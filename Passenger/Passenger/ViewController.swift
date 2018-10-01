@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PassengerKit
 
 class ViewController: UIViewController {
 
@@ -21,6 +22,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func didPressAuth(_ sender: UIBarButtonItem) {
+        PassengerKit.clearStoredCredentials()
+    }
 
 }
 

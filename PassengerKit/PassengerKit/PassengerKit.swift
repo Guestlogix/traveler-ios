@@ -55,11 +55,20 @@ public class PassengerKit {
     }
 
     public static func fightSearch(query: FlightQuery, delegate: AnyObject?) {
-
+        shared?.flightSearch(query: query, completion: { (flights, error) in
+            // TODO: Call delegate method
+        })
     }
 
     public static func flightSearch(query: FlightQuery, completion: @escaping ([Flight]? , Error?) -> Void) {
         shared?.flightSearch(query: query, completion: completion)
+    }
+
+    public static func clearStoredCredentials() {
+        SecItemDelete([
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: tokenKeychainKey
+            ] as CFDictionary)
     }
 }
 

@@ -53,7 +53,7 @@ class AuthenticatedRemoteFetchOperation<T>: ConcurrentOperation where T : Decoda
 
         let errorOperation = BlockOperation { [unowned fetchOperation, unowned authOperation, unowned refetchOperation, unowned routeOperation] in
             switch fetchOperation.error {
-            case .some(NetworkError.forbidden):
+            case .some(NetworkError.unauthorized): // TODO: This should happen on Specific errors (401 - EXPIRED TOKEN)
                 break
             default:
                 self.error = fetchOperation.error

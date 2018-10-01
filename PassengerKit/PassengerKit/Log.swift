@@ -31,7 +31,7 @@ import Foundation
     }
 }
 
-public var logLevel: LogLevel = .trace
+public var logLevel: LogLevel = .debug
 
 public func Log(_ message: @autoclosure () -> String, data: Any? = nil, level: LogLevel = .debug, filename: String = #file, function: String = #function, line: Int = #line) {
     

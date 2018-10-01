@@ -12,4 +12,10 @@ public struct FlightQuery {
     var carrierCode: String
     var number: String
     var date: Date
+
+    public init(carrierCode: String, number: String, date: Date) {
+        self.carrierCode = carrierCode
+        self.number = number
+        self.date = date
+    }
 }

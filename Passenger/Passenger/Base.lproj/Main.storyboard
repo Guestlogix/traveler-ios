@@ -13,7 +13,7 @@
         <!--Guestlogix-->
         <scene sceneID="JIh-V1-cdA">
             <objects>
-                <viewController id="UnY-fJ-3SI" sceneMemberID="viewController">
+                <viewController id="UnY-fJ-3SI" customClass="ViewController" customModule="Passenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l2j-QR-HmK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ivV-dS-PkU"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Guestlogix" id="TKB-4c-4T6"/>
+                    <navigationItem key="navigationItem" title="Guestlogix" id="TKB-4c-4T6">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="iQc-1Q-PM2">
+                            <connections>
+                                <action selector="didPressAuth:" destination="UnY-fJ-3SI" id="SHn-zS-XHD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQm-co-JM1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
