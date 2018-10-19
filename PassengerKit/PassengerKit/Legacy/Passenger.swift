@@ -98,7 +98,7 @@ class PassengerApi: Passenger {
                 } catch {
                     self = .generic
                 }
-            case MappingError.invalidJSON:
+            case is DecodingError:
                 self = .decoding(message: error.localizedDescription)
             default:
                 self = .generic

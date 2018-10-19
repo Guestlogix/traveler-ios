@@ -18,14 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         PassengerKit.initialize(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT")
 
-//        PassengerKit.identify(user.email) { glxUser in
-//
-//        }
-//
-//        PassngerKit.fetchOrders(glxUser) { orders in
-//
-//        }
-
         // Temp Styles
 
         UINavigationBar.appearance().tintColor = UIColor.white

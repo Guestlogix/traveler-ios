@@ -21,10 +21,9 @@ enum AuthPath {
 
         switch self {
         case .flights(let query):
-            urlComponents.path = "/trip"
+            urlComponents.path = "/flight"
             urlComponents.queryItems = [
-                URLQueryItem(name: "carrier-code", value: query.carrierCode),
-                URLQueryItem(name: "trip-number", value: query.number),
+                URLQueryItem(name: "flight-number", value: query.number),
                 URLQueryItem(name: "departure-date", value: DateFormatter.yearMonthDay.string(from: query.date))
             ]
         case .user:

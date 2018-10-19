@@ -79,6 +79,7 @@ open class NetworkOperation: ConcurrentOperation {
             case .some(let error):
                 Log("Error: \(error.localizedDescription)", data: data.flatMap({ String(data: $0, encoding: .utf8) }), level: .error)
                 self.delegate?.networkOperation(self, didFailWith: error)
+            // TODO: 4 levels and 5 levels should be an error
             case .none:
                 Log("Successful", data: "\(response?.statusCode ?? 0) - \(response?.url?.absoluteString ?? "[URL]")", level: .debug)
                 Log("Body", data: data.flatMap({ String(data: $0, encoding: .utf8) }), level: .trace)

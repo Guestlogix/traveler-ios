@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="211" id="5Ry-aV-Ch7" customClass="CarouselViewCell" customModule="Passenger" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="417" height="211"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ry-aV-Ch7" id="qN9-qu-Xr5">
+                <rect key="frame" x="0.0" y="0.0" width="417" height="210.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6n-Gh-Vki">
+                        <rect key="frame" x="20" y="11" width="323" height="23"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rww-P3-5AL">
+                        <rect key="frame" x="363" y="8" width="34" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="More"/>
+                        <connections>
+                            <action selector="didPressMoreButton:" destination="5Ry-aV-Ch7" eventType="touchUpInside" id="9rS-xx-EDi"/>
+                        </connections>
+                    </button>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5hI-3j-6Qv">
+                        <rect key="frame" x="0.0" y="41" width="417" height="159"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dh4-l6-idL">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="5Ry-aV-Ch7" id="BnP-p4-cga"/>
+                            <outlet property="delegate" destination="5Ry-aV-Ch7" id="sb2-1V-TNV"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5hI-3j-6Qv" firstAttribute="top" secondItem="rww-P3-5AL" secondAttribute="bottom" constant="4" id="9Fq-y4-1jA"/>
+                    <constraint firstAttribute="trailing" secondItem="rww-P3-5AL" secondAttribute="trailing" constant="20" id="ARG-nM-jKN"/>
+                    <constraint firstItem="5hI-3j-6Qv" firstAttribute="leading" secondItem="qN9-qu-Xr5" secondAttribute="leading" id="IO3-Yi-WJR"/>
+                    <constraint firstAttribute="trailing" secondItem="5hI-3j-6Qv" secondAttribute="trailing" id="Lb5-kC-mLt"/>
+                    <constraint firstItem="rww-P3-5AL" firstAttribute="leading" secondItem="Q6n-Gh-Vki" secondAttribute="trailing" constant="20" id="MA3-tR-nX4"/>
+                    <constraint firstItem="Q6n-Gh-Vki" firstAttribute="leading" secondItem="qN9-qu-Xr5" secondAttribute="leading" constant="20" id="P53-W0-SPY"/>
+                    <constraint firstItem="rww-P3-5AL" firstAttribute="centerY" secondItem="Q6n-Gh-Vki" secondAttribute="centerY" id="VGZ-Sz-6dy"/>
+                    <constraint firstAttribute="bottom" secondItem="5hI-3j-6Qv" secondAttribute="bottom" constant="10.5" id="lQE-lP-R9X"/>
+                    <constraint firstItem="Q6n-Gh-Vki" firstAttribute="top" secondItem="qN9-qu-Xr5" secondAttribute="top" constant="11" id="xP5-E0-6V2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionView" destination="5hI-3j-6Qv" id="Uki-oS-g9J"/>
+                <outlet property="headerLabel" destination="Q6n-Gh-Vki" id="XzS-jl-WrD"/>
+                <outlet property="moreButton" destination="rww-P3-5AL" id="SLL-Dr-Via"/>
+            </connections>
+            <point key="canvasLocation" x="93.599999999999994" y="66.11694152923539"/>
+        </tableViewCell>
+    </objects>
+</document>

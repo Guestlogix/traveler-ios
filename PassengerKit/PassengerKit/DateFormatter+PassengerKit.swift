@@ -10,8 +10,14 @@ import Foundation
 
 extension DateFormatter {
     static var yearMonthDay: DateFormatter = {
-        var dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         return dateFormatter
+    }()
+
+    static var withoutTimezone: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter
     }()
 }

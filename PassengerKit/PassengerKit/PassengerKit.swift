@@ -54,9 +54,13 @@ public class PassengerKit {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    public static func fightSearch(query: FlightQuery, delegate: AnyObject?) {
-        shared?.flightSearch(query: query, completion: { (flights, error) in
-            // TODO: Call delegate method
+    public static func fightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
+        shared?.flightSearch(query: query, completion: { [weak delegate] (flights, error) in
+            if let flights = flights {
+                delegate?.flightSearchDidSucceedWith(flights)
+            } else {
+                delegate?.flightSearchDidFailWith(error!)
+            }
         })
     }
 
@@ -71,4 +75,3 @@ public class PassengerKit {
             ] as CFDictionary)
     }
 }
-

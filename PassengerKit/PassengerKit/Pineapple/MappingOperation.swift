@@ -8,10 +8,6 @@
 
 import Foundation
 
-public enum MappingError: Error {
-    case invalidJSON
-}
-
 public class MappingOperation<T> : Operation where T : Decodable {
 
     public var data: Data?
@@ -39,9 +35,9 @@ public class MappingOperation<T> : Operation where T : Decodable {
             
             Log("Mapped Resource: ", data: type(of: mappedResource), level: .debug)
         } catch {
-            self.error = MappingError.invalidJSON
+            self.error = error
             
-            Log("Invalid JSON", data: String(data: data, encoding: .utf8), level: .error)
+            Log(error.localizedDescription, data: String(data: data, encoding: .utf8), level: .error)
         }
     }
 }
