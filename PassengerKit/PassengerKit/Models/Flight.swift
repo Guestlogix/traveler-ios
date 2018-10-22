@@ -19,30 +19,15 @@ import Foundation
          "longitude": 0,
          "latitude": 0,
          "address": "string",
-         "city": {
-             "id": "string",
-             "name": "string",
-             "state": {
-                 "id": "string",
-                 "name": "string",
-                 "code": "string",
-                 "country": {
-                     "name": "string",
-                     "isoCode": "string",
-                     "region": {
-                         "id": "string",
-                         "name": "string"
-                     }
-                 }
-             },
-             "country": {
-                 "name": "string",
-                 "isoCode": "string",
-                 "region": {
-                     "id": "string",
-                     "name": "string"
-                 }
-             }
+         "city": "Toronto",
+         "state": {
+             "name": "Ontario",
+             "code": "ON"
+         },
+         "country": {
+             "name": "Canada",
+             "isoCode": "CA",
+             "region": "North America"
          }
      },
      "destination": {
@@ -51,30 +36,15 @@ import Foundation
          "longitude": 0,
          "latitude": 0,
          "address": "string",
-         "city": {
-             "id": "string",
-             "name": "string",
-             "state": {
-                 "id": "string",
-                 "name": "string",
-                 "code": "string",
-                 "country": {
-                     "name": "string",
-                     "isoCode": "string",
-                     "region": {
-                         "id": "string",
-                         "name": "string"
-                     }
-                 }
-             },
-             "country": {
-                 "name": "string",
-                 "isoCode": "string",
-                 "region": {
-                     "id": "string",
-                     "name": "string"
-                 }
-             }
+         "city": "Toronto",
+         "state": {
+             "name": "Ontario",
+             "code": "ON"
+         },
+         "country": {
+             "name": "Canada",
+             "isoCode": "CA",
+             "region": "North America"
          }
      },
      "stops": 0,

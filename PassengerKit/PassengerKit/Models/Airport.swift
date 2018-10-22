@@ -22,13 +22,4 @@ public struct Airport: Decodable {
         case name = "name"
         case city = "city"
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let city = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .city)
-
-        self.code = try container.decode(String.self, forKey: .code)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.city = try city.decode(String.self, forKey: .name)
-    }
 }
