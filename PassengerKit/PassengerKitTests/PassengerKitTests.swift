@@ -24,7 +24,7 @@ class PassengerKitTests: XCTestCase {
     func testFlightSearch() {
         let passengerKit = PassengerKit(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT")
 
-        let query = FlightQuery(carrierCode: "SA", number: "1", date: DateFormatter.yearMonthDay.date(from: "2018/02/27")!)
+        let query = FlightQuery(number: "SA1", date: DateFormatter.yearMonthDay.date(from: "2018/02/27")!)
         let exp = expectation(description: "Should get a response")
 
         passengerKit.flightSearch(query: query) { (flights, error) in

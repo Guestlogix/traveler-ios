@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol CarouselViewCellDataSource: class {
+public protocol CarouselViewCellDataSource: class {
     func numberOfItemsInCell(_ cell: CarouselViewCell) -> Int
-    func carouselCell(_ cell: CarouselViewCell, configure itemCell: CarouselItemViewCell, at index: Int)
+    func carouselCell(_ cell: CarouselViewCell, configure: CarouselItemViewCell, at: Int)
 }
 
-protocol CarouselViewCellDelegate: class {
+public protocol CarouselViewCellDelegate: class {
     func carouselCellDidPressMoreButton(_ cell: CarouselViewCell)
     func sizeForItemsInCell(_ cell: CarouselViewCell) -> CGSize
     func carouselCell(_ cell: CarouselViewCell, didSelectItemAt index: Int)
@@ -21,20 +21,20 @@ protocol CarouselViewCellDelegate: class {
 
 let carouselItemCellIdentifier = "carouselItemCellIdentifier"
 
-class CarouselViewCell: UITableViewCell {
-    @IBOutlet weak var headerLabel: UILabel!
-    @IBOutlet weak var moreButton: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
+open class CarouselViewCell: UITableViewCell {
+    @IBOutlet open weak var headerLabel: UILabel!
+    @IBOutlet open weak var moreButton: UIButton!
+    @IBOutlet open weak var collectionView: UICollectionView!
 
-    weak var dataSource: CarouselViewCellDataSource?
-    weak var delegate: CarouselViewCellDelegate?
+    open weak var dataSource: CarouselViewCellDataSource?
+    open weak var delegate: CarouselViewCellDelegate?
 
     private var itemSize = CGSize.zero
 
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
 
-        collectionView.register(UINib(nibName: "CarouselItemViewCell", bundle: nil), forCellWithReuseIdentifier: carouselItemCellIdentifier)
+        collectionView.register(UINib(nibName: "CarouselItemViewCell", bundle: Bundle(for: type(of: self))), forCellWithReuseIdentifier: carouselItemCellIdentifier)
     }
 
     @IBAction func didPressMoreButton(_ sender: UIButton) {
@@ -48,30 +48,30 @@ class CarouselViewCell: UITableViewCell {
 }
 
 extension CarouselViewCell: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    private func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource?.numberOfItemsInCell(self) ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselItemCellIdentifier, for: indexPath) as! CarouselItemViewCell
         dataSource?.carouselCell(self, configure: cell, at: indexPath.row)
         return cell
     }
 }
 
-extension CarouselViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+extension CarouselViewCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var size = itemSize
         size.height += (2 * CarouselItemViewCell.margin) + CarouselItemViewCell.footerHeight
         size.width += (2 * CarouselItemViewCell.margin)
         return size
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.carouselCell(self, didSelectItemAt: indexPath.row)
     }
 }

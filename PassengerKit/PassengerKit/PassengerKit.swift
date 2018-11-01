@@ -54,6 +54,20 @@ public class PassengerKit {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func fetchCatalog(query: CatalogQuery, completion: @escaping (Catalog?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<Catalog>(path: .catalog(query), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    // MARK: Public API
+
     public static func fightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
         shared?.flightSearch(query: query, completion: { [weak delegate] (flights, error) in
             if let flights = flights {
@@ -68,10 +82,17 @@ public class PassengerKit {
         shared?.flightSearch(query: query, completion: completion)
     }
 
-    public static func clearStoredCredentials() {
-        SecItemDelete([
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: tokenKeychainKey
-            ] as CFDictionary)
+    public static func fetchCatalog(query: CatalogQuery, delegate: CatalogFetchDelegate) {
+        shared?.fetchCatalog(query: query, completion: { [weak delegate] (catalog, error) in
+            if let catalog = catalog {
+                delegate?.catalogFetchDidSucceedWith(catalog)
+            } else {
+                delegate?.catalogFetchDidFailWith(error!)
+            }
+        })
+    }
+
+    public static func fetchCatalog(query: CatalogQuery, completion: @escaping (Catalog?, Error?) -> Void) {
+        shared?.fetchCatalog(query: query, completion: completion)
     }
 }

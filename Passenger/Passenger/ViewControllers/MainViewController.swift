@@ -9,16 +9,29 @@
 import UIKit
 import PassengerKit
 
+let flightCellHeight: CGFloat = 44
+
 class MainViewController: UIViewController {
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
 
     private var flights = [Flight]()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        performSegue(withIdentifier: "catalogSegue", sender: nil)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch (segue.identifier, segue.destination) {
-        case ("addFlightSegue"?, let navVC as UINavigationController):
+        switch (segue, segue.destination) {
+        case (_, let navVC as UINavigationController) where segue.identifier == "addFlightSegue":
             let lookupVC = navVC.topViewController as? FlightLookupViewController
             lookupVC?.delegate = self
+        case (let segue as ContainerEmbedSegue, let catalogVC as PassengerCatalogViewController):
+            segue.containerView = containerView
+            catalogVC.query = CatalogQuery(flights: flights)
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -34,7 +47,13 @@ extension MainViewController: FlightLookupViewControllerDelegate {
     func flightLookupViewController(_ controller: FlightLookupViewController, didAdd flights: [Flight]) {
         self.flights.append(contentsOf: flights)
         self.tableView.reloadData()
+        self.updateTableViewHeight()
+        self.performSegue(withIdentifier: "catalogSegue", sender: nil)
         controller.dismiss(animated: true)
+    }
+
+    func updateTableViewHeight() {
+        self.tableViewHeightConstraint.constant = CGFloat(flights.count) * flightCellHeight
     }
 }
 
@@ -64,8 +83,14 @@ extension MainViewController: UITableViewDelegate {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
             self.flights.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.updateTableViewHeight()
+            self.performSegue(withIdentifier: "catalogSegue", sender: nil)
         }
 
         return [deleteAction]
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return flightCellHeight
     }
 }

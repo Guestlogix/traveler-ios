@@ -57,6 +57,7 @@ import Foundation
  **/
 
 public struct Flight: Decodable {
+    public let id: String
     public let number: String
     public let departureAirport: Airport
     public let arrivalAirport: Airport
@@ -64,6 +65,7 @@ public struct Flight: Decodable {
     public let arrivalDate: Date
 
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case number = "flightNumber"
         case departureAirport = "origin"
         case arrivalAirport = "destination"
@@ -74,6 +76,7 @@ public struct Flight: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.number = try container.decode(String.self, forKey: .number)
+        self.id = try container.decode(String.self, forKey: .id)
 
         let departureDateString = try container.decode(String.self, forKey: .departureDate)
         guard let departureDate = DateFormatter.withoutTimezone.date(from: departureDateString) else {

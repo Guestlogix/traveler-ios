@@ -9,16 +9,16 @@
 import UIKit
 import PassengerKit
 
-class PurchasableViewController: UIViewController {
+class CatalogItemViewController: UIViewController {
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
 
-    var purchasable: Purchasable?
+    var catalogItem: CatalogItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let imageURL = purchasable?.imageURL else {
+        guard let imageURL = catalogItem?.imageURL else {
             return
         }
 

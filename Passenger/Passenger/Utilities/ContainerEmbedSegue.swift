@@ -6,7 +6,7 @@
 //  Copyright © 2018 Ata Namvari. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class ContainerEmbedSegue : UIStoryboardSegue {
     public weak var containerView: UIView?
