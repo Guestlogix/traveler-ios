@@ -48,7 +48,7 @@ open class CarouselViewCell: UITableViewCell {
 }
 
 extension CarouselViewCell: UICollectionViewDataSource {
-    private func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
