@@ -278,10 +278,41 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vuY-UM-1wp"/>
                     </view>
+                    <connections>
+                        <segue destination="gMv-JQ-rLB" kind="presentation" identifier="itemSegue" id="cQk-1d-8Az"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yH-82-dcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5838" y="1421"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="i0C-gM-4K9">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSn-w1-OGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gMv-JQ-rLB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c6b-Iu-Leg">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LEK-jf-Bik" kind="relationship" relationship="rootViewController" id="VWx-Gm-QFY"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="7128.8000000000002" y="1420.9359605911332"/>
+        </scene>
+        <!--CatalogItem-->
+        <scene sceneID="8hi-b7-28c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CatalogItem" bundleIdentifier="com.guestlogix.PassengerKit" id="LEK-jf-Bik" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="unH-GR-SeP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EuA-bE-fFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7798" y="1421"/>
         </scene>
     </scenes>
 </document>

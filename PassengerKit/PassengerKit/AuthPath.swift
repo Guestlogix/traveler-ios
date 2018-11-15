@@ -11,8 +11,7 @@ import Foundation
 enum AuthPath {
     case flights(FlightQuery)
     case catalog(CatalogQuery)
-    case user
-    case updateUser(User)
+    case catalogItem(CatalogItem)
 
     // MARK: URLRequest
 
@@ -33,12 +32,8 @@ enum AuthPath {
             if let flights = query.flights, flights.count > 0 {
                 urlComponents.queryItems = [URLQueryItem(name: "flight-ids", value: flights.map({$0.id}).joined(separator: ","))]
             }
-        case .user:
-            urlComponents.path = "/user"
-        case .updateUser(let user):
-            urlComponents.path = "/user/\(user)"
-            urlRequest.method = .post
-            urlRequest.httpBody = try? JSONEncoder().encode(user)
+        case .catalogItem(let item):
+            urlComponents.path = "/catalog/\(item.vendor)/\(item.id)"
         }
 
         urlRequest.url = urlComponents.url

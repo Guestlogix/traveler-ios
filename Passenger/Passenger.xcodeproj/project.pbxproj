@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		A91E0CD8216271740017D207 /* PassengerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91E0CD7216271740017D207 /* PassengerKit.framework */; };
 		A91E0CD9216271740017D207 /* PassengerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A91E0CD7216271740017D207 /* PassengerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A91E0CE621665D7A0017D207 /* PurchasableGroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A91E0CE521665D7A0017D207 /* PurchasableGroupsViewController.xib */; };
-		A91E0CEC21666CAE0017D207 /* PurchasableGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CEB21666CAE0017D207 /* PurchasableGroupsViewController.swift */; };
-		A9BF40B021668B350090ED1C /* PurchasableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40AF21668B350090ED1C /* PurchasableViewController.swift */; };
-		A9BF40B221669C9E0090ED1C /* PurchasableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BF40B121669C9E0090ED1C /* PurchasableViewController.xib */; };
 		A9BF40B82177832F0090ED1C /* FlightLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40B72177832F0090ED1C /* FlightLookupViewController.swift */; };
 		A9BF40BA2177834E0090ED1C /* FlightLookupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40B92177834E0090ED1C /* FlightLookupFormViewController.swift */; };
 		A9BF40BC217783AB0090ED1C /* FlightSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40BB217783AB0090ED1C /* FlightSearchViewController.swift */; };
@@ -71,10 +67,6 @@
 
 /* Begin PBXFileReference section */
 		A91E0CD7216271740017D207 /* PassengerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PassengerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A91E0CE521665D7A0017D207 /* PurchasableGroupsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasableGroupsViewController.xib; sourceTree = "<group>"; };
-		A91E0CEB21666CAE0017D207 /* PurchasableGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasableGroupsViewController.swift; sourceTree = "<group>"; };
-		A9BF40AF21668B350090ED1C /* PurchasableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasableViewController.swift; sourceTree = "<group>"; };
-		A9BF40B121669C9E0090ED1C /* PurchasableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchasableViewController.xib; sourceTree = "<group>"; };
 		A9BF40B72177832F0090ED1C /* FlightLookupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightLookupViewController.swift; sourceTree = "<group>"; };
 		A9BF40B92177834E0090ED1C /* FlightLookupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightLookupFormViewController.swift; sourceTree = "<group>"; };
 		A9BF40BB217783AB0090ED1C /* FlightSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightSearchViewController.swift; sourceTree = "<group>"; };
@@ -215,10 +207,6 @@
 				A9BF40C521778BFF0090ED1C /* Views */,
 				A9BF40B62177830F0090ED1C /* ViewControllers */,
 				A9DB06792142F1BA009817EC /* AppDelegate.swift */,
-				A91E0CEB21666CAE0017D207 /* PurchasableGroupsViewController.swift */,
-				A91E0CE521665D7A0017D207 /* PurchasableGroupsViewController.xib */,
-				A9BF40AF21668B350090ED1C /* PurchasableViewController.swift */,
-				A9BF40B121669C9E0090ED1C /* PurchasableViewController.xib */,
 				A9DB06802142F1BD009817EC /* Assets.xcassets */,
 				A9DB06822142F1BD009817EC /* LaunchScreen.storyboard */,
 				A9DB06852142F1BD009817EC /* Info.plist */,
@@ -352,10 +340,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9BF40B221669C9E0090ED1C /* PurchasableViewController.xib in Resources */,
 				A9DB06842142F1BD009817EC /* LaunchScreen.storyboard in Resources */,
 				A9FF6D82218752EA00AFC20F /* AddFlight.storyboard in Resources */,
-				A91E0CE621665D7A0017D207 /* PurchasableGroupsViewController.xib in Resources */,
 				A9DB06812142F1BD009817EC /* Assets.xcassets in Resources */,
 				A9DB067F2142F1BA009817EC /* Main.storyboard in Resources */,
 			);
@@ -391,7 +377,6 @@
 				A9BF40DE218216860090ED1C /* PassengerCatalogViewController.swift in Sources */,
 				A9DB067A2142F1BA009817EC /* AppDelegate.swift in Sources */,
 				A9BF40C2217783F60090ED1C /* FlightSearchResultViewController.swift in Sources */,
-				A91E0CEC21666CAE0017D207 /* PurchasableGroupsViewController.swift in Sources */,
 				A9BF40D52177A60B0090ED1C /* FlightCell.swift in Sources */,
 				A9BF40BE217783C40090ED1C /* RetryViewController.swift in Sources */,
 				A9BF40CB21778F6B0090ED1C /* DateInputCell.swift in Sources */,
@@ -400,7 +385,6 @@
 				A9BF40C721778E870090ED1C /* StringInputCell.swift in Sources */,
 				A9BF40D0217793A40090ED1C /* DateFormatter+Passenger.swift in Sources */,
 				A9BF40BA2177834E0090ED1C /* FlightLookupFormViewController.swift in Sources */,
-				A9BF40B021668B350090ED1C /* PurchasableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

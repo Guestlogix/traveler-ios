@@ -18,7 +18,7 @@ public struct Airport: Decodable {
     public let city: String
 
     enum CodingKeys: String, CodingKey {
-        case code = "iataCode"
+        case code = "iata"
         case name = "name"
         case city = "city"
     }

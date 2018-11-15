@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        PassengerKit.initialize(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT")
+        PassengerKit.initialize(apiKey: "Z6RQqxeXNY82PTESKVqn76nurBm6JOpe6Aoks5Xi")
 
         // Temp Styles
 

@@ -66,6 +66,18 @@ public class PassengerKit {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func fetchCatalogItemDetails(_ catalogItem: CatalogItem, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<CatalogItemDetails>(path: .catalogItem(catalogItem), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     public static func fightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
@@ -94,5 +106,19 @@ public class PassengerKit {
 
     public static func fetchCatalog(query: CatalogQuery, completion: @escaping (Catalog?, Error?) -> Void) {
         shared?.fetchCatalog(query: query, completion: completion)
+    }
+
+    public static func fetchCatalogItemDetails(_ catalogItem: CatalogItem, delegate: CatalogItemDetailsFetchDelegate) {
+        shared?.fetchCatalogItemDetails(catalogItem, completion: { [weak delegate] (details, error) in
+            if let details = details {
+                delegate?.catalogItemDetailsFetchDidSucceedWith(details)
+            } else {
+                delegate?.catalogItemDetailsFetchDidFailWith(error!)
+            }
+        })
+    }
+
+    public static func fetchCatalogItemDetails(_ catalogItem: CatalogItem, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
+        shared?.fetchCatalogItemDetails(catalogItem, completion: completion)
     }
 }

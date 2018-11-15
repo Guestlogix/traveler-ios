@@ -9,13 +9,17 @@
 import Foundation
 
 public struct CatalogItem: Decodable {
+    let id: String
+    let vendor: Int
     public let title: String
     public let subTitle: String
     public let imageURL: URL?
 
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case title = "title"
         case subTitle = "subTitle"
         case imageURL = "thumbnail"
+        case vendor = "vendor"
     }
 }
