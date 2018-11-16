@@ -35,6 +35,9 @@ open class CarouselViewCell: UITableViewCell {
         super.awakeFromNib()
 
         collectionView.register(UINib(nibName: "CarouselItemViewCell", bundle: Bundle(for: type(of: self))), forCellWithReuseIdentifier: carouselItemCellIdentifier)
+        self.separatorInset = .zero
+        self.preservesSuperviewLayoutMargins = false
+        self.layoutMargins = .zero
     }
 
     @IBAction func didPressMoreButton(_ sender: UIButton) {
@@ -43,6 +46,7 @@ open class CarouselViewCell: UITableViewCell {
 
     func reload() {
         itemSize = delegate?.sizeForItemsInCell(self) ?? .zero
+        collectionView.collectionViewLayout.invalidateLayout()
         collectionView.reloadData()
     }
 }
