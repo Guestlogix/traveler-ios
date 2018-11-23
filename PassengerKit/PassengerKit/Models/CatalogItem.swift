@@ -8,9 +8,8 @@
 
 import Foundation
 
-public struct CatalogItem: Decodable {
-    let id: String
-    let vendor: Int
+public struct CatalogItem: Decodable, Product {
+    public let id: String
     public let title: String
     public let subTitle: String
     public let imageURL: URL?
@@ -20,6 +19,5 @@ public struct CatalogItem: Decodable {
         case title = "title"
         case subTitle = "subTitle"
         case imageURL = "thumbnail"
-        case vendor = "vendor"
     }
 }

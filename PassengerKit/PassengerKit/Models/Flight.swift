@@ -67,8 +67,8 @@ public struct Flight: Decodable {
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case number = "flightNumber"
-        case departureAirport = "origin"
-        case arrivalAirport = "destination"
+        case departureAirport = "destination"
+        case arrivalAirport = "origin"
         case departureDate = "departureTime"
         case arrivalDate = "arrivalTime"
     }

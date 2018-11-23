@@ -48,6 +48,9 @@
 		A9E28A85219B54F600967C4A /* StringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E28A84219B54F600967C4A /* StringCell.swift */; };
 		A9E28A87219B55AC00967C4A /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E28A86219B55AC00967C4A /* DatePickerCell.swift */; };
 		A9E28A89219C928800967C4A /* NSMutableAttributedString+FontFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E28A88219C928800967C4A /* NSMutableAttributedString+FontFace.swift */; };
+		A9E28A9321A84DBD00967C4A /* Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E28A9221A84DBD00967C4A /* Availability.swift */; };
+		A9E28A9521A8631600967C4A /* AvailabilityFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E28A9421A8631600967C4A /* AvailabilityFetchDelegate.swift */; };
+		A9E28A9721A864A700967C4A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E28A9621A864A700967C4A /* Product.swift */; };
 		A9E2AD6F218A00060063BF79 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2AD6E218A00060063BF79 /* CatalogViewController.swift */; };
 		A9E2AD71218A2BE60063BF79 /* CatalogResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2AD70218A2BE60063BF79 /* CatalogResultViewController.swift */; };
 		A9E2AD80219344670063BF79 /* CatalogItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2AD7F219344670063BF79 /* CatalogItemDetails.swift */; };
@@ -159,6 +162,9 @@
 		A9E28A84219B54F600967C4A /* StringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCell.swift; sourceTree = "<group>"; };
 		A9E28A86219B55AC00967C4A /* DatePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		A9E28A88219C928800967C4A /* NSMutableAttributedString+FontFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+FontFace.swift"; sourceTree = "<group>"; };
+		A9E28A9221A84DBD00967C4A /* Availability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Availability.swift; sourceTree = "<group>"; };
+		A9E28A9421A8631600967C4A /* AvailabilityFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityFetchDelegate.swift; sourceTree = "<group>"; };
+		A9E28A9621A864A700967C4A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A9E2AD6E218A00060063BF79 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		A9E2AD70218A2BE60063BF79 /* CatalogResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogResultViewController.swift; sourceTree = "<group>"; };
 		A9E2AD7F219344670063BF79 /* CatalogItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemDetails.swift; sourceTree = "<group>"; };
@@ -254,6 +260,7 @@
 				A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */,
 				A9BF40E9218264FB0090ED1C /* CatalogFetchDelegate.swift */,
 				A9E2AD8121934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift */,
+				A9E28A9421A8631600967C4A /* AvailabilityFetchDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -330,6 +337,8 @@
 				A9E2AD9E2194AD170063BF79 /* Menu.swift */,
 				A9E2ADA42194D75D0063BF79 /* Attribute.swift */,
 				A9E2ADB4219B30780063BF79 /* PurchaseStrategy.swift */,
+				A9E28A9221A84DBD00967C4A /* Availability.swift */,
+				A9E28A9621A864A700967C4A /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -620,6 +629,7 @@
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,
 				A9E2ADA92195EC110063BF79 /* AvailabilityFormViewController.swift in Sources */,
+				A9E28A9521A8631600967C4A /* AvailabilityFetchDelegate.swift in Sources */,
 				A9E2AD91219398C30063BF79 /* PagedHorizontalView.swift in Sources */,
 				A9DB06B1214AE0AF009817EC /* URLRequest+JSON.swift in Sources */,
 				A9BF40E2218231010090ED1C /* CatalogueQuery.swift in Sources */,
@@ -630,6 +640,7 @@
 				A9FF6D89218760BB00AFC20F /* CarouselItemViewCell.swift in Sources */,
 				A9E2AD842193505A0063BF79 /* CatalogItemDetailsViewController.swift in Sources */,
 				A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */,
+				A9E28A9721A864A700967C4A /* Product.swift in Sources */,
 				A9E2AD71218A2BE60063BF79 /* CatalogResultViewController.swift in Sources */,
 				A9E2ADA12194D0DE0063BF79 /* AttributesViewController.swift in Sources */,
 				A9DB065B2140665A009817EC /* NetworkOperation.swift in Sources */,
@@ -667,6 +678,7 @@
 				A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */,
 				A9DB064921404CE0009817EC /* Token.swift in Sources */,
 				A9BF40D72177C1270090ED1C /* Airport.swift in Sources */,
+				A9E28A9321A84DBD00967C4A /* Availability.swift in Sources */,
 				A9E2ADB7219B378A0063BF79 /* QuantityViewController.swift in Sources */,
 				A9E2AD9321948C3C0063BF79 /* CatalogItemResultViewController.swift in Sources */,
 				A9E2ADAB2199E0ED0063BF79 /* ShadowedView.swift in Sources */,

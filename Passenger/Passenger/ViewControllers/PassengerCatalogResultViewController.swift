@@ -12,12 +12,14 @@ import PassengerKit
 class PassengerCatalogResultViewController: CatalogResultViewController {
     private(set) var selectedGroupIndex: Int?
     private(set) var selectedPurchasableIndex: Int?
+    private(set) var selectedImage: UIImage?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination, sender) {
         case (_, let navVC as UINavigationController, let catalogItem as CatalogItem):
             let vc = navVC.topViewController as? CatalogItemViewController
             vc?.catalogItem = catalogItem
+            vc?.image = selectedImage
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break

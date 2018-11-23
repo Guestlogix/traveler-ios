@@ -20,4 +20,12 @@ extension DateFormatter {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         return formatter
     }()
+
+    static var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter
+    }()
 }

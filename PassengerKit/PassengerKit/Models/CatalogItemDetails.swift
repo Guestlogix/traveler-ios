@@ -8,9 +8,8 @@
 
 import Foundation
 
-public struct CatalogItemDetails: Decodable {
-    let id: String
-
+public struct CatalogItemDetails: Decodable, Product {
+    public let id: String
     public let title: String
     public private(set) var description: String
     public lazy var attributedDescription: NSMutableAttributedString? = {

@@ -12,6 +12,7 @@ enum AuthPath {
     case flights(FlightQuery)
     case catalog(CatalogQuery)
     case catalogItem(CatalogItem)
+    case productSchedule(Product)
 
     // MARK: URLRequest
 
@@ -33,7 +34,9 @@ enum AuthPath {
                 urlComponents.queryItems = [URLQueryItem(name: "flight-ids", value: flights.map({$0.id}).joined(separator: ","))]
             }
         case .catalogItem(let item):
-            urlComponents.path = "/catalog/\(item.vendor)/\(item.id)"
+            urlComponents.path = "/product/\(item.id)"
+        case .productSchedule(let product):
+            urlComponents.path = "/product/\(product.id)/schedule"
         }
 
         urlRequest.url = urlComponents.url

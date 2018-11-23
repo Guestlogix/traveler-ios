@@ -78,6 +78,18 @@ public class PassengerKit {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func fetchAvailibities(product: Product, completion: @escaping ([Availability]?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[Availability]>(path: .productSchedule(product), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     public static func fightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
@@ -120,5 +132,19 @@ public class PassengerKit {
 
     public static func fetchCatalogItemDetails(_ catalogItem: CatalogItem, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
         shared?.fetchCatalogItemDetails(catalogItem, completion: completion)
+    }
+
+    public static func fetchAvailabilities(product: Product, completion: @escaping ([Availability]?, Error?) -> Void) {
+        shared?.fetchAvailibities(product: product, completion: completion)
+    }
+
+    public static func fetchAvailabilities(product: Product, delegate: AvailabilityFetchDelegate) {
+        shared?.fetchAvailibities(product: product, completion: { [weak delegate] (availabilities, error) in
+            if let availabilities = availabilities {
+                delegate?.availabilityFetchDidSucceedWith(availabilities)
+            } else {
+                delegate?.availabilityFetchDidFailWith(error!)
+            }
+        })
     }
 }
