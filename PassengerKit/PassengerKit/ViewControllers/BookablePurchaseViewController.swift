@@ -9,9 +9,118 @@
 import UIKit
 
 protocol BookablePurchaseViewControllerDelegate: class {
-
+    func bookablePurchaseViewControllerDidFinish(_ controller: BookablePurchaseViewController)
 }
 
 class BookablePurchaseViewController: UIViewController {
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var button: UIButton!
+
+    var errorContext: ErrorContext?
+    var bookingContext: BookingContext?
     weak var delegate: BookablePurchaseViewControllerDelegate?
+
+    /// TEMP
+
+    private var passes: [Pass]?
+
+    /// END TEMP
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bookingContext?.addObserver(self)
+    }
+
+    deinit {
+        bookingContext?.removeObserver(self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch (segue.identifier, segue.destination) {
+        case (_, let vc as BookableConfirmationViewController):
+            vc.modalPresentationStyle = .custom
+            vc.modalPresentationCapturesStatusBarAppearance = true
+            vc.transitioningDelegate = self
+            vc.passes = passes
+            vc.delegate = self
+        default:
+            break
+        }
+    }
+
+    @IBAction func didPressCTA(_ sender: UIButton) {
+        guard let bookingContext = bookingContext else {
+            Log("No Context", data: nil, level: .error)
+            return
+        }
+
+        guard errorContext?.error == nil else {
+            return
+        }
+
+        button.isEnabled = false
+
+        PassengerKit.fetchPasses(bookingContext: bookingContext, delegate: self)
+    }
+}
+
+extension BookablePurchaseViewController: PassFetchDelegate {
+    func passFetchDidSucceedWith(_ result: [Pass]) {
+        self.passes = result
+
+        performSegue(withIdentifier: "passSegue", sender: nil)
+
+        button.isEnabled = true
+    }
+
+    func passFetchDidFailWith(_ error: Error) {
+        button.isEnabled = true
+
+        errorContext?.error = error
+    }
+}
+
+extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        guard presented is BookableConfirmationViewController else {
+            return nil
+        }
+
+        return DrawerPresentationController(presentedViewController: presented, presenting: presenting, source: source)
+    }
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let confirmVC = presented as? BookableConfirmationViewController else {
+            return nil
+        }
+
+        return DrawerPresentationAnimator(sourceDrawer: self, targetDrawer: confirmVC)
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let confirmVC = dismissed as? BookableConfirmationViewController else {
+            return nil
+        }
+
+        return DrawerDismmissalAnimator(sourceDrawer: confirmVC, targetDrawer: self)
+    }
+}
+
+extension BookablePurchaseViewController: DrawerTransitioning {
+    func drawerViewForTransition(context: UIViewControllerContextTransitioning) -> UIView {
+        return view
+    }
+}
+
+extension BookablePurchaseViewController: BookingContextObserving {
+    func bookingContextDidUpdate(_ context: BookingContext) {
+        button.isEnabled = context.isReady
+    }
+}
+
+extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
+    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController) {
+
+    }
 }

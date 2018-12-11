@@ -31,7 +31,6 @@
 		A9DB068F2142F1BD009817EC /* PassengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB068E2142F1BD009817EC /* PassengerTests.swift */; };
 		A9DB069A2142F1BD009817EC /* PassengerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB06992142F1BD009817EC /* PassengerUITests.swift */; };
 		A9FF6D82218752EA00AFC20F /* AddFlight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9FF6D80218752EA00AFC20F /* AddFlight.storyboard */; };
-		A9FF6D8E2187611C00AFC20F /* ContainerEmbedSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FF6D8D2187611C00AFC20F /* ContainerEmbedSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +94,6 @@
 		A9DB06992142F1BD009817EC /* PassengerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerUITests.swift; sourceTree = "<group>"; };
 		A9DB069B2142F1BD009817EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9FF6D81218752EA00AFC20F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddFlight.storyboard; sourceTree = "<group>"; };
-		A9FF6D8D2187611C00AFC20F /* ContainerEmbedSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerEmbedSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,14 +167,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		A9BF40EB2182662E0090ED1C /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				A9FF6D8D2187611C00AFC20F /* ContainerEmbedSegue.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		A9DB066D2142F1BA009817EC = {
 			isa = PBXGroup;
 			children = (
@@ -201,7 +191,6 @@
 		A9DB06782142F1BA009817EC /* Passenger */ = {
 			isa = PBXGroup;
 			children = (
-				A9BF40EB2182662E0090ED1C /* Utilities */,
 				A9BF40DC21820CCB0090ED1C /* Storyboards */,
 				A9BF40CE217793940090ED1C /* Extensions */,
 				A9BF40C521778BFF0090ED1C /* Views */,
@@ -381,7 +370,6 @@
 				A9BF40BE217783C40090ED1C /* RetryViewController.swift in Sources */,
 				A9BF40CB21778F6B0090ED1C /* DateInputCell.swift in Sources */,
 				A9BF40CD21778FEC0090ED1C /* ButtonCell.swift in Sources */,
-				A9FF6D8E2187611C00AFC20F /* ContainerEmbedSegue.swift in Sources */,
 				A9BF40C721778E870090ED1C /* StringInputCell.swift in Sources */,
 				A9BF40D0217793A40090ED1C /* DateFormatter+Passenger.swift in Sources */,
 				A9BF40BA2177834E0090ED1C /* FlightLookupFormViewController.swift in Sources */,

@@ -15,6 +15,7 @@ protocol CatalogItemResultViewControllerDelegate: class {
 }
 
 class CatalogItemResultViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -25,6 +26,24 @@ class CatalogItemResultViewController: UIViewController {
 
     weak var delegate: CatalogItemResultViewControllerDelegate?
     var catalogItemDetails: CatalogItemDetails?
+
+    private var purchaseDetails: PurchaseDetails?
+    private let errorContext = ErrorContext()
+    private lazy var purchaseContext: BookingContext? = {
+        return catalogItemDetails.flatMap({ BookingContext(product: $0) })
+    }()
+    /*
+    private lazy var purchaseContext: PurchaseContext? {
+        switch catalogItemDetails {
+        case .some(let item) where item.purchaseStrategy == .bookable:
+            return BookingContext(item)
+        case .some(let item) where item.purchaseStrategy == .buyable:
+            return BuyingContext(item)
+        default:
+            return nil
+        }
+    }
+ */
 
     private(set) var preferredTranslucency: Bool = true
 
@@ -43,18 +62,28 @@ class CatalogItemResultViewController: UIViewController {
                 // no-op
             })
         })
+
+        errorContext.addObserver(self)
+    }
+
+    deinit {
+        errorContext.removeObserver(self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as PurchaseDetailsViewController):
             vc.delegate = self
-            vc.strategy = catalogItemDetails?.purchaseStrategy
+            vc.catalogItemDetails = catalogItemDetails
+            vc.errorContext = errorContext
+            vc.purchaseContext = purchaseContext
         case (_, let vc as CatalogItemInfoViewController):
             vc.delegate = self
             vc.details = catalogItemDetails
         case (_, let vc as PurchaseViewController):
             vc.strategy = catalogItemDetails?.purchaseStrategy
+            vc.errorContext = errorContext
+            vc.purchaseContext = purchaseContext
             vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
@@ -90,6 +119,10 @@ extension CatalogItemResultViewController: PurchaseDetailsViewControllerDelgate 
         purchaseDetailsHeightConstraint.constant = controller.preferredContentSize.height
         view.layoutIfNeeded()
     }
+
+    func purchaseDetailsViewControllerDidSelectDetails(_ controller: PurchaseDetailsViewController) {
+        self.purchaseDetails = controller.purchaseDetails
+    }
 }
 
 extension CatalogItemResultViewController: CatalogItemInfoViewControllerDelegate {
@@ -115,5 +148,28 @@ extension CatalogItemResultViewController: UIScrollViewDelegate {
 }
 
 extension CatalogItemResultViewController: PurchaseViewControllerDelegate {
+    func purchaseDetailsForPurchaseViewController(_ controller: PurchaseViewController) -> PurchaseDetails? {
+        switch (catalogItemDetails?.purchaseStrategy, purchaseDetails) {
+        case (.some(.bookable), .none):
+            scrollView.setContentOffset(purchaseDetialsView.frame.origin, animated: true)
+            return nil
+        case (.some(.bookable), .some(let details)):
+            return details
+        default:
+            return nil
+        }
+    }
 
+    func purchaseViewController(_ controller: PurchaseViewController, didProduce bookingContext: BookingContext) {
+        performSegue(withIdentifier: "passSegue", sender: bookingContext)
+    }
+}
+
+extension CatalogItemResultViewController: ErrorContextObserving {
+    func errorContextDidUpdate(_ context: ErrorContext) {
+        if context.error != nil {
+            // TODO: This should not scroll if the size of the view is already in view port
+            scrollView.setContentOffsetWithoutGoingOver(purchaseDetialsView.frame.origin, animated: true)
+        }
+    }
 }

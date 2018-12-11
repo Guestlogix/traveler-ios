@@ -9,5 +9,7 @@
 import UIKit
 
 class DateCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    //@IBOutlet weak var errorLabel: UILabel!
 }

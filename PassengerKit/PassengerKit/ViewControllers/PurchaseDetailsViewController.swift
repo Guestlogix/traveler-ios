@@ -10,35 +10,53 @@ import UIKit
 
 protocol PurchaseDetailsViewControllerDelgate: class {
     func purchaseDetailsViewControllerDidChangePreferredContentSize(_ controller: PurchaseDetailsViewController)
+    func purchaseDetailsViewControllerDidSelectDetails(_ controller: PurchaseDetailsViewController)
 }
 
 class PurchaseDetailsViewController: UIViewController {
     weak var delegate: PurchaseDetailsViewControllerDelgate?
-    var strategy: PurchaseStrategy?
+    var catalogItemDetails: CatalogItemDetails?
+    var errorContext: ErrorContext?
+    var purchaseContext: BookingContext?
+
+    private(set) var purchaseDetails: PurchaseDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        switch strategy {
-//        case .some(.bookable):
-//            performSegue(withIdentifier: "availabilitySegue", sender: nil)
-//        case .some(.buyable):
-//            performSegue(withIdentifier: "quantitySegue", sender: nil)
-//        case .none:
-//            Log("No Strategy", data: nil, level: .error)
-//            break
-//        }
+        switch catalogItemDetails?.purchaseStrategy {
+        case .some(.bookable):
+            performSegue(withIdentifier: "bookableSegue", sender: nil)
+        case .some(.buyable):
+            performSegue(withIdentifier: "buyableSegue", sender: nil)
+        case .none:
+            Log("No Strategy", data: nil, level: .error)
+            break
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        switch (segue.identifier, segue.destination) {
-//        case (_, let vc as AvailabilityViewController):
-//            vc.delegate = self
-//        case (_, let vc as QuantityViewController):
-//            vc.delegate = self
-//        default:
-//            Log("Unknown segue", data: segue, level: .warning)
-//            break
-//        }
+        switch (segue.identifier, segue.destination) {
+        case (_, let vc as BookableDetailsViewController):
+            vc.delegate = self
+            vc.errorContext = errorContext
+            vc.bookingContext = purchaseContext
+        case (_, let vc as BuyableDetailsViewController):
+            vc.delegate = self
+        default:
+            Log("Unknown segue", data: segue, level: .warning)
+            break
+        }
     }
+}
+
+extension PurchaseDetailsViewController: BookableDetailsViewControllerDelegate {
+    func bookableDetailsViewControllerDidChangePreferredContentSize(_ controller: BookableDetailsViewController) {
+        preferredContentSize = controller.preferredContentSize
+        delegate?.purchaseDetailsViewControllerDidChangePreferredContentSize(self)
+    }
+}
+
+extension PurchaseDetailsViewController: BuyablePurchaseViewControllerDelegate {
+
 }

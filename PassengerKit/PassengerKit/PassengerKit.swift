@@ -78,8 +78,39 @@ public class PassengerKit {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func fetchAvailibities(product: Product, completion: @escaping ([Availability]?, Error?) -> Void) {
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[Availability]>(path: .productSchedule(product), session: session)
+    func checkAvailability(bookingContext: BookingContext, completion: @escaping (Error?) -> Void) {
+        guard let date = bookingContext.selectedDate else {
+            completion(BookingError.noDate)
+            return
+        }
+
+        bookingContext.isReady = false
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[Availability]>(path: .productSchedule(bookingContext.product, from: date, to: date), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            bookingContext.availability = fetchOperation.resource?.first
+            bookingContext.isReady = true
+            completion(fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func fetchPasses(bookingContext: BookingContext, completion: @escaping ([Pass]?, Error?) -> Void) {
+        guard let date = bookingContext.selectedDate else {
+            completion(nil, BookingError.noDate)
+            return
+        }
+
+        if bookingContext.requiresTime && bookingContext.selectedTime == nil {
+            completion(nil, BookingError.noTime)
+            return
+        }
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[Pass]>(path: .passes(bookingContext.product, date: date, time: bookingContext.selectedTime), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
         }
@@ -134,16 +165,30 @@ public class PassengerKit {
         shared?.fetchCatalogItemDetails(catalogItem, completion: completion)
     }
 
-    public static func fetchAvailabilities(product: Product, completion: @escaping ([Availability]?, Error?) -> Void) {
-        shared?.fetchAvailibities(product: product, completion: completion)
+    public static func checkAvailability(bookingContext: BookingContext, completion: @escaping (Error?) -> Void) {
+        shared?.checkAvailability(bookingContext: bookingContext, completion: completion)
     }
 
-    public static func fetchAvailabilities(product: Product, delegate: AvailabilityFetchDelegate) {
-        shared?.fetchAvailibities(product: product, completion: { [weak delegate] (availabilities, error) in
-            if let availabilities = availabilities {
-                delegate?.availabilityFetchDidSucceedWith(availabilities)
+    public static func checkAvailability(bookingContext: BookingContext, delegate: AvailabilityCheckDelegate) {
+        shared?.checkAvailability(bookingContext: bookingContext, completion: { [weak delegate] (error) in
+            if let error = error {
+                delegate?.availabilityCheckDidFailWith(error)
             } else {
-                delegate?.availabilityFetchDidFailWith(error!)
+                delegate?.availabilityCheckDidSucceedFor(bookingContext)
+            }
+        })
+    }
+
+    public static func fetchPasses(bookingContext: BookingContext, completion: @escaping ([Pass]?, Error?) -> Void) {
+        shared?.fetchPasses(bookingContext: bookingContext, completion: completion)
+    }
+
+    public static func fetchPasses(bookingContext: BookingContext, delegate: PassFetchDelegate) {
+        shared?.fetchPasses(bookingContext: bookingContext, completion: { [weak delegate] (passes, error) in
+            if let passes = passes {
+                delegate?.passFetchDidSucceedWith(passes)
+            } else {
+                delegate?.passFetchDidFailWith(error!)
             }
         })
     }

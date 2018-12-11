@@ -76,7 +76,7 @@
                         <outlet property="containerView" destination="4N9-oB-Ea2" id="Yq2-fb-6wj"/>
                         <outlet property="tableView" destination="EVd-E2-Upl" id="Qpd-bg-pqe"/>
                         <outlet property="tableViewHeightConstraint" destination="2zb-Yw-3oo" id="2gc-Yg-LZ3"/>
-                        <segue destination="eW6-xh-dsE" kind="custom" identifier="catalogSegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="EEh-LO-bub"/>
+                        <segue destination="eW6-xh-dsE" kind="custom" identifier="catalogSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="EEh-LO-bub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBr-9C-snF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,10 +120,10 @@
                         <viewLayoutGuide key="safeArea" id="VoZ-sH-Ts8"/>
                     </view>
                     <connections>
-                        <segue destination="alS-5p-xO7" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="tWb-qg-vgJ"/>
-                        <segue destination="37g-es-PDM" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="srw-sr-Ic6"/>
-                        <segue destination="dwi-gd-Sty" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="qzO-s9-EXi"/>
-                        <segue destination="pxC-2F-gAu" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="ckk-rs-fx1"/>
+                        <segue destination="alS-5p-xO7" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="tWb-qg-vgJ"/>
+                        <segue destination="37g-es-PDM" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="srw-sr-Ic6"/>
+                        <segue destination="dwi-gd-Sty" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="qzO-s9-EXi"/>
+                        <segue destination="pxC-2F-gAu" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="ckk-rs-fx1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGE-Af-Jfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +289,6 @@
         <!--Navigation Controller-->
         <scene sceneID="i0C-gM-4K9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eSn-w1-OGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gMv-JQ-rLB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c6b-Iu-Leg">
@@ -301,6 +300,7 @@
                         <segue destination="LEK-jf-Bik" kind="relationship" relationship="rootViewController" id="VWx-Gm-QFY"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSn-w1-OGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7128.8000000000002" y="1420.9359605911332"/>
         </scene>

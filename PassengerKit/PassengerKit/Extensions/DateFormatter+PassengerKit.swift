@@ -28,4 +28,16 @@ extension DateFormatter {
         formatter.timeStyle = .short
         return formatter
     }()
+
+    static var longFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMMM d, yyyy"
+        return formatter
+    }()
+
+    static var dateOnlyFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
 }

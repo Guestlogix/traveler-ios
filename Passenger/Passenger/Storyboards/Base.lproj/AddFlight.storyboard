@@ -276,10 +276,10 @@
                     <connections>
                         <outlet property="flightDateLabel" destination="96H-dq-RTI" id="KE9-2s-WsE"/>
                         <outlet property="flightNumberLabel" destination="HpK-BI-SWb" id="4Om-yR-e7s"/>
-                        <segue destination="aiJ-75-hCj" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="G2D-ct-ASr"/>
-                        <segue destination="bsE-Xy-q1u" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="i8O-Oe-TJJ"/>
-                        <segue destination="BtW-G3-6xw" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="z18-RV-Myv"/>
-                        <segue destination="abl-Wj-tak" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="Passenger" customModuleProvider="target" id="Kfv-fF-bHI"/>
+                        <segue destination="aiJ-75-hCj" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="G2D-ct-ASr"/>
+                        <segue destination="bsE-Xy-q1u" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="i8O-Oe-TJJ"/>
+                        <segue destination="BtW-G3-6xw" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="z18-RV-Myv"/>
+                        <segue destination="abl-Wj-tak" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="Kfv-fF-bHI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZz-2z-Hw3" userLabel="First Responder" sceneMemberID="firstResponder"/>

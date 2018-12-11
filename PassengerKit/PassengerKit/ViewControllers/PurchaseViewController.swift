@@ -11,7 +11,7 @@ import UIKit
 // TEMP
 
 enum PurchaseDetails {
-
+    case bookable(Date)
 }
 
 // END TEMP
@@ -28,25 +28,29 @@ class PurchaseViewController: UIViewController {
     weak var dataSource: PurchaseViewControllerDataSource?
     weak var delegate: PurchaseViewControllerDelegate?
     var strategy: PurchaseStrategy?
+    var errorContext: ErrorContext?
+    var purchaseContext: BookingContext?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        switch strategy {
-//        case .some(.bookable):
-//            performSegue(withIdentifier: "bookableSegue", sender: nil)
-//        case .some(.buyable):
-//            performSegue(withIdentifier: "buyableSegue", sender: nil)
-//        case .none:
-//            Log("No Strategy", data: nil, level: .error)
-//            break
-//        }
+        switch strategy {
+        case .some(.bookable):
+            performSegue(withIdentifier: "bookableSegue", sender: nil)
+        case .some(.buyable):
+            performSegue(withIdentifier: "buyableSegue", sender: nil)
+        case .none:
+            Log("No Strategy", data: nil, level: .error)
+            break
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as BookablePurchaseViewController):
             vc.delegate = self
+            vc.bookingContext = purchaseContext
+            vc.errorContext = errorContext
         case (_, let vc as BuyablePurchaseViewController):
             vc.delegate = self
         default:
@@ -57,7 +61,9 @@ class PurchaseViewController: UIViewController {
 }
 
 extension PurchaseViewController: BookablePurchaseViewControllerDelegate {
+    func bookablePurchaseViewControllerDidFinish(_ controller: BookablePurchaseViewController) {
 
+    }
 }
 
 extension PurchaseViewController: BuyablePurchaseViewControllerDelegate {

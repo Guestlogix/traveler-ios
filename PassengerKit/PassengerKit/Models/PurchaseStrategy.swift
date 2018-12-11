@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum PurchaseStrategy: Int, Decodable {
-    case bookable = 1 // = "bookable"
-    case buyable = 0 // = "buyable"
+public enum PurchaseStrategy: String, Decodable {
+    case bookable = "Bookable"
+    case buyable = "Buyable"
 }
