@@ -57,10 +57,6 @@ class BookablePurchaseViewController: UIViewController {
             return
         }
 
-        guard errorContext?.error == nil else {
-            return
-        }
-
         button.isEnabled = false
 
         PassengerKit.fetchPasses(bookingContext: bookingContext, delegate: self)

@@ -139,9 +139,11 @@ extension CatalogItemResultViewController: UIScrollViewDelegate {
 
         if scrollView.contentOffset.y > cutOffPoint && preferredTranslucency {
             preferredTranslucency = false
+            scrollView.contentInsetAdjustmentBehavior = .always
             delegate?.catalogItemResultViewControllerDidChangePreferredTranslucency(self)
         } else if scrollView.contentOffset.y <= cutOffPoint && !preferredTranslucency {
             preferredTranslucency = true
+            scrollView.contentInsetAdjustmentBehavior = .never
             delegate?.catalogItemResultViewControllerDidChangePreferredTranslucency(self)
         }
     }
