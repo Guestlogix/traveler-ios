@@ -132,6 +132,8 @@ class BookableDetailsViewController: UITableViewController {
 
             if bookingContext?.selectedDate == nil {
                 bookingContext?.selectedDate = Date()
+                updateSelectedDate(Date())
+
                 tableView.reloadRows(at: [indexPath], with: .none)
             }
 
@@ -158,9 +160,12 @@ class BookableDetailsViewController: UITableViewController {
 
 extension BookableDetailsViewController: DatePickerCellDelegate {
     func datePickerCellValueDidChange(_ cell: DatePickerCell) {
+        updateSelectedDate(cell.datePicker.date)
+    }
+
+    func updateSelectedDate(_ date: Date) {
         guard let bookingContext = bookingContext else { return }
 
-        let date = cell.datePicker.date
         bookingContext.selectedDate = date
         errorContext?.error = nil
 

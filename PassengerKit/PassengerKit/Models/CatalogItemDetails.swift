@@ -11,8 +11,12 @@ import Foundation
 public struct CatalogItemDetails: Decodable, Product {
     public let id: String
     public let title: String
-    public private(set) var description: String
+    public private(set) var description: String?
     public lazy var attributedDescription: NSMutableAttributedString? = {
+        guard let description = description else {
+            return nil
+        }
+
         let attr = try? NSMutableAttributedString(data: description.data(using: .utf8)!,
                                                   options: [.documentType : NSAttributedString.DocumentType.html],
                                                   documentAttributes: nil)
@@ -27,6 +31,10 @@ public struct CatalogItemDetails: Decodable, Product {
     public let priceStartingAt: Double
     public let purchaseStrategy: PurchaseStrategy
 
+    public var price: Double {
+        return priceStartingAt
+    }
+
     enum CodingKeys: String, CodingKey {
         case id
         case title
@@ -37,5 +45,15 @@ public struct CatalogItemDetails: Decodable, Product {
         case priceStartingAt
         case purchaseStrategy
         case information
+    }
+}
+
+extension Double {
+    public var priceDescription: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        numberFormatter.numberStyle = .currency
+
+        return numberFormatter.string(for:self)
     }
 }

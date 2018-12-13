@@ -18,7 +18,7 @@ let stepperCellIdentifier = "stepperCellIdentifier"
 class PassesViewController: UITableViewController {
     var passes: [Pass]?
     weak var delegate: PassesViewControllerDelegate?
-    var passQuantities = [Pass: Int]()
+    var passQuantities: [Pass: Int]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class PassesViewController: UITableViewController {
         cell.subTitleLabel.text = pass.description
         cell.stepper.minimumValue = 0
         cell.stepper.maximumValue = pass.maxQuantity ?? 999
-        cell.stepper.value = passQuantities[pass] ?? 0
+        cell.stepper.value = passQuantities?[pass] ?? 0
         cell.delegate = self
         return cell
     }
@@ -62,7 +62,7 @@ extension PassesViewController: StepperCellDelegate {
         }
 
         let pass = passes![indexPath.row]
-        passQuantities[pass] = cell.stepper.value
+        passQuantities?[pass] = cell.stepper.value
 
         delegate?.passesViewControllerDidChangeQuantities(self)
     }

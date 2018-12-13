@@ -15,12 +15,15 @@ protocol BookableConfirmationViewControllerDelegate: class {
 class BookableConfirmationViewController: UIViewController {
     @IBOutlet weak var confirmContainerView: UIView!
     @IBOutlet weak var passesContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var priceLabel: UILabel!
 
     var passes: [Pass]?
     weak var delegate: BookableConfirmationViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        reloadPriceLabel(passQuantities: passes?.defaultPassQuantities ?? [:])
 
         preferredContentSize = view.systemLayoutSizeFitting(CGSize(width: view.bounds.width, height: 0),
                                                             withHorizontalFittingPriority: .required,
@@ -32,7 +35,7 @@ class BookableConfirmationViewController: UIViewController {
         case (_, let passesVC as PassesViewController):
             passesVC.delegate = self
             passesVC.passes = passes
-            passesVC.passQuantities = [:]
+            passesVC.passQuantities = passes?.defaultPassQuantities
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -41,6 +44,10 @@ class BookableConfirmationViewController: UIViewController {
 
     @IBAction func didConfirm(_ sender: Any) {
         delegate?.bookableConfirmationViewControllerDidConfirm(self)
+    }
+
+    private func reloadPriceLabel(passQuantities: [Pass: Int]) {
+        priceLabel.text = passQuantities.subTotalDescription
     }
 }
 
@@ -56,6 +63,6 @@ extension BookableConfirmationViewController: PassesViewControllerDelegate {
     }
 
     func passesViewControllerDidChangeQuantities(_ controller: PassesViewController) {
-
+        reloadPriceLabel(passQuantities: controller.passQuantities ?? [:])
     }
 }

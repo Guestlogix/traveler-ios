@@ -168,8 +168,7 @@ extension CatalogItemResultViewController: PurchaseViewControllerDelegate {
 extension CatalogItemResultViewController: ErrorContextObserving {
     func errorContextDidUpdate(_ context: ErrorContext) {
         if context.error != nil {
-            // TODO: This should not scroll if the size of the view is already in view port
-            scrollView.setContentOffsetWithoutGoingOver(purchaseDetialsView.frame.origin, animated: true)
+            scrollView.scrollRectToVisible(purchaseDetialsView.frame, animated: true)
         }
     }
 }

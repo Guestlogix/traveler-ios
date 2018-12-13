@@ -29,6 +29,8 @@ class BookablePurchaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        priceLabel.text = bookingContext?.product.price.priceDescription
+
         bookingContext?.addObserver(self)
     }
 

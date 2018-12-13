@@ -24,7 +24,6 @@
 		A91F3BC621BF04400016894A /* DrawerPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BC521BF04400016894A /* DrawerPresentationAnimator.swift */; };
 		A91F3BC821BF044A0016894A /* DrawerDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BC721BF044A0016894A /* DrawerDismissalAnimator.swift */; };
 		A91F3BCA21BF04AC0016894A /* DrawerTansitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BC921BF04AC0016894A /* DrawerTansitioning.swift */; };
-		A91F3BCC21C05BA00016894A /* UIScrollView+ContentOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BCB21C05BA00016894A /* UIScrollView+ContentOffset.swift */; };
 		A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */; };
 		A957764B2152A9C400BD11C8 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764A2152A9C400BD11C8 /* Route.swift */; };
 		A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */; };
@@ -153,7 +152,6 @@
 		A91F3BC521BF04400016894A /* DrawerPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPresentationAnimator.swift; sourceTree = "<group>"; };
 		A91F3BC721BF044A0016894A /* DrawerDismissalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerDismissalAnimator.swift; sourceTree = "<group>"; };
 		A91F3BC921BF04AC0016894A /* DrawerTansitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerTansitioning.swift; sourceTree = "<group>"; };
-		A91F3BCB21C05BA00016894A /* UIScrollView+ContentOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ContentOffset.swift"; sourceTree = "<group>"; };
 		A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+AuthQueue.swift"; sourceTree = "<group>"; };
 		A957764A2152A9C400BD11C8 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperation.swift; sourceTree = "<group>"; };
@@ -296,7 +294,6 @@
 				A91F3BC521BF04400016894A /* DrawerPresentationAnimator.swift */,
 				A91F3BC721BF044A0016894A /* DrawerDismissalAnimator.swift */,
 				A91F3BC921BF04AC0016894A /* DrawerTansitioning.swift */,
-				A91F3BCB21C05BA00016894A /* UIScrollView+ContentOffset.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -684,7 +681,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9E2ADAF219B20250063BF79 /* BookablePurchaseViewController.swift in Sources */,
-				A91F3BCC21C05BA00016894A /* UIScrollView+ContentOffset.swift in Sources */,
 				A9DB06BD214C2B95009817EC /* Session.swift in Sources */,
 				A957764B2152A9C400BD11C8 /* Route.swift in Sources */,
 				A91F3BC121BEF03B0016894A /* PassesViewController.swift in Sources */,

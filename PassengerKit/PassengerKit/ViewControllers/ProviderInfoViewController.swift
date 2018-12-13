@@ -123,6 +123,16 @@ extension ProviderInfoViewController: UITableViewDelegate {
 
 extension ProviderInfoViewController: LocationCellDelegate {
     func locationCellDidPressMapsButton(_ cell: LocationCell) {
-        
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+
+        let location = locations![indexPath.row]
+
+        guard let url = URL(string: "http://maps.apple.com/?q=\(location.latitude),\(location.longitude)") else {
+            return
+        }
+
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }

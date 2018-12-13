@@ -27,15 +27,15 @@ class DrawerPresentationController: UIPresentationController {
     }
 
     override var frameOfPresentedViewInContainerView: CGRect {
+        guard let containerView = containerView else {
+            return super.frameOfPresentedViewInContainerView
+        }
+
         var frame = super.frameOfPresentedViewInContainerView
         let preferredContentSize = presentedViewController.preferredContentSize
-        let height = min(frame.size.height - 164, preferredContentSize.height) + 100
-
-        // TODO: DO not use UIScreen for layout
-        // Hank: suck less!
-
-        frame.size.height = height
-        frame.origin.y = UIScreen.main.bounds.height - height
+        let height = min(frame.size.height - 164, preferredContentSize.height)
+        frame.size.height = height + (frame.size.height - containerView.safeAreaLayoutGuide.layoutFrame.height - containerView.safeAreaLayoutGuide.layoutFrame.origin.y)
+        frame.origin.y = UIScreen.main.bounds.height - frame.size.height
 
         return frame
     }

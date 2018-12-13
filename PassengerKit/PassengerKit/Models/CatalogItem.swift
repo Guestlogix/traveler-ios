@@ -13,11 +13,15 @@ public struct CatalogItem: Decodable, Product {
     public let title: String
     public let subTitle: String
     public let imageURL: URL?
+    public var price: Double {
+        return 0 // TODO: Make this mappable
+    }
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"
         case subTitle = "subTitle"
         case imageURL = "thumbnail"
+        //case price = "priceStartingAt"
     }
 }
