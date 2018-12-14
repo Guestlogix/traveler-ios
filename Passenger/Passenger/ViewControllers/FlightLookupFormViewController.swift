@@ -68,7 +68,7 @@ class FlightLookupFormViewController: UITableViewController {
             cell.label.text = "Flight Number"
             cell.textField.text = flightNumber
             cell.delegate = self
-            cell.errorLabel.text = "Flight number must be of the form XX123"
+            cell.errorLabel.text = "Flight number must be of the form XX1230"
             cell.errorLabel.isHidden = flightNumberValid
             return cell
         case (1, _):
@@ -117,6 +117,8 @@ class FlightLookupFormViewController: UITableViewController {
         }
 
         tableView.reloadRows(at: [buttonCellIndexPath], with: .none)
+
+        view.endEditing(true)
     }
 }
 
