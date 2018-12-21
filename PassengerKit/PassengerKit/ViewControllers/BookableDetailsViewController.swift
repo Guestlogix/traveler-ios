@@ -18,7 +18,6 @@ protocol BookableDetailsViewControllerDelegate: class {
     func bookableDetailsViewControllerDidChangePreferredContentSize(_ controller: BookableDetailsViewController)
 }
 
-let listCellIdentifier = "listCellIdentifier"
 
 class BookableDetailsViewController: UITableViewController {
     var bookingContext: BookingContext?
@@ -100,7 +99,7 @@ class BookableDetailsViewController: UITableViewController {
             return cell
         case (1, false, true),
              (2, true, true):
-            let cell = tableView.dequeueReusableCell(withIdentifier: listCellIdentifier, for: indexPath) as! ListCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: timeCellIdentifier, for: indexPath) as! ListCell
             cell.delegate = self
             cell.dataSource = self
             cell.textField.text = bookingContext?.selectedTime?.formattedValue

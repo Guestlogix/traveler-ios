@@ -24,6 +24,11 @@
 		A91F3BC621BF04400016894A /* DrawerPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BC521BF04400016894A /* DrawerPresentationAnimator.swift */; };
 		A91F3BC821BF044A0016894A /* DrawerDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BC721BF044A0016894A /* DrawerDismissalAnimator.swift */; };
 		A91F3BCA21BF04AC0016894A /* DrawerTansitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BC921BF04AC0016894A /* DrawerTansitioning.swift */; };
+		A91F3BCE21C802260016894A /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BCD21C802260016894A /* FormView.swift */; };
+		A91F3BD121C8057C0016894A /* InputDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BD021C8057C0016894A /* InputDescriptor.swift */; };
+		A91F3BD321C805B00016894A /* InputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BD221C805B00016894A /* InputType.swift */; };
+		A91F3BD521C82AD00016894A /* StringInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BD421C82AD00016894A /* StringInputCell.swift */; };
+		A91F3BD721CBFF250016894A /* ListInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BD621CBFF250016894A /* ListInputCell.swift */; };
 		A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */; };
 		A957764B2152A9C400BD11C8 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764A2152A9C400BD11C8 /* Route.swift */; };
 		A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */; };
@@ -152,6 +157,11 @@
 		A91F3BC521BF04400016894A /* DrawerPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerPresentationAnimator.swift; sourceTree = "<group>"; };
 		A91F3BC721BF044A0016894A /* DrawerDismissalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerDismissalAnimator.swift; sourceTree = "<group>"; };
 		A91F3BC921BF04AC0016894A /* DrawerTansitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerTansitioning.swift; sourceTree = "<group>"; };
+		A91F3BCD21C802260016894A /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		A91F3BD021C8057C0016894A /* InputDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDescriptor.swift; sourceTree = "<group>"; };
+		A91F3BD221C805B00016894A /* InputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputType.swift; sourceTree = "<group>"; };
+		A91F3BD421C82AD00016894A /* StringInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInputCell.swift; sourceTree = "<group>"; };
+		A91F3BD621CBFF250016894A /* ListInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputCell.swift; sourceTree = "<group>"; };
 		A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+AuthQueue.swift"; sourceTree = "<group>"; };
 		A957764A2152A9C400BD11C8 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperation.swift; sourceTree = "<group>"; };
@@ -294,8 +304,21 @@
 				A91F3BC521BF04400016894A /* DrawerPresentationAnimator.swift */,
 				A91F3BC721BF044A0016894A /* DrawerDismissalAnimator.swift */,
 				A91F3BC921BF04AC0016894A /* DrawerTansitioning.swift */,
+				A91F3BCF21C803030016894A /* FormView */,
 			);
 			path = UIUtilities;
+			sourceTree = "<group>";
+		};
+		A91F3BCF21C803030016894A /* FormView */ = {
+			isa = PBXGroup;
+			children = (
+				A91F3BCD21C802260016894A /* FormView.swift */,
+				A91F3BD021C8057C0016894A /* InputDescriptor.swift */,
+				A91F3BD221C805B00016894A /* InputType.swift */,
+				A91F3BD421C82AD00016894A /* StringInputCell.swift */,
+				A91F3BD621CBFF250016894A /* ListInputCell.swift */,
+			);
+			path = FormView;
 			sourceTree = "<group>";
 		};
 		A9BF40B32177812D0090ED1C /* Utilities */ = {
@@ -697,6 +720,7 @@
 				A9E2AD9921949F6E0063BF79 /* CatalogItemInfoViewController.swift in Sources */,
 				A9FF6D8C218760BB00AFC20F /* CarouselViewCell.swift in Sources */,
 				A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */,
+				A91F3BCE21C802260016894A /* FormView.swift in Sources */,
 				A9E2ADB1219B206C0063BF79 /* BuyablePurchaseViewController.swift in Sources */,
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,
@@ -710,8 +734,11 @@
 				A9E2AD8B21938F0F0063BF79 /* ContainerEmbedSegue.swift in Sources */,
 				A9E2AD8221934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift in Sources */,
 				A9DB065D2140665A009817EC /* MappingOperation.swift in Sources */,
+				A91F3BD121C8057C0016894A /* InputDescriptor.swift in Sources */,
 				A9E2AD9F2194AD170063BF79 /* Menu.swift in Sources */,
 				A9FF6D89218760BB00AFC20F /* CarouselItemViewCell.swift in Sources */,
+				A91F3BD721CBFF250016894A /* ListInputCell.swift in Sources */,
+				A91F3BD521C82AD00016894A /* StringInputCell.swift in Sources */,
 				A9E2AD842193505A0063BF79 /* CatalogItemDetailsViewController.swift in Sources */,
 				A91F3BCA21BF04AC0016894A /* DrawerTansitioning.swift in Sources */,
 				A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */,
@@ -767,6 +794,7 @@
 				A9E2ADAB2199E0ED0063BF79 /* ShadowedView.swift in Sources */,
 				A9DB0646214047EB009817EC /* User.swift in Sources */,
 				A9DB06572140665A009817EC /* UploadOperation.swift in Sources */,
+				A91F3BD321C805B00016894A /* InputType.swift in Sources */,
 				A9E2AD8D219395EF0063BF79 /* CatalogItemLoadingViewController.swift in Sources */,
 				A91F3BBF21BECBA60016894A /* ButtonCell.swift in Sources */,
 				A9E2AD9D2194AD060063BF79 /* Location.swift in Sources */,
