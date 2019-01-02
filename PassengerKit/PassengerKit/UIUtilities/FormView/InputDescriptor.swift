@@ -8,4 +8,8 @@
 
 import Foundation
 
-public typealias InputDescriptor = (identifier: String, inputType: InputType, label: String?)
+public struct InputDescriptor {
+    public let identifier: String
+    public let type: InputType
+    public let label: String?
+}

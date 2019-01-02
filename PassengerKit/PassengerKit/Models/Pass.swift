@@ -15,6 +15,7 @@ public struct Pass: Decodable, Hashable {
     public let description: String?
     public let maxQuantity: Int?
     public let price: Double
+    //public let questions: [Question]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -22,6 +23,7 @@ public struct Pass: Decodable, Hashable {
         case description = "description"
         case maxQuantity = "maximumQuantity"
         case price = "price"
+        //case questions = "questions"
     }
 }
 

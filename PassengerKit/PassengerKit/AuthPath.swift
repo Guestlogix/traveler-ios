@@ -52,7 +52,7 @@ enum AuthPath {
 
             time.flatMap {
                 urlComponents.queryItems?.append(
-                    URLQueryItem(name: "timeInMinutes", value: String($0))
+                    URLQueryItem(name: "time-in-minutes", value: String($0))
                 )
             }
         }

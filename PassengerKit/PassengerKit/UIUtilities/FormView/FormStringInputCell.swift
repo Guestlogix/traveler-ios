@@ -9,10 +9,10 @@
 import UIKit
 
 protocol StringInputCellDelegate: class {
-    func stringInputCellValueDidChange(_ cell: StringInputCell)
+    func stringInputCellValueDidChange(_ cell: FormStringInputCell)
 }
 
-class StringInputCell: UICollectionViewCell {
+class FormStringInputCell: UICollectionViewCell {
     @IBOutlet weak var textField: UITextField!
 
     weak var delegate: StringInputCellDelegate?

@@ -884,7 +884,7 @@
                     <connections>
                         <outlet property="button" destination="aTu-uC-I9e" id="eCY-FG-Dax"/>
                         <outlet property="priceLabel" destination="wna-qp-fTD" id="MxN-Ou-m8A"/>
-                        <segue destination="NsW-lP-NLE" kind="presentation" identifier="passSegue" id="Q0V-sY-Huo"/>
+                        <segue destination="NsW-lP-NLE" kind="show" identifier="passSegue" id="Q0V-sY-Huo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYb-5M-rcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -909,6 +909,9 @@
                                                 <rect key="frame" x="296" y="28" width="102" height="18"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                                 <state key="normal" title="Book Now"/>
+                                                <connections>
+                                                    <segue destination="rC1-Qw-aaQ" kind="show" id="Z8j-ma-qC0"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub-total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JZ-Bx-5AK">
                                                 <rect key="frame" x="16" y="16.5" width="49" height="14"/>
@@ -1120,6 +1123,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bz8-1o-1WZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2816" y="1497"/>
+        </scene>
+        <!--Booking Questions View Controller-->
+        <scene sceneID="wVC-Uo-9mR">
+            <objects>
+                <viewController id="rC1-Qw-aaQ" customClass="BookingQuestionsViewController" customModule="PassengerKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9iR-FF-pLP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sb2-ve-qOn" customClass="FormView" customModule="PassengerKit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Sb2-ve-qOn" firstAttribute="top" secondItem="6Nm-fV-Vgu" secondAttribute="top" id="R93-xX-cXC"/>
+                            <constraint firstItem="Sb2-ve-qOn" firstAttribute="leading" secondItem="6Nm-fV-Vgu" secondAttribute="leading" id="epl-st-qcm"/>
+                            <constraint firstItem="Sb2-ve-qOn" firstAttribute="trailing" secondItem="6Nm-fV-Vgu" secondAttribute="trailing" id="y2D-7V-hBH"/>
+                            <constraint firstItem="6Nm-fV-Vgu" firstAttribute="bottom" secondItem="Sb2-ve-qOn" secondAttribute="bottom" id="yI9-Nl-41E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Nm-fV-Vgu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xAf-dq-zXZ">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="formView" destination="Sb2-ve-qOn" id="J4B-Io-KEp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EHa-yg-akd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7795.652173913044" y="1496.6517857142856"/>
         </scene>
         <!--Buyable Purchase View Controller-->
         <scene sceneID="9Sw-Vh-N7s">

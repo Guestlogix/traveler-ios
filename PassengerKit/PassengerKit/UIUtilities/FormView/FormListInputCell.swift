@@ -9,15 +9,15 @@
 import UIKit
 
 protocol ListInputCellDelegate: class {
-    func listInputCell(_ cell: ListInputCell, didSelect option: Int)
+    func listInputCell(_ cell: FormListInputCell, didSelect option: Int)
 }
 
 protocol ListInputCellDataSource: class {
-    func numberOfOptionsInListInputCell(_ cell: ListInputCell) -> Int
-    func listInputCell(_ cell: ListInputCell, titleForOption option: Int) -> String?
+    func numberOfOptionsInListInputCell(_ cell: FormListInputCell) -> Int
+    func listInputCell(_ cell: FormListInputCell, titleForOption option: Int) -> String?
 }
 
-class ListInputCell: UICollectionViewCell {
+class FormListInputCell: UICollectionViewCell {
     @IBOutlet weak var textField: UITextField!
 
     weak var dataSource: ListInputCellDataSource?
@@ -42,7 +42,7 @@ class ListInputCell: UICollectionViewCell {
     }
 }
 
-extension ListInputCell: UIPickerViewDataSource {
+extension FormListInputCell: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -52,12 +52,13 @@ extension ListInputCell: UIPickerViewDataSource {
     }
 }
 
-extension ListInputCell: UIPickerViewDelegate {
+extension FormListInputCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return dataSource?.listInputCell(self, titleForOption: row)
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textField.text = dataSource?.listInputCell(self, titleForOption: row)
         delegate?.listInputCell(self, didSelect: row)
     }
 }
