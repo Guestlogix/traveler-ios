@@ -71,7 +71,7 @@
                 <outlet property="imageContainerView" destination="rnT-fG-gjE" id="Lte-MQ-YV8"/>
                 <outlet property="imageView" destination="Gy5-z2-1cJ" id="Zya-I7-1ar"/>
                 <outlet property="subTitleLabel" destination="mYh-mC-yAI" id="aE3-if-hdg"/>
-                <outlet property="titleLable" destination="E1j-aG-0hM" id="QQs-yM-GWI"/>
+                <outlet property="titleLabel" destination="E1j-aG-0hM" id="ydw-lJ-z2C"/>
             </connections>
             <point key="canvasLocation" x="29.600000000000001" y="94.902548725637189"/>
         </collectionViewCell>

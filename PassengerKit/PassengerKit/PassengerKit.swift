@@ -15,7 +15,7 @@ public class PassengerKit {
     private static var _shared: PassengerKit?
     private static var shared: PassengerKit? {
         guard _shared != nil else {
-            Log("SDK not initialized. Initialize the SDK using `PassengerKit.initialize(token:)` in you app delegate.", data: nil, level: .error)
+            Log("SDK not initialized. Initialize the SDK using `PassengerKit.initialize(token:)` in your app delegate.", data: nil, level: .error)
             return nil
         }
 
@@ -123,7 +123,7 @@ public class PassengerKit {
 
     // MARK: Public API
 
-    public static func fightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
+    public static func flightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
         shared?.flightSearch(query: query, completion: { [weak delegate] (flights, error) in
             if let flights = flights {
                 delegate?.flightSearchDidSucceedWith(flights)
