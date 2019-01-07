@@ -85,7 +85,7 @@ public struct Flight: Decodable {
 
         let arrivalDateString = try container.decode(String.self, forKey: .arrivalDate)
         guard let arrivalDate = DateFormatter.withoutTimezone.date(from: arrivalDateString) else {
-            throw DecodingError.dataCorruptedError(forKey: .arrivalDate, in: container, debugDescription: "Date string does not match expeted format.")
+            throw DecodingError.dataCorruptedError(forKey: .arrivalDate, in: container, debugDescription: "Date string does not match expected format.")
         }
 
         self.departureDate = departureDate

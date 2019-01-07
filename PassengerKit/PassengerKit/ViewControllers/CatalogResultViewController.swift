@@ -27,7 +27,7 @@ open class CatalogResultViewController: CatalogViewController {
 
     open override func catalogView(_ catalogView: CatalogView, configure itemCell: CarouselItemViewCell, at indexPath: IndexPath) {
         let item = catalog!.groups[indexPath.section].items[indexPath.row]
-        itemCell.titleLable.text = item.title
+        itemCell.titleLabel.text = item.title
         itemCell.subTitleLabel.text = item.subTitle
         itemCell.imageView.image = nil
 

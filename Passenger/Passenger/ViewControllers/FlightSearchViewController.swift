@@ -61,7 +61,7 @@ class FlightSearchViewController: UIViewController {
 
         performSegue(withIdentifier: "loadingSegue", sender: nil)
 
-        PassengerKit.fightSearch(query: query, delegate: self)
+        PassengerKit.flightSearch(query: query, delegate: self)
     }
 }
 
