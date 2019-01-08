@@ -19,13 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6n-Gh-Vki">
-                        <rect key="frame" x="20" y="11" width="323" height="23"/>
+                        <rect key="frame" x="20" y="11" width="312" height="23"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rww-P3-5AL">
-                        <rect key="frame" x="363" y="8" width="34" height="29"/>
+                        <rect key="frame" x="352" y="8" width="45" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="dwI-N7-e96"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="More"/>
                         <connections>
