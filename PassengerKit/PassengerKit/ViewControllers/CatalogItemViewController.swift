@@ -69,7 +69,7 @@ extension CatalogItemViewController: CatalogItemDetailsFetchDelegate {
 }
 
 extension CatalogItemViewController: CatalogItemErrorViewControllerDelegate {
-    func catalotItemErrorViewControllerDidRetry(_ controller: CatalogItemErrorViewController) {
+    func catalogItemErrorViewControllerDidRetry(_ controller: CatalogItemErrorViewController) {
         reload()
     }
 }
