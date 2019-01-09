@@ -286,7 +286,7 @@
                         <outlet property="itemInfoHeightConstraint" destination="KqR-cu-QRS" id="EYL-wS-ff7"/>
                         <outlet property="itemInfoView" destination="AKz-8S-J8p" id="7xh-3i-QF5"/>
                         <outlet property="purchaseDetailsHeightConstraint" destination="hK3-2e-ajB" id="1rS-7N-QUt"/>
-                        <outlet property="purchaseDetialsView" destination="VGw-YN-GJt" id="tnA-gT-MN9"/>
+                        <outlet property="purchaseDetailsView" destination="VGw-YN-GJt" id="tnA-gT-MN9"/>
                         <outlet property="scrollView" destination="5AW-GA-zq8" id="ize-J1-UsE"/>
                         <outlet property="titleLabel" destination="13o-HV-sxb" id="nnV-gd-Blt"/>
                     </connections>
