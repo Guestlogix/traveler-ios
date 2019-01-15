@@ -24,7 +24,7 @@ class CatalogItemErrorViewController: UIViewController {
         imageView.image = image
     }
 
-    @IBAction func didRety(_ sender: UIButton) {
+    @IBAction func didRetry(_ sender: UIButton) {
         delegate?.catalogItemErrorViewControllerDidRetry(self)
     }
 }
