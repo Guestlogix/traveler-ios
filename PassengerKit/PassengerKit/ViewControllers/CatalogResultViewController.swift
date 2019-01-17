@@ -80,8 +80,8 @@ open class CatalogResultViewController: CatalogViewController {
     }
 
     open var featuredItemSize: CGSize {
-        let value = view.bounds.width - (2 * CarouselItemViewCell.margin)
-        return CGSize(width: value,
-                      height: value * itemRatio)
+        let value: CGFloat = 70
+        return CGSize(width: ((value * itemRatio) * 2),
+                      height: value)
     }
 }
