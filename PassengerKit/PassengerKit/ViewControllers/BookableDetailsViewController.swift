@@ -181,7 +181,7 @@ extension BookableDetailsViewController: ListCellDelegate {
     }
 }
 
-extension BookableDetailsViewController: ListCellDataSouce {
+extension BookableDetailsViewController: ListCellDataSource {
     func numberOfRowsInListCell(_ cell: ListCell) -> Int {
         return bookingContext?.availableTimes?.count ?? 0
     }
