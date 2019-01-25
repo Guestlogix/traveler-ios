@@ -120,6 +120,8 @@
 		A9FF6D8B218760BB00AFC20F /* CarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9FF6D87218760BB00AFC20F /* CarouselItemViewCell.xib */; };
 		A9FF6D8C218760BB00AFC20F /* CarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FF6D88218760BB00AFC20F /* CarouselViewCell.swift */; };
 		A9FF6D902187624400AFC20F /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FF6D8F2187624400AFC20F /* CatalogView.swift */; };
+		F31A954321FA39B9006B7178 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31A954221FA39B9006B7178 /* FeaturedCarouselViewCell.swift */; };
+		F31A954521FA3A53006B7178 /* FeaturedCarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F31A954421FA3A53006B7178 /* FeaturedCarouselViewCell.xib */; };
 		F327C3D221F1321500FB4F54 /* FeaturedCarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F327C3D121F1321500FB4F54 /* FeaturedCarouselItemViewCell.xib */; };
 		F327C3D421F1322D00FB4F54 /* FeaturedCarouselItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F327C3D321F1322D00FB4F54 /* FeaturedCarouselItemViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -261,6 +263,8 @@
 		A9FF6D87218760BB00AFC20F /* CarouselItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselItemViewCell.xib; sourceTree = "<group>"; };
 		A9FF6D88218760BB00AFC20F /* CarouselViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewCell.swift; sourceTree = "<group>"; };
 		A9FF6D8F2187624400AFC20F /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		F31A954221FA39B9006B7178 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
+		F31A954421FA3A53006B7178 /* FeaturedCarouselViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselViewCell.xib; sourceTree = "<group>"; };
 		F327C3D121F1321500FB4F54 /* FeaturedCarouselItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedCarouselItemViewCell.xib; sourceTree = "<group>"; };
 		F327C3D321F1322D00FB4F54 /* FeaturedCarouselItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselItemViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -534,6 +538,8 @@
 			children = (
 				A9FF6D88218760BB00AFC20F /* CarouselViewCell.swift */,
 				A9FF6D86218760BB00AFC20F /* CarouselViewCell.xib */,
+				F31A954221FA39B9006B7178 /* FeaturedCarouselViewCell.swift */,
+				F31A954421FA3A53006B7178 /* FeaturedCarouselViewCell.xib */,
 				A9FF6D85218760BB00AFC20F /* CarouselItemViewCell.swift */,
 				A9FF6D87218760BB00AFC20F /* CarouselItemViewCell.xib */,
 				F327C3D321F1322D00FB4F54 /* FeaturedCarouselItemViewCell.swift */,
@@ -680,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9FF6D8A218760BB00AFC20F /* CarouselViewCell.xib in Resources */,
+				F31A954521FA3A53006B7178 /* FeaturedCarouselViewCell.xib in Resources */,
 				A9FF6D8B218760BB00AFC20F /* CarouselItemViewCell.xib in Resources */,
 				F327C3D221F1321500FB4F54 /* FeaturedCarouselItemViewCell.xib in Resources */,
 				A9E2AD8921935C1F0063BF79 /* CatalogItem.storyboard in Resources */,
@@ -724,6 +731,7 @@
 				A9DB06A821496396009817EC /* PassengerKit.swift in Sources */,
 				A9E28A9B21B593A600967C4A /* BookableDetailsViewController.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
+				F31A954321FA39B9006B7178 /* FeaturedCarouselViewCell.swift in Sources */,
 				A9E2AD9921949F6E0063BF79 /* CatalogItemInfoViewController.swift in Sources */,
 				A9FF6D8C218760BB00AFC20F /* CarouselViewCell.swift in Sources */,
 				A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */,

@@ -8,15 +8,6 @@
 
 import UIKit
 
-open class FeaturedCarouselItemViewCell: UICollectionViewCell {
-    @IBOutlet open weak var imageContainerView: UIView!
-    @IBOutlet open weak var imageView: UIImageView!
-    
-    public static var margin: CGFloat {
-        return 15
-    }
-    
-    public static var footerHeight: CGFloat {
-        return 80
-    }
+open class FeaturedCarouselItemViewCell: CarouselItemViewCell {
+
 }

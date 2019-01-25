@@ -25,12 +25,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oto-vg-pBF">
                                 <rect key="frame" x="8" y="8" width="404" height="267"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="b6h-bY-JEJ">
+                                <rect key="frame" x="16" y="8" width="388" height="267"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Oto-vg-pBF" firstAttribute="leading" secondItem="f4V-Xh-I4N" secondAttribute="leadingMargin" id="DoV-2m-AoJ"/>
+                            <constraint firstItem="b6h-bY-JEJ" firstAttribute="leading" secondItem="f4V-Xh-I4N" secondAttribute="leadingMargin" constant="8" id="OoO-fH-Nm2"/>
+                            <constraint firstItem="b6h-bY-JEJ" firstAttribute="top" secondItem="f4V-Xh-I4N" secondAttribute="top" constant="8" id="QY7-aT-8k7"/>
                             <constraint firstItem="Oto-vg-pBF" firstAttribute="top" secondItem="f4V-Xh-I4N" secondAttribute="topMargin" id="TMw-dC-Z81"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oto-vg-pBF" secondAttribute="trailing" id="VhZ-Ir-LeS"/>
+                            <constraint firstAttribute="bottom" secondItem="b6h-bY-JEJ" secondAttribute="bottom" constant="8" id="Wi5-4i-d5i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b6h-bY-JEJ" secondAttribute="trailing" constant="8" id="jiH-M3-y3d"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Oto-vg-pBF" secondAttribute="bottom" id="vAz-g4-3xd"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -52,6 +62,7 @@
             <connections>
                 <outlet property="imageContainerView" destination="f4V-Xh-I4N" id="3OJ-Za-Onj"/>
                 <outlet property="imageView" destination="Oto-vg-pBF" id="ky9-lc-rPf"/>
+                <outlet property="titleLable" destination="b6h-bY-JEJ" id="48K-hO-otN"/>
             </connections>
             <point key="canvasLocation" x="369.60000000000002" y="11.244377811094454"/>
         </collectionViewCell>
