@@ -20,42 +20,64 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4V-Xh-I4N">
-                        <rect key="frame" x="8" y="8" width="420" height="283"/>
+                        <rect key="frame" x="20" y="0.0" width="396" height="299"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oto-vg-pBF">
-                                <rect key="frame" x="8" y="8" width="404" height="267"/>
+                                <rect key="frame" x="0.0" y="0.0" width="396" height="299"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="b6h-bY-JEJ">
-                                <rect key="frame" x="16" y="8" width="388" height="267"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <view opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5Q-RF-5fn">
+                                <rect key="frame" x="0.0" y="0.0" width="396" height="299"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="b6h-bY-JEJ">
+                                <rect key="frame" x="16" y="8" width="364" height="283"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Oto-vg-pBF" firstAttribute="leading" secondItem="f4V-Xh-I4N" secondAttribute="leadingMargin" id="DoV-2m-AoJ"/>
+                            <constraint firstAttribute="trailing" secondItem="c5Q-RF-5fn" secondAttribute="trailing" id="5bl-Ly-FMt"/>
+                            <constraint firstAttribute="trailing" secondItem="Oto-vg-pBF" secondAttribute="trailing" id="9v2-gb-ccO"/>
+                            <constraint firstAttribute="bottom" secondItem="c5Q-RF-5fn" secondAttribute="bottom" id="Ha9-qV-6Ud"/>
                             <constraint firstItem="b6h-bY-JEJ" firstAttribute="leading" secondItem="f4V-Xh-I4N" secondAttribute="leadingMargin" constant="8" id="OoO-fH-Nm2"/>
                             <constraint firstItem="b6h-bY-JEJ" firstAttribute="top" secondItem="f4V-Xh-I4N" secondAttribute="top" constant="8" id="QY7-aT-8k7"/>
-                            <constraint firstItem="Oto-vg-pBF" firstAttribute="top" secondItem="f4V-Xh-I4N" secondAttribute="topMargin" id="TMw-dC-Z81"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Oto-vg-pBF" secondAttribute="trailing" id="VhZ-Ir-LeS"/>
+                            <constraint firstItem="Oto-vg-pBF" firstAttribute="leading" secondItem="f4V-Xh-I4N" secondAttribute="leading" id="ViC-cp-LXP"/>
                             <constraint firstAttribute="bottom" secondItem="b6h-bY-JEJ" secondAttribute="bottom" constant="8" id="Wi5-4i-d5i"/>
+                            <constraint firstItem="Oto-vg-pBF" firstAttribute="top" secondItem="f4V-Xh-I4N" secondAttribute="top" id="Yb4-lK-ZJP"/>
+                            <constraint firstItem="c5Q-RF-5fn" firstAttribute="leading" secondItem="f4V-Xh-I4N" secondAttribute="leading" id="h64-jL-R1D"/>
+                            <constraint firstItem="c5Q-RF-5fn" firstAttribute="top" secondItem="f4V-Xh-I4N" secondAttribute="top" id="i8S-1o-Vhm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="b6h-bY-JEJ" secondAttribute="trailing" constant="8" id="jiH-M3-y3d"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Oto-vg-pBF" secondAttribute="bottom" id="vAz-g4-3xd"/>
+                            <constraint firstAttribute="bottom" secondItem="Oto-vg-pBF" secondAttribute="bottom" id="x3g-Fz-pVh"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.corner">
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="4"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="f4V-Xh-I4N" firstAttribute="top" secondItem="qLm-Hs-iHW" secondAttribute="top" constant="8" id="HDz-Xh-9vV"/>
-                <constraint firstAttribute="trailing" secondItem="f4V-Xh-I4N" secondAttribute="trailing" constant="8" id="ZW3-c3-Exl"/>
-                <constraint firstItem="f4V-Xh-I4N" firstAttribute="leading" secondItem="qLm-Hs-iHW" secondAttribute="leading" constant="8" id="q7h-hu-SEg"/>
-                <constraint firstAttribute="bottom" secondItem="f4V-Xh-I4N" secondAttribute="bottom" constant="8" id="wZR-Wm-MIj"/>
+                <constraint firstItem="f4V-Xh-I4N" firstAttribute="top" secondItem="qLm-Hs-iHW" secondAttribute="topMargin" id="YgL-J1-Vkv"/>
+                <constraint firstAttribute="bottomMargin" secondItem="f4V-Xh-I4N" secondAttribute="bottom" id="gcC-3h-awP"/>
+                <constraint firstAttribute="trailingMargin" secondItem="f4V-Xh-I4N" secondAttribute="trailing" id="q7b-G9-hsV"/>
+                <constraint firstItem="f4V-Xh-I4N" firstAttribute="leading" secondItem="qLm-Hs-iHW" secondAttribute="leadingMargin" id="w8P-cc-JT5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="oRw-9e-YhP"/>
             <size key="customSize" width="436" height="299"/>

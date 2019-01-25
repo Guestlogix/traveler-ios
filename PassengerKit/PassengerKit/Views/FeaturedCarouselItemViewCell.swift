@@ -9,5 +9,6 @@
 import UIKit
 
 open class FeaturedCarouselItemViewCell: CarouselItemViewCell {
-
+    
 }
+
