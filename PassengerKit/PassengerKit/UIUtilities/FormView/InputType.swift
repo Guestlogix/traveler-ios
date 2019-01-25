@@ -11,10 +11,12 @@ import Foundation
 public enum InputType {
     case string
     case list
+    case button(String?)
 }
 
 let formStringCellIdentifier = "formStringCellIdentifier"
 let formListCellIdentifier = "formListCellIdentifier"
+let buttonCellIdentifier = "buttonCellIdentifier"
 
 extension InputType {
     var cellIdentifier: String {
@@ -23,6 +25,8 @@ extension InputType {
             return formStringCellIdentifier
         case .list:
             return formListCellIdentifier
+        case .button:
+            return buttonCellIdentifier
         }
     }
 }

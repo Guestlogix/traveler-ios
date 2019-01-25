@@ -9,7 +9,11 @@
 import Foundation
 
 public struct InputDescriptor {
-    public let identifier: String
     public let type: InputType
     public let label: String?
+
+    public init(type: InputType, label: String? = nil) {
+        self.type = type
+        self.label = label
+    }
 }

@@ -22,13 +22,27 @@ public protocol FormViewDelegate: class {
     func formView(_ formView: FormView, sizeForInputFieldAt indexPath: IndexPath) -> CGSize
     func formView(_ formView: FormView, titleForHeaderIn secion: Int) -> String?
     func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String?
+    func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath)
+    func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage?
 }
 
 extension FormViewDelegate {
     func formView(_ formView: FormView, sizeForInputFieldAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: formView.bounds.width, height: 44)
+        return CGSize(width: formView.bounds.width, height: 50)
+    }
+
+    func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath) {
+        /// Default implementation is noop
+    }
+
+    func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage? {
+        return nil
     }
 }
+
+let elementKindFieldFooter = "elementKindFieldFooter"
+let errorFooterIdentifier = "errorFooterIdentifier"
+let sectionHeaderIdentifier = "sectionHeaderIdentifier"
 
 public class FormView: UIView {
     public weak var dataSource: FormViewDataSource?
@@ -41,28 +55,33 @@ public class FormView: UIView {
 
         let bundle = Bundle(for: type(of: self))
 
-        let layout = UICollectionViewFlowLayout()
+        let layout = FormLayout()
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
+        collectionView.keyboardDismissMode = .onDrag
 
         self.collectionView = collectionView
 
         addSubview(collectionView)
         addConstraints([
-            collectionView.topAnchor.constraint(equalTo: topAnchor),
-            collectionView.rightAnchor.constraint(equalTo: rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: leftAnchor)
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor)
             ])
 
         register(UINib(nibName: "FormStringCell", bundle: bundle), forInputWithType: .string)
         register(UINib(nibName: "FormListCell", bundle: bundle), forInputWithType: .list)
+        register(UINib(nibName: "FormButtonCell", bundle: bundle), forInputWithType: .button(nil))
 
-        collectionView.register(UINib(nibName: "FormHeaderView", bundle: bundle), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader")
+        /// TODO: Refactor and make public methods to expose this feature
+
+        collectionView.register(UINib(nibName: "FormHeaderView", bundle: bundle), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: sectionHeaderIdentifier)
+        collectionView.register(UINib(nibName: "FormFieldFooterView", bundle: bundle), forSupplementaryViewOfKind: elementKindFieldFooter, withReuseIdentifier: errorFooterIdentifier)
     }
 
     public func register(_ nib: UINib?, forInputWithType inputType: InputType) {
@@ -71,6 +90,14 @@ public class FormView: UIView {
 
     public func reloadForm() {
         collectionView.reloadData()
+    }
+
+    public func scrollToField(at indexPath: IndexPath, animated: Bool) {
+        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: animated)
+    }
+
+    public func reloadFields(at indexPaths: [IndexPath]) {
+        collectionView.reloadItems(at: indexPaths)
     }
 }
 
@@ -99,14 +126,25 @@ extension FormView: UICollectionViewDataSource {
             cell.textField.text = selectedIndex.flatMap({ dataSource!.formView(self, titleForOption: $0, at: indexPath) })
             cell.textField.placeholder = descriptor.label
             cell.delegate = self
-            cell.dataSource = self
+            cell.items = []
+
+            let totalItems = dataSource?.formView(self, numberOfOptionsForInputAt: indexPath) ?? 0
+            for i in 0..<totalItems {
+                cell.items.append(dataSource?.formView(self, titleForOption: i, at: indexPath))
+            }
+
             cell.reload()
+            return cell
+        case .button(let title):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: indexPath) as! FormButtonCell
+            cell.button.setTitle(title, for: .normal)
+            cell.delegate = self
             return cell
         }
     }
 }
 
-extension FormView: UICollectionViewDelegateFlowLayout {
+extension FormView: UICollectionViewDelegateFormLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return delegate?.formView(self, sizeForInputFieldAt: indexPath) ?? .zero
     }
@@ -118,15 +156,30 @@ extension FormView: UICollectionViewDelegateFlowLayout {
 
         let disclaimer = delegate?.formView(self, disclaimerForHeaderIn: section)
 
-        return FormHeaderView.sizeFor(boundingSize: CGSize(width: collectionView.bounds.width, height: 0), title: title, disclaimer: disclaimer)
+        return FormHeaderView.sizeFor(boundingSize: CGSize(width: collectionView.bounds.width - 10, height: 0), title: title, disclaimer: disclaimer)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterAt indexPath: IndexPath) -> CGSize {
+        guard let message = delegate?.formView(self, messageForFieldAt: indexPath) else {
+            return .zero
+        }
+
+        return FormFieldFooterView.sizeFor(boundingSize: CGSize(width: collectionView.bounds.width, height: 0), text: message.text)
     }
 
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath) as! FormHeaderView
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeaderIdentifier, for: indexPath) as! FormHeaderView
             view.titleLabel.text = delegate?.formView(self, titleForHeaderIn: indexPath.section)
             view.disclaimerLabel.text = delegate?.formView(self, disclaimerForHeaderIn: indexPath.section)
+            return view
+        case elementKindFieldFooter:
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: errorFooterIdentifier, for: indexPath) as! FormFieldFooterView
+            let message = delegate?.formView(self, messageForFieldAt: indexPath)
+            view.label.text = message?.text
+            view.label.textColor = message?.color
+            view.label.textAlignment = message?.textAlignment ?? .left
             return view
         default:
             fatalError("Unknown suppplementary element kind: \(kind)")
@@ -144,24 +197,6 @@ extension FormView: StringInputCellDelegate {
     }
 }
 
-extension FormView: ListInputCellDataSource {
-    func numberOfOptionsInListInputCell(_ cell: FormListInputCell) -> Int {
-        guard let indexPath = collectionView.indexPath(for: cell) else {
-            return 0
-        }
-
-        return dataSource?.formView(self, numberOfOptionsForInputAt: indexPath) ?? 0
-    }
-
-    func listInputCell(_ cell: FormListInputCell, titleForOption option: Int) -> String? {
-        guard let indexPath = collectionView.indexPath(for: cell) else {
-            return nil
-        }
-
-        return dataSource?.formView(self, titleForOption: option, at: indexPath)
-    }
-}
-
 extension FormView: ListInputCellDelegate {
     func listInputCell(_ cell: FormListInputCell, didSelect option: Int) {
         guard let indexPath = collectionView.indexPath(for: cell) else {
@@ -169,5 +204,35 @@ extension FormView: ListInputCellDelegate {
         }
 
         delegate?.formView(self, didChangeValue: option, forInputFieldAt: indexPath)
+    }
+}
+
+extension FormView: FormButtonCellDelegate {
+    func buttonCellDidPressButton(_ cell: FormButtonCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
+
+        delegate?.formView(self, didPressButtonAt: indexPath)
+    }
+}
+
+extension FormMessage {
+    var color: UIColor {
+        switch self {
+        case .alert:
+            return .red
+        default:
+            return .black
+        }
+    }
+
+    var textAlignment: NSTextAlignment {
+        switch self {
+        case .alert:
+            return .right
+        default:
+            return .left
+        }
     }
 }

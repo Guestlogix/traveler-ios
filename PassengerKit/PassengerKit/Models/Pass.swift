@@ -9,13 +9,21 @@
 import Foundation
 
 public struct Pass: Decodable, Hashable {
+    public static func == (lhs: Pass, rhs: Pass) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    public var hashValue: Int {
+        return id.hashValue
+    }
+
     let id: String
 
     public let name: String
     public let description: String?
     public let maxQuantity: Int?
     public let price: Double
-    //public let questions: [Question]
+    public let questions: [Question]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -23,7 +31,7 @@ public struct Pass: Decodable, Hashable {
         case description = "description"
         case maxQuantity = "maximumQuantity"
         case price = "price"
-        //case questions = "questions"
+        case questions = "questions"
     }
 }
 

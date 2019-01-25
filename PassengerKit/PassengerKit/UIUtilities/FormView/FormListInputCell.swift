@@ -12,16 +12,12 @@ protocol ListInputCellDelegate: class {
     func listInputCell(_ cell: FormListInputCell, didSelect option: Int)
 }
 
-protocol ListInputCellDataSource: class {
-    func numberOfOptionsInListInputCell(_ cell: FormListInputCell) -> Int
-    func listInputCell(_ cell: FormListInputCell, titleForOption option: Int) -> String?
-}
-
 class FormListInputCell: UICollectionViewCell {
     @IBOutlet weak var textField: UITextField!
 
-    weak var dataSource: ListInputCellDataSource?
     weak var delegate: ListInputCellDelegate?
+
+    var items = [String?]()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,17 +44,17 @@ extension FormListInputCell: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataSource?.numberOfOptionsInListInputCell(self) ?? 0
+        return items.count
     }
 }
 
 extension FormListInputCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSource?.listInputCell(self, titleForOption: row)
+        return items[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textField.text = dataSource?.listInputCell(self, titleForOption: row)
+        textField.text = items[row]
         delegate?.listInputCell(self, didSelect: row)
     }
 }

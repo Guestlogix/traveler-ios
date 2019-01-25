@@ -34,6 +34,13 @@ extension PassengerRoute: Route {
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
 
+        urlRequest.addValue(UIDevice.current.identifierForVendor?.uuidString ?? "[NO_DEVICE_ID]", forHTTPHeaderField: "x-device-id")
+        urlRequest.addValue(UIDevice.current.systemName + UIDevice.current.systemVersion, forHTTPHeaderField: "x-os-version")
+        urlRequest.addValue(Locale.current.languageCode ?? "en", forHTTPHeaderField: "x-language")
+        urlRequest.addValue(Locale.current.variantCode ?? "en_POSIX", forHTTPHeaderField: "x-region")
+        urlRequest.addValue(Bundle.main.bundleIdentifier ?? "[NO_BUNDLE_IDENTIFIER]", forHTTPHeaderField: "x-application-id")
+        urlRequest.addValue(TimeZone.current.identifier, forHTTPHeaderField: "x-timezone")
+
         return urlRequest
     }
 

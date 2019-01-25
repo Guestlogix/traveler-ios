@@ -18,12 +18,14 @@ class BookableConfirmationViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
 
     var passes: [Pass]?
+    var passQuantities = [Pass: Int]()
     weak var delegate: BookableConfirmationViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        reloadPriceLabel(passQuantities: passes?.defaultPassQuantities ?? [:])
+        passQuantities = passes?.defaultPassQuantities ?? [:]
+        reloadPriceLabel()
 
         preferredContentSize = view.systemLayoutSizeFitting(CGSize(width: view.bounds.width, height: 0),
                                                             withHorizontalFittingPriority: .required,
@@ -36,6 +38,9 @@ class BookableConfirmationViewController: UIViewController {
             passesVC.delegate = self
             passesVC.passes = passes
             passesVC.passQuantities = passes?.defaultPassQuantities
+        case (_, let vc as BookingQuestionsViewController):
+            vc.bookingForm = BookingForm(passQuantities: passQuantities)
+            vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -46,7 +51,7 @@ class BookableConfirmationViewController: UIViewController {
         delegate?.bookableConfirmationViewControllerDidConfirm(self)
     }
 
-    private func reloadPriceLabel(passQuantities: [Pass: Int]) {
+    private func reloadPriceLabel() {
         priceLabel.text = passQuantities.subTotalDescription
     }
 }
@@ -63,6 +68,18 @@ extension BookableConfirmationViewController: PassesViewControllerDelegate {
     }
 
     func passesViewControllerDidChangeQuantities(_ controller: PassesViewController) {
-        reloadPriceLabel(passQuantities: controller.passQuantities ?? [:])
+        self.passQuantities = controller.passQuantities ?? [:]
+        reloadPriceLabel()
+    }
+}
+
+extension BookableConfirmationViewController: BookingQuestionsViewControllerDelegate {
+    func bookingQuestionsViewControllerDidCheckout(_ controller: BookingQuestionsViewController) {
+        guard let bookingForm = controller.bookingForm else {
+            Log("No BookingForm", data: nil, level: .error)
+            return
+        }
+
+        
     }
 }

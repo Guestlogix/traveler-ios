@@ -438,7 +438,7 @@
         <scene sceneID="p6G-2d-bVM">
             <objects>
                 <tableViewController id="dIf-Dv-2gv" customClass="BookableDetailsViewController" customModule="PassengerKit" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UH0-1X-qGQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UH0-1X-qGQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1133,7 +1133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sb2-ve-qOn" customClass="FormView" customModule="PassengerKit" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -1142,7 +1142,7 @@
                             <constraint firstItem="Sb2-ve-qOn" firstAttribute="top" secondItem="6Nm-fV-Vgu" secondAttribute="top" id="R93-xX-cXC"/>
                             <constraint firstItem="Sb2-ve-qOn" firstAttribute="leading" secondItem="6Nm-fV-Vgu" secondAttribute="leading" id="epl-st-qcm"/>
                             <constraint firstItem="Sb2-ve-qOn" firstAttribute="trailing" secondItem="6Nm-fV-Vgu" secondAttribute="trailing" id="y2D-7V-hBH"/>
-                            <constraint firstItem="6Nm-fV-Vgu" firstAttribute="bottom" secondItem="Sb2-ve-qOn" secondAttribute="bottom" id="yI9-Nl-41E"/>
+                            <constraint firstAttribute="bottom" secondItem="Sb2-ve-qOn" secondAttribute="bottom" id="yI9-Nl-41E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Nm-fV-Vgu"/>
                     </view>
