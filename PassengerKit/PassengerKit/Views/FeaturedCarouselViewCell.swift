@@ -10,7 +10,6 @@ import UIKit
 
 
 open class FeaturedCarouselViewCell: CarouselViewCell {
-
     open override var itemNib: UINib {
         return UINib(nibName: "FeaturedCarouselItemViewCell", bundle: Bundle(for: type(of: self)))
     }

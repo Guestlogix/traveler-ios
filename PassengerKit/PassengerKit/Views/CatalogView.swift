@@ -126,7 +126,6 @@ extension CatalogView: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = dataSource!.catalogView(self, identifierFor: indexPath.row)
-        print(identifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CarouselViewCell
         
         cell.dataSource = self
