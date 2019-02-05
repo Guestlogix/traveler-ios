@@ -12,6 +12,13 @@ let carouselCellIdentifier = "carouselCellIdentifier"
 
 open class CatalogResultViewController: CatalogViewController {
     public var catalog: Catalog?
+    
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        
+        catalogView.register(UINib(nibName: "CarouselViewCell", bundle: Bundle(for: CatalogResultViewController.self)), forGroupWithIdentifier: standardIdentifier)
+        catalogView.register(UINib(nibName: "FeaturedCarouselViewCell", bundle: Bundle(for: CatalogResultViewController.self)), forGroupWithIdentifier: featuredIdentifier)
+    }
 
     @IBInspectable open var maxNumberOfItemsInGroup: Int = 5
 
@@ -28,7 +35,7 @@ open class CatalogResultViewController: CatalogViewController {
     open override func catalogView(_ catalogView: CatalogView, configure itemCell: CarouselItemViewCell, at indexPath: IndexPath) {
         let item = catalog!.groups[indexPath.section].items[indexPath.row]
         itemCell.titleLabel.text = item.title
-        itemCell.subTitleLabel.text = item.subTitle
+        itemCell.subTitleLabel?.text = item.subTitle
         itemCell.imageView.image = nil
 
         if let url = item.imageURL {
@@ -44,6 +51,16 @@ open class CatalogResultViewController: CatalogViewController {
 
     open override func catalogView(_ catalogView: CatalogView, titleForAccessoryButtonIn group: Int) -> String? {
         return catalog!.groups[group].items.count > maxNumberOfItemsInGroup ? "See All" : nil
+    }
+    
+    open override func catalogView(_ catalogView: CatalogView, identifierFor group: Int) -> String {
+        let group = catalog!.groups[group]
+        
+        if group.isFeatured {
+            return featuredIdentifier
+        } else {
+            return standardIdentifier
+        }
     }
 
     // MARK: CatalogViewDelegate
@@ -73,6 +90,8 @@ open class CatalogResultViewController: CatalogViewController {
     // MARK: Helpers
 
     private let itemRatio: CGFloat = 16.0 / 9.0
+    private let featuredIdentifier = "FeaturedCarouselViewCell"
+    private let standardIdentifier = "CarouselViewCell"
 
     open var standardItemSize: CGSize {
         let value: CGFloat = 70
@@ -80,8 +99,8 @@ open class CatalogResultViewController: CatalogViewController {
     }
 
     open var featuredItemSize: CGSize {
-        let value = view.bounds.width - (2 * CarouselItemViewCell.margin)
-        return CGSize(width: value,
-                      height: value * itemRatio)
+        let value: CGFloat = 70
+        return CGSize(width: ((value * itemRatio) * 2),
+                      height: value)
     }
 }

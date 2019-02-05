@@ -15,6 +15,7 @@ public protocol CatalogViewDataSouce: class {
     func catalogView(_ catalogView: CatalogView, configure itemCell: CarouselItemViewCell, at indexPath: IndexPath)
     func catalogView(_ catalogView: CatalogView, titleForHeaderIn group: Int) -> String?
     func catalogView(_ catalogView: CatalogView, titleForAccessoryButtonIn group: Int) -> String?
+    func catalogView(_ catalogView: CatalogView, identifierFor group: Int) -> String
 }
 
 extension CatalogViewDataSouce {
@@ -24,6 +25,10 @@ extension CatalogViewDataSouce {
 
     func catalogView(_ catalogView: CatalogView, titleForAccessoryButtonIn group: Int) -> String? {
         return nil
+    }
+    
+    func catalogView(_ catalogView: CatalogView, identifierFor group: Int) -> String {
+        return groupCellIdentifier
     }
 }
 
@@ -69,6 +74,8 @@ let groupCellIdentifier = "groupCellIdentifier"
 public class CatalogView: UIView {
     @IBOutlet public weak var dataSource: CatalogViewDataSouce?
     @IBOutlet public weak var delegate: CatalogViewDelegate?
+    
+    private weak var tableView: UITableView!
 
     @IBInspectable public var maxNumberOfCardsPerGroup = 5
 
@@ -92,6 +99,8 @@ public class CatalogView: UIView {
         tableView.allowsSelection = false
 
         addSubview(tableView)
+        
+        self.tableView = tableView
 
         addConstraints([
             tableView.topAnchor.constraint(equalTo: topAnchor),
@@ -99,6 +108,10 @@ public class CatalogView: UIView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor)
             ])
+    }
+    
+    func register(_ nib: UINib, forGroupWithIdentifier identifier: String) {
+        tableView.register(nib, forCellReuseIdentifier: identifier)
     }
 }
 
@@ -112,8 +125,9 @@ extension CatalogView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: groupCellIdentifier, for: indexPath) as! CarouselViewCell
-
+        let identifier = dataSource!.catalogView(self, identifierFor: indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CarouselViewCell
+        
         cell.dataSource = self
         cell.delegate = self
         cell.headerLabel.text = dataSource?.catalogView(self, titleForHeaderIn: indexPath.row)
@@ -164,5 +178,9 @@ extension CatalogView: CarouselViewCellDataSource {
 
     public func carouselCell(_ cell: CarouselViewCell, configure itemCell: CarouselItemViewCell, at index: Int) {
         dataSource!.catalogView(self, configure: itemCell, at: IndexPath(item: index, section: cell.tag))
+    }
+    
+    public func identifierForItemsInCell(_ cell: CarouselViewCell) -> String {
+        return dataSource?.catalogView(self, identifierFor: cell.tag) ?? ""
     }
 }

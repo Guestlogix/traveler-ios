@@ -16,6 +16,7 @@ public protocol CarouselViewCellDataSource: class {
 public protocol CarouselViewCellDelegate: class {
     func carouselCellDidPressMoreButton(_ cell: CarouselViewCell)
     func sizeForItemsInCell(_ cell: CarouselViewCell) -> CGSize
+    func identifierForItemsInCell(_ cell: CarouselViewCell) -> String
     func carouselCell(_ cell: CarouselViewCell, didSelectItemAt index: Int)
 }
 
@@ -30,11 +31,15 @@ open class CarouselViewCell: UITableViewCell {
     open weak var delegate: CarouselViewCellDelegate?
 
     private var itemSize = CGSize.zero
+    
+    open var itemNib: UINib {
+        return UINib(nibName: "CarouselItemViewCell", bundle: Bundle(for: type(of: self)))
+    }
 
     override open func awakeFromNib() {
         super.awakeFromNib()
 
-        collectionView.register(UINib(nibName: "CarouselItemViewCell", bundle: Bundle(for: type(of: self))), forCellWithReuseIdentifier: carouselItemCellIdentifier)
+        collectionView.register(itemNib, forCellWithReuseIdentifier: carouselItemCellIdentifier)
         self.separatorInset = .zero
         self.preservesSuperviewLayoutMargins = false
         self.layoutMargins = .zero

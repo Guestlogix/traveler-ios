@@ -52,6 +52,11 @@ open class CatalogViewController: UIViewController, CatalogViewDataSouce, Catalo
     open func catalogView(_ catalogView: CatalogView, titleForAccessoryButtonIn group: Int) -> String? {
         return nil
     }
+    
+    open func catalogView(_ catalogView: CatalogView, identifierFor group: Int) -> String  {
+        let identifier: String = "CarouselItemViewCell"
+        return identifier
+    }
 
     // MARK: CatalogViewDelegate
 
