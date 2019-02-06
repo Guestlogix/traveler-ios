@@ -139,8 +139,8 @@ extension CatalogView: UITableViewDataSource {
             cell.moreButton.isHidden = true
         }
 
-        cell.reload()
         cell.tag = indexPath.row
+        cell.reload()
 
         return cell
     }
