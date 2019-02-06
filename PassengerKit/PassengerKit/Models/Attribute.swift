@@ -19,7 +19,7 @@ public struct Attribute: Decodable {
         return attr
     }()
 
-    init(label: String, value: String) {
+    public init(label: String, value: String) {
         self.label = label
         self.value = value
     }

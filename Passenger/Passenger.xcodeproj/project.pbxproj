@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A91E0CD8216271740017D207 /* PassengerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91E0CD7216271740017D207 /* PassengerKit.framework */; };
-		A91E0CD9216271740017D207 /* PassengerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A91E0CD7216271740017D207 /* PassengerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A9825B952202146E008AA0C1 /* PassengerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9825B942202146E008AA0C1 /* PassengerKit.framework */; };
+		A9825B962202146E008AA0C1 /* PassengerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9825B942202146E008AA0C1 /* PassengerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A9825B9F22041B2E008AA0C1 /* StripPaymentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825B9E22041B2E008AA0C1 /* StripPaymentProvider.swift */; };
+		A9825BA622041EE0008AA0C1 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9825BA322041EB3008AA0C1 /* Stripe.framework */; };
 		A9BF40B82177832F0090ED1C /* FlightLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40B72177832F0090ED1C /* FlightLookupViewController.swift */; };
 		A9BF40BA2177834E0090ED1C /* FlightLookupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40B92177834E0090ED1C /* FlightLookupFormViewController.swift */; };
 		A9BF40BC217783AB0090ED1C /* FlightSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40BB217783AB0090ED1C /* FlightSearchViewController.swift */; };
@@ -57,7 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A91E0CD9216271740017D207 /* PassengerKit.framework in Embed Frameworks */,
+				A9825B962202146E008AA0C1 /* PassengerKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +67,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A91E0CD7216271740017D207 /* PassengerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PassengerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9825B942202146E008AA0C1 /* PassengerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PassengerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9825B9E22041B2E008AA0C1 /* StripPaymentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripPaymentProvider.swift; sourceTree = "<group>"; };
+		A9825BA322041EB3008AA0C1 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		A9BF40B72177832F0090ED1C /* FlightLookupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightLookupViewController.swift; sourceTree = "<group>"; };
 		A9BF40B92177834E0090ED1C /* FlightLookupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightLookupFormViewController.swift; sourceTree = "<group>"; };
 		A9BF40BB217783AB0090ED1C /* FlightSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightSearchViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A91E0CD8216271740017D207 /* PassengerKit.framework in Frameworks */,
+				A9825BA622041EE0008AA0C1 /* Stripe.framework in Frameworks */,
+				A9825B952202146E008AA0C1 /* PassengerKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +127,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A92523F922010C2E009E2642 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9825B9D22041AB1008AA0C1 /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				A9825B9E22041B2E008AA0C1 /* StripPaymentProvider.swift */,
+			);
+			path = Stripe;
+			sourceTree = "<group>";
+		};
 		A9BF40B62177830F0090ED1C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,11 +190,13 @@
 		A9DB066D2142F1BA009817EC = {
 			isa = PBXGroup;
 			children = (
-				A91E0CD7216271740017D207 /* PassengerKit.framework */,
+				A9825BA322041EB3008AA0C1 /* Stripe.framework */,
+				A9825B942202146E008AA0C1 /* PassengerKit.framework */,
 				A9DB06782142F1BA009817EC /* Passenger */,
 				A9DB068D2142F1BD009817EC /* PassengerTests */,
 				A9DB06982142F1BD009817EC /* PassengerUITests */,
 				A9DB06772142F1BA009817EC /* Products */,
+				A92523F922010C2E009E2642 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,6 +213,7 @@
 		A9DB06782142F1BA009817EC /* Passenger */ = {
 			isa = PBXGroup;
 			children = (
+				A9825B9D22041AB1008AA0C1 /* Stripe */,
 				A9BF40DC21820CCB0090ED1C /* Storyboards */,
 				A9BF40CE217793940090ED1C /* Extensions */,
 				A9BF40C521778BFF0090ED1C /* Views */,
@@ -232,6 +255,7 @@
 				A9DB06732142F1BA009817EC /* Frameworks */,
 				A9DB06742142F1BA009817EC /* Resources */,
 				A91E0CDA216271740017D207 /* Embed Frameworks */,
+				A9825B972202167B008AA0C1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -352,6 +376,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A9825B972202167B008AA0C1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A9DB06722142F1BA009817EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -361,6 +407,7 @@
 				A9BF40B82177832F0090ED1C /* FlightLookupViewController.swift in Sources */,
 				A9BF40E021821FFE0090ED1C /* PassengerCatalogResultViewController.swift in Sources */,
 				A9BF40C921778F250090ED1C /* ValueDisplayInputCell.swift in Sources */,
+				A9825B9F22041B2E008AA0C1 /* StripPaymentProvider.swift in Sources */,
 				A9BF40C0217783D30090ED1C /* EmptyViewController.swift in Sources */,
 				A9BF40BC217783AB0090ED1C /* FlightSearchViewController.swift in Sources */,
 				A9BF40DE218216860090ED1C /* PassengerCatalogViewController.swift in Sources */,
@@ -556,6 +603,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GXZZ6L8Q3B;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Passenger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -576,6 +624,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GXZZ6L8Q3B;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				INFOPLIST_FILE = Passenger/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

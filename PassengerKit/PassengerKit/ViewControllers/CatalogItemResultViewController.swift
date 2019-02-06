@@ -27,7 +27,6 @@ class CatalogItemResultViewController: UIViewController {
     weak var delegate: CatalogItemResultViewControllerDelegate?
     var catalogItemDetails: CatalogItemDetails?
 
-    private var purchaseDetails: PurchaseDetails?
     private let errorContext = ErrorContext()
     private lazy var purchaseContext: BookingContext? = {
         return catalogItemDetails.flatMap({ BookingContext(product: $0) })
@@ -84,7 +83,6 @@ class CatalogItemResultViewController: UIViewController {
             vc.strategy = catalogItemDetails?.purchaseStrategy
             vc.errorContext = errorContext
             vc.purchaseContext = purchaseContext
-            vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -119,10 +117,6 @@ extension CatalogItemResultViewController: PurchaseDetailsViewControllerDelgate 
         purchaseDetailsHeightConstraint.constant = controller.preferredContentSize.height
         view.layoutIfNeeded()
     }
-
-    func purchaseDetailsViewControllerDidSelectDetails(_ controller: PurchaseDetailsViewController) {
-        self.purchaseDetails = controller.purchaseDetails
-    }
 }
 
 extension CatalogItemResultViewController: CatalogItemInfoViewControllerDelegate {
@@ -146,24 +140,6 @@ extension CatalogItemResultViewController: UIScrollViewDelegate {
             scrollView.contentInsetAdjustmentBehavior = .never
             delegate?.catalogItemResultViewControllerDidChangePreferredTranslucency(self)
         }
-    }
-}
-
-extension CatalogItemResultViewController: PurchaseViewControllerDelegate {
-    func purchaseDetailsForPurchaseViewController(_ controller: PurchaseViewController) -> PurchaseDetails? {
-        switch (catalogItemDetails?.purchaseStrategy, purchaseDetails) {
-        case (.some(.bookable), .none):
-            scrollView.setContentOffset(purchaseDetailsView.frame.origin, animated: true)
-            return nil
-        case (.some(.bookable), .some(let details)):
-            return details
-        default:
-            return nil
-        }
-    }
-
-    func purchaseViewController(_ controller: PurchaseViewController, didProduce bookingContext: BookingContext) {
-        performSegue(withIdentifier: "passSegue", sender: bookingContext)
     }
 }
 

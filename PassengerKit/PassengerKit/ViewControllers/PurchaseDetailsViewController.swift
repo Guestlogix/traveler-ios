@@ -10,7 +10,6 @@ import UIKit
 
 protocol PurchaseDetailsViewControllerDelgate: class {
     func purchaseDetailsViewControllerDidChangePreferredContentSize(_ controller: PurchaseDetailsViewController)
-    func purchaseDetailsViewControllerDidSelectDetails(_ controller: PurchaseDetailsViewController)
 }
 
 class PurchaseDetailsViewController: UIViewController {
@@ -18,8 +17,6 @@ class PurchaseDetailsViewController: UIViewController {
     var catalogItemDetails: CatalogItemDetails?
     var errorContext: ErrorContext?
     var purchaseContext: BookingContext?
-
-    private(set) var purchaseDetails: PurchaseDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BookablePurchaseViewControllerDelegate: class {
-    func bookablePurchaseViewControllerDidFinish(_ controller: BookablePurchaseViewController)
+    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didCreate order: Order)
 }
 
 class BookablePurchaseViewController: UIViewController {
@@ -29,7 +29,7 @@ class BookablePurchaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        priceLabel.text = bookingContext?.product.price.priceDescription
+        //priceLabel.text = bookingContext?.product.price.priceDescription
 
         bookingContext?.addObserver(self)
     }
@@ -118,7 +118,31 @@ extension BookablePurchaseViewController: BookingContextObserving {
 }
 
 extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
-    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController) {
+    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, bookingForm: BookingForm) {
+        guard let bookingContext = self.bookingContext else {
+            Log("No BookingContext", data: nil, level: .error)
+            return
+        }
 
+        ProgressHUD.show()
+        PassengerKit.createOrder(bookingForm: bookingForm, context: bookingContext, delegate: self)
+    }
+}
+
+extension BookablePurchaseViewController: OrderCreateDelegate {
+    func orderCreationDidSucceed(_ order: Order) {
+        ProgressHUD.hide()
+
+        delegate?.bookablePurchaseViewController(self, didCreate: order)
+    }
+
+    func orderCreationDidFail(_ error: Error) {
+        ProgressHUD.hide()
+
+        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        present(alert, animated: true)
     }
 }

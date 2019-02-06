@@ -36,12 +36,29 @@
 		A91F3BE121DD51090016894A /* FormStringCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A91F3BE021DD51090016894A /* FormStringCell.xib */; };
 		A91F3BE321DD51170016894A /* FormListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A91F3BE221DD51170016894A /* FormListCell.xib */; };
 		A92523F221FB71D0009E2642 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92523F121FB71D0009E2642 /* ValidationError.swift */; };
+		A92523F421FBA2C3009E2642 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92523F321FBA2C3009E2642 /* ProgressHUD.swift */; };
+		A92523F621FBAD2C009E2642 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92523F521FBAD2C009E2642 /* Order.swift */; };
+		A92523F821FBAD90009E2642 /* OrderCreateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92523F721FBAD90009E2642 /* OrderCreateDelegate.swift */; };
 		A92F5C2421F22CFE00020F10 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92F5C2321F22CFE00020F10 /* Answer.swift */; };
 		A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */; };
 		A957764B2152A9C400BD11C8 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764A2152A9C400BD11C8 /* Route.swift */; };
 		A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */; };
 		A95776512153EC7E00BD11C8 /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95776502153EC7E00BD11C8 /* RestoreOperation.swift */; };
 		A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95776522153F1CE00BD11C8 /* StorageOperation.swift */; };
+		A9825B852202033F008AA0C1 /* PaymentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825B842202033F008AA0C1 /* PaymentProvider.swift */; };
+		A9825BA822042B47008AA0C1 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BA722042B47008AA0C1 /* PaymentConfirmationViewController.swift */; };
+		A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */; };
+		A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BAB220497FE008AA0C1 /* Receipt.swift */; };
+		A9825BAE22049BB1008AA0C1 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BAD22049BB1008AA0C1 /* OrderSummaryViewController.swift */; };
+		A9825BB02204ACD6008AA0C1 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BAF2204ACD6008AA0C1 /* ReceiptViewController.swift */; };
+		A9825BB22204E6CD008AA0C1 /* OrderItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB12204E6CD008AA0C1 /* OrderItemViewCell.swift */; };
+		A9825BB42204E754008AA0C1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB32204E754008AA0C1 /* HeaderView.swift */; };
+		A9825BB62204F01A008AA0C1 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9825BB52204F01A008AA0C1 /* HeaderView.xib */; };
+		A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB72204F5E0008AA0C1 /* Price.swift */; };
+		A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB922089323008AA0C1 /* Double+Currency.swift */; };
+		A9825BBC2208A7F9008AA0C1 /* BookingFormQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */; };
+		A9825BBE2208A86B008AA0C1 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBD2208A86B008AA0C1 /* QuestionType.swift */; };
+		A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */; };
 		A9AC3BF121F6C37F00690D46 /* FormButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC3BF021F6C37F00690D46 /* FormButtonCell.swift */; };
 		A9AC3BF321F6C3F400690D46 /* FormButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9AC3BF221F6C3F400690D46 /* FormButtonCell.xib */; };
 		A9AC3BF521FA4EAE00690D46 /* FormMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC3BF421FA4EAE00690D46 /* FormMessage.swift */; };
@@ -186,12 +203,29 @@
 		A91F3BE021DD51090016894A /* FormStringCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormStringCell.xib; sourceTree = "<group>"; };
 		A91F3BE221DD51170016894A /* FormListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormListCell.xib; sourceTree = "<group>"; };
 		A92523F121FB71D0009E2642 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		A92523F321FBA2C3009E2642 /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		A92523F521FBAD2C009E2642 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		A92523F721FBAD90009E2642 /* OrderCreateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCreateDelegate.swift; sourceTree = "<group>"; };
 		A92F5C2321F22CFE00020F10 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperationQueue+AuthQueue.swift"; sourceTree = "<group>"; };
 		A957764A2152A9C400BD11C8 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperation.swift; sourceTree = "<group>"; };
 		A95776502153EC7E00BD11C8 /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
 		A95776522153F1CE00BD11C8 /* StorageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageOperation.swift; sourceTree = "<group>"; };
+		A9825B842202033F008AA0C1 /* PaymentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProvider.swift; sourceTree = "<group>"; };
+		A9825BA722042B47008AA0C1 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
+		A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProcessDelegate.swift; sourceTree = "<group>"; };
+		A9825BAB220497FE008AA0C1 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		A9825BAD22049BB1008AA0C1 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
+		A9825BAF2204ACD6008AA0C1 /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
+		A9825BB12204E6CD008AA0C1 /* OrderItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemViewCell.swift; sourceTree = "<group>"; };
+		A9825BB32204E754008AA0C1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		A9825BB52204F01A008AA0C1 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		A9825BB72204F5E0008AA0C1 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		A9825BB922089323008AA0C1 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
+		A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFormQuestion.swift; sourceTree = "<group>"; };
+		A9825BBD2208A86B008AA0C1 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
+		A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerContact.swift; sourceTree = "<group>"; };
 		A9AC3BF021F6C37F00690D46 /* FormButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButtonCell.swift; sourceTree = "<group>"; };
 		A9AC3BF221F6C3F400690D46 /* FormButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormButtonCell.xib; sourceTree = "<group>"; };
 		A9AC3BF421FA4EAE00690D46 /* FormMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormMessage.swift; sourceTree = "<group>"; };
@@ -339,6 +373,7 @@
 				A91F3BC721BF044A0016894A /* DrawerDismissalAnimator.swift */,
 				A91F3BC921BF04AC0016894A /* DrawerTansitioning.swift */,
 				A91F3BCF21C803030016894A /* FormView */,
+				A92523F321FBA2C3009E2642 /* ProgressHUD.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -381,6 +416,8 @@
 				A9E2AD8121934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift */,
 				A9E28A9421A8631600967C4A /* AvailabilityCheckDelegate.swift */,
 				A91F3BB621B87C500016894A /* PassFetchDelegate.swift */,
+				A92523F721FBAD90009E2642 /* OrderCreateDelegate.swift */,
+				A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -419,6 +456,7 @@
 				A9DB06472140487B009817EC /* Models */,
 				A9DB06642141B90E009817EC /* Operations */,
 				A9BF40D121779CE90090ED1C /* Delegates */,
+				A9825B842202033F008AA0C1 /* PaymentProvider.swift */,
 				A9DB063D21402F8B009817EC /* PassengerRoute.swift */,
 				A9EED5F1215A7D43003AAA5F /* UnauthPath.swift */,
 				A9EED5EF215A7D3B003AAA5F /* AuthPath.swift */,
@@ -467,9 +505,15 @@
 				A91F3BDA21D9F9730016894A /* Question.swift */,
 				A91F3BDC21DC36AD0016894A /* BookingForm.swift */,
 				A91F3BDE21DD3BA80016894A /* QuestionGroup.swift */,
+				A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */,
+				A9825BBD2208A86B008AA0C1 /* QuestionType.swift */,
 				A92F5C2321F22CFE00020F10 /* Answer.swift */,
 				A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */,
 				A92523F121FB71D0009E2642 /* ValidationError.swift */,
+				A92523F521FBAD2C009E2642 /* Order.swift */,
+				A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */,
+				A9825BAB220497FE008AA0C1 /* Receipt.swift */,
+				A9825BB72204F5E0008AA0C1 /* Price.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -529,6 +573,9 @@
 				A91F3BB821BADD3F0016894A /* BookableConfirmationViewController.swift */,
 				A91F3BC021BEF03A0016894A /* PassesViewController.swift */,
 				A91F3BD821D9F2040016894A /* BookingQuestionsViewController.swift */,
+				A9825BA722042B47008AA0C1 /* PaymentConfirmationViewController.swift */,
+				A9825BAD22049BB1008AA0C1 /* OrderSummaryViewController.swift */,
+				A9825BAF2204ACD6008AA0C1 /* ReceiptViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -572,6 +619,7 @@
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A9E28A88219C928800967C4A /* NSMutableAttributedString+FontFace.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
+				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -595,6 +643,9 @@
 				A91F3BBA21BEC39A0016894A /* StepperCell.swift */,
 				A91F3BBC21BEC4A10016894A /* Stepper.swift */,
 				A91F3BBE21BECBA60016894A /* ButtonCell.swift */,
+				A9825BB12204E6CD008AA0C1 /* OrderItemViewCell.swift */,
+				A9825BB32204E754008AA0C1 /* HeaderView.swift */,
+				A9825BB52204F01A008AA0C1 /* HeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -730,6 +781,7 @@
 				A91F3BE121DD51090016894A /* FormStringCell.xib in Resources */,
 				A9C68F3B21DD5E5600589702 /* FormHeaderView.xib in Resources */,
 				A9E2AD8921935C1F0063BF79 /* CatalogItem.storyboard in Resources */,
+				A9825BB62204F01A008AA0C1 /* HeaderView.xib in Resources */,
 				A9AC3BF321F6C3F400690D46 /* FormButtonCell.xib in Resources */,
 				A91F3BE321DD51170016894A /* FormListCell.xib in Resources */,
 			);
@@ -773,6 +825,7 @@
 				A9E28A87219B55AC00967C4A /* DatePickerCell.swift in Sources */,
 				A9DB06A821496396009817EC /* PassengerKit.swift in Sources */,
 				A9E28A9B21B593A600967C4A /* BookableDetailsViewController.swift in Sources */,
+				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
 				A9E2AD9921949F6E0063BF79 /* CatalogItemInfoViewController.swift in Sources */,
 				A9FF6D8C218760BB00AFC20F /* CarouselViewCell.swift in Sources */,
@@ -793,6 +846,8 @@
 				A9E2AD8B21938F0F0063BF79 /* ContainerEmbedSegue.swift in Sources */,
 				A9E2AD8221934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift in Sources */,
 				A9DB065D2140665A009817EC /* MappingOperation.swift in Sources */,
+				A9825BB02204ACD6008AA0C1 /* ReceiptViewController.swift in Sources */,
+				A92523F421FBA2C3009E2642 /* ProgressHUD.swift in Sources */,
 				A91F3BD121C8057C0016894A /* InputDescriptor.swift in Sources */,
 				A9E2AD9F2194AD170063BF79 /* Menu.swift in Sources */,
 				A9FF6D89218760BB00AFC20F /* CarouselItemViewCell.swift in Sources */,
@@ -802,6 +857,7 @@
 				A9AC3BF121F6C37F00690D46 /* FormButtonCell.swift in Sources */,
 				A9C68F3D21DD5E6500589702 /* FormHeaderView.swift in Sources */,
 				A91F3BCA21BF04AC0016894A /* DrawerTansitioning.swift in Sources */,
+				A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */,
 				A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */,
 				A92523F221FB71D0009E2642 /* ValidationError.swift in Sources */,
 				A9E28A9721A864A700967C4A /* Product.swift in Sources */,
@@ -811,10 +867,13 @@
 				A91E0CE42166585A0017D207 /* AssetManager.swift in Sources */,
 				A9BF40E6218231580090ED1C /* CatalogGroup.swift in Sources */,
 				A9E2AD80219344670063BF79 /* CatalogItemDetails.swift in Sources */,
+				A9825BA822042B47008AA0C1 /* PaymentConfirmationViewController.swift in Sources */,
 				A9E28A89219C928800967C4A /* NSMutableAttributedString+FontFace.swift in Sources */,
+				A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */,
 				A91F3BC621BF04400016894A /* DrawerPresentationAnimator.swift in Sources */,
 				A9E2ADB5219B30780063BF79 /* PurchaseStrategy.swift in Sources */,
 				A9AC3BF521FA4EAE00690D46 /* FormMessage.swift in Sources */,
+				A9825BBE2208A86B008AA0C1 /* QuestionType.swift in Sources */,
 				A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */,
 				A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */,
 				A9E2ADA32194D1820063BF79 /* InfoCell.swift in Sources */,
@@ -823,22 +882,28 @@
 				A9EED5F6215AB713003AAA5F /* KeychainStoreOperation.swift in Sources */,
 				A9E28A83219B54C800967C4A /* DateCell.swift in Sources */,
 				A9DB06442140358C009817EC /* Credentials.swift in Sources */,
+				A9825B852202033F008AA0C1 /* PaymentProvider.swift in Sources */,
 				A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */,
 				A9E2ADAD219A2BA10063BF79 /* PurchaseViewController.swift in Sources */,
 				A91F3BDB21D9F9730016894A /* Question.swift in Sources */,
+				A9825BAE22049BB1008AA0C1 /* OrderSummaryViewController.swift in Sources */,
 				A9E2ADB3219B23E50063BF79 /* LocationCell.swift in Sources */,
+				A9825BBC2208A7F9008AA0C1 /* BookingFormQuestion.swift in Sources */,
 				A9E28A9D21B593B400967C4A /* BuyableDetailsViewController.swift in Sources */,
 				A9AC3BFD21FA6D9500690D46 /* ValidationRule.swift in Sources */,
 				A9FF6D902187624400AFC20F /* CatalogView.swift in Sources */,
 				A91F3BBB21BEC39A0016894A /* StepperCell.swift in Sources */,
 				A9EED5F2215A7D43003AAA5F /* UnauthPath.swift in Sources */,
 				A9E2ADA72194DF200063BF79 /* ProviderInfoViewController.swift in Sources */,
+				A92523F821FBAD90009E2642 /* OrderCreateDelegate.swift in Sources */,
 				A9BF40E42182310F0090ED1C /* Catalog.swift in Sources */,
+				A92523F621FBAD2C009E2642 /* Order.swift in Sources */,
 				A9EED5F4215A7E52003AAA5F /* AuthenticatedRemoteFetchOperation.swift in Sources */,
 				A9DB06B3214AFB54009817EC /* Flight.swift in Sources */,
 				A9E2AD9721949F1D0063BF79 /* PurchaseDetailsViewController.swift in Sources */,
 				A91F3BB321B82BDD0016894A /* ErrorContext.swift in Sources */,
 				A9DB065F2140665A009817EC /* ConcurrentOperation.swift in Sources */,
+				A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */,
 				A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */,
 				A91F3BC821BF044A0016894A /* DrawerDismissalAnimator.swift in Sources */,
 				A9E28A85219B54F600967C4A /* StringCell.swift in Sources */,
@@ -850,6 +915,7 @@
 				A9DB065E2140665A009817EC /* NetworkError.swift in Sources */,
 				A9E2AD8F219397650063BF79 /* CatalogItemErrorViewController.swift in Sources */,
 				A9E2AD862193531F0063BF79 /* CatalogItemViewController.swift in Sources */,
+				A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */,
 				A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */,
 				A92F5C2421F22CFE00020F10 /* Answer.swift in Sources */,
 				A91F3BDF21DD3BA80016894A /* QuestionGroup.swift in Sources */,
@@ -857,12 +923,14 @@
 				A9BF40D72177C1270090ED1C /* Airport.swift in Sources */,
 				A9E28A9321A84DBD00967C4A /* Availability.swift in Sources */,
 				A9E2ADB7219B378A0063BF79 /* QuantityViewController.swift in Sources */,
+				A9825BB22204E6CD008AA0C1 /* OrderItemViewCell.swift in Sources */,
 				A9AC3BFB21FA51F000690D46 /* FormLayout.swift in Sources */,
 				A9E2AD9321948C3C0063BF79 /* CatalogItemResultViewController.swift in Sources */,
 				A9E2ADAB2199E0ED0063BF79 /* ShadowedView.swift in Sources */,
 				A9DB0646214047EB009817EC /* User.swift in Sources */,
 				A9DB06572140665A009817EC /* UploadOperation.swift in Sources */,
 				A91F3BD321C805B00016894A /* InputType.swift in Sources */,
+				A9825BB42204E754008AA0C1 /* HeaderView.swift in Sources */,
 				A9E2AD8D219395EF0063BF79 /* CatalogItemLoadingViewController.swift in Sources */,
 				A91F3BBF21BECBA60016894A /* ButtonCell.swift in Sources */,
 				A9E2AD9D2194AD060063BF79 /* Location.swift in Sources */,

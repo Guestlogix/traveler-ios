@@ -14,6 +14,8 @@ enum AuthPath {
     case catalogItem(CatalogItem)
     case productSchedule(Product, from: Date, to: Date)
     case passes(Product, date: Date, time: Time?)
+    case createOrder(BookingForm, BookingContext)
+    case processOrder(Order, Payment)
 
     // MARK: URLRequest
 
@@ -58,6 +60,44 @@ enum AuthPath {
                     URLQueryItem(name: "time-in-minutes", value: String($0))
                 )
             }
+        case .createOrder(let form, let context):
+            urlComponents.path = "/order"
+            urlRequest.method = .post
+            urlRequest.jsonBody = [
+                "travelerProfileId": nil,
+                // TODO: Currency handling
+                "amount": [
+                    "value": form.passes.map({ $0.price.value }).reduce(0, +),
+                    "currency": Locale.current.currencyCode as Any
+                ],
+                "products": [
+                    [
+                        "id": context.product.id,
+                        "passes": form.passes.enumerated().map({ (index, pass) in
+                            [
+                                "id": pass.id,
+                                "title": pass.name,
+                                "answers": form.answers(passAt: index).map({ (answer) in
+                                    [
+                                        "id": answer.questionId,
+                                        "value": answer.codedValue
+                                    ]
+                                }),
+                                "upsellAnswers": []
+                            ]
+                        })
+                    ]
+                ],
+                "customer": form.questionGroups[0].questions.reduce([:], { (contact, q) -> [String: Any?] in
+                    var contact = contact
+                    contact[q.id] = try? form.answer(for: q)?.codedValue
+                    return contact
+                })
+            ]
+        case .processOrder(let order, let payment):
+            urlComponents.path = "/order/\(order.id)"
+            urlRequest.method = .patch
+            urlRequest.httpBody = payment.securePayload()
         }
 
         urlRequest.url = urlComponents.url

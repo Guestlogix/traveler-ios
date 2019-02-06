@@ -76,7 +76,7 @@ public struct Question: Decodable, Equatable {
         case "Text":
             self.type = .string
         case "MultipleChoice":
-            let choices = try container.decode([Choice].self, forKey: .choices)
+            let choices = try container.decode([Question.Choice].self, forKey: .choices)
 
             self.type = .multipleChoice(choices)
         default:

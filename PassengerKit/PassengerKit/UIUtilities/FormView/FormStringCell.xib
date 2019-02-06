@@ -25,7 +25,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
-                            <action selector="textFieldValueDidChange:" destination="jSN-gZ-D6R" eventType="valueChanged" id="h3z-t6-Mgc"/>
+                            <action selector="textFieldValueDidChange:" destination="jSN-gZ-D6R" eventType="editingChanged" id="jis-zw-PRg"/>
                         </connections>
                     </textField>
                 </subviews>

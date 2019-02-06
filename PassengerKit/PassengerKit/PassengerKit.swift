@@ -12,8 +12,11 @@ public class PassengerKit {
     private let queue = OperationQueue()
     private let session: Session
 
+    let paymentProvider: PaymentProvider
+
     private static var _shared: PassengerKit?
-    private static var shared: PassengerKit? {
+
+    static var shared: PassengerKit? {
         guard _shared != nil else {
             Log("SDK not initialized. Initialize the SDK using `PassengerKit.initialize(token:)` in your app delegate.", data: nil, level: .error)
             return nil
@@ -22,17 +25,18 @@ public class PassengerKit {
         return _shared
     }
 
-    public static func initialize(apiKey: String) {
+    public static func initialize(apiKey: String, paymentProvider: PaymentProvider) {
         guard _shared == nil else {
             Log("SDK already initialized!", data: nil, level: .warning)
             return
         }
 
-        _shared = PassengerKit(apiKey: apiKey)
+        _shared = PassengerKit(apiKey: apiKey, paymentProvider: paymentProvider)
     }
 
-    init(apiKey: String) {
+    init(apiKey: String, paymentProvider: PaymentProvider) {
         self.session = Session(apiKey: apiKey)
+        self.paymentProvider = paymentProvider
 
         let sessionOperation = SessionBeginOperation(session: session)
         OperationQueue.authQueue.addOperation(sessionOperation)
@@ -121,6 +125,50 @@ public class PassengerKit {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func createOrder(bookingForm: BookingForm, context: BookingContext, completion: @escaping (BookingOrder?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<InternalOrder>(path: .createOrder(bookingForm, context), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            if let internalOrder = fetchOperation.resource {
+                do {
+                    let bookingOrder = try BookingOrder(internalOrder: internalOrder, bookingContext: context, bookingForm: bookingForm)
+
+                    completion(bookingOrder, nil)
+                } catch {
+                    completion(nil, error)
+                }
+            } else {
+                completion(nil, fetchOperation.error!)
+            }
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func processOrder(_ order: Order, payment: Payment, completion: @escaping (Receipt?, Error?) -> Void) {
+        guard let bookingOrder = order as? BookingOrder else {
+            fatalError("BuyOrder not yet implemented")
+        }
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<InternalOrder>(path: .processOrder(order, payment), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            if let order = fetchOperation.resource {
+                let receipt = Receipt(bookingOrder: bookingOrder, confirmationNumber: order.id, customerContact: order.customerContact)
+
+                completion(receipt, nil)
+            } else {
+                completion(nil, fetchOperation.error)
+            }
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     public static func flightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
@@ -191,5 +239,33 @@ public class PassengerKit {
                 delegate?.passFetchDidFailWith(error!)
             }
         })
+    }
+
+    public static func createOrder(bookingForm: BookingForm, context: BookingContext, delegate: OrderCreateDelegate) {
+        shared?.createOrder(bookingForm: bookingForm, context: context, completion: { [weak delegate] (order, error) in
+            if let order = order {
+                delegate?.orderCreationDidSucceed(order)
+            } else {
+                delegate?.orderCreationDidFail(error!)
+            }
+        })
+    }
+
+    public static func createOrder(bookingForm: BookingForm, context: BookingContext, completion: @escaping (Order?, Error?) -> Void) {
+        shared?.createOrder(bookingForm: bookingForm, context: context, completion: completion)
+    }
+
+    public static func processOrder(_ order: Order, payment: Payment, delegate: OrderProcessDelegate) {
+        shared?.processOrder(order, payment: payment, completion: { [weak delegate] (receipt, error) in
+            if let receipt = receipt {
+                delegate?.order(order, didSucceedWithReceipt: receipt)
+            } else {
+                delegate?.order(order, didFailWithError: error!)
+            }
+        })
+    }
+
+    public static func processOrder(_ order: Order, payment: Payment, completion: @escaping (Receipt?, Error?) -> Void) {
+        shared?.processOrder(order, payment: payment, completion: completion)
     }
 }

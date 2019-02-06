@@ -22,7 +22,7 @@ public struct Pass: Decodable, Hashable {
     public let name: String
     public let description: String?
     public let maxQuantity: Int?
-    public let price: Double
+    public let price: Price
     public let questions: [Question]
 
     enum CodingKeys: String, CodingKey {
@@ -50,9 +50,9 @@ extension Dictionary where Key == Pass, Value == Int {
         var value: Double = 0
 
         for (pass, quantity) in self {
-            value += (Double(quantity) * pass.price)
+            value += (Double(quantity) * pass.price.value)
         }
 
-        return value.priceDescription
+        return value.priceDescription()
     }
 }

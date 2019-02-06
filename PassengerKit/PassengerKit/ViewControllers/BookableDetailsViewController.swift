@@ -196,8 +196,9 @@ extension BookableDetailsViewController: AvailabilityCheckDelegate {
         tableView.isUserInteractionEnabled = true
 
         let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
+        
         present(alert, animated: true, completion: nil)
     }
 

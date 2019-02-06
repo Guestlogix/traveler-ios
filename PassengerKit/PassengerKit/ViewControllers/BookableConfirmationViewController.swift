@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BookableConfirmationViewControllerDelegate: class {
-    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController)
+    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, bookingForm: BookingForm)
 }
 
 class BookableConfirmationViewController: UIViewController {
@@ -18,8 +18,9 @@ class BookableConfirmationViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
 
     var passes: [Pass]?
-    var passQuantities = [Pass: Int]()
     weak var delegate: BookableConfirmationViewControllerDelegate?
+
+    private var passQuantities: [Pass: Int]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class BookableConfirmationViewController: UIViewController {
             passesVC.passes = passes
             passesVC.passQuantities = passes?.defaultPassQuantities
         case (_, let vc as BookingQuestionsViewController):
-            vc.bookingForm = BookingForm(passQuantities: passQuantities)
+            vc.bookingForm = BookingForm(passes: passQuantities?.allPasses ?? [])
             vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
@@ -47,12 +48,8 @@ class BookableConfirmationViewController: UIViewController {
         }
     }
 
-    @IBAction func didConfirm(_ sender: Any) {
-        delegate?.bookableConfirmationViewControllerDidConfirm(self)
-    }
-
     private func reloadPriceLabel() {
-        priceLabel.text = passQuantities.subTotalDescription
+        priceLabel.text = passQuantities?.subTotalDescription
     }
 }
 
@@ -68,7 +65,7 @@ extension BookableConfirmationViewController: PassesViewControllerDelegate {
     }
 
     func passesViewControllerDidChangeQuantities(_ controller: PassesViewController) {
-        self.passQuantities = controller.passQuantities ?? [:]
+        self.passQuantities = controller.passQuantities
         reloadPriceLabel()
     }
 }
@@ -80,6 +77,18 @@ extension BookableConfirmationViewController: BookingQuestionsViewControllerDele
             return
         }
 
-        
+        delegate?.bookableConfirmationViewControllerDidConfirm(self, bookingForm: bookingForm)
+    }
+}
+
+extension Dictionary where Key == Pass, Value == Int {
+    var allPasses: [Pass] {
+        var passes = [Pass]()
+        for (pass, quantity) in self {
+            for _ in 0..<quantity {
+                passes.append(pass)
+            }
+        }
+        return passes
     }
 }

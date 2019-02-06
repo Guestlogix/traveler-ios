@@ -28,11 +28,12 @@ public struct CatalogItemDetails: Decodable, Product {
     public let information: [Attribute]?
     public let contact: ContactInfo?
     public let locations: [Location]
-    public let priceStartingAt: Double
+    public let priceStartingAt: Price
     public let purchaseStrategy: PurchaseStrategy
 
     public var price: Double {
-        return priceStartingAt
+        // TODO: Convert currency
+        return priceStartingAt.value
     }
 
     enum CodingKeys: String, CodingKey {
@@ -48,12 +49,3 @@ public struct CatalogItemDetails: Decodable, Product {
     }
 }
 
-extension Double {
-    public var priceDescription: String? {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.locale = Locale.current
-        numberFormatter.numberStyle = .currency
-
-        return numberFormatter.string(for:self)
-    }
-}

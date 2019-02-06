@@ -8,9 +8,14 @@
 
 import UIKit
 
+public protocol CatalogItemViewControllerDelegate: class {
+    func catalogItemViewController(_ controller: CatalogItemViewController, didCreate order: Order)
+}
+
 open class CatalogItemViewController: UIViewController {
     public var image: UIImage?
     public var catalogItem: CatalogItem?
+    public weak var delegate: CatalogItemViewControllerDelegate?
 
     private var details: CatalogItemDetails?
 
@@ -101,5 +106,9 @@ extension CatalogItemViewController: CatalogItemResultViewControllerDelegate {
                 controller.titleLabel.alpha = 0
             }
         }
+    }
+
+    func catalogItemResultViewController(_ controller: CatalogItemResultViewController, didCreate order: Order) {
+        delegate?.catalogItemViewController(self, didCreate: order)
     }
 }

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        PassengerKit.initialize(apiKey: "testtesttesttesttest")
+        PassengerKit.initialize(apiKey: "testtesttesttesttest", paymentProvider: StripePaymentProvider())
 
         // Temp Styles
 
