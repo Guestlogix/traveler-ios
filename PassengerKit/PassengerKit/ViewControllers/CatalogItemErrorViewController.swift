@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CatalogItemErrorViewControllerDelegate: class {
-    func catalotItemErrorViewControllerDidRetry(_ controller: CatalogItemErrorViewController)
+    func catalogItemErrorViewControllerDidRetry(_ controller: CatalogItemErrorViewController)
 }
 
 class CatalogItemErrorViewController: UIViewController {
@@ -24,7 +24,7 @@ class CatalogItemErrorViewController: UIViewController {
         imageView.image = image
     }
 
-    @IBAction func didRety(_ sender: UIButton) {
-        delegate?.catalotItemErrorViewControllerDidRetry(self)
+    @IBAction func didRetry(_ sender: UIButton) {
+        delegate?.catalogItemErrorViewControllerDidRetry(self)
     }
 }

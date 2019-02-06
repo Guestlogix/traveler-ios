@@ -32,9 +32,12 @@ enum AuthPath {
             urlComponents.path = "/catalog"
 
             if let flights = query.flights, flights.count > 0 {
-                urlComponents.queryItems = [
-                    URLQueryItem(name: "flight-ids", value: flights.map({$0.id}).joined(separator: ","))
-                ]
+                var urlQueryItemArray: [URLQueryItem] = []
+                for flight in flights {
+                    urlQueryItemArray.append(URLQueryItem(name:"flight-ids", value: flight.id))
+                }
+                
+                urlComponents.queryItems = urlQueryItemArray
             }
         case .catalogItem(let item):
             urlComponents.path = "/product/\(item.id)"

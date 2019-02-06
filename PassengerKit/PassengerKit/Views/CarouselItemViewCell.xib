@@ -34,14 +34,16 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnT-fG-gjE">
                         <rect key="frame" x="8" y="8" width="239" height="139"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gy5-z2-1cJ">
-                                <rect key="frame" x="0.0" y="0.0" width="239" height="139"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gy5-z2-1cJ">
+                                <rect key="frame" x="0.0" y="0.0" width="239" height="239"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Gy5-z2-1cJ" secondAttribute="height" multiplier="1:1" id="FPY-5I-7w5"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Gy5-z2-1cJ" secondAttribute="bottom" id="2vk-LG-0iH"/>
-                            <constraint firstItem="Gy5-z2-1cJ" firstAttribute="top" secondItem="rnT-fG-gjE" secondAttribute="top" id="4NQ-Zm-R9B"/>
+                            <constraint firstItem="Gy5-z2-1cJ" firstAttribute="top" secondItem="rnT-fG-gjE" secondAttribute="top" multiplier="1:1" id="4NQ-Zm-R9B"/>
                             <constraint firstAttribute="trailing" secondItem="Gy5-z2-1cJ" secondAttribute="trailing" id="Pob-L5-DWn"/>
                             <constraint firstItem="Gy5-z2-1cJ" firstAttribute="leading" secondItem="rnT-fG-gjE" secondAttribute="leading" id="ehQ-ax-Yyr"/>
                         </constraints>
@@ -71,7 +73,7 @@
                 <outlet property="imageContainerView" destination="rnT-fG-gjE" id="Lte-MQ-YV8"/>
                 <outlet property="imageView" destination="Gy5-z2-1cJ" id="Zya-I7-1ar"/>
                 <outlet property="subTitleLabel" destination="mYh-mC-yAI" id="aE3-if-hdg"/>
-                <outlet property="titleLable" destination="E1j-aG-0hM" id="QQs-yM-GWI"/>
+                <outlet property="titleLabel" destination="E1j-aG-0hM" id="ydw-lJ-z2C"/>
             </connections>
             <point key="canvasLocation" x="29.600000000000001" y="94.902548725637189"/>
         </collectionViewCell>

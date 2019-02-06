@@ -11,7 +11,7 @@ import UIKit
 open class CarouselItemViewCell: UICollectionViewCell {
     @IBOutlet open weak var imageContainerView: UIView!
     @IBOutlet open weak var imageView: UIImageView!
-    @IBOutlet open weak var titleLable: UILabel!
+    @IBOutlet open weak var titleLabel: UILabel!
     @IBOutlet open weak var subTitleLabel: UILabel!
 
     public static var margin: CGFloat {

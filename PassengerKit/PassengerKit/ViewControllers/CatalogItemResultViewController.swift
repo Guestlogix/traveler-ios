@@ -20,7 +20,7 @@ class CatalogItemResultViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var purchaseDetailsHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var purchaseDetialsView: UIView!
+    @IBOutlet weak var purchaseDetailsView: UIView!
     @IBOutlet weak var itemInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var itemInfoView: UIView!
 
@@ -115,7 +115,7 @@ extension CatalogItemResultViewController: UICollectionViewDataSource {
 
 extension CatalogItemResultViewController: PurchaseDetailsViewControllerDelgate {
     func purchaseDetailsViewControllerDidChangePreferredContentSize(_ controller: PurchaseDetailsViewController) {
-        purchaseDetialsView.isHidden = controller.preferredContentSize.height == 0
+        purchaseDetailsView.isHidden = controller.preferredContentSize.height == 0
         purchaseDetailsHeightConstraint.constant = controller.preferredContentSize.height
         view.layoutIfNeeded()
     }
@@ -153,7 +153,7 @@ extension CatalogItemResultViewController: PurchaseViewControllerDelegate {
     func purchaseDetailsForPurchaseViewController(_ controller: PurchaseViewController) -> PurchaseDetails? {
         switch (catalogItemDetails?.purchaseStrategy, purchaseDetails) {
         case (.some(.bookable), .none):
-            scrollView.setContentOffset(purchaseDetialsView.frame.origin, animated: true)
+            scrollView.setContentOffset(purchaseDetailsView.frame.origin, animated: true)
             return nil
         case (.some(.bookable), .some(let details)):
             return details
@@ -170,7 +170,7 @@ extension CatalogItemResultViewController: PurchaseViewControllerDelegate {
 extension CatalogItemResultViewController: ErrorContextObserving {
     func errorContextDidUpdate(_ context: ErrorContext) {
         if context.error != nil {
-            scrollView.scrollRectToVisible(purchaseDetialsView.frame, animated: true)
+            scrollView.scrollRectToVisible(purchaseDetailsView.frame, animated: true)
         }
     }
 }

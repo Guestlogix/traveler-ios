@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ListCellDataSouce: class {
+protocol ListCellDataSource: class {
     func numberOfRowsInListCell(_ cell: ListCell) -> Int
     func listCell(_ cell: ListCell, titleForRow row: Int) -> String?
 }
@@ -21,7 +21,7 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
 
-    weak var dataSource: ListCellDataSouce?
+    weak var dataSource: ListCellDataSource?
     weak var delegate: ListCellDelegate?
 
     override func awakeFromNib() {

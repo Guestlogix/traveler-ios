@@ -23,7 +23,7 @@ class FlightLookupFormViewController: UITableViewController {
     var flightNumber: String?
     var flightDate: Date?
 
-    private let flightNumberRegex = try? NSRegularExpression(pattern: "^([A-Z]{2}|[A-Z]\\d|\\d[A-Z])([1-9](\\d{1,3})?)$", options: .caseInsensitive)
+    private let flightNumberRegex = try? NSRegularExpression(pattern: "^([A-Z]{2}|[A-Z]\\d|\\d[A-Z])([1-9][0-9]{0,3}|[0-9]{0,3}[1-9])$", options: .caseInsensitive)
     private var flightNumberValid = true
     private var datePickerCellVisible = false
     private var buttonCellIndexPath: IndexPath {
