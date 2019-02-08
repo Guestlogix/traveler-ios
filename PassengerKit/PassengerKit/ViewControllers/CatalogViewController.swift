@@ -8,6 +8,8 @@
 
 import UIKit
 
+let identifier: String = "CarouselItemViewCell"
+
 open class CatalogViewController: UIViewController, CatalogViewDataSouce, CatalogViewDelegate {
     final weak var catalogView: CatalogView!
 
@@ -54,7 +56,6 @@ open class CatalogViewController: UIViewController, CatalogViewDataSouce, Catalo
     }
     
     open func catalogView(_ catalogView: CatalogView, identifierFor group: Int) -> String  {
-        let identifier: String = "CarouselItemViewCell"
         return identifier
     }
 

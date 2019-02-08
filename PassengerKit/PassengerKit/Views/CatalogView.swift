@@ -181,6 +181,6 @@ extension CatalogView: CarouselViewCellDataSource {
     }
     
     public func identifierForItemsInCell(_ cell: CarouselViewCell) -> String {
-        return dataSource?.catalogView(self, identifierFor: cell.tag) ?? ""
+        return dataSource?.catalogView(self, identifierFor: cell.tag) ?? groupCellIdentifier
     }
 }
