@@ -1,0 +1,9 @@
+[submodule "traveler-swift-core"]
+	path = traveler-swift-core
+	url = https://github.com/Guestlogix/traveler-swift-core.git
+[submodule "traveler-ios-ui"]
+	path = traveler-ios-ui
+	url = https://github.com/Guestlogix/traveler-ios-ui.git
+[submodule "traveler-ios-stripe"]
+	path = traveler-ios-stripe
+	url = https://github.com/Guestlogix/traveler-ios-stripe.git
