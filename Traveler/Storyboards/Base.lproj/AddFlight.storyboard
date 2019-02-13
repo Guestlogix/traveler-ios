@@ -13,7 +13,7 @@
         <!--Add New Flight-->
         <scene sceneID="6jz-BW-zrP">
             <objects>
-                <viewController id="1Qe-AC-UUf" customClass="FlightLookupViewController" customModule="Passenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1Qe-AC-UUf" customClass="FlightLookupViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pzx-6D-65v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,12 +54,12 @@
         <!--Flight Lookup Form View Controller-->
         <scene sceneID="RU3-oB-4eN">
             <objects>
-                <tableViewController id="jRD-OG-nDj" customClass="FlightLookupFormViewController" customModule="Passenger" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jRD-OG-nDj" customClass="FlightLookupFormViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ySe-75-thi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="7vg-e6-hCC">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="7vg-e6-hCC">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -83,7 +83,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="stringInputCellIdentifier" rowHeight="80" id="FK8-Xd-XjU" customClass="StringInputCell" customModule="Passenger" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="stringInputCellIdentifier" rowHeight="80" id="FK8-Xd-XjU" customClass="StringInputCell" customModule="Traveler" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FK8-Xd-XjU" id="eOi-3E-wJ2">
@@ -129,7 +129,7 @@
                                     <outlet property="textField" destination="Rcd-Hl-SSP" id="uPS-up-Cwr"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="valueDisplayCellIdentifier" id="iVu-3W-ozY" customClass="ValueDisplayInputCell" customModule="Passenger" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="valueDisplayCellIdentifier" id="iVu-3W-ozY" customClass="ValueDisplayInputCell" customModule="Traveler" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="193" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iVu-3W-ozY" id="LbO-Xb-6l0">
@@ -162,7 +162,7 @@
                                     <outlet property="valueLabel" destination="xz7-6W-Ao9" id="p8P-Mc-Nkj"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dateInputCellIdentifier" rowHeight="216" id="Dds-SN-q2M" customClass="DateInputCell" customModule="Passenger" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dateInputCellIdentifier" rowHeight="216" id="Dds-SN-q2M" customClass="DateInputCell" customModule="Traveler" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="237" width="375" height="216"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dds-SN-q2M" id="HGk-Q1-s05">
@@ -190,7 +190,7 @@
                                     <outlet property="datePicker" destination="rqx-e6-aBY" id="bBT-dz-jOG"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="buttonCellIdentifier" id="UXi-YS-c0b" customClass="ButtonCell" customModule="Passenger" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="buttonCellIdentifier" id="UXi-YS-c0b" customClass="ButtonCell" customModule="Traveler" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="453" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UXi-YS-c0b" id="lw5-hQ-cLj">
@@ -228,7 +228,7 @@
         <!--Flight Search View Controller-->
         <scene sceneID="65Y-jR-j8J">
             <objects>
-                <viewController id="Iue-Jd-E55" customClass="FlightSearchViewController" customModule="Passenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Iue-Jd-E55" customClass="FlightSearchViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6fY-yl-fqG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,7 +237,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pMs-5e-bs7">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="XzG-hT-p5m">
+                        <view key="titleView" contentMode="scaleToFill" ambiguous="YES" id="XzG-hT-p5m">
                             <rect key="frame" x="91" y="22" width="193" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -276,10 +276,10 @@
                     <connections>
                         <outlet property="flightDateLabel" destination="96H-dq-RTI" id="KE9-2s-WsE"/>
                         <outlet property="flightNumberLabel" destination="HpK-BI-SWb" id="4Om-yR-e7s"/>
-                        <segue destination="aiJ-75-hCj" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="G2D-ct-ASr"/>
-                        <segue destination="bsE-Xy-q1u" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="i8O-Oe-TJJ"/>
-                        <segue destination="BtW-G3-6xw" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="z18-RV-Myv"/>
-                        <segue destination="abl-Wj-tak" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="PassengerKit" id="Kfv-fF-bHI"/>
+                        <segue destination="aiJ-75-hCj" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="G2D-ct-ASr"/>
+                        <segue destination="bsE-Xy-q1u" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="i8O-Oe-TJJ"/>
+                        <segue destination="BtW-G3-6xw" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="z18-RV-Myv"/>
+                        <segue destination="abl-Wj-tak" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="Kfv-fF-bHI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZz-2z-Hw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,7 +322,7 @@
         <!--Retry View Controller-->
         <scene sceneID="SxH-Bh-DXW">
             <objects>
-                <viewController id="bsE-Xy-q1u" customClass="RetryViewController" customModule="Passenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bsE-Xy-q1u" customClass="RetryViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="exw-9F-5bG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,7 +379,7 @@
         <!--Empty View Controller-->
         <scene sceneID="TAP-wm-gpm">
             <objects>
-                <viewController id="BtW-G3-6xw" customClass="EmptyViewController" customModule="Passenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BtW-G3-6xw" customClass="EmptyViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eDF-IB-PQb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -436,13 +436,13 @@
         <!--Flight Search Result View Controller-->
         <scene sceneID="gkh-Aa-FbL">
             <objects>
-                <tableViewController id="abl-Wj-tak" customClass="FlightSearchResultViewController" customModule="Passenger" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="abl-Wj-tak" customClass="FlightSearchResultViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="194" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="jSk-YN-6wa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="flightCellIdentifier" rowHeight="194" id="KFU-Mf-VEe" customClass="FlightCell" customModule="Passenger" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="flightCellIdentifier" rowHeight="194" id="KFU-Mf-VEe" customClass="FlightCell" customModule="Traveler" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="194"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KFU-Mf-VEe" id="1ej-F8-4To">
