@@ -5,9 +5,6 @@
       location = "group:Traveler.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:traveler-ios-stripe/TravelerStripePaymentProvider.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:traveler-ios-ui/TravelerKitUI.xcodeproj">
    </FileRef>
    <FileRef

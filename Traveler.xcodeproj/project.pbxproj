@@ -31,9 +31,8 @@
 		A9639DD62211D13900625235 /* TravelerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD42211D13900625235 /* TravelerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9639DD92211D13F00625235 /* TravelerKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; };
 		A9639DDA2211D13F00625235 /* TravelerKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A9639DDC2211D14400625235 /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; };
-		A9639DDD2211D14400625235 /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9639DE22211D91A00625235 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DE12211D91A00625235 /* Stripe.framework */; };
+		A9639DED2215E7F400625235 /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,7 +44,6 @@
 			files = (
 				A9639DDA2211D13F00625235 /* TravelerKitUI.framework in Embed Frameworks */,
 				A9639DD62211D13900625235 /* TravelerKit.framework in Embed Frameworks */,
-				A9639DDD2211D14400625235 /* TravelerStripePaymentProvider.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +77,7 @@
 		A9639DD82211D13F00625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TravelerKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TravelerStripePaymentProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639DE12211D91A00625235 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TravelerStripePaymentProvider.framework; path = Carthage/Build/iOS/TravelerStripePaymentProvider.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9639DED2215E7F400625235 /* TravelerStripePaymentProvider.framework in Frameworks */,
 				A9639DE22211D91A00625235 /* Stripe.framework in Frameworks */,
 				A9639DD92211D13F00625235 /* TravelerKitUI.framework in Frameworks */,
 				A9639DD52211D13900625235 /* TravelerKit.framework in Frameworks */,
-				A9639DDC2211D14400625235 /* TravelerStripePaymentProvider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +178,7 @@
 		A9639DE02211D91A00625235 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */,
 				A9639DE12211D91A00625235 /* Stripe.framework */,
 			);
 			name = Frameworks;
@@ -263,12 +263,14 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/TravelerStripePaymentProvider.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TravelerStripePaymentProvider.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

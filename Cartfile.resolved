@@ -1,1 +1,4 @@
+github "Guestlogix/traveler-ios-stripe" "ecb197e2bde7341bf3c1f97a3c7dcd9cd8486ce9"
+github "Guestlogix/traveler-ios-ui" "7b331febdd820f5dad560cc926207b124e0f3d12"
+github "Guestlogix/traveler-swift-core" "6c81d6861dd5e162749a3bc070ae740991227648"
 github "stripe/stripe-ios" "v14.0.0"
