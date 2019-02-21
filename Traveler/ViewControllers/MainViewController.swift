@@ -21,8 +21,22 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openActivityFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
         performSegue(withIdentifier: "catalogSegue", sender: nil)
+    }
+    
+    @objc func openActivityFromBackground()  {
+        if !flights.isEmpty {
+
+            flights = flights.filter {
+                $0.departureDate > Date()
+            }
+            
+            self.updateTableViewHeight()
+            self.performSegue(withIdentifier: "catalogSegue", sender: nil)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
