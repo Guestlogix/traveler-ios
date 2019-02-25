@@ -22,13 +22,13 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.openActivityFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.filterStaleFlights), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         performSegue(withIdentifier: "catalogSegue", sender: nil)
     }
     
-    @objc func openActivityFromBackground()  {
-        if !flights.isEmpty {
+    @objc func filterStaleFlights() {
+        guard flights.isEmpty else {
 
             flights = flights.filter {
                 $0.departureDate > Date()
@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
             
             self.updateTableViewHeight()
             self.performSegue(withIdentifier: "catalogSegue", sender: nil)
+            
+            return
         }
     }
 
