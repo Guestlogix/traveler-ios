@@ -28,17 +28,16 @@ class MainViewController: UIViewController {
     }
     
     @objc func filterStaleFlights() {
-        guard flights.isEmpty else {
-
-            flights = flights.filter {
-                $0.departureDate > Date()
-            }
-            
-            self.updateTableViewHeight()
-            self.performSegue(withIdentifier: "catalogSegue", sender: nil)
-            
-            return
+        guard !flights.isEmpty else {
+                return
         }
+        
+        flights = flights.filter {
+            $0.departureDate > Date()
+        }
+            
+        self.updateTableViewHeight()
+        self.performSegue(withIdentifier: "catalogSegue", sender: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
