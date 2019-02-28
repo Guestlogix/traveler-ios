@@ -33,6 +33,7 @@
 		A9639DDA2211D13F00625235 /* TravelerKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9639DE22211D91A00625235 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DE12211D91A00625235 /* Stripe.framework */; };
 		A9639DED2215E7F400625235 /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */; };
+		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,6 +79,7 @@
 		A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TravelerStripePaymentProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639DE12211D91A00625235 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TravelerStripePaymentProvider.framework; path = Carthage/Build/iOS/TravelerStripePaymentProvider.framework; sourceTree = "<group>"; };
+		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				A9639D922211CE0B00625235 /* FlightLookupViewController.swift */,
 				A9639D932211CE0B00625235 /* EmptyViewController.swift */,
 				A9639D942211CE0B00625235 /* RetryViewController.swift */,
+				F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				A9639DA12211CE0B00625235 /* PassengerCatalogViewController.swift in Sources */,
 				A9639DA42211CE0B00625235 /* FlightLookupViewController.swift in Sources */,
 				A9639D972211CE0B00625235 /* ValueDisplayInputCell.swift in Sources */,
+				F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */,
 				A9639D9E2211CE0B00625235 /* FlightSearchViewController.swift in Sources */,
 				A9639D982211CE0B00625235 /* DateInputCell.swift in Sources */,
 				A9639D962211CE0B00625235 /* StringInputCell.swift in Sources */,
