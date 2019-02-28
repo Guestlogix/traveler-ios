@@ -12,6 +12,7 @@ import TravelerKit
 protocol FlightSearchViewControllerDelegate: class {
     func flightSearchViewControllerDidTryAgain(_ controller: FlightSearchViewController)
     func flightSearchViewController(_ controller: FlightSearchViewController, didSelect flight: Flight)
+    func flightSearchViewControllerCanAdd(_ controller: FlightSearchViewController, flight: Flight) -> Bool
 }
 
 class FlightSearchViewController: UIViewController {
@@ -97,5 +98,9 @@ extension FlightSearchViewController: RetryViewControllerDelegate {
 extension FlightSearchViewController: FlightSearchResultViewControllerDelegate {
     func flightSearchResultViewController(_ controller: FlightSearchResultViewController, didSelect flight: Flight) {
         delegate?.flightSearchViewController(self, didSelect: flight)
+    }
+    
+    func flightSearchResultViewControllerCanAdd(_ controller: FlightSearchResultViewController, flight: Flight) -> Bool {
+        return delegate?.flightSearchViewControllerCanAdd(self, flight: flight) ?? true
     }
 }

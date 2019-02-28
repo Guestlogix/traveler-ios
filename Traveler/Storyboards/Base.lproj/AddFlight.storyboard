@@ -237,7 +237,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pMs-5e-bs7">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" ambiguous="YES" id="XzG-hT-p5m">
+                        <view key="titleView" contentMode="scaleToFill" id="XzG-hT-p5m">
                             <rect key="frame" x="91" y="22" width="193" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -531,6 +531,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addFlightButton" destination="XGT-K0-8e9" id="vAm-3q-Hs5"/>
                                     <outlet property="arrivalCityLabel" destination="wXV-7N-adc" id="c39-YX-Pav"/>
                                     <outlet property="arrivalIATALabel" destination="cUu-7F-mjm" id="diS-NW-b6P"/>
                                     <outlet property="arrivalTimeLabel" destination="jI1-bc-yCF" id="bGf-cN-MUc"/>

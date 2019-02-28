@@ -56,6 +56,10 @@ extension MainViewController: FlightLookupViewControllerDelegate {
     func updateTableViewHeight() {
         self.tableViewHeightConstraint.constant = CGFloat(flights.count) * flightCellHeight
     }
+    
+    func flightLookUpViewControllerCanAdd(_ controller: FlightLookupViewController, flights: [Flight]) -> Bool {
+        return self.flights.contains(where: {$0.departureDate == flights[0].departureDate})
+    }
 }
 
 extension MainViewController: UITableViewDataSource {

@@ -19,6 +19,7 @@ class FlightCell: UITableViewCell {
     @IBOutlet weak var arrivalIATALabel: UILabel!
     @IBOutlet weak var departureTimeLabel: UILabel!
     @IBOutlet weak var arrivalTimeLabel: UILabel!
+    @IBOutlet weak var addFlightButton: UIButton!
 
     weak var delegate: FlightCellDelegate?
 
