@@ -12,7 +12,7 @@ import TravelerKit
 protocol FlightSearchViewControllerDelegate: class {
     func flightSearchViewControllerDidTryAgain(_ controller: FlightSearchViewController)
     func flightSearchViewController(_ controller: FlightSearchViewController, didSelect flight: Flight)
-    func flightSearchViewControllerCanAdd(_ controller: FlightSearchViewController, flight: Flight) -> Bool
+    func flightSearchViewController(_ controller: FlightSearchViewController, canAdd flight: Flight) -> Bool
 }
 
 class FlightSearchViewController: UIViewController {
@@ -100,7 +100,7 @@ extension FlightSearchViewController: FlightSearchResultViewControllerDelegate {
         delegate?.flightSearchViewController(self, didSelect: flight)
     }
     
-    func flightSearchResultViewControllerCanAdd(_ controller: FlightSearchResultViewController, flight: Flight) -> Bool {
-        return delegate?.flightSearchViewControllerCanAdd(self, flight: flight) ?? true
+    func flightSearchResultViewController(_ controller: FlightSearchResultViewController, canAdd flight: Flight) -> Bool {
+        return delegate?.flightSearchViewController(self, canAdd: flight) ?? true
     }
 }

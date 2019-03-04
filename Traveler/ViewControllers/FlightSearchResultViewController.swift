@@ -11,7 +11,7 @@ import TravelerKit
 
 protocol FlightSearchResultViewControllerDelegate: class {
     func flightSearchResultViewController(_ controller: FlightSearchResultViewController, didSelect flight: Flight)
-    func flightSearchResultViewControllerCanAdd(_ controller: FlightSearchResultViewController, flight: Flight) -> Bool
+    func flightSearchResultViewController(_ controller: FlightSearchResultViewController, canAdd flight: Flight) -> Bool
 }
 
 let flightCellIdentifier = "flightCellIdentifier"
@@ -31,7 +31,6 @@ class FlightSearchResultViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: flightCellIdentifier, for: indexPath) as! FlightCell
         let flight = flights![indexPath.section]
-        let canAddFlight = delegate?.flightSearchResultViewControllerCanAdd(self, flight: flight)
 
         cell.departureCityLabel.text = flight.departureAirport.city
         cell.departureIATALabel.text = flight.departureAirport.code
@@ -41,19 +40,11 @@ class FlightSearchResultViewController: UITableViewController {
         cell.arrivalTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.arrivalDate)
         cell.addFlightButton.setTitle("Flight Added", for: .disabled)
         cell.addFlightButton.setTitle("Add Flight", for: .normal)
+        cell.addFlightButton.isEnabled = delegate?.flightSearchResultViewController(self, canAdd: flight) ?? true
         cell.delegate = self
         cell.tag = indexPath.section
         
-        
-        switch(canAddFlight) {
-        case(false):
-            cell.addFlightButton.isEnabled = true
-        
-        default:
-            cell.addFlightButton.isEnabled = false
-        }
-        
-            return cell
+        return cell
     }
 }
 
