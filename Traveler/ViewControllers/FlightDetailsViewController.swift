@@ -12,29 +12,34 @@ import TravelerKit
 
 let flightCellInfoIdentifier = "flightCellIdentifier"
 
-class FlightDetailsViewController: UITableViewController {
+class FlightDetailsViewController: UIViewController {
+    @IBOutlet weak var departureCityLabel: UILabel!
+    @IBOutlet weak var arrivalCityLabel: UILabel!
+    @IBOutlet weak var departureIATALabel: UILabel!
+    @IBOutlet weak var arrivalIATALabel: UILabel!
+    @IBOutlet weak var departureTimeLabel: UILabel!
+    @IBOutlet weak var arrivalTimeLabel: UILabel!
+    @IBOutlet weak var flightNumberLabel: UILabel!
+    @IBOutlet weak var flightDateLabel: UILabel!
+    
     var flights: [Flight]?
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return flights?.count ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: flightCellInfoIdentifier, for: indexPath) as! FlightCell
-        let flight = flights![indexPath.section]
+    override func viewDidLoad() {
         
-        cell.departureCityLabel.text = flight.departureAirport.city
-        cell.departureIATALabel.text = flight.departureAirport.code
-        cell.departureTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.departureDate)
-        cell.arrivalCityLabel.text = flight.arrivalAirport.city
-        cell.arrivalIATALabel.text = flight.arrivalAirport.code
-        cell.arrivalTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.arrivalDate)
-        cell.tag = indexPath.section
+        let flight = flights![0]
         
-        return cell
+        departureCityLabel.text = flight.departureAirport.city
+        departureIATALabel.text = flight.departureAirport.code
+        departureTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.departureDate)
+        arrivalCityLabel.text = flight.arrivalAirport.city
+        arrivalIATALabel.text = flight.arrivalAirport.code
+        arrivalTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.arrivalDate)
+        
+        flightNumberLabel.text = flight.number
+        flightDateLabel.text = DateFormatter.longFormatter.string(for: flight.departureDate)
+        flightNumberLabel.textColor = .white
+        flightDateLabel.textColor = .white
     }
+
+
 }
