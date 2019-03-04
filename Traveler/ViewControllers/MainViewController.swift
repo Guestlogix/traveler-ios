@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     
     @objc func filterStaleFlights() {
         guard !flights.isEmpty else {
-                return
+            return
         }
         
         flights = flights.filter {
