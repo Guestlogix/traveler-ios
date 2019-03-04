@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
 
     private var flights = [Flight]()
-    var flightToUse: [Flight]?
+    private var selectedFlight: Flight?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +28,12 @@ class MainViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue, segue.destination) {
-        case (_, _) where segue.identifier == "flightDetailsSegue":
-            let flightDetailsVC = (segue.destination as! FlightDetailsViewController)
-            flightDetailsVC.flights = flightToUse
+        case (_, let flightDetailsVC as FlightDetailsViewController) where segue.identifier == "flightDetailsSegue":
+            guard let selectedFlight = selectedFlight else {
+                Log("No selected flight", data: segue, level: .warning)
+                break
+            }
+            flightDetailsVC.flight = selectedFlight
         case (_, let navVC as UINavigationController) where segue.identifier == "addFlightSegue":
             let lookupVC = navVC.topViewController as? FlightLookupViewController
             lookupVC?.delegate = self
@@ -81,7 +84,7 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        flightToUse = [flights[indexPath.row]]
+        selectedFlight = flights[indexPath.row]
         self.performSegue(withIdentifier: "flightDetailsSegue", sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }

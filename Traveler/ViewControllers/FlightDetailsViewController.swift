@@ -22,11 +22,13 @@ class FlightDetailsViewController: UIViewController {
     @IBOutlet weak var flightNumberLabel: UILabel!
     @IBOutlet weak var flightDateLabel: UILabel!
     
-    var flights: [Flight]?
+    var flight: Flight?
     
     override func viewDidLoad() {
-        
-        let flight = flights![0]
+        guard let flight = flight else {
+            Log("No selected flight", data: nil, level: .error)
+            return
+        }
         
         departureCityLabel.text = flight.departureAirport.city
         departureIATALabel.text = flight.departureAirport.code
