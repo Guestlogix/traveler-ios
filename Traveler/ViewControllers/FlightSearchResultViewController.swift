@@ -43,7 +43,6 @@ class FlightSearchResultViewController: UITableViewController {
         cell.addFlightButton.isEnabled = delegate?.flightSearchResultViewController(self, canAdd: flight) ?? true
         cell.delegate = self
         cell.tag = indexPath.section
-        
         return cell
     }
 }
