@@ -29,10 +29,6 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue, segue.destination) {
         case (_, let flightDetailsVC as FlightDetailsViewController) where segue.identifier == "flightDetailsSegue":
-            guard let selectedFlight = selectedFlight else {
-                Log("No selected flight", data: segue, level: .warning)
-                break
-            }
             flightDetailsVC.flight = selectedFlight
         case (_, let navVC as UINavigationController) where segue.identifier == "addFlightSegue":
             let lookupVC = navVC.topViewController as? FlightLookupViewController

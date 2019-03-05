@@ -9,9 +9,6 @@
 import UIKit
 import TravelerKit
 
-
-let flightCellInfoIdentifier = "flightCellIdentifier"
-
 class FlightDetailsViewController: UIViewController {
     @IBOutlet weak var departureCityLabel: UILabel!
     @IBOutlet weak var arrivalCityLabel: UILabel!
@@ -25,6 +22,8 @@ class FlightDetailsViewController: UIViewController {
     var flight: Flight?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         guard let flight = flight else {
             Log("No selected flight", data: nil, level: .error)
             return
@@ -36,12 +35,9 @@ class FlightDetailsViewController: UIViewController {
         arrivalCityLabel.text = flight.arrivalAirport.city
         arrivalIATALabel.text = flight.arrivalAirport.code
         arrivalTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.arrivalDate)
-        
         flightNumberLabel.text = flight.number
         flightDateLabel.text = DateFormatter.longFormatter.string(for: flight.departureDate)
         flightNumberLabel.textColor = .white
         flightDateLabel.textColor = .white
     }
-
-
 }
