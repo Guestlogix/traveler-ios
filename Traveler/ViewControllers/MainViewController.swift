@@ -57,8 +57,8 @@ extension MainViewController: FlightLookupViewControllerDelegate {
         self.tableViewHeightConstraint.constant = CGFloat(flights.count) * flightCellHeight
     }
     
-    func flightLookUpViewController(_ controller: FlightLookupViewController, canAdd flights: [Flight]) -> Bool {
-        return !self.flights.contains(where: {$0 == flights[0]})
+    func flightLookUpViewController(_ controller: FlightLookupViewController, canAdd flights: Flight) -> Bool {
+        return !self.flights.contains(where: {$0 == flights})
     }
 }
 

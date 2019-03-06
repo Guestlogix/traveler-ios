@@ -11,7 +11,7 @@ import TravelerKit
 
 protocol FlightLookupViewControllerDelegate: class {
     func flightLookupViewController(_ controller: FlightLookupViewController, didAdd flights: [Flight])
-    func flightLookUpViewController(_ controller: FlightLookupViewController, canAdd flights: [Flight]) -> Bool
+    func flightLookUpViewController(_ controller: FlightLookupViewController, canAdd flights: Flight) -> Bool
 }
 
 class FlightLookupViewController: UIViewController {
@@ -58,6 +58,6 @@ extension FlightLookupViewController: FlightSearchViewControllerDelegate {
     }
     
     func flightSearchViewController(_ controller: FlightSearchViewController, canAdd flight: Flight) -> Bool{
-        return delegate?.flightLookUpViewController(self, canAdd: [flight]) ?? true
+        return delegate?.flightLookUpViewController(self, canAdd: flight) ?? true
     }
 }
