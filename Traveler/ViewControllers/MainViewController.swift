@@ -28,20 +28,15 @@ class MainViewController: UIViewController {
     }
     
     @objc func filterStaleFlights() {
-        let preFilterNumFlights = flights.count
-
-        guard !flights.isEmpty else {
-            return
-        }
-        
-        flights = flights.filter {
+        let filteredFlights = flights.filter {
             $0.departureDate > Date()
         }
 
-        guard preFilterNumFlights > flights.count else {
+        guard flights.count > filteredFlights.count else {
             return
         }
 
+        flights = filteredFlights
         self.updateTableViewHeight()
         self.performSegue(withIdentifier: "catalogSegue", sender: nil)
     }
