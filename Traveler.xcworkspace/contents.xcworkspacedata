@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Traveler.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:traveler-ios-ui/TravelerKitUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:traveler-swift-core/TravelerKit.xcodeproj">
+   </FileRef>
+</Workspace>

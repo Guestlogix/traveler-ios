@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="75F-9g-ZpD" customClass="FormFieldFooterView" customModule="PassengerKit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ7-e2-pJR">
+                    <rect key="frame" x="16" y="5" width="318" height="67"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="YZ7-e2-pJR" firstAttribute="leading" secondItem="1v7-pd-g9o" secondAttribute="leading" constant="16" id="SY3-U9-Gop"/>
+                <constraint firstItem="1v7-pd-g9o" firstAttribute="bottom" secondItem="YZ7-e2-pJR" secondAttribute="bottom" constant="5" id="aNs-Gj-FAQ"/>
+                <constraint firstItem="1v7-pd-g9o" firstAttribute="trailing" secondItem="YZ7-e2-pJR" secondAttribute="trailing" constant="16" id="cct-UJ-oM4"/>
+                <constraint firstItem="YZ7-e2-pJR" firstAttribute="top" secondItem="1v7-pd-g9o" secondAttribute="top" constant="5" id="hVu-0n-gBS"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="1v7-pd-g9o"/>
+            <connections>
+                <outlet property="label" destination="YZ7-e2-pJR" id="O4U-Ev-E3t"/>
+            </connections>
+            <point key="canvasLocation" x="112" y="404.34782608695656"/>
+        </view>
+    </objects>
+</document>

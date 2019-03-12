@@ -1,0 +1,2 @@
+github "stripe/stripe-ios"
+github "Guestlogix/traveler-ios-stripe" "master"
