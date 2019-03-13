@@ -9,7 +9,7 @@
 import Foundation
 
 class AuthenticatedRemoteFetchOperation<T>: ConcurrentOperation where T : Decodable {
-    let path: AuthPath
+    var path: AuthPath
     let session: Session
 
     private(set) var resource: T?

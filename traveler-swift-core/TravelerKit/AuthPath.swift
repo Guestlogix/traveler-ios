@@ -13,8 +13,9 @@ enum AuthPath {
     case catalog(CatalogQuery)
     case catalogItem(CatalogItem)
     case productSchedule(Product, from: Date, to: Date)
-    case passes(Product, date: Date, time: Time?)
-    case createOrder(BookingForm, BookingContext)
+    case passes(Product, availability: Availability, option: BookingOption?)
+    case questions(Product, passes: [Pass])
+    case createOrder([BookingForm]) // Use an interface called Purchase in the future to capture buyables
     case processOrder(Order, Payment)
 
     // MARK: URLRequest
@@ -32,14 +33,10 @@ enum AuthPath {
             ]
         case .catalog(let query):
             urlComponents.path = "/catalog"
+            urlComponents.queryItems = [URLQueryItem]()
 
-            if let flights = query.flights, flights.count > 0 {
-                var urlQueryItemArray: [URLQueryItem] = []
-                for flight in flights {
-                    urlQueryItemArray.append(URLQueryItem(name:"flight-ids", value: flight.id))
-                }
-                
-                urlComponents.queryItems = urlQueryItemArray
+            query.flights?.forEach { (flight) in
+                urlComponents.queryItems!.append(URLQueryItem(name:"flight-ids", value: flight.id))
             }
         case .catalogItem(let item):
             urlComponents.path = "/product/\(item.id)"
@@ -49,49 +46,42 @@ enum AuthPath {
                 URLQueryItem(name: "from", value: DateFormatter.yearMonthDay.string(from: fromDate)),
                 URLQueryItem(name: "to", value: DateFormatter.yearMonthDay.string(from: toDate))
             ]
-        case .passes(let product, let date, let time):
-            urlComponents.path = "/product/\(product.id)/pass"
+        case .passes(let product, let availability, let option):
+            urlComponents.path = "product/\(product.id)/pass"
             urlComponents.queryItems = [
-                URLQueryItem(name: "date", value: DateFormatter.dateOnlyFormatter.string(from: date))
+                URLQueryItem(name: "availability-id", value: availability.id)
             ]
 
-            time.flatMap {
+            option.flatMap {
                 urlComponents.queryItems?.append(
-                    URLQueryItem(name: "time-in-minutes", value: String($0))
+                    URLQueryItem(name: "option-id", value: $0.id)
                 )
             }
-        case .createOrder(let form, let context):
+        case .questions(let product, let passes):
+            urlComponents.path = "/product/\(product.id)/question"
+            urlComponents.queryItems = [URLQueryItem]()
+
+            passes.forEach { (pass) in
+                urlComponents.queryItems!.append(URLQueryItem(name: "pass-ids", value: pass.id))
+            }
+        case .createOrder(let forms):
             urlComponents.path = "/order"
             urlRequest.method = .post
             urlRequest.jsonBody = [
                 "travelerProfileId": nil,
-                // TODO: Currency handling
-                "amount": [
-                    "value": form.passes.map({ $0.price.value }).reduce(0, +),
-                    "currency": Locale.current.currencyCode as Any
-                ],
-                "products": [
+                "products": forms.map({
                     [
-                        "id": context.product.id,
-                        "passes": form.passes.enumerated().map({ (index, pass) in
-                            [
-                                "id": pass.id,
-                                "title": pass.name,
-                                "answers": form.answers(passAt: index).map({ (answer) in
-                                    [
-                                        "id": answer.questionId,
-                                        "value": answer.codedValue
-                                    ]
-                                }),
-                                "upsellAnswers": []
-                            ]
-                        })
+                        [
+                            "id": $0.product.id,
+                            "passes": $0.passes.map({ $0.id }),
+                            "answers": $0.answers.values.map({
+                                [
+                                    "id": $0.questionId,
+                                    "value": $0.codedValue
+                                ]
+                            })
+                        ]
                     ]
-                ],
-                "customer": form.questionGroups[0].questions.reduce([:], { (contact, q) -> [String: Any?] in
-                    var contact = contact
-                    contact[q.id] = try? form.answer(for: q)?.codedValue
-                    return contact
                 })
             ]
         case .processOrder(let order, let payment):

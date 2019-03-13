@@ -16,42 +16,15 @@ public enum BookingFormError: Error {
 public struct BookingForm {
     public let questionGroups: [QuestionGroup]
 
-    private var answers = [String: Answer]()
+    internal private(set) var answers = [String: Answer]()
 
     let passes: [Pass]
+    let product: Product
 
-    public init(passes: [Pass]) {
-        let q1 = Question(id: "title", title: "Title", type: .multipleChoice([
-            Question.Choice(id: "Mr.", value: "Mr."),
-            Question.Choice(id: "Mrs.", value: "Mrs.")
-            ]))
-
-        let q2 = Question(id: "firstName", title: "First name", type: .string, validationRules: [.required, .pattern(try! NSRegularExpression(pattern: "^[a-zA-Z ]*$", options: .caseInsensitive))])
-
-        let q3 = Question(id: "lastName", title: "Last name", type: .string, validationRules: [.required, .pattern(try! NSRegularExpression(pattern: "^[a-zA-Z ]*$", options: .caseInsensitive))])
-
-        let q4 = Question(id: "phone", title: "Phone number", type: .string, validationRules: [.required, .pattern(try! NSRegularExpression(pattern: "^\\d*$", options: .caseInsensitive))])
-
-        let q5 = Question(id: "email", title: "Email", type: .string, validationRules: [.required, .pattern(try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive))])
-
-        let primaryContactQuestionGroup = QuestionGroup(title: "Primary Contact", disclaimer: "The primary contact is the person that will receive purchase confirmation and passes. This person does not have to be part of the group", questions: [q1, q2, q3, q4, q5])
-
-
-        var questionGroups = [QuestionGroup]()
-
-        questionGroups.append(primaryContactQuestionGroup)
-
-        for (index, pass) in passes.enumerated() {
-            let questionGroup = QuestionGroup(title: "Guest \(questionGroups.count): \(pass.name)", disclaimer: nil,
-                                              questions: pass.questions.map({
-                                                Question(id: "\($0.id)-\(index)", title: $0.title, description: $0.description, type: $0.type, validationRules: $0.validationRules)
-                                              }))
-            questionGroups.append(questionGroup)
-        }
-
+    public init(product: Product, passes: [Pass], questionGroups: [QuestionGroup]) {
         self.questionGroups = questionGroups
-
         self.passes = passes
+        self.product = product
     }
 
     public mutating func addAnswer(_ answer: Answer) throws {
@@ -68,14 +41,6 @@ public struct BookingForm {
         }
 
         return answers[question.id]
-    }
-
-    public func answers(passAt index: Int) -> [Answer] {
-        guard index < passes.count else {
-            return []
-        }
-
-        return passes[index].questions.compactMap({ answers["\($0.id)-\(index)"] })
     }
 
     public func validate(completion: (([BookingFormError]) -> Void)) {

@@ -8,53 +8,50 @@
 
 import Foundation
 
-public protocol Order {
-    var id: String { get }
-    var total: Price { get }
+public enum OrderStatus: String, Decodable {
+    case pending = "pending"
+    case processed = "processed"
 }
 
-struct InternalOrder: Decodable, Order {
-    let id: String
-    let total: Price
-    let customerContact: CustomerContact
+public struct Order: Decodable {
+    public let id: String
+    public let total: Price
+    public let orderNumber: String
+    public let products: [Product]
+    public let status: OrderStatus
+    public let createdDate: Date
+    //public let orderDetails: OrderDetails
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case total = "amount"
-        case customerContact = "customer"
+        case orderNumber = "orderNumber"
+        case products = "products"
+        case status = "status"
+        case createdDate = "createdOn"
     }
-}
 
-public struct BookingOrder: Order {
-    public let id: String
-    public let total: Price
-    public let product: Product
-    public let passes: [Pass]
-    public let date: Date
-    public let time: Time?
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-    public var bookingDateDescription: String? {
-        if let time = time {
-            return "\(DateFormatter.longFormatter.string(from: date)) \(time.formattedValue)"
+        self.id = try container.decode(String.self, forKey: .id)
+        self.total = try container.decode(Price.self, forKey: .total)
+        self.orderNumber = try container.decode(String.self, forKey: .orderNumber)
+        self.status = try container.decode(OrderStatus.self, forKey: .status)
+
+        let dateString = try container.decode(String.self, forKey: .createdDate)
+
+        if let date = DateFormatter.dateOnlyFormatter.date(from: dateString) {
+            self.createdDate = date
         } else {
-            return DateFormatter.longFormatter.string(from: date)
-        }
-    }
-
-    init(internalOrder: InternalOrder, bookingContext: BookingContext, bookingForm: BookingForm) throws {
-        guard let date = bookingContext.selectedDate else {
-            throw BookingError.noDate
+            throw DecodingError.dataCorruptedError(forKey: CodingKeys.createdDate, in: container, debugDescription: "Incorrect format")
         }
 
-        if bookingContext.requiresTime && bookingContext.selectedTime == nil {
-            throw BookingError.noTime
+        self.products = try container.decode([AnyProduct].self, forKey: .products).map { product in
+            switch product.productType {
+            case .bookable:
+                return BookableProduct(id: product.id, title: product.title, passes: product.passes!)
+            }
         }
-
-        self.id = internalOrder.id
-        self.total = internalOrder.total
-        self.product = bookingContext.product
-        self.passes = bookingForm.passes
-        self.date = date
-        self.time = bookingContext.selectedTime
     }
 }

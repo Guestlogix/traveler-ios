@@ -13,13 +13,13 @@ public protocol BookingContextObserving: class {
 }
 
 public class BookingContext {
-    public var selectedDate: Date? {
+    public var selectedAvailability: Availability? {
         didSet {
             notifyObservers()
         }
     }
 
-    public var selectedTime: Time? {
+    public var selectedOption: BookingOption? {
         didSet {
             notifyObservers()
         }
@@ -31,8 +31,8 @@ public class BookingContext {
         }
     }
 
-    public var requiresTime: Bool {
-        return availability?.times.count ?? 0 > 0
+    public var requiresAvailability: Bool {
+        return availabilities?.count ?? 0 > 0
     }
 
     public var hasAvailability: Bool {
@@ -43,7 +43,7 @@ public class BookingContext {
         return availability?.times
     }
 
-    internal var availability: Availability?
+    internal var availabilities: [Availability]?
 
     public let product: Product
 

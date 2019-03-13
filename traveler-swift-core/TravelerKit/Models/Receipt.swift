@@ -9,15 +9,11 @@
 import Foundation
 
 public struct Receipt {
-    public let product: Product
-    public let date: Date?
-    public let confirmationNumber: String
-    public let customerContact: CustomerContact
+    public let order: Order
+    public let payment: Payment
 
-    init(bookingOrder: BookingOrder, confirmationNumber: String, customerContact: CustomerContact) {
-        self.product = bookingOrder.product
-        self.date = bookingOrder.date
-        self.confirmationNumber = confirmationNumber
-        self.customerContact = customerContact
+    init(order: Order, payment: Payment) {
+        self.order = order
+        self.payment = payment
     }
 }

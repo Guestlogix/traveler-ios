@@ -58,9 +58,14 @@ class BookablePurchaseViewController: UIViewController {
             return
         }
 
+        guard let availability = bookingContext.selectedAvailability else {
+            errorContext?.error = BookingContextError.noOption
+            return
+        }
+
         button.isEnabled = false
 
-        Traveler.fetchPasses(bookingContext: bookingContext, delegate: self)
+        Traveler.fetchPasses(product: bookingContext.product, option: bookingContext.selectedOption, delegate: self)
     }
 }
 

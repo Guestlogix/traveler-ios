@@ -82,6 +82,7 @@
 		A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D3A220E02DF00625235 /* TravelerUI.swift */; };
 		A9639D3D220E033C00625235 /* PaymentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D3C220E033C00625235 /* PaymentProvider.swift */; };
 		A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639DEA2213463900625235 /* UIDevice+Device.swift */; };
+		A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830D22389E1D00268D0D /* BookingContext.swift */; };
 		F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */; };
 		F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */; };
 		F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */; };
@@ -165,6 +166,7 @@
 		A9639D3A220E02DF00625235 /* TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerUI.swift; sourceTree = "<group>"; };
 		A9639D3C220E033C00625235 /* PaymentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProvider.swift; sourceTree = "<group>"; };
 		A9639DEA2213463900625235 /* UIDevice+Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Device.swift"; sourceTree = "<group>"; };
+		A96F830D22389E1D00268D0D /* BookingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingContext.swift; sourceTree = "<group>"; };
 		F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
 		F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselViewCell.xib; sourceTree = "<group>"; };
 		F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselItemViewCell.xib; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		A9639C99220DF4F200625235 /* TravelerKitUI */ = {
 			isa = PBXGroup;
 			children = (
+				A96F830C22389DFA00268D0D /* Models */,
 				A9639D35220E023C00625235 /* Extensions */,
 				A9639CBB220DF57300625235 /* ModelExtensions */,
 				A9639CD0220DF57400625235 /* Storyboards */,
@@ -348,6 +351,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		A96F830C22389DFA00268D0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A96F830D22389E1D00268D0D /* BookingContext.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -476,6 +487,7 @@
 				A9639D0A220DF57400625235 /* ListCell.swift in Sources */,
 				A9639D13220DF57400625235 /* OrderItemViewCell.swift in Sources */,
 				A9639CFC220DF57400625235 /* AttributesViewController.swift in Sources */,
+				A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */,
 				A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */,
 				A9639D27220DF57400625235 /* DrawerDismissalAnimator.swift in Sources */,
 				A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */,

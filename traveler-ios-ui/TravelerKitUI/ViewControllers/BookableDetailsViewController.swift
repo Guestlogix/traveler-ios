@@ -70,7 +70,7 @@ class BookableDetailsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (indexPath.row, datePickerCellVisible, bookingContext?.requiresTime ?? false) {
+        switch (indexPath.row, datePickerCellVisible, bookingContext?.requiresOption ?? false) {
         case (0, _, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell
             cell.valueLabel.textColor = (errorContext?.hasAnyOf([.noDate, .badDate]) ?? false) ? UIColor.red : UIColor.darkText
@@ -89,16 +89,16 @@ class BookableDetailsViewController: UITableViewController {
         case (1, true, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: datePickerCellIdentifier, for: indexPath) as! DatePickerCell
             cell.datePicker.minimumDate = Date()
-            cell.datePicker.date = bookingContext?.selectedDate ?? Date()
+            cell.datePicker.date = bookingContext?.selectedAvailability?.date ?? Date()
             cell.delegate = self
             return cell
         case (1, false, true),
              (2, true, true):
-            let cell = tableView.dequeueReusableCell(withIdentifier: timeCellIdentifier, for: indexPath) as! ListCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! ListCell
             cell.delegate = self
             cell.dataSource = self
-            cell.textField.text = bookingContext?.selectedTime?.formattedValue
-            cell.titleLabel.textColor = (errorContext?.hasAnyOf([.noTime]) ?? false) ? UIColor.red : UIColor.darkText
+            cell.textField.text = bookingContext?.selectedOption?.value
+            cell.titleLabel.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
             return cell
         default:
             fatalError("Invalid indexPath")
@@ -132,7 +132,7 @@ class BookableDetailsViewController: UITableViewController {
             }
 
             updatePreferredContentSize()
-        case timeCellIndexPath:
+        case optionCellIndexPath:
             let cell = tableView.cellForRow(at: indexPath) as? ListCell
             cell?.textField.becomeFirstResponder()
 
@@ -160,52 +160,55 @@ extension BookableDetailsViewController: DatePickerCellDelegate {
     func updateSelectedDate(_ date: Date) {
         guard let bookingContext = bookingContext else { return }
 
-        bookingContext.selectedDate = date
         errorContext?.error = nil
 
         tableView.isUserInteractionEnabled = false
 
-        Traveler.checkAvailability(bookingContext: bookingContext, delegate: self)
+        Traveler.checkAvailabilityAndFetchOptions(product: bookingContext.product, date: date, delegate: self)
     }
 }
 
 extension BookableDetailsViewController: ListCellDelegate {
     func listCell(_ cell: ListCell, didSelectRow row: Int) {
-        bookingContext?.selectedTime = bookingContext?.availableTimes?[row]
+        bookingContext?.selectedOption = bookingContext?.availableOptions?[row]
         errorContext?.error = nil
     }
 }
 
 extension BookableDetailsViewController: ListCellDataSource {
     func numberOfRowsInListCell(_ cell: ListCell) -> Int {
-        return bookingContext?.availableTimes?.count ?? 0
+        return bookingContext?.availableOptions?.count ?? 0
     }
 
     func listCell(_ cell: ListCell, titleForRow row: Int) -> String? {
-        return bookingContext!.availableTimes![row].formattedValue
+        return bookingContext!.availableOptions![row].value
     }
 }
 
 extension BookableDetailsViewController: AvailabilityCheckDelegate {
-    func availabilityCheckDidFailWith(_ error: Error) {
+    func checkAvailabilityDidFailWith(_ error: Error) {
         tableView.isUserInteractionEnabled = true
 
-        let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
+        switch error {
+        case BookingError.badDate:
+            errorContext?.error = BookingError.badDate
+        default:
+
+            let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(action)
+
+            present(alert, animated: true, completion: nil)
+        }
     }
 
-    func availabilityCheckDidSucceedFor(_ bookingContext: BookingContext) {
+    func checkAvailabilityDidSucceedWith(_ availability: Availability, options: [BookingOption]) {
         tableView.isUserInteractionEnabled = true
 
-        if bookingContext.hasAvailability {
-            tableView.reloadData()
-            updatePreferredContentSize()
-        } else {
-            errorContext?.error = BookingError.badDate
-        }
+        bookingContext.selectedAvailability = availability
+        bookingContext.availableOptions = options
+        tableView.reloadData()
+        updatePreferredContentSize()
     }
 }
 

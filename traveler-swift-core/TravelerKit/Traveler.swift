@@ -82,39 +82,8 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func checkAvailability(bookingContext: BookingContext, completion: @escaping (Error?) -> Void) {
-        guard let date = bookingContext.selectedDate else {
-            completion(BookingError.noDate)
-            return
-        }
-
-        bookingContext.isReady = false
-
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[Availability]>(path: .productSchedule(bookingContext.product, from: date, to: date), session: session)
-        let blockOperation = BlockOperation { [unowned fetchOperation] in
-            bookingContext.availability = fetchOperation.resource?.first
-            bookingContext.isReady = true
-            completion(fetchOperation.error)
-        }
-
-        blockOperation.addDependency(fetchOperation)
-
-        queue.addOperation(fetchOperation)
-        OperationQueue.main.addOperation(blockOperation)
-    }
-
-    func fetchPasses(bookingContext: BookingContext, completion: @escaping ([Pass]?, Error?) -> Void) {
-        guard let date = bookingContext.selectedDate else {
-            completion(nil, BookingError.noDate)
-            return
-        }
-
-        if bookingContext.requiresTime && bookingContext.selectedTime == nil {
-            completion(nil, BookingError.noTime)
-            return
-        }
-
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[Pass]>(path: .passes(bookingContext.product, date: date, time: bookingContext.selectedTime), session: session)
+    func fetchAvailabilities(product: Product, startDate: Date, endDate: Date, completion: @escaping ([Availability]?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[Availability]>(path: .productSchedule(product, from: startDate, to: endDate), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
         }
@@ -125,19 +94,26 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func createOrder(bookingForm: BookingForm, context: BookingContext, completion: @escaping (BookingOrder?, Error?) -> Void) {
-        let fetchOperation = AuthenticatedRemoteFetchOperation<InternalOrder>(path: .createOrder(bookingForm, context), session: session)
+    func fetchPasses(product: Product, availability: Availability, option: BookingOption?, completion: @escaping ([Pass]?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[Pass]>(path: .passes(product, availability: availability, option: option), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
-            if let internalOrder = fetchOperation.resource {
-                do {
-                    let bookingOrder = try BookingOrder(internalOrder: internalOrder, bookingContext: context, bookingForm: bookingForm)
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
 
-                    completion(bookingOrder, nil)
-                } catch {
-                    completion(nil, error)
-                }
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func fetchBookingForm(product: Product, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[QuestionGroup]>(path: .questions(product, passes: passes), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            if let groups = fetchOperation.resource {
+                let bookingForm = BookingForm(product: product, passes: passes, questionGroups: groups)
+                completion(bookingForm, nil)
             } else {
-                completion(nil, fetchOperation.error!)
+                completion(nil, fetchOperation.error)
             }
         }
 
@@ -147,15 +123,24 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func processOrder(_ order: Order, payment: Payment, completion: @escaping (Receipt?, Error?) -> Void) {
-        guard let bookingOrder = order as? BookingOrder else {
-            fatalError("BuyOrder not yet implemented")
+    // TODO: Use an array Purchase as an interface instead of BookingForm
+    func createOrder(bookingForm: BookingForm, completion: @escaping (Order?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .createOrder([bookingForm]), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
         }
 
-        let fetchOperation = AuthenticatedRemoteFetchOperation<InternalOrder>(path: .processOrder(order, payment), session: session)
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func processOrder(_ order: Order, payment: Payment, completion: @escaping (Receipt?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .processOrder(order, payment), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             if let order = fetchOperation.resource {
-                let receipt = Receipt(bookingOrder: bookingOrder, confirmationNumber: order.id, customerContact: order.customerContact)
+                let receipt = Receipt(order: order, payment: payment)
 
                 completion(receipt, nil)
             } else {
@@ -213,26 +198,12 @@ public class Traveler {
         shared?.fetchCatalogItemDetails(catalogItem, completion: completion)
     }
 
-    public static func checkAvailability(bookingContext: BookingContext, completion: @escaping (Error?) -> Void) {
-        shared?.checkAvailability(bookingContext: bookingContext, completion: completion)
+    public static func fetchPasses(product: Product, availability: Availability, option: BookingOption?, completion: @escaping ([Pass]?, Error?) -> Void) {
+        shared?.fetchPasses(product: product, availability: availability, option: option, completion: completion)
     }
 
-    public static func checkAvailability(bookingContext: BookingContext, delegate: AvailabilityCheckDelegate) {
-        shared?.checkAvailability(bookingContext: bookingContext, completion: { [weak delegate] (error) in
-            if let error = error {
-                delegate?.availabilityCheckDidFailWith(error)
-            } else {
-                delegate?.availabilityCheckDidSucceedFor(bookingContext)
-            }
-        })
-    }
-
-    public static func fetchPasses(bookingContext: BookingContext, completion: @escaping ([Pass]?, Error?) -> Void) {
-        shared?.fetchPasses(bookingContext: bookingContext, completion: completion)
-    }
-
-    public static func fetchPasses(bookingContext: BookingContext, delegate: PassFetchDelegate) {
-        shared?.fetchPasses(bookingContext: bookingContext, completion: { [weak delegate] (passes, error) in
+    public static func fetchPasses(product: Product, availability: Availability, option: BookingOption?, delegate: PassFetchDelegate) {
+        shared?.fetchPasses(product: product, availability: availability, option: option, completion: { [weak delegate] (passes, error) in
             if let passes = passes {
                 delegate?.passFetchDidSucceedWith(passes)
             } else {
@@ -241,8 +212,8 @@ public class Traveler {
         })
     }
 
-    public static func createOrder(bookingForm: BookingForm, context: BookingContext, delegate: OrderCreateDelegate) {
-        shared?.createOrder(bookingForm: bookingForm, context: context, completion: { [weak delegate] (order, error) in
+    public static func createOrder(bookingForm: BookingForm, delegate: OrderCreateDelegate) {
+        shared?.createOrder(bookingForm: bookingForm, completion: { [weak delegate] (order, error) in
             if let order = order {
                 delegate?.orderCreationDidSucceed(order)
             } else {
@@ -251,8 +222,8 @@ public class Traveler {
         })
     }
 
-    public static func createOrder(bookingForm: BookingForm, context: BookingContext, completion: @escaping (Order?, Error?) -> Void) {
-        shared?.createOrder(bookingForm: bookingForm, context: context, completion: completion)
+    public static func createOrder(bookingForm: BookingForm, completion: @escaping (Order?, Error?) -> Void) {
+        shared?.createOrder(bookingForm: bookingForm, completion: completion)
     }
 
     public static func processOrder(_ order: Order, payment: Payment, delegate: OrderProcessDelegate) {
@@ -267,5 +238,33 @@ public class Traveler {
 
     public static func processOrder(_ order: Order, payment: Payment, completion: @escaping (Receipt?, Error?) -> Void) {
         shared?.processOrder(order, payment: payment, completion: completion)
+    }
+
+    public static func fetchBookingForm(product: Product, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
+        shared?.fetchBookingForm(product: product, passes: passes, completion: completion)
+    }
+
+    public static func fetchBookingForm(product: Product, passes: [Pass], delegate: BookingFormFetchDelegate) {
+        shared?.fetchBookingForm(product: product, passes: passes, completion: { [weak delegate] (form, error) in
+            if let error = error {
+                delegate?.bookingFormFetchDidFailWith(error)
+            } else {
+                delegate?.bookingFormFetchDidSucceedWith(form!)
+            }
+        })
+    }
+
+    public static func fetchAvailabilities(product: Product, startDate: Date, endDate: Date, completion: @escaping ([Availability]?, Error?) -> Void) {
+        shared?.fetchAvailabilities(product: product, startDate: startDate, endDate: endDate, completion: completion)
+    }
+
+    public static func fetchAvailabilities(product: Product, startDate: Date, endDate: Date, delegate: AvailabilitiesFetchDelegate) {
+        shared?.fetchAvailabilities(product: product, startDate: startDate, endDate: endDate, completion: { [weak delegate] (availabilities, error) in
+            if let error = error {
+                delegate?.availabilitiesFetchDidFailWith(error)
+            } else {
+                delegate?.availabilitiesFetchDidSucceedWith(availabilities!)
+            }
+        })
     }
 }

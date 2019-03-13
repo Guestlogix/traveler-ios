@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct QuestionGroup {
+public struct QuestionGroup: Decodable {
     public let title: String?
     public let disclaimer: String?
     public let questions: [Question]

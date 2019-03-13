@@ -8,22 +8,25 @@
 
 import Foundation
 
+public enum AvailabilityError: Error {
+    case badDate
+}
+
 public struct Availability: Decodable {
+    let id: String
     public let date: Date
-    public let times: [Time]
-    public let isAvailable: Bool
+    public let optionSet: BookingOptionSet?
 
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case date = "date"
-        case times = "timesInMinutes"
-        case isAvailable = "available"
+        case optionSet = "optionSet"
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.isAvailable = try container.decode(Bool.self, forKey: .isAvailable)
-        self.times = try container.decode([Int].self, forKey: .times)
+        self.id = try container.decode(String.self, forKey: .id)
 
         let dateString = try container.decode(String.self, forKey: .date)
 
@@ -31,6 +34,12 @@ public struct Availability: Decodable {
             self.date = date
         } else {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.date, in: container, debugDescription: "Incorrect format")
+        }
+
+        if container.contains(.optionSet) {
+            self.optionSet = try container.decode(BookingOptionSet.self, forKey: .optionSet)
+        } else {
+            self.optionSet = nil
         }
     }
 }

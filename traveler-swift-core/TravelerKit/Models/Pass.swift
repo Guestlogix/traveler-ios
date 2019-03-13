@@ -21,17 +21,13 @@ public struct Pass: Decodable, Hashable {
 
     public let name: String
     public let description: String?
-    public let maxQuantity: Int?
     public let price: Price
-    public let questions: [Question]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
         case description = "description"
-        case maxQuantity = "maximumQuantity"
         case price = "price"
-        case questions = "questions"
     }
 }
 
