@@ -1,6 +1,6 @@
 //
 //  DateFormatter+PassengerKit.swift
-//  PassengerKit
+//  TravelerKit
 //
 //  Created by Ata Namvari on 2018-10-01.
 //  Copyright © 2018 Ata Namvari. All rights reserved.

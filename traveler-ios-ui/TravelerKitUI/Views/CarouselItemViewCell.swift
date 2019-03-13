@@ -1,6 +1,6 @@
 //
 //  CarouselItemViewCell.swift
-//  Passenger
+//  Traveler
 //
 //  Created by Ata Namvari on 2018-10-03.
 //  Copyright © 2018 Guestlogix Inc. All rights reserved.

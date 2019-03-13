@@ -1,6 +1,6 @@
 //
 //  DateInputCell.swift
-//  Passenger
+//  Traveler
 //
 //  Created by Ata Namvari on 2018-10-17.
 //  Copyright © 2018 Guestlogix Inc. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  PagedHorizontalView.swift
-//  PassengerKit
+//  TravelerKit
 //
 //  Created by Ata Namvari.
 //  Copyright © 2018 Guestlogix. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  FormHeaderView.swift
-//  PassengerKit
+//  TravelerKit
 //
 //  Created by Ata Namvari on 2019-01-02.
 //  Copyright © 2019 Ata Namvari. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  PassengerKit.swift
-//  PassengerKit
+//  Traveler.swift
+//  TravelerKit
 //
 //  Created by Ata Namvari on 2018-09-12.
 //  Copyright © 2018 Ata Namvari. All rights reserved.

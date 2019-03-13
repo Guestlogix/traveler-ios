@@ -1,6 +1,6 @@
 //
 //  InputCell.swift
-//  PassengerKit
+//  TravelerKit
 //
 //  Created by Ata Namvari on 2018-12-17.
 //  Copyright © 2018 Ata Namvari. All rights reserved.

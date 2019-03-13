@@ -1,6 +1,6 @@
 //
 //  Array+ContainsAnyOf.swift
-//  PassengerKit
+//  TravelerKit
 //
 //  Created by Ata Namvari on 2018-12-05.
 //  Copyright © 2018 Ata Namvari. All rights reserved.
