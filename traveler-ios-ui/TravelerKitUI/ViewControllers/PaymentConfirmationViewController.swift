@@ -26,7 +26,7 @@ class PaymentConfirmationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as OrderSummaryViewController):
-            vc.order = order as? BookingOrder
+            vc.order = order
         case (_, let vc as ReceiptViewController):
             vc.receipt = receipt
         default:

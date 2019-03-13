@@ -19,7 +19,7 @@ class OrderSummaryViewController: UITableViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
 
-    var order: BookingOrder?
+    var order: Order?
     var payment: Payment?
 
     override func viewDidLoad() {
@@ -28,8 +28,10 @@ class OrderSummaryViewController: UITableViewController {
         let bundle = Bundle(for: HeaderView.self)
         tableView.register(UINib(nibName: "HeaderView", bundle: bundle), forHeaderFooterViewReuseIdentifier: headerViewIdentifier)
 
-        titleLabel.text = order?.product.title
-        dateLabel.text = order?.bookingDateDescription
+        // TODO: This VC should account for multiple products as an Order can have multiple Products
+
+        titleLabel.text = order?.products.first?.title
+        dateLabel.text = order.flatMap { DateFormatter.longFormatter.string(from: $0.createdDate) }
     }
 
     // MARK: UITableViewDataSource
@@ -41,7 +43,7 @@ class OrderSummaryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return order?.passes.count ?? 0
+            return (order?.products.first as? BookableProduct)?.passes.count ?? 0
         case 1:
             return payment?.attributes.count ?? 0
         default:
@@ -53,10 +55,10 @@ class OrderSummaryViewController: UITableViewController {
         switch (indexPath.section, indexPath.row) {
         case (0, let row):
             let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
-            let pass = order!.passes[row]
-            cell.titleLabel.text = pass.name
-            cell.subTitleLabel.text = pass.description
-            cell.priceLabel.text = pass.price.localizedDescription
+            let pass = (order!.products.first as? BookableProduct)?.passes[row]
+            cell.titleLabel.text = pass?.name
+            cell.subTitleLabel.text = pass?.description
+            cell.priceLabel.text = pass?.price.localizedDescription
             return cell
         case (1, let row):
             let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoCell

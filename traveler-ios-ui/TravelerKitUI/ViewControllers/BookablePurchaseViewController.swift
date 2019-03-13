@@ -54,18 +54,18 @@ class BookablePurchaseViewController: UIViewController {
 
     @IBAction func didPressCTA(_ sender: UIButton) {
         guard let bookingContext = bookingContext else {
-            Log("No Context", data: nil, level: .error)
+            Log("No BookingContext", data: nil, level: .error)
             return
         }
 
         guard let availability = bookingContext.selectedAvailability else {
-            errorContext?.error = BookingContextError.noOption
+            errorContext?.error = BookingError.noDate
             return
         }
 
         button.isEnabled = false
 
-        Traveler.fetchPasses(product: bookingContext.product, option: bookingContext.selectedOption, delegate: self)
+        Traveler.fetchPasses(availability: availability, option: bookingContext.selectedOption, delegate: self)
     }
 }
 
@@ -80,6 +80,8 @@ extension BookablePurchaseViewController: PassFetchDelegate {
 
     func passFetchDidFailWith(_ error: Error) {
         button.isEnabled = true
+
+        // TODO: handle error case when max quantity has been reached
 
         errorContext?.error = error
     }
@@ -125,13 +127,9 @@ extension BookablePurchaseViewController: BookingContextObserving {
 
 extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
     func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, bookingForm: BookingForm) {
-        guard let bookingContext = self.bookingContext else {
-            Log("No BookingContext", data: nil, level: .error)
-            return
-        }
-
         ProgressHUD.show()
-        Traveler.createOrder(bookingForm: bookingForm, context: bookingContext, delegate: self)
+
+        Traveler.createOrder(bookingForm: bookingForm, delegate: self)
     }
 }
 

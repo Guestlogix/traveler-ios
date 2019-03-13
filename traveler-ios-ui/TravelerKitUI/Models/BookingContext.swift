@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TravelerKit
 
 public protocol BookingContextObserving: class {
     func bookingContextDidUpdate(_ context: BookingContext)
@@ -31,17 +32,15 @@ public class BookingContext {
         }
     }
 
-    public var requiresAvailability: Bool {
-        return availabilities?.count ?? 0 > 0
+    public var hasOptions: Bool {
+        return availableOptions?.count ?? 0 > 0
     }
 
     public var hasAvailability: Bool {
-        return availability?.isAvailable ?? false
+        return selectedAvailability != nil
     }
 
-    public var availableTimes: [Time]? {
-        return availability?.times
-    }
+    public var availableOptions: [BookingOption]?
 
     internal var availabilities: [Availability]?
 

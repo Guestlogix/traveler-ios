@@ -11,5 +11,5 @@ import Foundation
 public enum BookingError: Error {
     case noDate
     case badDate
-    case noTime
+    case noOption
 }

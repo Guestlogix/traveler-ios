@@ -8,10 +8,6 @@
 
 import Foundation
 
-public enum AvailabilityError: Error {
-    case badDate
-}
-
 public struct Availability: Decodable {
     let id: String
     public let date: Date

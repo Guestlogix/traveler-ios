@@ -17,11 +17,14 @@ class BookableConfirmationViewController: UIViewController {
     @IBOutlet weak var confirmContainerView: UIView!
     @IBOutlet weak var passesContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
 
+    var product: Product?
     var passes: [Pass]?
     weak var delegate: BookableConfirmationViewControllerDelegate?
 
     private var passQuantities: [Pass: Int]?
+    private var bookingForm: BookingForm?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +44,7 @@ class BookableConfirmationViewController: UIViewController {
             passesVC.passes = passes
             passesVC.passQuantities = passes?.defaultPassQuantities
         case (_, let vc as BookingQuestionsViewController):
-            vc.bookingForm = BookingForm(passes: passQuantities?.allPasses ?? [])
+            vc.bookingForm = bookingForm
             vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
@@ -51,6 +54,17 @@ class BookableConfirmationViewController: UIViewController {
 
     private func reloadPriceLabel() {
         priceLabel.text = passQuantities?.subTotalDescription
+    }
+
+    @IBAction func didContinue(_ sender: Any) {
+        guard let product = product, let passes = passes else {
+            Log("No Product/Passes", data: nil, level: .error)
+            return
+        }
+
+        confirmButton.isEnabled = false
+
+        Traveler.fetchBookingForm(product: product, passes: passes, delegate: self)
     }
 }
 
@@ -79,6 +93,29 @@ extension BookableConfirmationViewController: BookingQuestionsViewControllerDele
         }
 
         delegate?.bookableConfirmationViewControllerDidConfirm(self, bookingForm: bookingForm)
+    }
+}
+
+extension BookableConfirmationViewController: BookingFormFetchDelegate {
+    func bookingFormFetchDidFailWith(_ error: Error) {
+        confirmButton.isEnabled = true
+
+        // TODO: Should cast Error correctly to a known error, OR better the custom error should override localizedDescription
+
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
+    }
+
+    func bookingFormFetchDidSucceedWith(_ bookingForm: BookingForm) {
+        confirmButton.isEnabled = true
+
+        self.bookingForm = bookingForm
+
+        performSegue(withIdentifier: "questionsSegue", sender: nil)
     }
 }
 

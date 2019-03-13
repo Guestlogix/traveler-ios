@@ -49,7 +49,7 @@ class PassesViewController: UITableViewController {
         cell.titleLabel.text = pass.name
         cell.subTitleLabel.text = pass.description
         cell.stepper.minimumValue = 0
-        cell.stepper.maximumValue = pass.maxQuantity ?? 999
+        cell.stepper.maximumValue = 999 // We removed the concept of MaxValue
         cell.stepper.value = passQuantities?[pass] ?? 0
         cell.delegate = self
         return cell

@@ -20,9 +20,11 @@ class ReceiptViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.text = receipt?.product.title
-        dateLabel.text = receipt?.date.flatMap { DateFormatter.longFormatter.string(from: $0) }
-        confirmationLabel.text = receipt?.confirmationNumber
-        emailLabel.text = receipt?.customerContact.email
+        // TODO: This VC should account for multiple products
+
+        titleLabel.text = receipt?.order.products.first?.title
+        dateLabel.text = receipt.flatMap { DateFormatter.longFormatter.string(from: $0.order.createdDate) }
+        confirmationLabel.text = receipt?.order.orderNumber
+        //emailLabel.text = receipt?.customerContact.email
     }
 }
