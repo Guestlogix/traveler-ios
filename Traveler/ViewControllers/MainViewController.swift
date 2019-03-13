@@ -23,7 +23,23 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(self.filterStaleFlights), name: UIApplication.didBecomeActiveNotification, object: nil)
+
         performSegue(withIdentifier: "catalogSegue", sender: nil)
+    }
+
+    @objc func filterStaleFlights() {
+        let filteredFlights = flights.filter {
+            $0.departureDate > Date()
+        }
+
+        guard flights.count > filteredFlights.count else {
+            return
+        }
+
+        flights = filteredFlights
+        self.updateTableViewHeight()
+        self.performSegue(withIdentifier: "catalogSegue", sender: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
