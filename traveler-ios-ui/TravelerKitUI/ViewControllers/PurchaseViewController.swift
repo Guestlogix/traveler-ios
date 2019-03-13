@@ -15,8 +15,6 @@ class PurchaseViewController: UIViewController {
     var purchaseContext: BookingContext?
 
     private var order: Order?
-    private var payment: Payment?
-    private var paymentHandler: PaymentHandler?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +40,6 @@ class PurchaseViewController: UIViewController {
             vc.delegate = self
         case (_, let vc as PaymentConfirmationViewController):
             vc.order = order
-            vc.payment = payment
         default:
             Log("Unknown segue", data: nil, level: .warning)
             break
@@ -54,31 +51,10 @@ extension PurchaseViewController: BookablePurchaseViewControllerDelegate {
     func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didCreate order: Order) {
         self.order = order
 
-        guard let paymentProvider = TravelerUI.shared?.paymentProvider else {
-            fatalError("SDK not initialized")
-        }
-
-        let paymentCollectorPackage = paymentProvider.paymentCollectorPackage()
-        let vc = paymentCollectorPackage.0
-        let paymentHandler = paymentCollectorPackage.1
-        let navVC = UINavigationController(rootViewController: vc)
-
-        paymentHandler.delegate = self
-
-        self.paymentHandler = paymentHandler
-
-        present(navVC, animated: true)
+        performSegue(withIdentifier: "confirmationSegue", sender: nil)
     }
 }
 
 extension PurchaseViewController: BuyablePurchaseViewControllerDelegate {
     /// This should be similar to above delegate
-}
-
-extension PurchaseViewController: PaymentHandlerDelegate {
-    func paymentHandler(_ handler: PaymentHandler, didCollect payment: Payment) {
-        self.payment = payment
-        
-        performSegue(withIdentifier: "confirmationSegue", sender: nil)
-    }
 }

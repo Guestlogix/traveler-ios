@@ -13,8 +13,9 @@ class PaymentConfirmationViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
 
     var order: Order?
-    var payment: Payment?
 
+    private var payment: Payment?
+    private var paymentHandler: PaymentHandler?
     private var receipt: Receipt?
 
     override func viewDidLoad() {
@@ -36,14 +37,20 @@ class PaymentConfirmationViewController: UIViewController {
     }
 
     @IBAction func didConfirm(_ sender: Any) {
-        guard let order = order, let payment = payment else {
-            Log("No Order/Payment", data: nil, level: .error)
-            return
+        guard let paymentProvider = TravelerUI.shared?.paymentProvider else {
+            fatalError("SDK not initialized")
         }
 
-        ProgressHUD.show()
+        let paymentCollectorPackage = paymentProvider.paymentCollectorPackage()
+        let vc = paymentCollectorPackage.0
+        let paymentHandler = paymentCollectorPackage.1
+        let navVC = UINavigationController(rootViewController: vc)
 
-        Traveler.processOrder(order, payment: payment, delegate: self)
+        paymentHandler.delegate = self
+
+        self.paymentHandler = paymentHandler
+
+        present(navVC, animated: true)
     }
 }
 
@@ -64,5 +71,20 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
         self.receipt = receipt
 
         performSegue(withIdentifier: "receiptSegue", sender: nil)
+    }
+}
+
+extension PaymentConfirmationViewController: PaymentHandlerDelegate {
+    func paymentHandler(_ handler: PaymentHandler, didCollect payment: Payment) {
+        guard let order = order else {
+            Log("No Order", data: nil, level: .error)
+            return
+        }
+
+        self.payment = payment
+
+        ProgressHUD.show()
+
+        Traveler.processOrder(order, payment: payment, delegate: self)
     }
 }
