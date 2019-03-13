@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		A9639D4D220E103F00625235 /* TravelerStripePaymentProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639D4B220E103F00625235 /* TravelerStripePaymentProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9639D56220E10BD00625235 /* StripePaymentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D55220E10BD00625235 /* StripePaymentProvider.swift */; };
-		A9639D5B220E12FF00625235 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639D58220E12FF00625235 /* Stripe.framework */; };
 		A9639D5C220E12FF00625235 /* TravelerKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639D59220E12FF00625235 /* TravelerKitUI.framework */; };
 		A9639D5D220E12FF00625235 /* TravelerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639D5A220E12FF00625235 /* TravelerKit.framework */; };
+		A96F8312223960D200268D0D /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96F8311223960D200268D0D /* Stripe.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +22,7 @@
 		A9639D58220E12FF00625235 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		A9639D59220E12FF00625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TravelerKitUI.framework; path = Carthage/Build/iOS/TravelerKitUI.framework; sourceTree = "<group>"; };
 		A9639D5A220E12FF00625235 /* TravelerKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TravelerKit.framework; path = Carthage/Build/iOS/TravelerKit.framework; sourceTree = "<group>"; };
+		A96F8311223960D200268D0D /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = ../Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9639D5B220E12FF00625235 /* Stripe.framework in Frameworks */,
+				A96F8312223960D200268D0D /* Stripe.framework in Frameworks */,
 				A9639D5C220E12FF00625235 /* TravelerKitUI.framework in Frameworks */,
 				A9639D5D220E12FF00625235 /* TravelerKit.framework in Frameworks */,
 			);
@@ -69,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				A9639D58220E12FF00625235 /* Stripe.framework */,
+				A96F8311223960D200268D0D /* Stripe.framework */,
 				A9639D5A220E12FF00625235 /* TravelerKit.framework */,
 				A9639D59220E12FF00625235 /* TravelerKitUI.framework */,
 			);

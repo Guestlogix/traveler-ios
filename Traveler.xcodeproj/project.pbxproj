@@ -32,7 +32,8 @@
 		A9639DD92211D13F00625235 /* TravelerKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; };
 		A9639DDA2211D13F00625235 /* TravelerKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9639DE22211D91A00625235 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DE12211D91A00625235 /* Stripe.framework */; };
-		A9639DED2215E7F400625235 /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */; };
+		A96F830F22395E7300268D0D /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; };
+		A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 			files = (
 				A9639DDA2211D13F00625235 /* TravelerKitUI.framework in Embed Frameworks */,
 				A9639DD62211D13900625235 /* TravelerKit.framework in Embed Frameworks */,
+				A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,8 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9639DED2215E7F400625235 /* TravelerStripePaymentProvider.framework in Frameworks */,
 				A9639DE22211D91A00625235 /* Stripe.framework in Frameworks */,
+				A96F830F22395E7300268D0D /* TravelerStripePaymentProvider.framework in Frameworks */,
 				A9639DD92211D13F00625235 /* TravelerKitUI.framework in Frameworks */,
 				A9639DD52211D13900625235 /* TravelerKit.framework in Frameworks */,
 			);
@@ -266,14 +268,12 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/TravelerStripePaymentProvider.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TravelerStripePaymentProvider.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
