@@ -20,7 +20,7 @@ public protocol FormViewDataSource: class {
 public protocol FormViewDelegate: class {
     func formView(_ formView: FormView, didChangeValue value: Any?, forInputFieldAt indexPath: IndexPath)
     func formView(_ formView: FormView, sizeForInputFieldAt indexPath: IndexPath) -> CGSize
-    func formView(_ formView: FormView, titleForHeaderIn secion: Int) -> String?
+    func formView(_ formView: FormView, titleForHeaderIn section: Int) -> String?
     func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String?
     func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath)
     func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage?
