@@ -1,13 +1,13 @@
 //
 //  KeychainReadOperationTests.swift
-//  PassengerKitTests
+//  TravelerKitTests
 //
 //  Created by Ata Namvari on 2018-09-26.
 //  Copyright © 2018 Ata Namvari. All rights reserved.
 //
 
 import XCTest
-@testable import PassengerKit
+@testable import TravelerKit
 
 class KeychainReadOperationTests: XCTestCase {
 

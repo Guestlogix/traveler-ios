@@ -1,15 +1,15 @@
 //
-//  PassengerKitTests.swift
-//  PassengerKitTests
+//  TravelerKitTests.swift
+//  TravelerKitTests
 //
 //  Created by Ata Namvari on 2018-09-05.
 //  Copyright © 2018 Ata Namvari. All rights reserved.
 //
 
 import XCTest
-@testable import PassengerKit
+@testable import TravelerKit
 
-class PassengerKitTests: XCTestCase {
+class TravelerKitTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -22,12 +22,12 @@ class PassengerKitTests: XCTestCase {
     }
     
     func testFlightSearch() {
-        let passengerKit = PassengerKit(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT")
+        let travelerKit = Traveler(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT", device: UIDevice.current as! Device)
 
         let query = FlightQuery(number: "SA1", date: DateFormatter.yearMonthDay.date(from: "2018/02/27")!)
         let exp = expectation(description: "Should get a response")
 
-        passengerKit.flightSearch(query: query) { (flights, error) in
+        travelerKit.flightSearch(query: query) { (flights, error) in
             exp.fulfill()
         }
 

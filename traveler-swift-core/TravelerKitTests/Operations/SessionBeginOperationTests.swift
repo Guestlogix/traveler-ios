@@ -1,13 +1,13 @@
 //
 //  SessionBeginOperationTests.swift
-//  PassengerKitTests
+//  TravelerKitTests
 //
 //  Created by Ata Namvari on 2018-09-28.
 //  Copyright © 2018 Ata Namvari. All rights reserved.
 //
 
 import XCTest
-@testable import PassengerKit
+@testable import TravelerKit
 
 class SessionBeginOperationTests: XCTestCase {
 
@@ -20,7 +20,7 @@ class SessionBeginOperationTests: XCTestCase {
     }
 
     func testSessionCreation() {
-        let session = Session(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT")
+        let session = Session(apiKey: "testtesttesttesttest")
 
         let operation = SessionBeginOperation(session: session)
         operation.start()

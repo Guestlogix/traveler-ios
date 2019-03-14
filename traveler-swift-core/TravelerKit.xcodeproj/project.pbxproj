@@ -768,17 +768,17 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GXZZ6L8Q3B;
-				INFOPLIST_FILE = PassengerKitTests/Info.plist;
+				INFOPLIST_FILE = TravelerKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.PassengerKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.TravelerKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestHost.app/TestHost";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Traveler.app/Traveler";
 			};
 			name = Debug;
 		};
@@ -787,17 +787,17 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GXZZ6L8Q3B;
-				INFOPLIST_FILE = PassengerKitTests/Info.plist;
+				INFOPLIST_FILE = TravelerKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.PassengerKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.TravelerKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestHost.app/TestHost";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Traveler.app/Traveler";
 			};
 			name = Release;
 		};
