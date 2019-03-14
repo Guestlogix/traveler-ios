@@ -40,7 +40,9 @@ public class BookingContext {
         return selectedAvailability != nil
     }
 
-    public var availableOptions: [BookingOption]?
+    public var availableOptions: [BookingOption]? {
+        return selectedAvailability?.optionSet?.options
+    }
 
     internal var availabilities: [Availability]?
 

@@ -164,7 +164,7 @@ extension BookableDetailsViewController: DatePickerCellDelegate {
 
         tableView.isUserInteractionEnabled = false
 
-        Traveler.checkAvailabilityAndFetchOptions(product: bookingContext.product, date: date, delegate: self)
+        Traveler.fetchAvailabilities(product: bookingContext.product, startDate: date, endDate: date, delegate: self)
     }
 }
 
@@ -185,30 +185,29 @@ extension BookableDetailsViewController: ListCellDataSource {
     }
 }
 
-extension BookableDetailsViewController: AvailabilityCheckDelegate {
-    func availabilityCheckDidFailWith(_ error: Error) {
+extension BookableDetailsViewController: AvailabilitiesFetchDelegate {
+    func availabilitiesFetchDidSucceedWith(_ availabilities: [Availability]) {
         tableView.isUserInteractionEnabled = true
 
-        switch error {
-        case BookingError.badDate:
+        guard let availability = availabilities.first else {
             errorContext?.error = BookingError.badDate
-        default:
-            let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(action)
-
-            present(alert, animated: true, completion: nil)
+            return
         }
-    }
-
-    func availabilityCheckDidSucceedWith(_ availability: Availability, options: [BookingOption]) {
-        tableView.isUserInteractionEnabled = true
 
         bookingContext?.selectedAvailability = availability
-        bookingContext?.availableOptions = options
 
         tableView.reloadData()
         updatePreferredContentSize()
+    }
+
+    func availabilitiesFetchDidFailWith(_ error: Error) {
+        tableView.isUserInteractionEnabled = true
+
+        let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+
+        present(alert, animated: true, completion: nil)
     }
 }
 

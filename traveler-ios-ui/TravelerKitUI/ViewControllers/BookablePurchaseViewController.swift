@@ -30,7 +30,7 @@ class BookablePurchaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        priceLabel.text = bookingContext?.product.price.priceDescription()
+        //priceLabel.text = bookingContext?.product.price.localizedDescription
 
         bookingContext?.addObserver(self)
     }
@@ -65,7 +65,7 @@ class BookablePurchaseViewController: UIViewController {
 
         button.isEnabled = false
 
-        Traveler.fetchPasses(availability: availability, option: bookingContext.selectedOption, delegate: self)
+        Traveler.fetchPasses(product: bookingContext.product, availability: availability, option: bookingContext.selectedOption, delegate: self)
     }
 }
 
