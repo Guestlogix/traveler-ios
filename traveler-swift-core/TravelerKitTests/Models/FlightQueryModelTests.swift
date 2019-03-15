@@ -10,6 +10,7 @@ import XCTest
 @testable import TravelerKit
 
 class FlightQueryModelTests: XCTestCase {
+    
     var currDate: Date!
 
     override func setUp() {
@@ -37,5 +38,4 @@ class FlightQueryModelTests: XCTestCase {
         let sut = FlightQuery(number: "AC0120", date: currDate!)
         XCTAssertEqual(sut.date, currDate)
     }
-
 }

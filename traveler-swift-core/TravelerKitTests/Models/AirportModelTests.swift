@@ -10,6 +10,7 @@ import XCTest
 @testable import TravelerKit
 
 class AirportModelTests: XCTestCase {
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -29,7 +30,6 @@ class AirportModelTests: XCTestCase {
     func testDecodingMissingCityThrows() throws {
         AssertThrowsKeyNotFound("city", decoding: Airport.self, from: try testAirport.json(deletingKeyPaths: "city"))
     }
-
 }
 
 private let testAirport = Data("""
@@ -46,6 +46,5 @@ private let testAirport = Data("""
     "countryName": "foo",
     "latitude": 3.1415,
     "longitude": 3.1415
-
 }
 """.utf8)
