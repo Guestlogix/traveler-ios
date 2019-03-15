@@ -86,6 +86,10 @@
 		A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */; };
 		A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */; };
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
+		F376B4A8223BF29D0080E27D /* FlightModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376B4A7223BF29D0080E27D /* FlightModelTests.swift */; };
+		F376B4AA223BFB1D0080E27D /* FlightQueryModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376B4A9223BFB1D0080E27D /* FlightQueryModelTests.swift */; };
+		F376B4AE223C02CA0080E27D /* AirportModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376B4AD223C02CA0080E27D /* AirportModelTests.swift */; };
+		F376B4B3223C1F0E0080E27D /* TestHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376B4B2223C1F0E0080E27D /* TestHelperMethods.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +186,10 @@
 		A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperation.swift; sourceTree = "<group>"; };
 		A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreOperationTests.swift; sourceTree = "<group>"; };
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
+		F376B4A7223BF29D0080E27D /* FlightModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightModelTests.swift; sourceTree = "<group>"; };
+		F376B4A9223BFB1D0080E27D /* FlightQueryModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightQueryModelTests.swift; sourceTree = "<group>"; };
+		F376B4AD223C02CA0080E27D /* AirportModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportModelTests.swift; sourceTree = "<group>"; };
+		F376B4B2223C1F0E0080E27D /* TestHelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelperMethods.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +283,7 @@
 		A9DB063021402F49009817EC /* TravelerKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				F376B4AF223C02D90080E27D /* Models */,
 				A9EED5F9215BD1E7003AAA5F /* Operations */,
 				A9DB063121402F49009817EC /* PassengerKitTests.swift */,
 				A9DB063321402F49009817EC /* Info.plist */,
@@ -378,6 +387,17 @@
 				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F376B4AF223C02D90080E27D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F376B4A7223BF29D0080E27D /* FlightModelTests.swift */,
+				F376B4A9223BFB1D0080E27D /* FlightQueryModelTests.swift */,
+				F376B4AD223C02CA0080E27D /* AirportModelTests.swift */,
+				F376B4B2223C1F0E0080E27D /* TestHelperMethods.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -572,9 +592,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F376B4AA223BFB1D0080E27D /* FlightQueryModelTests.swift in Sources */,
+				F376B4A8223BF29D0080E27D /* FlightModelTests.swift in Sources */,
 				A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */,
 				A9DB063221402F49009817EC /* PassengerKitTests.swift in Sources */,
+				F376B4AE223C02CA0080E27D /* AirportModelTests.swift in Sources */,
 				A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */,
+				F376B4B3223C1F0E0080E27D /* TestHelperMethods.swift in Sources */,
 				A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
