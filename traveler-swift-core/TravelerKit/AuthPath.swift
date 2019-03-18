@@ -47,7 +47,7 @@ enum AuthPath {
                 URLQueryItem(name: "to", value: DateFormatter.yearMonthDay.string(from: toDate))
             ]
         case .passes(let product, let availability, let option):
-            urlComponents.path = "product/\(product.id)/pass"
+            urlComponents.path = "/product/\(product.id)/pass"
             urlComponents.queryItems = [
                 URLQueryItem(name: "availability-id", value: availability.id)
             ]

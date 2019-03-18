@@ -19,6 +19,7 @@ class BookablePurchaseViewController: UIViewController {
 
     var errorContext: ErrorContext?
     var bookingContext: BookingContext?
+    var product: Product?
     weak var delegate: BookablePurchaseViewControllerDelegate?
 
     /// TEMP
@@ -46,6 +47,7 @@ class BookablePurchaseViewController: UIViewController {
             vc.modalPresentationCapturesStatusBarAppearance = true
             vc.transitioningDelegate = self
             vc.passes = passes
+            vc.product = product
             vc.delegate = self
         default:
             break
