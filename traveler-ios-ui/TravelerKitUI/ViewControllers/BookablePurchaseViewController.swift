@@ -46,6 +46,7 @@ class BookablePurchaseViewController: UIViewController {
             vc.modalPresentationCapturesStatusBarAppearance = true
             vc.transitioningDelegate = self
             vc.passes = passes
+            vc.product = bookingContext?.product
             vc.delegate = self
         default:
             break

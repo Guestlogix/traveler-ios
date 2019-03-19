@@ -12,4 +12,9 @@ public struct BookingOption: Decodable {
     let id: String
 
     public let value: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case value = "optionLabel"
+    }
 }
