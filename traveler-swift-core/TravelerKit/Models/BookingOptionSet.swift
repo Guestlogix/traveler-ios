@@ -11,9 +11,4 @@ import Foundation
 public struct BookingOptionSet: Decodable {
     public let label: String
     public let options: [BookingOption]
-
-    enum CodingKeys: String, CodingKey {
-        case label = "optionSetLabel"
-        case options = "options"
-    }
 }
