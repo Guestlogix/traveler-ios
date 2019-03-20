@@ -66,9 +66,15 @@
                         <viewLayoutGuide key="safeArea" id="G7B-YP-eh7"/>
                     </view>
                     <navigationItem key="navigationItem" id="2JO-eD-klr">
+<<<<<<< HEAD
                         <barButtonItem key="leftBarButtonItem" title="Sign In" id="f5P-La-iKT">
                             <connections>
                                 <action selector="didPressAuthButton:" destination="caP-4I-RGD" id="9mt-Rp-8XK"/>
+=======
+                        <barButtonItem key="leftBarButtonItem" title="Profile" id="x7D-nW-nA1">
+                            <connections>
+                                <segue destination="tl1-yb-TWz" kind="presentation" identifier="profileSegue" id="4jG-ji-HyK"/>
+>>>>>>> Adds Profile and Settings UI
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="g6t-xa-4nO">
@@ -126,13 +132,25 @@
             </objects>
             <point key="canvasLocation" x="576.79999999999995" y="809.85221674876846"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="9dF-ML-CfY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="tl1-yb-TWz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHF-uY-88S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2398" y="772"/>
+        </scene>
         <!--AddFlight-->
         <scene sceneID="VFG-fe-DY4">
             <objects>
                 <viewControllerPlaceholder storyboardName="AddFlight" id="U3w-ya-EKt" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8im-Y5-29Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="2735" y="-594"/>
+=======
+            <point key="canvasLocation" x="2388" y="810"/>
+>>>>>>> Adds Profile and Settings UI
         </scene>
         <!--Passenger Catalog View Controller-->
         <scene sceneID="hqm-07-Fsr">
@@ -465,6 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x2F-bv-bq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="3906" y="68"/>
         </scene>
         <!--Navigation Controller-->
@@ -484,6 +503,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DaJ-rb-8CI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2964" y="68"/>
+=======
+            <point key="canvasLocation" x="3025" y="158"/>
+>>>>>>> Adds Profile and Settings UI
         </scene>
     </scenes>
 </document>

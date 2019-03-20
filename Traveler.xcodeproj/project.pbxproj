@@ -45,6 +45,13 @@
 		A965D419224D38A800AAE774 /* Notification+Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D418224D38A800AAE774 /* Notification+Guest.swift */; };
 		A96F830F22395E7300268D0D /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; };
 		A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F373DA6C224278B900902A99 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6B224278B900902A99 /* ProfileCell.swift */; };
+		F373DA6E2242803D00902A99 /* InfoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6D2242803D00902A99 /* InfoButtonCell.swift */; };
+		F373DA702242A9AE00902A99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */; };
+		F373DA722242AEF200902A99 /* StaticInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA712242AEF200902A99 /* StaticInfoCell.swift */; };
+		F373DA742242CEAC00902A99 /* ImageFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA732242CEAC00902A99 /* ImageFormatter.swift */; };
+		F376B4F122416EB60080E27D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F376B4F022416EB60080E27D /* Profile.storyboard */; };
+		F376B4F3224181130080E27D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376B4F2224181130080E27D /* ProfileViewController.swift */; };
 		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +110,13 @@
 		A965D412224D274400AAE774 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		A965D414224D315100AAE774 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		A965D418224D38A800AAE774 /* Notification+Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Guest.swift"; sourceTree = "<group>"; };
+		F373DA6B224278B900902A99 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		F373DA6D2242803D00902A99 /* InfoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonCell.swift; sourceTree = "<group>"; };
+		F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F373DA712242AEF200902A99 /* StaticInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticInfoCell.swift; sourceTree = "<group>"; };
+		F373DA732242CEAC00902A99 /* ImageFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFormatter.swift; sourceTree = "<group>"; };
+		F376B4F022416EB60080E27D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		F376B4F2224181130080E27D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +197,9 @@
 				A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */,
 				A9639D802211CE0B00625235 /* DateInputCell.swift */,
 				A9639D812211CE0B00625235 /* ButtonCell.swift */,
+				F373DA6B224278B900902A99 /* ProfileCell.swift */,
+				F373DA6D2242803D00902A99 /* InfoButtonCell.swift */,
+				F373DA712242AEF200902A99 /* StaticInfoCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +218,7 @@
 			children = (
 				A9639D872211CE0B00625235 /* AddFlight.storyboard */,
 				A9639D892211CE0B00625235 /* Main.storyboard */,
+				F376B4F022416EB60080E27D /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -219,6 +237,8 @@
 				A9639D942211CE0B00625235 /* RetryViewController.swift */,
 				F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */,
 				A965D412224D274400AAE774 /* AuthViewController.swift */,
+				F376B4F2224181130080E27D /* ProfileViewController.swift */,
+				F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -298,6 +318,7 @@
 				A9152C37224D1FF6006F4EA4 /* GoogleSignIn.bundle in Resources */,
 				A9639D752211CD3600625235 /* LaunchScreen.storyboard in Resources */,
 				A9639D9C2211CE0B00625235 /* AddFlight.storyboard in Resources */,
+				F376B4F122416EB60080E27D /* Profile.storyboard in Resources */,
 				A9639D722211CD3600625235 /* Assets.xcassets in Resources */,
 				A9639D9D2211CE0B00625235 /* Main.storyboard in Resources */,
 			);
@@ -334,20 +355,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9639DA02211CE0B00625235 /* MainViewController.swift in Sources */,
+				F373DA6C224278B900902A99 /* ProfileCell.swift in Sources */,
+				F373DA702242A9AE00902A99 /* SettingsViewController.swift in Sources */,
 				A9639DA52211CE0B00625235 /* EmptyViewController.swift in Sources */,
 				A9639D6B2211CD3400625235 /* AppDelegate.swift in Sources */,
 				A9639D9F2211CE0B00625235 /* PassengerCatalogResultViewController.swift in Sources */,
 				A9639D9A2211CE0B00625235 /* DateFormatter+Passenger.swift in Sources */,
 				A9639DA32211CE0B00625235 /* FlightSearchResultViewController.swift in Sources */,
+				F376B4F3224181130080E27D /* ProfileViewController.swift in Sources */,
 				A9639DA62211CE0B00625235 /* RetryViewController.swift in Sources */,
 				A9639DA22211CE0B00625235 /* FlightLookupFormViewController.swift in Sources */,
 				A9639DA12211CE0B00625235 /* PassengerCatalogViewController.swift in Sources */,
+				F373DA6E2242803D00902A99 /* InfoButtonCell.swift in Sources */,
 				A9639DA42211CE0B00625235 /* FlightLookupViewController.swift in Sources */,
 				A965D415224D315100AAE774 /* Profile.swift in Sources */,
 				A9639D972211CE0B00625235 /* ValueDisplayInputCell.swift in Sources */,
 				F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */,
 				A965D413224D274400AAE774 /* AuthViewController.swift in Sources */,
 				A9639D9E2211CE0B00625235 /* FlightSearchViewController.swift in Sources */,
+				F373DA722242AEF200902A99 /* StaticInfoCell.swift in Sources */,
 				A9639D982211CE0B00625235 /* DateInputCell.swift in Sources */,
 				A9639D962211CE0B00625235 /* StringInputCell.swift in Sources */,
 				A9152C2D224AA491006F4EA4 /* GuestRoute.swift in Sources */,
