@@ -25,7 +25,7 @@ public struct Pass: Decodable, Hashable {
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
-        case name = "name"
+        case name = "title"
         case description = "description"
         case price = "price"
     }
