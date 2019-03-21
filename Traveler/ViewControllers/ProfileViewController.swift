@@ -33,10 +33,6 @@ class ProfileViewController: UITableViewController {
         image.setRoundImage()
     }
 
-    private var orderButtonCellIndexPath: IndexPath {
-        return IndexPath(row: 1, section: 0)
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -66,7 +62,7 @@ class ProfileViewController: UITableViewController {
             cell.label.text = "Orders"
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "profileCellIdentifier", for: indexPath) as! ProfileCell
             cell.titleLabel.text = profileData[indexPath.row].title
             cell.valueLabel.text = profileData[indexPath.row].value
             return cell
