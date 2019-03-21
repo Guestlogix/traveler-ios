@@ -81,7 +81,7 @@
                                     <outlet property="label" destination="7kW-VQ-EKB" id="W6j-NL-yvD"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="63" id="CXn-Uc-sD8" customClass="ProfileCell" customModule="Traveler" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="profileCellIdentifier" rowHeight="63" id="CXn-Uc-sD8" customClass="ProfileCell" customModule="Traveler" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="250.5" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CXn-Uc-sD8" id="Kr7-Po-3Ml">
@@ -207,6 +207,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlR-nd-mQg">
                                             <rect key="frame" x="16" y="11" width="46" height="21.5"/>
                                             <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="onClickAlert:" destination="4QC-bL-NFK" eventType="touchUpInside" id="wI8-2s-59Y"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -228,7 +231,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCA-sP-4yM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="77"/>
+            <point key="canvasLocation" x="1309.5999999999999" y="76.911544227886068"/>
         </scene>
     </scenes>
     <resources>

@@ -47,10 +47,12 @@ class SettingsViewController: UITableViewController {
         case (1, 0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCellIdentifier", for: indexPath) as! ButtonCell
             cell.button.setTitle("Delete Profile", for: .normal)
+            cell.button.tag = 0
             return cell
         case (1, 1):
             let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCellIdentifier", for: indexPath) as! ButtonCell
             cell.button.setTitle("Sign Out", for: .normal)
+            cell.button.tag = 1
             return cell
         case (2, 0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "staticInfoCellIdentifier", for: indexPath) as! StaticInfoCell
@@ -63,5 +65,33 @@ class SettingsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+
+    @IBAction func onClickAlert(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            showAlert(withTitle:"Are you sure you want to delete your profile?", withMessage: "This will remove features & order history linked to this profile.")
+        case 1:
+            showAlert(withTitle:"Are you sure you want to sign out of your profile?", withMessage: "Your order history will only be visible once you sign in.")
+        default:
+            print("Unknown Button")
+            return
+        }
+    }
+}
+
+extension SettingsViewController {
+    func showAlert(withTitle title: String, withMessage message:String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+        })
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        DispatchQueue.main.async(execute: {
+            self.present(alert, animated: true)
+        })
     }
 }

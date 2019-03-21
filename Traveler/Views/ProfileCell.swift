@@ -1,5 +1,5 @@
 //
-//  profileCell.swift
+//  ProfileCell.swift
 //  Traveler
 //
 //  Created by Dorothy Fu on 2019-03-20.
