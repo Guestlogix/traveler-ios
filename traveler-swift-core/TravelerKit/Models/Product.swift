@@ -15,7 +15,7 @@ public protocol Product {
 }
 
 public enum ProductType: String, Decodable {
-    case bookable = "bookable"
+    case bookable = "Bookable"
 }
 
 struct AnyProduct: Decodable {
@@ -31,7 +31,7 @@ struct AnyProduct: Decodable {
         case id = "id"
         //case price = "price"
         case title = "title"
-        case productType = "type"
+        case productType = "purchaseStrategy"
         case passes = "passes"
     }
 }
