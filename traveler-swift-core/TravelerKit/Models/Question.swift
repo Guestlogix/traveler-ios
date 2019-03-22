@@ -42,7 +42,7 @@ public struct Question: Decodable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case id             = "id"
-        case title          = "name"
+        case title          = "title"
         case description    = "description"
         case required       = "required"
         case type           = "type"
