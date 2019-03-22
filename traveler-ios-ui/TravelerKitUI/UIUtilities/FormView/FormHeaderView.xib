@@ -40,7 +40,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="2dW-yd-8Nl"/>
             <connections>
-                <outlet property="descriptionLabel" destination="FWo-PH-Zw2" id="cI0-ea-Qwm"/>
+                <outlet property="disclaimerLabel" destination="FWo-PH-Zw2" id="cI0-ea-Qwm"/>
                 <outlet property="titleLabel" destination="6Fb-nj-KSL" id="0V2-Or-gQ2"/>
             </connections>
             <point key="canvasLocation" x="154.40000000000001" y="-179.91004497751126"/>

@@ -41,10 +41,7 @@ public struct Order: Decodable {
 
         let dateString = try container.decode(String.self, forKey: .createdDate)
 
-        let dateComponents = dateString.components(separatedBy: "T")
-        let splitDate = dateComponents[0]
-
-        if let date = DateFormatter.dateOnlyFormatter.date(from: splitDate) {
+        if let date = ISO8601DateFormatter.dateOnlyFormatter.date(from: dateString) {
             self.createdDate = date
         } else {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.createdDate, in: container, debugDescription: "Incorrect format")

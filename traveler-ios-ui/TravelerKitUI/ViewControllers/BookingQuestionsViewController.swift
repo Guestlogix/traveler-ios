@@ -105,12 +105,12 @@ extension BookingQuestionsViewController: FormViewDataSource {
 }
 
 extension BookingQuestionsViewController: FormViewDelegate {
-    func formView(_ formView: FormView, descriptionForHeaderIn section: Int) -> String? {
+    func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String? {
         guard section < bookingForm!.questionGroups.count else {
             return nil
         }
 
-        return bookingForm?.questionGroups[section].description
+        return bookingForm?.questionGroups[section].disclaimer
     }
 
     func formView(_ formView: FormView, titleForHeaderIn section: Int) -> String? {
