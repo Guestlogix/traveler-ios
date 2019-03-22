@@ -31,7 +31,7 @@ public struct Question: Decodable, Equatable {
 
         enum CodingKeys: String, CodingKey {
             case id     = "id"
-            case value  = "name"
+            case value  = "label"
         }
 
         public init(id: String, value: String) {
@@ -73,6 +73,8 @@ public struct Question: Decodable, Equatable {
         let type = try container.decode(String.self, forKey: .type)
 
         switch type {
+        case "Quantity":
+            self.type = .string
         case "Text":
             self.type = .string
         case "MultipleChoice":
