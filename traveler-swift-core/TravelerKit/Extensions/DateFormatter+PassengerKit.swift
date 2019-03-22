@@ -41,3 +41,11 @@ extension DateFormatter {
         return formatter
     }()
 }
+
+extension ISO8601DateFormatter {
+    public static var dateOnlyFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+        return formatter
+    }()
+}
