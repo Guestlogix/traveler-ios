@@ -28,7 +28,7 @@ public struct Order: Decodable {
         case orderNumber = "orderNumber"
         case products = "products"
         case status = "status"
-        case createdDate = "createdOn"
+        case createdDate = "createdAt"
     }
 
     public init(from decoder: Decoder) throws {
@@ -41,7 +41,10 @@ public struct Order: Decodable {
 
         let dateString = try container.decode(String.self, forKey: .createdDate)
 
-        if let date = DateFormatter.dateOnlyFormatter.date(from: dateString) {
+        let dateComponents = dateString.components(separatedBy: "T")
+        let splitDate = dateComponents[0]
+
+        if let date = DateFormatter.dateOnlyFormatter.date(from: splitDate) {
             self.createdDate = date
         } else {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.createdDate, in: container, debugDescription: "Incorrect format")
