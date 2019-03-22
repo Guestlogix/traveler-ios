@@ -21,7 +21,7 @@ public protocol FormViewDelegate: class {
     func formView(_ formView: FormView, didChangeValue value: Any?, forInputFieldAt indexPath: IndexPath)
     func formView(_ formView: FormView, sizeForInputFieldAt indexPath: IndexPath) -> CGSize
     func formView(_ formView: FormView, titleForHeaderIn section: Int) -> String?
-    func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String?
+    func formView(_ formView: FormView, descriptionForHeaderIn section: Int) -> String?
     func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath)
     func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage?
 }
@@ -154,9 +154,9 @@ extension FormView: UICollectionViewDelegateFormLayout {
             return .zero
         }
 
-        let disclaimer = delegate?.formView(self, disclaimerForHeaderIn: section)
+        let description = delegate?.formView(self, descriptionForHeaderIn: section)
 
-        return FormHeaderView.sizeFor(boundingSize: CGSize(width: collectionView.bounds.width - 10, height: 0), title: title, disclaimer: disclaimer)
+        return FormHeaderView.sizeFor(boundingSize: CGSize(width: collectionView.bounds.width - 10, height: 0), title: title, description: description)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterAt indexPath: IndexPath) -> CGSize {
@@ -172,7 +172,7 @@ extension FormView: UICollectionViewDelegateFormLayout {
         case UICollectionView.elementKindSectionHeader:
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: sectionHeaderIdentifier, for: indexPath) as! FormHeaderView
             view.titleLabel.text = delegate?.formView(self, titleForHeaderIn: indexPath.section)
-            view.disclaimerLabel.text = delegate?.formView(self, disclaimerForHeaderIn: indexPath.section)
+            view.descriptionLabel.text = delegate?.formView(self, descriptionForHeaderIn: indexPath.section)
             return view
         case elementKindFieldFooter:
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: errorFooterIdentifier, for: indexPath) as! FormFieldFooterView

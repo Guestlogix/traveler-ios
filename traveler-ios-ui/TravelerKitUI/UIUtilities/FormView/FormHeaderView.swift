@@ -10,20 +10,20 @@ import Foundation
 
 class FormHeaderView: UICollectionReusableView {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var disclaimerLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
-    static func sizeFor(boundingSize: CGSize, title: String, disclaimer: String?) -> CGSize {
+    static func sizeFor(boundingSize: CGSize, title: String, description: String?) -> CGSize {
         let title = title as NSString
-        let disclaimer = disclaimer as NSString?
+        let description = description as NSString?
 
         var size = CGSize(width: boundingSize.width, height: 0)
 
         let titleHeight = title.boundingRect(with: boundingSize, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], context: nil).size.height
 
-        if let disclaimer = disclaimer {
-            let disclaimerHeight = disclaimer.boundingRect(with: boundingSize, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)], context: nil).size.height
+        if let description = description {
+            let descriptionHeight = description.boundingRect(with: boundingSize, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)], context: nil).size.height
 
-            size.height += disclaimerHeight + 16
+            size.height += descriptionHeight + 16
         }
 
         size.height += 24 + titleHeight + 16 + 24

@@ -10,12 +10,18 @@ import Foundation
 
 public struct QuestionGroup: Decodable {
     public let title: String?
-    public let disclaimer: String?
+    public let description: String?
     public let questions: [Question]
 
-    public init(title: String?, disclaimer: String?, questions: [Question]) {
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case description = "description"
+        case questions = "questions"
+    }
+
+    public init(title: String?, description: String?, questions: [Question]) {
         self.title = title
-        self.disclaimer = disclaimer
+        self.description = description
         self.questions = questions
     }
 }
