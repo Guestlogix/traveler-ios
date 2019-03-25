@@ -916,7 +916,6 @@
                                                 <state key="normal" title="Book Now"/>
                                                 <connections>
                                                     <action selector="didContinue:" destination="NsW-lP-NLE" eventType="touchUpInside" id="H0T-TL-8wX"/>
-                                                    <segue destination="rC1-Qw-aaQ" kind="show" identifier="questionsSegue" id="Z8j-ma-qC0"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub-total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JZ-Bx-5AK">
@@ -980,6 +979,7 @@
                         <outlet property="confirmContainerView" destination="auQ-nG-Jtt" id="9V1-C9-0pt"/>
                         <outlet property="passesContainerHeightConstraint" destination="L61-Zq-gac" id="Lpr-Sf-lOj"/>
                         <outlet property="priceLabel" destination="Ha6-Uy-F0q" id="l69-us-dYx"/>
+                        <segue destination="rC1-Qw-aaQ" kind="show" identifier="questionsSegue" id="GlM-Ry-N6v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAJ-OS-8mV" userLabel="First Responder" sceneMemberID="firstResponder"/>
