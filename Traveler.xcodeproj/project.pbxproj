@@ -49,7 +49,6 @@
 		F373DA6E2242803D00902A99 /* InfoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6D2242803D00902A99 /* InfoButtonCell.swift */; };
 		F373DA702242A9AE00902A99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */; };
 		F373DA722242AEF200902A99 /* StaticInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA712242AEF200902A99 /* StaticInfoCell.swift */; };
-		F373DA742242CEAC00902A99 /* ImageFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA732242CEAC00902A99 /* ImageFormatter.swift */; };
 		F376B4F122416EB60080E27D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F376B4F022416EB60080E27D /* Profile.storyboard */; };
 		F376B4F3224181130080E27D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376B4F2224181130080E27D /* ProfileViewController.swift */; };
 		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
@@ -114,7 +113,6 @@
 		F373DA6D2242803D00902A99 /* InfoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonCell.swift; sourceTree = "<group>"; };
 		F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F373DA712242AEF200902A99 /* StaticInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticInfoCell.swift; sourceTree = "<group>"; };
-		F373DA732242CEAC00902A99 /* ImageFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFormatter.swift; sourceTree = "<group>"; };
 		F376B4F022416EB60080E27D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F376B4F2224181130080E27D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
