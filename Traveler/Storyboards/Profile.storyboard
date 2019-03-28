@@ -141,93 +141,159 @@
             </objects>
             <point key="canvasLocation" x="172" y="77"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="6oN-d8-1jZ">
             <objects>
-                <tableViewController id="4QC-bL-NFK" customClass="SettingsViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="F70-d0-AEx">
+                <tableViewController title="Settings" id="4QC-bL-NFK" customClass="SettingsViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="F70-d0-AEx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="infoButtonCellIdentifier" id="gIb-eI-bjM" customClass="InfoButtonCell" customModule="Traveler" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gIb-eI-bjM" id="XDh-QA-1qo">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNF-a5-iFF">
-                                            <rect key="frame" x="16" y="11" width="42" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="JNF-a5-iFF" secondAttribute="bottom" constant="11" id="BJc-BP-ODE"/>
-                                        <constraint firstItem="JNF-a5-iFF" firstAttribute="top" secondItem="XDh-QA-1qo" secondAttribute="top" constant="11" id="HG7-bz-ilS"/>
-                                        <constraint firstItem="JNF-a5-iFF" firstAttribute="leading" secondItem="XDh-QA-1qo" secondAttribute="leading" constant="16" id="Ou7-XP-fRz"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="label" destination="JNF-a5-iFF" id="rzL-Sq-yTd"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="staticInfoCellIdentifier" id="Z0m-4S-IxK" customClass="StaticInfoCell" customModule="Traveler" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z0m-4S-IxK" id="enL-7Q-SDq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mk-ed-Y9a">
-                                            <rect key="frame" x="166.5" y="11.5" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="2Mk-ed-Y9a" firstAttribute="centerX" secondItem="enL-7Q-SDq" secondAttribute="centerX" id="Uad-P4-17w"/>
-                                        <constraint firstItem="2Mk-ed-Y9a" firstAttribute="centerY" secondItem="enL-7Q-SDq" secondAttribute="centerY" id="scm-ZP-z49"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="label" destination="2Mk-ed-Y9a" id="5Xo-TF-r1M"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCellIdentifier" id="hdG-8k-PkH" customClass="ButtonCell" customModule="Traveler" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdG-8k-PkH" id="WgP-3Q-dhP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlR-nd-mQg">
-                                            <rect key="frame" x="16" y="11" width="46" height="21.5"/>
-                                            <state key="normal" title="Button"/>
-                                            <connections>
-                                                <action selector="onClickAlert:" destination="4QC-bL-NFK" eventType="touchUpInside" id="wI8-2s-59Y"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="AlR-nd-mQg" firstAttribute="leading" secondItem="WgP-3Q-dhP" secondAttribute="leading" constant="16" id="08t-Yt-NMl"/>
-                                        <constraint firstAttribute="bottom" secondItem="AlR-nd-mQg" secondAttribute="bottom" constant="11" id="9Rv-9k-qvo"/>
-                                        <constraint firstItem="AlR-nd-mQg" firstAttribute="top" secondItem="WgP-3Q-dhP" secondAttribute="top" constant="11" id="JEg-Z8-Fh8"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="button" destination="AlR-nd-mQg" id="aQ1-g6-kZ3"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections>
+                            <tableViewSection id="3vJ-VO-2ll">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="infoButtonCellIdentifier" id="gIb-eI-bjM" customClass="InfoButtonCell" customModule="Traveler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gIb-eI-bjM" id="XDh-QA-1qo">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Legal Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNF-a5-iFF">
+                                                    <rect key="frame" x="16" y="11" width="133" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="JNF-a5-iFF" secondAttribute="bottom" constant="11" id="BJc-BP-ODE"/>
+                                                <constraint firstItem="JNF-a5-iFF" firstAttribute="top" secondItem="XDh-QA-1qo" secondAttribute="top" constant="11" id="HG7-bz-ilS"/>
+                                                <constraint firstItem="JNF-a5-iFF" firstAttribute="leading" secondItem="XDh-QA-1qo" secondAttribute="leading" constant="16" id="Ou7-XP-fRz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="JNF-a5-iFF" id="rzL-Sq-yTd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="infoButtonCellIdentifier" id="fXh-Np-P8m" customClass="InfoButtonCell" customModule="Traveler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="79" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fXh-Np-P8m" id="Ks8-hf-EOp">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pt-eV-eqV">
+                                                    <rect key="frame" x="16" y="11" width="106" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Pt-eV-eqV" firstAttribute="leading" secondItem="Ks8-hf-EOp" secondAttribute="leading" constant="16" id="GgL-0J-dOL"/>
+                                                <constraint firstItem="7Pt-eV-eqV" firstAttribute="top" secondItem="Ks8-hf-EOp" secondAttribute="top" constant="11" id="SKc-RB-OLY"/>
+                                                <constraint firstAttribute="bottom" secondItem="7Pt-eV-eqV" secondAttribute="bottom" constant="11" id="Wwh-E5-dxT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="7Pt-eV-eqV" id="a8N-Yk-y1V"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="BtT-3J-R92">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCellIdentifier" id="gew-Au-Art" customClass="ButtonCell" customModule="Traveler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gew-Au-Art" id="yUc-3A-lZg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMG-4b-yId">
+                                                    <rect key="frame" x="16" y="11" width="93" height="21.5"/>
+                                                    <state key="normal" title="Delete Profile"/>
+                                                    <connections>
+                                                        <action selector="onClickAlert:" destination="4QC-bL-NFK" eventType="touchUpInside" id="Dfh-Fo-4co"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="aMG-4b-yId" secondAttribute="bottom" constant="11" id="Plg-5t-Gbj"/>
+                                                <constraint firstItem="aMG-4b-yId" firstAttribute="top" secondItem="yUc-3A-lZg" secondAttribute="top" constant="11" id="Wuz-sn-dRN"/>
+                                                <constraint firstItem="aMG-4b-yId" firstAttribute="leading" secondItem="yUc-3A-lZg" secondAttribute="leading" constant="16" id="msN-jN-ofB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="button" destination="aMG-4b-yId" id="vHv-Fk-GW2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCellIdentifier" id="Q7b-CV-CAN" customClass="ButtonCell" customModule="Traveler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q7b-CV-CAN" id="buL-6r-LB5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fao-oq-hPB">
+                                                    <rect key="frame" x="16" y="11" width="60" height="21.5"/>
+                                                    <state key="normal" title="Sign Out"/>
+                                                    <connections>
+                                                        <action selector="onClickAlert:" destination="4QC-bL-NFK" eventType="touchUpInside" id="ufc-mF-0r4"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Fao-oq-hPB" firstAttribute="top" secondItem="buL-6r-LB5" secondAttribute="top" constant="11" id="442-vh-Y9d"/>
+                                                <constraint firstItem="Fao-oq-hPB" firstAttribute="leading" secondItem="buL-6r-LB5" secondAttribute="leading" constant="16" id="ksG-tQ-SFt"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fao-oq-hPB" secondAttribute="bottom" constant="11" id="vHC-A8-FoL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="button" destination="Fao-oq-hPB" id="i7I-Mo-JLK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="WF3-Nu-ASa">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="staticInfoCellIdentifier" id="THU-lp-hGf" customClass="StaticInfoCell" customModule="Traveler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="283" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="THU-lp-hGf" id="lIj-NE-ad5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-a7-pdj">
+                                                    <rect key="frame" x="166.5" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fGn-a7-pdj" firstAttribute="centerY" secondItem="lIj-NE-ad5" secondAttribute="centerY" id="1cA-U1-UTX"/>
+                                                <constraint firstItem="fGn-a7-pdj" firstAttribute="centerX" secondItem="lIj-NE-ad5" secondAttribute="centerX" id="P09-Xf-lvj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="fGn-a7-pdj" id="jfS-dh-FdX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="4QC-bL-NFK" id="HpC-ug-8D1"/>
                             <outlet property="delegate" destination="4QC-bL-NFK" id="zUv-Go-kf5"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="appVersionLabel" destination="fGn-a7-pdj" id="zyO-7b-dzK"/>
+                        <outlet property="deleteProfileButton" destination="aMG-4b-yId" id="uKL-va-nij"/>
+                        <outlet property="signOutButton" destination="Fao-oq-hPB" id="1WC-6A-CIt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCA-sP-4yM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

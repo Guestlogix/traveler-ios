@@ -24,18 +24,15 @@ class SettingsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    @IBAction func onClickAlert(_ sender: UIButton) {
-        switch sender {
-        case deleteProfileButton:
+        switch (indexPath.row, indexPath.section) {
+        case (0, 1):
             showAlert(withTitle:"Are you sure you want to delete your profile?", withMessage: "This will remove features & order history linked to this profile.")
-        case signOutButton:
+            tableView.deselectRow(at: indexPath, animated: true)
+        case (1, 1):
             showAlert(withTitle:"Are you sure you want to sign out of your profile?", withMessage: "Your order history will only be visible once you sign in.")
+            tableView.deselectRow(at: indexPath, animated: true)
         default:
-            print("Unknown Button")
-            return
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }
