@@ -17,6 +17,7 @@ class Session: Codable {
     private(set) var user: User
 
     var token: Token?
+    var identity: String?
 
     init(apiKey: String) {
         self.apiKey = apiKey

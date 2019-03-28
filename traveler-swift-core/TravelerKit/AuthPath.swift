@@ -15,7 +15,7 @@ enum AuthPath {
     case productSchedule(Product, from: Date, to: Date)
     case passes(Product, availability: Availability, option: BookingOption?)
     case questions(Product, passes: [Pass])
-    case createOrder([BookingForm]) // Use an interface called Purchase in the future to capture buyables
+    case createOrder([BookingForm], travelerId: String?) // Use an interface called Purchase in the future to capture buyables
     case processOrder(Order, Payment)
 
     // MARK: URLRequest
@@ -64,11 +64,11 @@ enum AuthPath {
             passes.forEach { (pass) in
                 urlComponents.queryItems!.append(URLQueryItem(name: "pass-ids", value: pass.id))
             }
-        case .createOrder(let forms):
+        case .createOrder(let forms, let travelerId):
             urlComponents.path = "/order"
             urlRequest.method = .post
             urlRequest.jsonBody = [
-                "travelerProfileId": nil,
+                "travelerProfileId": travelerId as Any,
                 "products": forms.map({
                     [
                         [

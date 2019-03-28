@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UoZ-2z-lXi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bqu-00-O93">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -66,6 +66,11 @@
                         <viewLayoutGuide key="safeArea" id="G7B-YP-eh7"/>
                     </view>
                     <navigationItem key="navigationItem" id="2JO-eD-klr">
+                        <barButtonItem key="leftBarButtonItem" title="Sign In" id="f5P-La-iKT">
+                            <connections>
+                                <action selector="didPressAuthButton:" destination="caP-4I-RGD" id="9mt-Rp-8XK"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="g6t-xa-4nO">
                             <connections>
                                 <segue destination="U3w-ya-EKt" kind="presentation" identifier="addFlightSegue" id="eEX-66-lWQ"/>
@@ -73,16 +78,35 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="authButton" destination="f5P-La-iKT" id="2IK-r8-NNL"/>
                         <outlet property="containerView" destination="4N9-oB-Ea2" id="Yq2-fb-6wj"/>
                         <outlet property="tableView" destination="EVd-E2-Upl" id="Qpd-bg-pqe"/>
                         <outlet property="tableViewHeightConstraint" destination="2zb-Yw-3oo" id="2gc-Yg-LZ3"/>
                         <segue destination="eW6-xh-dsE" kind="custom" identifier="catalogSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="EEh-LO-bub"/>
-                        <segue destination="SpD-9d-Liw" kind="show" identifier="flightDetailsSegue" id="Q05-JU-CLY"/>
+                        <segue destination="ODH-JI-sP1" kind="presentation" identifier="flightDetailsSegue" id="Q05-JU-CLY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBr-9C-snF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1568.8" y="809.85221674876846"/>
+        </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="JuQ-tc-Bez">
+            <objects>
+                <viewController id="Bqu-00-O93" customClass="AuthViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gho-4U-FL2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="DDn-Vy-COZ"/>
+                    </view>
+                    <connections>
+                        <segue destination="UoZ-2z-lXi" kind="custom" identifier="mainSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="BOx-Bs-Zob"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90Q-2W-uYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-402.39999999999998" y="809.85221674876846"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ufm-da-QOJ">
@@ -108,7 +132,7 @@
                 <viewControllerPlaceholder storyboardName="AddFlight" id="U3w-ya-EKt" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8im-Y5-29Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="450"/>
+            <point key="canvasLocation" x="2735" y="-594"/>
         </scene>
         <!--Passenger Catalog View Controller-->
         <scene sceneID="hqm-07-Fsr">
@@ -153,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AoH-s5-h6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5836" y="-709"/>
+            <point key="canvasLocation" x="6780" y="-684"/>
         </scene>
         <!--Retry View Controller-->
         <scene sceneID="WTf-HC-9Se">
@@ -210,7 +234,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W76-mR-o7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5838" y="-1"/>
+            <point key="canvasLocation" x="6780" y="-1.4778325123152709"/>
         </scene>
         <!--Retry View Controller-->
         <scene sceneID="ccJ-2w-NeJ">
@@ -267,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gsL-Rd-aiy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5838" y="709"/>
+            <point key="canvasLocation" x="6780" y="708.62068965517244"/>
         </scene>
         <!--Passenger Catalog Result View Controller-->
         <scene sceneID="HnW-a9-1qd">
@@ -285,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yH-82-dcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5838" y="1421"/>
+            <point key="canvasLocation" x="6780" y="1423"/>
         </scene>
         <!--CatalogItem-->
         <scene sceneID="8hi-b7-28c">
@@ -295,7 +319,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuA-bE-fFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7104" y="1421"/>
+            <point key="canvasLocation" x="8046" y="1423"/>
         </scene>
         <!--Flight Details View Controller-->
         <scene sceneID="516-ad-B0R">
@@ -422,6 +446,11 @@
                                 <constraint firstAttribute="trailing" secondItem="ewR-CO-Bj8" secondAttribute="trailing" id="u68-ww-9mA"/>
                             </constraints>
                         </view>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="VVT-Wc-IZv">
+                            <connections>
+                                <action selector="didClose:" destination="SpD-9d-Liw" id="Zu5-FF-czq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="arrivalCityLabel" destination="Qie-Qc-xXp" id="sZY-Fh-Ocs"/>
@@ -436,7 +465,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x2F-bv-bq6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655.20000000000005" y="77.58620689655173"/>
+            <point key="canvasLocation" x="3906" y="68"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Qu-fo-D96">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ODH-JI-sP1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h2f-U5-88E">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SpD-9d-Liw" kind="relationship" relationship="rootViewController" id="Nq1-8D-28E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DaJ-rb-8CI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2964" y="68"/>
         </scene>
     </scenes>
 </document>

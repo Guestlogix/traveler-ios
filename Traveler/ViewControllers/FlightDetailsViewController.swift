@@ -40,4 +40,8 @@ class FlightDetailsViewController: UIViewController {
         flightNumberLabel.textColor = .white
         flightDateLabel.textColor = .white
     }
+
+    @IBAction func didClose(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }

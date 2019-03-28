@@ -10,6 +10,7 @@ import UIKit
 import TravelerKit
 import TravelerStripePaymentProvider
 import TravelerKitUI
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        // GoogleSignInSDK
+
+        GIDSignIn.sharedInstance()?.clientID = "722316764255-7n0gp3v0061nh12t7ghckg969orp6rc3.apps.googleusercontent.com"
+
+        // TravelerSDK
 
         Traveler.initialize(apiKey: "testtesttesttesttest", device: UIDevice.current)
         TravelerUI.initialize(paymentProvider: StripePaymentProvider())
@@ -34,4 +41,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

@@ -42,8 +42,8 @@ public class Traveler {
         OperationQueue.authQueue.addOperation(sessionOperation)
     }
 
-    func identify(_ identifier: String, attributes: [String: Any?]? = nil) {
-
+    func identify(_ identifier: String?, attributes: [String: Any?]? = nil) {
+        self.session.identity = identifier
     }
 
     func flightSearch(query: FlightQuery, completion: @escaping ([Flight]? , Error?) -> Void) {
@@ -125,7 +125,7 @@ public class Traveler {
 
     // TODO: Use an array Purchase as an interface instead of BookingForm
     func createOrder(bookingForm: BookingForm, completion: @escaping (Order?, Error?) -> Void) {
-        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .createOrder([bookingForm]), session: session)
+        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .createOrder([bookingForm], travelerId: session.identity), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
         }
@@ -155,6 +155,10 @@ public class Traveler {
     }
 
     // MARK: Public API
+
+    public static func identify(_ identifier: String?, attributes: [String: Any?]) {
+        shared?.identify(identifier, attributes: attributes)
+    }
 
     public static func flightSearch(query: FlightQuery, delegate: FlightSearchDelegate) {
         shared?.flightSearch(query: query, completion: { [weak delegate] (flights, error) in
