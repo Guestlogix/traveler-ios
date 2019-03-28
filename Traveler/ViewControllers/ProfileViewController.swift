@@ -27,12 +27,6 @@ var profileData = [ProfileData(title: "Name", value: "John Doe"),
 class ProfileViewController: UITableViewController {
     @IBOutlet weak var image: UIImageView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        image.setRoundImage()
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
