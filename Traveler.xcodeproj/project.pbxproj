@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9152C2D224AA491006F4EA4 /* GuestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9152C2C224AA491006F4EA4 /* GuestRoute.swift */; };
+		A9152C2F224AA69D006F4EA4 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9152C2E224AA69D006F4EA4 /* Guest.swift */; };
+		A9152C37224D1FF6006F4EA4 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A9152C36224D1FF6006F4EA4 /* GoogleSignIn.bundle */; };
 		A9639D6B2211CD3400625235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D6A2211CD3400625235 /* AppDelegate.swift */; };
 		A9639D722211CD3600625235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9639D712211CD3600625235 /* Assets.xcassets */; };
 		A9639D752211CD3600625235 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9639D732211CD3600625235 /* LaunchScreen.storyboard */; };
@@ -32,6 +35,14 @@
 		A9639DD92211D13F00625235 /* TravelerKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; };
 		A9639DDA2211D13F00625235 /* TravelerKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9639DE22211D91A00625235 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DE12211D91A00625235 /* Stripe.framework */; };
+		A965D40B224D25B900AAE774 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D40A224D25B900AAE774 /* LocalAuthentication.framework */; };
+		A965D40D224D25C800AAE774 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D40C224D25C800AAE774 /* SafariServices.framework */; };
+		A965D40F224D25D700AAE774 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D40E224D25D700AAE774 /* SystemConfiguration.framework */; };
+		A965D410224D269800AAE774 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9152C33224AA8A8006F4EA4 /* GoogleSignIn.framework */; };
+		A965D411224D26BE00AAE774 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D407224D253200AAE774 /* GoogleSignInDependencies.framework */; };
+		A965D413224D274400AAE774 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D412224D274400AAE774 /* AuthViewController.swift */; };
+		A965D415224D315100AAE774 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D414224D315100AAE774 /* Profile.swift */; };
+		A965D419224D38A800AAE774 /* Notification+Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D418224D38A800AAE774 /* Notification+Guest.swift */; };
 		A96F830F22395E7300268D0D /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; };
 		A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
@@ -54,6 +65,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A9152C2C224AA491006F4EA4 /* GuestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRoute.swift; sourceTree = "<group>"; };
+		A9152C2E224AA69D006F4EA4 /* Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
+		A9152C33224AA8A8006F4EA4 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		A9152C36224D1FF6006F4EA4 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		A9639D672211CD3400625235 /* Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traveler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639D6A2211CD3400625235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9639D712211CD3600625235 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +96,13 @@
 		A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TravelerStripePaymentProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639DE12211D91A00625235 /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
 		A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TravelerStripePaymentProvider.framework; path = Carthage/Build/iOS/TravelerStripePaymentProvider.framework; sourceTree = "<group>"; };
+		A965D407224D253200AAE774 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		A965D40A224D25B900AAE774 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		A965D40C224D25C800AAE774 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		A965D40E224D25D700AAE774 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A965D412224D274400AAE774 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		A965D414224D315100AAE774 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		A965D418224D38A800AAE774 /* Notification+Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Guest.swift"; sourceTree = "<group>"; };
 		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +111,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A965D411224D26BE00AAE774 /* GoogleSignInDependencies.framework in Frameworks */,
+				A965D410224D269800AAE774 /* GoogleSignIn.framework in Frameworks */,
+				A965D40F224D25D700AAE774 /* SystemConfiguration.framework in Frameworks */,
+				A965D40D224D25C800AAE774 /* SafariServices.framework in Frameworks */,
+				A965D40B224D25B900AAE774 /* LocalAuthentication.framework in Frameworks */,
 				A9639DE22211D91A00625235 /* Stripe.framework in Frameworks */,
 				A96F830F22395E7300268D0D /* TravelerStripePaymentProvider.framework in Frameworks */,
 				A9639DD92211D13F00625235 /* TravelerKitUI.framework in Frameworks */,
@@ -99,9 +126,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9152C2B224AA355006F4EA4 /* GuestAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A9152C2C224AA491006F4EA4 /* GuestRoute.swift */,
+				A9152C2E224AA69D006F4EA4 /* Guest.swift */,
+				A965D414224D315100AAE774 /* Profile.swift */,
+			);
+			path = GuestAPI;
+			sourceTree = "<group>";
+		};
 		A9639D5E2211CD3400625235 = {
 			isa = PBXGroup;
 			children = (
+				A965D407224D253200AAE774 /* GoogleSignInDependencies.framework */,
+				A9152C36224D1FF6006F4EA4 /* GoogleSignIn.bundle */,
+				A9152C33224AA8A8006F4EA4 /* GoogleSignIn.framework */,
 				A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */,
 				A9639DD82211D13F00625235 /* TravelerKitUI.framework */,
 				A9639DD42211D13900625235 /* TravelerKit.framework */,
@@ -122,6 +162,7 @@
 		A9639D692211CD3400625235 /* Traveler */ = {
 			isa = PBXGroup;
 			children = (
+				A9152C2B224AA355006F4EA4 /* GuestAPI */,
 				A9639D822211CE0B00625235 /* Extensions */,
 				A9639D862211CE0B00625235 /* Storyboards */,
 				A9639D8B2211CE0B00625235 /* ViewControllers */,
@@ -150,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				A9639D832211CE0B00625235 /* DateFormatter+Passenger.swift */,
+				A965D418224D38A800AAE774 /* Notification+Guest.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -176,6 +218,7 @@
 				A9639D932211CE0B00625235 /* EmptyViewController.swift */,
 				A9639D942211CE0B00625235 /* RetryViewController.swift */,
 				F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */,
+				A965D412224D274400AAE774 /* AuthViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -183,6 +226,9 @@
 		A9639DE02211D91A00625235 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A965D40E224D25D700AAE774 /* SystemConfiguration.framework */,
+				A965D40C224D25C800AAE774 /* SafariServices.framework */,
+				A965D40A224D25B900AAE774 /* LocalAuthentication.framework */,
 				A9639DEC2215E7F400625235 /* TravelerStripePaymentProvider.framework */,
 				A9639DE12211D91A00625235 /* Stripe.framework */,
 			);
@@ -249,6 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9152C37224D1FF6006F4EA4 /* GoogleSignIn.bundle in Resources */,
 				A9639D752211CD3600625235 /* LaunchScreen.storyboard in Resources */,
 				A9639D9C2211CE0B00625235 /* AddFlight.storyboard in Resources */,
 				A9639D722211CD3600625235 /* Assets.xcassets in Resources */,
@@ -296,13 +343,18 @@
 				A9639DA22211CE0B00625235 /* FlightLookupFormViewController.swift in Sources */,
 				A9639DA12211CE0B00625235 /* PassengerCatalogViewController.swift in Sources */,
 				A9639DA42211CE0B00625235 /* FlightLookupViewController.swift in Sources */,
+				A965D415224D315100AAE774 /* Profile.swift in Sources */,
 				A9639D972211CE0B00625235 /* ValueDisplayInputCell.swift in Sources */,
 				F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */,
+				A965D413224D274400AAE774 /* AuthViewController.swift in Sources */,
 				A9639D9E2211CE0B00625235 /* FlightSearchViewController.swift in Sources */,
 				A9639D982211CE0B00625235 /* DateInputCell.swift in Sources */,
 				A9639D962211CE0B00625235 /* StringInputCell.swift in Sources */,
+				A9152C2D224AA491006F4EA4 /* GuestRoute.swift in Sources */,
 				A9639D952211CE0B00625235 /* FlightCell.swift in Sources */,
+				A9152C2F224AA69D006F4EA4 /* Guest.swift in Sources */,
 				A9639D992211CE0B00625235 /* ButtonCell.swift in Sources */,
+				A965D419224D38A800AAE774 /* Notification+Guest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,11 +513,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.Traveler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,11 +540,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.Traveler;
 				PRODUCT_NAME = "$(TARGET_NAME)";

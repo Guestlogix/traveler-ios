@@ -10,12 +10,20 @@ import UIKit
 import TravelerKit
 import TravelerKitUI
 
+protocol MainViewControllerDelegate: class {
+    func mainViewControllerDidSignIn(_ controller: MainViewController)
+}
+
 let flightCellHeight: CGFloat = 44
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var authButton: UIBarButtonItem!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
+
+    var profile: Profile?
+    weak var delegate: MainViewControllerDelegate?
 
     private var flights = [Flight]()
     private var selectedFlight: Flight?
@@ -23,7 +31,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.filterStaleFlights), name: UIApplication.didBecomeActiveNotification, object: nil)
+        reloadAuthButton()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(filterStaleFlights), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSignIn(_:)), name: .didSignIn, object: nil)
 
         performSegue(withIdentifier: "catalogSegue", sender: nil)
     }
@@ -58,9 +69,31 @@ class MainViewController: UIViewController {
         }
     }
 
+    @objc func didSignIn(_ note: Notification) {
+        guard let profile = note.userInfo?[profileKey] as? Profile else {
+            Log("Invalid notification", data: note, level: .error)
+            return
+        }
+
+        self.profile = profile
+        reloadAuthButton()
+    }
+
+    func reloadAuthButton() {
+        authButton.title = profile == nil ? "Sign In" : "Profile"
+    }
+
     // MARK: Actions
 
     @IBAction private func unwindToMainViewController(_ segue: UIStoryboardSegue) {}
+
+    @IBAction func didPressAuthButton(_ sender: Any) {
+        if profile == nil {
+            delegate?.mainViewControllerDidSignIn(self)
+        } else {
+            performSegue(withIdentifier: "profileSegue", sender: nil)
+        }
+    }
 }
 
 extension MainViewController: FlightLookupViewControllerDelegate {
