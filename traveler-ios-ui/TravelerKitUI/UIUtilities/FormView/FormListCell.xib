@@ -22,7 +22,7 @@
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3T-OB-cw8">
                         <rect key="frame" x="16" y="16" width="18" height="18"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
                             <action selector="didBeginEditing:" destination="Wt3-xW-rof" eventType="editingDidBegin" id="Ztr-Dy-awq"/>

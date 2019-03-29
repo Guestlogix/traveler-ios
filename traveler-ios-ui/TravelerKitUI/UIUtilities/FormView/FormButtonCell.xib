@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ue5-H0-ZLy" customClass="FormButtonCell" customModule="PassengerKit" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ue5-H0-ZLy" customClass="FormButtonCell" customModule="TravelerKitUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="237" height="142"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -21,6 +21,7 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lj-C2-9Hx">
                         <rect key="frame" x="15" y="15" width="207" height="112"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <state key="normal" title="Button"/>
                         <connections>
                             <action selector="didPressButton:" destination="ue5-H0-ZLy" eventType="touchUpInside" id="xdn-wc-1Kh"/>
