@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cYs-Nx-YZ8" customClass="FormQuantityInputCell" customModule="TravelerKitUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="431" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="431" height="175"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afJ-ob-euK">
+                        <rect key="frame" x="16" y="16" width="223" height="143"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="Oy9-Im-0A4" customClass="Stepper" customModule="TravelerKitUI" customModuleProvider="target">
+                        <rect key="frame" x="259" y="16" width="156" height="143"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaz-pn-bFL">
+                                <rect key="frame" x="0.0" y="57" width="49" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                                <state key="normal" title="－"/>
+                                <connections>
+                                    <action selector="didDecrease:" destination="Oy9-Im-0A4" eventType="touchUpInside" id="kgf-4U-sh1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Hg-0c-iy7">
+                                <rect key="frame" x="107" y="0.0" width="49" height="143"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                                <state key="normal" title="＋"/>
+                                <connections>
+                                    <action selector="didIncrease:" destination="Oy9-Im-0A4" eventType="touchUpInside" id="KRZ-bh-mGp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGW-i7-7gA">
+                                <rect key="frame" x="50" y="61" width="56" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="apH-7g-iM6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9Hg-0c-iy7" secondAttribute="trailing" id="1Gu-6q-Q4z"/>
+                            <constraint firstAttribute="width" constant="156" id="FPh-oT-k0y"/>
+                            <constraint firstItem="9Hg-0c-iy7" firstAttribute="centerY" secondItem="Oy9-Im-0A4" secondAttribute="centerY" id="HUC-jr-T7o"/>
+                            <constraint firstItem="eaz-pn-bFL" firstAttribute="leading" secondItem="Oy9-Im-0A4" secondAttribute="leading" id="Hig-2I-7ar"/>
+                            <constraint firstItem="9Hg-0c-iy7" firstAttribute="top" secondItem="Oy9-Im-0A4" secondAttribute="top" id="IAK-V1-eKJ"/>
+                            <constraint firstItem="9Hg-0c-iy7" firstAttribute="leading" secondItem="wGW-i7-7gA" secondAttribute="trailing" constant="1" id="WEF-nv-IcF"/>
+                            <constraint firstItem="wGW-i7-7gA" firstAttribute="leading" secondItem="eaz-pn-bFL" secondAttribute="trailing" constant="1" id="WfQ-XF-a2o"/>
+                            <constraint firstItem="wGW-i7-7gA" firstAttribute="centerY" secondItem="Oy9-Im-0A4" secondAttribute="centerY" id="gC9-VT-04s"/>
+                            <constraint firstItem="eaz-pn-bFL" firstAttribute="centerY" secondItem="Oy9-Im-0A4" secondAttribute="centerY" id="mdi-IJ-WJr"/>
+                            <constraint firstAttribute="bottom" secondItem="9Hg-0c-iy7" secondAttribute="bottom" id="wJV-Oi-IuQ"/>
+                        </constraints>
+                        <connections>
+                            <action selector="quantityCellValueDidChange:" destination="cYs-Nx-YZ8" eventType="valueChanged" id="EhW-Zv-xUk"/>
+                            <outlet property="decreaseButton" destination="eaz-pn-bFL" id="DBE-z2-5CF"/>
+                            <outlet property="increaseButton" destination="9Hg-0c-iy7" id="sqn-mv-ghH"/>
+                            <outlet property="valueLabel" destination="wGW-i7-7gA" id="oii-UI-IDb"/>
+                        </connections>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Oy9-Im-0A4" firstAttribute="leading" secondItem="afJ-ob-euK" secondAttribute="trailing" constant="20" id="29e-9Z-FjC"/>
+                <constraint firstAttribute="bottom" secondItem="Oy9-Im-0A4" secondAttribute="bottom" constant="16" id="Sxm-8f-Ry4"/>
+                <constraint firstItem="afJ-ob-euK" firstAttribute="top" secondItem="cYs-Nx-YZ8" secondAttribute="top" constant="16" id="Tfe-aY-JcN"/>
+                <constraint firstAttribute="bottom" secondItem="afJ-ob-euK" secondAttribute="bottom" constant="16" id="bJw-fs-MwC"/>
+                <constraint firstItem="Oy9-Im-0A4" firstAttribute="top" secondItem="cYs-Nx-YZ8" secondAttribute="top" constant="16" id="qMT-EI-QZS"/>
+                <constraint firstAttribute="trailing" secondItem="Oy9-Im-0A4" secondAttribute="trailing" constant="16" id="t7s-ck-9co"/>
+                <constraint firstItem="afJ-ob-euK" firstAttribute="leading" secondItem="cYs-Nx-YZ8" secondAttribute="leading" constant="16" id="tdR-7w-lU7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="56v-Vi-dgI"/>
+            <size key="customSize" width="431" height="175"/>
+            <connections>
+                <outlet property="label" destination="afJ-ob-euK" id="r38-oB-BX6"/>
+                <outlet property="stepper" destination="Oy9-Im-0A4" id="n2q-30-BQJ"/>
+            </connections>
+            <point key="canvasLocation" x="189.59999999999999" y="104.7976011994003"/>
+        </collectionViewCell>
+    </objects>
+</document>

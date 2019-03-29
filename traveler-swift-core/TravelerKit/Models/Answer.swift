@@ -54,3 +54,22 @@ public struct TextualAnswer: Answer {
     }
 
 }
+
+public struct QuantityAnswer: Answer {
+    public let value: Int
+    public let questionId: String
+    public var codedValue: String {
+        return String(value)
+    }
+
+    public init(_ value: Int, question: Question) throws {
+        switch question.type {
+        case .quantity:
+            self.value = value
+        default:
+            throw AnswerError.unacceptable
+        }
+
+        self.questionId = question.id
+    }
+}

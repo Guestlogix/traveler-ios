@@ -20,6 +20,7 @@ public struct Question: Decodable, Equatable {
     public let validationRules: [ValidationRule]
 
     public enum `Type` {
+        case quantity
         case string
         case multipleChoice([Choice])
     }
@@ -73,9 +74,11 @@ public struct Question: Decodable, Equatable {
         let type = try container.decode(String.self, forKey: .type)
 
         switch type {
+        case "Date":
+            self.type = .string
         //TODO: Create Quantity type and map it to the proper UI
         case "Quantity":
-            self.type = .string
+            self.type = .quantity
         case "Text":
             self.type = .string
         case "MultipleChoice":

@@ -86,6 +86,8 @@
 		F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */; };
 		F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */; };
 		F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */; };
+		F3A3E06A224D449A00CD69F4 /* FormQuantityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */; };
+		F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +172,8 @@
 		F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
 		F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselViewCell.xib; sourceTree = "<group>"; };
 		F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselItemViewCell.xib; sourceTree = "<group>"; };
+		F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuantityCell.swift; sourceTree = "<group>"; };
+		F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuantityCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,8 @@
 				A9639CDB220DF57400625235 /* FormHeaderView.xib */,
 				A9639CDC220DF57400625235 /* FormStringInputCell.swift */,
 				A9639CDD220DF57400625235 /* FormButtonCell.xib */,
+				F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */,
+				F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */,
 				A9639CDE220DF57400625235 /* FormLayout.swift */,
 				A9639CDF220DF57400625235 /* FormButtonCell.swift */,
 				A9639CE0220DF57400625235 /* FormView.swift */,
@@ -435,6 +441,7 @@
 				A9639D0F220DF57400625235 /* CarouselViewCell.xib in Resources */,
 				A9639D18220DF57400625235 /* FormFieldFooterView.xib in Resources */,
 				F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */,
+				F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */,
 				A9639D20220DF57400625235 /* FormButtonCell.xib in Resources */,
 				A9639D06220DF57400625235 /* HeaderView.xib in Resources */,
 				A9639D16220DF57400625235 /* CatalogItem.storyboard in Resources */,
@@ -464,6 +471,7 @@
 				A9639D0C220DF57400625235 /* HeaderView.swift in Sources */,
 				A9639D1B220DF57400625235 /* FormListInputCell.swift in Sources */,
 				A9639D2C220DF57400625235 /* DrawerPresentationAnimator.swift in Sources */,
+				F3A3E06A224D449A00CD69F4 /* FormQuantityCell.swift in Sources */,
 				A9639D21220DF57400625235 /* FormLayout.swift in Sources */,
 				A9639D0B220DF57400625235 /* DateCell.swift in Sources */,
 				A9639D37220E028300625235 /* NSMutableAttributedString+FontFace.swift in Sources */,
