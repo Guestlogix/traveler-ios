@@ -74,6 +74,7 @@ public class FormView: UIView {
             collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor)
             ])
 
+        register(UINib(nibName: "FormQuantityCell", bundle: bundle), forInputWithType: .quantity)
         register(UINib(nibName: "FormStringCell", bundle: bundle), forInputWithType: .string)
         register(UINib(nibName: "FormListCell", bundle: bundle), forInputWithType: .list)
         register(UINib(nibName: "FormButtonCell", bundle: bundle), forInputWithType: .button(nil))
@@ -114,6 +115,14 @@ extension FormView: UICollectionViewDataSource {
         let descriptor = dataSource!.formView(self, inputDescriptorForFieldAt: indexPath)
 
         switch descriptor.type {
+        case .quantity:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: indexPath) as! FormQuantityInputCell
+            cell.stepper.value = dataSource!.formView(self, valueForInputAt: indexPath) as? Int ?? 0
+            cell.label.text = descriptor.label
+            cell.stepper.minimumValue = 0
+            cell.stepper.maximumValue = 999
+            cell.delegate = self
+            return cell
         case .string:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: indexPath) as! FormStringInputCell
             cell.textField.text = dataSource!.formView(self, valueForInputAt: indexPath) as? String
@@ -184,6 +193,16 @@ extension FormView: UICollectionViewDelegateFormLayout {
         default:
             fatalError("Unknown suppplementary element kind: \(kind)")
         }
+    }
+}
+
+extension FormView: QuantityInputCellDelegate {
+    func quantityCellValueDidChange(_ cell: FormQuantityInputCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
+
+        delegate?.formView(self, didChangeValue: cell.stepper.value, forInputFieldAt: indexPath)
     }
 }
 
