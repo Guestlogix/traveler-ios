@@ -74,9 +74,9 @@ public struct Question: Decodable, Equatable {
         let type = try container.decode(String.self, forKey: .type)
 
         switch type {
+        //TODO: Create Date type and map it to the proper UI
         case "Date":
             self.type = .string
-        //TODO: Create Quantity type and map it to the proper UI
         case "Quantity":
             self.type = .quantity
         case "Text":
