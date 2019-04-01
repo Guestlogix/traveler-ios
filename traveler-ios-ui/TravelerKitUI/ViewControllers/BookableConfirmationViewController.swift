@@ -57,7 +57,7 @@ class BookableConfirmationViewController: UIViewController {
     }
 
     @IBAction func didContinue(_ sender: Any) {
-        guard let product = product, let passes = passes else {
+        guard let product = product, let passes = passQuantities?.allPasses else {
             Log("No Product/Passes", data: nil, level: .error)
             return
         }
