@@ -33,9 +33,9 @@ public struct Availability: Decodable {
         }
 
         if container.contains(.optionSet) {
-            self.optionSet = try container.decode(BookingOptionSet.self, forKey: .optionSet)
+            do { self.optionSet = try container.decode(BookingOptionSet.self, forKey: .optionSet) } catch { self.optionSet = nil }
         } else {
-            self.optionSet = nil
+            throw DecodingError.dataCorruptedError(forKey: CodingKeys.date, in: container, debugDescription: "OptionSet does not exist")
         }
     }
 }
