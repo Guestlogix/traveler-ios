@@ -138,14 +138,11 @@
                                 <segue destination="RZI-QP-F3g" kind="unwind" identifier="exitSegue" unwindAction="unwindToMainViewController:" id="8VS-jc-K9o"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="g0a-Vb-COz">
-                            <connections>
-                                <segue destination="4QC-bL-NFK" kind="show" identifier="settingsSegue" id="mtP-Ka-Aye"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit Profile" id="g0a-Vb-COz"/>
                     </navigationItem>
                     <connections>
                         <outlet property="image" destination="7ZE-qw-FO6" id="inA-VF-3jh"/>
+                        <segue destination="4QC-bL-NFK" kind="show" identifier="settingsSegue" id="EJJ-PW-3F0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRi-nt-Eqq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,7 +306,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCA-sP-4yM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309.5999999999999" y="76.911544227886068"/>
+            <point key="canvasLocation" x="1252" y="77"/>
         </scene>
     </scenes>
     <resources>

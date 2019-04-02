@@ -33,8 +33,8 @@ class ProfileViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
+        case 1:
+            return 2
         default:
             return profileData.count
         }
@@ -43,22 +43,26 @@ class ProfileViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 44
-        default:
             return 60
+        default:
+            return 44
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (indexPath.section) {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "infoButtonCellIdentifier", for: indexPath) as! InfoButtonCell
-            cell.label.text = "Orders"
-            return cell
-        case 1:
+        switch (indexPath.section, indexPath.row) {
+        case (0, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileCellIdentifier", for: indexPath) as! ProfileCell
             cell.titleLabel.text = profileData[indexPath.row].title
             cell.valueLabel.text = profileData[indexPath.row].value
+            return cell
+        case (1, 0):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoButtonCellIdentifier", for: indexPath) as! InfoButtonCell
+            cell.label.text = "Orders"
+            return cell
+        case (1, 1):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoButtonCellIdentifier", for: indexPath) as! InfoButtonCell
+            cell.label.text = "Settings"
             return cell
         default:
             fatalError("Invalid indexPath")
@@ -66,6 +70,12 @@ class ProfileViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch(indexPath.section, indexPath.row) {
+        case (1, 1):
+            self.performSegue(withIdentifier: "settingsSegue", sender: nil)
             tableView.deselectRow(at: indexPath, animated: true)
+        default:
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }
