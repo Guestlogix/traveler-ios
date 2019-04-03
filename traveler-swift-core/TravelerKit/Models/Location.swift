@@ -8,8 +8,12 @@
 
 import Foundation
 
+/// Represents a point on the map
 public struct Location: Decodable {
+    /// Address string
     public let address: String
+    /// Latitude
     public let latitude: Double
+    /// Longitude
     public let longitude: Double
 }

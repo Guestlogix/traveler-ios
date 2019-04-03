@@ -25,11 +25,16 @@ class BookableConfirmationViewController: UIViewController {
 
     private var passQuantities: [Pass: Int]?
     private var bookingForm: BookingForm?
+    private var defaultPassQuantities: [Pass: Int]? {
+        return passes?.first.flatMap({
+            [$0: 1]
+        })
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        passQuantities = passes?.defaultPassQuantities ?? [:]
+        passQuantities = defaultPassQuantities
         reloadPriceLabel()
 
         preferredContentSize = view.systemLayoutSizeFitting(CGSize(width: view.bounds.width, height: 0),
@@ -42,7 +47,7 @@ class BookableConfirmationViewController: UIViewController {
         case (_, let passesVC as PassesViewController):
             passesVC.delegate = self
             passesVC.passes = passes
-            passesVC.passQuantities = passes?.defaultPassQuantities
+            passesVC.passQuantities = defaultPassQuantities
         case (_, let vc as BookingQuestionsViewController):
             vc.bookingForm = bookingForm
             vc.delegate = self

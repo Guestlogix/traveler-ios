@@ -8,9 +8,12 @@
 
 import Foundation
 
+/// Represent a date for which there is availability (in the context of a bookabke producy)
 public struct Availability: Decodable {
     let id: String
+    /// The available date
     public let date: Date
+    /// The options available for that date
     public let optionSet: BookingOptionSet?
 
     enum CodingKeys: String, CodingKey {
@@ -33,15 +36,5 @@ public struct Availability: Decodable {
         }
 
         self.optionSet = try container.decodeIfPresent(BookingOptionSet.self, forKey: .optionSet)
-    }
-}
-
-public typealias Time = Int
-
-extension Time {
-    public var formattedValue: String {
-        let dateComponents = DateComponents(minute: self)
-        let date = Calendar.current.date(from: dateComponents)!
-        return DateFormatter.timeFormatter.string(from: date)
     }
 }

@@ -8,13 +8,19 @@
 
 import Foundation
 
+/// Any product that can be purchased
 public protocol Product {
+    /// Identifier
     var id: String { get }
+    /// Price
     //var price: Double { get }
+    /// Name
     var title: String { get }
 }
 
+/// Different types of product
 public enum ProductType: String, Decodable {
+    /// Experience or any product that has a booking nature
     case bookable = "Bookable"
 }
 
@@ -36,8 +42,12 @@ struct AnyProduct: Decodable {
     }
 }
 
+/// Any purchased bookable product
 public struct BookableProduct: Product {
+    /// Identifier
     public let id: String
+    /// Name
     public let title: String
+    /// Array of different `Pass`es purchased
     public let passes: [Pass]
 }

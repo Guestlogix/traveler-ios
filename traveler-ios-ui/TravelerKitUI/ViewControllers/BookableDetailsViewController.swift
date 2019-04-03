@@ -223,3 +223,13 @@ extension BookableDetailsViewController: ErrorContextObserving {
         }
     }
 }
+
+extension ErrorContext {
+    func hasAnyOf(_ errors: [BookingError]) -> Bool {
+        guard let error = error as? BookingError else {
+            return false
+        }
+
+        return errors.contains(error)
+    }
+}

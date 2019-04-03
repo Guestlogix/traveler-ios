@@ -8,11 +8,14 @@
 
 import Foundation
 
+/// Represents an attribute
 public struct Attribute: Decodable {
+    /// Caption
     public let label: String
+    /// Value
     public let value: String
 
-    public init(label: String, value: String) {
+    init(label: String, value: String) {
         self.label = label
         self.value = value
     }

@@ -8,9 +8,17 @@
 
 import Foundation
 
+/**
+ Holds the value for a `BookingOption`
+ */
+
 public struct BookingOption: Decodable {
     let id: String
 
+    /**
+     The value of the option. If for example the `BookingOptionSet` is time,
+     then this would read something like "11:00 am".
+     */
     public let value: String
 
     enum CodingKeys: String, CodingKey {

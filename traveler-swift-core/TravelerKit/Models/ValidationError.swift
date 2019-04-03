@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// The different types of errors that can occur when validating `Answer`s to a `Question`
 public enum ValidationError: Error {
+    /// No `Answer` was provided
     case required(Any?)
+    /// The `Answer` does not match the expected format
     case invalidFormat(Any?)
 }
