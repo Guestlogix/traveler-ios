@@ -57,7 +57,7 @@ class MainViewController: UIViewController {
         switch (segue, segue.destination) {
         case (_, let detailsNavVC as UINavigationController) where segue.identifier == "flightDetailsSegue":
             let flightDetailsVC = detailsNavVC.topViewController as? FlightDetailsViewController
-            flightDetailsVC!.flight = selectedFlight
+            flightDetailsVC?.flight = selectedFlight
         case (_, let navVC as UINavigationController) where segue.identifier == "addFlightSegue":
             let lookupVC = navVC.topViewController as? FlightLookupViewController
             lookupVC?.delegate = self
