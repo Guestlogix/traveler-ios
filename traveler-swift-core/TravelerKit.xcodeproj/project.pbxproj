@@ -36,7 +36,8 @@
 		A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */; };
 		A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BAB220497FE008AA0C1 /* Receipt.swift */; };
 		A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB72204F5E0008AA0C1 /* Price.swift */; };
-		A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB922089323008AA0C1 /* Double+Currency.swift */; };
+		A9825BBC2208A7F9008AA0C1 /* BookingFormQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */; };
+		A9825BBE2208A86B008AA0C1 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBD2208A86B008AA0C1 /* QuestionType.swift */; };
 		A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */; };
 		A9AC3BFD21FA6D9500690D46 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */; };
 		A9BF40D321779D030090ED1C /* FlightSeachDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */; };
@@ -125,7 +126,8 @@
 		A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProcessDelegate.swift; sourceTree = "<group>"; };
 		A9825BAB220497FE008AA0C1 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		A9825BB72204F5E0008AA0C1 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
-		A9825BB922089323008AA0C1 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
+		A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFormQuestion.swift; sourceTree = "<group>"; };
+		A9825BBD2208A86B008AA0C1 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
 		A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerContact.swift; sourceTree = "<group>"; };
 		A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
 		A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightSeachDelegate.swift; sourceTree = "<group>"; };
@@ -363,7 +365,6 @@
 				A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */,
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
-				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -527,7 +528,6 @@
 				A9DB06B3214AFB54009817EC /* Flight.swift in Sources */,
 				A91F3BB321B82BDD0016894A /* ErrorContext.swift in Sources */,
 				A9DB065F2140665A009817EC /* ConcurrentOperation.swift in Sources */,
-				A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */,
 				A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */,
 				A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */,
 				A9DB06592140665A009817EC /* DownloadOperation.swift in Sources */,
