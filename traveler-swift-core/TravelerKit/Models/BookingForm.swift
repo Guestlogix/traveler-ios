@@ -43,7 +43,7 @@ public struct BookingForm {
         return answers[question.id]
     }
 
-    public func validate(completion: (([BookingFormError]) -> Void)) {
+    public func validate() -> [BookingFormError] {
         var errors = [BookingFormError]()
 
         for (groupIndex, group) in questionGroups.enumerated() {
@@ -63,6 +63,6 @@ public struct BookingForm {
             }
         }
 
-        completion(errors)
+        return errors
     }
 }
