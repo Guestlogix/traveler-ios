@@ -142,20 +142,20 @@ extension BookingQuestionsViewController: FormViewDelegate {
     func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath) {
         /// There is only one button: Checkout
 
-        bookingForm?.validate { (errors) in
-            switch errors.first {
-            case .none:
-                delegate?.bookingQuestionsViewControllerDidCheckout(self)
-            case .some(.invalidAnswer(let groupIndex, let questionIndex, _)):
-                self.error = errors.first
+        let errors = bookingForm?.validate()
 
-                let indexPath = IndexPath(item: questionIndex, section: groupIndex)
-                formView.reloadFields(at: [indexPath])
-                formView.scrollToField(at: indexPath, animated: true)
-            case .some(let error):
-                Log("Unknown error", data: error, level: .error)
-                break
-            }
+        switch errors?.first {
+        case .none:
+            delegate?.bookingQuestionsViewControllerDidCheckout(self)
+        case .some(.invalidAnswer(let groupIndex, let questionIndex, _)):
+            self.error = errors?.first
+
+            let indexPath = IndexPath(item: questionIndex, section: groupIndex)
+            formView.reloadFields(at: [indexPath])
+            formView.scrollToField(at: indexPath, animated: true)
+        case .some(let error):
+            Log("Unknown error", data: error, level: .error)
+            break
         }
     }
 
