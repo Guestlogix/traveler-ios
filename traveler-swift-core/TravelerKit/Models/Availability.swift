@@ -32,11 +32,7 @@ public struct Availability: Decodable {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.date, in: container, debugDescription: "Incorrect format")
         }
 
-        if container.contains(.optionSet) {
-            do { self.optionSet = try container.decode(BookingOptionSet.self, forKey: .optionSet) } catch { self.optionSet = nil }
-        } else {
-            throw DecodingError.dataCorruptedError(forKey: CodingKeys.date, in: container, debugDescription: "OptionSet does not exist")
-        }
+        self.optionSet = try container.decodeIfPresent(BookingOptionSet.self, forKey: .optionSet)
     }
 }
 
