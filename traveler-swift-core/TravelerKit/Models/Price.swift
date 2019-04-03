@@ -17,6 +17,12 @@ public struct Price: Decodable {
 
     /// A convenience computed property for displaying a localized description of the amount. e.g. "$431.23"
     public var localizedDescription: String? {
-        return value.priceDescription(currencyCode: currency)
+        let numberFormatter = NumberFormatter()
+        let locale = NSLocale(localeIdentifier: currency)
+        numberFormatter.locale = Locale.current
+        numberFormatter.numberStyle = .currency
+        numberFormatter.currencySymbol = locale.displayName(forKey: .currencySymbol, value: currency)
+
+        return numberFormatter.string(for: self.value)
     }
 }

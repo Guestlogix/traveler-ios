@@ -65,7 +65,7 @@ public struct Order: Decodable {
         self.products = try container.decode([AnyProduct].self, forKey: .products).map { product in
             switch product.productType {
             case .bookable:
-                return BookableProduct(id: product.id, title: product.title, passes: product.passes!)
+                return BookableProduct(id: product.id, title: product.title, passes: product.passes!, price: product.price)
             }
         }
     }

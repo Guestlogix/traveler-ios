@@ -30,7 +30,7 @@ class BookablePurchaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //priceLabel.text = bookingContext?.product.price.localizedDescription
+        priceLabel.text = bookingContext?.product.price.localizedDescription
 
         bookingContext?.addObserver(self)
     }

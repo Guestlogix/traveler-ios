@@ -12,9 +12,13 @@ import Foundation
 public protocol Product {
     /// Identifier
     var id: String { get }
+<<<<<<< HEAD
     /// Price
     //var price: Double { get }
     /// Name
+=======
+    var price: Price { get }
+>>>>>>> Uses price model and modifies to use currency symbol from price model
     var title: String { get }
 }
 
@@ -26,7 +30,7 @@ public enum ProductType: String, Decodable {
 
 struct AnyProduct: Decodable {
     let id: String
-    //let price: Double
+    let price: Price
     let title: String
     let productType: ProductType
 
@@ -35,7 +39,7 @@ struct AnyProduct: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
-        //case price = "price"
+        case price = "price"
         case title = "title"
         case productType = "purchaseStrategy"
         case passes = "passes"
@@ -50,4 +54,5 @@ public struct BookableProduct: Product {
     public let title: String
     /// Array of different `Pass`es purchased
     public let passes: [Pass]
+    public let price: Price
 }
