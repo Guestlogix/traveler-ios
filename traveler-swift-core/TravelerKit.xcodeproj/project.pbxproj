@@ -37,8 +37,6 @@
 		A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BAB220497FE008AA0C1 /* Receipt.swift */; };
 		A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB72204F5E0008AA0C1 /* Price.swift */; };
 		A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB922089323008AA0C1 /* Double+Currency.swift */; };
-		A9825BBC2208A7F9008AA0C1 /* BookingFormQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */; };
-		A9825BBE2208A86B008AA0C1 /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBD2208A86B008AA0C1 /* QuestionType.swift */; };
 		A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */; };
 		A9AC3BFD21FA6D9500690D46 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */; };
 		A9BF40D321779D030090ED1C /* FlightSeachDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */; };
@@ -54,7 +52,6 @@
 		A9DB063E21402F8B009817EC /* TravelerRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB063D21402F8B009817EC /* TravelerRoute.swift */; };
 		A9DB0640214034C5009817EC /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB063F214034C5009817EC /* Log.swift */; };
 		A9DB06442140358C009817EC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB06432140358C009817EC /* Credentials.swift */; };
-		A9DB0646214047EB009817EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB0645214047EB009817EC /* User.swift */; };
 		A9DB064921404CE0009817EC /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB064821404CE0009817EC /* Token.swift */; };
 		A9DB06572140665A009817EC /* UploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB064C21406659009817EC /* UploadOperation.swift */; };
 		A9DB06592140665A009817EC /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DB064E21406659009817EC /* DownloadOperation.swift */; };
@@ -76,7 +73,6 @@
 		A9E2AD8221934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2AD8121934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift */; };
 		A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2AD9A2194ACF10063BF79 /* ContactInfo.swift */; };
 		A9E2AD9D2194AD060063BF79 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2AD9C2194AD060063BF79 /* Location.swift */; };
-		A9E2AD9F2194AD170063BF79 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2AD9E2194AD170063BF79 /* Menu.swift */; };
 		A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2ADA42194D75D0063BF79 /* Attribute.swift */; };
 		A9E2ADB5219B30780063BF79 /* PurchaseStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2ADB4219B30780063BF79 /* PurchaseStrategy.swift */; };
 		A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5EF215A7D3B003AAA5F /* AuthPath.swift */; };
@@ -130,8 +126,6 @@
 		A9825BAB220497FE008AA0C1 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		A9825BB72204F5E0008AA0C1 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		A9825BB922089323008AA0C1 /* Double+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Currency.swift"; sourceTree = "<group>"; };
-		A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFormQuestion.swift; sourceTree = "<group>"; };
-		A9825BBD2208A86B008AA0C1 /* QuestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
 		A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerContact.swift; sourceTree = "<group>"; };
 		A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
 		A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightSeachDelegate.swift; sourceTree = "<group>"; };
@@ -150,7 +144,6 @@
 		A9DB063D21402F8B009817EC /* TravelerRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerRoute.swift; sourceTree = "<group>"; };
 		A9DB063F214034C5009817EC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		A9DB06432140358C009817EC /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
-		A9DB0645214047EB009817EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A9DB064821404CE0009817EC /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		A9DB064C21406659009817EC /* UploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadOperation.swift; sourceTree = "<group>"; };
 		A9DB064E21406659009817EC /* DownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadOperation.swift; sourceTree = "<group>"; };
@@ -172,7 +165,6 @@
 		A9E2AD8121934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemDetailsFetchDelegate.swift; sourceTree = "<group>"; };
 		A9E2AD9A2194ACF10063BF79 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		A9E2AD9C2194AD060063BF79 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		A9E2AD9E2194AD170063BF79 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		A9E2ADA42194D75D0063BF79 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		A9E2ADB4219B30780063BF79 /* PurchaseStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStrategy.swift; sourceTree = "<group>"; };
 		A9EED5EF215A7D3B003AAA5F /* AuthPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPath.swift; sourceTree = "<group>"; };
@@ -286,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				A9DB06432140358C009817EC /* Credentials.swift */,
-				A9DB0645214047EB009817EC /* User.swift */,
 				A9DB064821404CE0009817EC /* Token.swift */,
 				A9DB06A9214AAF60009817EC /* FlightQuery.swift */,
 				A9DB06B2214AFB54009817EC /* Flight.swift */,
@@ -299,7 +290,6 @@
 				A9E2AD7F219344670063BF79 /* CatalogItemDetails.swift */,
 				A9E2AD9A2194ACF10063BF79 /* ContactInfo.swift */,
 				A9E2AD9C2194AD060063BF79 /* Location.swift */,
-				A9E2AD9E2194AD170063BF79 /* Menu.swift */,
 				A9E2ADA42194D75D0063BF79 /* Attribute.swift */,
 				A9E2ADB4219B30780063BF79 /* PurchaseStrategy.swift */,
 				A9E28A9221A84DBD00967C4A /* Availability.swift */,
@@ -310,8 +300,6 @@
 				A91F3BDA21D9F9730016894A /* Question.swift */,
 				A91F3BDC21DC36AD0016894A /* BookingForm.swift */,
 				A91F3BDE21DD3BA80016894A /* QuestionGroup.swift */,
-				A9825BBB2208A7F9008AA0C1 /* BookingFormQuestion.swift */,
-				A9825BBD2208A86B008AA0C1 /* QuestionType.swift */,
 				A92F5C2321F22CFE00020F10 /* Answer.swift */,
 				A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */,
 				A92523F121FB71D0009E2642 /* ValidationError.swift */,
@@ -512,7 +500,6 @@
 				A9639C8C220DF1F000625235 /* Device.swift in Sources */,
 				A9E2AD8221934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift in Sources */,
 				A9DB065D2140665A009817EC /* MappingOperation.swift in Sources */,
-				A9E2AD9F2194AD170063BF79 /* Menu.swift in Sources */,
 				A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */,
 				A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */,
 				A92523F221FB71D0009E2642 /* ValidationError.swift in Sources */,
@@ -522,7 +509,6 @@
 				A9E2AD80219344670063BF79 /* CatalogItemDetails.swift in Sources */,
 				A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */,
 				A9E2ADB5219B30780063BF79 /* PurchaseStrategy.swift in Sources */,
-				A9825BBE2208A86B008AA0C1 /* QuestionType.swift in Sources */,
 				A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */,
 				A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */,
 				A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */,
@@ -530,7 +516,6 @@
 				A9DB06442140358C009817EC /* Credentials.swift in Sources */,
 				A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */,
 				A91F3BDB21D9F9730016894A /* Question.swift in Sources */,
-				A9825BBC2208A7F9008AA0C1 /* BookingFormQuestion.swift in Sources */,
 				A9AC3BFD21FA6D9500690D46 /* ValidationRule.swift in Sources */,
 				A9EED5F2215A7D43003AAA5F /* UnauthPath.swift in Sources */,
 				A9639D32220E000100625235 /* PaymentHandler.swift in Sources */,
@@ -556,7 +541,6 @@
 				A9DB064921404CE0009817EC /* Token.swift in Sources */,
 				A9BF40D72177C1270090ED1C /* Airport.swift in Sources */,
 				A9E28A9321A84DBD00967C4A /* Availability.swift in Sources */,
-				A9DB0646214047EB009817EC /* User.swift in Sources */,
 				A9DB06572140665A009817EC /* UploadOperation.swift in Sources */,
 				A9E2AD9D2194AD060063BF79 /* Location.swift in Sources */,
 				A96F830722389CD100268D0D /* BookingFormFetchDelegate.swift in Sources */,

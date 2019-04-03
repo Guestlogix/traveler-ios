@@ -8,8 +8,14 @@
 
 import Foundation
 
+/// An protocol that defines what are the values needed to properly process payment.
 public protocol Payment {
+    /**
+     An `Array<Attribute>` that hold insensitive information about the payment.
+     In case of credit cards this would include things like 'Card Type', 'Last 4 Digits', etc.
+     */
     var attributes: [Attribute] { get }
 
+    /// The secure (encrypted) payload that is safe to transmit over the internet for processing.
     func securePayload() -> Data?
 }

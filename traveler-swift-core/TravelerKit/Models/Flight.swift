@@ -8,54 +8,7 @@
 
 import Foundation
 
-/**
- {
-     "flightNumber": "string",
-     "originId": "string",
-     "destinationId": "string",
-     "origin": {
-         "name": "string",
-         "iataCode": "string",
-         "longitude": 0,
-         "latitude": 0,
-         "address": "string",
-         "city": "Toronto",
-         "state": {
-             "name": "Ontario",
-             "code": "ON"
-         },
-         "country": {
-             "name": "Canada",
-             "isoCode": "CA",
-             "region": "North America"
-         }
-     },
-     "destination": {
-         "name": "string",
-         "iataCode": "string",
-         "longitude": 0,
-         "latitude": 0,
-         "address": "string",
-         "city": "Toronto",
-         "state": {
-             "name": "Ontario",
-             "code": "ON"
-         },
-         "country": {
-             "name": "Canada",
-             "isoCode": "CA",
-             "region": "North America"
-         }
-     },
-     "stops": 0,
-     "departureTerminal": "string",
-     "arrivalTerminal": "string",
-     "departureTime": "2018-10-19T13:51:02.308",
-     "arrivalTime": "2018-10-19T13:51:02.308",
-     "isCodeShare": true
- }
- **/
-
+/// Represents information about a flight
 public struct Flight: Decodable, Equatable {
     public static func == (lhs: Flight, rhs: Flight) -> Bool {
         return lhs.id == rhs.id
@@ -64,12 +17,18 @@ public struct Flight: Decodable, Equatable {
         && lhs.arrivalAirport == rhs.arrivalAirport
         && lhs.departureDate == rhs.departureDate
     }
-    
+
+    /// Identifier
     public let id: String
+    /// Flightnumber
     public let number: String
+    /// Departing airport
     public let departureAirport: Airport
+    /// Arriving airport
     public let arrivalAirport: Airport
+    /// Departure time
     public let departureDate: Date
+    /// Arrival time
     public let arrivalDate: Date
 
     enum CodingKeys: String, CodingKey {

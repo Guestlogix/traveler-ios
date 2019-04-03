@@ -8,19 +8,28 @@
 
 import Foundation
 
+/// Represents the different statuses an `Order` can have
 public enum OrderStatus: String, Decodable {
+    /// The `Order` is being processed
     case pending = "pending"
+    /// The `Order` has been successfully processed
     case processed = "processed"
 }
 
+/// Holds information about an order
 public struct Order: Decodable {
+    /// The identification `String`
     public let id: String
+    /// Total amount
     public let total: Price
+    /// Order number for confirmation purposes
     public let orderNumber: String
+    /// The `Product`s that were included in the order
     public let products: [Product]
+    /// The current status
     public let status: OrderStatus
+    /// The date and time the order was created
     public let createdDate: Date
-    //public let orderDetails: OrderDetails
 
     enum CodingKeys: String, CodingKey {
         case id = "id"

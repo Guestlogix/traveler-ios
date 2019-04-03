@@ -8,8 +8,12 @@
 
 import Foundation
 
+/// Different errors a booking can have
 public enum BookingError: Error {
+    /// Date was not supplied
     case noDate
+    /// The requested date is unavailable
     case badDate
+    /// The `BookingOption` is required and was not supplied
     case noOption
 }

@@ -14,18 +14,11 @@ enum SessionError: Error {
 
 class Session: Codable {
     let apiKey: String
-    private(set) var user: User
 
     var token: Token?
     var identity: String?
 
     init(apiKey: String) {
         self.apiKey = apiKey
-        self.user = User()
-    }
-
-    func merge(_ session: Session) {
-        self.token = session.token
-        self.user.merge(session.user)
     }
 }

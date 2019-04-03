@@ -8,13 +8,13 @@
 
 import Foundation
 
-/**
- Refer to Flight.swift for nested JSON structure
- **/
-
+/// Represents information about an airport
 public struct Airport: Decodable, Equatable {
+    /// IATA code
     public let code: String
+    /// Airport name
     public let name: String
+    /// City
     public let city: String
 
     enum CodingKeys: String, CodingKey {

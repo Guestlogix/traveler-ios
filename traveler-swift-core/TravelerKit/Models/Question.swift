@@ -13,21 +13,32 @@ public struct Question: Decodable, Equatable {
         return lhs.id == rhs.id
     }
 
+    /// Identifier
     public let id: String
+    /// Type of question
     public let type: Type
+    /// The caption
     public let title: String
+    /// An optional description
     public let description: String?
+    /// Validation rules
     public let validationRules: [ValidationRule]
 
+    /// Different questions types
     public enum `Type` {
+        /// Integer
         case quantity
+        /// Textual
         case string
+        /// Multiple choice
         case multipleChoice([Choice])
     }
 
+    /// Information about a `Choice` for multiple choice type questions
     public struct Choice: Decodable {
         let id: String
 
+        /// The caption
         public let value: String
 
         enum CodingKeys: String, CodingKey {
@@ -35,7 +46,7 @@ public struct Question: Decodable, Equatable {
             case value  = "label"
         }
 
-        public init(id: String, value: String) {
+        init(id: String, value: String) {
             self.id = id
             self.value = value
         }

@@ -83,6 +83,7 @@
 		A9639D3D220E033C00625235 /* PaymentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D3C220E033C00625235 /* PaymentProvider.swift */; };
 		A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639DEA2213463900625235 /* UIDevice+Device.swift */; };
 		A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830D22389E1D00268D0D /* BookingContext.swift */; };
+		A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */; };
 		F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */; };
 		F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */; };
 		F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */; };
@@ -169,6 +170,7 @@
 		A9639D3C220E033C00625235 /* PaymentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProvider.swift; sourceTree = "<group>"; };
 		A9639DEA2213463900625235 /* UIDevice+Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Device.swift"; sourceTree = "<group>"; };
 		A96F830D22389E1D00268D0D /* BookingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingContext.swift; sourceTree = "<group>"; };
+		A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pass+TravelerUI.swift"; sourceTree = "<group>"; };
 		F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
 		F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselViewCell.xib; sourceTree = "<group>"; };
 		F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselItemViewCell.xib; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				A9639D33220E01FE00625235 /* CatalogItemDetails+TravelerUI.swift */,
 				A9639D38220E029800625235 /* Attribute+TravelerUI.swift */,
+				A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */,
 			);
 			path = ModelExtensions;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				A9639CFB220DF57400625235 /* ReceiptViewController.swift in Sources */,
 				A9639D01220DF57400625235 /* CatalogItemResultViewController.swift in Sources */,
 				A9639D25220DF57400625235 /* InputType.swift in Sources */,
+				A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */,
 				A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */,
 				A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */,
 				A9639CF2220DF57400625235 /* CatalogItemLoadingViewController.swift in Sources */,
