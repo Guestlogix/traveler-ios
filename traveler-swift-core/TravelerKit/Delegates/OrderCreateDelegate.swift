@@ -18,11 +18,11 @@ public protocol OrderCreateDelegate: class {
      */
     func orderCreationDidSucceed(_ order: Order)
     /**
-     Called when there was as error creating the order
+     Called when there was an error creating the order
 
      - Parameters:
      - error: The `Error` representing the reason for failure. No specific errors
-     to look for here. Best coarse of action is to just display a generic error
+     to look for here. Best course of action is to just display a generic error
      message.
      */
     func orderCreationDidFail(_ error: Error)

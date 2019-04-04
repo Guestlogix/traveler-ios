@@ -19,11 +19,11 @@ public protocol OrderProcessDelegate: class {
      */
     func order(_ order: Order, didSucceedWithReceipt receipt: Receipt)
     /**
-     Called when there was as error processing the order
+     Called when there was an error processing the order
 
      - Parameters:
      - error: The `Error` representing the reason for failure. No specific errors
-     to look for here. Best coarse of action is to just display a generic error
+     to look for here. Best course of action is to just display a generic error
      message.
      */
     func order(_ order: Order, didFailWithError error: Error)

@@ -11,11 +11,11 @@ import Foundation
 /// Notified of booking form fetch results
 public protocol BookingFormFetchDelegate: class {
     /**
-     Called when there was as error processing the order
+     Called when there was an error processing the order
 
      - Parameters:
      - error: The `Error` representing the reason for failure. No specific errors
-     to look for here. Best coarse of action is to just display a generic error
+     to look for here. Best course of action is to just display a generic error
      message.
      */
     func bookingFormFetchDidFailWith(_ error: Error)

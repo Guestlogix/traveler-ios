@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// An protocol that defines what are the values needed to properly process payment.
+/// A protocol that defines what are the values needed to properly process payment.
 public protocol Payment {
     /**
      An `Array<Attribute>` that hold insensitive information about the payment.

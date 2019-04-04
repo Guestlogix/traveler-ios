@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A reciept that holds the order details as well as the payment details of a particular `Order`.
+/// A receipt that holds the order details as well as the payment details of a particular `Order`.
 public struct Receipt {
     /// The `Order` associated with the receipt
     public let order: Order
