@@ -8,7 +8,22 @@
 
 import Foundation
 
+/// Notified of pass fetch results
 public protocol PassFetchDelegate: class {
+    /**
+     Called when the `Pass`es were fetched successfully
+
+     - Parameters:
+     - result: Fetched `Array<Pass>`
+     */
     func passFetchDidSucceedWith(_ result: [Pass])
+    /**
+     Called when there was as error fetching the passes
+
+     - Parameters:
+     - error: The `Error` representing the reason for failure. No specific errors
+     to look for here. Best coarse of action is to just display a generic error
+     message.
+     */
     func passFetchDidFailWith(_ error: Error)
 }
