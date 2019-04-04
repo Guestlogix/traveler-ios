@@ -8,10 +8,10 @@
 
 import Foundation
 
-/// The different errors that can occure when instantiating an `Answer`
+/// The different errors that can occur when instantiating an `Answer`
 public enum AnswerError: Error {
     /**
-     The `Answer` was unacceptable. Occures when the `Answer` is of a wrong type,
+     The `Answer` was unacceptable. Occurs when the `Answer` is of a wrong type,
      or in the case of a `MultipleChoiceSelection`, the selected choice was not
      in the original `Question`
      */
@@ -61,7 +61,7 @@ public struct MultipleChoiceSelection: Answer {
     }
 }
 
-/// `Answer` to a sting type `Question`
+/// `Answer` to a string type `Question`
 public struct TextualAnswer: Answer {
     /// The string used as an answer to the `Question`
     public let value: String
@@ -117,7 +117,7 @@ public struct QuantityAnswer: Answer {
      - Throws: `AnswerError.unacceptable` if the question is not a quantity type
         or if the number is less than 0
 
-     - Returns: A `QuantityAnswer` represnting an `Answer` to the quantity type question
+     - Returns: A `QuantityAnswer` representing an `Answer` to the quantity type question
      */
     public init(_ value: Int, question: Question) throws {
         switch question.type {

@@ -162,7 +162,7 @@ public class Traveler {
      This method stores the identity of the traveler internally. Once this identity is set,
      all subsequent calls to the this facade will be tracked under this traveler's identity.
 
-     - Paramters:
+     - Parameters:
         - identifier: A unique string that you recieve from your own backend after it retrieves
             it using the partner API. Passing `nil` will clear the traveler identity from the SDK.
         - attributes: A `Dictionary<String, Any?>` of custom traveler attributes to keep for records.
@@ -175,7 +175,7 @@ public class Traveler {
     /**
      Performs a flight search for the given query.
 
-     - Paratemeters:
+     - Parameters:
         - query: A `FlightQuery` to search for.
         - delegate: The `FlightSearchDelegate` that is notified of the results
      */
@@ -194,7 +194,7 @@ public class Traveler {
      Performs a flight search for the given query.
 
      - Parameters:
-        - query: A `FligthQuery` to search for.
+        - query: A `FlightQuery` to search for.
         - completion: A completion block that is called when search is finished.
     */
 
@@ -263,9 +263,9 @@ public class Traveler {
     }
 
     /**
-     Fetches the `Pass`es associatd with a given a `Product` for a given `Availability` and `BookingOption`.
+     Fetches the `Pass`es associated with a given `Product` for a given `Availability` and `BookingOption`.
 
-     - Paramaters:
+     - Parameters:
         - product: The `Product` for which to fetch the passes for.
         - availability: The `Availability` for that Product to fetch the passes for.
         - option: An optional `BookingOption` to fetch passes for.
@@ -277,9 +277,9 @@ public class Traveler {
     }
 
     /**
-     Fetches the `Pass`es associatd with a given a `Product` for a given `Availability` and `BookingOption`.
+     Fetches the `Pass`es associated with a given `Product` for a given `Availability` and `BookingOption`.
 
-     - Paramaters:
+     - Parameters:
         - product: The `Product` for which to fetch the passes for.
         - availability: The `Availability` for that Product to fetch the passes for.
         - option: An optional `BookingOption` to fetch passes for.

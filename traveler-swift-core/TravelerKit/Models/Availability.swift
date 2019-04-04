@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represent a date for which there is availability (in the context of a bookabke producy)
+/// Represent a date for which there is availability (in the context of a bookable product)
 public struct Availability: Decodable {
     let id: String
     /// The available date

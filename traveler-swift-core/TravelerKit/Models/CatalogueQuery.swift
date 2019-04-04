@@ -9,14 +9,14 @@
 import Foundation
 
 /**
- This type is used to accurately retreive a `Catalog` that interests the user
+ This type is used to accurately retrieve a `Catalog` that interests the user
  */
 public struct CatalogQuery {
     /// Array of `Flight`s to better form a `Catalog`
     public var flights: [Flight]?
 
     /**
-     Intializes a `CatalogQuery`
+     Initializes a `CatalogQuery`
 
      - Parameters:
      - flights: An optional `Array<Flight>`

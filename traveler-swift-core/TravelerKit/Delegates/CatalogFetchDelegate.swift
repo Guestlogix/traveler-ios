@@ -18,11 +18,11 @@ public protocol CatalogFetchDelegate: class {
      */
     func catalogFetchDidSucceedWith(_ result: Catalog)
     /**
-     Called when there was as error fetching the catalog
+     Called when there was an error fetching the catalog
 
      - Parameters:
      - error: The `Error` representing the reason for failure. No specific errors
-        to look for here. Best coarse of action is to just display a generic error
+        to look for here. Best course of action is to just display a generic error
         message.
      */
     func catalogFetchDidFailWith(_ error: Error)

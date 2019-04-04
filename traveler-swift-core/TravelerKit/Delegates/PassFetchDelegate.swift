@@ -18,11 +18,11 @@ public protocol PassFetchDelegate: class {
      */
     func passFetchDidSucceedWith(_ result: [Pass])
     /**
-     Called when there was as error fetching the passes
+     Called when there was an error fetching the passes
 
      - Parameters:
      - error: The `Error` representing the reason for failure. No specific errors
-     to look for here. Best coarse of action is to just display a generic error
+     to look for here. Best course of action is to just display a generic error
      message.
      */
     func passFetchDidFailWith(_ error: Error)
