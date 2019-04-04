@@ -8,7 +8,22 @@
 
 import Foundation
 
+/// Notified of order creation results
 public protocol OrderCreateDelegate: class {
+    /**
+     Called when the `Order` was created successfully
+
+     - Parameters:
+     - order: Created `Order`
+     */
     func orderCreationDidSucceed(_ order: Order)
+    /**
+     Called when there was as error creating the order
+
+     - Parameters:
+     - error: The `Error` representing the reason for failure. No specific errors
+     to look for here. Best coarse of action is to just display a generic error
+     message.
+     */
     func orderCreationDidFail(_ error: Error)
 }
