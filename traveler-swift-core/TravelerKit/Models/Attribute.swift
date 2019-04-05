@@ -15,7 +15,14 @@ public struct Attribute: Decodable {
     /// Value
     public let value: String
 
-    init(label: String, value: String) {
+    /**
+     Initializes a new Attribute
+
+     - Parameters:
+     - label: The label for the attribute
+     - value: The value of the attribute
+     */
+    public init(label: String, value: String) {
         self.label = label
         self.value = value
     }
