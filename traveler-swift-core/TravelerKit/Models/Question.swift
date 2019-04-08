@@ -28,6 +28,8 @@ public struct Question: Decodable, Equatable {
     public enum `Type` {
         /// Integer
         case quantity
+        /// Date 
+        case date
         /// Textual
         case string
         /// Multiple choice
@@ -85,8 +87,9 @@ public struct Question: Decodable, Equatable {
         let type = try container.decode(String.self, forKey: .type)
 
         switch type {
-        //TODO: Create Date type and map it to the proper UI
         case "Date":
+            self.type = .date
+        case "Quantity":
             self.type = .string
         case "Quantity":
             self.type = .quantity

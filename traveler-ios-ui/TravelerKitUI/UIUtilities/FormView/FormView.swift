@@ -49,6 +49,7 @@ public class FormView: UIView {
     public weak var delegate: FormViewDelegate?
 
     private weak var collectionView: UICollectionView!
+    private var datePickerIndexPath: IndexPath?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -74,7 +75,10 @@ public class FormView: UIView {
             collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor)
             ])
 
+        collectionView.register(UINib(nibName: "FormDateInputCell", bundle: bundle), forCellWithReuseIdentifier: datePickerCellIdentifier)
+
         register(UINib(nibName: "FormQuantityCell", bundle: bundle), forInputWithType: .quantity)
+        register(UINib(nibName: "FormValueDisplayInputCell", bundle: bundle), forInputWithType: .date)
         register(UINib(nibName: "FormStringCell", bundle: bundle), forInputWithType: .string)
         register(UINib(nibName: "FormListCell", bundle: bundle), forInputWithType: .list)
         register(UINib(nibName: "FormButtonCell", bundle: bundle), forInputWithType: .button(nil))
@@ -94,11 +98,23 @@ public class FormView: UIView {
     }
 
     public func scrollToField(at indexPath: IndexPath, animated: Bool) {
-        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: animated)
+        collectionView.scrollToItem(at: formAdjustIndexPath(indexPath), at: .bottom, animated: animated)
     }
 
     public func reloadFields(at indexPaths: [IndexPath]) {
-        collectionView.reloadItems(at: indexPaths)
+        collectionView.reloadItems(at: indexPaths.map(formAdjustIndexPath))
+    }
+
+    // MARK: Helper methods
+
+    private func dataSourceAdjustedIndexPath(_ indexPath: IndexPath) -> IndexPath {
+        let needsAdjustment = datePickerIndexPath?.section == indexPath.section && indexPath.item > datePickerIndexPath!.item
+        return needsAdjustment ? IndexPath(item: indexPath.item - 1, section: indexPath.section) : indexPath
+    }
+
+    private func formAdjustIndexPath(_ indexPath: IndexPath) -> IndexPath {
+        let needsAdjustment = datePickerIndexPath?.section == indexPath.section && indexPath.item >= datePickerIndexPath!.item
+        return needsAdjustment ? IndexPath(item: indexPath.item + 1, section: indexPath.section) : indexPath
     }
 }
 
@@ -108,11 +124,23 @@ extension FormView: UICollectionViewDataSource {
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource!.formView(self, numberOfFieldsIn: section)
+        let count = dataSource!.formView(self, numberOfFieldsIn: section)
+        return datePickerIndexPath?.section == section ? count + 1 : count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let descriptor = dataSource!.formView(self, inputDescriptorForFieldAt: indexPath)
+        guard indexPath != datePickerIndexPath else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: datePickerCellIdentifier, for: indexPath) as! FormDateInputCell
+            let valueCellIndexPath = IndexPath(item: indexPath.row - 1, section: indexPath.section)
+            cell.delegate = self
+            cell.datePicker.minimumDate = nil // TODO
+            cell.datePicker.maximumDate = nil // TODO
+            cell.datePicker.date = dataSource?.formView(self, valueForInputAt: valueCellIndexPath) as? Date ?? Date()
+            return cell
+        }
+
+        let adjustedIndexPath = dataSourceAdjustedIndexPath(indexPath)
+        let descriptor = dataSource!.formView(self, inputDescriptorForFieldAt: adjustedIndexPath)
 
         switch descriptor.type {
         case .quantity:
@@ -123,29 +151,41 @@ extension FormView: UICollectionViewDataSource {
             cell.stepper.maximumValue = 999
             cell.delegate = self
             return cell
+        case .date:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormValueDisplayInputCell
+
+            if let value = dataSource!.formView(self, valueForInputAt: adjustedIndexPath) as? Date {
+                cell.valueLabel.text = DateFormatter.shortFormatter.string(from: value)
+                cell.valueLabel.textColor = .black
+            } else {
+                cell.valueLabel.text = descriptor.label
+                cell.valueLabel.textColor = UIColor(red: 0, green: 0, blue: 0.0980392, alpha: 0.22)
+            }
+
+            return cell
         case .string:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: indexPath) as! FormStringInputCell
-            cell.textField.text = dataSource!.formView(self, valueForInputAt: indexPath) as? String
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormStringInputCell
+            cell.textField.text = dataSource!.formView(self, valueForInputAt: adjustedIndexPath) as? String
             cell.textField.placeholder = descriptor.label
             cell.delegate = self
             return cell
         case .list:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: indexPath) as! FormListInputCell
-            let selectedIndex = dataSource?.formView(self, valueForInputAt: indexPath) as? Int
-            cell.textField.text = selectedIndex.flatMap({ dataSource!.formView(self, titleForOption: $0, at: indexPath) })
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormListInputCell
+            let selectedIndex = dataSource?.formView(self, valueForInputAt: adjustedIndexPath) as? Int
+            cell.textField.text = selectedIndex.flatMap({ dataSource!.formView(self, titleForOption: $0, at: adjustedIndexPath) })
             cell.textField.placeholder = descriptor.label
             cell.delegate = self
             cell.items = []
 
-            let totalItems = dataSource?.formView(self, numberOfOptionsForInputAt: indexPath) ?? 0
+            let totalItems = dataSource?.formView(self, numberOfOptionsForInputAt: adjustedIndexPath) ?? 0
             for i in 0..<totalItems {
-                cell.items.append(dataSource?.formView(self, titleForOption: i, at: indexPath))
+                cell.items.append(dataSource?.formView(self, titleForOption: i, at: adjustedIndexPath))
             }
 
             cell.reload()
             return cell
         case .button(let title):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: indexPath) as! FormButtonCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormButtonCell
             cell.button.setTitle(title, for: .normal)
             cell.delegate = self
             return cell
@@ -155,7 +195,11 @@ extension FormView: UICollectionViewDataSource {
 
 extension FormView: UICollectionViewDelegateFormLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return delegate?.formView(self, sizeForInputFieldAt: indexPath) ?? .zero
+        guard indexPath != datePickerIndexPath else {
+            return CGSize(width: collectionView.bounds.width, height: 162)
+        }
+
+        return delegate?.formView(self, sizeForInputFieldAt: dataSourceAdjustedIndexPath(indexPath)) ?? .zero
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -169,7 +213,7 @@ extension FormView: UICollectionViewDelegateFormLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterAt indexPath: IndexPath) -> CGSize {
-        guard let message = delegate?.formView(self, messageForFieldAt: indexPath) else {
+        guard let message = delegate?.formView(self, messageForFieldAt: dataSourceAdjustedIndexPath(indexPath)) else {
             return .zero
         }
 
@@ -185,7 +229,7 @@ extension FormView: UICollectionViewDelegateFormLayout {
             return view
         case elementKindFieldFooter:
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: errorFooterIdentifier, for: indexPath) as! FormFieldFooterView
-            let message = delegate?.formView(self, messageForFieldAt: indexPath)
+            let message = delegate?.formView(self, messageForFieldAt: dataSourceAdjustedIndexPath(indexPath))
             view.label.text = message?.text
             view.label.textColor = message?.color
             view.label.textAlignment = message?.textAlignment ?? .left
@@ -193,6 +237,64 @@ extension FormView: UICollectionViewDelegateFormLayout {
         default:
             fatalError("Unknown suppplementary element kind: \(kind)")
         }
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let _ = collectionView.cellForItem(at: indexPath) as? FormValueDisplayInputCell else {
+            return
+        }
+
+        UIView.setAnimationsEnabled(false)
+
+        switch datePickerIndexPath {
+        /// The picker is open and right underneath the selected cell
+        case .some(let currentDateIndexPath) where currentDateIndexPath.section == indexPath.section && currentDateIndexPath.item == indexPath.item + 1:
+            self.datePickerIndexPath = nil
+            collectionView.deleteItems(at: [currentDateIndexPath])
+
+        /// The picker is open and above the selected cell
+        case .some(let currentDateIndexPath) where currentDateIndexPath.section == indexPath.section && indexPath.item > currentDateIndexPath.item:
+            collectionView.performBatchUpdates({
+                let datePickerIndexPath = indexPath
+                self.datePickerIndexPath = datePickerIndexPath
+
+                collectionView.deleteItems(at: [currentDateIndexPath])
+                collectionView.insertItems(at: [datePickerIndexPath])
+            }, completion: nil)
+
+        /// The picker is open and is either in a different section or after the selected cell
+        case .some(let currentDateIndexPath):
+            collectionView.performBatchUpdates({
+                let datePickerIndexPath = IndexPath(item: indexPath.item + 1, section: indexPath.section)
+                self.datePickerIndexPath = datePickerIndexPath
+
+                collectionView.deleteItems(at: [currentDateIndexPath])
+                collectionView.insertItems(at: [datePickerIndexPath])
+
+            }, completion: nil)
+
+        /// The picker is not open
+        case .none:
+            let datePickerIndexPath = IndexPath(item: indexPath.item + 1, section: indexPath.section)
+            self.datePickerIndexPath = datePickerIndexPath
+            collectionView.insertItems(at: [datePickerIndexPath])
+        }
+
+        UIView.setAnimationsEnabled(true)
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+}
+
+extension FormView: DateInputCellDelegate {
+    func dateInputCellValueDidChange(_ cell: FormDateInputCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
+
+        let valueIndexPath = IndexPath(item: indexPath.item - 1, section: indexPath.section)
+        delegate?.formView(self, didChangeValue: cell.datePicker.date, forInputFieldAt: valueIndexPath)
+
+        collectionView.reloadItems(at: [valueIndexPath])
     }
 }
 
@@ -212,7 +314,7 @@ extension FormView: StringInputCellDelegate {
             return
         }
 
-        delegate?.formView(self, didChangeValue: cell.textField.text, forInputFieldAt: indexPath)
+        delegate?.formView(self, didChangeValue: cell.textField.text, forInputFieldAt: dataSourceAdjustedIndexPath(indexPath))
     }
 }
 
@@ -222,7 +324,7 @@ extension FormView: ListInputCellDelegate {
             return
         }
 
-        delegate?.formView(self, didChangeValue: option, forInputFieldAt: indexPath)
+        delegate?.formView(self, didChangeValue: option, forInputFieldAt: dataSourceAdjustedIndexPath(indexPath))
     }
 }
 
@@ -232,7 +334,7 @@ extension FormView: FormButtonCellDelegate {
             return
         }
 
-        delegate?.formView(self, didPressButtonAt: indexPath)
+        delegate?.formView(self, didPressButtonAt: dataSourceAdjustedIndexPath(indexPath))
     }
 }
 
