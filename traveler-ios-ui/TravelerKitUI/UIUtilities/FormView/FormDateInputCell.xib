@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="B5O-hs-QsU" customClass="FormDateInputCell" customModule="TravelerKitUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="344" height="204"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="344" height="204"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="u6L-8C-qAp">
+                        <rect key="frame" x="0.0" y="0.0" width="344" height="204"/>
+                        <date key="date" timeIntervalSinceReferenceDate="575389520.79794502">
+                            <!--2019-03-27 14:25:20 +0000-->
+                        </date>
+                        <connections>
+                            <action selector="dateValueChanged:" destination="B5O-hs-QsU" eventType="valueChanged" id="qDG-6V-Ms6"/>
+                        </connections>
+                    </datePicker>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="u6L-8C-qAp" secondAttribute="trailing" id="06w-fy-55h"/>
+                <constraint firstAttribute="bottom" secondItem="u6L-8C-qAp" secondAttribute="bottom" id="MC9-i6-bpx"/>
+                <constraint firstItem="u6L-8C-qAp" firstAttribute="top" secondItem="B5O-hs-QsU" secondAttribute="top" id="TUw-8r-OeA"/>
+                <constraint firstItem="u6L-8C-qAp" firstAttribute="leading" secondItem="B5O-hs-QsU" secondAttribute="leading" id="ybE-7F-j19"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="iYG-al-jEG"/>
+            <size key="customSize" width="344" height="204"/>
+            <connections>
+                <outlet property="datePicker" destination="u6L-8C-qAp" id="1zt-AJ-8GX"/>
+            </connections>
+            <point key="canvasLocation" x="28.800000000000001" y="77.361319340329842"/>
+        </collectionViewCell>
+    </objects>
+</document>
