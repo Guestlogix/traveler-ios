@@ -89,6 +89,10 @@
 		F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */; };
 		F3A3E06A224D449A00CD69F4 /* FormQuantityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */; };
 		F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */; };
+		F3A3E062224BB84100CD69F4 /* FormValueDisplayInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E061224BB84100CD69F4 /* FormValueDisplayInputCell.swift */; };
+		F3A3E064224BB85E00CD69F4 /* FormValueDisplayInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E063224BB85E00CD69F4 /* FormValueDisplayInputCell.xib */; };
+		F3A3E066224BBEF700CD69F4 /* FormDateInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E065224BBEF700CD69F4 /* FormDateInputCell.swift */; };
+		F3A3E068224BBF2400CD69F4 /* FormDateInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E067224BBF2400CD69F4 /* FormDateInputCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +180,10 @@
 		F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselItemViewCell.xib; sourceTree = "<group>"; };
 		F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuantityCell.swift; sourceTree = "<group>"; };
 		F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuantityCell.xib; sourceTree = "<group>"; };
+		F3A3E061224BB84100CD69F4 /* FormValueDisplayInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValueDisplayInputCell.swift; sourceTree = "<group>"; };
+		F3A3E063224BB85E00CD69F4 /* FormValueDisplayInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormValueDisplayInputCell.xib; sourceTree = "<group>"; };
+		F3A3E065224BBEF700CD69F4 /* FormDateInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDateInputCell.swift; sourceTree = "<group>"; };
+		F3A3E067224BBF2400CD69F4 /* FormDateInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormDateInputCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +343,10 @@
 				F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */,
 				A9639CDE220DF57400625235 /* FormLayout.swift */,
 				A9639CDF220DF57400625235 /* FormButtonCell.swift */,
+				F3A3E063224BB85E00CD69F4 /* FormValueDisplayInputCell.xib */,
+				F3A3E061224BB84100CD69F4 /* FormValueDisplayInputCell.swift */,
+				F3A3E067224BBF2400CD69F4 /* FormDateInputCell.xib */,
+				F3A3E065224BBEF700CD69F4 /* FormDateInputCell.swift */,
 				A9639CE0220DF57400625235 /* FormView.swift */,
 				A9639CE1220DF57400625235 /* InputDescriptor.swift */,
 				A9639CE2220DF57400625235 /* InputType.swift */,
@@ -437,10 +449,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */,
+				F3A3E064224BB85E00CD69F4 /* FormValueDisplayInputCell.xib in Resources */,
 				A9639D1D220DF57400625235 /* FormStringCell.xib in Resources */,
 				A9639D14220DF57400625235 /* CarouselItemViewCell.xib in Resources */,
 				A9639D19220DF57400625235 /* FormListCell.xib in Resources */,
 				A9639D1E220DF57400625235 /* FormHeaderView.xib in Resources */,
+				F3A3E068224BBF2400CD69F4 /* FormDateInputCell.xib in Resources */,
 				A9639D0F220DF57400625235 /* CarouselViewCell.xib in Resources */,
 				A9639D18220DF57400625235 /* FormFieldFooterView.xib in Resources */,
 				F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */,
@@ -472,6 +486,7 @@
 				A9639CFA220DF57400625235 /* BookableDetailsViewController.swift in Sources */,
 				A9639CFE220DF57400625235 /* CatalogResultViewController.swift in Sources */,
 				A9639D0C220DF57400625235 /* HeaderView.swift in Sources */,
+				F3A3E062224BB84100CD69F4 /* FormValueDisplayInputCell.swift in Sources */,
 				A9639D1B220DF57400625235 /* FormListInputCell.swift in Sources */,
 				A9639D2C220DF57400625235 /* DrawerPresentationAnimator.swift in Sources */,
 				F3A3E06A224D449A00CD69F4 /* FormQuantityCell.swift in Sources */,
@@ -482,6 +497,7 @@
 				A9639D10220DF57400625235 /* CatalogView.swift in Sources */,
 				A9639CFB220DF57400625235 /* ReceiptViewController.swift in Sources */,
 				A9639D01220DF57400625235 /* CatalogItemResultViewController.swift in Sources */,
+				F3A3E066224BBEF700CD69F4 /* FormDateInputCell.swift in Sources */,
 				A9639D25220DF57400625235 /* InputType.swift in Sources */,
 				A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */,
 				A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */,

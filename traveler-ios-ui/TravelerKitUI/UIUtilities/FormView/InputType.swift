@@ -10,12 +10,14 @@ import Foundation
 
 public enum InputType {
     case quantity
+    case date
     case string
     case list
     case button(String?)
 }
 
 let formQuantityCellIdentifier = "formQuantityCellIdentifier"
+let formValueDisplayInputCellIdentifier = "formValueDisplayInputCellIdentifier"
 let formStringCellIdentifier = "formStringCellIdentifier"
 let formListCellIdentifier = "formListCellIdentifier"
 let buttonCellIdentifier = "buttonCellIdentifier"
@@ -25,6 +27,8 @@ extension InputType {
         switch self {
         case .quantity:
             return formQuantityCellIdentifier
+        case .date:
+            return formValueDisplayInputCellIdentifier
         case .string:
             return formStringCellIdentifier
         case .list:

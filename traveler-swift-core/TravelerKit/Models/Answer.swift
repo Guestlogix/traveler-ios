@@ -93,7 +93,25 @@ public struct TextualAnswer: Answer {
 
         self.questionId = question.id
     }
+}
 
+public struct DateAnswer: Answer {
+    public let value: Date
+    public let questionId: String
+    public var codedValue: String {
+        return DateFormatter.dateOnlyFormatter.string(from: value)
+    }
+
+    public init(_ value: Date, question: Question) throws {
+        switch question.type {
+        case .date:
+            self.value = value
+        default:
+            throw AnswerError.unacceptable
+        }
+
+        self.questionId = question.id
+    }
 }
 
 /// `Answer` to a quantity type `Question`
