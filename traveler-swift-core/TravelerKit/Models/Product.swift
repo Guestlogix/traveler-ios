@@ -12,13 +12,7 @@ import Foundation
 public protocol Product {
     /// Identifier
     var id: String { get }
-<<<<<<< HEAD
-    /// Price
-    //var price: Double { get }
-    /// Name
-=======
     var price: Price { get }
->>>>>>> Uses price model and modifies to use currency symbol from price model
     var title: String { get }
 }
 

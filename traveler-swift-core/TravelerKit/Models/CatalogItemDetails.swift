@@ -28,13 +28,8 @@ public struct CatalogItemDetails: Decodable, Product {
     public let priceStartingAt: Price
     /// Strategy for purchasing the item
     public let purchaseStrategy: PurchaseStrategy
-<<<<<<< HEAD
     /// Starting price
-    public var price: Double {
-=======
-
     public var price: Price {
->>>>>>> Uses price model and modifies to use currency symbol from price model
         // TODO: Convert currency
         return priceStartingAt
     }

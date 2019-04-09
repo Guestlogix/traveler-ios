@@ -37,8 +37,6 @@ public struct Pass: Decodable, Hashable {
         case price = "price"
     }
 }
-<<<<<<< HEAD
-=======
 
 extension Array where Element == Pass {
     public var defaultPassQuantities: [Pass: Int] {
@@ -52,15 +50,20 @@ extension Array where Element == Pass {
 
 extension Dictionary where Key == Pass, Value == Int {
     public var subTotalDescription: String? {
+        guard let currency = first?.key.price.currency else {
+            return nil
+        }
+
         var value: Double = 0
-        var currency: String = "USD"
 
         for (pass, quantity) in self {
             value += (Double(quantity) * pass.price.value)
-            currency = pass.price.currency
+
+            if pass.price.currency != currency {
+                return nil
+            }
         }
 
         return Price(value: value, currency: currency).localizedDescription
     }
 }
->>>>>>> Uses price model and modifies to use currency symbol from price model
