@@ -17,5 +17,5 @@ s3cmd put --delete-removed --recursive --acl-public ./docs/ $s3Bucket --region=$
 cd ..
 
 # Publish CocoaPods
-pod trunk push TravelerKit.podspec --allow-warnings
+#pod trunk push TravelerKit.podspec --allow-warnings
 
