@@ -72,6 +72,8 @@ extension BookingQuestionsViewController: FormViewDataSource {
         let answer = try? bookingForm!.answer(for: question)
 
         switch answer {
+        case .some(let date as DateAnswer):
+            return date.value
         case .some(let quantity as QuantityAnswer):
             return quantity.value
         case .some(let selection as MultipleChoiceSelection):
@@ -127,6 +129,8 @@ extension BookingQuestionsViewController: FormViewDelegate {
         let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
 
         switch (question.type, value) {
+        case (.date, let value as Date):
+            try? bookingForm!.addAnswer(DateAnswer(value, question: question))
         case (.quantity, let value as Int):
             try? bookingForm!.addAnswer(QuantityAnswer(value, question: question))
         case (.string, let value as String):
@@ -185,6 +189,8 @@ extension InputDescriptor {
 extension Question.`Type` {
     var inputType: InputType {
         switch self {
+        case .date:
+            return .date
         case .quantity:
             return .quantity
         case .string:
