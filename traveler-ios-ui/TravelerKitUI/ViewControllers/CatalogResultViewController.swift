@@ -21,8 +21,6 @@ open class CatalogResultViewController: CatalogViewController {
         catalogView.register(UINib(nibName: "FeaturedCarouselViewCell", bundle: Bundle(for: CatalogResultViewController.self)), forGroupWithIdentifier: featuredIdentifier)
     }
 
-    @IBInspectable open var maxNumberOfItemsInGroup: Int = 5
-
     // MARK: CatalogViewDataSource
 
     open override func numberOfGroups(in catalogView: CatalogView) -> Int {
@@ -30,7 +28,7 @@ open class CatalogResultViewController: CatalogViewController {
     }
 
     open override func catalogView(_ catalogView: CatalogView, numberOfItemsIn group: Int) -> Int {
-        return min(catalog!.groups[group].items.count, maxNumberOfItemsInGroup)
+        return catalog!.groups[group].items.count
     }
 
     open override func catalogView(_ catalogView: CatalogView, configure itemCell: CarouselItemViewCell, at indexPath: IndexPath) {
@@ -48,10 +46,6 @@ open class CatalogResultViewController: CatalogViewController {
 
     open override func catalogView(_ catalogView: CatalogView, titleForHeaderIn group: Int) -> String? {
         return catalog!.groups[group].title
-    }
-
-    open override func catalogView(_ catalogView: CatalogView, titleForAccessoryButtonIn group: Int) -> String? {
-        return catalog!.groups[group].items.count > maxNumberOfItemsInGroup ? "See All" : nil
     }
     
     open override func catalogView(_ catalogView: CatalogView, identifierFor group: Int) -> String {
