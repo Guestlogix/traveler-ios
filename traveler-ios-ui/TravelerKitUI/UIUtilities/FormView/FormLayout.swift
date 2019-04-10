@@ -121,4 +121,17 @@ class FormLayout: UICollectionViewLayout {
             return nil
         }
     }
+
+    override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath)
+        attributes?.alpha = 1.0
+        return attributes
+    }
+
+    override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath)
+        attributes?.transform = attributes!.transform.scaledBy(x: 0, y: 0.1)
+        attributes?.alpha = 1.0
+        return attributes
+    }
 }
