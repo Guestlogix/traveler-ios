@@ -136,6 +136,7 @@ extension FormView: UICollectionViewDataSource {
             cell.datePicker.minimumDate = nil // TODO
             cell.datePicker.maximumDate = nil // TODO
             cell.datePicker.date = dataSource?.formView(self, valueForInputAt: valueCellIndexPath) as? Date ?? Date()
+            cell.backgroundColor = .white
             return cell
         }
 
@@ -244,8 +245,6 @@ extension FormView: UICollectionViewDelegateFormLayout {
             return
         }
 
-        UIView.setAnimationsEnabled(false)
-
         switch datePickerIndexPath {
         /// The picker is open and right underneath the selected cell
         case .some(let currentDateIndexPath) where currentDateIndexPath.section == indexPath.section && currentDateIndexPath.item == indexPath.item + 1:
@@ -280,7 +279,6 @@ extension FormView: UICollectionViewDelegateFormLayout {
             collectionView.insertItems(at: [datePickerIndexPath])
         }
 
-        UIView.setAnimationsEnabled(true)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
