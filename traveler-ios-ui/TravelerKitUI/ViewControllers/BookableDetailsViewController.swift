@@ -98,8 +98,18 @@ class BookableDetailsViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! ListCell
             cell.delegate = self
             cell.dataSource = self
-            cell.textField.text = bookingContext?.selectedOption?.value
+            //cell.textField.text = bookingContext?.selectedOption?.value
+            cell.textField.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
             cell.titleLabel.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
+
+            switch (errorContext?.error) {
+            case .some(BookingError.noOption):
+                cell.textField.text = "Please Select"
+                cell.textField.textColor = UIColor.red
+            default:
+                cell.textField.text = bookingContext?.selectedOption?.value
+            }
+
             return cell
         default:
             fatalError("Invalid indexPath")
@@ -133,10 +143,12 @@ class BookableDetailsViewController: UITableViewController {
 
             updatePreferredContentSize()
         case optionCellIndexPath:
+            errorContext?.error = nil
+            tableView.reloadRows(at: [indexPath], with: .none)
+            tableView.deselectRow(at: indexPath, animated: true)
+
             let cell = tableView.cellForRow(at: indexPath) as? ListCell
             cell?.textField.becomeFirstResponder()
-
-            tableView.deselectRow(at: indexPath, animated: true)
         default:
             break
         }
@@ -195,6 +207,7 @@ extension BookableDetailsViewController: AvailabilitiesFetchDelegate {
         }
 
         bookingContext?.selectedAvailability = availability
+        bookingContext?.selectedOption = nil
 
         tableView.reloadData()
         updatePreferredContentSize()
