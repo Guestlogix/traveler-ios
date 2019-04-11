@@ -63,6 +63,11 @@ class BookablePurchaseViewController: UIViewController {
             errorContext?.error = BookingError.noDate
             return
         }
+        
+        guard bookingContext.availableOptions == nil || bookingContext.selectedOption != nil else {
+            errorContext?.error = BookingError.noOption
+            return
+        }
 
         button.isEnabled = false
 
