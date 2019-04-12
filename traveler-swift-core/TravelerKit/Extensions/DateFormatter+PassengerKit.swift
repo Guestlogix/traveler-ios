@@ -35,7 +35,7 @@ extension DateFormatter {
         return formatter
     }()
 
-    public static var shortFormatter: DateFormatter = {
+    public static var monthTextFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
         return formatter
