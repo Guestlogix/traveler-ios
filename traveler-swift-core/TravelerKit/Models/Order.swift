@@ -36,6 +36,8 @@ public struct Order: Decodable {
     public let status: OrderStatus
     /// The date and time the order was created
     public let createdDate: Date
+    /// The email of the primary contact
+    public let email: CustomerContact
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -44,6 +46,7 @@ public struct Order: Decodable {
         case products = "products"
         case status = "status"
         case createdDate = "createdOn"
+        case email = "customer"
     }
 
     public init(from decoder: Decoder) throws {
@@ -68,5 +71,7 @@ public struct Order: Decodable {
                 return BookableProduct(id: product.id, title: product.title, passes: product.passes!)
             }
         }
+
+        self.email = try container.decode(CustomerContact.self, forKey: .email)
     }
 }
