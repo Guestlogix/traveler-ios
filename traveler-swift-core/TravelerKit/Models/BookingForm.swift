@@ -95,19 +95,4 @@ public struct BookingForm {
 
         return errors
     }
-
-    /// TEMP
-
-    public static func testForm() -> BookingForm {
-        let product = BookableProduct(id: "id", title: "Title", passes: [])
-        let questionGroup = QuestionGroup(title: "MyTestGroup", disclaimer: "This is just a test. dont worry", questions: [
-            Question(id: "1", title: "Name", type: .string),
-            Question(id: "2", title: "Date", type: .date),
-            Question(id: "3", title: "Something", type: .string),
-            Question(id: "4", title: "Other Date", type: .date)
-            ])
-        return BookingForm(product: product, passes: [], questionGroups: [questionGroup, questionGroup])
-    }
-
-    /// END TEMP
 }
