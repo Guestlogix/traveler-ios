@@ -156,7 +156,7 @@ extension FormView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormValueDisplayInputCell
 
             if let value = dataSource!.formView(self, valueForInputAt: adjustedIndexPath) as? Date {
-                cell.valueLabel.text = DateFormatter.shortFormatter.string(from: value)
+                cell.valueLabel.text = DateFormatter.monthAsTextFormatter.string(from: value)
                 cell.valueLabel.textColor = .black
             } else {
                 cell.valueLabel.text = descriptor.label
