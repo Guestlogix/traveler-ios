@@ -25,6 +25,6 @@ class ReceiptViewController: UIViewController {
         titleLabel.text = receipt?.order.products.first?.title
         dateLabel.text = receipt.flatMap { DateFormatter.longFormatter.string(from: $0.order.createdDate) }
         confirmationLabel.text = receipt?.order.referenceNumber
-        //emailLabel.text = receipt?.customerContact.email
+        emailLabel.text = receipt?.order.email.email
     }
 }
