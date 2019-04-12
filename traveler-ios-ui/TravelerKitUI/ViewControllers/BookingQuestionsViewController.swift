@@ -26,12 +26,6 @@ class BookingQuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // TEMP
-
-        bookingForm = BookingForm.testForm()
-
-        // END TEMP
-
         formView.dataSource = self
         formView.delegate = self
         formView.reloadForm()
