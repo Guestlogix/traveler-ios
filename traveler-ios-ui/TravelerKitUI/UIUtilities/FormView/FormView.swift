@@ -133,8 +133,8 @@ extension FormView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: datePickerCellIdentifier, for: indexPath) as! FormDateInputCell
             let valueCellIndexPath = IndexPath(item: indexPath.row - 1, section: indexPath.section)
             cell.delegate = self
-            cell.datePicker.minimumDate = nil // TODO
-            cell.datePicker.maximumDate = nil // TODO
+            cell.datePicker.minimumDate = nil // TODO: Wait for API to implement then add to the models
+            cell.datePicker.maximumDate = nil // TODO: Wait for API to implement then add to the models
             cell.datePicker.date = dataSource?.formView(self, valueForInputAt: valueCellIndexPath) as? Date ?? Date()
             cell.backgroundColor = .white
             return cell
