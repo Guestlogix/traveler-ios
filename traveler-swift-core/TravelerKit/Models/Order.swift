@@ -13,9 +13,13 @@ public enum OrderStatus: String, Decodable {
     /// The `Order` is being processed
     case pending = "Pending"
     /// The `Order` has been successfully processed
-    case processed = "Processed"
-    /// The `Order` has been successfully confirmed
     case confirmed = "Confirmed"
+    /// Payment failed
+    case declined = "Declined"
+    /// Traveler asked for a cancellation and the `Order` is under review
+    case underReview = "UnderReview"
+    /// `Order` is cancelled
+    case cancelled = "Cancelled"
 }
 
 /// Holds information about an order
@@ -47,7 +51,7 @@ public struct Order: Decodable {
 
         self.id = try container.decode(String.self, forKey: .id)
         self.total = try container.decode(Price.self, forKey: .total)
-        self.referenceNumber = try container.decode(String?.self, forKey: .referenceNumber) ?? nil // TODO: Double check whether referenceNumber can actually be false when Alex returns
+        self.referenceNumber = try container.decode(String?.self, forKey: .referenceNumber) ?? nil
         self.status = try container.decode(OrderStatus.self, forKey: .status)
 
         let dateString = try container.decode(String.self, forKey: .createdDate)
