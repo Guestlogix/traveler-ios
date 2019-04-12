@@ -11,9 +11,11 @@ import Foundation
 /// Represents the different statuses an `Order` can have
 public enum OrderStatus: String, Decodable {
     /// The `Order` is being processed
-    case pending = "pending"
+    case pending = "Pending"
     /// The `Order` has been successfully processed
-    case processed = "processed"
+    case processed = "Processed"
+    /// The `Order` has been successfully confirmed
+    case confirmed = "Confirmed"
 }
 
 /// Holds information about an order
@@ -23,7 +25,7 @@ public struct Order: Decodable {
     /// Total amount
     public let total: Price
     /// Order number for confirmation purposes
-    public let orderNumber: String
+    public let referenceNumber: String?
     /// The `Product`s that were included in the order
     public let products: [Product]
     /// The current status
@@ -34,10 +36,10 @@ public struct Order: Decodable {
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case total = "amount"
-        case orderNumber = "orderNumber"
+        case referenceNumber = "referenceNumber"
         case products = "products"
         case status = "status"
-        case createdDate = "createdAt"
+        case createdDate = "createdOn"
     }
 
     public init(from decoder: Decoder) throws {
@@ -45,7 +47,7 @@ public struct Order: Decodable {
 
         self.id = try container.decode(String.self, forKey: .id)
         self.total = try container.decode(Price.self, forKey: .total)
-        self.orderNumber = try container.decode(String.self, forKey: .orderNumber)
+        self.referenceNumber = try container.decode(String?.self, forKey: .referenceNumber) ?? nil // TODO: Double check whether referenceNumber can actually be false when Alex returns
         self.status = try container.decode(OrderStatus.self, forKey: .status)
 
         let dateString = try container.decode(String.self, forKey: .createdDate)
