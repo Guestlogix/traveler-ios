@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="toC-Xe-BM1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="toC-Xe-BM1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1257,7 +1257,11 @@
                         <viewLayoutGuide key="safeArea" id="nGT-53-WZ3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Review your order" id="DeQ-AW-yVe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="2sw-9N-k80"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="2sw-9N-k80">
+                            <connections>
+                                <segue destination="eW2-et-f5b" kind="unwind" unwindAction="unwindToMainViewController:" id="ggg-l1-HPo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="660"/>
@@ -1267,6 +1271,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhI-lq-Xeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eW2-et-f5b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="8605.7971014492759" y="1564.9553571428571"/>
         </scene>
@@ -1442,6 +1447,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8o-9i-P9O">
+                                <rect key="frame" x="31" y="598" width="352" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Home"/>
+                                <connections>
+                                    <segue destination="F4O-UN-cXT" kind="unwind" unwindAction="unwindToMainViewController:" id="NIU-fV-nS3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1451,6 +1464,9 @@
                             <constraint firstItem="1Wb-2h-2s9" firstAttribute="trailing" secondItem="npG-pf-8MP" secondAttribute="trailing" constant="16" id="AZ9-9C-5Vx"/>
                             <constraint firstItem="iUH-kh-d9S" firstAttribute="top" secondItem="jJC-7j-qLB" secondAttribute="bottom" constant="16" id="BK2-vd-l3g"/>
                             <constraint firstItem="ILa-g2-vUx" firstAttribute="top" secondItem="the-NH-CHb" secondAttribute="bottom" constant="10" id="GyD-tR-TMd"/>
+                            <constraint firstItem="1Wb-2h-2s9" firstAttribute="trailing" secondItem="T8o-9i-P9O" secondAttribute="trailing" constant="31" id="Iwz-1U-g6U"/>
+                            <constraint firstItem="1Wb-2h-2s9" firstAttribute="bottom" secondItem="T8o-9i-P9O" secondAttribute="bottom" constant="29" id="Jh0-Lr-pjx"/>
+                            <constraint firstItem="T8o-9i-P9O" firstAttribute="leading" secondItem="1Wb-2h-2s9" secondAttribute="leading" constant="31" id="Uc5-es-9th"/>
                             <constraint firstItem="1Wb-2h-2s9" firstAttribute="trailing" secondItem="the-NH-CHb" secondAttribute="trailing" constant="16" id="ZJP-Nb-I2O"/>
                             <constraint firstItem="npG-pf-8MP" firstAttribute="top" secondItem="iUH-kh-d9S" secondAttribute="bottom" constant="8" id="ag4-Dh-Hfd"/>
                             <constraint firstItem="jJC-7j-qLB" firstAttribute="top" secondItem="ZP9-Nk-D4B" secondAttribute="bottom" constant="8" id="ayr-bf-eOz"/>
@@ -1466,7 +1482,6 @@
                         <viewLayoutGuide key="safeArea" id="1Wb-2h-2s9"/>
                     </view>
                     <navigationItem key="navigationItem" title="Order confirmed" id="hjX-Q9-Yaa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="cDB-Yk-iQG"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="hidesBackButton" value="YES"/>
                         </userDefinedRuntimeAttributes>
@@ -1480,6 +1495,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gge-bM-c6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="F4O-UN-cXT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="9741" y="1565"/>
         </scene>

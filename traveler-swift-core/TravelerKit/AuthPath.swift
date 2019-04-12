@@ -68,19 +68,21 @@ enum AuthPath {
             urlComponents.path = "/order"
             urlRequest.method = .post
             urlRequest.jsonBody = [
-                "travelerProfileId": travelerId as Any,
+                "travelerId": travelerId as Any,
+                "amount": [ // TODO: Set actual amounts when we get price from the backend
+                    "value": 0,
+                    "currency": "USD"
+                ],
                 "products": forms.map({
                     [
-                        [
-                            "id": $0.product.id,
-                            "passes": $0.passes.map({ $0.id }),
-                            "answers": $0.answers.values.map({
-                                [
-                                    "id": $0.questionId,
-                                    "value": $0.codedValue
-                                ]
-                            })
-                        ]
+                        "id": $0.product.id,
+                        "passes": $0.passes.map({ $0.id }),
+                        "answers": $0.answers.values.map({
+                            [
+                                "questionId": $0.questionId,
+                                "value": $0.codedValue
+                            ]
+                        })
                     ]
                 })
             ]
