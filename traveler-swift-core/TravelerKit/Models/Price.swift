@@ -21,6 +21,6 @@ public struct Price: Decodable {
 
     /// A convenience computed property for displaying a localized description of the amount. e.g. "$431.23"
     public var localizedDescription: String? {
-        return NumberFormatter.currency(currency: currency).string(for: value)
+        return NumberFormatter.currencyFormatter(currency).string(for: value)
     }
 }

@@ -60,6 +60,7 @@ extension Dictionary where Key == Pass, Value == Int {
             value += (Double(quantity) * pass.price.value)
 
             if pass.price.currency != currency {
+                Log("Currency does not match", data: pass.price.currency, level: .error)
                 return nil
             }
         }
