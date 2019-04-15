@@ -1423,26 +1423,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmation number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZP9-Nk-D4B">
-                                <rect key="frame" x="16" y="243.5" width="382" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmation email sent to:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUH-kh-d9S">
-                                <rect key="frame" x="16" y="303.5" width="382" height="15"/>
+                                <rect key="frame" x="16" y="227.5" width="382" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJC-7j-qLB">
-                                <rect key="frame" x="15" y="266.5" width="384" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npG-pf-8MP">
-                                <rect key="frame" x="16" y="326.5" width="382" height="21"/>
+                                <rect key="frame" x="16" y="250.5" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1472,7 +1460,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXa-KU-M0P">
-                                <rect key="frame" x="16" y="379.5" width="382" height="33"/>
+                                <rect key="frame" x="16" y="303.5" width="382" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Email Tickets"/>
                             </button>
@@ -1481,15 +1469,12 @@
                         <constraints>
                             <constraint firstItem="npG-pf-8MP" firstAttribute="top" secondItem="iUH-kh-d9S" secondAttribute="bottom" constant="8" id="1XY-VH-koe"/>
                             <constraint firstItem="g1B-Am-4hv" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="3IH-dp-tMd"/>
-                            <constraint firstItem="jJC-7j-qLB" firstAttribute="top" secondItem="ZP9-Nk-D4B" secondAttribute="bottom" constant="8" id="47H-Jv-aHg"/>
                             <constraint firstItem="1Wb-2h-2s9" firstAttribute="bottom" secondItem="T8o-9i-P9O" secondAttribute="bottom" constant="16" id="96U-rF-r3G"/>
                             <constraint firstItem="iUH-kh-d9S" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="Aac-qb-COH"/>
-                            <constraint firstItem="iUH-kh-d9S" firstAttribute="top" secondItem="jJC-7j-qLB" secondAttribute="bottom" constant="16" id="EbI-fK-CEy"/>
                             <constraint firstItem="NXa-KU-M0P" firstAttribute="top" secondItem="npG-pf-8MP" secondAttribute="bottom" constant="32" id="I6z-yr-mYE"/>
+                            <constraint firstItem="iUH-kh-d9S" firstAttribute="top" secondItem="g1B-Am-4hv" secondAttribute="bottom" constant="16" id="IGQ-9l-8o6"/>
                             <constraint firstItem="T8o-9i-P9O" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="KFy-ry-Nil"/>
                             <constraint firstAttribute="trailing" secondItem="npG-pf-8MP" secondAttribute="trailing" constant="16" id="LHL-go-b3b"/>
-                            <constraint firstItem="ZP9-Nk-D4B" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="Lwn-5O-BgL"/>
-                            <constraint firstItem="ZP9-Nk-D4B" firstAttribute="top" secondItem="g1B-Am-4hv" secondAttribute="bottom" constant="32" id="U1I-rG-gBc"/>
                             <constraint firstItem="ozy-TF-TBm" firstAttribute="top" secondItem="ILa-g2-vUx" secondAttribute="bottom" constant="32" id="U2G-tt-qRs"/>
                             <constraint firstItem="NXa-KU-M0P" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="UBB-xp-RIx"/>
                             <constraint firstItem="the-NH-CHb" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="ULI-e5-ioo"/>
@@ -1497,7 +1482,6 @@
                             <constraint firstItem="ozy-TF-TBm" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="Vlq-iZ-qa4"/>
                             <constraint firstAttribute="trailing" secondItem="the-NH-CHb" secondAttribute="trailing" constant="16" id="Y7x-83-Syh"/>
                             <constraint firstItem="g1B-Am-4hv" firstAttribute="top" secondItem="ozy-TF-TBm" secondAttribute="bottom" constant="8" id="YhR-Wj-HY9"/>
-                            <constraint firstAttribute="trailing" secondItem="ZP9-Nk-D4B" secondAttribute="trailing" constant="16" id="cXZ-Kd-9Oe"/>
                             <constraint firstAttribute="trailing" secondItem="g1B-Am-4hv" secondAttribute="trailing" constant="16" id="dFV-w8-JwO"/>
                             <constraint firstItem="npG-pf-8MP" firstAttribute="leading" secondItem="q92-St-pgD" secondAttribute="leading" constant="16" id="dTZ-AQ-2Eg"/>
                             <constraint firstAttribute="trailing" secondItem="T8o-9i-P9O" secondAttribute="trailing" constant="16" id="eDm-nA-VWx"/>
@@ -1517,7 +1501,6 @@
                     </navigationItem>
                     <size key="freeformSize" width="414" height="660"/>
                     <connections>
-                        <outlet property="confirmationLabel" destination="jJC-7j-qLB" id="7RD-Qp-yNL"/>
                         <outlet property="dateLabel" destination="ILa-g2-vUx" id="Ypk-6b-ICt"/>
                         <outlet property="emailLabel" destination="npG-pf-8MP" id="yai-eF-Li0"/>
                         <outlet property="titleLabel" destination="the-NH-CHb" id="tGu-js-gjZ"/>
