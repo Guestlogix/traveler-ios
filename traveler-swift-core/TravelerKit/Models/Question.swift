@@ -90,8 +90,6 @@ public struct Question: Decodable, Equatable {
         case "Date":
             self.type = .date
         case "Quantity":
-            self.type = .string
-        case "Quantity":
             self.type = .quantity
         case "Text":
             self.type = .string
