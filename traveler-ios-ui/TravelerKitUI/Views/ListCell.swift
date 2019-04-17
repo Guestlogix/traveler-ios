@@ -15,6 +15,7 @@ protocol ListCellDataSource: class {
 
 protocol ListCellDelegate: class {
     func listCell(_ cell: ListCell, didSelectRow row: Int)
+    func didSelectTextField(_ cell: ListCell)
 }
 
 class ListCell: UITableViewCell {
@@ -35,12 +36,17 @@ class ListCell: UITableViewCell {
     }
 
     @IBAction func didBeginEditing(_ sender: UITextField) {
-        guard let dataSource = dataSource, (sender.text == nil || sender.text == "") && dataSource.numberOfRowsInListCell(self) > 0 else {
+        guard let dataSource = dataSource, dataSource.numberOfRowsInListCell(self) > 0 else {
             return
         }
 
         textField.text = dataSource.listCell(self, titleForRow: 0)
         delegate?.listCell(self, didSelectRow: 0)
+        textField.textColor = UIColor.darkText
+        titleLabel.textColor = UIColor.darkText
+
+        delegate?.didSelectTextField(self)
+        self.textField.becomeFirstResponder()
     }
 }
 
