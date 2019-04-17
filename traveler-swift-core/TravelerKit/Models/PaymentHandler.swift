@@ -20,6 +20,8 @@ public protocol PaymentHandlerDelegate: class {
         - payment: The `Payment` that it collected.
      */
     func paymentHandler(_ handler: PaymentHandler, didCollect payment: Payment)
+
+    func addCardDidClose()
 }
 
 /// A class that handles `Payment` and notifies its delegate.

@@ -14,6 +14,11 @@ import TravelerKit
 let orderItemCellIdentifier = "orderItemCellIdentifier"
 let infoCellIdentifier = "infoCellIdentifier"
 let headerViewIdentifier = "headerViewIdentifier"
+let buttonTextCellIdentifier = "buttonTextCellIdentifier"
+
+protocol OrderSummaryViewControllerDelegate: class {
+    func orderSummaryViewControllerDidClickAddCard(_ controller: OrderSummaryViewController)
+}
 
 class OrderSummaryViewController: UITableViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +26,8 @@ class OrderSummaryViewController: UITableViewController {
 
     var order: Order?
     var payment: Payment?
+
+    weak var delegate: OrderSummaryViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +44,11 @@ class OrderSummaryViewController: UITableViewController {
     // MARK: UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        guard payment == nil else {
+            return 2
+        }
+
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,6 +57,8 @@ class OrderSummaryViewController: UITableViewController {
             return (order?.products.first as? BookableProduct)?.passes.count ?? 0
         case 1:
             return payment?.attributes.count ?? 0
+        case 2:
+            return 1
         default:
             fatalError("Invalid section")
         }
@@ -59,15 +72,31 @@ class OrderSummaryViewController: UITableViewController {
             cell.titleLabel.text = pass?.name
             cell.subTitleLabel.text = pass?.description
             cell.priceLabel.text = pass?.price.localizedDescription
+            cell.isUserInteractionEnabled = false
             return cell
         case (1, let row):
             let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoCell
             let attribute = payment!.attributes[row]
             cell.titleLabel.text = attribute.label
             cell.valueLabel.text = attribute.value
+            cell.isUserInteractionEnabled = false
+            return cell
+        case (2, 0):
+            let cell = tableView.dequeueReusableCell(withIdentifier: buttonTextCellIdentifier, for: indexPath) as! ButtonTextCell
+            cell.titleLabel.text = "Add Card"
             return cell
         default:
             fatalError("Invalid IndexPath")
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (indexPath.section, indexPath.row) {
+        case (2, 0):
+            delegate?.orderSummaryViewControllerDidClickAddCard(self)
+            tableView.deselectRow(at: indexPath, animated: true)
+        default:
+            return
         }
     }
 
@@ -87,9 +116,26 @@ class OrderSummaryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 1:
-            return 44
+            return 60
         default:
             return 0
         }
     }
+
+    // Helper functions
+
+    public func reloadPaymentInfo() {
+        let indices: IndexSet = [1, 2]
+        tableView.reloadSections(indices, with: .top)
+    }
 }
+
+extension OrderSummaryViewController: PaymentConfirmationViewControllerDelegate {
+    func paymentConfirmationViewControllerDelegateAddCardClose(_ controller: PaymentConfirmationViewController) {
+        reloadPaymentInfo()
+    }
+
+
+}
+
+

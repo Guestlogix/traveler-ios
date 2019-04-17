@@ -11,6 +11,10 @@ import TravelerKit
 import TravelerKitUI
 import Stripe
 
+protocol StripePaymentProviderDelegate: class {
+    func stripePaymentHandlerAddCardClose(_ controller: STPAddCardViewController)
+}
+
 public struct StripePaymentProvider: PaymentProvider  {
     private var paymentConfiguration: STPPaymentConfiguration = {
         let config = STPPaymentConfiguration()
@@ -28,7 +32,7 @@ public struct StripePaymentProvider: PaymentProvider  {
     }
 
     public init() {
-        
+        weak var addCardDelegate: StripePaymentProviderDelegate?
     }
 }
 
@@ -36,13 +40,13 @@ class StripePaymentHandler: NSObject, PaymentHandler, STPAddCardViewControllerDe
     weak var delegate: PaymentHandlerDelegate?
 
     func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
-        addCardViewController.dismiss(animated: true, completion: nil)
+        addCardViewController.dismiss(animated: true, completion: { StripePaymentProviderDelegate(addCardViewController) })
     }
 
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
         delegate?.paymentHandler(self, didCollect: StripePayment(token: token))
 
-        addCardViewController.dismiss(animated: true, completion: nil)
+        addCardViewController.dismiss(animated: true, completion: { StripePaymentProviderDelegate(addCardViewController) })
     }
 }
 

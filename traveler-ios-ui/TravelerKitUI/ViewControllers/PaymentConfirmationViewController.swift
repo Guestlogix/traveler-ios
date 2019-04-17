@@ -9,6 +9,10 @@
 import UIKit
 import TravelerKit
 
+protocol PaymentConfirmationViewControllerDelegate: class {
+    func paymentConfirmationViewControllerDelegateAddCardClose(_ controller: PaymentConfirmationViewController)
+}
+
 class PaymentConfirmationViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
 
@@ -17,6 +21,8 @@ class PaymentConfirmationViewController: UIViewController {
     private var payment: Payment?
     private var paymentHandler: PaymentHandler?
     private var receipt: Receipt?
+
+    weak var delegate: PaymentConfirmationViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,7 @@ class PaymentConfirmationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as OrderSummaryViewController):
+            vc.delegate = self
             vc.order = order
         case (_, let vc as ReceiptViewController):
             vc.receipt = receipt
@@ -37,6 +44,10 @@ class PaymentConfirmationViewController: UIViewController {
     }
 
     @IBAction func didConfirm(_ sender: Any) {
+        performSegue(withIdentifier: "receiptSegue", sender: nil)
+    }
+
+    private func presentAddCard() {
         guard let paymentProvider = TravelerUI.shared?.paymentProvider else {
             fatalError("SDK not initialized")
         }
@@ -69,8 +80,6 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
         ProgressHUD.hide()
 
         self.receipt = receipt
-
-        performSegue(withIdentifier: "receiptSegue", sender: nil)
     }
 }
 
@@ -87,4 +96,14 @@ extension PaymentConfirmationViewController: PaymentHandlerDelegate {
 
         Traveler.processOrder(order, payment: payment, delegate: self)
     }
+}
+
+extension PaymentConfirmationViewController: OrderSummaryViewControllerDelegate {
+    func orderSummaryViewControllerDidClickAddCard(_ controller: OrderSummaryViewController) {
+        presentAddCard()
+    }
+}
+
+extension PaymentConfirmationViewController: StripePaymentProviderDelegate {
+
 }
