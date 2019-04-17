@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fxx-ss-yED">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fxx-ss-yED">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -213,33 +213,8 @@
                             </tableViewSection>
                             <tableViewSection id="BtT-3J-R92">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCellIdentifier" id="gew-Au-Art" customClass="ButtonCell" customModule="Traveler" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gew-Au-Art" id="yUc-3A-lZg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMG-4b-yId">
-                                                    <rect key="frame" x="16" y="11" width="93" height="21.5"/>
-                                                    <state key="normal" title="Delete Profile"/>
-                                                    <connections>
-                                                        <action selector="onClickAlert:" destination="4QC-bL-NFK" eventType="touchUpInside" id="Dfh-Fo-4co"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="aMG-4b-yId" secondAttribute="bottom" constant="11" id="Plg-5t-Gbj"/>
-                                                <constraint firstItem="aMG-4b-yId" firstAttribute="top" secondItem="yUc-3A-lZg" secondAttribute="top" constant="11" id="Wuz-sn-dRN"/>
-                                                <constraint firstItem="aMG-4b-yId" firstAttribute="leading" secondItem="yUc-3A-lZg" secondAttribute="leading" constant="16" id="msN-jN-ofB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="button" destination="aMG-4b-yId" id="vHv-Fk-GW2"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCellIdentifier" id="Q7b-CV-CAN" customClass="ButtonCell" customModule="Traveler" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q7b-CV-CAN" id="buL-6r-LB5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -268,7 +243,7 @@
                             <tableViewSection id="WF3-Nu-ASa">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="staticInfoCellIdentifier" id="THU-lp-hGf" customClass="StaticInfoCell" customModule="Traveler" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="283" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="239" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="THU-lp-hGf" id="lIj-NE-ad5">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -300,7 +275,6 @@
                     </tableView>
                     <connections>
                         <outlet property="appVersionLabel" destination="fGn-a7-pdj" id="zyO-7b-dzK"/>
-                        <outlet property="deleteProfileButton" destination="aMG-4b-yId" id="uKL-va-nij"/>
                         <outlet property="signOutButton" destination="Fao-oq-hPB" id="1WC-6A-CIt"/>
                     </connections>
                 </tableViewController>
