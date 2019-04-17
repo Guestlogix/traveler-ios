@@ -98,7 +98,6 @@ class BookableDetailsViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! ListCell
             cell.delegate = self
             cell.dataSource = self
-            //cell.textField.text = bookingContext?.selectedOption?.value
             cell.textField.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
             cell.titleLabel.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
 
@@ -146,9 +145,6 @@ class BookableDetailsViewController: UITableViewController {
             errorContext?.error = nil
             tableView.reloadRows(at: [indexPath], with: .none)
             tableView.deselectRow(at: indexPath, animated: true)
-
-            let cell = tableView.cellForRow(at: indexPath) as? ListCell
-            cell?.textField.becomeFirstResponder()
         default:
             break
         }
@@ -184,6 +180,10 @@ extension BookableDetailsViewController: ListCellDelegate {
     func listCell(_ cell: ListCell, didSelectRow row: Int) {
         bookingContext?.selectedOption = bookingContext?.availableOptions?[row]
         errorContext?.error = nil
+    }
+
+    func didSelectTextField(_ cell: ListCell) {
+        self.tableView(self.tableView, didSelectRowAt: optionCellIndexPath)
     }
 }
 
