@@ -10,16 +10,16 @@ import Foundation
 
 struct Profile: Codable {
     let travelerId: String
+    let externalId: String
     let firstName: String
     let lastName: String
     let email: String
-    let avatarURL: URL
 
     enum CodingKeys: String, CodingKey {
         case travelerId = "travelerId"
+        case externalId = "externalId"
         case firstName = "firstName"
         case lastName = "lastName"
         case email = "email"
-        case avatarURL = "avatar"
     }
 }
