@@ -22,7 +22,7 @@ class ProfileViewController: UITableViewController {
             return
         }
 
-        nameLabel.text = "\(profile?.firstName ?? "")\(profile?.lastName ?? "")"
+        nameLabel.text = "\(profile?.firstName ?? "") \(profile?.lastName ?? "")"
     }
 
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,10 +42,7 @@ class ProfileViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            guard profile?.firstName != nil else {
-                return 1
-            }
-            return 2
+            return 1
         case 1:
             return 2
         default:
@@ -65,15 +62,10 @@ class ProfileViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row) {
-        case (0, _):
+        case (0, 0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileCellIdentifier", for: indexPath) as! ProfileCell
-            if profile?.firstName != nil && indexPath.row == 0 {
-                cell.titleLabel.text = "Name"
-                cell.valueLabel.text = "\(profile?.firstName ?? "")\(profile?.lastName ?? "")"
-            } else {
-                cell.titleLabel.text = "Email"
-                cell.valueLabel.text = "\(profile!.email ?? "")"
-            }
+            cell.titleLabel.text = "Email"
+            cell.valueLabel.text = "\(profile?.email ?? "")"
             return cell
         case (1, 0):
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoButtonCellIdentifier", for: indexPath) as! InfoButtonCell
