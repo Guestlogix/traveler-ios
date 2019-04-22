@@ -54,8 +54,7 @@ extension SettingsViewController {
             self.logOut()
             self.performSegue(withIdentifier: "exitSegue", sender: self)
         })
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
-        })
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in })
         alert.addAction(ok)
         alert.addAction(cancel)
         DispatchQueue.main.async(execute: {
