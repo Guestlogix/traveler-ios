@@ -35,7 +35,6 @@ public class MappingOperation<T> : Operation where T : Decodable {
             
             Log("Mapped Resource: ", data: type(of: mappedResource), level: .debug)
         } catch {
-            self.error = error
             Log(error.localizedDescription, data: String(data: data, encoding: .utf8), level: .error)
         }
     }

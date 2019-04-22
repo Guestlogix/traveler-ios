@@ -222,10 +222,10 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fao-oq-hPB">
                                                     <rect key="frame" x="16" y="11" width="60" height="21.5"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" title="Sign Out"/>
-                                                    <connections>
-                                                        <action selector="onClickAlert:" destination="4QC-bL-NFK" eventType="touchUpInside" id="ufc-mF-0r4"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -275,10 +275,12 @@
                     </tableView>
                     <connections>
                         <outlet property="appVersionLabel" destination="fGn-a7-pdj" id="zyO-7b-dzK"/>
-                        <outlet property="signOutButton" destination="Fao-oq-hPB" id="1WC-6A-CIt"/>
+                        <outlet property="signOutButton" destination="Fao-oq-hPB" id="JeW-54-jtM"/>
+                        <segue destination="v5w-p6-qNd" kind="unwind" identifier="exitSegue" unwindAction="unwindToMainViewController:" id="3gE-FI-RM8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCA-sP-4yM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="v5w-p6-qNd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1252" y="77"/>
         </scene>
