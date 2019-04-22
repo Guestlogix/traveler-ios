@@ -51,7 +51,7 @@ extension SettingsViewController {
     func showAlert(withTitle title: String, withMessage message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
-            GIDSignIn.sharedInstance().signOut()
+            self.logOut()
             self.performSegue(withIdentifier: "exitSegue", sender: self)
         })
         let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
@@ -61,5 +61,12 @@ extension SettingsViewController {
         DispatchQueue.main.async(execute: {
             self.present(alert, animated: true)
         })
+    }
+}
+
+extension SettingsViewController {
+    func logOut() {
+        GIDSignIn.sharedInstance().signOut()
+        UserDefaults.standard.removeObject(forKey: profileKey)
     }
 }

@@ -9,11 +9,11 @@
 import Foundation
 
 struct Profile: Codable {
-    var travelerId: String?
-    var externalId: String?
+    var travelerId: String
+    var externalId: String
     var firstName: String?
     var lastName: String?
-    var email: String?
+    var email: String
 
     enum CodingKeys: String, CodingKey {
         case travelerId = "travelerId"
