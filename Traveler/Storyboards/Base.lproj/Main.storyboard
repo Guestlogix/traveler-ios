@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bqu-00-O93">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bqu-00-O93">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,6 +84,7 @@
                         <outlet property="tableViewHeightConstraint" destination="2zb-Yw-3oo" id="2gc-Yg-LZ3"/>
                         <segue destination="eW6-xh-dsE" kind="custom" identifier="catalogSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="EEh-LO-bub"/>
                         <segue destination="ODH-JI-sP1" kind="presentation" identifier="flightDetailsSegue" id="Q05-JU-CLY"/>
+                        <segue destination="tl1-yb-TWz" kind="presentation" identifier="profileSegue" id="FKB-rI-fXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBr-9C-snF" userLabel="First Responder" sceneMemberID="firstResponder"/>

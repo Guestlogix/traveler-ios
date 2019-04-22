@@ -9,11 +9,11 @@
 import Foundation
 
 struct Profile: Codable {
-    let travelerId: String
-    let externalId: String
-    let firstName: String
-    let lastName: String
-    let email: String
+    var travelerId: String?
+    var externalId: String?
+    var firstName: String?
+    var lastName: String?
+    var email: String?
 
     enum CodingKeys: String, CodingKey {
         case travelerId = "travelerId"
@@ -21,5 +21,13 @@ struct Profile: Codable {
         case firstName = "firstName"
         case lastName = "lastName"
         case email = "email"
+    }
+
+    mutating func remove() {
+        travelerId = nil
+        externalId = nil
+        firstName = nil
+        lastName = nil
+        email = nil
     }
 }
