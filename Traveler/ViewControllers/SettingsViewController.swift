@@ -51,7 +51,6 @@ extension SettingsViewController {
     func showAlert(withTitle title: String, withMessage message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
-            self.profile?.remove()
             GIDSignIn.sharedInstance().signOut()
             self.performSegue(withIdentifier: "exitSegue", sender: self)
         })
