@@ -26,4 +26,9 @@ class Guest {
         shared.queue.addOperation(fetchOperation)
         OperationQueue.main.addOperation(blockOperation)
     }
+
+    static func logOut() {
+        GIDSignIn.sharedInstance().signOut()
+        UserDefaults.standard.removeObject(forKey: profileKey)
+    }
 }
