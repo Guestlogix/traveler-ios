@@ -22,12 +22,4 @@ struct Profile: Codable {
         case lastName = "lastName"
         case email = "email"
     }
-
-    mutating func remove() {
-        travelerId = nil
-        externalId = nil
-        firstName = nil
-        lastName = nil
-        email = nil
-    }
 }

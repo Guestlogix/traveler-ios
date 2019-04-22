@@ -10,26 +10,20 @@ import UIKit
 import TravelerKit
 import TravelerKitUI
 
-// TODO: Remove TravelerRoute mock and profileData mock
-
-//struct ProfileData {
-//    var title: String
-//    var value: String
-//}
-//
-//var profileData = [ProfileData(title: "Name", value: "John Doe"),
-//                   ProfileData(title: "Email", value: "johndoe@email.com"),
-//                   ProfileData(title: "Payment Info", value: "Visa ending in 8932"),
-//                    ProfileData(title: "Address", value: "123 Home Street"),
-//                    ProfileData(title: "Phone Number", value: "123-456-7890"),
-//                    ProfileData(title: "Language", value: "English")]
-
-
 
 class ProfileViewController: UITableViewController {
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
 
     var profile: Profile?
+
+    override func viewDidLoad() {
+        guard profile != nil && profile?.firstName != nil else {
+            return
+        }
+
+        nameLabel.text = "\(profile?.firstName ?? "")\(profile?.lastName ?? "")"
+    }
 
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
