@@ -90,7 +90,6 @@ class BookableDetailsViewController: UITableViewController {
         case (1, true, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: datePickerCellIdentifier, for: indexPath) as! DatePickerCell
             cell.datePicker.minimumDate = Date()
-            cell.datePicker.date = bookingContext?.selectedAvailability?.date ?? Date()
             cell.delegate = self
             return cell
         case (1, false, true),
@@ -203,6 +202,8 @@ extension BookableDetailsViewController: AvailabilitiesFetchDelegate {
 
         guard let availability = availabilities.first else {
             errorContext?.error = BookingError.badDate
+            bookingContext?.selectedAvailability = nil
+            tableView.reloadData()
             return
         }
 
