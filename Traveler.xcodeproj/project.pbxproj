@@ -18,7 +18,7 @@
 		A9639D972211CE0B00625235 /* ValueDisplayInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */; };
 		A9639D982211CE0B00625235 /* DateInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D802211CE0B00625235 /* DateInputCell.swift */; };
 		A9639D992211CE0B00625235 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D812211CE0B00625235 /* ButtonCell.swift */; };
-		A9639D9A2211CE0B00625235 /* DateFormatter+Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D832211CE0B00625235 /* DateFormatter+Passenger.swift */; };
+		A9639D9A2211CE0B00625235 /* DateFormatter+Traveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D832211CE0B00625235 /* DateFormatter+Traveler.swift */; };
 		A9639D9C2211CE0B00625235 /* AddFlight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9639D872211CE0B00625235 /* AddFlight.storyboard */; };
 		A9639D9D2211CE0B00625235 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9639D892211CE0B00625235 /* Main.storyboard */; };
 		A9639D9E2211CE0B00625235 /* FlightSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8C2211CE0B00625235 /* FlightSearchViewController.swift */; };
@@ -79,7 +79,7 @@
 		A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueDisplayInputCell.swift; sourceTree = "<group>"; };
 		A9639D802211CE0B00625235 /* DateInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateInputCell.swift; sourceTree = "<group>"; };
 		A9639D812211CE0B00625235 /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
-		A9639D832211CE0B00625235 /* DateFormatter+Passenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Passenger.swift"; sourceTree = "<group>"; };
+		A9639D832211CE0B00625235 /* DateFormatter+Traveler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Traveler.swift"; sourceTree = "<group>"; };
 		A9639D882211CE0B00625235 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AddFlight.storyboard; sourceTree = "<group>"; };
 		A9639D8A2211CE0B00625235 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9639D8C2211CE0B00625235 /* FlightSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightSearchViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		A9639D822211CE0B00625235 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A9639D832211CE0B00625235 /* DateFormatter+Passenger.swift */,
+				A9639D832211CE0B00625235 /* DateFormatter+Traveler.swift */,
 				A965D418224D38A800AAE774 /* Notification+Guest.swift */,
 			);
 			path = Extensions;
@@ -337,7 +337,7 @@
 				A9639DA52211CE0B00625235 /* EmptyViewController.swift in Sources */,
 				A9639D6B2211CD3400625235 /* AppDelegate.swift in Sources */,
 				A9639D9F2211CE0B00625235 /* PassengerCatalogResultViewController.swift in Sources */,
-				A9639D9A2211CE0B00625235 /* DateFormatter+Passenger.swift in Sources */,
+				A9639D9A2211CE0B00625235 /* DateFormatter+Traveler.swift in Sources */,
 				A9639DA32211CE0B00625235 /* FlightSearchResultViewController.swift in Sources */,
 				A9639DA62211CE0B00625235 /* RetryViewController.swift in Sources */,
 				A9639DA22211CE0B00625235 /* FlightLookupFormViewController.swift in Sources */,

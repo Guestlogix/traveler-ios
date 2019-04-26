@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */; };
-		A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */; };
+		A91E0CD621625E350017D207 /* DateFormatter+TravelerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD521625E350017D207 /* DateFormatter+TravelerKit.swift */; };
 		A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */; };
 		A91F3BB321B82BDD0016894A /* ErrorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB221B82BDD0016894A /* ErrorContext.swift */; };
 		A91F3BB521B879DB0016894A /* Pass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB421B879DB0016894A /* Pass.swift */; };
@@ -96,7 +96,7 @@
 
 /* Begin PBXFileReference section */
 		A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperationTests.swift; sourceTree = "<group>"; };
-		A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+PassengerKit.swift"; sourceTree = "<group>"; };
+		A91E0CD521625E350017D207 /* DateFormatter+TravelerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+TravelerKit.swift"; sourceTree = "<group>"; };
 		A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ContainsAnyOf.swift"; sourceTree = "<group>"; };
 		A91F3BB221B82BDD0016894A /* ErrorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorContext.swift; sourceTree = "<group>"; };
 		A91F3BB421B879DB0016894A /* Pass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pass.swift; sourceTree = "<group>"; };
@@ -360,7 +360,7 @@
 		A9FF6D8321875FF100AFC20F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */,
+				A91E0CD521625E350017D207 /* DateFormatter+TravelerKit.swift */,
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
 				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
@@ -535,7 +535,7 @@
 				A9BF40EA218264FB0090ED1C /* CatalogFetchDelegate.swift in Sources */,
 				A9DB065E2140665A009817EC /* NetworkError.swift in Sources */,
 				A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */,
-				A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */,
+				A91E0CD621625E350017D207 /* DateFormatter+TravelerKit.swift in Sources */,
 				A92F5C2421F22CFE00020F10 /* Answer.swift in Sources */,
 				A91F3BDF21DD3BA80016894A /* QuestionGroup.swift in Sources */,
 				A9DB064921404CE0009817EC /* Token.swift in Sources */,

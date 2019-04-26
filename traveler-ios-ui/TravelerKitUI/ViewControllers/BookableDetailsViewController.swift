@@ -83,7 +83,7 @@ class BookableDetailsViewController: UITableViewController {
             case .some(BookingError.noDate):
                 cell.valueLabel.text = "Please Select"
             default:
-                cell.valueLabel.text = bookingContext?.selectedAvailability.flatMap({ DateFormatter.yearMonthDay.string(from: $0.date) })
+                cell.valueLabel.text = bookingContext?.selectedAvailability.flatMap({ DateFormatter.yearMonthDaySlash.string(from: $0.date) })
             }
 
             return cell

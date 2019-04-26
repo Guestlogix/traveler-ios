@@ -31,7 +31,7 @@ class OrderSummaryViewController: UITableViewController {
         // TODO: This VC should account for multiple products as an Order can have multiple Products
 
         titleLabel.text = order?.products.first?.title
-        dateLabel.text = order.flatMap { DateFormatter.longFormatter.string(from: $0.createdDate) }
+        dateLabel.text = order.flatMap { DateFormatter.dayNameMonthDayYear.string(from: $0.createdDate) }
     }
 
     // MARK: UITableViewDataSource

@@ -29,7 +29,7 @@ enum AuthPath {
             urlComponents.path = "/flight"
             urlComponents.queryItems = [
                 URLQueryItem(name: "flight-number", value: query.number),
-                URLQueryItem(name: "departure-date", value: DateFormatter.yearMonthDay.string(from: query.date))
+                URLQueryItem(name: "departure-date", value: DateFormatter.yearMonthDaySlash.string(from: query.date))
             ]
         case .catalog(let query):
             urlComponents.path = "/catalog"
@@ -43,8 +43,8 @@ enum AuthPath {
         case .productSchedule(let product, let fromDate, let toDate):
             urlComponents.path = "/product/\(product.id)/schedule"
             urlComponents.queryItems = [
-                URLQueryItem(name: "from", value: DateFormatter.yearMonthDay.string(from: fromDate)),
-                URLQueryItem(name: "to", value: DateFormatter.yearMonthDay.string(from: toDate))
+                URLQueryItem(name: "from", value: DateFormatter.yearMonthDaySlash.string(from: fromDate)),
+                URLQueryItem(name: "to", value: DateFormatter.yearMonthDaySlash.string(from: toDate))
             ]
         case .passes(let product, let availability, let option):
             urlComponents.path = "/product/\(product.id)/pass"

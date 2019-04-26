@@ -23,7 +23,7 @@ class ReceiptViewController: UIViewController {
         // TODO: This VC should account for multiple products
 
         titleLabel.text = receipt?.order.products.first?.title
-        dateLabel.text = receipt.flatMap { DateFormatter.longFormatter.string(from: $0.order.createdDate) }
+        dateLabel.text = receipt.flatMap { DateFormatter.dayNameMonthDayYear.string(from: $0.order.createdDate) }
         confirmationLabel.text = receipt?.order.orderNumber
         //emailLabel.text = receipt?.customerContact.email
     }

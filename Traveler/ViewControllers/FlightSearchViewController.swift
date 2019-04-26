@@ -29,7 +29,7 @@ class FlightSearchViewController: UIViewController {
         super.viewDidLoad()
 
         flightNumberLabel.text = query?.number
-        flightDateLabel.text = query.flatMap({ DateFormatter.longFormatter.string(from: $0.date) })
+        flightDateLabel.text = query.flatMap({ DateFormatter.abbrMonthDayYear.string(from: $0.date) })
         flightNumberLabel.textColor = UIColor.white
         flightDateLabel.textColor = UIColor.white
 

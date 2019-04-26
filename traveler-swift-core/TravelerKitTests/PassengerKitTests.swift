@@ -24,7 +24,7 @@ class TravelerKitTests: XCTestCase {
     func testFlightSearch() {
         let travelerKit = Traveler(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT", device: UIDevice.current as! Device)
 
-        let query = FlightQuery(number: "SA1", date: DateFormatter.yearMonthDay.date(from: "2018/02/27")!)
+        let query = FlightQuery(number: "SA1", date: DateFormatter.yearMonthDaySlash.date(from: "2018/02/27")!)
         let exp = expectation(description: "Should get a response")
 
         travelerKit.flightSearch(query: query) { (flights, error) in

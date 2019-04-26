@@ -50,7 +50,7 @@ public struct Order: Decodable {
 
         let dateString = try container.decode(String.self, forKey: .createdDate)
 
-        if let date = ISO8601DateFormatter.dateOnlyFormatter.date(from: dateString) {
+        if let date = ISO8601DateFormatter.yearMonthDayDash.date(from: dateString) {
             self.createdDate = date
         } else {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.createdDate, in: container, debugDescription: "Incorrect format")

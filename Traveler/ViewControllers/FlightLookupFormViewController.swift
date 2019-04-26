@@ -74,7 +74,7 @@ class FlightLookupFormViewController: UITableViewController {
         case (1, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: valueDisplayCellIdentifier, for: indexPath) as! ValueDisplayInputCell
             cell.label.text = "Departure Date"
-            cell.valueLabel.text = flightDate.flatMap({ DateFormatter.longFormatter.string(from: $0) })
+            cell.valueLabel.text = flightDate.flatMap({ DateFormatter.abbrMonthDayYear.string(from: $0) })
             return cell
         case (2, true):
             let cell = tableView.dequeueReusableCell(withIdentifier: dateInputCellIdentifier, for: indexPath) as! DateInputCell

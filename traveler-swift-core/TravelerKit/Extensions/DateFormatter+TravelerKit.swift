@@ -1,5 +1,5 @@
 //
-//  DateFormatter+PassengerKit.swift
+//  DateFormatter+TravelerKit.swift
 //  TravelerKit
 //
 //  Created by Ata Namvari on 2018-10-01.
@@ -9,7 +9,7 @@
 import Foundation
 
 extension DateFormatter {
-    public static var yearMonthDay: DateFormatter = {
+    public static var yearMonthDaySlash: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         return dateFormatter
@@ -29,13 +29,13 @@ extension DateFormatter {
         return formatter
     }()
 
-    public static var longFormatter: DateFormatter = {
+    public static var dayNameMonthDayYear: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMMM d, yyyy"
         return formatter
     }()
 
-    public static var dateOnlyFormatter: DateFormatter = {
+    public static var yearMonthDayDash: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
@@ -43,7 +43,7 @@ extension DateFormatter {
 }
 
 extension ISO8601DateFormatter {
-    public static var dateOnlyFormatter: ISO8601DateFormatter = {
+    public static var yearMonthDayDash: ISO8601DateFormatter = {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
         return formatter

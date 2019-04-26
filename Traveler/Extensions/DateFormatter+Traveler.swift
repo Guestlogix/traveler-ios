@@ -1,5 +1,5 @@
 //
-//  DateFormatter+Passenger.swift
+//  DateFormatter+Traveler.swift
 //  Traveler
 //
 //  Created by Ata Namvari on 2018-10-17.
@@ -9,7 +9,7 @@
 import Foundation
 
 extension DateFormatter {
-    static var longFormatter: DateFormatter = {
+    static var abbrMonthDayYear: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd, yyyy"
         return formatter
