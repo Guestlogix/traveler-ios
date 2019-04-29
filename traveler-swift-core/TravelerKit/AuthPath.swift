@@ -17,6 +17,7 @@ enum AuthPath {
     case questions(Product, passes: [Pass])
     case createOrder([BookingForm], travelerId: String?) // Use an interface called Purchase in the future to capture buyables
     case processOrder(Order, Payment)
+    case fetchAllOrders(from: Date, to: Date, travelerId: String?)
 
     // MARK: URLRequest
 
@@ -90,6 +91,13 @@ enum AuthPath {
             urlComponents.path = "/order/\(order.id)"
             urlRequest.method = .patch
             urlRequest.httpBody = payment.securePayload()
+        case .fetchAllOrders(let toDate, let fromDate, let travelerId):
+            urlComponents.path = "/order"
+            urlComponents.queryItems = [
+                URLQueryItem(name: "from", value: DateFormatter.yearMonthDay.string(from: fromDate)),
+                URLQueryItem(name: "to", value: DateFormatter.yearMonthDay.string(from: toDate)),
+                URLQueryItem(name: "traveler", value: travelerId)
+            ]
         }
 
         urlRequest.url = urlComponents.url

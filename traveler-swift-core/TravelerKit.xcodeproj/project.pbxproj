@@ -82,6 +82,9 @@
 		A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */; };
 		A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */; };
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
+		F3233557226F8CC900ED9D8A /* OrderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3233556226F8CC900ED9D8A /* OrderGroup.swift */; };
+		F3233559226F9AA800ED9D8A /* OrderQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3233558226F9AA800ED9D8A /* OrderQuery.swift */; };
+		F323355B2271E9B500ED9D8A /* AllOrderFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F323355A2271E9B500ED9D8A /* AllOrderFetchDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +177,9 @@
 		A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperation.swift; sourceTree = "<group>"; };
 		A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreOperationTests.swift; sourceTree = "<group>"; };
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
+		F3233556226F8CC900ED9D8A /* OrderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderGroup.swift; sourceTree = "<group>"; };
+		F3233558226F9AA800ED9D8A /* OrderQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQuery.swift; sourceTree = "<group>"; };
+		F323355A2271E9B500ED9D8A /* AllOrderFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrderFetchDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */,
+				F323355A2271E9B500ED9D8A /* AllOrderFetchDelegate.swift */,
 				A9BF40E9218264FB0090ED1C /* CatalogFetchDelegate.swift */,
 				A9E2AD8121934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift */,
 				A91F3BB621B87C500016894A /* PassFetchDelegate.swift */,
@@ -304,6 +311,8 @@
 				A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */,
 				A92523F121FB71D0009E2642 /* ValidationError.swift */,
 				A92523F521FBAD2C009E2642 /* Order.swift */,
+				F3233556226F8CC900ED9D8A /* OrderGroup.swift */,
+				F3233558226F9AA800ED9D8A /* OrderQuery.swift */,
 				A9825BBF2208DD31008AA0C1 /* CustomerContact.swift */,
 				A9825BAB220497FE008AA0C1 /* Receipt.swift */,
 				A9825BB72204F5E0008AA0C1 /* Price.swift */,
@@ -484,6 +493,7 @@
 				A9DB06BD214C2B95009817EC /* Session.swift in Sources */,
 				A957764B2152A9C400BD11C8 /* Route.swift in Sources */,
 				A9DB0640214034C5009817EC /* Log.swift in Sources */,
+				F3233559226F9AA800ED9D8A /* OrderQuery.swift in Sources */,
 				A91F3BB521B879DB0016894A /* Pass.swift in Sources */,
 				A9DB06612140665A009817EC /* RemoteFetchOperation.swift in Sources */,
 				A9DB06AA214AAF60009817EC /* FlightQuery.swift in Sources */,
@@ -526,6 +536,7 @@
 				A96F8305223784F500268D0D /* BookingOption.swift in Sources */,
 				A9DB06B3214AFB54009817EC /* Flight.swift in Sources */,
 				A91F3BB321B82BDD0016894A /* ErrorContext.swift in Sources */,
+				F3233557226F8CC900ED9D8A /* OrderGroup.swift in Sources */,
 				A9DB065F2140665A009817EC /* ConcurrentOperation.swift in Sources */,
 				A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */,
 				A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */,
@@ -542,6 +553,7 @@
 				A9BF40D72177C1270090ED1C /* Airport.swift in Sources */,
 				A9E28A9321A84DBD00967C4A /* Availability.swift in Sources */,
 				A9DB06572140665A009817EC /* UploadOperation.swift in Sources */,
+				F323355B2271E9B500ED9D8A /* AllOrderFetchDelegate.swift in Sources */,
 				A9E2AD9D2194AD060063BF79 /* Location.swift in Sources */,
 				A96F830722389CD100268D0D /* BookingFormFetchDelegate.swift in Sources */,
 				A95776512153EC7E00BD11C8 /* RestoreOperation.swift in Sources */,

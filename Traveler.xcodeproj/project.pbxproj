@@ -45,6 +45,8 @@
 		A965D419224D38A800AAE774 /* Notification+Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D418224D38A800AAE774 /* Notification+Guest.swift */; };
 		A96F830F22395E7300268D0D /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; };
 		A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F3233553226F818600ED9D8A /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3233552226F818600ED9D8A /* OrdersViewController.swift */; };
+		F3233555226F83F300ED9D8A /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3233554226F83F300ED9D8A /* CardCell.swift */; };
 		F373DA6C224278B900902A99 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6B224278B900902A99 /* ProfileCell.swift */; };
 		F373DA6E2242803D00902A99 /* InfoButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6D2242803D00902A99 /* InfoButtonCell.swift */; };
 		F373DA702242A9AE00902A99 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */; };
@@ -109,6 +111,8 @@
 		A965D412224D274400AAE774 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		A965D414224D315100AAE774 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		A965D418224D38A800AAE774 /* Notification+Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Guest.swift"; sourceTree = "<group>"; };
+		F3233552226F818600ED9D8A /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		F3233554226F83F300ED9D8A /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		F373DA6B224278B900902A99 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		F373DA6D2242803D00902A99 /* InfoButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonCell.swift; sourceTree = "<group>"; };
 		F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				A9639D7D2211CE0B00625235 /* FlightCell.swift */,
 				A9639D7E2211CE0B00625235 /* StringInputCell.swift */,
 				A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */,
+				F3233554226F83F300ED9D8A /* CardCell.swift */,
 				A9639D802211CE0B00625235 /* DateInputCell.swift */,
 				A9639D812211CE0B00625235 /* ButtonCell.swift */,
 				F373DA6B224278B900902A99 /* ProfileCell.swift */,
@@ -237,6 +242,7 @@
 				A965D412224D274400AAE774 /* AuthViewController.swift */,
 				F376B4F2224181130080E27D /* ProfileViewController.swift */,
 				F373DA6F2242A9AE00902A99 /* SettingsViewController.swift */,
+				F3233552226F818600ED9D8A /* OrdersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				A9639DA02211CE0B00625235 /* MainViewController.swift in Sources */,
 				F373DA6C224278B900902A99 /* ProfileCell.swift in Sources */,
 				F373DA702242A9AE00902A99 /* SettingsViewController.swift in Sources */,
+				F3233553226F818600ED9D8A /* OrdersViewController.swift in Sources */,
 				A9639DA52211CE0B00625235 /* EmptyViewController.swift in Sources */,
 				A9639D6B2211CD3400625235 /* AppDelegate.swift in Sources */,
 				A9639D9F2211CE0B00625235 /* PassengerCatalogResultViewController.swift in Sources */,
@@ -379,6 +386,7 @@
 				A9152C2F224AA69D006F4EA4 /* Guest.swift in Sources */,
 				A9639D992211CE0B00625235 /* ButtonCell.swift in Sources */,
 				A965D419224D38A800AAE774 /* Notification+Guest.swift in Sources */,
+				F3233555226F83F300ED9D8A /* CardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

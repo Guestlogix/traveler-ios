@@ -156,6 +156,18 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func fetchAllOrders(startDate: Date, endDate: Date, completion: @escaping (OrderGroup?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<OrderGroup>(path: .fetchAllOrders(from: startDate, to: endDate, travelerId: session.identity), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     /**
@@ -422,6 +434,16 @@ public class Traveler {
                 delegate?.availabilitiesFetchDidFailWith(error)
             } else {
                 delegate?.availabilitiesFetchDidSucceedWith(availabilities!)
+            }
+        })
+    }
+
+    public static func fetchAllOrders(startDate: Date, endDate: Date, delegate: AllOrderFetchDelegate) {
+        shared?.fetchAllOrders(startDate: startDate, endDate: endDate, completion: { [weak delegate] (orderGroup, error) in
+            if let error = error {
+                delegate?.allOrderFetchDidFail(error)
+            } else {
+                delegate?.allOrderFetchDidSucceed(orderGroup!)
             }
         })
     }

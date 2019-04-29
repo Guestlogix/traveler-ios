@@ -29,6 +29,8 @@ class ProfileViewController: UITableViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as SettingsViewController):
             vc.profile = profile
+        case (_, let vc as OrdersViewController):
+            vc.profile = profile
         default:
             Log("Unknown segue", data: nil, level: .warning)
             break
@@ -82,6 +84,9 @@ class ProfileViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch(indexPath.section, indexPath.row) {
+        case (1, 0):
+            self.performSegue(withIdentifier: "ordersSegue", sender: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
         case (1, 1):
             self.performSegue(withIdentifier: "settingsSegue", sender: nil)
             tableView.deselectRow(at: indexPath, animated: true)
