@@ -24,6 +24,7 @@ public protocol FormViewDelegate: class {
     func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String?
     func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath)
     func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage?
+    func formViewDidChangeContentSize(_ formView: FormView)
 }
 
 extension FormViewDelegate {
@@ -38,6 +39,18 @@ extension FormViewDelegate {
     func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage? {
         return nil
     }
+
+    func formViewDidChangeContentSize(_ formView: FormView) {
+        /// Default noop
+    }
+
+    func formView(_ formView: FormView, titleForHeaderIn section: Int) -> String? {
+        return nil
+    }
+
+    func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String? {
+        return nil
+    }
 }
 
 let elementKindFieldFooter = "elementKindFieldFooter"
@@ -47,6 +60,9 @@ let sectionHeaderIdentifier = "sectionHeaderIdentifier"
 public class FormView: UIView {
     public weak var dataSource: FormViewDataSource?
     public weak var delegate: FormViewDelegate?
+    public var contentSize: CGSize {
+        return collectionView.collectionViewLayout.collectionViewContentSize
+    }
 
     private weak var collectionView: UICollectionView!
     private var datePickerIndexPath: IndexPath?
@@ -154,27 +170,26 @@ extension FormView: UICollectionViewDataSource {
             return cell
         case .date:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormValueDisplayInputCell
+            cell.label = descriptor.label
 
             if let value = dataSource!.formView(self, valueForInputAt: adjustedIndexPath) as? Date {
-                cell.valueLabel.text = DateFormatter.monthAsTextFormatter.string(from: value)
-                cell.valueLabel.textColor = .black
+                cell.value = DateFormatter.monthAsTextFormatter.string(from: value)
             } else {
-                cell.valueLabel.text = descriptor.label
-                cell.valueLabel.textColor = UIColor(red: 0, green: 0, blue: 0.0980392, alpha: 0.22)
+                cell.value = nil
             }
 
             return cell
         case .string:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormStringInputCell
             cell.textField.text = dataSource!.formView(self, valueForInputAt: adjustedIndexPath) as? String
-            cell.textField.placeholder = descriptor.label
+            cell.label = descriptor.label
             cell.delegate = self
             return cell
         case .list:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: descriptor.type.cellIdentifier, for: adjustedIndexPath) as! FormListInputCell
             let selectedIndex = dataSource?.formView(self, valueForInputAt: adjustedIndexPath) as? Int
             cell.textField.text = selectedIndex.flatMap({ dataSource!.formView(self, titleForOption: $0, at: adjustedIndexPath) })
-            cell.textField.placeholder = descriptor.label
+            cell.label = descriptor.label
             cell.delegate = self
             cell.items = []
 
@@ -280,6 +295,10 @@ extension FormView: UICollectionViewDelegateFormLayout {
         }
 
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, contentSizeDidChangeWith collectionViewLayout: UICollectionViewLayout) {
+        delegate?.formViewDidChangeContentSize(self)
     }
 }
 

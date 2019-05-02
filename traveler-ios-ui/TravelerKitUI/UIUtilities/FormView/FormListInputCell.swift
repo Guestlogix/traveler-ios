@@ -18,6 +18,14 @@ class FormListInputCell: UICollectionViewCell {
     weak var delegate: ListInputCellDelegate?
 
     var items = [String?]()
+    var label: String? {
+        set {
+            textField.placeholder = newValue
+        }
+        get {
+            return textField.placeholder
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

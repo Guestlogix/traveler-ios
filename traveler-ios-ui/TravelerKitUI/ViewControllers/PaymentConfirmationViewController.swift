@@ -11,6 +11,7 @@ import TravelerKit
 
 class PaymentConfirmationViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
 
     var order: Order?
 
@@ -28,6 +29,7 @@ class PaymentConfirmationViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as OrderSummaryViewController):
             vc.order = order
+            vc.delegate = self
         case (_, let vc as ReceiptViewController):
             vc.receipt = receipt
         default:
@@ -37,20 +39,28 @@ class PaymentConfirmationViewController: UIViewController {
     }
 
     @IBAction func didConfirm(_ sender: Any) {
-        guard let paymentProvider = TravelerUI.shared?.paymentProvider else {
-            fatalError("SDK not initialized")
+        guard let order = order, let payment = payment else {
+            Log("No Order", data: nil, level: .error)
+            return
         }
 
-        let paymentCollectorPackage = paymentProvider.paymentCollectorPackage()
-        let vc = paymentCollectorPackage.0
-        let paymentHandler = paymentCollectorPackage.1
-        let navVC = UINavigationController(rootViewController: vc)
+        ProgressHUD.show()
 
-        paymentHandler.delegate = self
+        Traveler.processOrder(order, payment: payment, delegate: self)
+    }
 
-        self.paymentHandler = paymentHandler
+    @IBAction func didCancel(_ sender: Any) {
+        let alert = UIAlertController(title: "Are you sure you want to cancel?", message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
 
-        present(navVC, animated: true)
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true)
     }
 }
 
@@ -74,17 +84,9 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
     }
 }
 
-extension PaymentConfirmationViewController: PaymentHandlerDelegate {
-    func paymentHandler(_ handler: PaymentHandler, didCollect payment: Payment) {
-        guard let order = order else {
-            Log("No Order", data: nil, level: .error)
-            return
-        }
-
+extension PaymentConfirmationViewController: OrderSummaryViewControllerDelegate {
+    func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment) {
         self.payment = payment
-
-        ProgressHUD.show()
-
-        Traveler.processOrder(order, payment: payment, delegate: self)
+        self.confirmButton.isEnabled = true
     }
 }

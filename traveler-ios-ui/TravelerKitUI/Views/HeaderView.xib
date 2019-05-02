@@ -12,30 +12,42 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="h1R-Cx-PQJ" customClass="HeaderView" customModule="PassengerKit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="469" height="118"/>
+        <view contentMode="scaleToFill" id="EX3-BM-Iff" customClass="HeaderView" customModule="TravelerKitUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6m-xM-Pwc">
-                    <rect key="frame" x="16" y="16" width="437" height="86"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHm-2W-hlk">
+                    <rect key="frame" x="16" y="32" width="344" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1od-k8-K0x">
+                    <rect key="frame" x="16" y="40" width="344" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="rWM-xg-iXE" firstAttribute="trailing" secondItem="M6m-xM-Pwc" secondAttribute="trailing" constant="16" id="5pr-Ey-lG8"/>
-                <constraint firstItem="M6m-xM-Pwc" firstAttribute="top" secondItem="rWM-xg-iXE" secondAttribute="top" constant="16" id="9iI-Dd-foO"/>
-                <constraint firstItem="M6m-xM-Pwc" firstAttribute="leading" secondItem="rWM-xg-iXE" secondAttribute="leading" constant="16" id="Jqb-Yn-WjU"/>
-                <constraint firstItem="rWM-xg-iXE" firstAttribute="bottom" secondItem="M6m-xM-Pwc" secondAttribute="bottom" constant="16" id="cNA-OZ-Cct"/>
+                <constraint firstItem="1od-k8-K0x" firstAttribute="leading" secondItem="EX3-BM-Iff" secondAttribute="leading" constant="16" id="AAV-BU-Mjt"/>
+                <constraint firstAttribute="trailing" secondItem="1od-k8-K0x" secondAttribute="trailing" constant="16" id="Ov5-oT-to0"/>
+                <constraint firstItem="PHm-2W-hlk" firstAttribute="top" secondItem="EX3-BM-Iff" secondAttribute="top" constant="32" id="RGE-o4-mkw"/>
+                <constraint firstItem="1od-k8-K0x" firstAttribute="top" secondItem="PHm-2W-hlk" secondAttribute="bottom" constant="8" id="cuT-Oz-0Um"/>
+                <constraint firstAttribute="bottom" secondItem="1od-k8-K0x" secondAttribute="bottom" constant="30" id="iL4-UL-AfW"/>
+                <constraint firstAttribute="trailing" secondItem="PHm-2W-hlk" secondAttribute="trailing" constant="16" id="qTO-QB-ITF"/>
+                <constraint firstItem="PHm-2W-hlk" firstAttribute="leading" secondItem="EX3-BM-Iff" secondAttribute="leading" constant="16" id="t5i-H9-o3G"/>
             </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="rWM-xg-iXE"/>
+            <viewLayoutGuide key="safeArea" id="7Ir-fu-M7B"/>
             <connections>
-                <outlet property="titleLabel" destination="M6m-xM-Pwc" id="Peu-a4-dLO"/>
+                <outlet property="disclaimerLabel" destination="1od-k8-K0x" id="M0g-xw-jxy"/>
+                <outlet property="titleLabel" destination="PHm-2W-hlk" id="wQA-ng-TRb"/>
             </connections>
-            <point key="canvasLocation" x="196" y="76.46176911544228"/>
+            <point key="canvasLocation" x="-57.600000000000001" y="-88.605697151424295"/>
         </view>
     </objects>
 </document>

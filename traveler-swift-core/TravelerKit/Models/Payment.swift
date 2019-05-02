@@ -16,6 +16,11 @@ public protocol Payment {
      */
     var attributes: [Attribute] { get }
 
+    /**
+     A one liner localized description of the payment method. Use this for payment selection.
+     */
+    var localizedDescription: String { get }
+
     /// The secure (encrypted) payload that is safe to transmit over the internet for processing.
     func securePayload() -> Data?
 }

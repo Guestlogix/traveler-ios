@@ -12,10 +12,23 @@ protocol UICollectionViewDelegateFormLayout: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterAt indexPath: IndexPath) -> CGSize
+    func collectionView(_ collectionView: UICollectionView, contentSizeDidChangeWith collectionViewLayout: UICollectionViewLayout)
+}
+
+extension UICollectionViewDelegateFormLayout {
+    func collectionView(_ collectionView: UICollectionView, contentSizeDidChangeWith collectionViewLayout: UICollectionViewLayout) {
+        // Default noop
+    }
 }
 
 class FormLayout: UICollectionViewLayout {
-    private var contentSize: CGSize?
+    private var contentSize: CGSize? {
+        didSet {
+            collectionView.flatMap {
+                ($0.delegate as? UICollectionViewDelegateFormLayout)?.collectionView($0, contentSizeDidChangeWith: self)
+            }
+        }
+    }
     private var headerLayoutAttributes = [Int: UICollectionViewLayoutAttributes]()
     private var itemLayoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
     private var itemFooterLayoutAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
