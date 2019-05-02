@@ -87,12 +87,12 @@
 		F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */; };
 		F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */; };
 		F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */; };
-		F3A3E06A224D449A00CD69F4 /* FormQuantityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */; };
-		F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */; };
 		F3A3E062224BB84100CD69F4 /* FormValueDisplayInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E061224BB84100CD69F4 /* FormValueDisplayInputCell.swift */; };
 		F3A3E064224BB85E00CD69F4 /* FormValueDisplayInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E063224BB85E00CD69F4 /* FormValueDisplayInputCell.xib */; };
 		F3A3E066224BBEF700CD69F4 /* FormDateInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E065224BBEF700CD69F4 /* FormDateInputCell.swift */; };
 		F3A3E068224BBF2400CD69F4 /* FormDateInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E067224BBF2400CD69F4 /* FormDateInputCell.xib */; };
+		F3A3E06A224D449A00CD69F4 /* FormQuantityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */; };
+		F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,12 +178,12 @@
 		F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
 		F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselViewCell.xib; sourceTree = "<group>"; };
 		F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselItemViewCell.xib; sourceTree = "<group>"; };
-		F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuantityCell.swift; sourceTree = "<group>"; };
-		F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuantityCell.xib; sourceTree = "<group>"; };
 		F3A3E061224BB84100CD69F4 /* FormValueDisplayInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValueDisplayInputCell.swift; sourceTree = "<group>"; };
 		F3A3E063224BB85E00CD69F4 /* FormValueDisplayInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormValueDisplayInputCell.xib; sourceTree = "<group>"; };
 		F3A3E065224BBEF700CD69F4 /* FormDateInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDateInputCell.swift; sourceTree = "<group>"; };
 		F3A3E067224BBF2400CD69F4 /* FormDateInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormDateInputCell.xib; sourceTree = "<group>"; };
+		F3A3E069224D449A00CD69F4 /* FormQuantityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormQuantityCell.swift; sourceTree = "<group>"; };
+		F3A3E06B224D44B100CD69F4 /* FormQuantityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormQuantityCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,12 +281,12 @@
 				F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */,
 				A9639CBE220DF57300625235 /* StepperCell.swift */,
 				A9639CBF220DF57300625235 /* CarouselItemViewCell.swift */,
-				A9639CC0220DF57300625235 /* HeaderView.xib */,
 				A9639CC1220DF57300625235 /* StringCell.swift */,
 				A9639CC2220DF57300625235 /* ShadowedView.swift */,
 				A9639CC3220DF57300625235 /* InfoCell.swift */,
 				A9639CC4220DF57300625235 /* ListCell.swift */,
 				A9639CC5220DF57300625235 /* DateCell.swift */,
+				A9639CC0220DF57300625235 /* HeaderView.xib */,
 				A9639CC6220DF57300625235 /* HeaderView.swift */,
 				A9639CC7220DF57300625235 /* LocationCell.swift */,
 				A9639CC8220DF57300625235 /* DatePickerCell.swift */,

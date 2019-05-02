@@ -47,6 +47,14 @@ class StripePaymentHandler: NSObject, PaymentHandler, STPAddCardViewControllerDe
 }
 
 struct StripePayment: Payment {
+    var localizedDescription: String {
+        guard let card = token.card else {
+            return "UNKNOWN CARD"
+        }
+
+        return "\(STPCard.string(from: card.brand)) ending in \(card.last4)"
+    }
+
     var attributes: [Attribute] {
         guard let card = token.card else {
             return []

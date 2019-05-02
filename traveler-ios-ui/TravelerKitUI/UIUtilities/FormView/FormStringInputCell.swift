@@ -20,4 +20,13 @@ class FormStringInputCell: UICollectionViewCell {
     @IBAction func textFieldValueDidChange(_ textField: UITextField) {
         delegate?.stringInputCellValueDidChange(self)
     }
+
+    var label: String? {
+        set {
+            textField.placeholder = newValue
+        }
+        get {
+            return textField.placeholder
+        }
+    }
 }

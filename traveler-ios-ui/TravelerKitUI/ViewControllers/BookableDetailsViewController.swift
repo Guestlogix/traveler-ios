@@ -98,7 +98,7 @@ class BookableDetailsViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! ListCell
             cell.delegate = self
             cell.dataSource = self
-            //cell.textField.text = bookingContext?.selectedOption?.value
+            cell.textField.text = bookingContext?.selectedOption?.value
             cell.textField.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
             cell.titleLabel.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
 

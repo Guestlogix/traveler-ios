@@ -13,7 +13,7 @@ public protocol Product {
     /// Identifier
     var id: String { get }
     /// Price
-    //var price: Double { get }
+    //var price: Price { get }
     /// Name
     var title: String { get }
 }
@@ -26,7 +26,7 @@ public enum ProductType: String, Decodable {
 
 struct AnyProduct: Decodable {
     let id: String
-    //let price: Double
+    //let price: Price
     let title: String
     let productType: ProductType
 

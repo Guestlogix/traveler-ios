@@ -12,7 +12,7 @@ import Foundation
  Holds the value for a `BookingOption`
  */
 
-public struct BookingOption: Decodable {
+public struct BookingOption: Decodable, Equatable {
     let id: String
 
     /**
@@ -24,5 +24,9 @@ public struct BookingOption: Decodable {
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case value = "optionLabel"
+    }
+
+    public static func ==(lhs: BookingOption, rhs: BookingOption) -> Bool {
+        return lhs.id == rhs.id
     }
 }
