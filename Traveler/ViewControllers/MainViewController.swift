@@ -12,6 +12,7 @@ import TravelerKitUI
 
 protocol MainViewControllerDelegate: class {
     func mainViewControllerDidSignIn(_ controller: MainViewController)
+    func mainViewControllerDidSignOut(_ controller: MainViewController)
 }
 
 let flightCellHeight: CGFloat = 44
@@ -34,7 +35,7 @@ class MainViewController: UIViewController {
         reloadAuthButton()
 
         NotificationCenter.default.addObserver(self, selector: #selector(filterStaleFlights), name: UIApplication.didBecomeActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSignIn(_:)), name: .didSignIn, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(signInStatusDidChange(_:)), name: .signInStatusDidChange, object: nil)
 
         performSegue(withIdentifier: "catalogSegue", sender: nil)
     }
@@ -61,6 +62,10 @@ class MainViewController: UIViewController {
         case (_, let navVC as UINavigationController) where segue.identifier == "addFlightSegue":
             let lookupVC = navVC.topViewController as? FlightLookupViewController
             lookupVC?.delegate = self
+        case (_, let navVC as UINavigationController) where segue.identifier == "profileSegue":
+            let profileVC = navVC.topViewController as? ProfileViewController
+            profileVC?.profile = profile
+            profileVC?.delegate = self
         case (let segue as ContainerEmbedSegue, let catalogVC as PassengerCatalogViewController):
             segue.containerView = containerView
             catalogVC.query = CatalogQuery(flights: flights)
@@ -70,13 +75,8 @@ class MainViewController: UIViewController {
         }
     }
 
-    @objc func didSignIn(_ note: Notification) {
-        guard let profile = note.userInfo?[profileKey] as? Profile else {
-            Log("Invalid notification", data: note, level: .error)
-            return
-        }
-
-        self.profile = profile
+    @objc func signInStatusDidChange(_ note: Notification) {
+        self.profile = note.userInfo?[profileKey] as? Profile
         reloadAuthButton()
     }
 
@@ -152,5 +152,13 @@ extension MainViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return flightCellHeight
+    }
+}
+
+extension MainViewController: ProfileViewControllerDelegate {
+    func profileViewControllerDidLogOut(_ controller: ProfileViewController) {
+        delegate?.mainViewControllerDidSignOut(self)
+
+        controller.dismiss(animated: true)
     }
 }

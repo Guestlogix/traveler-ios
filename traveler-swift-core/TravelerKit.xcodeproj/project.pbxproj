@@ -33,6 +33,10 @@
 		A96F830722389CD100268D0D /* BookingFormFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830622389CD100268D0D /* BookingFormFetchDelegate.swift */; };
 		A96F830922389CE300268D0D /* AvailabilitiesFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830822389CE300268D0D /* AvailabilitiesFetchDelegate.swift */; };
 		A96F8314223AC79F00268D0D /* BookingOptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F8313223AC79F00268D0D /* BookingOptionSet.swift */; };
+		A974A68F2280C42900319683 /* OrderQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A68E2280C42900319683 /* OrderQuery.swift */; };
+		A974A6912280C43300319683 /* OrderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6902280C43300319683 /* OrderResult.swift */; };
+		A974A6932280CA9C00319683 /* OrderFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */; };
+		A974A6952280CFD800319683 /* OrderResultError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6942280CFD800319683 /* OrderResultError.swift */; };
 		A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */; };
 		A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BAB220497FE008AA0C1 /* Receipt.swift */; };
 		A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB72204F5E0008AA0C1 /* Price.swift */; };
@@ -122,6 +126,10 @@
 		A96F830622389CD100268D0D /* BookingFormFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFormFetchDelegate.swift; sourceTree = "<group>"; };
 		A96F830822389CE300268D0D /* AvailabilitiesFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilitiesFetchDelegate.swift; sourceTree = "<group>"; };
 		A96F8313223AC79F00268D0D /* BookingOptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionSet.swift; sourceTree = "<group>"; };
+		A974A68E2280C42900319683 /* OrderQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQuery.swift; sourceTree = "<group>"; };
+		A974A6902280C43300319683 /* OrderResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResult.swift; sourceTree = "<group>"; };
+		A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFetchDelegate.swift; sourceTree = "<group>"; };
+		A974A6942280CFD800319683 /* OrderResultError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultError.swift; sourceTree = "<group>"; };
 		A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProcessDelegate.swift; sourceTree = "<group>"; };
 		A9825BAB220497FE008AA0C1 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		A9825BB72204F5E0008AA0C1 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 				A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */,
 				A96F830622389CD100268D0D /* BookingFormFetchDelegate.swift */,
 				A96F830822389CE300268D0D /* AvailabilitiesFetchDelegate.swift */,
+				A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -312,6 +321,9 @@
 				A9639D31220E000100625235 /* PaymentHandler.swift */,
 				A96F8304223784F500268D0D /* BookingOption.swift */,
 				A96F8313223AC79F00268D0D /* BookingOptionSet.swift */,
+				A974A68E2280C42900319683 /* OrderQuery.swift */,
+				A974A6902280C43300319683 /* OrderResult.swift */,
+				A974A6942280CFD800319683 /* OrderResultError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -491,6 +503,7 @@
 				A9DB06A821496396009817EC /* Traveler.swift in Sources */,
 				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
+				A974A68F2280C42900319683 /* OrderQuery.swift in Sources */,
 				A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */,
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,
@@ -507,6 +520,7 @@
 				A9DB065B2140665A009817EC /* NetworkOperation.swift in Sources */,
 				A9BF40E6218231580090ED1C /* CatalogGroup.swift in Sources */,
 				A9E2AD80219344670063BF79 /* CatalogItemDetails.swift in Sources */,
+				A974A6932280CA9C00319683 /* OrderFetchDelegate.swift in Sources */,
 				A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */,
 				A9E2ADB5219B30780063BF79 /* PurchaseStrategy.swift in Sources */,
 				A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */,
@@ -521,6 +535,7 @@
 				A9639D32220E000100625235 /* PaymentHandler.swift in Sources */,
 				A92523F821FBAD90009E2642 /* OrderCreateDelegate.swift in Sources */,
 				A9BF40E42182310F0090ED1C /* Catalog.swift in Sources */,
+				A974A6952280CFD800319683 /* OrderResultError.swift in Sources */,
 				A92523F621FBAD2C009E2642 /* Order.swift in Sources */,
 				A9EED5F4215A7E52003AAA5F /* AuthenticatedRemoteFetchOperation.swift in Sources */,
 				A96F8305223784F500268D0D /* BookingOption.swift in Sources */,
@@ -547,6 +562,7 @@
 				A95776512153EC7E00BD11C8 /* RestoreOperation.swift in Sources */,
 				A9DB06B9214C27B3009817EC /* AuthOperation.swift in Sources */,
 				A9DB063E21402F8B009817EC /* TravelerRoute.swift in Sources */,
+				A974A6912280C43300319683 /* OrderResult.swift in Sources */,
 				A9BF40D321779D030090ED1C /* FlightSeachDelegate.swift in Sources */,
 				A96F8314223AC79F00268D0D /* BookingOptionSet.swift in Sources */,
 			);

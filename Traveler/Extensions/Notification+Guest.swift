@@ -11,5 +11,5 @@ import Foundation
 let profileKey = "UserInfoProfileKey"
 
 extension Notification.Name {
-    static var didSignIn = Notification.Name("GuestDidSignInNotification")
+    static var signInStatusDidChange = Notification.Name("GuestDidChangeSignInStatus")
 }

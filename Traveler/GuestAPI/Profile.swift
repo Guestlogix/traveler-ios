@@ -13,13 +13,31 @@ struct Profile: Codable {
     let firstName: String
     let lastName: String
     let email: String
-    let avatarURL: URL
 
     enum CodingKeys: String, CodingKey {
         case travelerId = "travelerId"
         case firstName = "firstName"
         case lastName = "lastName"
         case email = "email"
-        case avatarURL = "avatar"
+    }
+
+    static var storedProfile: Profile? {
+        guard let data = UserDefaults.standard.data(forKey: profileKey) else {
+            return nil
+        }
+
+        return try? JSONDecoder().decode(Profile.self, from: data)
+    }
+
+    static func clearStoredProfile() {
+        UserDefaults.standard.removeObject(forKey: profileKey)
+    }
+
+    func store() {
+        guard let data = try? JSONEncoder().encode(self) else {
+            return
+        }
+
+        UserDefaults.standard.set(data, forKey: profileKey)
     }
 }
