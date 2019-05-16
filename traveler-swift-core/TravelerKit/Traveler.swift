@@ -10,6 +10,7 @@ import Foundation
 
 public class Traveler {
     private let queue = OperationQueue()
+    private let orderSerialQueue = OperationQueue()
     private let session: Session
 
     private static var _shared: Traveler?
@@ -37,6 +38,7 @@ public class Traveler {
     init(apiKey: String, device: Device) {
         self.session = Session(apiKey: apiKey)
         self.device = device
+        self.orderSerialQueue.maxConcurrentOperationCount = 1
 
         let sessionOperation = SessionBeginOperation(session: session)
         OperationQueue.authQueue.addOperation(sessionOperation)
@@ -153,6 +155,41 @@ public class Traveler {
         blockOperation.addDependency(fetchOperation)
 
         queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func fetchOrders(_ query: OrderQuery, identifier: AnyHashable?, previousResultBlock: (() -> OrderResult?)?, resultBlock: ((OrderResult, AnyHashable?) -> Void)?, completion: @escaping (OrderResult?, Error?, AnyHashable?) -> Void) {
+        guard let travelerProfileId = session.identity else {
+            completion(nil, OrderResultError.unidentifiedTraveler, identifier)
+            return
+        }
+
+        class ResultWrapper {
+            var result: OrderResult?
+        }
+
+        let wrapper = ResultWrapper()
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<OrderResult>(path: .orders(query, travelerId: travelerProfileId), session: session)
+        let mergeOperation = BlockOperation { [unowned fetchOperation] in
+            guard let result = fetchOperation.resource else { return }
+
+            wrapper.result = previousResultBlock?()?.merge(result) ?? result
+        }
+
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            if let result = wrapper.result {
+                completion(result, nil, identifier)
+            } else {
+                completion(nil, fetchOperation.error!, identifier)
+            }
+        }
+
+        mergeOperation.addDependency(fetchOperation)
+        blockOperation.addDependency(mergeOperation)
+
+        queue.addOperation(fetchOperation)
+        orderSerialQueue.addOperation(mergeOperation)
         OperationQueue.main.addOperation(blockOperation)
     }
 
@@ -424,5 +461,43 @@ public class Traveler {
                 delegate?.availabilitiesFetchDidSucceedWith(availabilities!)
             }
         })
+    }
+
+    /**
+     Fetches an `OrderResult` corresponding to the given `OrderQuery`.
+
+     - Parameters:
+     - query: The `OrderQuery` to filter.
+     - identifier: An optional hash identifying the request. This value is returned back in the delegates. Use this to distinguish between different requests
+     - delegate: An `OrderFetchDelegate` that is notified of the results.
+     */
+
+    public static func fetchOrders(_ query: OrderQuery, identifier: AnyHashable?, delegate: OrderFetchDelegate) {
+        shared?.fetchOrders(query, identifier: identifier, previousResultBlock: { [weak delegate] () -> OrderResult? in
+            return delegate?.previousResult()
+            }, resultBlock: { [weak delegate] (result, identifier) in
+                delegate?.orderFetchDidReceive(result, identifier: identifier)
+            }, completion: { [weak delegate] (result, error, identifier) in
+                if let error = error {
+                    delegate?.orderFetchDidFailWith(error, identifier: identifier)
+                } else {
+                    delegate?.orderFetchDidSucceedWith(result!, identifier: identifier)
+                }
+        })
+    }
+
+    /**
+     Fetches an `OrderResult` corresponding to the given `OrderQuery`.
+
+     - Parameters:
+     - query: The `OrderQuery` to filter.
+     - identifier: An optional hash identifying the request. This value is returned back in the callbacks. Use this to distinguish between different requests
+     - previousResultBlock: A block called (on a worker thread) to return any previous results that are to be merged
+     - resultBlock: A block called (on a worker thread) with the final merged results
+     - completion: A completion block that is called when the results are ready.
+     */
+
+    public static func fetchOrders(_ query: OrderQuery, identifier: AnyHashable?, previousResultBlock: (() -> OrderResult?)?, resultBlock: ((OrderResult, AnyHashable?) -> Void)?, completion: @escaping (OrderResult?, Error?, AnyHashable?) -> Void) {
+        shared?.fetchOrders(query, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
     }
 }

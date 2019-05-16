@@ -11,7 +11,6 @@ import Foundation
 enum PassengerRoute {
     case unauthenticated(UnauthPath)
     case authenticated(AuthPath, apiKey: String, token: Token)  //  TODO: Once there is a JWT validator on the gateway we wont need apiKey passed here
-    
 }
 
 extension PassengerRoute: Route {

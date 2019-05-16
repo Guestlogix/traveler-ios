@@ -9,14 +9,13 @@
 import UIKit
 import TravelerKit
 import GoogleSignIn
+import TravelerKitUI
 
 class AuthViewController: UIViewController {
-    private var profile: Profile?
+    private var profile: Profile? = Profile.storedProfile
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        profile = UserDefaults.standard.object(forKey: profileKey) as? Profile
 
         Traveler.identify(profile?.travelerId, attributes: [:])
 
@@ -49,6 +48,13 @@ class AuthViewController: UIViewController {
 }
 
 extension AuthViewController: MainViewControllerDelegate {
+    func mainViewControllerDidSignOut(_ controller: MainViewController) {
+        GIDSignIn.sharedInstance()?.signOut()
+        Profile.clearStoredProfile()
+
+        NotificationCenter.default.post(name: .signInStatusDidChange, object: nil)
+    }
+
     func mainViewControllerDidSignIn(_ controller: MainViewController) {
         GIDSignIn.sharedInstance()?.signIn()
     }
@@ -71,15 +77,23 @@ extension AuthViewController: GIDSignInDelegate {
             return
         }
 
+        ProgressHUD.show()
+
         Guest.fetchProfile(user) { [weak self] (profile, error) in
+            defer {
+                ProgressHUD.hide()
+            }
+
             guard let profile = profile else {
                 self?.presentError(error!)
                 return
             }
 
+            profile.store()
+
             Traveler.identify(profile.travelerId, attributes: [:])
 
-            NotificationCenter.default.post(name: .didSignIn, object: nil, userInfo: [profileKey: profile])
+            NotificationCenter.default.post(name: .signInStatusDidChange, object: nil, userInfo: [profileKey: profile])
         }
     }
 }

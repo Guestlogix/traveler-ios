@@ -54,4 +54,10 @@ extension ISO8601DateFormatter {
         formatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
         return formatter
     }()
+
+    public static var fullFormatter: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withFullDate, .withFullTime]
+        return formatter
+    }()
 }
