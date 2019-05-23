@@ -179,7 +179,7 @@
         <scene sceneID="W5I-sT-XZs">
             <objects>
                 <tableViewController id="c4I-71-Syr" customClass="OrderResultViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OqR-pl-VLR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="165" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OqR-pl-VLR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -253,7 +253,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEk-Qy-uIm">
                                             <rect key="frame" x="20" y="12" width="128" height="25"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.87726011270068471" green="0.87726011270068471" blue="0.87726011270068471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="128" id="1O3-ee-x52"/>
                                                 <constraint firstAttribute="height" constant="25" id="Zmj-cA-5wZ"/>
@@ -261,7 +261,7 @@
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt5-A5-5yU">
                                             <rect key="frame" x="20" y="45" width="107" height="21"/>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.87726011270068471" green="0.87726011270068471" blue="0.87726011270068471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="107" id="FfL-Cg-U6K"/>
                                                 <constraint firstAttribute="height" constant="21" id="mR3-xm-3ND"/>
@@ -269,7 +269,7 @@
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-fA-DKQ">
                                             <rect key="frame" x="20" y="74" width="280" height="21"/>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.87726011270068471" green="0.87726011270068471" blue="0.87726011270068471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="I3t-Ta-E9A"/>
                                                 <constraint firstAttribute="width" constant="280" id="UIw-yg-Aws"/>
@@ -277,7 +277,7 @@
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxq-Ds-fbp">
                                             <rect key="frame" x="20" y="133" width="82" height="21"/>
-                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.87726011270068471" green="0.87726011270068471" blue="0.87726011270068471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="B87-2Q-gFh"/>
                                                 <constraint firstAttribute="width" constant="82" id="jgK-0y-sK7"/>
