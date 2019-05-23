@@ -97,9 +97,14 @@ enum AuthPath {
                 URLQueryItem(name: "traveler", value: travelerId),
                 URLQueryItem(name: "skip", value: String(query.offset)),
                 URLQueryItem(name: "take", value: String(query.limit)),
-                URLQueryItem(name: "from", value: query.fromDate.flatMap({ ISO8601DateFormatter.fullFormatter.string(from: $0) })),
                 URLQueryItem(name: "to", value: ISO8601DateFormatter.fullFormatter.string(from: query.toDate))
             ]
+
+            if let fromDate = query.fromDate {
+                urlComponents.queryItems?.append(
+                    URLQueryItem(name: "from", value: ISO8601DateFormatter.fullFormatter.string(from: fromDate))
+                )
+            }
         }
 
         urlRequest.url = urlComponents.url

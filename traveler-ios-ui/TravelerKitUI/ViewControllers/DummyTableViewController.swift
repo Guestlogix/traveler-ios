@@ -23,6 +23,7 @@ class DummyTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: dummyCellIdentifier, for: indexPath)
+        cell.contentView.subviews.forEach({ $0.startShimmering() })
         return cell
     }
 }

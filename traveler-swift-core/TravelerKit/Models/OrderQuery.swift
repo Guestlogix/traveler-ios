@@ -32,7 +32,7 @@ public struct OrderQuery: Equatable {
      */
     public init(offset: Int = 0, limit: Int = 10, from: Date? = nil, to: Date? = nil) {
         self.offset = offset
-        self.limit = 0
+        self.limit = limit
         self.fromDate = from
         self.toDate = to ?? Date()
     }
