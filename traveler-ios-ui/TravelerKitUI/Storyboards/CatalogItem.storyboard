@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="toC-Xe-BM1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="toC-Xe-BM1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +26,9 @@
                                 <action selector="didClose:" destination="dKu-cx-0lO" id="3kR-pP-FYM"/>
                             </connections>
                         </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
                         <segue destination="Py4-h5-jSH" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="g2Z-xU-kh6"/>
@@ -358,7 +361,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="nuh-nd-1yf">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="nuh-nd-1yf">
                             <rect key="frame" x="0.0" y="130" width="414" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -995,7 +998,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="4tW-NL-cjA">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="4tW-NL-cjA">
                             <rect key="frame" x="0.0" y="172" width="414" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1400,7 +1403,7 @@
             </objects>
             <point key="canvasLocation" x="8604.7999999999993" y="2346.9265367316343"/>
         </scene>
-        <!--Receipt View Controller-->
+        <!--Order Confirmed-->
         <scene sceneID="mRY-f5-eLw">
             <objects>
                 <tableViewController id="DcU-hM-wtE" customClass="ReceiptViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
@@ -1495,8 +1498,21 @@
                             <outlet property="delegate" destination="DcU-hM-wtE" id="wx2-Kf-wg2"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Order Confirmed" id="SKo-Vg-NM4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="MgI-Fa-SEv">
+                            <connections>
+                                <action selector="didClose:" destination="DcU-hM-wtE" id="Jx2-ay-U4h"/>
+                            </connections>
+                        </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="hidesBackButton" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="660"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="emailLabel" destination="gaB-V9-DfH" id="HlT-g2-Xkb"/>
                     </connections>
