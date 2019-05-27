@@ -44,6 +44,7 @@ extension DateFormatter {
     public static var dateOnlyFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         return formatter
     }()
 }
