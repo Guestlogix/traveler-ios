@@ -193,6 +193,35 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func fetchCancellationQuote(order: Order, completion: @escaping (CancellationQuote?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<CancellationQuoteResponse>(path: .cancellationQuote(order), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource.flatMap({ CancellationQuote(cancellationQuoteResponse: $0, order: order) }), fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func cancelOrder(quote: CancellationQuote, competion: @escaping (Error?) -> Void) {
+        guard quote.expirationDate > Date() else {
+            competion(CancellationError.expiredQuote)
+            return
+        }
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .cancelOrder(quote), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            competion(fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     /**
@@ -499,5 +528,67 @@ public class Traveler {
 
     public static func fetchOrders(_ query: OrderQuery, identifier: AnyHashable?, previousResultBlock: (() -> OrderResult?)?, resultBlock: ((OrderResult, AnyHashable?) -> Void)?, completion: @escaping (OrderResult?, Error?, AnyHashable?) -> Void) {
         shared?.fetchOrders(query, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
+    }
+
+    /**
+     Fetches a `CancellationQuote` for a given `Order`
+
+     - Parameters:
+     - order: The `Order` for which to get a quote
+     - delegate: A `CancellationQuoteFetchDelegate` that is notified of the results.
+    */
+
+    public static func fetchCancellationQuote(order: Order, delegate: CancellationQuoteFetchDelegate) {
+        shared?.fetchCancellationQuote(order: order, completion: { [weak delegate] (quote, error) in
+            if let error = error {
+                delegate?.cancellationQuoteFetchDidFailWith(error)
+            } else {
+                delegate?.cancellationQuoteFetchDidSucceedWith(quote!)
+            }
+        })
+    }
+
+    /**
+     Fetches a `CancellationQuote` for a given `Order`
+
+     - Parameters:
+     - order: The `Order` for which to get a quote
+     - completion: A completion block that is called when the results are ready
+     */
+
+    public static func fetchCancellationQuote(order: Order, completion: @escaping (CancellationQuote?, Error?) -> Void) {
+        shared?.fetchCancellationQuote(order: order, completion: completion)
+    }
+
+    /**
+     Cancels an `Order`, given the `CancellationQuote`
+
+     - Parameters:
+     - quote: The `CancellationQuote` corresponding to the `Order` that is to be cancelled
+     - delegate: A `CancellationDelegate` that is notified of the results
+        A `CancellationError.expiredQuote` will be thrown if the quote has expired.
+     */
+
+    public static func cancelOrder(quote: CancellationQuote, delegate: CancellationDelegate) {
+        shared?.cancelOrder(quote: quote, competion: { [weak delegate] (error) in
+            if let error = error {
+                delegate?.cancellationDidFailWith(error)
+            } else {
+                delegate?.cancellationDidSucceed()
+            }
+        })
+    }
+
+    /**
+     Cancels an `Order`, given the `CancellationQuote`
+
+     - Parameters:
+     - quote: The `CancellationQuote` corresponding to the `Order` that is to be cancelled
+     - completion: A completion block that is called when the results are ready.
+        A `CancellationError.expiredQuote` will be thrown if the quote has expired.
+     */
+
+    public static func cancelOrder(quote: CancellationQuote, completion: @escaping (Error?) -> Void) {
+        shared?.cancelOrder(quote: quote, competion: completion)
     }
 }
