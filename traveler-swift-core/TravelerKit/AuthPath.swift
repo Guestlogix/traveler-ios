@@ -18,6 +18,8 @@ enum AuthPath {
     case createOrder([BookingForm], travelerId: String?) // Use an interface called Purchase in the future to capture buyables
     case processOrder(Order, Payment)
     case orders(OrderQuery, travelerId: String)
+    case cancellationQuote(Order)
+    case cancelOrder(CancellationQuote)
 
     // MARK: URLRequest
 
@@ -105,6 +107,11 @@ enum AuthPath {
                     URLQueryItem(name: "from", value: ISO8601DateFormatter.fullFormatter.string(from: fromDate))
                 )
             }
+        case .cancellationQuote(let order):
+            urlComponents.path = "/order/\(order.id)/cancellation"
+        case .cancelOrder(let quote):
+            urlComponents.path = "/order/\(quote.order.id)/cancellation/\(quote.id)"
+            urlRequest.method = .patch
         }
 
         urlRequest.url = urlComponents.url

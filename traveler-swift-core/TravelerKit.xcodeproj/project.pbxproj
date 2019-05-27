@@ -25,6 +25,10 @@
 		A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */; };
 		A95776512153EC7E00BD11C8 /* RestoreOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95776502153EC7E00BD11C8 /* RestoreOperation.swift */; };
 		A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95776522153F1CE00BD11C8 /* StorageOperation.swift */; };
+		A95F46A922983B6C009C9227 /* CancellationQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46A822983B6C009C9227 /* CancellationQuote.swift */; };
+		A95F46AB229C403B009C9227 /* CancellationQuoteFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46AA229C403B009C9227 /* CancellationQuoteFetchDelegate.swift */; };
+		A95F46AD229C6AD3009C9227 /* CancellationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46AC229C6AD3009C9227 /* CancellationError.swift */; };
+		A95F46AF229C6B00009C9227 /* CancellationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46AE229C6B00009C9227 /* CancellationDelegate.swift */; };
 		A9639C88220DEDCC00625235 /* BookingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639C87220DEDCC00625235 /* BookingError.swift */; };
 		A9639C8A220DF10A00625235 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639C89220DF10A00625235 /* Payment.swift */; };
 		A9639C8C220DF1F000625235 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639C8B220DF1F000625235 /* Device.swift */; };
@@ -117,6 +121,10 @@
 		A957764E2153E82600BD11C8 /* SessionBeginOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperation.swift; sourceTree = "<group>"; };
 		A95776502153EC7E00BD11C8 /* RestoreOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreOperation.swift; sourceTree = "<group>"; };
 		A95776522153F1CE00BD11C8 /* StorageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageOperation.swift; sourceTree = "<group>"; };
+		A95F46A822983B6C009C9227 /* CancellationQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationQuote.swift; sourceTree = "<group>"; };
+		A95F46AA229C403B009C9227 /* CancellationQuoteFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationQuoteFetchDelegate.swift; sourceTree = "<group>"; };
+		A95F46AC229C6AD3009C9227 /* CancellationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationError.swift; sourceTree = "<group>"; };
+		A95F46AE229C6B00009C9227 /* CancellationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationDelegate.swift; sourceTree = "<group>"; };
 		A9639C85220DEB3F00625235 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A9639C87220DEDCC00625235 /* BookingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingError.swift; sourceTree = "<group>"; };
 		A9639C89220DF10A00625235 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
@@ -231,6 +239,8 @@
 				A96F830622389CD100268D0D /* BookingFormFetchDelegate.swift */,
 				A96F830822389CE300268D0D /* AvailabilitiesFetchDelegate.swift */,
 				A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */,
+				A95F46AA229C403B009C9227 /* CancellationQuoteFetchDelegate.swift */,
+				A95F46AE229C6B00009C9227 /* CancellationDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -324,6 +334,8 @@
 				A974A68E2280C42900319683 /* OrderQuery.swift */,
 				A974A6902280C43300319683 /* OrderResult.swift */,
 				A974A6942280CFD800319683 /* OrderResultError.swift */,
+				A95F46A822983B6C009C9227 /* CancellationQuote.swift */,
+				A95F46AC229C6AD3009C9227 /* CancellationError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -517,6 +529,7 @@
 				A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */,
 				A92523F221FB71D0009E2642 /* ValidationError.swift in Sources */,
 				A9E28A9721A864A700967C4A /* Product.swift in Sources */,
+				A95F46A922983B6C009C9227 /* CancellationQuote.swift in Sources */,
 				A9DB065B2140665A009817EC /* NetworkOperation.swift in Sources */,
 				A9BF40E6218231580090ED1C /* CatalogGroup.swift in Sources */,
 				A9E2AD80219344670063BF79 /* CatalogItemDetails.swift in Sources */,
@@ -526,6 +539,7 @@
 				A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */,
 				A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */,
 				A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */,
+				A95F46AB229C403B009C9227 /* CancellationQuoteFetchDelegate.swift in Sources */,
 				A9EED5F6215AB713003AAA5F /* KeychainStoreOperation.swift in Sources */,
 				A9DB06442140358C009817EC /* Credentials.swift in Sources */,
 				A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */,
@@ -535,6 +549,7 @@
 				A9639D32220E000100625235 /* PaymentHandler.swift in Sources */,
 				A92523F821FBAD90009E2642 /* OrderCreateDelegate.swift in Sources */,
 				A9BF40E42182310F0090ED1C /* Catalog.swift in Sources */,
+				A95F46AD229C6AD3009C9227 /* CancellationError.swift in Sources */,
 				A974A6952280CFD800319683 /* OrderResultError.swift in Sources */,
 				A92523F621FBAD2C009E2642 /* Order.swift in Sources */,
 				A9EED5F4215A7E52003AAA5F /* AuthenticatedRemoteFetchOperation.swift in Sources */,
@@ -562,6 +577,7 @@
 				A95776512153EC7E00BD11C8 /* RestoreOperation.swift in Sources */,
 				A9DB06B9214C27B3009817EC /* AuthOperation.swift in Sources */,
 				A9DB063E21402F8B009817EC /* TravelerRoute.swift in Sources */,
+				A95F46AF229C6B00009C9227 /* CancellationDelegate.swift in Sources */,
 				A974A6912280C43300319683 /* OrderResult.swift in Sources */,
 				A9BF40D321779D030090ED1C /* FlightSeachDelegate.swift in Sources */,
 				A96F8314223AC79F00268D0D /* BookingOptionSet.swift in Sources */,
