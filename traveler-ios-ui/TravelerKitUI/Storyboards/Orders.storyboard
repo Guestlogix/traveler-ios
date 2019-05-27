@@ -302,10 +302,187 @@
                             <outlet property="delegate" destination="c4I-71-Syr" id="LJw-60-RSl"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="cuo-8P-FDf" kind="show" identifier="orderDetailSegue" id="2nE-6J-WiF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si7-ue-QdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1614.4927536231885" y="1251.5625"/>
+        </scene>
+        <!--View Order-->
+        <scene sceneID="gqT-lz-hP1">
+            <objects>
+                <tableViewController title="View Order" id="cuo-8P-FDf" customClass="OrderDetailViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lc1-2A-10P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderDetailCellIdentifier" rowHeight="140" id="olh-qy-PT6" customClass="OrderDetailCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="140"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="olh-qy-PT6" id="0DS-Dj-uM7">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDG-Ju-6X6">
+                                            <rect key="frame" x="20" y="11" width="133" height="27"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eso-YX-xka" userLabel="Date Label">
+                                            <rect key="frame" x="20" y="46" width="36" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bai-wp-Aot">
+                                            <rect key="frame" x="20" y="106.5" width="39" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bai-wp-Aot" firstAttribute="top" secondItem="eso-YX-xka" secondAttribute="bottom" constant="39.5" id="9IQ-64-vj5"/>
+                                        <constraint firstItem="bai-wp-Aot" firstAttribute="leading" secondItem="0DS-Dj-uM7" secondAttribute="leadingMargin" id="KjE-BQ-F8y"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bai-wp-Aot" secondAttribute="bottom" constant="2.5" id="dmR-ZS-3Sd"/>
+                                        <constraint firstItem="oDG-Ju-6X6" firstAttribute="leading" secondItem="0DS-Dj-uM7" secondAttribute="leadingMargin" id="eJg-5k-Ueo"/>
+                                        <constraint firstItem="eso-YX-xka" firstAttribute="top" secondItem="oDG-Ju-6X6" secondAttribute="bottom" constant="8" id="g8w-6t-O1g"/>
+                                        <constraint firstItem="eso-YX-xka" firstAttribute="leading" secondItem="0DS-Dj-uM7" secondAttribute="leadingMargin" id="gWt-v2-dRd"/>
+                                        <constraint firstItem="oDG-Ju-6X6" firstAttribute="top" secondItem="0DS-Dj-uM7" secondAttribute="topMargin" id="hXr-Re-Umh"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="eso-YX-xka" id="hev-BK-cAb"/>
+                                    <outlet property="orderNumberLabel" destination="oDG-Ju-6X6" id="f49-ZZ-8Jc"/>
+                                    <outlet property="priceLabel" destination="bai-wp-Aot" id="0Ax-7F-WRx"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="productCellIdentifier" rowHeight="88" id="kip-aI-zH0" customClass="ProductCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="168" width="414" height="88"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kip-aI-zH0" id="vDv-fR-Xn7">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="87.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNy-1g-UtY">
+                                            <rect key="frame" x="20" y="10" width="348" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tb2-OS-Os2">
+                                            <rect key="frame" x="20" y="64" width="37" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt3-kX-2zd">
+                                            <rect key="frame" x="20" y="39" width="34.5" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Nt3-kX-2zd" firstAttribute="leading" secondItem="vDv-fR-Xn7" secondAttribute="leading" constant="20" id="04p-gi-uU6"/>
+                                        <constraint firstItem="Nt3-kX-2zd" firstAttribute="top" secondItem="aNy-1g-UtY" secondAttribute="bottom" constant="5" id="10C-xI-dL0"/>
+                                        <constraint firstItem="tb2-OS-Os2" firstAttribute="leading" secondItem="vDv-fR-Xn7" secondAttribute="leading" constant="20" id="8IL-ES-ueC"/>
+                                        <constraint firstItem="aNy-1g-UtY" firstAttribute="top" secondItem="vDv-fR-Xn7" secondAttribute="top" constant="10" id="8Il-Uz-Ca8"/>
+                                        <constraint firstItem="tb2-OS-Os2" firstAttribute="top" secondItem="Nt3-kX-2zd" secondAttribute="bottom" constant="5" id="JqM-CC-k3i"/>
+                                        <constraint firstItem="aNy-1g-UtY" firstAttribute="leading" secondItem="vDv-fR-Xn7" secondAttribute="leading" constant="20" id="MOQ-bO-c0E"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aNy-1g-UtY" secondAttribute="trailing" id="jFf-3h-b1J"/>
+                                        <constraint firstAttribute="bottom" secondItem="tb2-OS-Os2" secondAttribute="bottom" constant="3.5" id="qRn-ka-KJl"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="Nt3-kX-2zd" id="5cu-f2-9UZ"/>
+                                    <outlet property="priceLabel" destination="tb2-OS-Os2" id="QEP-sq-hGE"/>
+                                    <outlet property="productNameLabel" destination="aNy-1g-UtY" id="ChV-Nq-uip"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="billingCellIdentifier" rowHeight="143" id="GtR-5d-0VY" customClass="BillingCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="256" width="414" height="143"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GtR-5d-0VY" id="Ix8-AW-uKR">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="142.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Credit card information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzG-4h-Vmi">
+                                            <rect key="frame" x="20" y="101.5" width="374" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuF-CC-6Qr">
+                                            <rect key="frame" x="18" y="11" width="374" height="30"/>
+                                            <state key="normal" title="Email tickets"/>
+                                            <connections>
+                                                <action selector="emailButtonTapped:" destination="GtR-5d-0VY" eventType="touchUpInside" id="q0g-rk-Hao"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billing information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL8-Lc-4BB">
+                                            <rect key="frame" x="20" y="61" width="145" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="vuF-CC-6Qr" secondAttribute="trailing" constant="22" id="4Bj-Lw-bNl"/>
+                                        <constraint firstItem="vuF-CC-6Qr" firstAttribute="leading" secondItem="Ix8-AW-uKR" secondAttribute="leading" constant="18" id="4mx-LC-NzR"/>
+                                        <constraint firstAttribute="bottom" secondItem="OzG-4h-Vmi" secondAttribute="bottom" constant="20" id="KKF-xz-i2a"/>
+                                        <constraint firstItem="OzG-4h-Vmi" firstAttribute="top" secondItem="fL8-Lc-4BB" secondAttribute="bottom" constant="20" id="UdA-ev-MFO"/>
+                                        <constraint firstItem="vuF-CC-6Qr" firstAttribute="top" secondItem="Ix8-AW-uKR" secondAttribute="top" constant="11" id="fuz-ms-vEQ"/>
+                                        <constraint firstItem="fL8-Lc-4BB" firstAttribute="leading" secondItem="Ix8-AW-uKR" secondAttribute="leading" constant="20" id="iUd-LI-4X0"/>
+                                        <constraint firstItem="OzG-4h-Vmi" firstAttribute="leading" secondItem="Ix8-AW-uKR" secondAttribute="leading" constant="20" id="oRm-eu-1k3"/>
+                                        <constraint firstItem="fL8-Lc-4BB" firstAttribute="top" secondItem="vuF-CC-6Qr" secondAttribute="bottom" constant="20" id="sOv-uW-Sut"/>
+                                        <constraint firstAttribute="trailing" secondItem="OzG-4h-Vmi" secondAttribute="trailing" constant="20" id="zeW-Vg-sva"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="creditCardLabel" destination="OzG-4h-Vmi" id="TA4-xp-J4e"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cancelOrderCellIdentifier" rowHeight="135" id="kJZ-YN-vYL" customClass="CancelCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="399" width="414" height="135"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kJZ-YN-vYL" id="rHz-Fg-ltw">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="134.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kti-AU-E0U">
+                                            <rect key="frame" x="161.5" y="52" width="91" height="30.5"/>
+                                            <state key="normal" title="Cancel Order"/>
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="kJZ-YN-vYL" eventType="touchUpInside" id="Ga2-Bg-m0o"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kti-AU-E0U" firstAttribute="centerY" secondItem="rHz-Fg-ltw" secondAttribute="centerY" id="BeD-p0-jiP"/>
+                                        <constraint firstItem="kti-AU-E0U" firstAttribute="top" secondItem="rHz-Fg-ltw" secondAttribute="top" constant="52" id="h2F-ON-A62"/>
+                                        <constraint firstAttribute="bottom" secondItem="kti-AU-E0U" secondAttribute="bottom" constant="52" id="kv7-I5-Ja7"/>
+                                        <constraint firstItem="kti-AU-E0U" firstAttribute="centerX" secondItem="rHz-Fg-ltw" secondAttribute="centerX" id="teL-ek-0U6"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cancelButton" destination="kti-AU-E0U" id="66k-8T-EVy"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cuo-8P-FDf" id="RAm-zI-4Z4"/>
+                            <outlet property="delegate" destination="cuo-8P-FDf" id="Qlx-Re-6Zf"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-42-lTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-300" y="1252"/>
         </scene>
     </scenes>
 </document>
