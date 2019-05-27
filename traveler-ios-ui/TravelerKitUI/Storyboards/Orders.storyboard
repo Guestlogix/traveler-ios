@@ -197,7 +197,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzS-NX-5AS">
-                                            <rect key="frame" x="20" y="11" width="374" height="27"/>
+                                            <rect key="frame" x="20" y="11" width="136.5" height="27"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -214,9 +214,15 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGc-wn-e0i">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGc-wn-e0i">
                                             <rect key="frame" x="20" y="133.5" width="374" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB1-S7-pAi" userLabel="Status Label">
+                                            <rect key="frame" x="346" y="17" width="48" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -226,14 +232,15 @@
                                         <constraint firstAttribute="bottom" secondItem="RGc-wn-e0i" secondAttribute="bottom" constant="10.5" id="Hc3-HN-Ewq"/>
                                         <constraint firstAttribute="trailing" secondItem="AU0-mH-5Uv" secondAttribute="trailing" constant="20" id="KRx-V2-WHj"/>
                                         <constraint firstItem="TzS-NX-5AS" firstAttribute="top" secondItem="mH8-cF-Lz3" secondAttribute="top" constant="11" id="Q3l-Dl-3Ns"/>
-                                        <constraint firstAttribute="trailing" secondItem="TzS-NX-5AS" secondAttribute="trailing" constant="20" id="SUm-GB-DoN"/>
                                         <constraint firstItem="RGc-wn-e0i" firstAttribute="leading" secondItem="mH8-cF-Lz3" secondAttribute="leading" constant="20" id="SZm-ah-rYc"/>
                                         <constraint firstItem="TzS-NX-5AS" firstAttribute="leading" secondItem="mH8-cF-Lz3" secondAttribute="leading" constant="20" id="TKb-zM-lub"/>
                                         <constraint firstAttribute="trailing" secondItem="oYr-Qm-W6Y" secondAttribute="trailing" constant="20" id="eCg-RR-w52"/>
                                         <constraint firstItem="oYr-Qm-W6Y" firstAttribute="top" secondItem="AU0-mH-5Uv" secondAttribute="bottom" constant="8" id="jP8-TK-1k0"/>
                                         <constraint firstItem="oYr-Qm-W6Y" firstAttribute="leading" secondItem="mH8-cF-Lz3" secondAttribute="leading" constant="20" id="tma-j5-kfy"/>
+                                        <constraint firstAttribute="trailing" secondItem="DB1-S7-pAi" secondAttribute="trailing" constant="20" id="uA5-wT-MhW"/>
                                         <constraint firstItem="AU0-mH-5Uv" firstAttribute="top" secondItem="TzS-NX-5AS" secondAttribute="bottom" constant="8" id="vab-2j-fbf"/>
                                         <constraint firstItem="AU0-mH-5Uv" firstAttribute="leading" secondItem="mH8-cF-Lz3" secondAttribute="leading" constant="20" id="wYc-hJ-22L"/>
+                                        <constraint firstItem="DB1-S7-pAi" firstAttribute="top" secondItem="mH8-cF-Lz3" secondAttribute="top" constant="17" id="xfF-Ka-Zd3"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -242,6 +249,7 @@
                                     <outlet property="numberLabel" destination="TzS-NX-5AS" id="aGE-jL-JXc"/>
                                     <outlet property="priceLabel" destination="RGc-wn-e0i" id="lRz-J0-0Km"/>
                                     <outlet property="productsLabel" destination="oYr-Qm-W6Y" id="gXL-ZV-BZS"/>
+                                    <outlet property="statusLabel" destination="DB1-S7-pAi" id="gGR-fq-uBg"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCellIdentifier" rowHeight="165" id="dFT-WS-4dB">
