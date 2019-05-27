@@ -25,6 +25,16 @@ open class OrderResultViewController: UITableViewController {
         _volatileResult = orderResult
     }
 
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch (segue.identifier, segue.destination) {
+        case (_, let vc as OrderDetailViewController):
+            vc.order = selectedOrder
+        default:
+            Log("Unknown segue", data: segue, level: .warning)
+            break
+        }
+    }
+
     // MARK: UITableViewDataSource
 
     override open func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,8 +66,9 @@ open class OrderResultViewController: UITableViewController {
     // MARK: UITableViewDelegate
 
     override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        selectedOrder = orderResult!.orders[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "orderDetailSegue", sender: nil)
     }
 }
 

@@ -38,6 +38,8 @@ public struct Order: Decodable {
     public let createdDate: Date
     /// The email of the primary contact
     public let email: CustomerContact
+    /// The last four digits of credit card
+    public let last4Digits: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -47,6 +49,7 @@ public struct Order: Decodable {
         case status = "status"
         case createdDate = "createdOn"
         case email = "customer"
+        case last4Digits = "last4Digits"
     }
 
     public init(from decoder: Decoder) throws {
@@ -68,10 +71,11 @@ public struct Order: Decodable {
         self.products = try container.decode([AnyProduct].self, forKey: .products).map { product in
             switch product.productType {
             case .bookable:
-                return BookableProduct(id: product.id, title: product.title, passes: product.passes!)
+                return BookableProduct(id: product.id, title: product.title, passes: product.passes!, eventDate: product.eventDate, price: product.price)
             }
         }
 
         self.email = try container.decode(CustomerContact.self, forKey: .email)
+        self.last4Digits = try container.decode(String?.self, forKey: .last4Digits) ?? nil
     }
 }
