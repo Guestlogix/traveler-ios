@@ -9,7 +9,7 @@
 import Foundation
 
 public extension URLRequest {
-    public enum HTTPMethod : String {
+    enum HTTPMethod : String {
         case get = "GET"
         case post = "POST"
         case patch = "PATCH"
@@ -17,7 +17,7 @@ public extension URLRequest {
         case put = "PUT"
     }
 
-    public var jsonBody: Any? {
+    var jsonBody: Any? {
         get {
             return httpBody.flatMap { try? JSONSerialization.jsonObject(with: $0, options: .allowFragments) }
         }
@@ -26,7 +26,7 @@ public extension URLRequest {
         }
     }
 
-    public var method: HTTPMethod? {
+    var method: HTTPMethod? {
         get {
             let httpMethod = self.httpMethod ?? "GET"
             return HTTPMethod(rawValue: httpMethod)
