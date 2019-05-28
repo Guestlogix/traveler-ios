@@ -58,7 +58,7 @@ public struct OrderResult: Decodable {
      - Returns: A merged `OrderResult` if the two OrderResults are result-equivalent; nil otherwise.
      */
     public func merge(_ result: OrderResult) -> OrderResult? {
-        guard !self.isResultEquivalent(to: result) else {
+        guard self.isResultEquivalent(to: result) else {
             // Not mergable
             return nil
         }

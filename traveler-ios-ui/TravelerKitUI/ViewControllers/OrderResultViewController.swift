@@ -42,7 +42,7 @@ open class OrderResultViewController: UITableViewController {
     }
 
     override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderResult?.orders.count ?? 0
+        return orderResult?.total ?? 0
     }
 
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -51,6 +51,7 @@ open class OrderResultViewController: UITableViewController {
         switch order {
         case .none:
             let cell = tableView.dequeueReusableCell(withIdentifier: loadingCellIdentifier, for: indexPath)
+            cell.contentView.subviews.forEach({ $0.startShimmering() })
             return cell
         case .some(let order):
             let cell = tableView.dequeueReusableCell(withIdentifier: orderCellIdentifier, for: indexPath) as! OrderCell
@@ -79,8 +80,8 @@ extension OrderResultViewController: UITableViewDataSourcePrefetching {
         }
         
         let indexesRequested = indexPaths.map({ $0.row }).filter({ orderResult.orders[$0] == nil })
-        let pages = Set(indexesRequested.map({ $0 / OrderQuery.pageSize + 1 }))
-        let pagesNotRequested = pages.filter({ orderResult.hasPage($0, pageSize: OrderQuery.pageSize) })
+        let pages = Set(indexesRequested.map({ $0 / OrderQuery.pageSize }))
+        let pagesNotRequested = pages.filter({ !orderResult.hasPage($0, pageSize: OrderQuery.pageSize) })
         for page in pagesNotRequested where !pagesLoading.contains(page) {
             pagesLoading.insert(page)
 
@@ -92,9 +93,10 @@ extension OrderResultViewController: UITableViewDataSourcePrefetching {
 
 extension OrderResultViewController: OrderFetchDelegate {
     public func orderFetchDidSucceedWith(_ result: OrderResult, identifier: AnyHashable?) {
+        self.orderResult = _volatileResult
+
         _ = (identifier as? Int).flatMap({ pagesLoading.remove($0) })
 
-        self.orderResult = _volatileResult
         tableView.indexPathsForVisibleRows.flatMap({ tableView.reloadRows(at: $0, with: .none) })
     }
 
@@ -108,7 +110,7 @@ extension OrderResultViewController: OrderFetchDelegate {
         return _volatileResult
     }
 
-    public func orderFetchDidReceiveResult(_ result: OrderResult) {
+    public func orderFetchDidReceive(_ result: OrderResult, identifier: AnyHashable?) {
         _volatileResult = result
     }
 }
@@ -117,7 +119,7 @@ extension OrderQuery {
     static let pageSize = 10
 
     init(page: Int, from: Date?, to: Date) {
-        self.init(offset: (page - 1) * OrderQuery.pageSize, limit: OrderQuery.pageSize, from: from, to: to)
+        self.init(offset: page * OrderQuery.pageSize, limit: OrderQuery.pageSize, from: from, to: to)
     }
 }
 
