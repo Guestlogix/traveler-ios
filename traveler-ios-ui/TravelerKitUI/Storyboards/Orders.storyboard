@@ -348,30 +348,112 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8IP-KU-qXz" userLabel="Separator Line">
+                                    <rect key="frame" x="20" y="134" width="394" height="1"/>
+                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="72B-yx-UBT" secondAttribute="bottom" constant="16" id="2kP-BY-cxO"/>
+                                <constraint firstAttribute="trailing" secondItem="8IP-KU-qXz" secondAttribute="trailing" id="6qq-yh-OJN"/>
+                                <constraint firstAttribute="bottom" secondItem="8IP-KU-qXz" secondAttribute="bottom" id="C7J-NS-yBA"/>
                                 <constraint firstItem="fhq-7d-Gnf" firstAttribute="leading" secondItem="P25-eb-rbr" secondAttribute="leading" constant="20" id="CeZ-JH-LQ6"/>
+                                <constraint firstItem="8IP-KU-qXz" firstAttribute="leading" secondItem="P25-eb-rbr" secondAttribute="leading" constant="20" id="GSC-xZ-Guk"/>
                                 <constraint firstItem="W7R-8i-nto" firstAttribute="leading" secondItem="P25-eb-rbr" secondAttribute="leading" constant="20" id="MSl-tj-6An"/>
                                 <constraint firstItem="72B-yx-UBT" firstAttribute="leading" secondItem="P25-eb-rbr" secondAttribute="leading" constant="20" id="lcX-qv-hSv"/>
                                 <constraint firstItem="fhq-7d-Gnf" firstAttribute="top" secondItem="P25-eb-rbr" secondAttribute="top" constant="17" id="mJj-bZ-T1z"/>
+                                <constraint firstItem="8IP-KU-qXz" firstAttribute="top" secondItem="72B-yx-UBT" secondAttribute="bottom" constant="15" id="nqy-Tk-Suk"/>
                                 <constraint firstAttribute="trailing" secondItem="fhq-7d-Gnf" secondAttribute="trailing" constant="20" id="puA-wm-Qiq"/>
                                 <constraint firstItem="W7R-8i-nto" firstAttribute="top" secondItem="fhq-7d-Gnf" secondAttribute="bottom" constant="8" id="qeQ-QS-PDp"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="dXG-HQ-jZ9">
-                            <rect key="frame" x="0.0" y="251" width="414" height="117"/>
+                            <rect key="frame" x="0.0" y="251" width="414" height="301"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjg-fC-3B3">
-                                    <rect key="frame" x="161.5" y="43.5" width="91" height="30"/>
-                                    <state key="normal" title="Cancel Order"/>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4RS-z9-eLr">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="301"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SK6-tc-RVS">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP7-ml-xMA">
+                                                    <rect key="frame" x="20" y="17" width="374" height="33.5"/>
+                                                    <state key="normal" title="Email Tickets"/>
+                                                    <connections>
+                                                        <action selector="cancelButtonTapped:" destination="cuo-8P-FDf" eventType="touchUpInside" id="WVQ-rO-KGg"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billing Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eb3-Gr-rBt">
+                                                    <rect key="frame" x="20" y="72.5" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visa ending in 4242" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfN-2e-Fn5" userLabel="Credit card information">
+                                                    <rect key="frame" x="20" y="112" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvf-uw-ypM" userLabel="Separator Line">
+                                                    <rect key="frame" x="20" y="0.0" width="394" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="0go-0y-us7"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jvf-uw-ypM" firstAttribute="top" secondItem="SK6-tc-RVS" secondAttribute="top" id="1z4-hp-I4g"/>
+                                                <constraint firstItem="Jvf-uw-ypM" firstAttribute="leading" secondItem="SK6-tc-RVS" secondAttribute="leading" constant="20" id="2HL-x6-Zrr"/>
+                                                <constraint firstItem="Eb3-Gr-rBt" firstAttribute="leading" secondItem="SK6-tc-RVS" secondAttribute="leading" constant="20" id="5ZK-K8-Tfl"/>
+                                                <constraint firstItem="TfN-2e-Fn5" firstAttribute="leading" secondItem="SK6-tc-RVS" secondAttribute="leading" constant="20" id="Dhs-3r-5QB"/>
+                                                <constraint firstAttribute="bottom" secondItem="TfN-2e-Fn5" secondAttribute="bottom" constant="18" id="JB0-gG-BRn"/>
+                                                <constraint firstAttribute="trailing" secondItem="EP7-ml-xMA" secondAttribute="trailing" constant="20" id="Jxe-si-Fu1"/>
+                                                <constraint firstAttribute="trailing" secondItem="TfN-2e-Fn5" secondAttribute="trailing" constant="20" id="ccs-gy-qBT"/>
+                                                <constraint firstAttribute="trailing" secondItem="Eb3-Gr-rBt" secondAttribute="trailing" constant="20" id="dCC-W5-stH"/>
+                                                <constraint firstItem="TfN-2e-Fn5" firstAttribute="top" secondItem="Eb3-Gr-rBt" secondAttribute="bottom" constant="19" id="jWd-yU-AVm"/>
+                                                <constraint firstItem="EP7-ml-xMA" firstAttribute="leading" secondItem="SK6-tc-RVS" secondAttribute="leading" constant="20" id="oop-bs-0pY"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jvf-uw-ypM" secondAttribute="trailing" id="s5j-Qf-8d6"/>
+                                                <constraint firstItem="EP7-ml-xMA" firstAttribute="top" secondItem="Jvf-uw-ypM" secondAttribute="bottom" constant="16" id="z3P-pZ-eUN"/>
+                                                <constraint firstItem="Eb3-Gr-rBt" firstAttribute="top" secondItem="EP7-ml-xMA" secondAttribute="bottom" constant="22" id="zxQ-9p-h8S"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8F-pA-0Qk">
+                                            <rect key="frame" x="0.0" y="150.5" width="414" height="150.5"/>
+                                            <subviews>
+                                                <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kex-IS-Fds" userLabel="Separator Line">
+                                                    <rect key="frame" x="20" y="0.0" width="394" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="q3v-Q2-dpL"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FP9-6V-Hm6">
+                                                    <rect key="frame" x="163" y="60.5" width="88" height="30"/>
+                                                    <state key="normal" title="Cancel order"/>
+                                                    <connections>
+                                                        <action selector="emailButtonTapped:" destination="cuo-8P-FDf" eventType="touchUpInside" id="ubG-db-m7P"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Kex-IS-Fds" secondAttribute="trailing" id="0MM-9x-jx3"/>
+                                                <constraint firstItem="FP9-6V-Hm6" firstAttribute="centerX" secondItem="o8F-pA-0Qk" secondAttribute="centerX" id="7UD-hr-gFd"/>
+                                                <constraint firstItem="Kex-IS-Fds" firstAttribute="top" secondItem="o8F-pA-0Qk" secondAttribute="top" id="D9i-26-gBO"/>
+                                                <constraint firstItem="Kex-IS-Fds" firstAttribute="leading" secondItem="o8F-pA-0Qk" secondAttribute="leading" constant="20" id="JTr-jg-wBA"/>
+                                                <constraint firstItem="FP9-6V-Hm6" firstAttribute="centerY" secondItem="o8F-pA-0Qk" secondAttribute="centerY" id="Tj6-CM-ZGV"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="fjg-fC-3B3" firstAttribute="centerX" secondItem="dXG-HQ-jZ9" secondAttribute="centerX" id="2xL-Py-WaL"/>
-                                <constraint firstItem="fjg-fC-3B3" firstAttribute="centerY" secondItem="dXG-HQ-jZ9" secondAttribute="centerY" id="9vt-fv-R0m"/>
-                                <constraint firstItem="fjg-fC-3B3" firstAttribute="top" secondItem="dXG-HQ-jZ9" secondAttribute="top" constant="43.5" id="Q5N-1F-Epv"/>
+                                <constraint firstAttribute="trailing" secondItem="4RS-z9-eLr" secondAttribute="trailing" id="6wW-wl-8fF"/>
+                                <constraint firstItem="4RS-z9-eLr" firstAttribute="top" secondItem="dXG-HQ-jZ9" secondAttribute="top" id="G8T-F4-K42"/>
+                                <constraint firstAttribute="bottom" secondItem="4RS-z9-eLr" secondAttribute="bottom" id="aaL-Iu-seg"/>
+                                <constraint firstItem="4RS-z9-eLr" firstAttribute="leading" secondItem="dXG-HQ-jZ9" secondAttribute="leading" id="cRn-tV-ILU"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -425,6 +507,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="creditCardLabel" destination="TfN-2e-Fn5" id="Fzm-HQ-SQR"/>
                         <outlet property="orderDateLabel" destination="W7R-8i-nto" id="Roz-nD-uE4"/>
                         <outlet property="orderNumberLabel" destination="fhq-7d-Gnf" id="z3U-AX-Te4"/>
                         <outlet property="orderPriceLabel" destination="72B-yx-UBT" id="FmG-fY-IHn"/>
