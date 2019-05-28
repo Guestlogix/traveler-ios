@@ -321,6 +321,7 @@
         <!--View Order-->
         <scene sceneID="gqT-lz-hP1">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-42-lTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="View Order" id="cuo-8P-FDf" customClass="OrderDetailViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lc1-2A-10P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -381,7 +382,7 @@
                                                     <rect key="frame" x="20" y="17" width="374" height="33.5"/>
                                                     <state key="normal" title="Email Tickets"/>
                                                     <connections>
-                                                        <action selector="cancelButtonTapped:" destination="cuo-8P-FDf" eventType="touchUpInside" id="WVQ-rO-KGg"/>
+                                                        <action selector="didRequestTickets:" destination="cuo-8P-FDf" eventType="touchUpInside" id="GJa-V0-fSo"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billing Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eb3-Gr-rBt">
@@ -434,7 +435,7 @@
                                                     <rect key="frame" x="163" y="60.5" width="88" height="30"/>
                                                     <state key="normal" title="Cancel order"/>
                                                     <connections>
-                                                        <action selector="emailButtonTapped:" destination="cuo-8P-FDf" eventType="touchUpInside" id="ubG-db-m7P"/>
+                                                        <action selector="didCancelOrder:" destination="cuo-8P-FDf" eventType="touchUpInside" id="slv-aC-vf0"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -513,7 +514,6 @@
                         <outlet property="orderPriceLabel" destination="72B-yx-UBT" id="FmG-fY-IHn"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-42-lTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-300" y="1251.5625"/>
         </scene>
