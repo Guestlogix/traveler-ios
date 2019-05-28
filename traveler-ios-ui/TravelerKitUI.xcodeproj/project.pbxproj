@@ -92,10 +92,7 @@
 		A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6A02285FBF800319683 /* DummyTableViewController.swift */; };
 		A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */; };
 		CAC32410229C50E200A4F286 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */; };
-		CAC32412229C511E00A4F286 /* OrderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC32411229C511E00A4F286 /* OrderDetailCell.swift */; };
 		CAC32414229C512400A4F286 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC32413229C512400A4F286 /* ProductCell.swift */; };
-		CAC32418229C514D00A4F286 /* BillingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC32417229C514C00A4F286 /* BillingCell.swift */; };
-		CAC3241A229C515200A4F286 /* CancelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC32419229C515200A4F286 /* CancelCell.swift */; };
 		F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */; };
 		F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */; };
 		F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */; };
@@ -195,10 +192,7 @@
 		A974A6A02285FBF800319683 /* DummyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTableViewController.swift; sourceTree = "<group>"; };
 		A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pass+TravelerUI.swift"; sourceTree = "<group>"; };
 		CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
-		CAC32411229C511E00A4F286 /* OrderDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailCell.swift; sourceTree = "<group>"; };
 		CAC32413229C512400A4F286 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
-		CAC32417229C514C00A4F286 /* BillingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingCell.swift; sourceTree = "<group>"; };
-		CAC32419229C515200A4F286 /* CancelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelCell.swift; sourceTree = "<group>"; };
 		F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
 		F33397D82214C76E003C7819 /* FeaturedCarouselViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselViewCell.xib; sourceTree = "<group>"; };
 		F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeaturedCarouselItemViewCell.xib; sourceTree = "<group>"; };
@@ -268,9 +262,9 @@
 				A9639CA4220DF57300625235 /* BuyableDetailsViewController.swift */,
 				A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */,
 				A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */,
+				A9639CA9220DF57300625235 /* PurchaseViewController.swift */,
 				A9639CA7220DF57300625235 /* PurchaseDetailsViewController.swift */,
 				A9639CA8220DF57300625235 /* QuantityViewController.swift */,
-				A9639CA9220DF57300625235 /* PurchaseViewController.swift */,
 				A9639CAA220DF57300625235 /* CatalogItemLoadingViewController.swift */,
 				A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */,
 				A9639CAC220DF57300625235 /* CatalogItemErrorViewController.swift */,
@@ -329,10 +323,7 @@
 				F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */,
 				A9639CCF220DF57300625235 /* ImageCell.swift */,
 				A974A69A2282152E00319683 /* OrderCell.swift */,
-				CAC32411229C511E00A4F286 /* OrderDetailCell.swift */,
 				CAC32413229C512400A4F286 /* ProductCell.swift */,
-				CAC32417229C514C00A4F286 /* BillingCell.swift */,
-				CAC32419229C515200A4F286 /* CancelCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -545,7 +536,6 @@
 				A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */,
 				A974A69B2282152E00319683 /* OrderCell.swift in Sources */,
 				A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */,
-				CAC32412229C511E00A4F286 /* OrderDetailCell.swift in Sources */,
 				A9639D12220DF57400625235 /* Stepper.swift in Sources */,
 				A9639CEC220DF57400625235 /* BuyableDetailsViewController.swift in Sources */,
 				A9639D23220DF57400625235 /* FormView.swift in Sources */,
@@ -555,7 +545,6 @@
 				A9639D0A220DF57400625235 /* ListCell.swift in Sources */,
 				A9639D13220DF57400625235 /* OrderItemViewCell.swift in Sources */,
 				A9639CFC220DF57400625235 /* AttributesViewController.swift in Sources */,
-				CAC32418229C514D00A4F286 /* BillingCell.swift in Sources */,
 				A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */,
 				A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */,
 				A9639D27220DF57400625235 /* DrawerDismissalAnimator.swift in Sources */,
@@ -589,7 +578,6 @@
 				A9639D0E220DF57400625235 /* DatePickerCell.swift in Sources */,
 				A9639D39220E029800625235 /* Attribute+TravelerUI.swift in Sources */,
 				A9639D24220DF57400625235 /* InputDescriptor.swift in Sources */,
-				CAC3241A229C515200A4F286 /* CancelCell.swift in Sources */,
 				A9639D11220DF57400625235 /* ButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

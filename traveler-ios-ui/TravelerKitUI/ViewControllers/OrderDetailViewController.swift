@@ -18,6 +18,7 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var orderDateLabel: UILabel!
     @IBOutlet weak var orderPriceLabel: UILabel!
+    @IBOutlet weak var creditCardLabel: UILabel!
 
     public var order: Order?
 
@@ -29,10 +30,10 @@ class OrderDetailViewController: UITableViewController {
         orderNumberLabel.text = order?.referenceNumber ?? "Order number"
         orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
         orderPriceLabel.text = order?.total.localizedDescription
+        creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
     }
 
     // MARK: UITableViewDataSource
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -48,5 +49,13 @@ class OrderDetailViewController: UITableViewController {
         cell.dateLabel.text = DateFormatter.dateOnlyFormatter.string(from: product.eventDate)
         cell.priceLabel.text = product.price.localizedDescription
         return cell
+    }
+
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+
+    }
+
+    @IBAction func emailButtonTapped(_ sender: Any) {
+
     }
 }
