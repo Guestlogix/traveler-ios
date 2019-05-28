@@ -20,7 +20,7 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderPriceLabel: UILabel!
     @IBOutlet weak var creditCardLabel: UILabel!
 
-    public var order: Order?
+    internal var order: Order?
     
     override func viewDidLoad() {
         super.viewDidLoad()
