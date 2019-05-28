@@ -32,7 +32,7 @@ struct AnyProduct: Decodable {
 
     // Properties for BookableProduct
     let passes: [Pass]?
-    let eventDate:Date
+    let eventDate: Date
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
