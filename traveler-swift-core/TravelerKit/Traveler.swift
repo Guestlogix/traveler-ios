@@ -175,6 +175,7 @@ public class Traveler {
             guard let result = fetchOperation.resource else { return }
 
             wrapper.result = previousResultBlock?()?.merge(result) ?? result
+            resultBlock?(wrapper.result!, identifier)
         }
 
         let blockOperation = BlockOperation { [unowned fetchOperation] in
