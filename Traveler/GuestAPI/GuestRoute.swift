@@ -27,4 +27,8 @@ extension GuestRoute: Route {
             return request
         }
     }
+
+    func transform(error: Error) -> Error {
+        return error
+    }
 }
