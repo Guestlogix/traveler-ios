@@ -72,7 +72,7 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func fetchCatalogItemDetails(_ catalogItem: CatalogItem, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
+    func fetchCatalogItemDetails(_ catalogItem: Product, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
         let fetchOperation = AuthenticatedRemoteFetchOperation<CatalogItemDetails>(path: .catalogItem(catalogItem), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
@@ -303,11 +303,11 @@ public class Traveler {
      Fetches the `CatalogItemDetails` for a given `CatalogItem`.
 
      - Parameters:
-        - catalogItem: A `CatalogItem` for which to fetch the details.
+        - catalogItem: A `Product` for which to fetch the details.
         - delegate: A `CatalogItemDetailsFetchDelegate` that is notified of the results.
      */
 
-    public static func fetchCatalogItemDetails(_ catalogItem: CatalogItem, delegate: CatalogItemDetailsFetchDelegate) {
+    public static func fetchCatalogItemDetails(_ catalogItem: Product, delegate: CatalogItemDetailsFetchDelegate) {
         shared?.fetchCatalogItemDetails(catalogItem, completion: { [weak delegate] (details, error) in
             if let details = details {
                 delegate?.catalogItemDetailsFetchDidSucceedWith(details)
@@ -321,11 +321,11 @@ public class Traveler {
      Fetches the `CatalogItemDetails` for a given `CatalogItem`.
 
      - Parameters:
-        - catalogItem: A `CatalogItem` for which to fetch the details.
+        - catalogItem: A `Product` for which to fetch the details.
         - delegate: A completion block that is called when the results are ready.
      */
 
-    public static func fetchCatalogItemDetails(_ catalogItem: CatalogItem, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
+    public static func fetchCatalogItemDetails(_ catalogItem: Product, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
         shared?.fetchCatalogItemDetails(catalogItem, completion: completion)
     }
 

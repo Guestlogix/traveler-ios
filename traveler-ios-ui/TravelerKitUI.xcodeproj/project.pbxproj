@@ -91,6 +91,10 @@
 		A974A69F2283209A00319683 /* RetryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A69E2283209A00319683 /* RetryViewController.swift */; };
 		A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6A02285FBF800319683 /* DummyTableViewController.swift */; };
 		A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */; };
+		CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */; };
+		CA88803D22B2AF4800213E41 /* BookableProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */; };
+		CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */; };
+		CA88804022B2AF9700213E41 /* PassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803F22B2AF9700213E41 /* PassCell.swift */; };
 		CAC32410229C50E200A4F286 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */; };
 		CAC32414229C512400A4F286 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC32413229C512400A4F286 /* ProductCell.swift */; };
 		CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACFE0D122B01FF200927899 /* Product+Description.swift */; };
@@ -192,6 +196,10 @@
 		A974A69E2283209A00319683 /* RetryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryViewController.swift; sourceTree = "<group>"; };
 		A974A6A02285FBF800319683 /* DummyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTableViewController.swift; sourceTree = "<group>"; };
 		A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pass+TravelerUI.swift"; sourceTree = "<group>"; };
+		CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregatedPassesViewController.swift; sourceTree = "<group>"; };
+		CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookableProductDetailViewController.swift; sourceTree = "<group>"; };
+		CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		CA88803F22B2AF9700213E41 /* PassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCell.swift; sourceTree = "<group>"; };
 		CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		CAC32413229C512400A4F286 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		CACFE0D122B01FF200927899 /* Product+Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+Description.swift"; sourceTree = "<group>"; };
@@ -256,6 +264,9 @@
 		A9639CA2220DF57300625235 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */,
+				CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */,
+				CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */,
 				A974A69E2283209A00319683 /* RetryViewController.swift */,
 				A974A6A02285FBF800319683 /* DummyTableViewController.swift */,
 				A974A6962282130900319683 /* OrdersViewController.swift */,
@@ -303,6 +314,7 @@
 		A9639CBC220DF57300625235 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CA88803F22B2AF9700213E41 /* PassCell.swift */,
 				A9639CBD220DF57300625235 /* CarouselViewCell.swift */,
 				F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */,
 				A9639CBE220DF57300625235 /* StepperCell.swift */,
@@ -527,6 +539,7 @@
 				A9639D37220E028300625235 /* NSMutableAttributedString+FontFace.swift in Sources */,
 				A9639D1F220DF57400625235 /* FormStringInputCell.swift in Sources */,
 				A9639D10220DF57400625235 /* CatalogView.swift in Sources */,
+				CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */,
 				A9639CFB220DF57400625235 /* ReceiptViewController.swift in Sources */,
 				A9639D01220DF57400625235 /* CatalogItemResultViewController.swift in Sources */,
 				F3A3E066224BBEF700CD69F4 /* FormDateInputCell.swift in Sources */,
@@ -544,7 +557,9 @@
 				A9639D23220DF57400625235 /* FormView.swift in Sources */,
 				A9639CF7220DF57400625235 /* CatalogItemDetailsViewController.swift in Sources */,
 				A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */,
+				CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */,
 				A9639D08220DF57400625235 /* ShadowedView.swift in Sources */,
+				CA88804022B2AF9700213E41 /* PassCell.swift in Sources */,
 				A9639D0A220DF57400625235 /* ListCell.swift in Sources */,
 				A9639D13220DF57400625235 /* OrderItemViewCell.swift in Sources */,
 				A9639CFC220DF57400625235 /* AttributesViewController.swift in Sources */,
@@ -583,6 +598,7 @@
 				A9639D39220E029800625235 /* Attribute+TravelerUI.swift in Sources */,
 				A9639D24220DF57400625235 /* InputDescriptor.swift in Sources */,
 				A9639D11220DF57400625235 /* ButtonCell.swift in Sources */,
+				CA88803D22B2AF4800213E41 /* BookableProductDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
