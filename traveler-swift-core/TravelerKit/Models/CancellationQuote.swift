@@ -44,7 +44,7 @@ struct CancellationQuoteResponse: Decodable {
         case id = "id"
         case totalRefund = "totalRefund"
         case cancellationCharge = "cancellationCharge"
-        case expirationDate = "expirationDate"
+        case expirationDate = "quoteExpiresOn"
         case products = "products"
     }
 }
