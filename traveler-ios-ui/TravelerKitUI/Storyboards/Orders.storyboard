@@ -512,7 +512,8 @@
                         <outlet property="orderDateLabel" destination="W7R-8i-nto" id="Roz-nD-uE4"/>
                         <outlet property="orderNumberLabel" destination="fhq-7d-Gnf" id="z3U-AX-Te4"/>
                         <outlet property="orderPriceLabel" destination="72B-yx-UBT" id="FmG-fY-IHn"/>
-                        <segue destination="YSV-Xs-1SK" kind="presentation" identifier="productDetailSegue" id="mGH-Zg-YVb"/>
+                        <segue destination="3Qh-jB-GJH" kind="presentation" identifier="cancelQuoteSegue" id="p82-ls-XM5"/>
+                        <segue destination="EEA-Kv-t8H" kind="presentation" identifier="productDetailSegue" id="t2R-N3-YVE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-42-lTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -520,12 +521,52 @@
             <point key="canvasLocation" x="-300" y="1251.5625"/>
         </scene>
         <!--Product-->
-        <scene sceneID="0Oo-HY-frv">
+        <scene sceneID="Bc7-8A-prr">
             <objects>
-                <viewControllerPlaceholder storyboardName="Product" id="YSV-Xs-1SK" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BvF-zs-mbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Product" id="EEA-Kv-t8H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNE-2C-HCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="472" y="1252"/>
+            <point key="canvasLocation" x="-109" y="1792"/>
+        </scene>
+        <!--Cancel order-->
+        <scene sceneID="d4u-9q-u5S">
+            <objects>
+                <viewController title="Cancel order" id="WRo-Rq-iPv" customClass="CancelOrderViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mfe-45-ZjM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wmO-6S-ydM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mMa-9w-M4R">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Uaa-dx-uJJ">
+                            <connections>
+                                <action selector="didClose:" destination="WRo-Rq-iPv" id="M1y-ek-bsT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FtA-9x-Mhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1663.7681159420292" y="1251.5625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1dy-xi-h7m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Qh-jB-GJH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wao-bT-lSb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WRo-Rq-iPv" kind="relationship" relationship="rootViewController" id="KiQ-fY-8s3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lV1-im-2Mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="753.62318840579712" y="1251.5625"/>
         </scene>
     </scenes>
 </document>

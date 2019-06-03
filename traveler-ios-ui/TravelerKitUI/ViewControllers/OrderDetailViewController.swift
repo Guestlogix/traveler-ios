@@ -23,6 +23,7 @@ class OrderDetailViewController: UITableViewController {
     var order: Order?
 
     private var product: Product?
+    private var resultQuote: CancellationQuote?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,12 @@ class OrderDetailViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let navVC as UINavigationController):
+        case ("productDetailSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? ProductDetailViewController
             vc?.product = product
+        case ("cancelQuoteSegue" , let navVC as UINavigationController):
+            let vc = navVC.topViewController as? CancelOrderViewController
+            vc?.resultQuote = resultQuote
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -76,10 +80,32 @@ class OrderDetailViewController: UITableViewController {
     }
 
     @IBAction func didCancelOrder(_ sender: Any) {
-        
+        ProgressHUD.show()
+        Traveler.fetchCancellationQuote(order: order!, delegate: self)
     }
 
     @IBAction func didRequestTickets(_ sender: Any) {
 
+    }
+}
+
+extension OrderDetailViewController: CancellationQuoteFetchDelegate {
+    func cancellationQuoteFetchDidSucceedWith(_ quote: CancellationQuote) {
+        resultQuote = quote
+
+        ProgressHUD.hide()
+
+        performSegue(withIdentifier: "cancelQuoteSegue", sender: nil)
+    }
+
+    func cancellationQuoteFetchDidFailWith(_ error: Error) {
+        ProgressHUD.hide()
+
+        let alert = UIAlertController(title: "Error", message: "This order is not cancellable", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true, completion: nil)
     }
 }
