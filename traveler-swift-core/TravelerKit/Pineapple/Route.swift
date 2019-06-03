@@ -10,4 +10,6 @@ import Foundation
 
 public protocol Route {
     var urlRequest: URLRequest { get }
+
+    func transform(error: Error) -> Error
 }

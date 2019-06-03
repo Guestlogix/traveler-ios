@@ -43,11 +43,13 @@ open class NetworkOperation: ConcurrentOperation {
     }
 
     override open func execute() {
-        guard let urlRequest = route?.urlRequest else {
+        guard let route = route else {
             Log("No route", data: nil, level: .error)
             self.finish()
             return
         }
+
+        let urlRequest = route.urlRequest
 
         Log("URLRequest: ", data: "\(urlRequest.httpMethod ?? "") \(urlRequest.url?.absoluteString ?? "")", level: .debug)
 
@@ -67,6 +69,7 @@ open class NetworkOperation: ConcurrentOperation {
             let response = response as? HTTPURLResponse
 
             self.error = error ?? response.flatMap({ NetworkError(data: data, response: $0) })
+            self.error = self.error.flatMap({ route.transform(error: $0) })
             self.data = data
             self.response = response
 
