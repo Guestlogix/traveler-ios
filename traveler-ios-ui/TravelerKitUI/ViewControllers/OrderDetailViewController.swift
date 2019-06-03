@@ -21,7 +21,9 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var creditCardLabel: UILabel!
 
     internal var order: Order?
-    
+
+    private var product:Product?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +31,17 @@ class OrderDetailViewController: UITableViewController {
         orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
         orderPriceLabel.text = order?.total.localizedDescription
         creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch (segue.identifier, segue.destination) {
+        case (_, let navVC as UINavigationController):
+            let vc = navVC.topViewController as? ProductDetailViewController
+            vc?.product = product
+        default:
+            Log("Unknown segue", data: segue, level: .warning)
+            break
+        }
     }
 
     // MARK: UITableViewDataSource
@@ -50,6 +63,14 @@ class OrderDetailViewController: UITableViewController {
             cell.priceLabel.text = bookableProduct.price.localizedDescription
         }
         return cell
+    }
+
+    //MARK: UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        product = order!.products[indexPath.row]
+
+        performSegue(withIdentifier: "productDetailSegue", sender: nil)
     }
 
     @IBAction func didCancelOrder(_ sender: Any) {

@@ -322,7 +322,6 @@
         <!--View Order-->
         <scene sceneID="gqT-lz-hP1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-42-lTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="View Order" id="cuo-8P-FDf" customClass="OrderDetailViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lc1-2A-10P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -513,10 +512,20 @@
                         <outlet property="orderDateLabel" destination="W7R-8i-nto" id="Roz-nD-uE4"/>
                         <outlet property="orderNumberLabel" destination="fhq-7d-Gnf" id="z3U-AX-Te4"/>
                         <outlet property="orderPriceLabel" destination="72B-yx-UBT" id="FmG-fY-IHn"/>
+                        <segue destination="YSV-Xs-1SK" kind="presentation" identifier="productDetailSegue" id="mGH-Zg-YVb"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-42-lTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-300" y="1251.5625"/>
+        </scene>
+        <!--Product-->
+        <scene sceneID="0Oo-HY-frv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Product" id="YSV-Xs-1SK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BvF-zs-mbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472" y="1252"/>
         </scene>
     </scenes>
 </document>

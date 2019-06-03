@@ -11,7 +11,7 @@ import Foundation
 enum AuthPath {
     case flights(FlightQuery)
     case catalog(CatalogQuery)
-    case catalogItem(CatalogItem)
+    case catalogItem(Product)
     case productSchedule(Product, from: Date, to: Date)
     case passes(Product, availability: Availability, option: BookingOption?)
     case questions(Product, passes: [Pass])
