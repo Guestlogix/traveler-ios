@@ -12,8 +12,10 @@ import Foundation
 public protocol CancellationDelegate: class {
     /**
      Called when the `Order` was cancelled successfully
+      - Parameters:
+     -order: The `Order`that was cancelled
      */
-    func cancellationDidSucceed()
+    func cancellationDidSucceed(_ order: Order)
     /**
      Called when there was an error cancelling the `Order`
 

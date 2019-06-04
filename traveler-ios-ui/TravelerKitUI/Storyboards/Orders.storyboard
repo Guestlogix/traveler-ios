@@ -508,7 +508,9 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="cancelButton" destination="FP9-6V-Hm6" id="mp7-5m-720"/>
                         <outlet property="creditCardLabel" destination="TfN-2e-Fn5" id="Fzm-HQ-SQR"/>
+                        <outlet property="emailTicketsButton" destination="EP7-ml-xMA" id="2dl-cz-K8m"/>
                         <outlet property="orderDateLabel" destination="W7R-8i-nto" id="Roz-nD-uE4"/>
                         <outlet property="orderNumberLabel" destination="fhq-7d-Gnf" id="z3U-AX-Te4"/>
                         <outlet property="orderPriceLabel" destination="72B-yx-UBT" id="FmG-fY-IHn"/>
@@ -581,16 +583,9 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="PzC-3W-uqm">
-                            <rect key="frame" x="0.0" y="243" width="414" height="168"/>
+                            <rect key="frame" x="0.0" y="249" width="414" height="168"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05N-eB-NHS">
-                                    <rect key="frame" x="135" y="130" width="144" height="30"/>
-                                    <state key="normal" title="Confirm Cancellation"/>
-                                    <connections>
-                                        <action selector="didConfirm:" destination="mr1-AX-rIJ" eventType="touchUpInside" id="Xpa-vc-Kmh"/>
-                                    </connections>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Cancel refund" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbw-Cp-PJY">
                                     <rect key="frame" x="20" y="13" width="149" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -603,45 +598,62 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pid-cJ-N2g" userLabel="Separator Line">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="V04-J6-Di1"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbV-6N-peK">
+                                    <rect key="frame" x="138" y="130" width="138" height="30"/>
+                                    <state key="normal" title="Confirm cancelation"/>
+                                    <connections>
+                                        <action selector="didConfirm:" destination="mr1-AX-rIJ" eventType="touchUpInside" id="BLa-0W-Lt4"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="pid-cJ-N2g" firstAttribute="leading" secondItem="PzC-3W-uqm" secondAttribute="leading" id="2Ec-59-hn1"/>
+                                <constraint firstAttribute="bottom" secondItem="FbV-6N-peK" secondAttribute="bottom" constant="8" id="KbX-hS-rDA"/>
+                                <constraint firstItem="FbV-6N-peK" firstAttribute="centerX" secondItem="PzC-3W-uqm" secondAttribute="centerX" id="NHe-LZ-8wd"/>
                                 <constraint firstItem="Rbw-Cp-PJY" firstAttribute="top" secondItem="PzC-3W-uqm" secondAttribute="top" constant="13" id="WYu-A6-qXx"/>
                                 <constraint firstItem="AIr-JY-KrV" firstAttribute="top" secondItem="PzC-3W-uqm" secondAttribute="top" constant="13" id="Y4M-AR-BKX"/>
+                                <constraint firstItem="pid-cJ-N2g" firstAttribute="top" secondItem="PzC-3W-uqm" secondAttribute="top" id="dvB-pt-dEC"/>
                                 <constraint firstAttribute="trailing" secondItem="AIr-JY-KrV" secondAttribute="trailing" constant="20" id="gtm-5c-gua"/>
                                 <constraint firstItem="Rbw-Cp-PJY" firstAttribute="leading" secondItem="PzC-3W-uqm" secondAttribute="leading" constant="20" id="i08-Nb-hVG"/>
-                                <constraint firstAttribute="bottom" secondItem="05N-eB-NHS" secondAttribute="bottom" constant="8" id="s1b-9f-ncr"/>
-                                <constraint firstItem="05N-eB-NHS" firstAttribute="centerX" secondItem="PzC-3W-uqm" secondAttribute="centerX" id="u2X-AU-0xm"/>
+                                <constraint firstAttribute="trailing" secondItem="pid-cJ-N2g" secondAttribute="trailing" id="x6o-ZE-Yci"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCancelCell" rowHeight="102" id="DFf-n0-fzs" customClass="ProductCancelCell" customModule="TravelerKitUI" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="141" width="414" height="102"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCancelCell" rowHeight="108" id="DFf-n0-fzs" customClass="ProductCancelCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="141" width="414" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DFf-n0-fzs" id="KKJ-xG-IYg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="101.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8a-d7-MvT">
-                                            <rect key="frame" x="20" y="11" width="108" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8a-d7-MvT">
+                                            <rect key="frame" x="20" y="11" width="232" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancellation fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxN-XR-fn5">
-                                            <rect key="frame" x="20" y="40" width="123" height="21"/>
+                                            <rect key="frame" x="20" y="39.5" width="123" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvZ-rq-ckr">
-                                            <rect key="frame" x="355" y="40.5" width="39" height="21"/>
+                                            <rect key="frame" x="355" y="43.5" width="39" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FG-mi-5qb">
-                                            <rect key="frame" x="20" y="69" width="85" height="30"/>
+                                            <rect key="frame" x="20" y="68.5" width="85" height="30"/>
                                             <state key="normal" title="More details"/>
                                             <connections>
                                                 <action selector="didPress:" destination="DFf-n0-fzs" eventType="touchUpInside" id="ylx-xy-WrB"/>
@@ -651,11 +663,13 @@
                                     <constraints>
                                         <constraint firstItem="IvZ-rq-ckr" firstAttribute="centerY" secondItem="KKJ-xG-IYg" secondAttribute="centerY" id="AdZ-d7-QV5"/>
                                         <constraint firstItem="3FG-mi-5qb" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leading" constant="20" id="Bjq-oq-aXs"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="N8a-d7-MvT" secondAttribute="trailing" constant="142" id="Hay-5P-v0k"/>
                                         <constraint firstItem="3FG-mi-5qb" firstAttribute="top" secondItem="WxN-XR-fn5" secondAttribute="bottom" constant="8" id="IR4-3U-HYo"/>
                                         <constraint firstItem="WxN-XR-fn5" firstAttribute="top" secondItem="N8a-d7-MvT" secondAttribute="bottom" constant="8" id="Z10-vq-k4y"/>
                                         <constraint firstItem="N8a-d7-MvT" firstAttribute="top" secondItem="KKJ-xG-IYg" secondAttribute="topMargin" id="c22-kT-jKj"/>
                                         <constraint firstItem="WxN-XR-fn5" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leadingMargin" id="cOQ-z7-F7c"/>
                                         <constraint firstItem="N8a-d7-MvT" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leadingMargin" id="j29-ga-y5P"/>
+                                        <constraint firstAttribute="bottom" secondItem="3FG-mi-5qb" secondAttribute="bottom" constant="9" id="lKC-RW-GUz"/>
                                         <constraint firstItem="IvZ-rq-ckr" firstAttribute="trailing" secondItem="KKJ-xG-IYg" secondAttribute="trailingMargin" id="saP-du-mIA"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -672,7 +686,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Cancel order" id="DvF-lC-Vie">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="zXZ-gm-5PG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="zXZ-gm-5PG">
+                            <connections>
+                                <action selector="didClose:" destination="mr1-AX-rIJ" id="7tv-Hh-y6B"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="totalRefundLabel" destination="AIr-JY-KrV" id="Ovq-M2-b8r"/>
