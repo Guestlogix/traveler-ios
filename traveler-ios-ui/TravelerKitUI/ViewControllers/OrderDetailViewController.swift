@@ -41,7 +41,7 @@ class OrderDetailViewController: UITableViewController {
             vc?.product = product
         case ("cancelQuoteSegue" , let navVC as UINavigationController):
             let vc = navVC.topViewController as? CancelOrderViewController
-            vc?.resultQuote = resultQuote
+            vc?.quote = resultQuote
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break

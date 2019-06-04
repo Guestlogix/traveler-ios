@@ -513,42 +513,20 @@
                         <outlet property="orderNumberLabel" destination="fhq-7d-Gnf" id="z3U-AX-Te4"/>
                         <outlet property="orderPriceLabel" destination="72B-yx-UBT" id="FmG-fY-IHn"/>
                         <segue destination="3Qh-jB-GJH" kind="presentation" identifier="cancelQuoteSegue" id="p82-ls-XM5"/>
-                        <segue destination="EEA-Kv-t8H" kind="presentation" identifier="productDetailSegue" id="t2R-N3-YVE"/>
+                        <segue destination="k11-YO-6pv" kind="presentation" identifier="productDetailSegue" id="h7O-p4-dKC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-42-lTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-300" y="1251.5625"/>
         </scene>
-        <!--Product-->
-        <scene sceneID="Bc7-8A-prr">
+        <!--Storyboard Reference-->
+        <scene sceneID="wrf-nS-mw8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Product" id="EEA-Kv-t8H" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iNE-2C-HCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder id="k11-YO-6pv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yky-Ls-dlu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-109" y="1792"/>
-        </scene>
-        <!--Cancel order-->
-        <scene sceneID="d4u-9q-u5S">
-            <objects>
-                <viewController title="Cancel order" id="WRo-Rq-iPv" customClass="CancelOrderViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Mfe-45-ZjM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="wmO-6S-ydM"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="mMa-9w-M4R">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Uaa-dx-uJJ">
-                            <connections>
-                                <action selector="didClose:" destination="WRo-Rq-iPv" id="M1y-ek-bsT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FtA-9x-Mhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1663.7681159420292" y="1251.5625"/>
+            <point key="canvasLocation" x="184" y="1750"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1dy-xi-h7m">
@@ -561,12 +539,148 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="WRo-Rq-iPv" kind="relationship" relationship="rootViewController" id="KiQ-fY-8s3"/>
+                        <segue destination="mr1-AX-rIJ" kind="relationship" relationship="rootViewController" id="Vi1-Vm-pf5"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lV1-im-2Mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="753.62318840579712" y="1251.5625"/>
+        </scene>
+        <!--Cancel Order-->
+        <scene sceneID="4D8-Dd-kft">
+            <objects>
+                <tableViewController title="Cancel Order" id="mr1-AX-rIJ" customClass="CancelOrderViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZKx-UA-4z2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="z2d-ue-2ca">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancelation Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnm-xV-xlk">
+                                    <rect key="frame" x="20" y="8" width="188" height="27"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To get cancelation information on your item, please check more details." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMz-Xb-JVw">
+                                    <rect key="frame" x="20" y="43" width="374" height="41"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="gnm-xV-xlk" firstAttribute="top" secondItem="z2d-ue-2ca" secondAttribute="top" constant="8" id="2Tj-gK-318"/>
+                                <constraint firstItem="gnm-xV-xlk" firstAttribute="leading" secondItem="z2d-ue-2ca" secondAttribute="leading" constant="20" id="AVj-fp-xPn"/>
+                                <constraint firstItem="eMz-Xb-JVw" firstAttribute="top" secondItem="gnm-xV-xlk" secondAttribute="bottom" constant="8" id="jHM-yL-aXS"/>
+                                <constraint firstAttribute="trailing" secondItem="eMz-Xb-JVw" secondAttribute="trailing" constant="20" id="jUO-bk-wqk"/>
+                                <constraint firstItem="eMz-Xb-JVw" firstAttribute="leading" secondItem="z2d-ue-2ca" secondAttribute="leading" constant="20" id="zod-g3-5Pp"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="PzC-3W-uqm">
+                            <rect key="frame" x="0.0" y="243" width="414" height="168"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05N-eB-NHS">
+                                    <rect key="frame" x="135" y="130" width="144" height="30"/>
+                                    <state key="normal" title="Confirm Cancellation"/>
+                                    <connections>
+                                        <action selector="didConfirm:" destination="mr1-AX-rIJ" eventType="touchUpInside" id="Xpa-vc-Kmh"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Cancel refund" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbw-Cp-PJY">
+                                    <rect key="frame" x="20" y="13" width="149" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIr-JY-KrV">
+                                    <rect key="frame" x="355" y="13" width="39" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Rbw-Cp-PJY" firstAttribute="top" secondItem="PzC-3W-uqm" secondAttribute="top" constant="13" id="WYu-A6-qXx"/>
+                                <constraint firstItem="AIr-JY-KrV" firstAttribute="top" secondItem="PzC-3W-uqm" secondAttribute="top" constant="13" id="Y4M-AR-BKX"/>
+                                <constraint firstAttribute="trailing" secondItem="AIr-JY-KrV" secondAttribute="trailing" constant="20" id="gtm-5c-gua"/>
+                                <constraint firstItem="Rbw-Cp-PJY" firstAttribute="leading" secondItem="PzC-3W-uqm" secondAttribute="leading" constant="20" id="i08-Nb-hVG"/>
+                                <constraint firstAttribute="bottom" secondItem="05N-eB-NHS" secondAttribute="bottom" constant="8" id="s1b-9f-ncr"/>
+                                <constraint firstItem="05N-eB-NHS" firstAttribute="centerX" secondItem="PzC-3W-uqm" secondAttribute="centerX" id="u2X-AU-0xm"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCancelCell" rowHeight="102" id="DFf-n0-fzs" customClass="ProductCancelCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="141" width="414" height="102"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DFf-n0-fzs" id="KKJ-xG-IYg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="101.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8a-d7-MvT">
+                                            <rect key="frame" x="20" y="11" width="108" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancellation fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxN-XR-fn5">
+                                            <rect key="frame" x="20" y="40" width="123" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvZ-rq-ckr">
+                                            <rect key="frame" x="355" y="40.5" width="39" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FG-mi-5qb">
+                                            <rect key="frame" x="20" y="69" width="85" height="30"/>
+                                            <state key="normal" title="More details"/>
+                                            <connections>
+                                                <action selector="didPress:" destination="DFf-n0-fzs" eventType="touchUpInside" id="ylx-xy-WrB"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="IvZ-rq-ckr" firstAttribute="centerY" secondItem="KKJ-xG-IYg" secondAttribute="centerY" id="AdZ-d7-QV5"/>
+                                        <constraint firstItem="3FG-mi-5qb" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leading" constant="20" id="Bjq-oq-aXs"/>
+                                        <constraint firstItem="3FG-mi-5qb" firstAttribute="top" secondItem="WxN-XR-fn5" secondAttribute="bottom" constant="8" id="IR4-3U-HYo"/>
+                                        <constraint firstItem="WxN-XR-fn5" firstAttribute="top" secondItem="N8a-d7-MvT" secondAttribute="bottom" constant="8" id="Z10-vq-k4y"/>
+                                        <constraint firstItem="N8a-d7-MvT" firstAttribute="top" secondItem="KKJ-xG-IYg" secondAttribute="topMargin" id="c22-kT-jKj"/>
+                                        <constraint firstItem="WxN-XR-fn5" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leadingMargin" id="cOQ-z7-F7c"/>
+                                        <constraint firstItem="N8a-d7-MvT" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leadingMargin" id="j29-ga-y5P"/>
+                                        <constraint firstItem="IvZ-rq-ckr" firstAttribute="trailing" secondItem="KKJ-xG-IYg" secondAttribute="trailingMargin" id="saP-du-mIA"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cancellationFeeLabel" destination="WxN-XR-fn5" id="iF4-jd-nkg"/>
+                                    <outlet property="productNameLabel" destination="N8a-d7-MvT" id="UqM-vO-a1Y"/>
+                                    <outlet property="refundLabel" destination="IvZ-rq-ckr" id="boG-AL-Ceb"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mr1-AX-rIJ" id="vil-8X-Guw"/>
+                            <outlet property="delegate" destination="mr1-AX-rIJ" id="ANX-I1-92g"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Cancel order" id="DvF-lC-Vie">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="zXZ-gm-5PG"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="totalRefundLabel" destination="AIr-JY-KrV" id="Ovq-M2-b8r"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AaD-q3-cgi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1905.7971014492755" y="1251.5625"/>
         </scene>
     </scenes>
 </document>
