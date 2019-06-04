@@ -19,19 +19,19 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderDateLabel: UILabel!
     @IBOutlet weak var orderPriceLabel: UILabel!
     @IBOutlet weak var creditCardLabel: UILabel!
+    @IBOutlet weak var emailTicketsButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
 
     var order: Order?
 
     private var product: Product?
     private var resultQuote: CancellationQuote?
+    private var prefix:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        orderNumberLabel.text = order?.referenceNumber ?? "Order number"
-        orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
-        orderPriceLabel.text = order?.total.localizedDescription
-        creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
+        reload(with: order?.status)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,10 +42,26 @@ class OrderDetailViewController: UITableViewController {
         case ("cancelQuoteSegue" , let navVC as UINavigationController):
             let vc = navVC.topViewController as? CancelOrderViewController
             vc?.quote = resultQuote
+            vc?.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
         }
+    }
+
+    private func reload(with status:OrderStatus?) {
+
+        if status == OrderStatus.cancelled {
+            prefix = "Cancelled: "
+            emailTicketsButton.isEnabled = false
+            cancelButton.setTitle("View cancellation receipt", for: .normal)
+        }
+
+        orderNumberLabel.text = prefix ?? "" + (order?.referenceNumber ?? "Order number")
+        orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
+        orderPriceLabel.text = order?.total.localizedDescription
+        creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
+        tableView.reloadData()
     }
 
     // MARK: UITableViewDataSource
@@ -61,7 +77,7 @@ class OrderDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let product = order?.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! ProductCell
-        cell.productNameLabel.text = product?.title
+        cell.productNameLabel.text = (prefix ?? "") + (product?.title ?? "")
         if let bookableProduct = product as? BookableProduct {
             cell.dateLabel.text = DateFormatter.dateOnlyFormatter.string(from: bookableProduct.eventDate)
             cell.priceLabel.text = bookableProduct.price.localizedDescription
@@ -80,12 +96,21 @@ class OrderDetailViewController: UITableViewController {
     }
 
     @IBAction func didCancelOrder(_ sender: Any) {
-        ProgressHUD.show()
-        Traveler.fetchCancellationQuote(order: order!, delegate: self)
+        if order?.status != OrderStatus.cancelled {
+            ProgressHUD.show()
+            Traveler.fetchCancellationQuote(order: order!, delegate: self)
+        }
     }
 
     @IBAction func didRequestTickets(_ sender: Any) {
 
+    }
+}
+
+extension OrderDetailViewController: CancelOrderViewControllerDelegate {
+    func orderCancelSucceed(with order: Order) {
+        self.order = order
+        reload(with: self.order?.status)
     }
 }
 

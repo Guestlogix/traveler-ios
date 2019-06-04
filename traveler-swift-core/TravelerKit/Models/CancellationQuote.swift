@@ -47,6 +47,24 @@ struct CancellationQuoteResponse: Decodable {
         case expirationDate = "quoteExpiresOn"
         case products = "products"
     }
+
+    public init (from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.id = try container.decode(String.self, forKey: .id)
+        self.totalRefund = try container.decode(Price.self, forKey: .totalRefund)
+        self.cancellationCharge = try container.decode(Price.self, forKey: .cancellationCharge)
+
+        let dateString = try container.decode(String.self, forKey: .expirationDate)
+
+        if let date = DateFormatter.withoutTimezone.date(from: dateString) {
+            self.expirationDate = date
+        } else {
+            throw DecodingError.dataCorruptedError(forKey: CodingKeys.expirationDate, in: container, debugDescription: "Incorrect format")
+        }
+
+        self.products = try container.decode([ProductCancellationQuote].self, forKey: .products)
+    }
 }
 
 /// Per product cancellation quote

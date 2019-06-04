@@ -206,15 +206,15 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func cancelOrder(quote: CancellationQuote, competion: @escaping (Error?) -> Void) {
+    func cancelOrder(quote: CancellationQuote, competion: @escaping (Order?, Error?) -> Void) {
         guard quote.expirationDate > Date() else {
-            competion(CancellationError.expiredQuote)
+            competion(nil, CancellationError.expiredQuote)
             return
         }
 
         let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .cancelOrder(quote), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
-            competion(fetchOperation.error)
+            competion(fetchOperation.resource, fetchOperation.error)
         }
 
         blockOperation.addDependency(fetchOperation)
@@ -571,11 +571,11 @@ public class Traveler {
      */
 
     public static func cancelOrder(quote: CancellationQuote, delegate: CancellationDelegate) {
-        shared?.cancelOrder(quote: quote, competion: { [weak delegate] (error) in
+        shared?.cancelOrder(quote: quote, competion: { [weak delegate] (order, error) in
             if let error = error {
                 delegate?.cancellationDidFailWith(error)
             } else {
-                delegate?.cancellationDidSucceed()
+                delegate?.cancellationDidSucceed(order!)
             }
         })
     }
@@ -589,7 +589,7 @@ public class Traveler {
         A `CancellationError.expiredQuote` will be thrown if the quote has expired.
      */
 
-    public static func cancelOrder(quote: CancellationQuote, completion: @escaping (Error?) -> Void) {
+    public static func cancelOrder(quote: CancellationQuote, completion: @escaping (Order?,Error?) -> Void) {
         shared?.cancelOrder(quote: quote, competion: completion)
     }
 }
