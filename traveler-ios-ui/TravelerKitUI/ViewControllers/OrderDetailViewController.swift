@@ -25,7 +25,7 @@ class OrderDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        orderNumberLabel.text = order?.referenceNumber ?? "Order number"
+        orderNumberLabel.text = order?.referenceNumber 
         orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
         orderPriceLabel.text = order?.total.localizedDescription
         creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
