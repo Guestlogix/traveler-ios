@@ -133,6 +133,24 @@ class OrderSummaryViewController: UITableViewController {
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let cellIdentifier = tableView.cellForRow(at: indexPath)?.reuseIdentifier
+
+        if cellIdentifier == infoCellIdentifier {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
+            self.payments.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        return [deleteAction]
+    }
 }
 
 extension OrderSummaryViewController: PaymentHandlerDelegate {
