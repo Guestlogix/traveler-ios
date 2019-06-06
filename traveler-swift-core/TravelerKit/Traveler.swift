@@ -575,7 +575,7 @@ public class Traveler {
             if let error = error {
                 delegate?.cancellationDidFailWith(error)
             } else {
-                delegate?.cancellationDidSucceed(order!)
+                delegate?.cancellationDidSucceed(order: order!)
             }
         })
     }
@@ -589,7 +589,7 @@ public class Traveler {
         A `CancellationError.expiredQuote` will be thrown if the quote has expired.
      */
 
-    public static func cancelOrder(quote: CancellationQuote, completion: @escaping (Order?,Error?) -> Void) {
+    public static func cancelOrder(quote: CancellationQuote, completion: @escaping (Order?, Error?) -> Void) {
         shared?.cancelOrder(quote: quote, competion: completion)
     }
 }

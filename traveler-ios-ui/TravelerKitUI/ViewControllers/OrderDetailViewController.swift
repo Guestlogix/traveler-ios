@@ -25,7 +25,7 @@ class OrderDetailViewController: UITableViewController {
     var order: Order?
 
     private var product: Product?
-    private var resultQuote: CancellationQuote?
+    private var cancellationQuote: CancellationQuote?
     private var prefix:String?
 
     override func viewDidLoad() {
@@ -39,9 +39,9 @@ class OrderDetailViewController: UITableViewController {
         case ("productDetailSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? ProductDetailViewController
             vc?.product = product
-        case ("cancelQuoteSegue" , let navVC as UINavigationController):
-            let vc = navVC.topViewController as? CancelOrderViewController
-            vc?.quote = resultQuote
+        case ("cancelQuoteSegue", let navVC as UINavigationController):
+            let vc = navVC.topViewController as? CancellationViewController
+            vc?.quote = cancellationQuote
             vc?.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
@@ -107,8 +107,9 @@ class OrderDetailViewController: UITableViewController {
     }
 }
 
-extension OrderDetailViewController: CancelOrderViewControllerDelegate {
-    func orderCancelSucceed(with order: Order) {
+extension OrderDetailViewController: CancellationViewControllerDelegate {
+    func orderCancelSucceed(_ controller: CancellationViewController, didCancel order: Order) {
+        controller.dismiss(animated: true, completion: nil)
         self.order = order
         reload(with: self.order?.status)
     }
@@ -116,17 +117,17 @@ extension OrderDetailViewController: CancelOrderViewControllerDelegate {
 
 extension OrderDetailViewController: CancellationQuoteFetchDelegate {
     func cancellationQuoteFetchDidSucceedWith(_ quote: CancellationQuote) {
-        resultQuote = quote
+        cancellationQuote = quote
 
         ProgressHUD.hide()
 
-        performSegue(withIdentifier: "cancelQuoteSegue", sender: nil)
+        performSegue(withIdentifier: "cancelSegue", sender: nil)
     }
 
     func cancellationQuoteFetchDidFailWith(_ error: Error) {
         ProgressHUD.hide()
 
-        let alert = UIAlertController(title: "Error", message: "This order is not cancellable", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
 
         alert.addAction(okAction)
