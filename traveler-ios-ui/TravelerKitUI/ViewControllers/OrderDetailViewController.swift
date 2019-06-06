@@ -41,7 +41,7 @@ class OrderDetailViewController: UITableViewController {
 
         orderNumberLabel.text = order.isCancelled ? "Cancelled: \(order.referenceNumber ?? "")" : order.referenceNumber
         orderDateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order.createdDate)
-        orderPriceLabel.text = order.total.localizedDescription
+        orderPriceLabel.text = order.total.localizedDescriptionInBaseCurrency
         creditCardLabel.text = "Visa ending in: \(order.paymentDescription ?? "")"
         emailConfirmation.isEnabled = order.canEmailOrderConfirmation
         cancellationButton.isEnabled = !order.isCancelled
@@ -77,10 +77,13 @@ class OrderDetailViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let product = order!.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! InfoCell
         cell.titleLabel.text = order!.isCancelled ? "Cancelled: \(product.title)" : product.title
         cell.valueLabel.text = product.secondaryDescription
+        cell.secondValueLabel?.text = product.price.localizedDescriptionInBaseCurrency
+        
         return cell
     }
 

@@ -14,6 +14,8 @@ public class TravelerUI {
 
     let paymentProvider: PaymentProvider
 
+    var preferredCurrency: Currency
+
     static var shared: TravelerUI? {
         guard _shared != nil else {
             Log("SDK not initialized. Initialize the SDK using `TravelerUI.initialize(paymentProvider:)` in your app delegate.", data: nil, level: .error)
@@ -23,16 +25,30 @@ public class TravelerUI {
         return _shared
     }
 
-    public static func initialize(paymentProvider: PaymentProvider) {
+    // MARK: Public API
+
+    public static var preferredCurrency: Currency {
+        get {
+            return shared?.preferredCurrency ?? .USD
+        }
+        set {
+            shared?.preferredCurrency = newValue
+
+            NotificationCenter.default.post(name: .preferredCurrencyDidChange, object: nil)
+        }
+    }
+
+    public static func initialize(paymentProvider: PaymentProvider, preferredCurrency: Currency = .USD) {
         guard _shared == nil else {
             Log("SDK already initialized!", data: nil, level: .warning)
             return
         }
 
-        _shared = TravelerUI(paymentProvider: paymentProvider)
+        _shared = TravelerUI(paymentProvider: paymentProvider, preferredCurrency: preferredCurrency)
     }
 
-    init(paymentProvider: PaymentProvider) {
+    init(paymentProvider: PaymentProvider, preferredCurrency: Currency) {
         self.paymentProvider = paymentProvider
+        self.preferredCurrency = preferredCurrency
     }
 }

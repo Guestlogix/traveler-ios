@@ -19,15 +19,13 @@ public struct CatalogItem: Decodable, Product {
     /// URL for a thumbnail
     public let imageURL: URL?
     /// Price
-    public var price: Double {
-        return 0 // TODO: Make this mappable
-    }
+    public var price: Price
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"
         case subTitle = "subTitle"
         case imageURL = "thumbnail"
-        //case price = "priceStartingAt"
+        case price = "priceStartingAt"
     }
 }

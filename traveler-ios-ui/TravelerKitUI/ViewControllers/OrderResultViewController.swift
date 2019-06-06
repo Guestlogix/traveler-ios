@@ -75,7 +75,7 @@ open class OrderResultViewController: UITableViewController {
             cell.numberLabel.text = order.referenceNumber
             cell.dateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order.createdDate)
             cell.productsLabel.text = order.products.map({ $0.title }).joined(separator: "\n")
-            cell.priceLabel.text = order.total.localizedDescription
+            cell.priceLabel.text = order.total.localizedDescriptionInBaseCurrency
 
             switch order.status {
             case .cancelled:
@@ -89,7 +89,6 @@ open class OrderResultViewController: UITableViewController {
             case .underReview:
                 cell.statusLabel.text = "Under Review"
             }
-            
             return cell
         }
     }

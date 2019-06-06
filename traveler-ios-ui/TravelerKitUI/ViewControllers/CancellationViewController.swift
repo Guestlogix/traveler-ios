@@ -23,7 +23,7 @@ class CancellationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        totalRefundLabel.text = quote?.totalRefund.localizedDescription
+        totalRefundLabel.text = quote?.totalRefund.localizedDescriptionInBaseCurrency
     }
 
     // MARK: UITableViewDataSource
@@ -42,7 +42,7 @@ class CancellationViewController: UITableViewController {
         cell.titleLabel.text = quote?.products[indexPath.row].title
         let percentageFee = quote!.percentageFee(product: quote!.products[indexPath.row])
         cell.valueLabel.text = "Cancellation Fee \(percentageFee)%"
-        cell.secondValueLabel?.text = quote?.products[indexPath.row].totalRefund.localizedDescription
+        cell.secondValueLabel?.text = quote?.products[indexPath.row].totalRefund.localizedDescriptionInBaseCurrency
 
         return cell
     }
@@ -92,6 +92,6 @@ extension CancellationViewController: CancellationDelegate {
 
 extension CancellationQuote {
     func percentageFee(product: ProductCancellationQuote) -> Double {
-        return (self.cancellationCharge.value / product.totalRefund.value) * 100
+        return (self.cancellationCharge.valueInBaseCurrency / product.totalRefund.valueInBaseCurrency) * 100
     }
 }
