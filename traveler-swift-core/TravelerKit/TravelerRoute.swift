@@ -44,7 +44,23 @@ extension PassengerRoute: Route {
         return urlRequest
     }
 
-    func error(from error: Error) -> Error {
-        return error
+    func transform(error: Error) -> Error {
+        guard case NetworkError.clientError(400, .some(let data)) = error else {
+            return error
+        }
+
+        guard let errorJSON = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+           let errorCode = errorJSON["errorCode"] as? Int else {
+            Log("Bad JSON", data: String(data: data, encoding: .utf8), level: .error)
+            return error
+        }
+
+        switch errorCode {
+        case 2012:
+            return CancellationError.notCancellable
+        default:
+            Log("Unknown error code", data: errorJSON, level: .warning)
+            return error
+        }
     }
 }

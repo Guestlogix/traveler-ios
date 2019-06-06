@@ -17,6 +17,10 @@ fileprivate struct ImageRoute: Route {
     var urlRequest: URLRequest {
         return URLRequest(url: url)
     }
+
+    func transform(error: Error) -> Error {
+        return error
+    }
 }
 
 public class AssetManager {
