@@ -10,13 +10,18 @@ import Foundation
 import TravelerKit
 
 extension Dictionary where Key == Pass, Value == Int {
-    var subTotalDescription: String? {
-        var value: Double = 0
+    func subTotalDescription(in currency: Currency) -> String? {
+        var value: Price = 0.0
 
         for (pass, quantity) in self {
-            value += (Double(quantity) * pass.price.value)
+            do {
+                try value += (Double(quantity) * pass.price)
+            } catch {
+                Log("Error performing Price arithmetic", data: self, level: .error)
+                return nil
+            }
         }
 
-        return value.priceDescription()
+        return value.localizedDescription(in: currency)
     }
 }

@@ -13,7 +13,7 @@ public protocol Product {
     /// Identifier
     var id: String { get }
     /// Price
-    //var price: Price { get }
+    var price: Price { get }
     /// Name
     var title: String { get }
 }

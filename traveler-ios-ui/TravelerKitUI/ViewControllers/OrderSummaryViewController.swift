@@ -72,10 +72,11 @@ class OrderSummaryViewController: UITableViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
+            // TODO: This should also be fixed in coming PRs
             let pass = (order!.products.first as? BookableProduct)?.passes[indexPath.row]
             cell.titleLabel.text = pass?.name
             cell.subTitleLabel.text = pass?.description
-            cell.priceLabel.text = pass?.price.localizedDescription
+            cell.priceLabel.text = pass?.price.localizedDescriptionInBaseCurrency
             return cell
         }
     }

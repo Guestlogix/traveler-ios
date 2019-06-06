@@ -40,6 +40,8 @@ class BookableConfirmationViewController: UIViewController {
         preferredContentSize = view.systemLayoutSizeFitting(CGSize(width: view.bounds.width, height: 0),
                                                             withHorizontalFittingPriority: .required,
                                                             verticalFittingPriority: .defaultLow)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadPriceLabel), name: .preferredCurrencyDidChange, object: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,8 +59,9 @@ class BookableConfirmationViewController: UIViewController {
         }
     }
 
+    @objc
     private func reloadPriceLabel() {
-        priceLabel.text = passQuantities?.subTotalDescription
+        priceLabel.text = passQuantities?.subTotalDescription(in: TravelerUI.preferredCurrency)
     }
 
     @IBAction func didContinue(_ sender: Any) {

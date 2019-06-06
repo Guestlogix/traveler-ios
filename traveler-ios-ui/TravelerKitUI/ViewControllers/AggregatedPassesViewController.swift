@@ -27,7 +27,7 @@ class AggregatedPassesViewController: UITableViewController {
         passes?.forEach({ passQuantity[$0] = (passQuantity[$0] ?? 0) + 1 })
 
         for (pass, quantity) in passQuantity {
-            let total = pass.price.value * Double(quantity)
+            let total = pass.price.valueInBaseCurrency * Double(quantity)
             aggregateInfo.append((pass.name, quantity, total.priceDescription()))
         }
 

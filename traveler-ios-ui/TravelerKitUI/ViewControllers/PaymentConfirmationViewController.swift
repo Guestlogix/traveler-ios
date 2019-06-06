@@ -22,7 +22,7 @@ class PaymentConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        totalPriceLabel.text = order?.total.localizedDescription
+        totalPriceLabel.text = order?.total.localizedDescriptionInBaseCurrency
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
