@@ -9,15 +9,15 @@
 import UIKit
 import TravelerKit
 
-protocol CancelOrderViewControllerDelegate {
-    func orderCancelSucceed(with order:Order)
+protocol CancellationViewControllerDelegate: class {
+    func orderCancelSucceed(_ controller: CancellationViewController, didCancel order:Order)
 }
 
-class CancelOrderViewController: UITableViewController {
+class CancellationViewController: UITableViewController {
     @IBOutlet weak var totalRefundLabel: UILabel!
 
-    internal var quote: CancellationQuote?
-    internal var delegate:CancelOrderViewControllerDelegate?
+    var quote: CancellationQuote?
+    weak var delegate:CancellationViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,6 @@ class CancelOrderViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productCancelCell", for: indexPath) as! ProductCancelCell
 
-        cell.delegate = self
         cell.productNameLabel.text = quote?.products[indexPath.row].title
         let percentageFee = (quote?.cancellationCharge.value ?? 0.0/quote!.products[indexPath.row].totalRefund.value ) * 100.0
         cell.cancellationFeeLabel.text = "Cancellation Fee \(percentageFee)%"
@@ -53,17 +52,19 @@ class CancelOrderViewController: UITableViewController {
     }
 
     @IBAction func didConfirm(_ sender: Any) {
-        let alert = UIAlertController(title: "Are you sure you want to cancel your order?", message: nil, preferredStyle: .alert)
-        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
-            ProgressHUD.show()
-            Traveler.cancelOrder(quote: self.quote!, delegate: self)
+        if let quote = quote {
+            let alert = UIAlertController(title: "Are you sure you want to cancel your order?", message: nil, preferredStyle: .alert)
+            let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+            let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+                ProgressHUD.show()
+                Traveler.cancelOrder(quote: quote, delegate: self)
+            }
+
+            alert.addAction(noAction)
+            alert.addAction(yesAction)
+
+            present(alert, animated: true, completion: nil)
         }
-
-        alert.addAction(noAction)
-        alert.addAction(yesAction)
-
-        present(alert, animated: true, completion: nil)
     }
 
     @IBAction func didClose(_ sender: Any) {
@@ -71,35 +72,20 @@ class CancelOrderViewController: UITableViewController {
     }
 }
 
-extension CancelOrderViewController: CancellationDelegate{
-    
-    func cancellationDidSucceed(_ order: Order) {
+extension CancellationViewController: CancellationDelegate {
+    func cancellationDidSucceed(order: Order) {
         ProgressHUD.hide()
-        delegate?.orderCancelSucceed(with: order)
-        dismiss(animated: true, completion: nil)
+        delegate?.orderCancelSucceed(self, didCancel: order)
     }
 
     func cancellationDidFailWith(_ error: Error) {
         ProgressHUD.hide()
-        var message = ""
 
-        switch error {
-        case CancellationError.expiredQuote:
-            message = "Your quote has expired please try again"
-        default:
-            message = "There was a problem cancelling your order"
-        }
-
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
-    }
-}
-
-extension CancelOrderViewController: ProductCancelCellDelegate {
-    func productCancelDidPressButton(_ cell: ProductCancelCell) {
     }
 }

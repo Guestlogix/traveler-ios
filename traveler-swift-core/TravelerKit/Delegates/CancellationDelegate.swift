@@ -15,7 +15,7 @@ public protocol CancellationDelegate: class {
       - Parameters:
      -order: The `Order`that was cancelled
      */
-    func cancellationDidSucceed(_ order: Order)
+    func cancellationDidSucceed(order: Order)
     /**
      Called when there was an error cancelling the `Order`
 
