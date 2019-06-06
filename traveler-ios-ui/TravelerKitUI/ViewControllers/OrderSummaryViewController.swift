@@ -135,11 +135,11 @@ class OrderSummaryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let cellIdentifier = tableView.cellForRow(at: indexPath)?.reuseIdentifier
 
-        if cellIdentifier == infoCellIdentifier {
+        switch tableView.cellForRow(at: indexPath)?.reuseIdentifier{
+        case infoCellIdentifier?:
             return true
-        } else {
+        default:
             return false
         }
     }
