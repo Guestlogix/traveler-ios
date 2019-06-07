@@ -10,7 +10,8 @@ import UIKit
 import TravelerKit
 
 protocol CancellationViewControllerDelegate: class {
-    func orderCancelSucceed(_ controller: CancellationViewController, didCancel order:Order)
+    func cancellationViewController(_ controller: CancellationViewController, didCancel order:Order)
+    func cancellationViewController(_ controller: CancellationViewController, cancelationDidFail error: Error)
 }
 
 class CancellationViewController: UITableViewController {
@@ -75,17 +76,11 @@ class CancellationViewController: UITableViewController {
 extension CancellationViewController: CancellationDelegate {
     func cancellationDidSucceed(order: Order) {
         ProgressHUD.hide()
-        delegate?.orderCancelSucceed(self, didCancel: order)
+        delegate?.cancellationViewController(self, didCancel: order)
     }
 
     func cancellationDidFailWith(_ error: Error) {
         ProgressHUD.hide()
-
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        delegate?.cancellationViewController(self, cancelationDidFail: error)
     }
 }
