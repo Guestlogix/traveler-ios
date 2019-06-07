@@ -108,7 +108,16 @@ class OrderDetailViewController: UITableViewController {
 }
 
 extension OrderDetailViewController: CancellationViewControllerDelegate {
-    func orderCancelSucceed(_ controller: CancellationViewController, didCancel order: Order) {
+    func cancellationViewController(_ controller: CancellationViewController, cancelationDidFail error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+
+        controller.dismiss(animated: true , completion:nil)
+    }
+
+    func cancellationViewController(_ controller: CancellationViewController, didCancel order: Order) {
         controller.dismiss(animated: true, completion: nil)
         self.order = order
         reload(with: self.order?.status)
