@@ -23,12 +23,7 @@ class CancellationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let quote = quote else {
-            Log ("No quote", data: nil, level: .error)
-            return
-        }
-
-        totalRefundLabel.text = quote.totalRefund.localizedDescription
+        totalRefundLabel.text = quote?.totalRefund.localizedDescription
     }
 
     // MARK: UITableViewDataSource
@@ -42,12 +37,12 @@ class CancellationViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "productCancelCell", for: indexPath) as! ProductCancelCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "productCancelCell", for: indexPath) as! InfoCell
 
-        cell.productNameLabel.text = quote?.products[indexPath.row].title
+        cell.titleLabel.text = quote?.products[indexPath.row].title
         let percentageFee = (quote?.cancellationCharge.value ?? 0.0/quote!.products[indexPath.row].totalRefund.value ) * 100.0
-        cell.cancellationFeeLabel.text = "Cancellation Fee \(percentageFee)%"
-        cell.refundLabel.text = quote?.products[indexPath.row].totalRefund.localizedDescription
+        cell.valueLabel.text = "Cancellation Fee \(percentageFee)%"
+        cell.secondValueLabel?.text = quote?.products[indexPath.row].totalRefund.localizedDescription
 
         return cell
     }
@@ -77,6 +72,7 @@ extension CancellationViewController: CancellationDelegate {
     func cancellationDidSucceed(order: Order) {
         ProgressHUD.hide()
         delegate?.cancellationViewController(self, didCancel: order)
+        NotificationCenter.default.post(name: .orderDidCancel, object: self, userInfo: [orderKey: order])
     }
 
     func cancellationDidFailWith(_ error: Error) {

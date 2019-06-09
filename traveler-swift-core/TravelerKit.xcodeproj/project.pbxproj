@@ -90,6 +90,7 @@
 		A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */; };
 		A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */; };
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
+		CA8FB75B22ADABB70088E368 /* Order+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FB75A22ADABB70088E368 /* Order+Equatable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,7 @@
 		A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperation.swift; sourceTree = "<group>"; };
 		A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreOperationTests.swift; sourceTree = "<group>"; };
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
+		CA8FB75A22ADABB70088E368 /* Order+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+Equatable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +390,7 @@
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
 				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
+				CA8FB75A22ADABB70088E368 /* Order+Equatable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				A9639C88220DEDCC00625235 /* BookingError.swift in Sources */,
 				A9DB06BD214C2B95009817EC /* Session.swift in Sources */,
 				A957764B2152A9C400BD11C8 /* Route.swift in Sources */,
+				CA8FB75B22ADABB70088E368 /* Order+Equatable.swift in Sources */,
 				A9DB0640214034C5009817EC /* Log.swift in Sources */,
 				A91F3BB521B879DB0016894A /* Pass.swift in Sources */,
 				A9DB06612140665A009817EC /* RemoteFetchOperation.swift in Sources */,

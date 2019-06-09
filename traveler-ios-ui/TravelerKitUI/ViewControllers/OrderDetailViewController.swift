@@ -26,12 +26,20 @@ class OrderDetailViewController: UITableViewController {
 
     private var product: Product?
     private var cancellationQuote: CancellationQuote?
-    private var prefix:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        reload(with: order?.status)
+        NotificationCenter.default.addObserver(self, selector: #selector(orderDidCancel(_:)), name: .orderDidCancel, object: nil)
+
+        loadOrder()
+    }
+
+    func loadOrder() {
+        orderNumberLabel.text = order?.status == OrderStatus.cancelled ? "Cancelled: \(order?.referenceNumber ?? "")" : order?.referenceNumber
+        orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
+        orderPriceLabel.text = order?.total.localizedDescription
+        creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,18 +57,9 @@ class OrderDetailViewController: UITableViewController {
         }
     }
 
-    private func reload(with status:OrderStatus?) {
-
-        if status == OrderStatus.cancelled {
-            prefix = "Cancelled: "
-            emailTicketsButton.isEnabled = false
-            cancelButton.setTitle("View cancellation receipt", for: .normal)
-        }
-
-        orderNumberLabel.text = prefix ?? "" + (order?.referenceNumber ?? "Order number")
-        orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
-        orderPriceLabel.text = order?.total.localizedDescription
-        creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
+    @objc func orderDidCancel (_ note: Notification) {
+        self.order = note.userInfo?[orderKey] as? Order
+        loadOrder()
         tableView.reloadData()
     }
 
@@ -76,12 +75,9 @@ class OrderDetailViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let product = order?.products[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! ProductCell
-        cell.productNameLabel.text = (prefix ?? "") + (product?.title ?? "")
-        if let bookableProduct = product as? BookableProduct {
-            cell.dateLabel.text = DateFormatter.dateOnlyFormatter.string(from: bookableProduct.eventDate)
-            cell.priceLabel.text = bookableProduct.price.localizedDescription
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! InfoCell
+        cell.titleLabel.text = order?.status == OrderStatus.cancelled ? "Cancelled: \(product?.title ?? "")" : product?.title
+        cell.valueLabel.text = product?.secondaryDescription
         return cell
     }
 
@@ -119,8 +115,6 @@ extension OrderDetailViewController: CancellationViewControllerDelegate {
 
     func cancellationViewController(_ controller: CancellationViewController, didCancel order: Order) {
         controller.dismiss(animated: true, completion: nil)
-        self.order = order
-        reload(with: self.order?.status)
     }
 }
 

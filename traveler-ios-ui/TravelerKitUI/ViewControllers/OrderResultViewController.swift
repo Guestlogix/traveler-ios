@@ -23,6 +23,8 @@ open class OrderResultViewController: UITableViewController {
         super.viewDidLoad()
 
         _volatileResult = orderResult
+
+        NotificationCenter.default.addObserver(self, selector: #selector(orderDidCancel(_:)), name: .orderDidCancel, object: nil)
     }
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,6 +35,14 @@ open class OrderResultViewController: UITableViewController {
             Log("Unknown segue", data: segue, level: .warning)
             break
         }
+    }
+
+    @objc func orderDidCancel (_ note: Notification) {
+        if let order = note.userInfo?[orderKey] as? Order {
+            orderResult = orderResult?.update(order)
+        }
+
+        tableView.reloadData()
     }
 
     // MARK: UITableViewDataSource
