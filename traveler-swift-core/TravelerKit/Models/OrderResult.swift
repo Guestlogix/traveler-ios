@@ -72,6 +72,34 @@ public struct OrderResult: Decodable {
         return OrderResult(total: result.total, orders: orders, fromDate: result.fromDate, toDate: result.toDate)
     }
 
+    /**
+     Updates `Order` in orders in self.
+
+     - Parameters:
+     - order: The `Order` to be updated
+
+     - Returns: An updated `OrderResult` if the the `Order` exists; nil otherwise.
+     */
+
+    public func update(_ order: Order) -> OrderResult? {
+        var updatedOrders = self.orders
+        var updated = false
+
+        for key in updatedOrders.keys {
+            if order == updatedOrders[key] {
+                updatedOrders[key] = order
+
+                updated = true
+            }
+        }
+
+        guard updated == true else {
+            return nil
+        }
+
+        return OrderResult(total: self.total, orders: updatedOrders, fromDate: self.fromDate, toDate: self.toDate)
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let offset = try container.decode(Int.self, forKey: .offset)

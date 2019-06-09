@@ -458,7 +458,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="productCellIdentifier" rowHeight="88" id="kip-aI-zH0" customClass="ProductCell" customModule="TravelerKitUI" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="productCellIdentifier" rowHeight="88" id="kip-aI-zH0" customClass="InfoCell" customModule="TravelerKitUI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="163" width="414" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kip-aI-zH0" id="vDv-fR-Xn7">
@@ -496,9 +496,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="dateLabel" destination="Nt3-kX-2zd" id="5cu-f2-9UZ"/>
-                                    <outlet property="priceLabel" destination="tb2-OS-Os2" id="QEP-sq-hGE"/>
-                                    <outlet property="productNameLabel" destination="aNy-1g-UtY" id="ChV-Nq-uip"/>
+                                    <outlet property="secondValueLabel" destination="tb2-OS-Os2" id="Th1-NZ-HMF"/>
+                                    <outlet property="titleLabel" destination="aNy-1g-UtY" id="l1p-va-3bc"/>
+                                    <outlet property="valueLabel" destination="Nt3-kX-2zd" id="Sps-Rd-Yww"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -627,7 +627,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCancelCell" rowHeight="108" id="DFf-n0-fzs" customClass="ProductCancelCell" customModule="TravelerKitUI" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCancelCell" rowHeight="108" id="DFf-n0-fzs" customClass="InfoCell" customModule="TravelerKitUI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="141" width="414" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DFf-n0-fzs" id="KKJ-xG-IYg">
@@ -656,7 +656,7 @@
                                             <rect key="frame" x="20" y="68.5" width="85" height="30"/>
                                             <state key="normal" title="More details"/>
                                             <connections>
-                                                <action selector="didPress:" destination="DFf-n0-fzs" eventType="touchUpInside" id="ylx-xy-WrB"/>
+                                                <action selector="didPush:" destination="DFf-n0-fzs" eventType="touchUpInside" id="NFv-eK-Lwb"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -674,9 +674,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cancellationFeeLabel" destination="WxN-XR-fn5" id="iF4-jd-nkg"/>
-                                    <outlet property="productNameLabel" destination="N8a-d7-MvT" id="UqM-vO-a1Y"/>
-                                    <outlet property="refundLabel" destination="IvZ-rq-ckr" id="boG-AL-Ceb"/>
+                                    <outlet property="secondValueLabel" destination="IvZ-rq-ckr" id="Mcz-5e-JFv"/>
+                                    <outlet property="titleLabel" destination="N8a-d7-MvT" id="eAI-ye-wZg"/>
+                                    <outlet property="valueLabel" destination="WxN-XR-fn5" id="zSU-m1-cq3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

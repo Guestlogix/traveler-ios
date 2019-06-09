@@ -8,9 +8,20 @@
 
 import UIKit
 
+protocol InfoCellDelegate: class {
+    func infoCellDidPressButton(_ cell: InfoCell)
+}
+
 class InfoCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var secondValueLabel: UILabel?
+
+    weak var delegate:InfoCellDelegate?
+
+    @IBAction func didPush(_ sender: Any) {
+        delegate?.infoCellDidPressButton(self)
+    }
 
     static func boundingSize(title: String, value: String, with boundingSize: CGSize) -> CGSize {
         let size = CGSize(width: boundingSize.width - 16 - 16, height: 0)       // Left and Right margins
