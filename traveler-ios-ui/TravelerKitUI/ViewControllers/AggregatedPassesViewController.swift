@@ -18,25 +18,12 @@ class AggregatedPassesViewController: UITableViewController {
 
     weak var delegate: AggregatedPassesViewControllerDelegate?
 
-    private var passQuantity:[Pass:Int]?
+    private var passQuantity = [Pass:Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let passes = passes else {
-            Log("No passes", data: nil, level: .error)
-            return
-        }
-
-        passQuantity = [Pass:Int]()
-
-        _ = passes.compactMap({
-            if let quantity = passQuantity?[$0] {
-                passQuantity?[$0] = quantity + 1
-            } else {
-                passQuantity?[$0] = 1
-            }
-        })
+        _ = passes?.compactMap({ passQuantity[$0] = (passQuantity[$0] ?? 0 ) + 1 })
 
         updatePreferredContentSize()
     }
@@ -54,14 +41,14 @@ class AggregatedPassesViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return passQuantity?.aggregatedPassInfo.count ?? 0
+        return passQuantity.aggregatedPassInfo.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "passCell", for: indexPath) as! PassCell
-        let passInfo = passQuantity?.aggregatedPassInfo[indexPath.row]
-        cell.passTypeLabel.text = "\(passInfo?.name ?? "") x\(passInfo?.quantity ?? 0)"
-        cell.priceLabel.text = passInfo?.total
+        let passInfo = passQuantity.aggregatedPassInfo[indexPath.row]
+        cell.passTypeLabel.text = "\(passInfo.name) x\(passInfo.quantity)"
+        cell.priceLabel.text = passInfo.total
         return cell
     }
 }
