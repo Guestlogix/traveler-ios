@@ -14,7 +14,7 @@ protocol AggregatedPassesViewControllerDelegate: class {
 }
 
 class AggregatedPassesViewController: UITableViewController {
-    internal var passes:[Pass]?
+    var passes:[Pass]?
 
     weak var delegate: AggregatedPassesViewControllerDelegate?
 
@@ -38,17 +38,12 @@ class AggregatedPassesViewController: UITableViewController {
             }
         })
 
-        var size = CGSize(width: view.frame.width, height: 0)
-        let count = passQuantity?.aggregatedPassInfo.count ?? 0
+        updatePreferredContentSize()
+    }
 
-        for i in 0..<count {
-            let indexPath = IndexPath(row: i, section: 0)
-            let height = tableView(tableView, heightForRowAt: indexPath)
-            size.height += height
-        }
-
-        preferredContentSize = size
-
+    private func updatePreferredContentSize() {
+        tableView.layoutIfNeeded()
+        preferredContentSize = tableView.contentSize
         delegate?.aggregatedPasssesViewControllerDidChangePreferredContentSize(self)
     }
 
