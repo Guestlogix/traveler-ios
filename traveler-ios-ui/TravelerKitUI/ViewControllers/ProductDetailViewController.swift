@@ -17,11 +17,7 @@ class ProductDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-
+        
         reload()
     }
 
@@ -30,8 +26,9 @@ class ProductDetailViewController: UIViewController {
         case (_, let vc as BookableProductDetailViewController ):
             vc.purchasedProduct = product as? BookableProduct
             vc.productDetails = productDetails
-        case ("errorSegue", _),
-             ("loadingSegue", _):
+        case (_, let vc as RetryViewController ):
+            vc.delegate = self
+        case ("loadingSegue", _):
             break
         default:
             Log("Unknown segue", data: nil, level:.warning)
@@ -68,6 +65,12 @@ extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
 
     func catalogItemDetailsFetchDidFailWith(_ error: Error) {
         performSegue(withIdentifier: "errorSegue", sender: nil)
+    }
+}
+
+extension ProductDetailViewController: RetryViewControllerDelegate {
+    func retryViewControllerDidRetry(_ controller: RetryViewController) {
+        reload()
     }
 }
 
