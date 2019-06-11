@@ -20,7 +20,7 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderPriceLabel: UILabel!
     @IBOutlet weak var creditCardLabel: UILabel!
     @IBOutlet weak var emailTicketsButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var button: UIButton!
 
     var order: Order?
 
@@ -40,6 +40,8 @@ class OrderDetailViewController: UITableViewController {
         orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
         orderPriceLabel.text = order?.total.localizedDescription
         creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
+        let title = order?.status == OrderStatus.cancelled ? "View cancellation receipt" : "Cancel order"
+        button.setTitle(title, for: .normal)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,7 +60,12 @@ class OrderDetailViewController: UITableViewController {
     }
 
     @objc func orderDidCancel (_ note: Notification) {
-        self.order = note.userInfo?[orderKey] as? Order
+        guard let order = note.userInfo?[orderKey] as? Order else {
+            Log("Invalid notification", data: note, level: .error)
+            return
+        }
+
+        self.order = order
         loadOrder()
         tableView.reloadData()
     }
@@ -90,8 +97,8 @@ class OrderDetailViewController: UITableViewController {
         
         performSegue(withIdentifier: "productDetailSegue", sender: nil)
     }
-
-    @IBAction func didCancelOrder(_ sender: Any) {
+    
+    @IBAction func didPressButton(_ sender: Any) {
         if order?.status != OrderStatus.cancelled {
             ProgressHUD.show()
             Traveler.fetchCancellationQuote(order: order!, delegate: self)
