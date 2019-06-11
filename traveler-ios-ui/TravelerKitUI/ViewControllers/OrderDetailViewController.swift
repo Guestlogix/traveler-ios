@@ -104,7 +104,7 @@ class OrderDetailViewController: UITableViewController {
 }
 
 extension OrderDetailViewController: CancellationViewControllerDelegate {
-    func cancellationViewController(_ controller: CancellationViewController, cancelationDidFail error: Error) {
+    func cancellationViewController(_ controller: CancellationViewController, didFailWith error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(okAction)

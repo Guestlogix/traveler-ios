@@ -23,7 +23,15 @@ public enum OrderStatus: String, Decodable {
 }
 
 /// Holds information about an order
-public struct Order: Decodable {
+public struct Order: Decodable, Equatable, Hashable {
+    public static func == (lhs: Order, rhs: Order) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
     /// The identification `String`
     public let id: String
     /// Total amount

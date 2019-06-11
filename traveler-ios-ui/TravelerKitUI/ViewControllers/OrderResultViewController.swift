@@ -38,11 +38,16 @@ open class OrderResultViewController: UITableViewController {
     }
 
     @objc func orderDidCancel (_ note: Notification) {
-        if let order = note.userInfo?[orderKey] as? Order {
-            orderResult = orderResult?.update(order)
+        guard let order = note.userInfo?[orderKey] as? Order else {
+            Log("Invalid notification", data: note, level: .error)
+            return
         }
 
-        tableView.reloadData()
+        guard let index = try? self.orderResult?.update(order) else {
+            return
+        }
+
+        tableView.reloadRows(at: [IndexPath(row: index!, section: 0)], with: .automatic)
     }
 
     // MARK: UITableViewDataSource
