@@ -83,7 +83,7 @@ public struct OrderResult: Decodable {
      - Parameters:
      - order: The `Order` to be updated
 
-     - Returns: An updated `OrderResult` if the the `Order` exists; nil otherwise.
+     - Returns: The index in which the `Order` was updated or a `OrderResultError` if `Order` is not in `OrderResult`
      */
 
     @discardableResult
