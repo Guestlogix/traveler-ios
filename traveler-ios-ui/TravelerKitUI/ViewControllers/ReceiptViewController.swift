@@ -42,7 +42,7 @@ class ReceiptViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoCell
         let product = receipt!.order.products[indexPath.row]
         cell.titleLabel.text = product.title
-        cell.valueLabel.text = product.eventDateDescription
+        cell.valueLabel.text = product.secondaryDescription
         // TODO: Add booking date once the backend is sending it
         return cell
     }

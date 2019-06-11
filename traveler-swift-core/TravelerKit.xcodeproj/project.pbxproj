@@ -90,7 +90,6 @@
 		A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */; };
 		A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */; };
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
-		CAAF66C722A9B45E00543EBC /* Product+EventDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAF66C622A9B45E00543EBC /* Product+EventDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,7 +190,6 @@
 		A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperation.swift; sourceTree = "<group>"; };
 		A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreOperationTests.swift; sourceTree = "<group>"; };
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
-		CAAF66C622A9B45E00543EBC /* Product+EventDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product+EventDate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,7 +388,6 @@
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
 				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
-				CAAF66C622A9B45E00543EBC /* Product+EventDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -571,7 +568,6 @@
 				A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */,
 				A92F5C2421F22CFE00020F10 /* Answer.swift in Sources */,
 				A91F3BDF21DD3BA80016894A /* QuestionGroup.swift in Sources */,
-				CAAF66C722A9B45E00543EBC /* Product+EventDate.swift in Sources */,
 				A9DB064921404CE0009817EC /* Token.swift in Sources */,
 				A9BF40D72177C1270090ED1C /* Airport.swift in Sources */,
 				A9E28A9321A84DBD00967C4A /* Availability.swift in Sources */,
