@@ -11,7 +11,7 @@ import TravelerKit
 
 protocol CancellationViewControllerDelegate: class {
     func cancellationViewController(_ controller: CancellationViewController, didCancel order:Order)
-    func cancellationViewController(_ controller: CancellationViewController, cancelationDidFail error: Error)
+    func cancellationViewController(_ controller: CancellationViewController, didFailWith error: Error)
 }
 
 class CancellationViewController: UITableViewController {
@@ -40,7 +40,7 @@ class CancellationViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productCancelCell", for: indexPath) as! InfoCell
 
         cell.titleLabel.text = quote?.products[indexPath.row].title
-        let percentageFee = (quote?.cancellationCharge.value ?? 0.0/quote!.products[indexPath.row].totalRefund.value ) * 100.0
+        let percentageFee = quote!.percentageFee(product: quote!.products[indexPath.row])
         cell.valueLabel.text = "Cancellation Fee \(percentageFee)%"
         cell.secondValueLabel?.text = quote?.products[indexPath.row].totalRefund.localizedDescription
 
@@ -77,6 +77,12 @@ extension CancellationViewController: CancellationDelegate {
 
     func cancellationDidFailWith(_ error: Error) {
         ProgressHUD.hide()
-        delegate?.cancellationViewController(self, cancelationDidFail: error)
+        delegate?.cancellationViewController(self, didFailWith: error)
+    }
+}
+
+extension CancellationQuote {
+    func percentageFee(product: ProductCancellationQuote) -> Double {
+        return (self.cancellationCharge.value/product.totalRefund.value) * 100
     }
 }

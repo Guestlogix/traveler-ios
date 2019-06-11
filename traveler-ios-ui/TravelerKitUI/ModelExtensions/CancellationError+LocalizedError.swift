@@ -15,7 +15,7 @@ extension CancellationError: LocalizedError {
         case .expiredQuote:
             return NSLocalizedString("Quote has expired", comment: "CancellationError")
         case .notCancellable:
-            return NSLocalizedString("Quote not cancellable", comment: "CancellationError")
+            return NSLocalizedString("Order not cancellable", comment: "CancellationError")
         }
     }
 }

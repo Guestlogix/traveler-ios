@@ -17,7 +17,7 @@ class InfoCell: UITableViewCell {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var secondValueLabel: UILabel?
 
-    weak var delegate:InfoCellDelegate?
+    weak var delegate: InfoCellDelegate?
 
     @IBAction func didPush(_ sender: Any) {
         delegate?.infoCellDidPressButton(self)

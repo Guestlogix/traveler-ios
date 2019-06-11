@@ -12,4 +12,5 @@ import Foundation
 public enum OrderResultError: Error {
     /// The traveler is not identified yer. Developer must call `Traveler.identify()` before attempting to fetch orders
     case unidentifiedTraveler
+    case notInResult
 }
