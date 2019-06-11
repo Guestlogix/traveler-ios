@@ -20,7 +20,7 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderPriceLabel: UILabel!
     @IBOutlet weak var creditCardLabel: UILabel!
     @IBOutlet weak var emailTicketsButton: UIButton!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var cancellationButton: UIButton!
 
     var order: Order?
 
@@ -40,8 +40,28 @@ class OrderDetailViewController: UITableViewController {
         orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
         orderPriceLabel.text = order?.total.localizedDescription
         creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
+
         let title = order?.status == OrderStatus.cancelled ? "View cancellation receipt" : "Cancel order"
-        button.setTitle(title, for: .normal)
+
+        cancellationButton.setTitle(title, for: .normal)
+
+        if let status = order?.status {
+            switch status {
+            case OrderStatus.cancelled:
+                emailTicketsButton.isEnabled = false
+                cancellationButton.isEnabled = true
+            case OrderStatus.confirmed:
+                emailTicketsButton.isEnabled = true
+                cancellationButton.isEnabled = true
+            case OrderStatus.declined, OrderStatus.pending:
+                emailTicketsButton.isEnabled = false
+                cancellationButton.isEnabled = false
+            case OrderStatus.underReview:
+                emailTicketsButton.isEnabled = true
+                cancellationButton.isEnabled = false
+            }
+        }
+
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,7 +69,7 @@ class OrderDetailViewController: UITableViewController {
         case ("productDetailSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? ProductDetailViewController
             vc?.product = product
-        case ("cancelQuoteSegue", let navVC as UINavigationController):
+        case ("cancelSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? CancellationViewController
             vc?.quote = cancellationQuote
             vc?.delegate = self
@@ -88,6 +108,7 @@ class OrderDetailViewController: UITableViewController {
         return cell
     }
 
+
     //MARK: UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -97,11 +118,19 @@ class OrderDetailViewController: UITableViewController {
         
         performSegue(withIdentifier: "productDetailSegue", sender: nil)
     }
-    
-    @IBAction func didPressButton(_ sender: Any) {
-        if order?.status != OrderStatus.cancelled {
+
+    @IBAction func didCancelOrder(_ sender: Any) {
+        guard let status = order?.status else {
+            Log("Order is nil", data: nil, level: .error)
+            return
+        }
+
+        switch status {
+        case OrderStatus.confirmed:
             ProgressHUD.show()
             Traveler.fetchCancellationQuote(order: order!, delegate: self)
+        default:
+            break
         }
     }
 

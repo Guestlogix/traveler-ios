@@ -435,7 +435,7 @@
                                                     <rect key="frame" x="163" y="60.5" width="88" height="30"/>
                                                     <state key="normal" title="Cancel order"/>
                                                     <connections>
-                                                        <action selector="didPressButton:" destination="cuo-8P-FDf" eventType="touchUpInside" id="slv-aC-vf0"/>
+                                                        <action selector="didCancelOrder:" destination="cuo-8P-FDf" eventType="touchUpInside" id="slv-aC-vf0"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -508,7 +508,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="button" destination="FP9-6V-Hm6" id="mp7-5m-720"/>
+                        <outlet property="cancellationButton" destination="FP9-6V-Hm6" id="mp7-5m-720"/>
                         <outlet property="creditCardLabel" destination="TfN-2e-Fn5" id="Fzm-HQ-SQR"/>
                         <outlet property="emailTicketsButton" destination="EP7-ml-xMA" id="2dl-cz-K8m"/>
                         <outlet property="orderDateLabel" destination="W7R-8i-nto" id="Roz-nD-uE4"/>
@@ -656,7 +656,7 @@
                                             <rect key="frame" x="20" y="68.5" width="85" height="30"/>
                                             <state key="normal" title="More details"/>
                                             <connections>
-                                                <action selector="didPush:" destination="DFf-n0-fzs" eventType="touchUpInside" id="NFv-eK-Lwb"/>
+                                                <action selector="didPush:" destination="DFf-n0-fzs" eventType="touchUpInside" id="E3J-z7-tZo"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -674,9 +674,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="secondValueLabel" destination="IvZ-rq-ckr" id="Mcz-5e-JFv"/>
+                                    <outlet property="secondValueLabel" destination="IvZ-rq-ckr" id="077-7w-83Z"/>
                                     <outlet property="titleLabel" destination="N8a-d7-MvT" id="eAI-ye-wZg"/>
-                                    <outlet property="valueLabel" destination="WxN-XR-fn5" id="zSU-m1-cq3"/>
+                                    <outlet property="valueLabel" destination="WxN-XR-fn5" id="W9c-AT-Pmp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
