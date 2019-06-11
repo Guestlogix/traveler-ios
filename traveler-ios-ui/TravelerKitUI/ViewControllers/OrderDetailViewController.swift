@@ -37,7 +37,7 @@ class OrderDetailViewController: UITableViewController {
 
     func loadOrder() {
         orderNumberLabel.text = order?.status == OrderStatus.cancelled ? "Cancelled: \(order?.referenceNumber ?? "")" : order?.referenceNumber
-        orderDateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
+        orderDateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
         orderPriceLabel.text = order?.total.localizedDescription
         creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
 
