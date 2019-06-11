@@ -23,7 +23,7 @@ class AggregatedPassesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = passes?.compactMap({ passQuantity[$0] = (passQuantity[$0] ?? 0 ) + 1 })
+        _ = passes?.compactMap({ passQuantity[$0] = (passQuantity[$0] ?? 0) + 1 })
 
         updatePreferredContentSize()
     }
