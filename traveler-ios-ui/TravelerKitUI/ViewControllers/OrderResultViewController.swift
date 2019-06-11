@@ -45,7 +45,7 @@ open class OrderResultViewController: UITableViewController {
         case .some(let order):
             let cell = tableView.dequeueReusableCell(withIdentifier: orderCellIdentifier, for: indexPath) as! OrderCell
             cell.numberLabel.text = order.referenceNumber
-            cell.dateLabel.text = DateFormatter.dateOnlyFormatter.string(from: order.createdDate)
+            cell.dateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order.createdDate)
             cell.productsLabel.text = order.products.map({ $0.title }).joined(separator: "\n")
             cell.priceLabel.text = order.total.localizedDescription
             cell.statusLabel.text = order.status.rawValue
