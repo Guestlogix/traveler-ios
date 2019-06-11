@@ -13,7 +13,7 @@ extension Product {
     var secondaryDescription: String? {
         switch self {
         case let self as BookableProduct:
-            return DateFormatter.dateOnlyFormatter.string(from: self.eventDate)
+            return ISO8601DateFormatter.dateOnlyFormatter.string(from: self.eventDate)
         default:
             return nil
         }
