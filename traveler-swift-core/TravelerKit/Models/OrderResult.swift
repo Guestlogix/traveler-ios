@@ -17,7 +17,7 @@ public struct OrderResult: Decodable {
     /// An `Array<Order>` representing the results of the query
     public private(set) var orders: [Int: Order]
     /// A dictionary representing the sequence of the orders
-    public let ordersSequence: [Order:Int]
+    private let ordersSequence: [String: Int]
     /// The fromDate part of the `OrderQuery` that matches the result
     public let fromDate: Date?
     /// The toDate part of the `OrderQuery` that matches the result
@@ -32,12 +32,19 @@ public struct OrderResult: Decodable {
         case orders = "result"
     }
 
-    init(total: Int, orders: [Int : Order], ordersSequence: [Order : Int], fromDate: Date?, toDate: Date) {
+    init(total: Int, orders: [Int : Order], fromDate: Date?, toDate: Date) {
         self.total = total
         self.orders = orders
-        self.ordersSequence = ordersSequence
         self.fromDate = fromDate
         self.toDate = toDate
+
+        var sequence = [String : Int]()
+
+        for (index, order) in orders {
+            sequence[order.id] = index
+        }
+
+        self.ordersSequence = sequence
     }
 
     /**
@@ -67,28 +74,28 @@ public struct OrderResult: Decodable {
         }
 
         var orders = self.orders
-        var sequence = self.ordersSequence
 
         for (index, order) in result.orders {
             orders[index] = order
-            sequence[order] = index
         }
 
-        return OrderResult(total: result.total, orders: orders, ordersSequence: sequence, fromDate: result.fromDate, toDate: result.toDate)
+        return OrderResult(total: result.total, orders: orders, fromDate: result.fromDate, toDate: result.toDate)
     }
 
     /**
-     Updates `Order` in orders in self.
+     Updates a specific `Order`in the internal storage
 
      - Parameters:
      - order: The `Order` to be updated
 
-     - Returns: The index in which the `Order` was updated or a `OrderResultError` if `Order` is not in `OrderResult`
+     - Returns: The index in which the `Order` was updated
+     - Throws: An `OrderResultError` if the `Order`was not part of the result
+
      */
 
     @discardableResult
-    mutating public func update(_ order: Order) throws -> Int? {
-        guard let index = ordersSequence[order] else {
+    mutating public func update(_ order: Order) throws -> Int {
+        guard let index = ordersSequence[order.id] else {
             throw OrderResultError.notInResult
         }
 
@@ -110,11 +117,11 @@ public struct OrderResult: Decodable {
         let orders = try container.decode([Order].self, forKey: .orders)
 
         var indexedOrders = [Int : Order]()
-        var ordersSequence = [Order : Int]()
+        var ordersSequence = [String : Int]()
 
         for (idx, order) in orders.enumerated() {
             indexedOrders[idx + offset] = order
-            ordersSequence[order] = idx + offset
+            ordersSequence[order.id] = idx + offset
         }
 
         self.orders = indexedOrders
