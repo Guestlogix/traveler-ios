@@ -19,11 +19,17 @@ class AggregatedPassesViewController: UITableViewController {
     weak var delegate: AggregatedPassesViewControllerDelegate?
 
     private var passQuantity = [Pass: Int]()
+    private var aggregateInfo = [(name: String, quantity: Int, total: String?)]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         passes?.forEach({ passQuantity[$0] = (passQuantity[$0] ?? 0) + 1 })
+
+        for (pass, quantity) in passQuantity {
+            let total = pass.price.value * Double(quantity)
+            aggregateInfo.append((pass.name, quantity, total.priceDescription()))
+        }
 
         updatePreferredContentSize()
     }
@@ -41,25 +47,14 @@ class AggregatedPassesViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return passQuantity.aggregatedPassInfo.count
+        return aggregateInfo.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "passCell", for: indexPath) as! PassCell
-        let passInfo = passQuantity.aggregatedPassInfo[indexPath.row]
+        let passInfo = aggregateInfo[indexPath.row]
         cell.passTypeLabel.text = "\(passInfo.name) x\(passInfo.quantity)"
         cell.priceLabel.text = passInfo.total
         return cell
-    }
-}
-
-extension Dictionary where Key == Pass, Value == Int {
-    var aggregatedPassInfo: [(name: String, quantity: Int, total: String?)] {
-        var aggregateInfo = [(name: String, quantity: Int, total: String?)]()
-        for (pass, quantity) in self {
-            let total = pass.price.value * Double(quantity)
-            aggregateInfo.append((pass.name, quantity, total.priceDescription()))
-        }
-        return aggregateInfo
     }
 }
