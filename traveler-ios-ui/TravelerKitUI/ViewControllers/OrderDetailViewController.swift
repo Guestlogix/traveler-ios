@@ -20,7 +20,7 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderPriceLabel: UILabel!
     @IBOutlet weak var creditCardLabel: UILabel!
 
-    internal var order: Order?
+    var order: Order?
 
     private var product:Product?
 
@@ -70,6 +70,8 @@ class OrderDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         product = order!.products[indexPath.row]
 
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         performSegue(withIdentifier: "productDetailSegue", sender: nil)
     }
 

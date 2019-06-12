@@ -14,16 +14,16 @@ protocol AggregatedPassesViewControllerDelegate: class {
 }
 
 class AggregatedPassesViewController: UITableViewController {
-    var passes:[Pass]?
+    var passes: [Pass]?
 
     weak var delegate: AggregatedPassesViewControllerDelegate?
 
-    private var passQuantity = [Pass:Int]()
+    private var passQuantity = [Pass: Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = passes?.compactMap({ passQuantity[$0] = (passQuantity[$0] ?? 0) + 1 })
+        passes?.forEach({ passQuantity[$0] = (passQuantity[$0] ?? 0) + 1 })
 
         updatePreferredContentSize()
     }

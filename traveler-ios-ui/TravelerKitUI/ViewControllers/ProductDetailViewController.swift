@@ -10,10 +10,9 @@ import UIKit
 import TravelerKit
 
 class ProductDetailViewController: UIViewController {
-    public var product:Product?
+    var product: Product?
 
-    private var productDetails:CatalogItemDetails?
-
+    private var productDetails: CatalogItemDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +22,16 @@ class ProductDetailViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as BookableProductDetailViewController ):
+        case (_, let vc as BookableProductDetailViewController):
             vc.purchasedProduct = product as? BookableProduct
             vc.productDetails = productDetails
-        case (_, let vc as RetryViewController ):
+        case (_, let vc as RetryViewController):
             vc.delegate = self
         case ("loadingSegue", _):
             break
         default:
             Log("Unknown segue", data: nil, level:.warning)
+            break
         }
     }
 
@@ -46,10 +46,9 @@ class ProductDetailViewController: UIViewController {
         Traveler.fetchCatalogItemDetails(product, delegate: self)
     }
 
-    @IBAction func didClose(_ sender: UIBarButtonItem) {
+    @IBAction func didClose(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
 }
 
 extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
@@ -57,7 +56,7 @@ extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
         self.productDetails = result
 
         if let _ = product as? BookableProduct {
-            performSegue(withIdentifier:"bookableDetailSegue", sender: nil)
+            performSegue(withIdentifier: "bookableDetailSegue", sender: nil)
         } else {
             performSegue(withIdentifier: "errorSegue", sender: nil)
         }
