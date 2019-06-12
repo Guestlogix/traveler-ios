@@ -18,7 +18,7 @@ class CancellationViewController: UITableViewController {
     @IBOutlet weak var totalRefundLabel: UILabel!
 
     var quote: CancellationQuote?
-    weak var delegate:CancellationViewControllerDelegate?
+    weak var delegate: CancellationViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +83,6 @@ extension CancellationViewController: CancellationDelegate {
 
 extension CancellationQuote {
     func percentageFee(product: ProductCancellationQuote) -> Double {
-        return (self.cancellationCharge.value/product.totalRefund.value) * 100
+        return (self.cancellationCharge.value / product.totalRefund.value) * 100
     }
 }

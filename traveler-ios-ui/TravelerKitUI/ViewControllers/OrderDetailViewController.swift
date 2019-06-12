@@ -30,8 +30,6 @@ class OrderDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(orderDidCancel(_:)), name: .orderDidCancel, object: nil)
-
         loadOrder()
     }
 
@@ -45,23 +43,24 @@ class OrderDetailViewController: UITableViewController {
 
         cancellationButton.setTitle(title, for: .normal)
 
-        if let status = order?.status {
-            switch status {
-            case OrderStatus.cancelled:
-                emailTicketsButton.isEnabled = false
-                cancellationButton.isEnabled = true
-            case OrderStatus.confirmed:
-                emailTicketsButton.isEnabled = true
-                cancellationButton.isEnabled = true
-            case OrderStatus.declined, OrderStatus.pending:
-                emailTicketsButton.isEnabled = false
-                cancellationButton.isEnabled = false
-            case OrderStatus.underReview:
-                emailTicketsButton.isEnabled = true
-                cancellationButton.isEnabled = false
-            }
-        }
 
+        switch order?.status {
+        case .cancelled?:
+            emailTicketsButton.isEnabled = false
+            cancellationButton.isEnabled = true
+        case .confirmed?:
+            emailTicketsButton.isEnabled = true
+            cancellationButton.isEnabled = true
+        case .declined?, .pending?:
+            emailTicketsButton.isEnabled = false
+            cancellationButton.isEnabled = false
+        case .underReview?:
+            emailTicketsButton.isEnabled = true
+            cancellationButton.isEnabled = false
+        case .none:
+            Log("Order has no status", data: nil, level: .error)
+            break
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,17 +78,6 @@ class OrderDetailViewController: UITableViewController {
         }
     }
 
-    @objc func orderDidCancel (_ note: Notification) {
-        guard let order = note.userInfo?[orderKey] as? Order else {
-            Log("Invalid notification", data: note, level: .error)
-            return
-        }
-
-        self.order = order
-        loadOrder()
-        tableView.reloadData()
-    }
-
     // MARK: UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -103,7 +91,7 @@ class OrderDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let product = order?.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! InfoCell
-        cell.titleLabel.text = order?.status == OrderStatus.cancelled ? "Cancelled: \(product?.title ?? "")" : product?.title
+        cell.titleLabel.text = order?.status == .cancelled ? "Cancelled: \(product?.title ?? "")" : product?.title
         cell.valueLabel.text = product?.secondaryDescription
         return cell
     }
@@ -151,6 +139,10 @@ extension OrderDetailViewController: CancellationViewControllerDelegate {
 
     func cancellationViewController(_ controller: CancellationViewController, didCancel order: Order) {
         controller.dismiss(animated: true, completion: nil)
+        
+        self.order = order
+        loadOrder()
+        tableView.reloadData()
     }
 }
 
