@@ -19,18 +19,22 @@ class BookableProductDetailViewController: UIViewController {
     @IBOutlet weak var productInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var productInfoView: UIView!
 
-    internal var purchasedProduct:BookableProduct?
-    internal var productDetails:CatalogItemDetails?
+    var purchasedProduct: BookableProduct?
+    var productDetails: CatalogItemDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         navigationController?.navigationBar.isTranslucent = true
 
         productNameLabel.text = purchasedProduct?.title
-        dateLabel.text = DateFormatter.dateOnlyFormatter.string(from: purchasedProduct!.eventDate)
-        let description = productDetails?.attributedDescription
-        description?.setFontFace(font: UIFont.systemFont(ofSize: 17), color: .darkGray)
-        productDescriptionLabel.attributedText = description
+
+        if let date = purchasedProduct?.eventDate {
+            dateLabel.text = DateFormatter.dateOnlyFormatter.string(from: date)
+        }
+
+        let description = productDetails?.attributedDescription 
+        productDescriptionLabel.text = description?.string
 
         // Preload images
 
@@ -51,6 +55,7 @@ class BookableProductDetailViewController: UIViewController {
             vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
+            break
         }
     }
 
