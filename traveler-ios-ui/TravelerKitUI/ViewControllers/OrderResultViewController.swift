@@ -43,11 +43,11 @@ open class OrderResultViewController: UITableViewController {
             return
         }
 
-        guard let index = try? self.orderResult?.update(order) else {
+        guard let index = try? self.orderResult!.update(order) else {
             return
         }
 
-        tableView.reloadRows(at: [IndexPath(row: index!, section: 0)], with: .automatic)
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 
     // MARK: UITableViewDataSource
