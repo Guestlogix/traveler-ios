@@ -56,7 +56,7 @@ extension PassengerRoute: Route {
         }
 
         switch errorCode {
-        case 2012, 2008:
+        case 2012:
             return CancellationError.notCancellable
         default:
             Log("Unknown error code", data: errorJSON, level: .warning)

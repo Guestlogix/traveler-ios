@@ -115,6 +115,12 @@ class OrderDetailViewController: UITableViewController {
 
 extension OrderDetailViewController: CancellationViewControllerDelegate {
     func cancellationViewControllerDidExpire(_ controller: CancellationViewController) {
+        let alert = UIAlertController(title: "Error", message: "Quote expired", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "", style: .default)
+        alert.addAction(okAction)
+
+        present(alert, animated: true, completion:  nil)
+        controller.dismiss(animated: true, completion: nil)
     }
 
     func cancellationViewController(_ controller: CancellationViewController, didCancel order: Order) {
