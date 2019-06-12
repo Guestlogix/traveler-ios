@@ -78,14 +78,14 @@ extension CancellationViewController: CancellationDelegate {
     func cancellationDidFailWith(_ error: Error) {
         ProgressHUD.hide()
 
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-
         switch error {
         case CancellationError.expiredQuote:
             delegate?.cancellationViewControllerDidExpire(self)
         default:
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         }
     }
 }
