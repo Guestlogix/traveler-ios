@@ -43,15 +43,11 @@ class OrderDetailViewController: UITableViewController {
 
         cancellationButton.setTitle(title, for: .normal)
 
-
         switch order?.status {
-        case .cancelled?:
-            emailTicketsButton.isEnabled = false
-            cancellationButton.isEnabled = true
         case .confirmed?:
             emailTicketsButton.isEnabled = true
             cancellationButton.isEnabled = true
-        case .declined?, .pending?:
+        case .declined?, .pending?, .cancelled?:
             emailTicketsButton.isEnabled = false
             cancellationButton.isEnabled = false
         case .underReview?:
@@ -108,18 +104,8 @@ class OrderDetailViewController: UITableViewController {
     }
 
     @IBAction func didCancelOrder(_ sender: Any) {
-        guard let status = order?.status else {
-            Log("Order is nil", data: nil, level: .error)
-            return
-        }
-
-        switch status {
-        case OrderStatus.confirmed:
-            ProgressHUD.show()
-            Traveler.fetchCancellationQuote(order: order!, delegate: self)
-        default:
-            break
-        }
+        ProgressHUD.show()
+        Traveler.fetchCancellationQuote(order: order!, delegate: self)
     }
 
     @IBAction func didRequestTickets(_ sender: Any) {
@@ -128,18 +114,12 @@ class OrderDetailViewController: UITableViewController {
 }
 
 extension OrderDetailViewController: CancellationViewControllerDelegate {
-    func cancellationViewController(_ controller: CancellationViewController, didFailWith error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-
-        controller.dismiss(animated: true , completion:nil)
+    func cancellationViewControllerDidExpire(_ controller: CancellationViewController) {
     }
 
     func cancellationViewController(_ controller: CancellationViewController, didCancel order: Order) {
         controller.dismiss(animated: true, completion: nil)
-        
+
         self.order = order
         loadOrder()
         tableView.reloadData()

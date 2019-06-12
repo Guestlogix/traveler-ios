@@ -11,7 +11,7 @@ import TravelerKit
 
 protocol CancellationViewControllerDelegate: class {
     func cancellationViewController(_ controller: CancellationViewController, didCancel order:Order)
-    func cancellationViewController(_ controller: CancellationViewController, didFailWith error: Error)
+    func cancellationViewControllerDidExpire(_ controller: CancellationViewController)
 }
 
 class CancellationViewController: UITableViewController {
@@ -77,7 +77,16 @@ extension CancellationViewController: CancellationDelegate {
 
     func cancellationDidFailWith(_ error: Error) {
         ProgressHUD.hide()
-        delegate?.cancellationViewController(self, didFailWith: error)
+
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+
+        switch error {
+        case CancellationError.expiredQuote:
+            delegate?.cancellationViewControllerDidExpire(self)
+        default:
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okAction)
+        }
     }
 }
 
