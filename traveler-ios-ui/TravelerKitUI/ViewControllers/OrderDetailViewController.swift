@@ -22,7 +22,7 @@ class OrderDetailViewController: UITableViewController {
 
     var order: Order?
 
-    private var product:Product?
+    private var product: Product?
 
     override func viewDidLoad() {
         super.viewDidLoad()
