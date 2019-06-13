@@ -43,7 +43,7 @@ open class OrderResultViewController: UITableViewController {
             return
         }
 
-        guard let index = try? self.orderResult!.update(order) else {
+        guard var result = orderResult, let index = try? result.update(order) else {
             return
         }
 
