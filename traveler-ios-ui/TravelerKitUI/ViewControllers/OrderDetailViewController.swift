@@ -105,7 +105,13 @@ class OrderDetailViewController: UITableViewController {
 
     @IBAction func didCancelOrder(_ sender: Any) {
         ProgressHUD.show()
-        Traveler.fetchCancellationQuote(order: order!, delegate: self)
+
+        guard let order = order else {
+            Log("No order", data:  nil, level: .error)
+            return
+        }
+
+        Traveler.fetchCancellationQuote(order: order, delegate: self)
     }
 
     @IBAction func didRequestTickets(_ sender: Any) {
