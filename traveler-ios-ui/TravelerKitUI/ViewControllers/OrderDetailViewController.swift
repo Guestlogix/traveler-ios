@@ -54,7 +54,7 @@ class OrderDetailViewController: UITableViewController {
             emailTicketsButton.isEnabled = true
             cancellationButton.isEnabled = false
         case .none:
-            Log("Order has no status", data: nil, level: .error)
+            Log("No Order", data: nil, level: .error)
             break
         }
     }
