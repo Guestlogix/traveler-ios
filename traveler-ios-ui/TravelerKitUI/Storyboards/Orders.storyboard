@@ -583,7 +583,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="PzC-3W-uqm">
-                            <rect key="frame" x="0.0" y="249" width="414" height="168"/>
+                            <rect key="frame" x="0.0" y="221" width="414" height="168"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Cancel refund" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbw-Cp-PJY">
@@ -627,11 +627,11 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCancelCell" rowHeight="108" id="DFf-n0-fzs" customClass="InfoCell" customModule="TravelerKitUI" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="141" width="414" height="108"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCancelCell" rowHeight="80" id="DFf-n0-fzs" customClass="InfoCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="141" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DFf-n0-fzs" id="KKJ-xG-IYg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="107.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8a-d7-MvT">
@@ -647,29 +647,20 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvZ-rq-ckr">
-                                            <rect key="frame" x="355" y="43.5" width="39" height="21"/>
+                                            <rect key="frame" x="355" y="29.5" width="39" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3FG-mi-5qb">
-                                            <rect key="frame" x="20" y="68.5" width="85" height="30"/>
-                                            <state key="normal" title="More details"/>
-                                            <connections>
-                                                <action selector="didPush:" destination="DFf-n0-fzs" eventType="touchUpInside" id="E3J-z7-tZo"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="IvZ-rq-ckr" firstAttribute="centerY" secondItem="KKJ-xG-IYg" secondAttribute="centerY" id="AdZ-d7-QV5"/>
-                                        <constraint firstItem="3FG-mi-5qb" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leading" constant="20" id="Bjq-oq-aXs"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="N8a-d7-MvT" secondAttribute="trailing" constant="142" id="Hay-5P-v0k"/>
-                                        <constraint firstItem="3FG-mi-5qb" firstAttribute="top" secondItem="WxN-XR-fn5" secondAttribute="bottom" constant="8" id="IR4-3U-HYo"/>
                                         <constraint firstItem="WxN-XR-fn5" firstAttribute="top" secondItem="N8a-d7-MvT" secondAttribute="bottom" constant="8" id="Z10-vq-k4y"/>
                                         <constraint firstItem="N8a-d7-MvT" firstAttribute="top" secondItem="KKJ-xG-IYg" secondAttribute="topMargin" id="c22-kT-jKj"/>
                                         <constraint firstItem="WxN-XR-fn5" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leadingMargin" id="cOQ-z7-F7c"/>
                                         <constraint firstItem="N8a-d7-MvT" firstAttribute="leading" secondItem="KKJ-xG-IYg" secondAttribute="leadingMargin" id="j29-ga-y5P"/>
-                                        <constraint firstAttribute="bottom" secondItem="3FG-mi-5qb" secondAttribute="bottom" constant="9" id="lKC-RW-GUz"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WxN-XR-fn5" secondAttribute="bottom" constant="8.5" id="o7P-Ki-Epv"/>
                                         <constraint firstItem="IvZ-rq-ckr" firstAttribute="trailing" secondItem="KKJ-xG-IYg" secondAttribute="trailingMargin" id="saP-du-mIA"/>
                                     </constraints>
                                 </tableViewCellContentView>
