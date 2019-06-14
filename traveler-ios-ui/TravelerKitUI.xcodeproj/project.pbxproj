@@ -99,6 +99,7 @@
 		CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */; };
 		CA88804022B2AF9700213E41 /* PassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803F22B2AF9700213E41 /* PassCell.swift */; };
 		CA88804222B2B22500213E41 /* Product.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA88804122B2B22400213E41 /* Product.storyboard */; };
+		CA90A4A622B3F73100C69C70 /* CancellationError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA90A4A522B3F73100C69C70 /* CancellationError+LocalizedError.swift */; };
 		CAC32410229C50E200A4F286 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */; };
 		CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACFE0D122B01FF200927899 /* Product+Description.swift */; };
 		F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */; };
@@ -207,6 +208,7 @@
 		CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		CA88803F22B2AF9700213E41 /* PassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCell.swift; sourceTree = "<group>"; };
 		CA88804122B2B22400213E41 /* Product.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Product.storyboard; sourceTree = "<group>"; };
+		CA90A4A522B3F73100C69C70 /* CancellationError+LocalizedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CancellationError+LocalizedError.swift"; path = "../../../../../Desktop/CancellationError+LocalizedError.swift"; sourceTree = "<group>"; };
 		CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		CACFE0D122B01FF200927899 /* Product+Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+Description.swift"; sourceTree = "<group>"; };
 		F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		A9639CBB220DF57300625235 /* ModelExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				CA90A4A522B3F73100C69C70 /* CancellationError+LocalizedError.swift */,
 				A9639D33220E01FE00625235 /* CatalogItemDetails+TravelerUI.swift */,
 				A9639D38220E029800625235 /* Attribute+TravelerUI.swift */,
 				A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */,
@@ -541,6 +544,7 @@
 				A9639CFA220DF57400625235 /* BookableDetailsViewController.swift in Sources */,
 				A9639CFE220DF57400625235 /* CatalogResultViewController.swift in Sources */,
 				A9639D0C220DF57400625235 /* HeaderView.swift in Sources */,
+				CA90A4A622B3F73100C69C70 /* CancellationError+LocalizedError.swift in Sources */,
 				F3A3E062224BB84100CD69F4 /* FormValueDisplayInputCell.swift in Sources */,
 				A9639D1B220DF57400625235 /* FormListInputCell.swift in Sources */,
 				A9639D2C220DF57400625235 /* DrawerPresentationAnimator.swift in Sources */,
