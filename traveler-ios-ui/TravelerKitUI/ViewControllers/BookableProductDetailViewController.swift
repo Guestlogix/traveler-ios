@@ -30,7 +30,7 @@ class BookableProductDetailViewController: UIViewController {
         productNameLabel.text = purchasedProduct?.title
 
         if let date = purchasedProduct?.eventDate {
-            dateLabel.text = DateFormatter.dateOnlyFormatter.string(from: date)
+            dateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: date)
         }
 
         let description = productDetails?.attributedDescription 
