@@ -47,6 +47,8 @@ open class OrderResultViewController: UITableViewController {
             return
         }
 
+        orderResult = result
+
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 
