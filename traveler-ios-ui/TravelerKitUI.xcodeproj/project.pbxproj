@@ -91,6 +91,7 @@
 		A974A69F2283209A00319683 /* RetryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A69E2283209A00319683 /* RetryViewController.swift */; };
 		A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6A02285FBF800319683 /* DummyTableViewController.swift */; };
 		A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */; };
+		CA1462A722BBE0A200137F06 /* Order+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1462A622BBE0A200137F06 /* Order+TravelerUI.swift */; };
 		CA1656FB22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */; };
 		CA1656FF22B2E0FB00FDF6C7 /* CancellationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1656FE22B2E0FB00FDF6C7 /* CancellationViewController.swift */; };
 		CA16570322B2E91300FDF6C7 /* Notification+Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */; };
@@ -200,6 +201,7 @@
 		A974A69E2283209A00319683 /* RetryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryViewController.swift; sourceTree = "<group>"; };
 		A974A6A02285FBF800319683 /* DummyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTableViewController.swift; sourceTree = "<group>"; };
 		A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pass+TravelerUI.swift"; sourceTree = "<group>"; };
+		CA1462A622BBE0A200137F06 /* Order+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CatalogItemInfo.storyboard; sourceTree = "<group>"; };
 		CA1656FE22B2E0FB00FDF6C7 /* CancellationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationViewController.swift; sourceTree = "<group>"; };
 		CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Cancel.swift"; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				A9639D38220E029800625235 /* Attribute+TravelerUI.swift */,
 				A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */,
 				CACFE0D122B01FF200927899 /* Product+Description.swift */,
+				CA1462A622BBE0A200137F06 /* Order+TravelerUI.swift */,
 			);
 			path = ModelExtensions;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */,
 				A9639D3D220E033C00625235 /* PaymentProvider.swift in Sources */,
 				A9639D00220DF57400625235 /* CatalogItemInfoViewController.swift in Sources */,
+				CA1462A722BBE0A200137F06 /* Order+TravelerUI.swift in Sources */,
 				A9639D04220DF57400625235 /* StepperCell.swift in Sources */,
 				A9639CF8220DF57400625235 /* PassesViewController.swift in Sources */,
 				A974A6992282131D00319683 /* OrderResultViewController.swift in Sources */,
