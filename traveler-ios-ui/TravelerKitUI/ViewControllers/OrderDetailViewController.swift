@@ -34,29 +34,21 @@ class OrderDetailViewController: UITableViewController {
     }
 
     func loadOrder() {
-        orderNumberLabel.text = order?.status == OrderStatus.cancelled ? "Cancelled: \(order?.referenceNumber ?? "")" : order?.referenceNumber
-        orderDateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order!.createdDate)
-        orderPriceLabel.text = order?.total.localizedDescription
-        creditCardLabel.text = "Visa ending in: \(order?.last4Digits ?? "")"
+        guard let order = order else {
+            Log("No order", data: nil, level: .error)
+            return
+        }
 
-        let title = order?.status == OrderStatus.cancelled ? "View cancellation receipt" : "Cancel order"
+        orderNumberLabel.text = order.isCancelled ? "Cancelled: \(order.referenceNumber ?? "")" : order.referenceNumber
+        orderDateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order.createdDate)
+        orderPriceLabel.text = order.total.localizedDescription
+        creditCardLabel.text = "Visa ending in: \(order.paymentDescription ?? "")"
+        emailTicketsButton.isEnabled = order.canEmailTickets
+        cancellationButton.isEnabled = !order.isCancelled
+
+        let title = order.isCancelled ? "View cancellation receipt" : "Cancel order"
 
         cancellationButton.setTitle(title, for: .normal)
-
-        switch order?.status {
-        case .confirmed?:
-            emailTicketsButton.isEnabled = true
-            cancellationButton.isEnabled = true
-        case .declined?, .pending?, .cancelled?:
-            emailTicketsButton.isEnabled = false
-            cancellationButton.isEnabled = false
-        case .underReview?:
-            emailTicketsButton.isEnabled = true
-            cancellationButton.isEnabled = false
-        case .none:
-            Log("No Order", data: nil, level: .error)
-            break
-        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,13 +77,12 @@ class OrderDetailViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let product = order?.products[indexPath.row]
+        let product = order!.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! InfoCell
-        cell.titleLabel.text = order?.status == .cancelled ? "Cancelled: \(product?.title ?? "")" : product?.title
-        cell.valueLabel.text = product?.secondaryDescription
+        cell.titleLabel.text = order!.isCancelled ? "Cancelled: \(product.title)" : product.title
+        cell.valueLabel.text = product.secondaryDescription
         return cell
     }
-
 
     //MARK: UITableViewDelegate
 

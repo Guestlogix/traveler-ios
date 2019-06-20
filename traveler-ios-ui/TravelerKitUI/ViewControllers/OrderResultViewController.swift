@@ -76,7 +76,20 @@ open class OrderResultViewController: UITableViewController {
             cell.dateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order.createdDate)
             cell.productsLabel.text = order.products.map({ $0.title }).joined(separator: "\n")
             cell.priceLabel.text = order.total.localizedDescription
-            cell.statusLabel.text = order.status.rawValue
+
+            switch order.status {
+            case .cancelled:
+                cell.statusLabel.text = "Cancelled"
+            case .pending:
+                cell.statusLabel.text = "Pending"
+            case .confirmed:
+                cell.statusLabel.text = "Confirmed"
+            case .declined:
+                cell.statusLabel.text = "Declined"
+            case .underReview:
+                cell.statusLabel.text = "Under Review"
+            }
+            
             return cell
         }
     }
