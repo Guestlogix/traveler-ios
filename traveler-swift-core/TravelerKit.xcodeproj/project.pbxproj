@@ -91,6 +91,9 @@
 		A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */; };
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
 		CA15F90122BAC66300F3788A /* ProcessedPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */; };
+		CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */; };
+		CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */; };
+		CAE90E8722BD5E4B0066FAAF /* EmailTicketsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8622BD5E4B0066FAAF /* EmailTicketsDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +195,9 @@
 		A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreOperationTests.swift; sourceTree = "<group>"; };
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
 		CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedPaymentInfo.swift; sourceTree = "<group>"; };
+		CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRequestOperation.swift; sourceTree = "<group>"; };
+		CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRemoteRequestOperation.swift; sourceTree = "<group>"; };
+		CAE90E8622BD5E4B0066FAAF /* EmailTicketsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTicketsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +249,7 @@
 				A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */,
 				A95F46AA229C403B009C9227 /* CancellationQuoteFetchDelegate.swift */,
 				A95F46AE229C6B00009C9227 /* CancellationDelegate.swift */,
+				CAE90E8622BD5E4B0066FAAF /* EmailTicketsDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -353,6 +360,7 @@
 				A9EED5F3215A7E52003AAA5F /* AuthenticatedRemoteFetchOperation.swift */,
 				A9EED5F5215AB713003AAA5F /* KeychainStoreOperation.swift */,
 				A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */,
+				CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -370,6 +378,7 @@
 				A9DB064E21406659009817EC /* DownloadOperation.swift */,
 				A9DB06542140665A009817EC /* ConcurrentOperation.swift */,
 				A957764A2152A9C400BD11C8 /* Route.swift */,
+				CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */,
 			);
 			path = Pineapple;
 			sourceTree = "<group>";
@@ -515,6 +524,7 @@
 				A9DB06612140665A009817EC /* RemoteFetchOperation.swift in Sources */,
 				A9DB06AA214AAF60009817EC /* FlightQuery.swift in Sources */,
 				A9639C8A220DF10A00625235 /* Payment.swift in Sources */,
+				CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */,
 				A9DB06A821496396009817EC /* Traveler.swift in Sources */,
 				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
@@ -523,6 +533,7 @@
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,
 				A9DB06B1214AE0AF009817EC /* URLRequest+JSON.swift in Sources */,
+				CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */,
 				A9BF40E2218231010090ED1C /* CatalogueQuery.swift in Sources */,
 				A91F3BDD21DC36AD0016894A /* BookingForm.swift in Sources */,
 				A9639C8C220DF1F000625235 /* Device.swift in Sources */,
@@ -564,6 +575,7 @@
 				A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */,
 				A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */,
 				A9DB06592140665A009817EC /* DownloadOperation.swift in Sources */,
+				CAE90E8722BD5E4B0066FAAF /* EmailTicketsDelegate.swift in Sources */,
 				A96F830922389CE300268D0D /* AvailabilitiesFetchDelegate.swift in Sources */,
 				A9BF40EA218264FB0090ED1C /* CatalogFetchDelegate.swift in Sources */,
 				A9DB065E2140665A009817EC /* NetworkError.swift in Sources */,

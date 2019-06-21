@@ -21,7 +21,7 @@ class ReceiptViewController: UITableViewController {
         // TODO: Add back confirmation number label after backend figures out how to send us an ORDER confirmation number
 
         //confirmationLabel.text = receipt?.order.referenceNumber
-        emailLabel.text = receipt?.order.email.email
+        emailLabel.text = receipt?.order.contact.email
     }
 
     @IBAction func didClose(_ sender: Any) {
