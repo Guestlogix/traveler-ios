@@ -22,7 +22,6 @@ class BookingQuestionsViewController: UIViewController {
     weak var delegate: BookingQuestionsViewControllerDelegate?
 
     private var error: Error?
-    private var originalSafeArea: CGRect?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +35,15 @@ class BookingQuestionsViewController: UIViewController {
 
     @objc
     func keyboardWillChangeFrame(_ note: Notification) {
-        var bottomInset:CGFloat = 0.0
-
         guard let keyboardFrame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
             return
         }
 
+        let viewControllerInView = view.convert(self.view.frame, from: nil)
         let keyboardFrameInView = view.convert(keyboardFrame, from: nil)
-
-        if let safeArea = originalSafeArea {
-            bottomInset = safeArea.intersection(keyboardFrameInView).height
-        } else {
-            bottomInset = view.safeAreaLayoutGuide.layoutFrame.intersection(keyboardFrameInView).height
-            originalSafeArea = view.safeAreaLayoutGuide.layoutFrame
-        }
-
-        additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+        let bottomInset = viewControllerInView.intersection(keyboardFrameInView).height
+        
+        self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
     }
 }
 
