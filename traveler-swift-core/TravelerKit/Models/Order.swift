@@ -46,7 +46,7 @@ public struct Order: Decodable, Equatable, Hashable {
     /// The date and time the order was created
     public let createdDate: Date
     /// The email of the primary contact
-    public let email: CustomerContact
+    public let contact: CustomerContact
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -102,6 +102,6 @@ public struct Order: Decodable, Equatable, Hashable {
             }
         }
 
-        self.email = try container.decode(CustomerContact.self, forKey: .email)
+        self.contact = try container.decode(CustomerContact.self, forKey: .email)
     }
 }

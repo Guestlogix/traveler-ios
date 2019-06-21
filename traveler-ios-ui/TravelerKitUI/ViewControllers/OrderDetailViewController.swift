@@ -106,7 +106,12 @@ class OrderDetailViewController: UITableViewController {
     }
 
     @IBAction func didRequestTickets(_ sender: Any) {
+        guard let order = order else {
+            Log("Missing order", data:  nil, level: .error)
+            return
+        }
 
+        Traveler.emailTickets(order: order, delegate: self)
     }
 }
 
@@ -147,5 +152,25 @@ extension OrderDetailViewController: CancellationQuoteFetchDelegate {
         alert.addAction(okAction)
 
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension OrderDetailViewController: EmailTicketsDelegate {
+    func emailDidSucceed() {
+        let alert = UIAlertController(title: "Success", message: "Email sent", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
+    }
+
+    func emailDidFailWith(_ error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
     }
 }
