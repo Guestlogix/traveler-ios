@@ -93,7 +93,7 @@
 		CA15F90122BAC66300F3788A /* ProcessedPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */; };
 		CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */; };
 		CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */; };
-		CAE90E8722BD5E4B0066FAAF /* EmailTicketsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8622BD5E4B0066FAAF /* EmailTicketsDelegate.swift */; };
+		CAE90E8722BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,7 +197,7 @@
 		CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedPaymentInfo.swift; sourceTree = "<group>"; };
 		CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRequestOperation.swift; sourceTree = "<group>"; };
 		CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRemoteRequestOperation.swift; sourceTree = "<group>"; };
-		CAE90E8622BD5E4B0066FAAF /* EmailTicketsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTicketsDelegate.swift; sourceTree = "<group>"; };
+		CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOrderConfirmationDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +249,7 @@
 				A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */,
 				A95F46AA229C403B009C9227 /* CancellationQuoteFetchDelegate.swift */,
 				A95F46AE229C6B00009C9227 /* CancellationDelegate.swift */,
-				CAE90E8622BD5E4B0066FAAF /* EmailTicketsDelegate.swift */,
+				CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -575,7 +575,7 @@
 				A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */,
 				A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */,
 				A9DB06592140665A009817EC /* DownloadOperation.swift in Sources */,
-				CAE90E8722BD5E4B0066FAAF /* EmailTicketsDelegate.swift in Sources */,
+				CAE90E8722BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift in Sources */,
 				A96F830922389CE300268D0D /* AvailabilitiesFetchDelegate.swift in Sources */,
 				A9BF40EA218264FB0090ED1C /* CatalogFetchDelegate.swift in Sources */,
 				A9DB065E2140665A009817EC /* NetworkError.swift in Sources */,

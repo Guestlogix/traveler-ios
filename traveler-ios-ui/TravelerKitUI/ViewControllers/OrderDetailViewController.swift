@@ -19,7 +19,7 @@ class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderDateLabel: UILabel!
     @IBOutlet weak var orderPriceLabel: UILabel!
     @IBOutlet weak var creditCardLabel: UILabel!
-    @IBOutlet weak var emailTicketsButton: UIButton!
+    @IBOutlet weak var emailConfirmation: UIButton!
     @IBOutlet weak var cancellationButton: UIButton!
 
     var order: Order?
@@ -43,7 +43,7 @@ class OrderDetailViewController: UITableViewController {
         orderDateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: order.createdDate)
         orderPriceLabel.text = order.total.localizedDescription
         creditCardLabel.text = "Visa ending in: \(order.paymentDescription ?? "")"
-        emailTicketsButton.isEnabled = order.canEmailTickets
+        emailConfirmation.isEnabled = order.canEmailOrderConfirmation
         cancellationButton.isEnabled = !order.isCancelled
 
         let title = order.isCancelled ? "View cancellation receipt" : "Cancel order"
@@ -111,7 +111,9 @@ class OrderDetailViewController: UITableViewController {
             return
         }
 
-        Traveler.emailTickets(order: order, delegate: self)
+        ProgressHUD.show()
+
+        Traveler.emailOrderConfirmation(order: order, delegate: self)
     }
 }
 
@@ -155,22 +157,26 @@ extension OrderDetailViewController: CancellationQuoteFetchDelegate {
     }
 }
 
-extension OrderDetailViewController: EmailTicketsDelegate {
+extension OrderDetailViewController: EmailOrderConfirmationDelegate {
     func emailDidSucceed() {
-        let alert = UIAlertController(title: "Success", message: "Email sent", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Success", message: "Confirmation sent", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
 
         alert.addAction(okAction)
+
+        ProgressHUD.hide()
 
         present(alert, animated: true)
     }
 
     func emailDidFailWith(_ error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "Something went wrong, please try again", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
 
         alert.addAction(okAction)
 
+        ProgressHUD.hide()
+        
         present(alert, animated: true)
     }
 }

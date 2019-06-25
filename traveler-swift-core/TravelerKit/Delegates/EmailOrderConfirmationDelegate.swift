@@ -1,5 +1,5 @@
 //
-//  EmailTicketsDelegate.swift
+//  EmailOrderConfirmationDelegate.swift
 //  TravelerKit
 //
 //  Created by Omar Padierna on 2019-06-21.
@@ -8,15 +8,15 @@
 
 import Foundation
 
-/// Notified of sending tickets by email
-public protocol EmailTicketsDelegate: class {
+/// Notified of sending order confirmation by email
+public protocol EmailOrderConfirmationDelegate: class {
     /**
-     Called when the tickets were sent successfully
+     Called when the order confirmation was sent successfully
      - Parameters:
      */
     func emailDidSucceed()
     /**
-     Called when there was an error sending the tickets
+     Called when there was an error sending the order confirmation
 
      - Parameters:
      - error: The `Error` representing the reason for failure.
