@@ -952,7 +952,7 @@
                         <outlet property="confirmButton" destination="fF6-Zn-vL4" id="Lge-e8-Gfq"/>
                         <outlet property="totalPriceLabel" destination="o8Y-1Y-07Q" id="Q7h-Ff-7ZK"/>
                         <segue destination="DcU-hM-wtE" kind="show" identifier="receiptSegue" id="bGy-Wl-oj1"/>
-                        <segue destination="Fbe-8o-slF" kind="show" identifier="failSegue" id="0Ft-tp-TpI"/>
+                        <segue destination="GdT-PN-fmz" kind="show" identifier="failSegue" id="yjo-6A-VI2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhI-lq-Xeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1202,19 +1202,18 @@
             </objects>
             <point key="canvasLocation" x="9982" y="1245"/>
         </scene>
-        <!--Order Confirmed-->
-        <scene sceneID="KJZ-ib-Afd">
+        <!--Failed Order-->
+        <scene sceneID="xoe-iU-vj6">
             <objects>
-                <viewController id="Fbe-8o-slF" customClass="FailViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="spn-66-1lO">
+                <viewController id="GdT-PN-fmz" customClass="FailViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sEH-UB-UlG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There was an error purchasing this order please try again " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcP-3u-LT1">
-                                <rect key="frame" x="69" y="297" width="237" height="73"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There was a problem processing your order please try again" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-Dp-mNq">
+                                <rect key="frame" x="42" y="313" width="291" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="237" id="575-Sw-mGM"/>
-                                    <constraint firstAttribute="width" secondItem="bcP-3u-LT1" secondAttribute="height" multiplier="237:73" id="fLA-AH-zlJ"/>
+                                    <constraint firstAttribute="width" constant="291" id="C0h-dW-Gds"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1223,27 +1222,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bcP-3u-LT1" firstAttribute="centerX" secondItem="spn-66-1lO" secondAttribute="centerX" id="D4y-Cu-nGC"/>
-                            <constraint firstItem="bcP-3u-LT1" firstAttribute="centerY" secondItem="spn-66-1lO" secondAttribute="centerY" id="zd4-dE-EyG"/>
+                            <constraint firstItem="BA1-Dp-mNq" firstAttribute="centerY" secondItem="sEH-UB-UlG" secondAttribute="centerY" id="cPb-rc-id2"/>
+                            <constraint firstItem="BA1-Dp-mNq" firstAttribute="centerX" secondItem="sEH-UB-UlG" secondAttribute="centerX" id="gpm-2j-kpy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="V3M-XA-af9"/>
+                        <viewLayoutGuide key="safeArea" id="YrI-Ec-3hH"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Order Confirmed" id="2IR-cD-GeO" userLabel="Failed order">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="vCk-JZ-4lb">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Failed Order" id="95I-cT-X9F">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="sjj-7H-sVk">
                             <connections>
-                                <action selector="didClose:" destination="Fbe-8o-slF" id="DEK-DU-e50"/>
+                                <action selector="didClose:" destination="GdT-PN-fmz" id="0cW-in-C8o"/>
                             </connections>
                         </barButtonItem>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="hidesBackButton" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="keb-lT-h8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hbX-TE-1c9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9981.6000000000004" y="1944.3778110944529"/>
+            <point key="canvasLocation" x="9981.6000000000004" y="2043.3283358320841"/>
         </scene>
         <!--CatalogItemInfo-->
         <scene sceneID="aax-ra-ycj">
