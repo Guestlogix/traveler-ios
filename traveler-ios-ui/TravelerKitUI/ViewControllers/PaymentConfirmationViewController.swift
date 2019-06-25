@@ -71,12 +71,12 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
         ProgressHUD.hide()
 
         let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] (_) in
+            self.performSegue(withIdentifier: "failSegue", sender: nil)
+        }
         alert.addAction(okAction)
 
         present(alert, animated: true, completion: nil)
-
-        performSegue(withIdentifier: "failSegue", sender: nil)
     }
 
     func order(_ order: Order, didSucceedWithReceipt receipt: Receipt) {

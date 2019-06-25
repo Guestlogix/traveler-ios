@@ -10,6 +10,8 @@ import UIKit
 
 class FailViewController: UIViewController {
 
+    var test: Bool?
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
