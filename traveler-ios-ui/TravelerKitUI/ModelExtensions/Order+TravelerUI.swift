@@ -19,7 +19,7 @@ extension Order {
         }
     }
 
-    var canEmailTickets: Bool {
+    var canEmailOrderConfirmation: Bool {
         switch self.status {
         case .confirmed, .underReview:
             return true

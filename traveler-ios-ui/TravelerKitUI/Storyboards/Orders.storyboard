@@ -380,7 +380,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP7-ml-xMA">
                                                     <rect key="frame" x="20" y="17" width="374" height="33.5"/>
-                                                    <state key="normal" title="Email Tickets"/>
+                                                    <state key="normal" title="Email confirmation"/>
                                                     <connections>
                                                         <action selector="didRequestTickets:" destination="cuo-8P-FDf" eventType="touchUpInside" id="GJa-V0-fSo"/>
                                                     </connections>
@@ -510,7 +510,7 @@
                     <connections>
                         <outlet property="cancellationButton" destination="FP9-6V-Hm6" id="mp7-5m-720"/>
                         <outlet property="creditCardLabel" destination="TfN-2e-Fn5" id="Fzm-HQ-SQR"/>
-                        <outlet property="emailTicketsButton" destination="EP7-ml-xMA" id="2dl-cz-K8m"/>
+                        <outlet property="emailConfirmation" destination="EP7-ml-xMA" id="2dl-cz-K8m"/>
                         <outlet property="orderDateLabel" destination="W7R-8i-nto" id="Roz-nD-uE4"/>
                         <outlet property="orderNumberLabel" destination="fhq-7d-Gnf" id="z3U-AX-Te4"/>
                         <outlet property="orderPriceLabel" destination="72B-yx-UBT" id="FmG-fY-IHn"/>

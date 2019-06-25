@@ -223,8 +223,8 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func emailTickets(order: Order, completion: @escaping (Error?) -> Void) {
-        let requestOperation = AuthenticatedRemoteRequestOperation(path: .emailTickets(order), session: session)
+    func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
+        let requestOperation = AuthenticatedRemoteRequestOperation(path: .emailOrderConfirmation(order), session: session)
         let blockOperation = BlockOperation { [unowned requestOperation] in
             completion(requestOperation.error)
         }
@@ -606,15 +606,15 @@ public class Traveler {
     }
 
     /**
-     Emails tickets to email used in purchase, given the `Order`
+     Emails order confirmation to email used in purchase, given the `Order`
 
      - Parameters:
      - order: The `Order` with the tickets to be sent
      - delegate: A `EmailTicketsDelegate` that is notified if the tickets were sent successfuly
     */
 
-    public static func emailTickets(order: Order, delegate: EmailTicketsDelegate) {
-        shared?.emailTickets(order: order, completion: { [weak delegate] (error) in
+    public static func emailOrderConfirmation(order: Order, delegate: EmailOrderConfirmationDelegate) {
+        shared?.emailOrderConfirmation(order: order, completion: { [weak delegate] (error) in
             if let error = error {
                 delegate?.emailDidFailWith(error)
             } else {
@@ -624,14 +624,14 @@ public class Traveler {
     }
 
     /**
-     Emails tickets to email used in purchase, given the `Order`
+     Emails order confirmation to email used in purchase, given the `Order`
 
      - Parameters:
      - order: The `Order` with the tickets to be sent
      - completion: A completion block that is called when the email is sent
      */
 
-    public static func emailTickets(order: Order, completion: @escaping (Error?) -> Void) {
-        shared?.emailTickets(order: order, completion: completion)
+    public static func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
+        shared?.emailOrderConfirmation(order: order, completion: completion)
     }
 }
