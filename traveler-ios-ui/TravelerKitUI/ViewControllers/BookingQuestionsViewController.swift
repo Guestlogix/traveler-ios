@@ -44,6 +44,7 @@ class BookingQuestionsViewController: UIViewController {
         let bottomInset = viewControllerInView.intersection(keyboardFrameInView).height
         
         self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
+        self.view.layoutIfNeeded()
     }
 }
 
