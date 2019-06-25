@@ -32,6 +32,8 @@ class PaymentConfirmationViewController: UIViewController {
             vc.delegate = self
         case (_, let vc as ReceiptViewController):
             vc.receipt = receipt
+        case ("failSegue", _):
+            break
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -73,6 +75,8 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
         alert.addAction(okAction)
 
         present(alert, animated: true, completion: nil)
+
+        performSegue(withIdentifier: "failSegue", sender: nil)
     }
 
     func order(_ order: Order, didSucceedWithReceipt receipt: Receipt) {
