@@ -47,6 +47,7 @@
 		A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A974A6892280B19900319683 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6882280B19900319683 /* ProfileViewController.swift */; };
 		A974A6CD228C63FA00319683 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6CC228C63FA00319683 /* SettingsViewController.swift */; };
+		CA187CB222C56B7100E14D6B /* CI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA187CB122C56B7100E14D6B /* CI.swift */; };
 		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		A965D418224D38A800AAE774 /* Notification+Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Guest.swift"; sourceTree = "<group>"; };
 		A974A6882280B19900319683 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A974A6CC228C63FA00319683 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CA187CB122C56B7100E14D6B /* CI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI.swift; sourceTree = "<group>"; };
 		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 		A9639D692211CD3400625235 /* Traveler */ = {
 			isa = PBXGroup;
 			children = (
+				CA187CB022C56B6000E14D6B /* Environment  */,
 				A9152C2B224AA355006F4EA4 /* GuestAPI */,
 				A9639D822211CE0B00625235 /* Extensions */,
 				A9639D862211CE0B00625235 /* Storyboards */,
@@ -239,6 +242,14 @@
 				A9639DE12211D91A00625235 /* Stripe.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA187CB022C56B6000E14D6B /* Environment  */ = {
+			isa = PBXGroup;
+			children = (
+				CA187CB122C56B7100E14D6B /* CI.swift */,
+			);
+			path = "Environment ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 				A9639DA02211CE0B00625235 /* MainViewController.swift in Sources */,
 				A9639DA52211CE0B00625235 /* EmptyViewController.swift in Sources */,
 				A9639D6B2211CD3400625235 /* AppDelegate.swift in Sources */,
+				CA187CB222C56B7100E14D6B /* CI.swift in Sources */,
 				A9639D9F2211CE0B00625235 /* PassengerCatalogResultViewController.swift in Sources */,
 				A9639D9A2211CE0B00625235 /* DateFormatter+Passenger.swift in Sources */,
 				A9639DA32211CE0B00625235 /* FlightSearchResultViewController.swift in Sources */,
