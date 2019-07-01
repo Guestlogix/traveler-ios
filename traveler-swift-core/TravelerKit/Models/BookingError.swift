@@ -16,4 +16,6 @@ public enum BookingError: Error {
     case badDate
     /// The `BookingOption` is required and was not supplied
     case noOption
+    /// The requested number of passes is not available
+    case noPasses
 }
