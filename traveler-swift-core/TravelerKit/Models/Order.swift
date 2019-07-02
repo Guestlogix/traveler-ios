@@ -9,17 +9,18 @@
 import Foundation
 
 /// Represents the different statuses an `Order` can have
-public enum OrderStatus: String, Decodable {
+public enum OrderStatus {
     /// The `Order` is being processed
-    case pending = "Pending"
+    case pending
     /// The `Order` has been successfully processed
-    case confirmed = "Confirmed"
+    case confirmed(ProcessedPaymentInfo)
     /// Payment failed
-    case declined = "Declined"
+    case declined(ProcessedPaymentInfo)
     /// Traveler asked for a cancellation and the `Order` is under review
-    case underReview = "UnderReview"
+    case underReview(ProcessedPaymentInfo)
     /// `Order` is cancelled
-    case cancelled = "Cancelled"
+    case cancelled(ProcessedPaymentInfo)
+
 }
 
 /// Holds information about an order
@@ -45,9 +46,7 @@ public struct Order: Decodable, Equatable, Hashable {
     /// The date and time the order was created
     public let createdDate: Date
     /// The email of the primary contact
-    public let email: CustomerContact
-    /// The last four digits of credit card
-    public let last4Digits: String?
+    public let contact: CustomerContact
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -66,7 +65,27 @@ public struct Order: Decodable, Equatable, Hashable {
         self.id = try container.decode(String.self, forKey: .id)
         self.total = try container.decode(Price.self, forKey: .total)
         self.referenceNumber = try container.decode(String?.self, forKey: .referenceNumber) ?? nil
-        self.status = try container.decode(OrderStatus.self, forKey: .status)
+
+        let statusString = try container.decode(String.self, forKey: .status)
+
+        switch statusString.lowercased() {
+        case "pending":
+            self.status = .pending
+        case "confirmed":
+            let paymentString = try container.decode(String.self, forKey: .last4Digits)
+            self.status = .confirmed(ProcessedPaymentInfo(paymentInfo: paymentString))
+        case "declined":
+            let paymentString = try container.decode(String.self, forKey: .last4Digits)
+            self.status = .declined(ProcessedPaymentInfo(paymentInfo: paymentString))
+        case "underreview":
+            let paymentString = try container.decode(String.self, forKey: .last4Digits)
+            self.status = .underReview(ProcessedPaymentInfo(paymentInfo: paymentString))
+        case "cancelled":
+            let paymentString = try container.decode(String.self, forKey: .last4Digits)
+            self.status = .cancelled(ProcessedPaymentInfo(paymentInfo: paymentString))
+        default:
+            throw DecodingError.dataCorruptedError(forKey: CodingKeys.status, in: container, debugDescription: "Unknown status")
+        }
 
         let dateString = try container.decode(String.self, forKey: .createdDate)
 
@@ -83,7 +102,6 @@ public struct Order: Decodable, Equatable, Hashable {
             }
         }
 
-        self.email = try container.decode(CustomerContact.self, forKey: .email)
-        self.last4Digits = try container.decode(String?.self, forKey: .last4Digits) ?? nil
+        self.contact = try container.decode(CustomerContact.self, forKey: .email)
     }
 }

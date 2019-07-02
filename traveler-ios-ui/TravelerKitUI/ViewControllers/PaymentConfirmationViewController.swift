@@ -32,6 +32,8 @@ class PaymentConfirmationViewController: UIViewController {
             vc.delegate = self
         case (_, let vc as ReceiptViewController):
             vc.receipt = receipt
+        case ("failSegue", _):
+            break
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -69,7 +71,9 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
         ProgressHUD.hide()
 
         let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] (_) in
+            self.performSegue(withIdentifier: "failSegue", sender: nil)
+        }
         alert.addAction(okAction)
 
         present(alert, animated: true, completion: nil)

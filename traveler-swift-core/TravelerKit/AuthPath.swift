@@ -20,6 +20,7 @@ enum AuthPath {
     case orders(OrderQuery, travelerId: String)
     case cancellationQuote(Order)
     case cancelOrder(CancellationQuote)
+    case emailOrderConfirmation(Order)
 
     // MARK: URLRequest
 
@@ -111,6 +112,9 @@ enum AuthPath {
             urlComponents.path = "/order/\(order.id)/cancellation"
         case .cancelOrder(let quote):
             urlComponents.path = "/order/\(quote.order.id)/cancellation/\(quote.id)"
+            urlRequest.method = .patch
+        case .emailOrderConfirmation(let order):
+            urlComponents.path = "/order/\(order.id)/ticket"
             urlRequest.method = .patch
         }
 

@@ -223,6 +223,18 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
+        let requestOperation = AuthenticatedRemoteRequestOperation(path: .emailOrderConfirmation(order), session: session)
+        let blockOperation = BlockOperation { [unowned requestOperation] in
+            completion(requestOperation.error)
+        }
+
+        blockOperation.addDependency(requestOperation)
+
+        queue.addOperation(requestOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     /**
@@ -591,5 +603,35 @@ public class Traveler {
 
     public static func cancelOrder(quote: CancellationQuote, completion: @escaping (Order?, Error?) -> Void) {
         shared?.cancelOrder(quote: quote, competion: completion)
+    }
+
+    /**
+     Emails order confirmation to email used in purchase, given the `Order`
+
+     - Parameters:
+     - order: The `Order` with the tickets to be sent
+     - delegate: A `EmailTicketsDelegate` that is notified if the tickets were sent successfuly
+    */
+
+    public static func emailOrderConfirmation(order: Order, delegate: EmailOrderConfirmationDelegate) {
+        shared?.emailOrderConfirmation(order: order, completion: { [weak delegate] (error) in
+            if let error = error {
+                delegate?.emailDidFailWith(error)
+            } else {
+                delegate?.emailDidSucceed()
+            }
+        })
+    }
+
+    /**
+     Emails order confirmation to email used in purchase, given the `Order`
+
+     - Parameters:
+     - order: The `Order` with the tickets to be sent
+     - completion: A completion block that is called when the email is sent
+     */
+
+    public static func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
+        shared?.emailOrderConfirmation(order: order, completion: completion)
     }
 }
