@@ -30,28 +30,28 @@ enum AuthPath {
 
         switch self {
         case .flights(let query):
-            urlComponents.path = "/flight"
+            urlComponents.path = "/v1/flight"
             urlComponents.queryItems = [
                 URLQueryItem(name: "flight-number", value: query.number),
                 URLQueryItem(name: "departure-date", value: DateFormatter.yearMonthDay.string(from: query.date))
             ]
         case .catalog(let query):
-            urlComponents.path = "/catalog"
+            urlComponents.path = "/v1/catalog"
             urlComponents.queryItems = [URLQueryItem]()
 
             query.flights?.forEach { (flight) in
                 urlComponents.queryItems!.append(URLQueryItem(name:"flight-ids", value: flight.id))
             }
         case .catalogItem(let item):
-            urlComponents.path = "/product/\(item.id)"
+            urlComponents.path = "/v1/product/\(item.id)"
         case .productSchedule(let product, let fromDate, let toDate):
-            urlComponents.path = "/product/\(product.id)/schedule"
+            urlComponents.path = "/v1/product/\(product.id)/schedule"
             urlComponents.queryItems = [
                 URLQueryItem(name: "from", value: DateFormatter.yearMonthDay.string(from: fromDate)),
                 URLQueryItem(name: "to", value: DateFormatter.yearMonthDay.string(from: toDate))
             ]
         case .passes(let product, let availability, let option):
-            urlComponents.path = "/product/\(product.id)/pass"
+            urlComponents.path = "/v1/product/\(product.id)/pass"
             urlComponents.queryItems = [
                 URLQueryItem(name: "availability-id", value: availability.id)
             ]
@@ -62,14 +62,14 @@ enum AuthPath {
                 )
             }
         case .questions(let product, let passes):
-            urlComponents.path = "/product/\(product.id)/question"
+            urlComponents.path = "/v1/product/\(product.id)/question"
             urlComponents.queryItems = [URLQueryItem]()
 
             passes.forEach { (pass) in
                 urlComponents.queryItems!.append(URLQueryItem(name: "pass-ids", value: pass.id))
             }
         case .createOrder(let forms, let travelerId):
-            urlComponents.path = "/order"
+            urlComponents.path = "/v1/order"
             urlRequest.method = .post
             urlRequest.jsonBody = [
                 "travelerId": travelerId as Any,
@@ -91,11 +91,11 @@ enum AuthPath {
                 })
             ]
         case .processOrder(let order, let payment):
-            urlComponents.path = "/order/\(order.id)"
+            urlComponents.path = "/v1/order/\(order.id)"
             urlRequest.method = .patch
             urlRequest.httpBody = payment.securePayload()
         case .orders(let query, let travelerId):
-            urlComponents.path = "/order"
+            urlComponents.path = "/v1/order"
             urlComponents.queryItems = [
                 URLQueryItem(name: "traveler", value: travelerId),
                 URLQueryItem(name: "skip", value: String(query.offset)),
@@ -109,9 +109,9 @@ enum AuthPath {
                 )
             }
         case .cancellationQuote(let order):
-            urlComponents.path = "/order/\(order.id)/cancellation"
+            urlComponents.path = "/v1/order/\(order.id)/cancellation"
         case .cancelOrder(let quote):
-            urlComponents.path = "/order/\(quote.order.id)/cancellation/\(quote.id)"
+            urlComponents.path = "/v1/order/\(quote.order.id)/cancellation/\(quote.id)"
             urlRequest.method = .patch
         case .emailOrderConfirmation(let order):
             urlComponents.path = "/order/\(order.id)/ticket"

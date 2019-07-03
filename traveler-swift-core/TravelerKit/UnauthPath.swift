@@ -19,7 +19,7 @@ enum UnauthPath {
 
         switch self {
         case .authenticate(let apiKey):
-            urlComponents.path = "/auth/token"
+            urlComponents.path = "/v1/auth/token"
             urlRequest.method = .get
             urlRequest.addValue(apiKey, forHTTPHeaderField: "x-api-key")
         }

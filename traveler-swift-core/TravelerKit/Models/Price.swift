@@ -19,7 +19,7 @@ public struct Price: Decodable {
     public private(set) var baseCurrency: Currency
 
     private var exchangeEnabled: Bool
-    private var exhangeRates: ExchangeRates
+    private var exchangeRates: ExchangeRates
 
 
     /// A convenience computed property for displaying a localized description of the amount in its base currency. e.g. "$431.23"
@@ -70,7 +70,7 @@ public struct Price: Decodable {
             throw ExchangeError.notAllowed
         }
 
-        return value * exhangeRates.rate(for: currency)
+        return value * exchangeRates.rate(for: currency)
     }
 }
 
@@ -96,7 +96,7 @@ extension Price {
         return Price(value: (try! lhs.value(in: currency)) - (try! rhs.value(in: currency)),
                      baseCurrency: currency,
                      exchangeEnabled: lhs.exchangeEnabled && rhs.exchangeEnabled,
-                     exhangeRates: lhs.exchangeEnabled ? lhs.exhangeRates : rhs.exhangeRates)
+                     exchangeRates: lhs.exchangeEnabled ? lhs.exchangeRates : rhs.exchangeRates)
     }
 
     public static func += (lhs: inout Price, rhs: Price) throws {
@@ -107,7 +107,7 @@ extension Price {
         lhs.baseCurrency = currency
         lhs.value = (try! lhs.value(in: currency)) + (try! rhs.value(in: currency))
         lhs.exchangeEnabled = lhs.exchangeEnabled && rhs.exchangeEnabled
-        lhs.exhangeRates = lhs.exchangeEnabled ? lhs.exhangeRates : rhs.exhangeRates
+        lhs.exchangeRates = lhs.exchangeEnabled ? lhs.exchangeRates : rhs.exchangeRates
     }
 
     public static func + (lhs: Price, rhs: Price) throws -> Price {
@@ -118,7 +118,7 @@ extension Price {
         return Price(value: (try! lhs.value(in: currency)) + (try! rhs.value(in: currency)),
                      baseCurrency: currency,
                      exchangeEnabled: lhs.exchangeEnabled && rhs.exchangeEnabled,
-                     exhangeRates: lhs.exhangeRates)
+                     exchangeRates: lhs.exchangeRates)
     }
 
     public static func -= (lhs: inout Price, rhs: Price) throws {
@@ -129,7 +129,7 @@ extension Price {
         lhs.baseCurrency = currency
         lhs.value = (try! lhs.value(in: currency)) - (try! rhs.value(in: currency))
         lhs.exchangeEnabled = lhs.exchangeEnabled && rhs.exchangeEnabled
-        lhs.exhangeRates = lhs.exchangeEnabled ? lhs.exhangeRates : rhs.exhangeRates
+        lhs.exchangeRates = lhs.exchangeEnabled ? lhs.exchangeRates : rhs.exchangeRates
     }
 }
 
@@ -138,14 +138,14 @@ extension Price {
         return Price(value: rhs.value * lhs,
                      baseCurrency: rhs.baseCurrency,
                      exchangeEnabled: rhs.exchangeEnabled,
-                     exhangeRates: rhs.exhangeRates)
+                     exchangeRates: rhs.exchangeRates)
     }
 
     public static func * (lhs: Price, rhs: Double) -> Price {
         return Price(value: lhs.value * rhs,
                      baseCurrency: lhs.baseCurrency,
                      exchangeEnabled: lhs.exchangeEnabled,
-                     exhangeRates: lhs.exhangeRates)
+                     exchangeRates: lhs.exchangeRates)
     }
 
     public static func *= (lhs: inout Price, rhs: Double) {
@@ -157,7 +157,7 @@ extension Price: ExpressibleByFloatLiteral {
     public typealias FloatLiteralType = Double
 
     public init(floatLiteral value: Double) {
-        self.init(value: value, baseCurrency: .USD, exchangeEnabled: true, exhangeRates: .equalRates)
+        self.init(value: value, baseCurrency: .USD, exchangeEnabled: true, exchangeRates: .equalRates)
     }
 }
 
@@ -170,32 +170,32 @@ public enum Currency: String, Decodable {
 }
 
 struct ExchangeRates: Decodable {
-    let USD: Double
-    let CAD: Double
-    let AUD: Double
-    let EUR: Double
-    let GBP: Double
+    let usd: Double
+    let cad: Double
+    let aud: Double
+    let eur: Double
+    let gbp: Double
 
     func rate(for currency: Currency) -> Double {
         switch currency {
         case .USD:
-            return USD
+            return usd
         case .CAD:
-            return CAD
+            return cad
         case .AUD:
-            return AUD
+            return aud
         case .EUR:
-            return EUR
+            return eur
         case .GBP:
-            return GBP
+            return gbp
         }
     }
 
     static var equalRates: ExchangeRates = {
-        return ExchangeRates(USD: 1,
-                             CAD: 1,
-                             AUD: 1,
-                             EUR: 1,
-                             GBP: 1)
+        return ExchangeRates(usd: 1,
+                             cad: 1,
+                             aud: 1,
+                             eur: 1,
+                             gbp: 1)
     }()
 }
