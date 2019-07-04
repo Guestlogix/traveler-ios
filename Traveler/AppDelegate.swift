@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // GoogleSignInSDK
 
-        GIDSignIn.sharedInstance()?.clientID = CI.gIDClientId
-        GIDSignIn.sharedInstance()?.serverClientID = CI.gIDServerClientID
+        GIDSignIn.sharedInstance()?.clientID = "722316764255-7n0gp3v0061nh12t7ghckg969orp6rc3.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.serverClientID = "722316764255-b5b818k7flnugh4brq17r6jmqt71cddr.apps.googleusercontent.com"
 
         // TravelerSDK
 
