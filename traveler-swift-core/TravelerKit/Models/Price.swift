@@ -42,7 +42,7 @@ public struct Price: Decodable {
         numberFormatter.currencyCode = currency.rawValue
         numberFormatter.numberStyle = .currency
 
-        return numberFormatter.string(for: self)
+        return numberFormatter.string(for: NSNumber(value: self.value))
     }
 
     /// The nominal value of the amount in its base currency
