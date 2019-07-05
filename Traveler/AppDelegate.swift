@@ -21,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // GoogleSignInSDK
 
-        GIDSignIn.sharedInstance()?.clientID = CI.gIDClientId
-        GIDSignIn.sharedInstance()?.serverClientID = CI.gIDServerClientID
+        GIDSignIn.sharedInstance()?.clientID = Environment.gIDClientId
+        GIDSignIn.sharedInstance()?.serverClientID = Environment.gIDServerClientID
 
         // TravelerSDK
 
-        Traveler.initialize(apiKey: CI.travelerKitKey, device: UIDevice.current)
+        Traveler.initialize(apiKey: Environment.travelerKitKey, device: UIDevice.current)
         TravelerUI.initialize(paymentProvider: StripePaymentProvider())
 
         // Temp Styles
