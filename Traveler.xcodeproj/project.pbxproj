@@ -47,6 +47,48 @@
 		A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A974A6892280B19900319683 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6882280B19900319683 /* ProfileViewController.swift */; };
 		A974A6CD228C63FA00319683 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6CC228C63FA00319683 /* SettingsViewController.swift */; };
+		CAC5085B22D3C736004A114B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8E2211CE0B00625235 /* MainViewController.swift */; };
+		CAC5085C22D3C736004A114B /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D932211CE0B00625235 /* EmptyViewController.swift */; };
+		CAC5085D22D3C736004A114B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D6A2211CD3400625235 /* AppDelegate.swift */; };
+		CAC5085E22D3C736004A114B /* PassengerCatalogResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8D2211CE0B00625235 /* PassengerCatalogResultViewController.swift */; };
+		CAC5085F22D3C736004A114B /* DateFormatter+Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D832211CE0B00625235 /* DateFormatter+Passenger.swift */; };
+		CAC5086022D3C736004A114B /* FlightSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D912211CE0B00625235 /* FlightSearchResultViewController.swift */; };
+		CAC5086122D3C736004A114B /* RetryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D942211CE0B00625235 /* RetryViewController.swift */; };
+		CAC5086222D3C736004A114B /* FlightLookupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D902211CE0B00625235 /* FlightLookupFormViewController.swift */; };
+		CAC5086322D3C736004A114B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEC49922CFB05C00FCF7A2 /* Environment.swift */; };
+		CAC5086422D3C736004A114B /* PassengerCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8F2211CE0B00625235 /* PassengerCatalogViewController.swift */; };
+		CAC5086522D3C736004A114B /* FlightLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D922211CE0B00625235 /* FlightLookupViewController.swift */; };
+		CAC5086622D3C736004A114B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D414224D315100AAE774 /* Profile.swift */; };
+		CAC5086722D3C736004A114B /* ValueDisplayInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */; };
+		CAC5086822D3C736004A114B /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
+		CAC5086922D3C736004A114B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D412224D274400AAE774 /* AuthViewController.swift */; };
+		CAC5086A22D3C736004A114B /* FlightSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8C2211CE0B00625235 /* FlightSearchViewController.swift */; };
+		CAC5086B22D3C736004A114B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6882280B19900319683 /* ProfileViewController.swift */; };
+		CAC5086C22D3C736004A114B /* DateInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D802211CE0B00625235 /* DateInputCell.swift */; };
+		CAC5086D22D3C736004A114B /* StringInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D7E2211CE0B00625235 /* StringInputCell.swift */; };
+		CAC5086E22D3C736004A114B /* GuestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9152C2C224AA491006F4EA4 /* GuestRoute.swift */; };
+		CAC5086F22D3C736004A114B /* FlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D7D2211CE0B00625235 /* FlightCell.swift */; };
+		CAC5087022D3C736004A114B /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9152C2E224AA69D006F4EA4 /* Guest.swift */; };
+		CAC5087122D3C736004A114B /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D812211CE0B00625235 /* ButtonCell.swift */; };
+		CAC5087222D3C736004A114B /* Notification+Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D418224D38A800AAE774 /* Notification+Guest.swift */; };
+		CAC5087322D3C736004A114B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6CC228C63FA00319683 /* SettingsViewController.swift */; };
+		CAC5087522D3C736004A114B /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D407224D253200AAE774 /* GoogleSignInDependencies.framework */; };
+		CAC5087622D3C736004A114B /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9152C33224AA8A8006F4EA4 /* GoogleSignIn.framework */; };
+		CAC5087722D3C736004A114B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D40E224D25D700AAE774 /* SystemConfiguration.framework */; };
+		CAC5087822D3C736004A114B /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D40C224D25C800AAE774 /* SafariServices.framework */; };
+		CAC5087922D3C736004A114B /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A965D40A224D25B900AAE774 /* LocalAuthentication.framework */; };
+		CAC5087A22D3C736004A114B /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DE12211D91A00625235 /* Stripe.framework */; };
+		CAC5087B22D3C736004A114B /* TravelerStripePaymentProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; };
+		CAC5087C22D3C736004A114B /* TravelerKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; };
+		CAC5087D22D3C736004A114B /* TravelerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD42211D13900625235 /* TravelerKit.framework */; };
+		CAC5087F22D3C736004A114B /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A9152C36224D1FF6006F4EA4 /* GoogleSignIn.bundle */; };
+		CAC5088022D3C736004A114B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9639D732211CD3600625235 /* LaunchScreen.storyboard */; };
+		CAC5088122D3C736004A114B /* AddFlight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9639D872211CE0B00625235 /* AddFlight.storyboard */; };
+		CAC5088222D3C736004A114B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9639D712211CD3600625235 /* Assets.xcassets */; };
+		CAC5088322D3C736004A114B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9639D892211CE0B00625235 /* Main.storyboard */; };
+		CAC5088522D3C736004A114B /* TravelerKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD82211D13F00625235 /* TravelerKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CAC5088622D3C736004A114B /* TravelerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD42211D13900625235 /* TravelerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CAC5088722D3C736004A114B /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CADEC49A22CFB05C00FCF7A2 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEC49922CFB05C00FCF7A2 /* Environment.swift */; };
 		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +103,19 @@
 				A9639DDA2211D13F00625235 /* TravelerKitUI.framework in Embed Frameworks */,
 				A9639DD62211D13900625235 /* TravelerKit.framework in Embed Frameworks */,
 				A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAC5088422D3C736004A114B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CAC5088522D3C736004A114B /* TravelerKitUI.framework in Embed Frameworks */,
+				CAC5088622D3C736004A114B /* TravelerKit.framework in Embed Frameworks */,
+				CAC5088722D3C736004A114B /* TravelerStripePaymentProvider.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +163,8 @@
 		A965D418224D38A800AAE774 /* Notification+Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Guest.swift"; sourceTree = "<group>"; };
 		A974A6882280B19900319683 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A974A6CC228C63FA00319683 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CAC5088C22D3C736004A114B /* gCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAC5088D22D3C736004A114B /* Traveler copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Traveler copy-Info.plist"; path = "/Users/opadierna/Documents/traveler-ios/Traveler copy-Info.plist"; sourceTree = "<absolute>"; };
 		CADEC49922CFB05C00FCF7A2 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +183,22 @@
 				A96F830F22395E7300268D0D /* TravelerStripePaymentProvider.framework in Frameworks */,
 				A9639DD92211D13F00625235 /* TravelerKitUI.framework in Frameworks */,
 				A9639DD52211D13900625235 /* TravelerKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAC5087422D3C736004A114B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAC5087522D3C736004A114B /* GoogleSignInDependencies.framework in Frameworks */,
+				CAC5087622D3C736004A114B /* GoogleSignIn.framework in Frameworks */,
+				CAC5087722D3C736004A114B /* SystemConfiguration.framework in Frameworks */,
+				CAC5087822D3C736004A114B /* SafariServices.framework in Frameworks */,
+				CAC5087922D3C736004A114B /* LocalAuthentication.framework in Frameworks */,
+				CAC5087A22D3C736004A114B /* Stripe.framework in Frameworks */,
+				CAC5087B22D3C736004A114B /* TravelerStripePaymentProvider.framework in Frameworks */,
+				CAC5087C22D3C736004A114B /* TravelerKitUI.framework in Frameworks */,
+				CAC5087D22D3C736004A114B /* TravelerKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +227,7 @@
 				A9639D692211CD3400625235 /* Traveler */,
 				A9639D682211CD3400625235 /* Products */,
 				A9639DE02211D91A00625235 /* Frameworks */,
+				CAC5088D22D3C736004A114B /* Traveler copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				A9639D672211CD3400625235 /* Traveler.app */,
+				CAC5088C22D3C736004A114B /* gCrew.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,6 +349,25 @@
 			productReference = A9639D672211CD3400625235 /* Traveler.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CAC5085922D3C736004A114B /* gCrew */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAC5088922D3C736004A114B /* Build configuration list for PBXNativeTarget "gCrew" */;
+			buildPhases = (
+				CAC5085A22D3C736004A114B /* Sources */,
+				CAC5087422D3C736004A114B /* Frameworks */,
+				CAC5087E22D3C736004A114B /* Resources */,
+				CAC5088422D3C736004A114B /* Embed Frameworks */,
+				CAC5088822D3C736004A114B /* Carthage Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gCrew;
+			productName = Traveler;
+			productReference = CAC5088C22D3C736004A114B /* gCrew.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -303,6 +397,7 @@
 			projectRoot = "";
 			targets = (
 				A9639D662211CD3400625235 /* Traveler */,
+				CAC5085922D3C736004A114B /* gCrew */,
 			);
 		};
 /* End PBXProject section */
@@ -320,10 +415,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAC5087E22D3C736004A114B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAC5087F22D3C736004A114B /* GoogleSignIn.bundle in Resources */,
+				CAC5088022D3C736004A114B /* LaunchScreen.storyboard in Resources */,
+				CAC5088122D3C736004A114B /* AddFlight.storyboard in Resources */,
+				CAC5088222D3C736004A114B /* Assets.xcassets in Resources */,
+				CAC5088322D3C736004A114B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		A9639DE32211D95100625235 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Stripe.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Stripe.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		CAC5088822D3C736004A114B /* Carthage Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -375,6 +502,38 @@
 				A9639D992211CE0B00625235 /* ButtonCell.swift in Sources */,
 				A965D419224D38A800AAE774 /* Notification+Guest.swift in Sources */,
 				A974A6CD228C63FA00319683 /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAC5085A22D3C736004A114B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAC5085B22D3C736004A114B /* MainViewController.swift in Sources */,
+				CAC5085C22D3C736004A114B /* EmptyViewController.swift in Sources */,
+				CAC5085D22D3C736004A114B /* AppDelegate.swift in Sources */,
+				CAC5085E22D3C736004A114B /* PassengerCatalogResultViewController.swift in Sources */,
+				CAC5085F22D3C736004A114B /* DateFormatter+Passenger.swift in Sources */,
+				CAC5086022D3C736004A114B /* FlightSearchResultViewController.swift in Sources */,
+				CAC5086122D3C736004A114B /* RetryViewController.swift in Sources */,
+				CAC5086222D3C736004A114B /* FlightLookupFormViewController.swift in Sources */,
+				CAC5086322D3C736004A114B /* Environment.swift in Sources */,
+				CAC5086422D3C736004A114B /* PassengerCatalogViewController.swift in Sources */,
+				CAC5086522D3C736004A114B /* FlightLookupViewController.swift in Sources */,
+				CAC5086622D3C736004A114B /* Profile.swift in Sources */,
+				CAC5086722D3C736004A114B /* ValueDisplayInputCell.swift in Sources */,
+				CAC5086822D3C736004A114B /* FlightDetailsViewController.swift in Sources */,
+				CAC5086922D3C736004A114B /* AuthViewController.swift in Sources */,
+				CAC5086A22D3C736004A114B /* FlightSearchViewController.swift in Sources */,
+				CAC5086B22D3C736004A114B /* ProfileViewController.swift in Sources */,
+				CAC5086C22D3C736004A114B /* DateInputCell.swift in Sources */,
+				CAC5086D22D3C736004A114B /* StringInputCell.swift in Sources */,
+				CAC5086E22D3C736004A114B /* GuestRoute.swift in Sources */,
+				CAC5086F22D3C736004A114B /* FlightCell.swift in Sources */,
+				CAC5087022D3C736004A114B /* Guest.swift in Sources */,
+				CAC5087122D3C736004A114B /* ButtonCell.swift in Sources */,
+				CAC5087222D3C736004A114B /* Notification+Guest.swift in Sources */,
+				CAC5087322D3C736004A114B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +737,60 @@
 			};
 			name = Release;
 		};
+		CAC5088A22D3C736004A114B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GXZZ6L8Q3B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Traveler copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.Traveler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CAC5088B22D3C736004A114B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GXZZ6L8Q3B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Traveler copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guestlogix.Traveler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -595,6 +808,15 @@
 			buildConfigurations = (
 				A9639D7A2211CD3600625235 /* Debug */,
 				A9639D7B2211CD3600625235 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAC5088922D3C736004A114B /* Build configuration list for PBXNativeTarget "gCrew" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAC5088A22D3C736004A114B /* Debug */,
+				CAC5088B22D3C736004A114B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
