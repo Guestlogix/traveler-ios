@@ -14,7 +14,7 @@ import Stripe
 public struct StripePaymentProvider: PaymentProvider  {
     private var paymentConfiguration: STPPaymentConfiguration = {
         let config = STPPaymentConfiguration()
-        config.publishableKey = "pk_test_yUnRnhSqk2DvuL6Qlx9TNrfx"
+        config.publishableKey = "pk_live_BbIRatKepYSWQBVL9G9JfR6I"
         return config
     }()
 
