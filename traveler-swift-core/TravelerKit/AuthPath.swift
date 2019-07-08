@@ -114,7 +114,7 @@ enum AuthPath {
             urlComponents.path = "/v1/order/\(quote.order.id)/cancellation/\(quote.id)"
             urlRequest.method = .patch
         case .emailOrderConfirmation(let order):
-            urlComponents.path = "/order/\(order.id)/ticket"
+            urlComponents.path = "/v1/order/\(order.id)/ticket"
             urlRequest.method = .patch
         }
 
