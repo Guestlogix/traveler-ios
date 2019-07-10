@@ -15,7 +15,7 @@ enum PassengerRoute {
 
 extension PassengerRoute: Route {
     var baseURL: URL {
-        return URL(string: "https://traveler.rc.guestlogix.io/")!
+        return URL(string: "https://traveler.guestlogix.io/")!
     }
 
     var urlRequest: URLRequest {

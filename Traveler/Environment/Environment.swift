@@ -11,5 +11,5 @@ import Foundation
 struct Environment {
     static var gIDClientId: String = "$(GID_CLIENT_ID)"
     static var gIDServerClientID: String = "$(GID_SERVER_CLIENT_ID)"
-    static var travelerKitKey: String = "$(TRAVELER_KIT_API_KEY)"
+    static var travelerKitKey: String = "$(TRAVELER_KIT_API_KEY_PRODUCTION)"
 }
