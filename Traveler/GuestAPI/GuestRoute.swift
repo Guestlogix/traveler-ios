@@ -16,7 +16,7 @@ enum GuestRoute {
 
 extension GuestRoute: Route {
     var baseURL: URL {
-        return URL(string: "https://hklkg7c974.execute-api.ca-central-1.amazonaws.com/dev/login")!
+        return URL(string: "https://9th3dtgfg3.execute-api.ca-central-1.amazonaws.com/dev/")!
     }
 
     var urlRequest: URLRequest {
