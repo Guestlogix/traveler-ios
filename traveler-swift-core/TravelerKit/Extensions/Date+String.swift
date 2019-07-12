@@ -12,6 +12,6 @@ extension Date {
     public func description(with timeZone: TimeZone, formatter: DateFormatter) -> String {
         let formatterCopy = formatter.copy() as! DateFormatter
         formatterCopy.timeZone = timeZone
-        return formatter.string(from: self)
+        return formatterCopy.string(from: self)
     }
 }
