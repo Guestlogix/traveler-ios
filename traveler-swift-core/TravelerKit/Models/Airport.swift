@@ -26,6 +26,13 @@ public struct Airport: Decodable, Equatable {
         case utcOffsetHours = "utcOffsetHours"
     }
 
+    init(code: String, name: String, city: String, timeZone: TimeZone) {
+        self.code = code
+        self.name = name
+        self.city = city
+        self.timeZone = timeZone
+    }
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.code = try container.decode(String.self, forKey: .code)
