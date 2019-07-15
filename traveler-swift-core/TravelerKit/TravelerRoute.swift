@@ -13,9 +13,29 @@ enum PassengerRoute {
     case authenticated(AuthPath, apiKey: String, token: Token)  //  TODO: Once there is a JWT validator on the gateway we wont need apiKey passed here
 }
 
+public let TRAVELER_SDK_ENDPOINT = "traveler_SDK_endpoint"
+
 extension PassengerRoute: Route {
     var baseURL: URL {
-        return URL(string: "https://traveler.guestlogix.io/")!
+        struct Endpoint {
+            static var url: URL?
+        }
+
+        if let url = Endpoint.url {
+            return url
+        }
+
+        let productionEndpoint = "https://traveler.guestlogix.io"
+
+        // TODO: add the v1 to the above URL
+
+        guard let endpoint = UserDefaults.standard.string(forKey: TRAVELER_SDK_ENDPOINT) else {
+            return URL(string: productionEndpoint)!
+        }
+
+        Endpoint.url = URL(string: endpoint) ?? URL(string: productionEndpoint)!
+
+        return Endpoint.url!
     }
 
     var urlRequest: URLRequest {

@@ -47,6 +47,7 @@
 		A96F831022395E7300268D0D /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A974A6892280B19900319683 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6882280B19900319683 /* ProfileViewController.swift */; };
 		A974A6CD228C63FA00319683 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6CC228C63FA00319683 /* SettingsViewController.swift */; };
+		CA11A5B022DD0798002850A2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA11A5AF22DD0798002850A2 /* Settings.bundle */; };
 		CAC5085B22D3C736004A114B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8E2211CE0B00625235 /* MainViewController.swift */; };
 		CAC5085C22D3C736004A114B /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D932211CE0B00625235 /* EmptyViewController.swift */; };
 		CAC5085D22D3C736004A114B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D6A2211CD3400625235 /* AppDelegate.swift */; };
@@ -163,6 +164,7 @@
 		A965D418224D38A800AAE774 /* Notification+Guest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Guest.swift"; sourceTree = "<group>"; };
 		A974A6882280B19900319683 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A974A6CC228C63FA00319683 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CA11A5AF22DD0798002850A2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CAC5088C22D3C736004A114B /* gCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC5088D22D3C736004A114B /* Traveler copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Traveler copy-Info.plist"; path = "/Users/opadierna/Documents/traveler-ios/Traveler copy-Info.plist"; sourceTree = "<absolute>"; };
 		CADEC49922CFB05C00FCF7A2 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				A9639D712211CD3600625235 /* Assets.xcassets */,
 				A9639D732211CD3600625235 /* LaunchScreen.storyboard */,
 				A9639D762211CD3600625235 /* Info.plist */,
+				CA11A5AF22DD0798002850A2 /* Settings.bundle */,
 			);
 			path = Traveler;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				A9639D752211CD3600625235 /* LaunchScreen.storyboard in Resources */,
 				A9639D9C2211CE0B00625235 /* AddFlight.storyboard in Resources */,
 				A9639D722211CD3600625235 /* Assets.xcassets in Resources */,
+				CA11A5B022DD0798002850A2 /* Settings.bundle in Resources */,
 				A9639D9D2211CE0B00625235 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

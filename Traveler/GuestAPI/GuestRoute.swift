@@ -16,7 +16,23 @@ enum GuestRoute {
 
 extension GuestRoute: Route {
     var baseURL: URL {
-        return URL(string: "https://9th3dtgfg3.execute-api.ca-central-1.amazonaws.com/dev/")!
+        struct Endpoint {
+            static var url: URL?
+        }
+
+        if let url = Endpoint.url {
+            return url
+        }
+
+        let productionEndpoint = "https://9th3dtgfg3.execute-api.ca-central-1.amazonaws.com/dev/"
+
+        guard let endpoint = UserDefaults.standard.string(forKey: "traveler_Authentication_Endpoint") else {
+            return URL(string: productionEndpoint)!
+        }
+
+        Endpoint.url = URL(string: endpoint) ?? URL(string: productionEndpoint)!
+
+        return Endpoint.url!
     }
 
     var urlRequest: URLRequest {

@@ -12,14 +12,22 @@ import TravelerKitUI
 import Stripe
 
 public struct StripePaymentProvider: PaymentProvider  {
-    private var paymentConfiguration: STPPaymentConfiguration = {
+
+    private let sandBoxModeEnabled: Bool
+
+    private var paymentConfiguration: STPPaymentConfiguration {
         let config = STPPaymentConfiguration()
-        config.publishableKey = "pk_live_BbIRatKepYSWQBVL9G9JfR6I"
+
+        if self.sandBoxModeEnabled {
+            config.publishableKey = "pk_live_BbIRatKepYSWQBVL9G9JfR6I"
+        } else {
+            config.publishableKey = "pk_test_yUnRnhSqk2DvuL6Qlx9TNrfx"
+        }
         return config
-    }()
+    }
 
     public func paymentCollectorPackage() -> (UIViewController, PaymentHandler) {
-        let paymentHandler = StripePaymentHandler()
+        let paymentHandler = StripePaymentHandler(sandBoxMode: self.sandBoxModeEnabled)
 
         let addCardViewController = STPAddCardViewController(configuration: paymentConfiguration, theme: STPTheme.default())
         addCardViewController.delegate = paymentHandler
@@ -27,20 +35,26 @@ public struct StripePaymentProvider: PaymentProvider  {
         return (addCardViewController, paymentHandler)
     }
 
-    public init() {
-        
+    public init(sandBoxModeEnabled: Bool = false) {
+        self.sandBoxModeEnabled = sandBoxModeEnabled
     }
 }
 
 class StripePaymentHandler: NSObject, PaymentHandler, STPAddCardViewControllerDelegate {
     weak var delegate: PaymentHandlerDelegate?
 
+    private var sandBoxMode: Bool
+
+    init(sandBoxMode: Bool) {
+        self.sandBoxMode = sandBoxMode
+    }
+
     func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
         addCardViewController.dismiss(animated: true, completion: nil)
     }
 
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        delegate?.paymentHandler(self, didCollect: StripePayment(token: token))
+        delegate?.paymentHandler(self, didCollect: StripePayment(token: token, sandBoxMode: self.sandBoxMode))
 
         addCardViewController.dismiss(animated: true, completion: nil)
     }
@@ -67,10 +81,12 @@ struct StripePayment: Payment {
     }
 
     let token: STPToken
+    let sandBoxMode: Bool
 
     func securePayload() -> Data? {
-        let jsonPayload = [
-            "token": token.tokenId
+        let jsonPayload: [String: Any] = [
+            "token": token.tokenId,
+            "sandBox": sandBoxMode
         ]
 
         return try? JSONSerialization.data(withJSONObject: jsonPayload, options: [])
