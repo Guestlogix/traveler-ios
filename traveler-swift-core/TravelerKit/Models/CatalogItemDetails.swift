@@ -32,6 +32,8 @@ public struct CatalogItemDetails: Decodable, Product {
     public var price: Price {
         return priceStartingAt
     }
+    // Supplier
+    public let supplier: Supplier
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -43,6 +45,7 @@ public struct CatalogItemDetails: Decodable, Product {
         case priceStartingAt
         case purchaseStrategy
         case information
+        case supplier
     }
 }
 
