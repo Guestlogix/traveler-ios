@@ -93,6 +93,8 @@
 		CA15F90122BAC66300F3788A /* ProcessedPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */; };
 		CA594AF922DFD33F008C6C4B /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AF822DFD33F008C6C4B /* Supplier.swift */; };
 		CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFA22DFD344008C6C4B /* Trademark.swift */; };
+		CA594AFF22DFD3BF008C6C4B /* SupplierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */; };
+		CA594B0122DFD3C4008C6C4B /* TrademarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */; };
 		CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */; };
 		CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */; };
 		CAE90E8722BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */; };
@@ -199,6 +201,8 @@
 		CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedPaymentInfo.swift; sourceTree = "<group>"; };
 		CA594AF822DFD33F008C6C4B /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		CA594AFA22DFD344008C6C4B /* Trademark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trademark.swift; sourceTree = "<group>"; };
+		CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierTests.swift; sourceTree = "<group>"; };
+		CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrademarkTests.swift; sourceTree = "<group>"; };
 		CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRequestOperation.swift; sourceTree = "<group>"; };
 		CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRemoteRequestOperation.swift; sourceTree = "<group>"; };
 		CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOrderConfirmationDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 		A9DB063021402F49009817EC /* TravelerKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				CA594AFD22DFD3AB008C6C4B /* Models */,
 				A9EED5F9215BD1E7003AAA5F /* Operations */,
 				A9DB063121402F49009817EC /* PassengerKitTests.swift */,
 				A9DB063321402F49009817EC /* Info.plist */,
@@ -408,6 +413,15 @@
 				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CA594AFD22DFD3AB008C6C4B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */,
+				CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -613,8 +627,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */,
+				CA594B0122DFD3C4008C6C4B /* TrademarkTests.swift in Sources */,
 				A9DB063221402F49009817EC /* PassengerKitTests.swift in Sources */,
 				A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */,
+				CA594AFF22DFD3BF008C6C4B /* SupplierTests.swift in Sources */,
 				A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
