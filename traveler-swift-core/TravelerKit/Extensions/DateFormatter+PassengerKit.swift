@@ -47,7 +47,7 @@ extension DateFormatter {
         return formatter
     }()
 
-    public static func dateFormatter(with timeZone: TimeZone) -> DateFormatter {
+    public static func fullFormatter(with timeZone: TimeZone) -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         dateFormatter.timeZone = timeZone
