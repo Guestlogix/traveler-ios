@@ -91,7 +91,7 @@
 		A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */; };
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
 		CA12275722F0CCEA00541F3A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12275522F0CCEA00541F3A /* Date+String.swift */; };
-		CA12275822F0CCEA00541F3A /* Timezone+UTCOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12275622F0CCEA00541F3A /* Timezone+UTCOffset.swift */; };
+		CA12275A22F0CEB400541F3A /* OffsetSeconds.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12275922F0CEB400541F3A /* OffsetSeconds.swift */; };
 		CA15F90122BAC66300F3788A /* ProcessedPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */; };
 		CA594AF922DFD33F008C6C4B /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AF822DFD33F008C6C4B /* Supplier.swift */; };
 		CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFA22DFD344008C6C4B /* Trademark.swift */; };
@@ -202,7 +202,7 @@
 		A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreOperationTests.swift; sourceTree = "<group>"; };
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
 		CA12275522F0CCEA00541F3A /* Date+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
-		CA12275622F0CCEA00541F3A /* Timezone+UTCOffset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Timezone+UTCOffset.swift"; sourceTree = "<group>"; };
+		CA12275922F0CEB400541F3A /* OffsetSeconds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetSeconds.swift; sourceTree = "<group>"; };
 		CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedPaymentInfo.swift; sourceTree = "<group>"; };
 		CA594AF822DFD33F008C6C4B /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		CA594AFA22DFD344008C6C4B /* Trademark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trademark.swift; sourceTree = "<group>"; };
@@ -320,6 +320,7 @@
 		A9DB06472140487B009817EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA12275922F0CEB400541F3A /* OffsetSeconds.swift */,
 				CAA8EF0D22EA076B0000376D /* Category.swift */,
 				A9DB06432140358C009817EC /* Credentials.swift */,
 				A9DB064821404CE0009817EC /* Token.swift */,
@@ -415,7 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				CA12275522F0CCEA00541F3A /* Date+String.swift */,
-				CA12275622F0CCEA00541F3A /* Timezone+UTCOffset.swift */,
 				A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */,
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
@@ -559,6 +559,7 @@
 				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
 				A974A68F2280C42900319683 /* OrderQuery.swift in Sources */,
+				CA12275A22F0CEB400541F3A /* OffsetSeconds.swift in Sources */,
 				A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */,
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,
@@ -583,7 +584,6 @@
 				A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */,
 				A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */,
 				A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */,
-				CA12275822F0CCEA00541F3A /* Timezone+UTCOffset.swift in Sources */,
 				A95F46AB229C403B009C9227 /* CancellationQuoteFetchDelegate.swift in Sources */,
 				A9EED5F6215AB713003AAA5F /* KeychainStoreOperation.swift in Sources */,
 				CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */,

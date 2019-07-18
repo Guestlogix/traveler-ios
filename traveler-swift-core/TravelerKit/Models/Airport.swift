@@ -41,9 +41,14 @@ public struct Airport: Decodable, Equatable {
 
         let utcOffsetHours = try container.decode(String.self, forKey: .utcOffsetHours)
 
-        guard let timeZone = TimeZone(with: utcOffsetHours) else {
+        guard let offsetSeconds = OffsetSeconds(offsetHourString: utcOffsetHours) else {
             throw DecodingError.dataCorruptedError(forKey: .utcOffsetHours, in: container, debugDescription: "Wrong format for UTC offset hours")
         }
+
+        guard let timeZone = TimeZone(secondsFromGMT: offsetSeconds.value) else {
+            throw DecodingError.dataCorruptedError(forKey: .utcOffsetHours, in: container, debugDescription: "Wrong format for UTC offset hours, can't create TimeZone")
+        }
+
         self.timeZone = timeZone
     }
 }
