@@ -16,7 +16,11 @@ protocol AttributesViewControllerDelegate: class {
 let attributeCellIdentifier = "attributeCellIdentifier"
 
 class AttributesViewController: UITableViewController {
+    @IBOutlet weak var tradeMarkCopyLabel: UILabel!
+    @IBOutlet weak var tradeMarkImageView: UIImageView!
+
     var attributes: [Attribute]?
+    var supplier: Supplier?
     weak var delegate: AttributesViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -29,6 +33,14 @@ class AttributesViewController: UITableViewController {
             let indexPath = IndexPath(row: i, section: 0)
             let height = tableView(tableView, heightForRowAt: indexPath)
             size.height += height
+        }
+
+        tradeMarkCopyLabel.text = supplier?.trademark?.copyRight
+
+        if let imageURL = supplier?.trademark?.iconURL {
+            AssetManager.shared.loadImage(with: imageURL) { [weak self] (image) in
+                self?.tradeMarkImageView.image = image
+            }
         }
 
         preferredContentSize = size
