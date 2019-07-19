@@ -20,6 +20,8 @@ public struct CatalogItem: Decodable, Product {
     public let imageURL: URL?
     /// Price
     public var price: Price
+    /// Categories
+    public let categories: [Category]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -27,5 +29,6 @@ public struct CatalogItem: Decodable, Product {
         case subTitle = "subTitle"
         case imageURL = "thumbnail"
         case price = "priceStartingAt"
+        case categories = "categories"
     }
 }
