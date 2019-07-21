@@ -19,9 +19,9 @@ public struct StripePaymentProvider: PaymentProvider  {
         let config = STPPaymentConfiguration()
 
         if self.sandBoxModeEnabled {
-            config.publishableKey = "pk_live_BbIRatKepYSWQBVL9G9JfR6I"
-        } else {
             config.publishableKey = "pk_test_yUnRnhSqk2DvuL6Qlx9TNrfx"
+        } else {
+            config.publishableKey = "pk_live_BbIRatKepYSWQBVL9G9JfR6I"
         }
         return config
     }
@@ -35,7 +35,7 @@ public struct StripePaymentProvider: PaymentProvider  {
         return (addCardViewController, paymentHandler)
     }
 
-    public init(sandBoxModeEnabled: Bool = false) {
+    public init(sandBoxModeEnabled: Bool = true) {
         self.sandBoxModeEnabled = sandBoxModeEnabled
     }
 }
