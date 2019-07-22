@@ -61,6 +61,23 @@
             ReferencedContainer = "container:Traveler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "TRAVELER_KIT_TEST_API_KEY"
+            value = "testtesttesttesttest"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "GID_SERVER_CLIENT_ID"
+            value = "722316764255-b5b818k7flnugh4brq17r6jmqt71cddr.apps.googleusercontent.com"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "GID_CLIENT_ID"
+            value = "722316764255-7n0gp3v0061nh12t7ghckg969orp6rc3.apps.googleusercontent.com"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
