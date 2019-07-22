@@ -9,7 +9,6 @@
 import Foundation
 
 struct Environment {
-
     #if GCREW
     static var travelerKitKey: String = "$(TRAVELER_KIT_API_KEY)"
     static var gIDClientId: String = "$(GID_CLIENT_ID)"
