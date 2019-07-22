@@ -19,6 +19,7 @@ class BookablePurchaseViewController: UIViewController {
 
     var errorContext: ErrorContext?
     var bookingContext: BookingContext?
+    var catalogItemDetails: CatalogItemDetails?
     weak var delegate: BookablePurchaseViewControllerDelegate?
 
     /// TEMP
@@ -34,6 +35,7 @@ class BookablePurchaseViewController: UIViewController {
         //priceLabel.text = bookingContext?.product.price.priceDescription()
 
         bookingContext?.addObserver(self)
+        priceLabel.text = catalogItemDetails?.priceStartingAt.localizedDescriptionInBaseCurrency
     }
 
     deinit {
