@@ -38,7 +38,7 @@ class AuthViewController: UIViewController {
     }
 
     private func presentError(_ error: Error) {
-        let alert = UIAlertController(title: "Error", message: "There was an error singing in. \(error.localizedDescription)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "There was an error signing in. \(error.localizedDescription)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
 
         alert.addAction(okAction)
