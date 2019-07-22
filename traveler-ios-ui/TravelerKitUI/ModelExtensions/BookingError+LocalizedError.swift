@@ -20,6 +20,14 @@ extension BookingError: LocalizedError {
             return NSLocalizedString("Requested number of passes is not available", comment: "Unavailable Passes")
         case .noOption:
             return NSLocalizedString("Missing booking option", comment: "No booking option")
+        case .cutOffAgeExceeded:
+            return NSLocalizedString("Cut off age exceeded", comment: "Cut off age exceeded")
+        case .adultAgeInvalid:
+            return NSLocalizedString("The age for adult pass is invalid", comment: "Adult age invalid")
+        case .belowMinUnits:
+            return NSLocalizedString("The requested number of units is not enough", comment: "Below minimum number of units")
+        case .unaccompaniedChildren:
+            return NSLocalizedString("Children are not allowed without adults", comment: "Unaccompanied children not allowed")
         }
     }
 }

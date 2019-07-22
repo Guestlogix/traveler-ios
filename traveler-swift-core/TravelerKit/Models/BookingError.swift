@@ -18,4 +18,12 @@ public enum BookingError: Error {
     case noOption
     /// The requested number of passes is not available
     case noPasses
+    /// The cut off age is exceeded
+    case cutOffAgeExceeded
+    /// The age for adult pass is invalid
+    case adultAgeInvalid
+    /// The requested number of units is below the minimum
+    case belowMinUnits
+    /// Children are not allowed without adults
+    case unaccompaniedChildren
 }

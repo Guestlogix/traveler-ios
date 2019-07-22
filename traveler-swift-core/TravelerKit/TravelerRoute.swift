@@ -76,10 +76,18 @@ extension PassengerRoute: Route {
         }
 
         switch errorCode {
-        case 2012:
-            return CancellationError.notCancellable
         case 2006:
             return BookingError.noPasses
+        case 2007:
+            return BookingError.cutOffAgeExceeded
+        case 2012-2014:
+            return CancellationError.notCancellable
+        case 2014:
+            return BookingError.adultAgeInvalid
+        case 2017:
+            return BookingError.belowMinUnits
+        case 2018:
+            return BookingError.unaccompaniedChildren
         default:
             Log("Unknown error code", data: errorJSON, level: .warning)
             return error
