@@ -60,14 +60,16 @@ public struct Flight: Decodable, Equatable {
         self.departureAirport = departureAirport
         self.arrivalAirport = arrivalAirport
 
+        let formatter = DateFormatter()
+        
         let departureDateString = try container.decode(String.self, forKey: .departureDate)
-        let formatterDeparture = DateFormatter.fullFormatter(with: departureAirport.timeZone)
+        let formatterDeparture = formatter.fullFormatter(with: departureAirport.timeZone)
         guard let departureDate = formatterDeparture.date(from: departureDateString) else {
             throw DecodingError.dataCorruptedError(forKey: .departureDate, in: container, debugDescription: "Date string does not match expected format for departure date.")
         }
 
         let arrivalDateString = try container.decode(String.self, forKey: .arrivalDate)
-        let formatterArrival = DateFormatter.fullFormatter(with: arrivalAirport.timeZone)
+        let formatterArrival = formatter.fullFormatter(with: arrivalAirport.timeZone)
         guard let arrivalDate = formatterArrival.date(from: arrivalDateString) else {
             throw DecodingError.dataCorruptedError(forKey: .departureDate, in: container, debugDescription: "Date string does not match expected format for arrival date.")
         }
