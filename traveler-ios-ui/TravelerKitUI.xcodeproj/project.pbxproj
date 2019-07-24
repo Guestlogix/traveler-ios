@@ -97,6 +97,7 @@
 		CA1656FF22B2E0FB00FDF6C7 /* CancellationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1656FE22B2E0FB00FDF6C7 /* CancellationViewController.swift */; };
 		CA16570322B2E91300FDF6C7 /* Notification+Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */; };
 		CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */; };
+		CA35995022E8B10400D7D675 /* SupplierInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */; };
 		CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */; };
 		CA88803D22B2AF4800213E41 /* BookableProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */; };
 		CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */; };
@@ -210,6 +211,7 @@
 		CA1656FE22B2E0FB00FDF6C7 /* CancellationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationViewController.swift; sourceTree = "<group>"; };
 		CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Cancel.swift"; sourceTree = "<group>"; };
 		CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+TravelerUI.swift"; sourceTree = "<group>"; };
+		CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierInfoViewController.swift; sourceTree = "<group>"; };
 		CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregatedPassesViewController.swift; sourceTree = "<group>"; };
 		CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookableProductDetailViewController.swift; sourceTree = "<group>"; };
 		CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				A9639CBA220DF57300625235 /* BookablePurchaseViewController.swift */,
 				CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */,
 				CAEF49D322C2910F00117857 /* FailViewController.swift */,
+				CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				A9639D03220DF57400625235 /* CarouselViewCell.swift in Sources */,
 				A9639CFA220DF57400625235 /* BookableDetailsViewController.swift in Sources */,
 				A9639CFE220DF57400625235 /* CatalogResultViewController.swift in Sources */,
+				CA35995022E8B10400D7D675 /* SupplierInfoViewController.swift in Sources */,
 				A9639D0C220DF57400625235 /* HeaderView.swift in Sources */,
 				F3A3E062224BB84100CD69F4 /* FormValueDisplayInputCell.swift in Sources */,
 				A9639D1B220DF57400625235 /* FormListInputCell.swift in Sources */,

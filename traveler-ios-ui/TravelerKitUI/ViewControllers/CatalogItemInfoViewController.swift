@@ -72,7 +72,6 @@ class CatalogItemInfoViewController: UIViewController {
             segue.containerView = containerView
             vc.attributes = details?.information
             vc.delegate = self
-            vc.supplier = details?.supplier
         case (let segue as ContainerEmbedSegue, let vc as ProviderInfoViewController):
             segue.containerView = containerView
             vc.contactInfo = details?.contact

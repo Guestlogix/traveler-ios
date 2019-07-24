@@ -13,16 +13,16 @@ public struct Trademark: Decodable {
     /// The `Trademark`s logo or icon
     public let iconURL: URL
     /// The `Trademark`s copyright
-    public let copyRight: String
+    public let copyright: String
 
     enum CodingKeys: String, CodingKey {
         case iconURL = "iconURL"
-        case copyRight = "copyright"
+        case copyright = "copyright"
     }
 
     init(iconURL: URL, copyRight: String) {
         self.iconURL = iconURL
-        self.copyRight = copyRight
+        self.copyright = copyRight
     }
 
     public init(from decoder: Decoder) throws {
@@ -34,6 +34,6 @@ public struct Trademark: Decodable {
         }
         self.iconURL = iconURL
 
-        self.copyRight = try container.decode(String.self, forKey: .copyRight)
+        self.copyright = try container.decode(String.self, forKey: .copyright)
     }
 }

@@ -53,6 +53,8 @@ class BookableProductDetailViewController: UIViewController {
         case (_, let vc as CatalogItemInfoViewController):
             vc.details = productDetails
             vc.delegate = self
+        case (_ , let vc as SupplierInfoViewController):
+            vc.supplier = productDetails?.supplier
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break

@@ -95,6 +95,8 @@ class CatalogItemResultViewController: UIViewController {
             vc.strategy = catalogItemDetails?.purchaseStrategy
             vc.errorContext = errorContext
             vc.purchaseContext = purchaseContext
+        case (_, let vc as SupplierInfoViewController):
+            vc.supplier = catalogItemDetails?.supplier
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
