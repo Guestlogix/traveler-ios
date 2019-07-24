@@ -17,7 +17,7 @@ class SupplierTests: XCTestCase {
         let jsonData = "{\"id\": \"SupplierID\",\"name\": \"Tiqets\",\"trademark\": {\"iconURL\": \"https://myicon.com\",\"copyright\": \"DisplayThisText\"}}".data(using: .utf8)!
 
         let decoder = JSONDecoder()
-        let trademark = Trademark(iconURL: URL(string: "https://myicon.com")! , copyRight: "DisplayThisText")
+        let trademark = Trademark(iconURL: URL(string: "https://myicon.com")! , copyright: "DisplayThisText")
 
         //when
         let supplier = try! decoder.decode(Supplier.self, from: jsonData)

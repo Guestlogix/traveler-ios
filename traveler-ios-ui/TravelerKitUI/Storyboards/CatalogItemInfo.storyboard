@@ -18,32 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="GCj-NG-7xO" userLabel="Supplier Info">
-                            <rect key="frame" x="0.0" y="130" width="414" height="65"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sjb-5e-Ode" userLabel="TrademarkIcon">
-                                    <rect key="frame" x="350" y="8.5" width="48" height="48"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="sjb-5e-Ode" secondAttribute="height" multiplier="1:1" id="LH7-A5-A9Y"/>
-                                        <constraint firstAttribute="width" constant="48" id="dNF-V5-iNd"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-aw-tbP" userLabel="TrademarkCopy">
-                                    <rect key="frame" x="16" y="22" width="42" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="sjb-5e-Ode" secondAttribute="trailing" constant="16" id="MZI-UN-nlJ"/>
-                                <constraint firstItem="7VI-aw-tbP" firstAttribute="centerY" secondItem="GCj-NG-7xO" secondAttribute="centerY" id="V91-VE-ocT"/>
-                                <constraint firstItem="7VI-aw-tbP" firstAttribute="leading" secondItem="GCj-NG-7xO" secondAttribute="leading" constant="16" id="bGa-Jc-B9d"/>
-                                <constraint firstItem="sjb-5e-Ode" firstAttribute="centerY" secondItem="GCj-NG-7xO" secondAttribute="centerY" id="uQb-tF-8qo"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="attributeCellIdentifier" rowHeight="102" id="mnr-va-CNd" customClass="InfoCell" customModule="TravelerKitUI" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="102"/>
@@ -91,10 +65,6 @@
                     </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="896"/>
-                    <connections>
-                        <outlet property="tradeMarkCopyLabel" destination="7VI-aw-tbP" id="GzZ-EK-hbo"/>
-                        <outlet property="tradeMarkImageView" destination="sjb-5e-Ode" id="wcz-gZ-5Ov"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6s4-WN-EEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
