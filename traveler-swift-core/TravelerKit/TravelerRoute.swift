@@ -79,7 +79,7 @@ extension PassengerRoute: Route {
         case 2006:
             return BookingError.noPasses
         case 2007:
-            return BookingError.cutOffAgeExceeded
+            return BookingError.veryOldTraveler
         case 2012-2014:
             return CancellationError.notCancellable
         case 2014:
