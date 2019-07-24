@@ -19,7 +19,7 @@ class SupplierInfoViewController: UIViewController {
         super.viewDidLoad()
 
         trademarkCopyLabel.text = supplier?.trademark?.copyright
-        if let imageUrl = supplier?.trademark?.iconURL {
+        if let imageUrl = supplier?.trademark?.iconUrl {
             AssetManager.shared.loadImage(with: imageUrl) { [weak self] (image)  in
                 self?.trademarkImageView.image = image
             }
