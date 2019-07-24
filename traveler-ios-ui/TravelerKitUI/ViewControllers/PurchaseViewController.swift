@@ -13,7 +13,6 @@ class PurchaseViewController: UIViewController {
     var strategy: PurchaseStrategy?
     var errorContext: ErrorContext?
     var purchaseContext: BookingContext?
-    var catalogItemDetails: CatalogItemDetails?
 
     private var order: Order?
 
@@ -37,7 +36,6 @@ class PurchaseViewController: UIViewController {
             vc.delegate = self
             vc.bookingContext = purchaseContext
             vc.errorContext = errorContext
-            vc.catalogItemDetails = catalogItemDetails
         case (_, let vc as BuyablePurchaseViewController):
             vc.delegate = self
         case (_, let vc as PaymentConfirmationViewController):
