@@ -9,12 +9,12 @@
 import Foundation
 /// Represents the different categories a `CatalogItem` can have
 public enum Category: String, Decodable {
-    case Activity
-    case Tour
-    case Show
-    case Event
-    case Transfer
-    case Parking
-    case Nightlife
-    case Dining
+    case activity = "Activity"
+    case tour = "Tour"
+    case show = "Show"
+    case event = "Event"
+    case transfer = "Transfer"
+    case parking = "Parking"
+    case nightlife = "Nightlife"
+    case dining = "Dining"
 }
