@@ -23,17 +23,9 @@ class AttributesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        var size = CGSize(width: view.frame.width, height: 0)
-        let count = attributes?.count ?? 0
-
-        for i in 0..<count {
-            let indexPath = IndexPath(row: i, section: 0)
-            let height = tableView(tableView, heightForRowAt: indexPath)
-            size.height += height
-        }
         
-        preferredContentSize = size
+        tableView.layoutIfNeeded()
+        preferredContentSize = tableView.contentSize
 
         delegate?.attributesViewControllerDidChangePreferredContentSize(self)
     }

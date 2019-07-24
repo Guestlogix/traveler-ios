@@ -103,7 +103,7 @@ extension CatalogItemInfoViewController.Segment {
 extension CatalogItemInfoViewController: AttributesViewControllerDelegate {
     func attributesViewControllerDidChangePreferredContentSize(_ controller: AttributesViewController) {
         var size = controller.preferredContentSize
-        size.height += segmentedControl.frame.height + containerView.frame.origin.y
+        size.height += containerView.frame.origin.y
 
         preferredContentSize = size
         delegate?.catalogItemInfoViewControllerDidChangePreferredContentSize(self)

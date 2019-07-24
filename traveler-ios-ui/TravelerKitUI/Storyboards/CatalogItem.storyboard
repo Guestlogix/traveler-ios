@@ -94,17 +94,17 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="2qR-Lh-IWg" customClass="CatalogItemResultViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JnD-M0-Vv5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPK-5h-dNc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="5AW-GA-zq8">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="836"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypP-Pg-YB4">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="767"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="857"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcw-xY-71N" customClass="PagedHorizontalView" customModule="TravelerKitUI" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
@@ -222,7 +222,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="13o-HV-sxb" secondAttribute="trailing" constant="16" id="LS5-H0-8zb"/>
                                                     <constraint firstAttribute="trailing" secondItem="VGw-YN-GJt" secondAttribute="trailing" id="MNl-qh-AHj"/>
                                                     <constraint firstItem="zyr-24-GVl" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="Nr2-tK-qli"/>
-                                                    <constraint firstAttribute="bottom" secondItem="AKz-8S-J8p" secondAttribute="bottom" id="RRO-O2-x5X"/>
+                                                    <constraint firstAttribute="bottom" secondItem="zyr-24-GVl" secondAttribute="bottom" id="P3r-Aa-aug"/>
                                                     <constraint firstItem="kOt-35-ojm" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" constant="16" id="SXB-Ax-Ljd"/>
                                                     <constraint firstItem="VGw-YN-GJt" firstAttribute="top" secondItem="kOt-35-ojm" secondAttribute="bottom" constant="24" id="Szb-z6-iVC"/>
                                                     <constraint firstItem="VGw-YN-GJt" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="dFi-rQ-eiB"/>
@@ -234,8 +234,8 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="ypP-Pg-YB4" secondAttribute="bottom" id="MfY-pw-1eH"/>
                                             <constraint firstAttribute="trailing" secondItem="ypP-Pg-YB4" secondAttribute="trailing" id="iML-Ue-d0a"/>
+                                            <constraint firstAttribute="bottom" secondItem="ypP-Pg-YB4" secondAttribute="bottom" id="kOD-DG-jyj"/>
                                             <constraint firstItem="ypP-Pg-YB4" firstAttribute="top" secondItem="5AW-GA-zq8" secondAttribute="top" id="pb1-Od-6pO"/>
                                             <constraint firstItem="ypP-Pg-YB4" firstAttribute="leading" secondItem="5AW-GA-zq8" secondAttribute="leading" id="pti-0S-u1o"/>
                                         </constraints>
@@ -244,7 +244,7 @@
                                         </connections>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bit-yu-qL2" customClass="ShadowedView" customModule="TravelerKitUI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                        <rect key="frame" x="0.0" y="836" width="375" height="64"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ufx-sd-RhW">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -295,6 +295,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vgF-DM-hnZ"/>
                     </view>
+                    <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="kOt-35-ojm" id="IJ7-gS-RhV"/>
                         <outlet property="headerView" destination="Zcw-xY-71N" id="jHv-5g-ty6"/>
@@ -308,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7R-B5-6j6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2423.1999999999998" y="341.37931034482762"/>
+            <point key="canvasLocation" x="2423" y="444"/>
         </scene>
         <!--Catalog Item Loading View Controller-->
         <scene sceneID="CM0-lU-sYq">
@@ -1275,13 +1276,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bak-sh-062">
-                                <rect key="frame" x="16" y="34.5" width="42" height="21"/>
+                                <rect key="frame" x="16" y="39.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qZb-wq-4cH">
-                                <rect key="frame" x="68" y="5" width="80" height="80"/>
+                                <rect key="frame" x="68" y="10" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="0B9-wm-sIN"/>
                                     <constraint firstAttribute="width" secondItem="qZb-wq-4cH" secondAttribute="height" multiplier="1:1" id="Qkc-rf-2XD"/>
@@ -1290,11 +1291,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qZb-wq-4cH" firstAttribute="top" secondItem="SN8-5g-Liz" secondAttribute="top" constant="10" id="4zc-Dn-kcd"/>
                             <constraint firstItem="qZb-wq-4cH" firstAttribute="leading" secondItem="bak-sh-062" secondAttribute="trailing" constant="10" id="Sc6-pb-I9A"/>
                             <constraint firstItem="bak-sh-062" firstAttribute="leading" secondItem="9NW-YW-zkH" secondAttribute="leadingMargin" id="WnO-Xb-HMh"/>
-                            <constraint firstItem="qZb-wq-4cH" firstAttribute="centerY" secondItem="9NW-YW-zkH" secondAttribute="centerY" id="igs-8a-QFl"/>
-                            <constraint firstItem="bak-sh-062" firstAttribute="centerY" secondItem="9NW-YW-zkH" secondAttribute="centerY" id="kHW-dH-L2d"/>
+                            <constraint firstItem="bak-sh-062" firstAttribute="centerY" secondItem="qZb-wq-4cH" secondAttribute="centerY" id="ue1-q5-qyH"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="SN8-5g-Liz"/>
                     </view>
                     <connections>
                         <outlet property="trademarkCopyLabel" destination="bak-sh-062" id="Irx-Ep-lh6"/>
