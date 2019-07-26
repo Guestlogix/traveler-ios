@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="836"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypP-Pg-YB4">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="857"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="883"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcw-xY-71N" customClass="PagedHorizontalView" customModule="TravelerKitUI" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
@@ -182,7 +182,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VGw-YN-GJt">
-                                                        <rect key="frame" x="0.0" y="499" width="375" height="148"/>
+                                                        <rect key="frame" x="0.0" y="525" width="375" height="148"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="148" id="hK3-2e-ajB"/>
                                                         </constraints>
@@ -191,7 +191,7 @@
                                                         </connections>
                                                     </containerView>
                                                     <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKz-8S-J8p">
-                                                        <rect key="frame" x="0.0" y="647" width="375" height="120"/>
+                                                        <rect key="frame" x="0.0" y="673" width="375" height="120"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="120" id="KqR-cu-QRS"/>
                                                         </constraints>
@@ -200,7 +200,7 @@
                                                         </connections>
                                                     </containerView>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyr-24-GVl" userLabel="Supplier Info View">
-                                                        <rect key="frame" x="0.0" y="767" width="375" height="90"/>
+                                                        <rect key="frame" x="0.0" y="793" width="375" height="90"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="90" id="s6P-tP-ZfC"/>
                                                         </constraints>
@@ -208,6 +208,14 @@
                                                             <segue destination="Ekb-OE-tqt" kind="embed" id="4C3-nn-63T"/>
                                                         </connections>
                                                     </containerView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVE-rB-saD">
+                                                        <rect key="frame" x="16" y="485" width="343" height="30"/>
+                                                        <state key="normal" title="Terms and conditions"/>
+                                                        <connections>
+                                                            <action selector="didSelectTermsAndConditions:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="zY2-1n-D73"/>
+                                                            <segue destination="dYu-Mg-MyD" kind="presentation" identifier="termsAndConditionsSegue" id="uFP-mr-GeA"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -217,14 +225,17 @@
                                                     <constraint firstItem="13o-HV-sxb" firstAttribute="top" secondItem="Zcw-xY-71N" secondAttribute="bottom" constant="24" id="6ok-nQ-3Xb"/>
                                                     <constraint firstItem="Zcw-xY-71N" firstAttribute="top" secondItem="ypP-Pg-YB4" secondAttribute="top" id="6wl-zf-gRX"/>
                                                     <constraint firstAttribute="trailing" secondItem="zyr-24-GVl" secondAttribute="trailing" id="7xR-qD-LFb"/>
+                                                    <constraint firstItem="PVE-rB-saD" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" constant="16" id="8EX-U9-K38"/>
                                                     <constraint firstItem="zyr-24-GVl" firstAttribute="top" secondItem="AKz-8S-J8p" secondAttribute="bottom" id="Awu-Yn-Ry0"/>
+                                                    <constraint firstItem="PVE-rB-saD" firstAttribute="top" secondItem="kOt-35-ojm" secondAttribute="bottom" constant="10" id="C0A-bF-dlD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PVE-rB-saD" secondAttribute="trailing" constant="16" id="JQV-7M-d0J"/>
                                                     <constraint firstAttribute="trailing" secondItem="Zcw-xY-71N" secondAttribute="trailing" id="Kfs-sF-z4B"/>
                                                     <constraint firstAttribute="trailing" secondItem="13o-HV-sxb" secondAttribute="trailing" constant="16" id="LS5-H0-8zb"/>
                                                     <constraint firstAttribute="trailing" secondItem="VGw-YN-GJt" secondAttribute="trailing" id="MNl-qh-AHj"/>
                                                     <constraint firstItem="zyr-24-GVl" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="Nr2-tK-qli"/>
+                                                    <constraint firstItem="VGw-YN-GJt" firstAttribute="top" secondItem="PVE-rB-saD" secondAttribute="bottom" constant="10" id="Nzt-3a-OgH"/>
                                                     <constraint firstAttribute="bottom" secondItem="zyr-24-GVl" secondAttribute="bottom" id="P3r-Aa-aug"/>
                                                     <constraint firstItem="kOt-35-ojm" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" constant="16" id="SXB-Ax-Ljd"/>
-                                                    <constraint firstItem="VGw-YN-GJt" firstAttribute="top" secondItem="kOt-35-ojm" secondAttribute="bottom" constant="24" id="Szb-z6-iVC"/>
                                                     <constraint firstItem="VGw-YN-GJt" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="dFi-rQ-eiB"/>
                                                     <constraint firstItem="Zcw-xY-71N" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="h0e-6v-wsz"/>
                                                     <constraint firstItem="AKz-8S-J8p" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="uxp-aE-JEX"/>
@@ -304,12 +315,13 @@
                         <outlet property="purchaseDetailsHeightConstraint" destination="hK3-2e-ajB" id="1rS-7N-QUt"/>
                         <outlet property="purchaseDetailsView" destination="VGw-YN-GJt" id="tnA-gT-MN9"/>
                         <outlet property="scrollView" destination="5AW-GA-zq8" id="ize-J1-UsE"/>
+                        <outlet property="termsAndConditionsButton" destination="PVE-rB-saD" id="DcN-Fu-XG1"/>
                         <outlet property="titleLabel" destination="13o-HV-sxb" id="nnV-gd-Blt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7R-B5-6j6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2423" y="444"/>
+            <point key="canvasLocation" x="2421.5999999999999" y="443.47826086956525"/>
         </scene>
         <!--Catalog Item Loading View Controller-->
         <scene sceneID="CM0-lU-sYq">
@@ -1306,6 +1318,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7b-Di-xA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3632.8000000000002" y="631.48425787106453"/>
+        </scene>
+        <!--TermsAndConditions-->
+        <scene sceneID="mml-aW-azR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TermsAndConditions" id="dYu-Mg-MyD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thz-VO-k2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3239" y="1007"/>
         </scene>
     </scenes>
 </document>

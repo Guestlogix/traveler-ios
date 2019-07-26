@@ -205,17 +205,28 @@
                                                 <rect key="frame" x="0.0" y="298" width="414" height="82"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLl-CV-bfQ" userLabel="Product Name Label">
-                                                        <rect key="frame" x="8" y="24" width="398" height="34"/>
+                                                        <rect key="frame" x="8" y="10" width="398" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsK-Px-5il">
+                                                        <rect key="frame" x="8" y="49" width="398" height="30"/>
+                                                        <state key="normal" title="Terms and conditions"/>
+                                                        <connections>
+                                                            <action selector="didSelectTermsAndConditions:" destination="edl-lD-YNF" eventType="touchUpInside" id="ui7-UZ-4SC"/>
+                                                            <segue destination="5jO-fW-3UY" kind="presentation" identifier="termsAndConditionsSegue" id="siI-JJ-L8d"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="uLl-CV-bfQ" secondAttribute="trailing" constant="8" id="4R7-IJ-jNP"/>
+                                                    <constraint firstItem="KsK-Px-5il" firstAttribute="top" secondItem="uLl-CV-bfQ" secondAttribute="bottom" constant="5" id="4a4-r6-Ecl"/>
+                                                    <constraint firstItem="uLl-CV-bfQ" firstAttribute="top" secondItem="0vu-ti-VlC" secondAttribute="top" constant="10" id="Da5-Yh-8vg"/>
+                                                    <constraint firstItem="KsK-Px-5il" firstAttribute="leading" secondItem="0vu-ti-VlC" secondAttribute="leading" constant="8" id="LIB-BF-ipd"/>
                                                     <constraint firstAttribute="height" constant="82" id="Pry-1A-1PB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="KsK-Px-5il" secondAttribute="trailing" constant="8" id="Xxc-mU-aJY"/>
                                                     <constraint firstItem="uLl-CV-bfQ" firstAttribute="leading" secondItem="0vu-ti-VlC" secondAttribute="leading" constant="8" id="fhr-x5-cUT"/>
-                                                    <constraint firstItem="uLl-CV-bfQ" firstAttribute="centerY" secondItem="0vu-ti-VlC" secondAttribute="centerY" id="r4V-rF-ca6"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrF-1i-BKa">
@@ -302,13 +313,6 @@
                                             <constraint firstAttribute="trailing" secondItem="0vu-ti-VlC" secondAttribute="trailing" id="xVG-pS-0DM"/>
                                         </constraints>
                                     </view>
-                                    <view alpha="0.20000000298023224" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17H-9e-JbJ" userLabel="Separator Line">
-                                        <rect key="frame" x="10" y="10" width="394" height="1"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="QeW-kL-Z2m"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="kvE-UW-3cW" firstAttribute="width" secondItem="rZy-bo-5ga" secondAttribute="width" id="32n-7j-2Gk"/>
@@ -350,6 +354,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Osg-aK-cYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5522" y="2216"/>
+        </scene>
+        <!--TermsAndConditions-->
+        <scene sceneID="tUq-us-aOY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TermsAndConditions" id="5jO-fW-3UY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Co6-OU-2MC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4502" y="2434"/>
         </scene>
         <!--Aggregated Passes View Controller-->
         <scene sceneID="ioq-tM-X28">

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Terms and Conditions-->
+        <!--Terms and conditions-->
         <scene sceneID="b56-aY-bSh">
             <objects>
-                <viewController id="7Xb-H7-OAi" sceneMemberID="viewController">
+                <viewController id="7Xb-H7-OAi" customClass="TermsAndConditionsViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jlM-3B-8fx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,9 +58,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fTa-oy-ZmT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Terms and Conditions" id="f2Q-cY-wWp">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="stop" id="K7b-Ea-54p"/>
+                    <navigationItem key="navigationItem" title="Terms and conditions" id="f2Q-cY-wWp">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="stop" id="K7b-Ea-54p">
+                            <connections>
+                                <action selector="didClose:" destination="7Xb-H7-OAi" id="mcg-ko-sK1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="termsAndConditionsLabel" destination="Uco-VT-ZxJ" id="v12-yU-xpy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HFY-d8-gJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

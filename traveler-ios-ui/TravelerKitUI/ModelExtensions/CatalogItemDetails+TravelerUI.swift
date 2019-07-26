@@ -21,4 +21,14 @@ extension CatalogItemDetails {
 
         return attr
     }
+
+    public var attributedTermsAndConditions: NSMutableAttributedString? {
+        guard let termsAndConditions = termsAndConditions else {
+            return nil
+        }
+
+        let attr = try? NSMutableAttributedString(data: termsAndConditions.data(using: .utf8)!, options: [.documentType: NSMutableAttributedString.DocumentType.html], documentAttributes: nil)
+
+        return attr
+    }
 }
