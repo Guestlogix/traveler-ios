@@ -35,7 +35,7 @@ public struct CatalogItemDetails: Decodable, Product {
     /// Product supplier
     public let supplier: Supplier
     /// Terms and conditions
-    public var termsAndConditions: String
+    public var termsAndConditions: String?
 
     enum CodingKeys: String, CodingKey {
         case id

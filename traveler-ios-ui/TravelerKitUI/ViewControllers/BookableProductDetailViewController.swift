@@ -33,8 +33,9 @@ class BookableProductDetailViewController: UIViewController {
             dateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: date)
         }
 
-        let description = productDetails?.attributedDescription 
-        productDescriptionLabel.text = description?.string
+        let description = productDetails?.attributedDescription
+        description?.setFontFace(font: UIFont.systemFont(ofSize: 17))
+        productDescriptionLabel.attributedText = description
 
         // Preload images
 
@@ -55,12 +56,17 @@ class BookableProductDetailViewController: UIViewController {
             vc.delegate = self
         case (_ , let vc as SupplierInfoViewController):
             vc.supplier = productDetails?.supplier
+        case (_, let vc as TermsAndConditionsViewController):
+            vc.termsAndConditions = productDetails?.attributedTermsAndConditions
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
         }
     }
 
+    @IBAction func didSelectTermsAndConditions(_ sender: Any) {
+        performSegue(withIdentifier: "termsAndConditionsSegue", sender: nil)
+    }
 }
 
 extension BookableProductDetailViewController: UICollectionViewDataSource {

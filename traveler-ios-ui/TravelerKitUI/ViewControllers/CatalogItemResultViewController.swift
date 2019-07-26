@@ -24,7 +24,8 @@ class CatalogItemResultViewController: UIViewController {
     @IBOutlet weak var purchaseDetailsView: UIView!
     @IBOutlet weak var itemInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var itemInfoView: UIView!
-
+    @IBOutlet weak var termsAndConditionsButton: UIButton!
+    
     weak var delegate: CatalogItemResultViewControllerDelegate?
     var catalogItemDetails: CatalogItemDetails?
 
@@ -64,6 +65,8 @@ class CatalogItemResultViewController: UIViewController {
         })
 
         errorContext.addObserver(self)
+
+        termsAndConditionsButton.isEnabled = catalogItemDetails?.attributedDescription != nil
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,10 +100,16 @@ class CatalogItemResultViewController: UIViewController {
             vc.purchaseContext = purchaseContext
         case (_, let vc as SupplierInfoViewController):
             vc.supplier = catalogItemDetails?.supplier
+        case (_, let vc as TermsAndConditionsViewController):
+            vc.termsAndConditions = catalogItemDetails?.attributedTermsAndConditions
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
         }
+    }
+
+    @IBAction func didSelectTermsAndConditions(_ sender: Any) {
+        performSegue(withIdentifier: "termsAndConditionsSegue", sender: nil)
     }
 }
 
