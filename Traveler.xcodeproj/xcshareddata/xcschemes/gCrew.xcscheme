@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1020"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "#Open environment swift file and search for environment variables&#10;cat ${SRCROOT}/Traveler/Environment/Environment.swift | while read line&#10;do&#10;if [[ $line =~ \&quot;.*\&quot; ]]; then&#10;variable=$(echo $line | sed &apos;s/.*&quot;\([^&quot;]*\)&quot;.*/\1/&apos;)&#10;variableName=$(echo $line | sed &apos;s:.*//\(.*\):\1:&apos;)&#10;if [[ $variableName =~ \$.* ]]; then&#10;sed -i &apos;&apos; -e &quot;s/$variable/$variableName/&quot; ${SRCROOT}/Traveler/Environment/Environment.swift&#10;fi&#10;fi&#10;done &#10;cat ${SRCROOT}/Traveler/Environment/Environment.swift&#10;"
+               shellToInvoke = "/usr/local/bin/bash">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "CAC5085922D3C736004A114B"
+                     BuildableName = "gCrew.app"
+                     BlueprintName = "gCrew"
+                     ReferencedContainer = "container:Traveler.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
