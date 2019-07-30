@@ -337,6 +337,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9639D792211CD3600625235 /* Build configuration list for PBXNativeTarget "Traveler" */;
 			buildPhases = (
+				CA1226E722F09FF700541F3A /* ShellScript */,
 				A9639D632211CD3400625235 /* Sources */,
 				A9639D642211CD3400625235 /* Frameworks */,
 				A9639D652211CD3400625235 /* Resources */,
@@ -356,6 +357,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAC5088922D3C736004A114B /* Build configuration list for PBXNativeTarget "gCrew" */;
 			buildPhases = (
+				CA1226E822F0A01900541F3A /* ShellScript */,
 				CAC5085A22D3C736004A114B /* Sources */,
 				CAC5087422D3C736004A114B /* Frameworks */,
 				CAC5087E22D3C736004A114B /* Resources */,
@@ -453,6 +455,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		CA1226E722F09FF700541F3A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/local/bin/bash;
+			shellScript = "#Read through variables file and store variables in associated array (dictionary)\nFILE=/Users/variables/variables.txt\ndeclare -gA variables\nif test -f \"$FILE\"; then\nwhile read line\ndo \nkey=$(echo $line | cut -d ' ' -f1)\nvalue=$(echo $line | cut -d ' ' -f2)\nvariables[$key]=$value\ndone < $FILE\n\n#Force git to ignore environment swift file. \ngit update-index --skip-worktree ${SRCROOT}/Traveler/Environment/Environment.swift\n\n#Open environment swift file and search for environment variables\ncat ${SRCROOT}/Traveler/Environment/Environment.swift | while read line\ndo\nif [[ $line =~ \\\"\\$\\(.*\\)\\\" ]]; then\nvariable=$(echo $line | sed 's/.*\"$(\\([^\"]*\\))\".*/\\1/')\necho $variable\necho ${variables[$variable]}\nsed -i '' -e \"s/\\$($variable)/${variables[$variable]}/\" ${SRCROOT}/Traveler/Environment/Environment.swift\nfi\ndone \n\ncat ${SRCROOT}/Traveler/Environment/Environment.swift\nelse \necho \"****--Warning: Variables file not found--****\"\nfi\n";
+		};
+		CA1226E822F0A01900541F3A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/local/bin/bash;
+			shellScript = "#Read through variables file and store variables in associated array (dictionary)\nFILE=/Users/variables/variables.txt\ndeclare -gA variables\nif test -f \"$FILE\"; then\nwhile read line\ndo \nkey=$(echo $line | cut -d ' ' -f1)\nvalue=$(echo $line | cut -d ' ' -f2)\nvariables[$key]=$value\ndone < $FILE\n\n#Force git to ignore environment swift file. \ngit update-index --skip-worktree ${SRCROOT}/Traveler/Environment/Environment.swift\n\n#Open environment swift file and search for environment variables\ncat ${SRCROOT}/Traveler/Environment/Environment.swift | while read line\ndo\nif [[ $line =~ \\\"\\$\\(.*\\)\\\" ]]; then\nvariable=$(echo $line | sed 's/.*\"$(\\([^\"]*\\))\".*/\\1/')\necho $variable\necho ${variables[$variable]}\nsed -i '' -e \"s/\\$($variable)/${variables[$variable]}/\" ${SRCROOT}/Traveler/Environment/Environment.swift\nfi\ndone \n\ncat ${SRCROOT}/Traveler/Environment/Environment.swift\nelse \necho \"****--Warning: Variables file not found--****\"\nfi\n";
 		};
 		CAC5088822D3C736004A114B /* Carthage Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
