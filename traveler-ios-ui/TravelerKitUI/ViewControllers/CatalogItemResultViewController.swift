@@ -100,8 +100,9 @@ class CatalogItemResultViewController: UIViewController {
             vc.purchaseContext = purchaseContext
         case (_, let vc as SupplierInfoViewController):
             vc.supplier = catalogItemDetails?.supplier
-        case (_, let vc as TermsAndConditionsViewController):
-            vc.termsAndConditions = catalogItemDetails?.attributedTermsAndConditions
+        case ("termsAndConditionsSegue", let navVC as UINavigationController):
+            let vc = navVC.topViewController as? TermsAndConditionsViewController
+            vc?.termsAndConditions = catalogItemDetails?.attributedTermsAndConditions
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
