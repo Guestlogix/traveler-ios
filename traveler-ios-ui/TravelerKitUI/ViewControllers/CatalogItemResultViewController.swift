@@ -66,7 +66,7 @@ class CatalogItemResultViewController: UIViewController {
 
         errorContext.addObserver(self)
 
-        termsAndConditionsButton.isEnabled = catalogItemDetails?.attributedDescription != nil
+        termsAndConditionsButton.isEnabled = catalogItemDetails?.attributedTermsAndConditions != nil
     }
 
     override func viewWillDisappear(_ animated: Bool) {
