@@ -34,9 +34,9 @@ class FlightDetailsViewController: UIViewController {
         departureTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.departureDate)
         arrivalCityLabel.text = flight.arrivalAirport.city
         arrivalIATALabel.text = flight.arrivalAirport.code
-        arrivalTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.arrivalDate)
+        arrivalTimeLabel.text = flight.arrivalDate.description(with: flight.arrivalAirport.timeZone, formatter: DateFormatter.longFormatter)
         flightNumberLabel.text = flight.number
-        flightDateLabel.text = DateFormatter.longFormatter.string(for: flight.departureDate)
+        flightDateLabel.text = flight.departureDate.description(with: flight.departureAirport.timeZone, formatter: DateFormatter.longFormatter)
         flightNumberLabel.textColor = .white
         flightDateLabel.textColor = .white
     }
