@@ -34,10 +34,10 @@ class FlightSearchResultViewController: UITableViewController {
 
         cell.departureCityLabel.text = flight.departureAirport.city
         cell.departureIATALabel.text = flight.departureAirport.code
-        cell.departureTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.departureDate)
+        cell.departureTimeLabel.text = flight.departureDate.description(with: flight.departureAirport.timeZone, formatter: DateFormatter.timeFormatter)
         cell.arrivalCityLabel.text = flight.arrivalAirport.city
         cell.arrivalIATALabel.text = flight.arrivalAirport.code
-        cell.arrivalTimeLabel.text = DateFormatter.timeFormatter.string(from: flight.arrivalDate)
+        cell.arrivalTimeLabel.text = flight.arrivalDate.description(with: flight.arrivalAirport.timeZone, formatter: DateFormatter.timeFormatter)
         cell.addFlightButton.setTitle("Flight Added", for: .disabled)
         cell.addFlightButton.setTitle("Add Flight", for: .normal)
         cell.addFlightButton.isEnabled = delegate?.flightSearchResultViewController(self, canAdd: flight) ?? true
