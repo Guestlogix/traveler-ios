@@ -21,6 +21,7 @@ enum AuthPath {
     case cancellationQuote(Order)
     case cancelOrder(CancellationQuote)
     case emailOrderConfirmation(Order)
+    case searchCatalog(SearchQuery)
 
     // MARK: URLRequest
 
@@ -116,6 +117,35 @@ enum AuthPath {
         case .emailOrderConfirmation(let order):
             urlComponents.path = "/v1/order/\(order.id)/ticket"
             urlRequest.method = .patch
+        case .searchCatalog(let searchQuery):
+            urlComponents.path = "/v1/catalog/search"
+            urlRequest.method = .get
+            urlComponents.queryItems = [
+                URLQueryItem(name: "text", value: searchQuery.text)]
+            if let minPrice = searchQuery.minPrice {
+                urlComponents.queryItems?.append(URLQueryItem(name: "min-price", value: String(minPrice)))
+            }
+            if let maxPrice = searchQuery.maxPrice {
+                urlComponents.queryItems?.append(URLQueryItem(name: "max-price", value: String(maxPrice)))
+            }
+            if let maxPrice = searchQuery.maxPrice {
+                urlComponents.queryItems?.append(URLQueryItem(name: "max-price", value: String(maxPrice)))
+            }
+            searchQuery.categories?.forEach({ (category) in
+                urlComponents.queryItems?.append(URLQueryItem(name: "category", value: category.rawValue))
+            })
+            if let topLeftLatitude = searchQuery.topLeftLatitude {
+                urlComponents.queryItems?.append(URLQueryItem(name: "top-left-latitude", value: String(topLeftLatitude)))
+            }
+            if let topLeftLongitude = searchQuery.topLeftLongitude {
+                urlComponents.queryItems?.append(URLQueryItem(name: "top-left-longitude", value: String(topLeftLongitude)))
+            }
+            if let bottomRightLatitude = searchQuery.bottomRightLatitude {
+                urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-latitude", value: String(bottomRightLatitude)))
+            }
+            if let bottomRightLongitude = searchQuery.bottomRightLongitude {
+                urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-longitude", value: String(bottomRightLongitude)))
+            }
         }
 
         urlRequest.url = urlComponents.url

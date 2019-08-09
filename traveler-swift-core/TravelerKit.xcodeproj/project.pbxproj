@@ -92,6 +92,8 @@
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
 		CA12275722F0CCEA00541F3A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12275522F0CCEA00541F3A /* Date+String.swift */; };
 		CA15F90122BAC66300F3788A /* ProcessedPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */; };
+		CA1ECEF322FD3703000AB0CA /* CatalogSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECEF222FD3703000AB0CA /* CatalogSearchDelegate.swift */; };
+		CA1ECEF522FD3727000AB0CA /* CatalogSearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1ECEF422FD3727000AB0CA /* CatalogSearchQuery.swift */; };
 		CA594AF922DFD33F008C6C4B /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AF822DFD33F008C6C4B /* Supplier.swift */; };
 		CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFA22DFD344008C6C4B /* Trademark.swift */; };
 		CA594AFF22DFD3BF008C6C4B /* SupplierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */; };
@@ -202,6 +204,8 @@
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
 		CA12275522F0CCEA00541F3A /* Date+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedPaymentInfo.swift; sourceTree = "<group>"; };
+		CA1ECEF222FD3703000AB0CA /* CatalogSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSearchDelegate.swift; sourceTree = "<group>"; };
+		CA1ECEF422FD3727000AB0CA /* CatalogSearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogSearchQuery.swift; sourceTree = "<group>"; };
 		CA594AF822DFD33F008C6C4B /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		CA594AFA22DFD344008C6C4B /* Trademark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trademark.swift; sourceTree = "<group>"; };
 		CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierTests.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				A95F46AA229C403B009C9227 /* CancellationQuoteFetchDelegate.swift */,
 				A95F46AE229C6B00009C9227 /* CancellationDelegate.swift */,
 				CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */,
+				CA1ECEF222FD3703000AB0CA /* CatalogSearchDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 				CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */,
 				CA594AF822DFD33F008C6C4B /* Supplier.swift */,
 				CA594AFA22DFD344008C6C4B /* Trademark.swift */,
+				CA1ECEF422FD3727000AB0CA /* CatalogSearchQuery.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -544,6 +550,7 @@
 			files = (
 				A9639C88220DEDCC00625235 /* BookingError.swift in Sources */,
 				A9DB06BD214C2B95009817EC /* Session.swift in Sources */,
+				CA1ECEF322FD3703000AB0CA /* CatalogSearchDelegate.swift in Sources */,
 				A957764B2152A9C400BD11C8 /* Route.swift in Sources */,
 				A9DB0640214034C5009817EC /* Log.swift in Sources */,
 				A91F3BB521B879DB0016894A /* Pass.swift in Sources */,
@@ -551,6 +558,7 @@
 				A9DB06AA214AAF60009817EC /* FlightQuery.swift in Sources */,
 				A9639C8A220DF10A00625235 /* Payment.swift in Sources */,
 				CA12275722F0CCEA00541F3A /* Date+String.swift in Sources */,
+				CA1ECEF522FD3727000AB0CA /* CatalogSearchQuery.swift in Sources */,
 				CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */,
 				A9DB06A821496396009817EC /* Traveler.swift in Sources */,
 				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,

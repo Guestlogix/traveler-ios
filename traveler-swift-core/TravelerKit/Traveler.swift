@@ -235,6 +235,18 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func searchCatalog(searchQuery: SearchQuery, completion: @escaping (Catalog?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<Catalog>(path: .searchCatalog(searchQuery), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     /**
@@ -633,5 +645,35 @@ public class Traveler {
 
     public static func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
         shared?.emailOrderConfirmation(order: order, completion: completion)
+    }
+
+    /**
+     Makes a search in the API catalog given a `SearchQuery`
+
+     - Parameters:
+     - searchQuery: The `SearchQuery` with the search parameters
+     - delegate: A `CatalogSearchDelegate` that is notified if the search is successful
+     */
+
+    public static func searchCatalog(searchQuery: SearchQuery, delegate: CatalogSearchDelegate) {
+        shared?.searchCatalog(searchQuery: searchQuery, completion: { [weak delegate] (catalog, error) in
+            if let error = error {
+                delegate?.catalogSearchDidFailWith(error)
+            } else {
+                delegate?.catalogSearchDidSucceedWith(catalog!)
+            }
+        })
+    }
+
+    /**
+     Makes a search in the API catalog given a `SearchQuery`
+
+     - Parameters:
+     - searchQuery: The `SearchQuery` with the search parameters
+     - completion: A completion block that is called when the search is performed
+     */
+
+    public static func searchCatalog(searchQuery: SearchQuery, completion: @escaping (Catalog?, Error?)-> Void) {
+        shared?.searchCatalog(searchQuery: searchQuery, completion: completion)
     }
 }
