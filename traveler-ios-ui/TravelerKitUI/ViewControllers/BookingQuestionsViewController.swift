@@ -21,7 +21,7 @@ class BookingQuestionsViewController: UIViewController {
     var bookingForm: BookingForm?
     weak var delegate: BookingQuestionsViewControllerDelegate?
 
-    private var error: Error?
+    private var errorsDic: [IndexPath: Error?] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,12 +154,22 @@ extension BookingQuestionsViewController: FormViewDelegate {
         switch errors?.first {
         case .none:
             delegate?.bookingQuestionsViewControllerDidCheckout(self)
-        case .some(.invalidAnswer(let groupIndex, let questionIndex, _)):
-            self.error = errors?.first
+        case .some(.invalidAnswer):
+            if let errors = errors {
+                var first: Bool = true
+                for error in errors {
+                    if case .invalidAnswer(let groupIndex, let questionIndex, _) = error {
+                        let indexPath = IndexPath(item: questionIndex, section: groupIndex)
+                        errorsDic[indexPath] = error
+                        formView.reloadFields(at: [indexPath])
 
-            let indexPath = IndexPath(item: questionIndex, section: groupIndex)
-            formView.reloadFields(at: [indexPath])
-            formView.scrollToField(at: indexPath, animated: true)
+                        if first == true {
+                            formView.scrollToField(at: indexPath, animated: true)
+                            first = false
+                        }
+                    }
+                }
+            }
         case .some(let error):
             Log("Unknown error", data: error, level: .error)
             break
@@ -167,7 +177,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
     }
 
     func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage? {
-        guard let error = self.error as? BookingFormError,
+        guard let error = errorsDic[indexPath] as? BookingFormError,
             case let .invalidAnswer(groupIndex, questionIndex, validationError) = error,
             indexPath.section == groupIndex, indexPath.item == questionIndex else {
                 return nil
