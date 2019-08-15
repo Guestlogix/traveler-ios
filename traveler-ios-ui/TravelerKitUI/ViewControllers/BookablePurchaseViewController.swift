@@ -15,80 +15,32 @@ protocol BookablePurchaseViewControllerDelegate: class {
 
 class BookablePurchaseViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var proceedButton: UIButton!
 
     var errorContext: ErrorContext?
     var bookingContext: BookingContext?
     weak var delegate: BookablePurchaseViewControllerDelegate?
 
-    /// TEMP
-
-    private var passes: [Pass]?
-
-    /// END TEMP
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        bookingContext?.addObserver(self)
-        priceLabel.text = bookingContext?.product.price.localizedDescriptionInBaseCurrency
-    }
 
-    deinit {
-        bookingContext?.removeObserver(self)
+        priceLabel.text = bookingContext?.product.price.localizedDescriptionInBaseCurrency
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as BookableConfirmationViewController):
-            vc.modalPresentationStyle = .custom
-            vc.modalPresentationCapturesStatusBarAppearance = true
-            vc.transitioningDelegate = self
-            vc.passes = passes
-            vc.product = bookingContext?.product
+        case (_, let vc as BookableAvailabilityViewController):
+            vc.bookingContext = bookingContext
+            vc.errorContext = errorContext
             vc.delegate = self
         default:
+            Log("Unknown Segue", data: segue, level: .warning)
             break
         }
     }
 
-    @IBAction func didPressCTA(_ sender: UIButton) {
-        guard let bookingContext = bookingContext else {
-            Log("No BookingContext", data: nil, level: .error)
-            return
-        }
-
-        guard let availability = bookingContext.selectedAvailability else {
-            errorContext?.error = BookingError.noDate
-            return
-        }
-        
-        guard bookingContext.availableOptions == nil || bookingContext.selectedOption != nil else {
-            errorContext?.error = BookingError.noOption
-            return
-        }
-
-        button.isEnabled = false
-
-        Traveler.fetchPasses(product: bookingContext.product, availability: availability, option: bookingContext.selectedOption, delegate: self)
-    }
-}
-
-extension BookablePurchaseViewController: PassFetchDelegate {
-    func passFetchDidSucceedWith(_ result: [Pass]) {
-        self.passes = result
-
-        performSegue(withIdentifier: "passSegue", sender: nil)
-
-        button.isEnabled = true
-    }
-
-    func passFetchDidFailWith(_ error: Error) {
-        button.isEnabled = true
-
-        // TODO: handle error case when max quantity has been reached
-
-        errorContext?.error = error
+    @IBAction func didProceed(_ sender: Any) {
+        performSegue(withIdentifier: "dateOptionSegue", sender: nil)
     }
 }
 
@@ -124,14 +76,8 @@ extension BookablePurchaseViewController: DrawerTransitioning {
     }
 }
 
-extension BookablePurchaseViewController: BookingContextObserving {
-    func bookingContextDidUpdate(_ context: BookingContext) {
-        button.isEnabled = context.isReady
-    }
-}
-
-extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
-    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, bookingForm: BookingForm) {
+extension BookablePurchaseViewController: BookableAvailabilityViewControllerDelegate {
+    func bookableAvailabilityViewControllerDidConfirm(_ controller: BookableAvailabilityViewController, bookingForm: BookingForm) {
         ProgressHUD.show()
 
         Traveler.createOrder(bookingForm: bookingForm, delegate: self)

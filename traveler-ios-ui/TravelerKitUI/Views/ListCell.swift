@@ -62,6 +62,11 @@ extension ListCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         textField.text = dataSource?.listCell(self, titleForRow: row)
         delegate?.listCell(self, didSelectRow: row)
+
+        // TODO: Since the picker is on a seperate screen now, we need to manually dismiss it. 'endEditing' forces end
+        //   editing to dismiss the list and is a temporary solution. The best solution is to have a done button added.
+
+        endEditing(true)
     }
 }
 

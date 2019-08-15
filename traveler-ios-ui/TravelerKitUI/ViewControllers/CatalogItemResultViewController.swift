@@ -20,8 +20,6 @@ class CatalogItemResultViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var purchaseDetailsHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var purchaseDetailsView: UIView!
     @IBOutlet weak var itemInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var itemInfoView: UIView!
     @IBOutlet weak var termsAndConditionsButton: UIButton!
@@ -64,8 +62,6 @@ class CatalogItemResultViewController: UIViewController {
             })
         })
 
-        errorContext.addObserver(self)
-
         termsAndConditionsButton.isEnabled = catalogItemDetails?.attributedTermsAndConditions != nil
     }
 
@@ -80,17 +76,8 @@ class CatalogItemResultViewController: UIViewController {
         updatePreferredTranslucency()
     }
 
-    deinit {
-        errorContext.removeObserver(self)
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as PurchaseDetailsViewController):
-            vc.delegate = self
-            vc.catalogItemDetails = catalogItemDetails
-            vc.errorContext = errorContext
-            vc.purchaseContext = purchaseContext
         case (_, let vc as CatalogItemInfoViewController):
             vc.delegate = self
             vc.details = catalogItemDetails
@@ -135,14 +122,6 @@ extension CatalogItemResultViewController: UICollectionViewDataSource {
     }
 }
 
-extension CatalogItemResultViewController: PurchaseDetailsViewControllerDelgate {
-    func purchaseDetailsViewControllerDidChangePreferredContentSize(_ controller: PurchaseDetailsViewController) {
-        purchaseDetailsView.isHidden = controller.preferredContentSize.height == 0
-        purchaseDetailsHeightConstraint.constant = controller.preferredContentSize.height
-        view.layoutIfNeeded()
-    }
-}
-
 extension CatalogItemResultViewController: CatalogItemInfoViewControllerDelegate {
     func catalogItemInfoViewControllerDidChangePreferredContentSize(_ controller: CatalogItemInfoViewController) {
         itemInfoView.isHidden = controller.preferredContentSize.height == 0
@@ -167,14 +146,6 @@ extension CatalogItemResultViewController: UIScrollViewDelegate {
             preferredTranslucency = true
             scrollView.contentInsetAdjustmentBehavior = .never
             delegate?.catalogItemResultViewControllerDidChangePreferredTranslucency(self)
-        }
-    }
-}
-
-extension CatalogItemResultViewController: ErrorContextObserving {
-    func errorContextDidUpdate(_ context: ErrorContext) {
-        if context.error != nil {
-            scrollView.scrollRectToVisible(purchaseDetailsView.frame, animated: true)
         }
     }
 }
