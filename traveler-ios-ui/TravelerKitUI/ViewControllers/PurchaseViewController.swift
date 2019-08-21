@@ -48,13 +48,33 @@ class PurchaseViewController: UIViewController {
 }
 
 extension PurchaseViewController: BookablePurchaseViewControllerDelegate {
-    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didCreate order: Order) {
-        self.order = order
+    func bookablePurchaseViewControllerDidReceiveConfirmation(withForm form: BookingForm) {
+        ProgressHUD.show()
 
-        performSegue(withIdentifier: "confirmationSegue", sender: nil)
+        Traveler.createOrder(bookingForm: form, delegate: self)
     }
 }
 
 extension PurchaseViewController: BuyablePurchaseViewControllerDelegate {
     /// This should be similar to above delegate
+}
+
+extension PurchaseViewController: OrderCreateDelegate {
+    func orderCreationDidSucceed(_ order: Order) {
+        ProgressHUD.hide()
+
+        self.order = order
+
+        performSegue(withIdentifier: "confirmationSegue", sender: nil)
+    }
+
+    func orderCreationDidFail(_ error: Error) {
+        ProgressHUD.hide()
+
+        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
+    }
 }

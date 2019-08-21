@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookablePurchaseViewControllerDelegate: class {
-    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didCreate order: Order)
+    func bookablePurchaseViewControllerDidReceiveConfirmation(withForm form: BookingForm)
 }
 
 class BookablePurchaseViewController: UIViewController {
@@ -29,7 +29,7 @@ class BookablePurchaseViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as BookableAvailabilityViewController):
+        case (_, let vc as BookableConfirmationViewController):
             vc.bookingContext = bookingContext
             vc.errorContext = errorContext
             vc.delegate = self
@@ -40,13 +40,13 @@ class BookablePurchaseViewController: UIViewController {
     }
 
     @IBAction func didProceed(_ sender: Any) {
-        performSegue(withIdentifier: "dateOptionSegue", sender: nil)
+        performSegue(withIdentifier: "confirmationSegue", sender: nil)
     }
 }
 
 extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        guard presented is BookableConfirmationViewController else {
+        guard presented is BookablePassesViewController else {
             return nil
         }
 
@@ -54,7 +54,7 @@ extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate 
     }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let confirmVC = presented as? BookableConfirmationViewController else {
+        guard let confirmVC = presented as? BookablePassesViewController else {
             return nil
         }
 
@@ -62,7 +62,7 @@ extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate 
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let confirmVC = dismissed as? BookableConfirmationViewController else {
+        guard let confirmVC = dismissed as? BookablePassesViewController else {
             return nil
         }
 
@@ -76,28 +76,8 @@ extension BookablePurchaseViewController: DrawerTransitioning {
     }
 }
 
-extension BookablePurchaseViewController: BookableAvailabilityViewControllerDelegate {
-    func bookableAvailabilityViewControllerDidConfirm(_ controller: BookableAvailabilityViewController, bookingForm: BookingForm) {
-        ProgressHUD.show()
-
-        Traveler.createOrder(bookingForm: bookingForm, delegate: self)
-    }
-}
-
-extension BookablePurchaseViewController: OrderCreateDelegate {
-    func orderCreationDidSucceed(_ order: Order) {
-        ProgressHUD.hide()
-
-        delegate?.bookablePurchaseViewController(self, didCreate: order)
-    }
-
-    func orderCreationDidFail(_ error: Error) {
-        ProgressHUD.hide()
-
-        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        
-        present(alert, animated: true)
+extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
+    func bookableConfirmationViewControllerDidConfirm(withForm form: BookingForm) {
+        delegate?.bookablePurchaseViewControllerDidReceiveConfirmation(withForm: form)
     }
 }

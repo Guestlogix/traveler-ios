@@ -1,5 +1,5 @@
 //
-//  BookingQuestionsViewController.swift
+//  BookableQuestionsViewController.swift
 //  TravelerKit
 //
 //  Created by Ata Namvari on 2018-12-31.
@@ -9,17 +9,17 @@
 import UIKit
 import TravelerKit
 
-protocol BookingQuestionsViewControllerDelegate: class {
-    func bookingQuestionsViewControllerDidCheckout(_ controller: BookingQuestionsViewController)
+protocol BookableQuestionsViewControllerDelegate: class {
+    func bookableQuestionsViewControllerDidCheckout(withForm form: BookingForm?)
 }
 
-class BookingQuestionsViewController: UIViewController {
+class BookableQuestionsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var formView: FormView!
 
     var bookingForm: BookingForm?
-    weak var delegate: BookingQuestionsViewControllerDelegate?
+    weak var delegate: BookableQuestionsViewControllerDelegate?
 
     private var error: Error?
 
@@ -49,7 +49,7 @@ class BookingQuestionsViewController: UIViewController {
     }
 }
 
-extension BookingQuestionsViewController: FormViewDataSource {
+extension BookableQuestionsViewController: FormViewDataSource {
     func formView(_ formView: FormView, titleForOption option: Int, at indexPath: IndexPath) -> String {
         let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
         
@@ -111,7 +111,7 @@ extension BookingQuestionsViewController: FormViewDataSource {
     }
 }
 
-extension BookingQuestionsViewController: FormViewDelegate {
+extension BookableQuestionsViewController: FormViewDelegate {
     func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String? {
         guard section < bookingForm!.questionGroups.count else {
             return nil
@@ -153,7 +153,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
 
         switch errors?.first {
         case .none:
-            delegate?.bookingQuestionsViewControllerDidCheckout(self)
+            delegate?.bookableQuestionsViewControllerDidCheckout(withForm: bookingForm)
         case .some(.invalidAnswer(let groupIndex, let questionIndex, _)):
             self.error = errors?.first
 
