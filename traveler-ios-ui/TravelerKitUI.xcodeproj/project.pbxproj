@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A33609EE23049DEF007AA844 /* BookableAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33609ED23049DEF007AA844 /* BookableAvailabilityViewController.swift */; };
+		A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */; };
 		A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */; };
 		A9639C9C220DF4F200625235 /* TravelerKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639C9A220DF4F200625235 /* TravelerKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA3220DF57300625235 /* CatalogItemViewController.swift */; };
 		A9639CEC220DF57400625235 /* BuyableDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA4220DF57300625235 /* BuyableDetailsViewController.swift */; };
-		A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */; };
+		A9639CED220DF57400625235 /* BookableQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA5220DF57300625235 /* BookableQuestionsViewController.swift */; };
 		A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */; };
 		A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA8220DF57300625235 /* QuantityViewController.swift */; };
 		A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA9220DF57300625235 /* PurchaseViewController.swift */; };
@@ -27,7 +28,7 @@
 		A9639CFA220DF57400625235 /* BookableDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB2220DF57300625235 /* BookableDetailsViewController.swift */; };
 		A9639CFB220DF57400625235 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB3220DF57300625235 /* ReceiptViewController.swift */; };
 		A9639CFC220DF57400625235 /* AttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB4220DF57300625235 /* AttributesViewController.swift */; };
-		A9639CFD220DF57400625235 /* BookableConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB5220DF57300625235 /* BookableConfirmationViewController.swift */; };
+		A9639CFD220DF57400625235 /* BookablePassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB5220DF57300625235 /* BookablePassesViewController.swift */; };
 		A9639CFE220DF57400625235 /* CatalogResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB6220DF57300625235 /* CatalogResultViewController.swift */; };
 		A9639CFF220DF57400625235 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB7220DF57300625235 /* CatalogViewController.swift */; };
 		A9639D00220DF57400625235 /* CatalogItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB8220DF57300625235 /* CatalogItemInfoViewController.swift */; };
@@ -122,13 +123,14 @@
 
 /* Begin PBXFileReference section */
 		A33609ED23049DEF007AA844 /* BookableAvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookableAvailabilityViewController.swift; sourceTree = "<group>"; };
+		A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookableConfirmationViewController.swift; sourceTree = "<group>"; };
 		A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmer.swift"; sourceTree = "<group>"; };
 		A9639C97220DF4F200625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TravelerKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639C9A220DF4F200625235 /* TravelerKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TravelerKitUI.h; sourceTree = "<group>"; };
 		A9639C9B220DF4F200625235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9639CA3220DF57300625235 /* CatalogItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemViewController.swift; sourceTree = "<group>"; };
 		A9639CA4220DF57300625235 /* BuyableDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyableDetailsViewController.swift; sourceTree = "<group>"; };
-		A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingQuestionsViewController.swift; sourceTree = "<group>"; };
+		A9639CA5220DF57300625235 /* BookableQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookableQuestionsViewController.swift; sourceTree = "<group>"; };
 		A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
 		A9639CA8220DF57300625235 /* QuantityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityViewController.swift; sourceTree = "<group>"; };
 		A9639CA9220DF57300625235 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +145,7 @@
 		A9639CB2220DF57300625235 /* BookableDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookableDetailsViewController.swift; sourceTree = "<group>"; };
 		A9639CB3220DF57300625235 /* ReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		A9639CB4220DF57300625235 /* AttributesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributesViewController.swift; sourceTree = "<group>"; };
-		A9639CB5220DF57300625235 /* BookableConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookableConfirmationViewController.swift; sourceTree = "<group>"; };
+		A9639CB5220DF57300625235 /* BookablePassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookablePassesViewController.swift; sourceTree = "<group>"; };
 		A9639CB6220DF57300625235 /* CatalogResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogResultViewController.swift; sourceTree = "<group>"; };
 		A9639CB7220DF57300625235 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		A9639CB8220DF57300625235 /* CatalogItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemInfoViewController.swift; sourceTree = "<group>"; };
@@ -297,7 +299,7 @@
 				A974A6982282131D00319683 /* OrderResultViewController.swift */,
 				A9639CA3220DF57300625235 /* CatalogItemViewController.swift */,
 				A9639CA4220DF57300625235 /* BuyableDetailsViewController.swift */,
-				A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */,
+				A9639CA5220DF57300625235 /* BookableQuestionsViewController.swift */,
 				A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */,
 				A9639CA9220DF57300625235 /* PurchaseViewController.swift */,
 				A9639CA8220DF57300625235 /* QuantityViewController.swift */,
@@ -312,7 +314,7 @@
 				A9639CB2220DF57300625235 /* BookableDetailsViewController.swift */,
 				A9639CB3220DF57300625235 /* ReceiptViewController.swift */,
 				A9639CB4220DF57300625235 /* AttributesViewController.swift */,
-				A9639CB5220DF57300625235 /* BookableConfirmationViewController.swift */,
+				A9639CB5220DF57300625235 /* BookablePassesViewController.swift */,
 				A9639CB6220DF57300625235 /* CatalogResultViewController.swift */,
 				A9639CB7220DF57300625235 /* CatalogViewController.swift */,
 				A9639CB8220DF57300625235 /* CatalogItemInfoViewController.swift */,
@@ -322,6 +324,7 @@
 				CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */,
 				CAEF49D322C2910F00117857 /* FailViewController.swift */,
 				CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */,
+				A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 			files = (
 				A9639D2A220DF57400625235 /* DrawerTansitioning.swift in Sources */,
 				A9639D02220DF57400625235 /* BookablePurchaseViewController.swift in Sources */,
+				A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */,
 				A9639CFF220DF57400625235 /* CatalogViewController.swift in Sources */,
 				A9639D1C220DF57400625235 /* FormFieldFooterView.swift in Sources */,
 				CAACA48322B835600054765C /* CancellationError+LocalizedError.swift in Sources */,
@@ -606,7 +610,7 @@
 				A9639D13220DF57400625235 /* OrderItemViewCell.swift in Sources */,
 				A9639CFC220DF57400625235 /* AttributesViewController.swift in Sources */,
 				A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */,
-				A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */,
+				A9639CED220DF57400625235 /* BookableQuestionsViewController.swift in Sources */,
 				A9639D27220DF57400625235 /* DrawerDismissalAnimator.swift in Sources */,
 				A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */,
 				A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */,
@@ -636,7 +640,7 @@
 				A9639D28220DF57400625235 /* ContainerEmbedSegue.swift in Sources */,
 				F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */,
 				CAC32410229C50E200A4F286 /* OrderDetailViewController.swift in Sources */,
-				A9639CFD220DF57400625235 /* BookableConfirmationViewController.swift in Sources */,
+				A9639CFD220DF57400625235 /* BookablePassesViewController.swift in Sources */,
 				A9639D09220DF57400625235 /* InfoCell.swift in Sources */,
 				A9639D0E220DF57400625235 /* DatePickerCell.swift in Sources */,
 				A9639D39220E029800625235 /* Attribute+TravelerUI.swift in Sources */,

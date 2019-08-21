@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookableAvailabilityViewControllerDelegate: class {
-    func bookableAvailabilityViewControllerDidConfirm(_ controller: BookableAvailabilityViewController, bookingForm: BookingForm)
+    func bookableAvailabilityViewControllerDidReceiveCheckout(withForm form: BookingForm?)
 }
 
 class BookableAvailabilityViewController: UIViewController {
@@ -43,7 +43,7 @@ class BookableAvailabilityViewController: UIViewController {
         case (_, let vc as BookableDetailsViewController):
             vc.errorContext = errorContext
             vc.bookingContext = bookingContext
-        case (_, let vc as BookableConfirmationViewController):
+        case (_, let vc as BookablePassesViewController):
             vc.passes = passes
             vc.product = bookingContext?.product
             vc.delegate = self
@@ -96,8 +96,8 @@ extension BookableAvailabilityViewController: BookingContextObserving {
     }
 }
 
-extension BookableAvailabilityViewController: BookableConfirmationViewControllerDelegate {
-    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, bookingForm: BookingForm) {
-        delegate?.bookableAvailabilityViewControllerDidConfirm(self, bookingForm: bookingForm)
+extension BookableAvailabilityViewController: BookablePassesViewControllerDelegate {
+    func bookablePassesViewControllerDidReceiveCheckout(withForm form: BookingForm?) {
+        delegate?.bookableAvailabilityViewControllerDidReceiveCheckout(withForm: form)
     }
 }
