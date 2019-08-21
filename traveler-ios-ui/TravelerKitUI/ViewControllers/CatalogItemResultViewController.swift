@@ -28,21 +28,6 @@ class CatalogItemResultViewController: UIViewController {
     var catalogItemDetails: CatalogItemDetails?
 
     private let errorContext = ErrorContext()
-    private lazy var purchaseContext: BookingContext? = {
-        return catalogItemDetails.flatMap({ BookingContext(product: $0) })
-    }()
-    /*
-    private lazy var purchaseContext: PurchaseContext? {
-        switch catalogItemDetails {
-        case .some(let item) where item.purchaseStrategy == .bookable:
-            return BookingContext(item)
-        case .some(let item) where item.purchaseStrategy == .buyable:
-            return BuyingContext(item)
-        default:
-            return nil
-        }
-    }
- */
 
     private(set) var preferredTranslucency: Bool = true
 
@@ -84,7 +69,7 @@ class CatalogItemResultViewController: UIViewController {
         case (_, let vc as PurchaseViewController):
             vc.strategy = catalogItemDetails?.purchaseStrategy
             vc.errorContext = errorContext
-            vc.purchaseContext = purchaseContext
+            vc.product = catalogItemDetails
         case (_, let vc as SupplierInfoViewController):
             vc.supplier = catalogItemDetails?.supplier
         case ("termsAndConditionsSegue", let navVC as UINavigationController):

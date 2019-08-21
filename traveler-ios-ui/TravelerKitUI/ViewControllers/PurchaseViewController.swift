@@ -12,7 +12,7 @@ import TravelerKit
 class PurchaseViewController: UIViewController {
     var strategy: PurchaseStrategy?
     var errorContext: ErrorContext?
-    var purchaseContext: BookingContext?
+    var product: Product?
 
     private var order: Order?
 
@@ -34,7 +34,7 @@ class PurchaseViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as BookablePurchaseViewController):
             vc.delegate = self
-            vc.bookingContext = purchaseContext
+            vc.product = product
             vc.errorContext = errorContext
         case (_, let vc as BuyablePurchaseViewController):
             vc.delegate = self
@@ -48,10 +48,10 @@ class PurchaseViewController: UIViewController {
 }
 
 extension PurchaseViewController: BookablePurchaseViewControllerDelegate {
-    func bookablePurchaseViewControllerDidReceiveConfirmation(_ controller: BookablePurchaseViewController, with form: BookingForm) {
+    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didReceiveConfirmationWith bookingForm: BookingForm) {
         ProgressHUD.show()
 
-        Traveler.createOrder(bookingForm: form, delegate: self)
+        Traveler.createOrder(bookingForm: bookingForm, delegate: self)
     }
 }
 

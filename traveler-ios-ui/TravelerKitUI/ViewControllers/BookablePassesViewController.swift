@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookablePassesViewControllerDelegate: class {
-    func bookablePassesViewControllerDidReceiveCheckout(_ controller: BookablePassesViewController, with form: BookingForm)
+    func bookablePassesViewController(_ controller: BookablePassesViewController, didReceiveCheckoutWith bookingForm: BookingForm)
 }
 
 class BookablePassesViewController: UIViewController {
@@ -94,8 +94,8 @@ extension BookablePassesViewController: PassesViewControllerDelegate {
 }
 
 extension BookablePassesViewController: BookableQuestionsViewControllerDelegate {
-    func bookableQuestionsViewControllerDidCheckout(_ controller: BookableQuestionsViewController, with form: BookingForm) {
-        delegate?.bookablePassesViewControllerDidReceiveCheckout(self, with: form)
+    func bookableQuestionsViewController(_ controller: BookableQuestionsViewController, didCheckoutWith bookingForm: BookingForm) {
+        delegate?.bookablePassesViewController(self, didReceiveCheckoutWith: bookingForm)
     }
 }
 

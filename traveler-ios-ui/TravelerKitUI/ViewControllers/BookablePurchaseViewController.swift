@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookablePurchaseViewControllerDelegate: class {
-    func bookablePurchaseViewControllerDidReceiveConfirmation(_ controller: BookablePurchaseViewController, with form: BookingForm)
+    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didReceiveConfirmationWith bookingForm: BookingForm)
 }
 
 class BookablePurchaseViewController: UIViewController {
@@ -18,19 +18,19 @@ class BookablePurchaseViewController: UIViewController {
     @IBOutlet weak var proceedButton: UIButton!
 
     var errorContext: ErrorContext?
-    var bookingContext: BookingContext?
+    var product: Product?
     weak var delegate: BookablePurchaseViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        priceLabel.text = bookingContext?.product.price.localizedDescriptionInBaseCurrency
+        priceLabel.text = product?.price.localizedDescriptionInBaseCurrency
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as BookableConfirmationViewController):
-            vc.bookingContext = bookingContext
+            vc.product = product
             vc.errorContext = errorContext
             vc.delegate = self
         default:
@@ -77,7 +77,7 @@ extension BookablePurchaseViewController: DrawerTransitioning {
 }
 
 extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
-    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, with form: BookingForm) {
-        delegate?.bookablePurchaseViewControllerDidReceiveConfirmation(self, with: form)
+    func bookableConfirmationViewController(_ controller: BookableConfirmationViewController, didConfirmWith bookingForm: BookingForm) {
+        delegate?.bookablePurchaseViewController(self, didReceiveConfirmationWith: bookingForm)
     }
 }
