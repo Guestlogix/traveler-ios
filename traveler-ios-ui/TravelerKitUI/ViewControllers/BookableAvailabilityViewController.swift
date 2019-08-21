@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookableAvailabilityViewControllerDelegate: class {
-    func bookableAvailabilityViewControllerDidReceiveCheckout(_ controller: BookableAvailabilityViewController, with form: BookingForm)
+    func bookableAvailabilityViewController(_ controller: BookableAvailabilityViewController, didReceiveCheckoutWith bookingForm: BookingForm)
 }
 
 class BookableAvailabilityViewController: UIViewController {
@@ -18,7 +18,13 @@ class BookableAvailabilityViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
 
     var errorContext: ErrorContext?
-    var bookingContext: BookingContext?
+    var product: Product?
+    var selectedAvailability: Availability?
+    var availableOptions: [BookingOption]? {
+        return selectedAvailability?.optionSet?.options
+    }
+    var selectedOption: BookingOption?
+
     weak var delegate: BookableAvailabilityViewControllerDelegate?
 
     /// TEMP
@@ -30,22 +36,18 @@ class BookableAvailabilityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bookingContext?.addObserver(self)
-        priceLabel.text = bookingContext?.product.price.localizedDescriptionInBaseCurrency
-    }
-
-    deinit {
-        bookingContext?.removeObserver(self)
+        priceLabel.text = product?.price.localizedDescriptionInBaseCurrency
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as BookableDetailsViewController):
             vc.errorContext = errorContext
-            vc.bookingContext = bookingContext
+            vc.product = product
+            vc.delegate = self
         case (_, let vc as BookablePassesViewController):
             vc.passes = passes
-            vc.product = bookingContext?.product
+            vc.product = product
             vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
@@ -54,24 +56,24 @@ class BookableAvailabilityViewController: UIViewController {
     }
 
     @IBAction func didProceed(_ sender: Any) {
-        guard let bookingContext = bookingContext else {
-            Log("No BookingContext", data: nil, level: .error)
+        guard let product = product else {
+            Log("No product", data: nil, level: .error)
             return
         }
 
-        guard let availability = bookingContext.selectedAvailability else {
+        guard let availability = selectedAvailability else {
             errorContext?.error = BookingError.noDate
             return
         }
 
-        guard bookingContext.availableOptions == nil || bookingContext.selectedOption != nil else {
+        guard availableOptions == nil || selectedOption != nil else {
             errorContext?.error = BookingError.noOption
             return
         }
 
         nextButton.isEnabled = false
 
-        Traveler.fetchPasses(product: bookingContext.product, availability: availability, option: bookingContext.selectedOption, delegate: self)
+        Traveler.fetchPasses(product: product, availability: availability, option: selectedOption, delegate: self)
     }
 }
 
@@ -90,14 +92,23 @@ extension BookableAvailabilityViewController: PassFetchDelegate {
     }
 }
 
-extension BookableAvailabilityViewController: BookingContextObserving {
-    func bookingContextDidUpdate(_ context: BookingContext) {
-        nextButton.isEnabled = context.isReady
+extension BookableAvailabilityViewController: BookableDetailsViewControllerDelegate {
+    func bookableDetailsViewControllerDidChangePreferredContentSize(_ controller: BookableDetailsViewController) {
+        return
+    }
+
+    func bookableDetailsViewController(_ controller: BookableDetailsViewController, didUpdate availability: Availability) {
+        selectedAvailability = availability
+        selectedOption = nil
+    }
+
+    func bookableDetailsViewController(_ controller: BookableDetailsViewController, didSelect option: BookingOption?) {
+        selectedOption = option
     }
 }
 
 extension BookableAvailabilityViewController: BookablePassesViewControllerDelegate {
-    func bookablePassesViewControllerDidReceiveCheckout(_ controller: BookablePassesViewController, with form: BookingForm) {
-        delegate?.bookableAvailabilityViewControllerDidReceiveCheckout(self, with: form)
+    func bookablePassesViewController(_ controller: BookablePassesViewController, didReceiveCheckoutWith bookingForm: BookingForm) {
+        delegate?.bookableAvailabilityViewController(self, didReceiveCheckoutWith: bookingForm)
     }
 }

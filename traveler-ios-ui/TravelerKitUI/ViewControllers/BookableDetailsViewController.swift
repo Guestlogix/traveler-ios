@@ -11,12 +11,23 @@ import TravelerKit
 
 protocol BookableDetailsViewControllerDelegate: class {
     func bookableDetailsViewControllerDidChangePreferredContentSize(_ controller: BookableDetailsViewController)
+    func bookableDetailsViewController(_ controller: BookableDetailsViewController, didUpdate availability: Availability)
+    func bookableDetailsViewController(_ controller: BookableDetailsViewController, didSelect option: BookingOption?)
 }
 
 let optionCellIdentifier = "optionCellIdentifier"
 
 class BookableDetailsViewController: UITableViewController {
-    var bookingContext: BookingContext?
+    var product: Product?
+    var selectedAvailability: Availability?
+    var availableOptions: [BookingOption]? {
+        return selectedAvailability?.optionSet?.options
+    }
+    var hasOptions: Bool {
+        return availableOptions?.count ?? 0 > 0
+    }
+    var selectedOption: BookingOption?
+
     var errorContext: ErrorContext?
     weak var delegate: BookableDetailsViewControllerDelegate?
 
@@ -59,7 +70,7 @@ class BookableDetailsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch (datePickerCellVisible, bookingContext?.hasOptions ?? false) {
+        switch (datePickerCellVisible, hasOptions) {
         case (false, false):
             return 1
         case (true, false),
@@ -71,7 +82,7 @@ class BookableDetailsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch (indexPath.row, datePickerCellVisible, bookingContext?.hasOptions ?? false) {
+        switch (indexPath.row, datePickerCellVisible, hasOptions) {
         case (0, _, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell
             cell.valueLabel.textColor = (errorContext?.hasAnyOf([.noDate, .badDate]) ?? false) ? UIColor.red : UIColor.darkText
@@ -83,14 +94,14 @@ class BookableDetailsViewController: UITableViewController {
             case .some(BookingError.noDate):
                 cell.valueLabel.text = "Please Select"
             default:
-                cell.valueLabel.text = bookingContext?.selectedAvailability.flatMap({ DateFormatter.yearMonthDay.string(from: $0.date) })
+                cell.valueLabel.text = selectedAvailability.flatMap({ DateFormatter.yearMonthDay.string(from: $0.date) })
             }
 
             return cell
         case (1, true, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: datePickerCellIdentifier, for: indexPath) as! DatePickerCell
             cell.datePicker.minimumDate = Date()
-            cell.datePicker.date = bookingContext?.selectedAvailability?.date ?? Date()
+            cell.datePicker.date = selectedAvailability?.date ?? Date()
             cell.delegate = self
             return cell
         case (1, false, true),
@@ -98,7 +109,7 @@ class BookableDetailsViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! ListCell
             cell.delegate = self
             cell.dataSource = self
-            cell.textField.text = bookingContext?.selectedOption?.value
+            cell.textField.text = selectedOption?.value
             cell.textField.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
             cell.titleLabel.textColor = (errorContext?.hasAnyOf([.noOption]) ?? false) ? UIColor.red : UIColor.darkText
 
@@ -107,7 +118,7 @@ class BookableDetailsViewController: UITableViewController {
                 cell.textField.text = "Please Select"
                 cell.textField.textColor = UIColor.red
             default:
-                cell.textField.text = bookingContext?.selectedOption?.value
+                cell.textField.text = selectedOption?.value
             }
 
             return cell
@@ -135,7 +146,7 @@ class BookableDetailsViewController: UITableViewController {
 
             tableView.deselectRow(at: indexPath, animated: true)
 
-            if bookingContext?.selectedAvailability == nil {
+            if selectedAvailability == nil {
                 updateSelectedDate(Date())
 
                 tableView.reloadRows(at: [indexPath], with: .none)
@@ -170,30 +181,31 @@ extension BookableDetailsViewController: DatePickerCellDelegate {
     }
 
     func updateSelectedDate(_ date: Date) {
-        guard let bookingContext = bookingContext else { return }
+        guard let product = product else { return }
 
         errorContext?.error = nil
 
         tableView.isUserInteractionEnabled = false
 
-        Traveler.fetchAvailabilities(product: bookingContext.product, startDate: date, endDate: date, delegate: self)
+        Traveler.fetchAvailabilities(product: product, startDate: date, endDate: date, delegate: self)
     }
 }
 
 extension BookableDetailsViewController: ListCellDelegate {
     func listCell(_ cell: ListCell, didSelectRow row: Int) {
-        bookingContext?.selectedOption = bookingContext?.availableOptions?[row]
+        selectedOption = availableOptions?[row]
+        delegate?.bookableDetailsViewController(self, didSelect: selectedOption)
         errorContext?.error = nil
     }
 }
 
 extension BookableDetailsViewController: ListCellDataSource {
     func numberOfRowsInListCell(_ cell: ListCell) -> Int {
-        return bookingContext?.availableOptions?.count ?? 0
+        return availableOptions?.count ?? 0
     }
 
     func listCell(_ cell: ListCell, titleForRow row: Int) -> String? {
-        return bookingContext!.availableOptions![row].value
+        return availableOptions![row].value
     }
 }
 
@@ -206,8 +218,9 @@ extension BookableDetailsViewController: AvailabilitiesFetchDelegate {
             return
         }
 
-        bookingContext?.selectedAvailability = availability
-        bookingContext?.selectedOption = nil
+        selectedAvailability = availability
+        selectedOption = nil
+        delegate?.bookableDetailsViewController(self, didUpdate: availability)
 
         tableView.reloadData()
         updatePreferredContentSize()

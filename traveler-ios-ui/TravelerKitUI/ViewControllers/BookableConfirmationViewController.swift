@@ -10,12 +10,12 @@ import UIKit
 import TravelerKit
 
 protocol BookableConfirmationViewControllerDelegate: class {
-    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, with form: BookingForm)
+    func bookableConfirmationViewController(_ controller: BookableConfirmationViewController, didConfirmWith bookingForm: BookingForm)
 }
 
 class BookableConfirmationViewController: UIViewController {
     var errorContext: ErrorContext?
-    var bookingContext: BookingContext?
+    var product: Product?
     weak var delegate: BookableConfirmationViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class BookableConfirmationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as BookableAvailabilityViewController):
-            vc.bookingContext = bookingContext
+            vc.product = product
             vc.errorContext = errorContext
             vc.delegate = self
         default:
@@ -36,7 +36,7 @@ class BookableConfirmationViewController: UIViewController {
 }
 
 extension BookableConfirmationViewController: BookableAvailabilityViewControllerDelegate {
-    func bookableAvailabilityViewControllerDidReceiveCheckout(_ controller: BookableAvailabilityViewController, with form: BookingForm) {
-        delegate?.bookableConfirmationViewControllerDidConfirm(self, with: form)
+    func bookableAvailabilityViewController(_ controller: BookableAvailabilityViewController, didReceiveCheckoutWith bookingForm: BookingForm) {
+        delegate?.bookableConfirmationViewController(self, didConfirmWith: bookingForm)
     }
 }
