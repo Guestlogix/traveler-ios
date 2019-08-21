@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookableConfirmationViewControllerDelegate: class {
-    func bookableConfirmationViewControllerDidConfirm(withForm form: BookingForm)
+    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, with form: BookingForm)
 }
 
 class BookableConfirmationViewController: UIViewController {
@@ -36,12 +36,7 @@ class BookableConfirmationViewController: UIViewController {
 }
 
 extension BookableConfirmationViewController: BookableAvailabilityViewControllerDelegate {
-    func bookableAvailabilityViewControllerDidReceiveCheckout(withForm form: BookingForm?) {
-        guard let bookingForm = form else {
-            Log("No BookingForm", data: nil, level: .error)
-            return
-        }
-
-        delegate?.bookableConfirmationViewControllerDidConfirm(withForm: bookingForm)
+    func bookableAvailabilityViewControllerDidReceiveCheckout(_ controller: BookableAvailabilityViewController, with form: BookingForm) {
+        delegate?.bookableConfirmationViewControllerDidConfirm(self, with: form)
     }
 }
