@@ -48,7 +48,7 @@ class PurchaseViewController: UIViewController {
 }
 
 extension PurchaseViewController: BookablePurchaseViewControllerDelegate {
-    func bookablePurchaseViewControllerDidReceiveConfirmation(withForm form: BookingForm) {
+    func bookablePurchaseViewControllerDidReceiveConfirmation(_ controller: BookablePurchaseViewController, with form: BookingForm) {
         ProgressHUD.show()
 
         Traveler.createOrder(bookingForm: form, delegate: self)

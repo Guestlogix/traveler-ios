@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookableQuestionsViewControllerDelegate: class {
-    func bookableQuestionsViewControllerDidCheckout(withForm form: BookingForm?)
+    func bookableQuestionsViewControllerDidCheckout(_ controller: BookableQuestionsViewController, with form: BookingForm)
 }
 
 class BookableQuestionsViewController: UIViewController {
@@ -153,7 +153,7 @@ extension BookableQuestionsViewController: FormViewDelegate {
 
         switch errors?.first {
         case .none:
-            delegate?.bookableQuestionsViewControllerDidCheckout(withForm: bookingForm)
+            delegate?.bookableQuestionsViewControllerDidCheckout(self, with: bookingForm!)
         case .some(.invalidAnswer(let groupIndex, let questionIndex, _)):
             self.error = errors?.first
 

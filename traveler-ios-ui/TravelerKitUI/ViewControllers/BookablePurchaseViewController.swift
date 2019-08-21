@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookablePurchaseViewControllerDelegate: class {
-    func bookablePurchaseViewControllerDidReceiveConfirmation(withForm form: BookingForm)
+    func bookablePurchaseViewControllerDidReceiveConfirmation(_ controller: BookablePurchaseViewController, with form: BookingForm)
 }
 
 class BookablePurchaseViewController: UIViewController {
@@ -77,7 +77,7 @@ extension BookablePurchaseViewController: DrawerTransitioning {
 }
 
 extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
-    func bookableConfirmationViewControllerDidConfirm(withForm form: BookingForm) {
-        delegate?.bookablePurchaseViewControllerDidReceiveConfirmation(withForm: form)
+    func bookableConfirmationViewControllerDidConfirm(_ controller: BookableConfirmationViewController, with form: BookingForm) {
+        delegate?.bookablePurchaseViewControllerDidReceiveConfirmation(self, with: form)
     }
 }
