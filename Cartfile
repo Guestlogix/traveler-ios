@@ -1,1 +1,1 @@
-github "stripe/stripe-ios"
+github "stripe/stripe-ios" ~> 15.0
