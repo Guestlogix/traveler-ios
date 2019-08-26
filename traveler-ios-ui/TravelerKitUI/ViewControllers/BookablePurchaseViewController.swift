@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 protocol BookablePurchaseViewControllerDelegate: class {
-    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didReceiveConfirmationWith bookingForm: BookingForm)
+    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith bookingForm: BookingForm)
 }
 
 class BookablePurchaseViewController: UIViewController {
@@ -46,7 +46,7 @@ class BookablePurchaseViewController: UIViewController {
 
 extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        guard presented is BookablePassesViewController else {
+        guard presented is BookingPassesViewController else {
             return nil
         }
 
@@ -54,7 +54,7 @@ extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate 
     }
 
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let confirmVC = presented as? BookablePassesViewController else {
+        guard let confirmVC = presented as? BookingPassesViewController else {
             return nil
         }
 
@@ -62,7 +62,7 @@ extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate 
     }
 
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let confirmVC = dismissed as? BookablePassesViewController else {
+        guard let confirmVC = dismissed as? BookingPassesViewController else {
             return nil
         }
 
@@ -77,7 +77,7 @@ extension BookablePurchaseViewController: DrawerTransitioning {
 }
 
 extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
-    func bookableConfirmationViewController(_ controller: BookableConfirmationViewController, didConfirmWith bookingForm: BookingForm) {
-        delegate?.bookablePurchaseViewController(self, didReceiveConfirmationWith: bookingForm)
+    func bookableConfirmationViewController(_ controller: BookableConfirmationViewController, didFinishWith bookingForm: BookingForm) {
+        delegate?.bookablePurchaseViewController(self, didFinishWith: bookingForm)
     }
 }

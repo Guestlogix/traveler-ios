@@ -1,5 +1,5 @@
 //
-//  BookablePassesViewController.swift
+//  BookingPassesViewController.swift
 //  TravelerKit
 //
 //  Created by Ata Namvari on 2018-12-07.
@@ -9,11 +9,11 @@
 import UIKit
 import TravelerKit
 
-protocol BookablePassesViewControllerDelegate: class {
-    func bookablePassesViewController(_ controller: BookablePassesViewController, didReceiveCheckoutWith bookingForm: BookingForm)
+protocol BookingPassesViewControllerDelegate: class {
+    func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookablePassesViewController: UIViewController {
+class BookingPassesViewController: UIViewController {
     @IBOutlet weak var confirmContainerView: UIView!
     @IBOutlet weak var passesContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel!
@@ -21,7 +21,7 @@ class BookablePassesViewController: UIViewController {
 
     var product: Product?
     var passes: [Pass]?
-    weak var delegate: BookablePassesViewControllerDelegate?
+    weak var delegate: BookingPassesViewControllerDelegate?
 
     private var passQuantities: [Pass: Int]?
     private var bookingForm: BookingForm?
@@ -50,7 +50,7 @@ class BookablePassesViewController: UIViewController {
             passesVC.delegate = self
             passesVC.passes = passes
             passesVC.passQuantities = defaultPassQuantities
-        case (_, let vc as BookableQuestionsViewController):
+        case (_, let vc as BookingQuestionsViewController):
             vc.bookingForm = bookingForm
             vc.delegate = self
         default:
@@ -76,13 +76,13 @@ class BookablePassesViewController: UIViewController {
     }
 }
 
-extension BookablePassesViewController: DrawerTransitioning {
+extension BookingPassesViewController: DrawerTransitioning {
     func drawerViewForTransition(context: UIViewControllerContextTransitioning) -> UIView {
         return confirmContainerView
     }
 }
 
-extension BookablePassesViewController: PassesViewControllerDelegate {
+extension BookingPassesViewController: PassesViewControllerDelegate {
     func passesViewControllerDidChangePreferredContentSize(_ controller: PassesViewController) {
         passesContainerHeightConstraint.constant = controller.preferredContentSize.height
     }
@@ -93,13 +93,13 @@ extension BookablePassesViewController: PassesViewControllerDelegate {
     }
 }
 
-extension BookablePassesViewController: BookableQuestionsViewControllerDelegate {
-    func bookableQuestionsViewController(_ controller: BookableQuestionsViewController, didCheckoutWith bookingForm: BookingForm) {
-        delegate?.bookablePassesViewController(self, didReceiveCheckoutWith: bookingForm)
+extension BookingPassesViewController: BookingQuestionsViewControllerDelegate {
+    func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith bookingForm: BookingForm) {
+        delegate?.bookingPassesViewController(self, didFinishWith: bookingForm)
     }
 }
 
-extension BookablePassesViewController: BookingFormFetchDelegate {
+extension BookingPassesViewController: BookingFormFetchDelegate {
     func bookingFormFetchDidFailWith(_ error: Error) {
         confirmButton.isEnabled = true
 
