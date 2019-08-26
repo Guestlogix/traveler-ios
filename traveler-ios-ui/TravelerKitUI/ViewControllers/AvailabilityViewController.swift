@@ -1,5 +1,5 @@
 //
-//  BookableAvailabilityViewController.swift
+//  AvailabilityViewController.swift
 //  TravelerKitUI
 //
 //  Created by Ben Ruan on 2019-08-14.
@@ -9,11 +9,11 @@
 import UIKit
 import TravelerKit
 
-protocol BookableAvailabilityViewControllerDelegate: class {
-    func bookableAvailabilityViewController(_ controller: BookableAvailabilityViewController, didReceiveCheckoutWith bookingForm: BookingForm)
+protocol AvailabilityViewControllerDelegate: class {
+    func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookableAvailabilityViewController: UIViewController {
+class AvailabilityViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
 
@@ -25,7 +25,7 @@ class BookableAvailabilityViewController: UIViewController {
     }
     var selectedOption: BookingOption?
 
-    weak var delegate: BookableAvailabilityViewControllerDelegate?
+    weak var delegate: AvailabilityViewControllerDelegate?
 
     /// TEMP
 
@@ -45,7 +45,7 @@ class BookableAvailabilityViewController: UIViewController {
             vc.errorContext = errorContext
             vc.product = product
             vc.delegate = self
-        case (_, let vc as BookablePassesViewController):
+        case (_, let vc as BookingPassesViewController):
             vc.passes = passes
             vc.product = product
             vc.delegate = self
@@ -77,7 +77,7 @@ class BookableAvailabilityViewController: UIViewController {
     }
 }
 
-extension BookableAvailabilityViewController: PassFetchDelegate {
+extension AvailabilityViewController: PassFetchDelegate {
     func passFetchDidSucceedWith(_ result: [Pass]) {
         self.passes = result
 
@@ -92,7 +92,7 @@ extension BookableAvailabilityViewController: PassFetchDelegate {
     }
 }
 
-extension BookableAvailabilityViewController: BookableDetailsViewControllerDelegate {
+extension AvailabilityViewController: BookableDetailsViewControllerDelegate {
     func bookableDetailsViewControllerDidChangePreferredContentSize(_ controller: BookableDetailsViewController) {
         return
     }
@@ -107,8 +107,8 @@ extension BookableAvailabilityViewController: BookableDetailsViewControllerDeleg
     }
 }
 
-extension BookableAvailabilityViewController: BookablePassesViewControllerDelegate {
-    func bookablePassesViewController(_ controller: BookablePassesViewController, didReceiveCheckoutWith bookingForm: BookingForm) {
-        delegate?.bookableAvailabilityViewController(self, didReceiveCheckoutWith: bookingForm)
+extension AvailabilityViewController: BookingPassesViewControllerDelegate {
+    func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm) {
+        delegate?.availabilityViewController(self, didFinishWith: bookingForm)
     }
 }

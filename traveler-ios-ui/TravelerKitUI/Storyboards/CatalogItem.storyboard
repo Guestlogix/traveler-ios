@@ -387,7 +387,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8i-pB-4Hb">
-                                            <rect key="frame" x="352" y="11.5" width="42" height="21"/>
+                                            <rect key="frame" x="313" y="11.5" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -420,7 +420,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sy-be-FCq">
-                                            <rect key="frame" x="79.5" y="13.5" width="314.5" height="17"/>
+                                            <rect key="frame" x="79.5" y="13.5" width="275.5" height="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -451,7 +451,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="jjl-1a-1os">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="161.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="161.5"/>
                                             <date key="date" timeIntervalSinceReferenceDate="563821096.19836104">
                                                 <!--2018-11-13 16:58:16 +0000-->
                                             </date>
@@ -583,10 +583,10 @@
             </objects>
             <point key="canvasLocation" x="2046" y="2651"/>
         </scene>
-        <!--Bookable Availability View Controller-->
+        <!--Availability View Controller-->
         <scene sceneID="XMZ-BH-1zQ">
             <objects>
-                <viewController id="Kin-Bm-rsn" customClass="BookableAvailabilityViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Kin-Bm-rsn" customClass="AvailabilityViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hze-ix-iPU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -656,10 +656,10 @@
             </objects>
             <point key="canvasLocation" x="2046" y="3506"/>
         </scene>
-        <!--Bookable Passes View Controller-->
+        <!--Booking Passes View Controller-->
         <scene sceneID="INt-55-PaM">
             <objects>
-                <viewController id="NsW-lP-NLE" customClass="BookablePassesViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NsW-lP-NLE" customClass="BookingPassesViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UCM-sd-Rm4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -890,10 +890,10 @@
             </objects>
             <point key="canvasLocation" x="3094" y="4361"/>
         </scene>
-        <!--Bookable Questions View Controller-->
+        <!--Booking Questions View Controller-->
         <scene sceneID="wVC-Uo-9mR">
             <objects>
-                <viewController id="rC1-Qw-aaQ" customClass="BookableQuestionsViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rC1-Qw-aaQ" customClass="BookingQuestionsViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9iR-FF-pLP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1168,7 +1168,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="zdc-Mc-KZs">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="zdc-Mc-KZs">
                             <rect key="frame" x="0.0" y="88" width="375" height="318"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
