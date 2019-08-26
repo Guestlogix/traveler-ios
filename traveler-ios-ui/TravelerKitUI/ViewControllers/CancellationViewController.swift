@@ -92,6 +92,6 @@ extension CancellationViewController: CancellationDelegate {
 
 extension CancellationQuote {
     func percentageFee(product: ProductCancellationQuote) -> Double {
-        return (self.cancellationCharge.valueInBaseCurrency / product.totalRefund.valueInBaseCurrency) * 100
+        return (product.cancellationCharge.valueInBaseCurrency / (product.totalRefund.valueInBaseCurrency + product.cancellationCharge.valueInBaseCurrency)) * 100
     }
 }
