@@ -1,5 +1,5 @@
 //
-//  BookableConfirmationViewController.swift
+//  BookingConfirmationViewController.swift
 //  TravelerKitUI
 //
 //  Created by Ben Ruan on 2019-08-19.
@@ -9,14 +9,13 @@
 import UIKit
 import TravelerKit
 
-protocol BookableConfirmationViewControllerDelegate: class {
-    func bookableConfirmationViewController(_ controller: BookableConfirmationViewController, didFinishWith bookingForm: BookingForm)
+protocol BookingConfirmationViewControllerDelegate: class {
+    func bookingConfirmationViewController(_ controller: BookingConfirmationViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookableConfirmationViewController: UIViewController {
-    var errorContext: ErrorContext?
+class BookingConfirmationViewController: UIViewController {
     var product: Product?
-    weak var delegate: BookableConfirmationViewControllerDelegate?
+    weak var delegate: BookingConfirmationViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,6 @@ class BookableConfirmationViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as AvailabilityViewController):
             vc.product = product
-            vc.errorContext = errorContext
             vc.delegate = self
         default:
             Log("Unknown Segue", data: segue, level: .warning)
@@ -35,8 +33,8 @@ class BookableConfirmationViewController: UIViewController {
     }
 }
 
-extension BookableConfirmationViewController: AvailabilityViewControllerDelegate {
+extension BookingConfirmationViewController: AvailabilityViewControllerDelegate {
     func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.bookableConfirmationViewController(self, didFinishWith: bookingForm)
+        delegate?.bookingConfirmationViewController(self, didFinishWith: bookingForm)
     }
 }

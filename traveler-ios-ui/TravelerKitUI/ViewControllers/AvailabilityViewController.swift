@@ -16,22 +16,32 @@ protocol AvailabilityViewControllerDelegate: class {
 class AvailabilityViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-
-    var errorContext: ErrorContext?
-    var product: Product?
-    var selectedAvailability: Availability?
-    var availableOptions: [BookingOption]? {
-        return selectedAvailability?.optionSet?.options
-    }
-    var selectedOption: BookingOption?
+    @IBOutlet weak var tableView: UITableView!
 
     weak var delegate: AvailabilityViewControllerDelegate?
 
-    /// TEMP
+    var product: Product?
+    var selectedAvailability: Availability?
+    var availabilityError: Error?
+    var availableOptions: [BookingOption]? {
+        return selectedAvailability?.optionSet?.options
+    }
+    var hasOptions: Bool {
+        return availableOptions?.count ?? 0 > 0
+    }
+    var selectedOption: BookingOption?
+    var optionsViewController: BookingOptionsViewController?
 
     private var passes: [Pass]?
 
-    /// END TEMP
+    private var datePickerCellVisible = false
+    private var dateCellIndexPath: IndexPath {
+        return IndexPath(row: 0, section: 0)
+    }
+
+    private var datePickerCellIndexPath: IndexPath {
+        return IndexPath(row: 1, section: 0)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +51,9 @@ class AvailabilityViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as BookableDetailsViewController):
-            vc.errorContext = errorContext
+        case (_, let vc as BookingOptionsViewController):
             vc.product = product
+            vc.selectedAvailability = selectedAvailability
             vc.delegate = self
         case (_, let vc as BookingPassesViewController):
             vc.passes = passes
@@ -62,23 +72,136 @@ class AvailabilityViewController: UIViewController {
         }
 
         guard let availability = selectedAvailability else {
-            errorContext?.error = BookingError.noDate
-            return
-        }
-
-        guard availableOptions == nil || selectedOption != nil else {
-            errorContext?.error = BookingError.noOption
+            availabilityError = BookingError.noDate
+            tableView.reloadData()
             return
         }
 
         nextButton.isEnabled = false
 
-        Traveler.fetchPasses(product: product, availability: availability, option: selectedOption, delegate: self)
+        if hasOptions == true {
+            performSegue(withIdentifier: "optionSegue", sender: nil)
+            nextButton.isEnabled = true
+        } else {
+            Traveler.fetchPasses(product: product, availability: availability, option: nil, delegate: self)
+        }
+    }
+}
+
+extension AvailabilityViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datePickerCellVisible ? 2 : 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell
+            cell.valueLabel.textColor = (availabilityError != nil ? true : false) ? UIColor.red : UIColor.darkText
+            cell.titleLabel.textColor = (availabilityError != nil ? true : false) ? UIColor.red : UIColor.darkText
+
+            switch (availabilityError) {
+            case .some(BookingError.badDate):
+                cell.valueLabel.text = "Unavailable"
+            case .some(BookingError.noDate):
+                cell.valueLabel.text = "Please Select"
+            default:
+                cell.valueLabel.text = selectedAvailability.flatMap({ DateFormatter.yearMonthDay.string(from: $0.date) })
+            }
+
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: datePickerCellIdentifier, for: indexPath) as! DatePickerCell
+            cell.datePicker.minimumDate = Date()
+            cell.datePicker.date = selectedAvailability?.date ?? Date()
+            cell.delegate = self
+            return cell
+        }
+    }
+}
+
+extension AvailabilityViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath {
+        case dateCellIndexPath:
+            datePickerCellVisible = !datePickerCellVisible
+
+            tableView.beginUpdates()
+
+            if datePickerCellVisible {
+                tableView.insertRows(at: [datePickerCellIndexPath], with: .automatic)
+            } else {
+                tableView.deleteRows(at: [datePickerCellIndexPath], with: .top)
+            }
+
+            tableView.endUpdates()
+
+            tableView.deselectRow(at: indexPath, animated: true)
+
+            if selectedAvailability == nil {
+                updateSelectedDate(Date())
+
+                tableView.reloadRows(at: [indexPath], with: .none)
+            }
+        default:
+            break
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == 0 ? 44 : 162
+    }
+}
+
+extension AvailabilityViewController: DatePickerCellDelegate {
+    func datePickerCellValueDidChange(_ cell: DatePickerCell) {
+        updateSelectedDate(cell.datePicker.date)
+    }
+
+    func updateSelectedDate(_ date: Date) {
+        guard let product = product else { return }
+
+        availabilityError = nil
+
+        tableView.isUserInteractionEnabled = false
+
+        Traveler.fetchAvailabilities(product: product, startDate: date, endDate: date, delegate: self)
+    }
+}
+
+extension AvailabilityViewController: AvailabilitiesFetchDelegate {
+    func availabilitiesFetchDidSucceedWith(_ availabilities: [Availability]) {
+        tableView.isUserInteractionEnabled = true
+
+        guard let availability = availabilities.first else {
+            availabilityError = BookingError.badDate
+            tableView.reloadData()
+            return
+        }
+
+        selectedOption = nil
+        selectedAvailability = availability
+
+        tableView.reloadData()
+    }
+
+    func availabilitiesFetchDidFailWith(_ error: Error) {
+        tableView.isUserInteractionEnabled = true
+
+        let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension AvailabilityViewController: PassFetchDelegate {
     func passFetchDidSucceedWith(_ result: [Pass]) {
+        if let _ = selectedOption {
+            optionsViewController?.passFetchDidSucceedWith(result)
+            return
+        }
+
         self.passes = result
 
         performSegue(withIdentifier: "passSegue", sender: nil)
@@ -87,23 +210,31 @@ extension AvailabilityViewController: PassFetchDelegate {
     }
 
     func passFetchDidFailWith(_ error: Error) {
+        if let _ = selectedOption {
+            optionsViewController?.passFetchDidFailWith(error)
+            return
+        }
+
         nextButton.isEnabled = true
-        errorContext?.error = error
+
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
     }
 }
 
-extension AvailabilityViewController: BookableDetailsViewControllerDelegate {
-    func bookableDetailsViewControllerDidChangePreferredContentSize(_ controller: BookableDetailsViewController) {
-        return
-    }
-
-    func bookableDetailsViewController(_ controller: BookableDetailsViewController, didUpdate availability: Availability) {
-        selectedAvailability = availability
-        selectedOption = nil
-    }
-
-    func bookableDetailsViewController(_ controller: BookableDetailsViewController, didSelect option: BookingOption?) {
+extension AvailabilityViewController: BookingOptionsViewControllerDelegate {
+    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didProceedWith option: BookingOption) {
         selectedOption = option
+        optionsViewController = controller
+        Traveler.fetchPasses(product: product!, availability: selectedAvailability!, option: option, delegate: self)
+    }
+
+    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm) {
+        delegate?.availabilityViewController(self, didFinishWith: bookingForm)
     }
 }
 

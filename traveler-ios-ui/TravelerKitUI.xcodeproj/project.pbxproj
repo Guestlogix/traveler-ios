@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */; };
+		A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */; };
 		A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */; };
 		A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */; };
 		A9639C9C220DF4F200625235 /* TravelerKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639C9A220DF4F200625235 /* TravelerKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,6 +124,7 @@
 
 /* Begin PBXFileReference section */
 		A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
+		A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionsViewController.swift; sourceTree = "<group>"; };
 		A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookableConfirmationViewController.swift; sourceTree = "<group>"; };
 		A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmer.swift"; sourceTree = "<group>"; };
 		A9639C97220DF4F200625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TravelerKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,6 +327,7 @@
 				CAEF49D322C2910F00117857 /* FailViewController.swift */,
 				CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */,
 				A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */,
+				A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				A974A6972282130900319683 /* OrdersViewController.swift in Sources */,
 				A9639D17220DF57400625235 /* PagedHorizontalView.swift in Sources */,
 				CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */,
+				A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */,
 				A9639D3D220E033C00625235 /* PaymentProvider.swift in Sources */,
 				A9639D00220DF57400625235 /* CatalogItemInfoViewController.swift in Sources */,
 				CA1462A722BBE0A200137F06 /* Order+TravelerUI.swift in Sources */,
