@@ -11,7 +11,6 @@ import TravelerKit
 
 class PurchaseViewController: UIViewController {
     var strategy: PurchaseStrategy?
-    var errorContext: ErrorContext?
     var product: Product?
 
     private var order: Order?
@@ -35,7 +34,6 @@ class PurchaseViewController: UIViewController {
         case (_, let vc as BookablePurchaseViewController):
             vc.delegate = self
             vc.product = product
-            vc.errorContext = errorContext
         case (_, let vc as BuyablePurchaseViewController):
             vc.delegate = self
         case (_, let vc as PaymentConfirmationViewController):

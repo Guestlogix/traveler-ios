@@ -17,7 +17,6 @@ class BookablePurchaseViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var proceedButton: UIButton!
 
-    var errorContext: ErrorContext?
     var product: Product?
     weak var delegate: BookablePurchaseViewControllerDelegate?
 
@@ -29,9 +28,8 @@ class BookablePurchaseViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as BookableConfirmationViewController):
+        case (_, let vc as BookingConfirmationViewController):
             vc.product = product
-            vc.errorContext = errorContext
             vc.delegate = self
         default:
             Log("Unknown Segue", data: segue, level: .warning)
@@ -76,8 +74,8 @@ extension BookablePurchaseViewController: DrawerTransitioning {
     }
 }
 
-extension BookablePurchaseViewController: BookableConfirmationViewControllerDelegate {
-    func bookableConfirmationViewController(_ controller: BookableConfirmationViewController, didFinishWith bookingForm: BookingForm) {
+extension BookablePurchaseViewController: BookingConfirmationViewControllerDelegate {
+    func bookingConfirmationViewController(_ controller: BookingConfirmationViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.bookablePurchaseViewController(self, didFinishWith: bookingForm)
     }
 }

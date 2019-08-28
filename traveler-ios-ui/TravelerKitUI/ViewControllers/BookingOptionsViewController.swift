@@ -66,6 +66,7 @@ class BookingOptionsViewController: UIViewController {
     }
 
     func passFetchDidSucceedWith(_ result: [Pass]) {
+        nextButton.isEnabled = true
         passes = result
         performSegue(withIdentifier: "optionPassSegue", sender: nil)
     }
@@ -79,6 +80,60 @@ class BookingOptionsViewController: UIViewController {
         alert.addAction(okAction)
 
         present(alert, animated: true)
+    }
+}
+
+extension BookingOptionsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! ListCell
+        cell.delegate = self
+        cell.dataSource = self
+        cell.textField.text = selectedOption?.value
+        cell.textField.textColor = (optionError != nil ? true : false) ? UIColor.red : UIColor.darkText
+        cell.titleLabel.textColor = (optionError != nil ? true : false) ? UIColor.red : UIColor.darkText
+
+        switch (optionError) {
+        case .some(BookingError.noOption):
+            cell.textField.text = "Please Select"
+            cell.textField.textColor = UIColor.red
+        default:
+            cell.textField.text = selectedOption?.value
+        }
+
+        return cell
+    }
+}
+
+extension BookingOptionsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        optionError = nil
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let cell = tableView.cellForRow(at: indexPath) as? ListCell
+        cell?.textField.becomeFirstResponder()
+    }
+}
+
+extension BookingOptionsViewController: ListCellDelegate {
+    func listCell(_ cell: ListCell, didSelectRow row: Int) {
+        selectedOption = availableOptions?[row]
+        optionError = nil
+        tableView.reloadData()
+    }
+}
+
+extension BookingOptionsViewController: ListCellDataSource {
+    func numberOfRowsInListCell(_ cell: ListCell) -> Int {
+        return availableOptions?.count ?? 0
+    }
+
+    func listCell(_ cell: ListCell, titleForRow row: Int) -> String? {
+        return availableOptions![row].value
     }
 }
 

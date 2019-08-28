@@ -1,5 +1,5 @@
 //
-//  CatalogResultViewController.swift
+//  PassengerCatalogResultViewController.swift
 //  Traveler
 //
 //  Created by Ata Namvari on 2018-10-25.

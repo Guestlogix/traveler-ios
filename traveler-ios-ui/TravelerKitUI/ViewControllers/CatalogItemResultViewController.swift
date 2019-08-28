@@ -27,8 +27,6 @@ class CatalogItemResultViewController: UIViewController {
     weak var delegate: CatalogItemResultViewControllerDelegate?
     var catalogItemDetails: CatalogItemDetails?
 
-    private let errorContext = ErrorContext()
-
     private(set) var preferredTranslucency: Bool = true
 
     override func viewDidLoad() {
@@ -68,7 +66,6 @@ class CatalogItemResultViewController: UIViewController {
             vc.details = catalogItemDetails
         case (_, let vc as PurchaseViewController):
             vc.strategy = catalogItemDetails?.purchaseStrategy
-            vc.errorContext = errorContext
             vc.product = catalogItemDetails
         case (_, let vc as SupplierInfoViewController):
             vc.supplier = catalogItemDetails?.supplier
