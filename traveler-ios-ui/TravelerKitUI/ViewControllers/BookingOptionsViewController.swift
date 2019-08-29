@@ -10,8 +10,8 @@ import UIKit
 import TravelerKit
 
 protocol BookingOptionsViewControllerDelegate: class {
-    func bookOptionsViewController(_ controller: BookingOptionsViewController, willProceedWith option: BookingOption)
-    func bookOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm)
+    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didProceedWith option: BookingOption)
+    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm)
 }
 
 class BookingOptionsViewController: UIViewController {
@@ -62,7 +62,7 @@ class BookingOptionsViewController: UIViewController {
         }
 
         nextButton.isEnabled = false
-        delegate?.bookOptionsViewController(self, willProceedWith: option)
+        delegate?.bookingOptionsViewController(self, didProceedWith: option)
     }
 
     func passFetchDidSucceedWith(_ result: [Pass]) {
@@ -139,6 +139,6 @@ extension BookingOptionsViewController: ListCellDataSource {
 
 extension BookingOptionsViewController: BookingPassesViewControllerDelegate {
     func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.bookOptionsViewController(self, didFinishWith: bookingForm)
+        delegate?.bookingOptionsViewController(self, didFinishWith: bookingForm)
     }
 }

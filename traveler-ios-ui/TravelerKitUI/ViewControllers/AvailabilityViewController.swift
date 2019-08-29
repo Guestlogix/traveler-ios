@@ -227,13 +227,13 @@ extension AvailabilityViewController: PassFetchDelegate {
 }
 
 extension AvailabilityViewController: BookingOptionsViewControllerDelegate {
-    func bookOptionsViewController(_ controller: BookingOptionsViewController, willProceedWith option: BookingOption) {
+    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didProceedWith option: BookingOption) {
         selectedOption = option
         optionsViewController = controller
         Traveler.fetchPasses(product: product!, availability: selectedAvailability!, option: option, delegate: self)
     }
 
-    func bookOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm) {
+    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.availabilityViewController(self, didFinishWith: bookingForm)
     }
 }
