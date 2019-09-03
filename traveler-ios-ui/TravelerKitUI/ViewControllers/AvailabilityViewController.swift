@@ -72,7 +72,9 @@ class AvailabilityViewController: UIViewController {
         }
 
         guard let availability = selectedAvailability else {
-            availabilityError = BookingError.noDate
+            if availabilityError == nil {
+                availabilityError = BookingError.noDate
+            }
             tableView.reloadData()
             return
         }
