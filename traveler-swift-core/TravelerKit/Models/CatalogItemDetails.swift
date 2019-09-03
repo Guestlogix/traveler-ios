@@ -20,6 +20,8 @@ public struct CatalogItemDetails: Decodable, Product {
     public let imageUrls: [URL]
     /// Attributes
     public let information: [Attribute]?
+    // Indicating if it's wishlisted
+    public var isWishlisted: Bool?
     /// Vendor's contact information
     public let contact: ContactInfo?
     /// An array of locations
@@ -49,6 +51,7 @@ public struct CatalogItemDetails: Decodable, Product {
         case priceStartingAt
         case purchaseStrategy
         case information
+        case isWishlisted
         case supplier
         case termsAndConditions
         case disclaimer
