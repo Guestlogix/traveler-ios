@@ -235,6 +235,59 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func wishlistToggle(item: CatalogItem, completion: @escaping(CatalogItem?, Error?) -> Void) {
+        guard let travelerProfileId = session.identity else {
+            completion(nil, WishlistToggleError.unidentifiedTraveler)
+            return
+        }
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<CatalogItem>(path: .wishlistToggle([item], travelerId: travelerProfileId), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+         }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func fetchWishlist(_ query: WishlistQuery, identifier: AnyHashable?, previousResultBlock: (() -> WishlistResult?)?, resultBlock: ((WishlistResult, AnyHashable?) -> Void)?, completion: @escaping (WishlistResult?, Error?, AnyHashable?) -> Void) {
+        guard let travelerProfileId = session.identity else {
+            completion(nil, WishlistResultError.unidentifiedTraveler, identifier)
+            return
+        }
+
+        class ResultWrapper {
+            var result: WishlistResult?
+        }
+
+        let wrapper = ResultWrapper()
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<WishlistResult>(path: .wishlist(query, travelerId: travelerProfileId) , session: session)
+        let mergeOperation = BlockOperation { [unowned fetchOperation] in
+            guard let result = fetchOperation.resource else { return }
+
+            wrapper.result = previousResultBlock?()?.merge(result) ?? result
+            resultBlock?(wrapper.result!, identifier)
+        }
+
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            if let result = wrapper.result {
+                completion(result, nil, identifier)
+            } else {
+                completion(nil, fetchOperation.error!, identifier)
+            }
+        }
+
+        mergeOperation.addDependency(fetchOperation)
+        blockOperation.addDependency(mergeOperation)
+
+        queue.addOperation(fetchOperation)
+        orderSerialQueue.addOperation(mergeOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     /**
@@ -634,4 +687,103 @@ public class Traveler {
     public static func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
         shared?.emailOrderConfirmation(order: order, completion: completion)
     }
+
+    /**
+     Adds the given `CatalogItem` into the traveler's wishlist
+
+     - Parameters:
+     - item: The `CatalogItem` that needs to be wishlisted
+     - delegate: A `WishlistAddDelegate` that is notified if the item was wishlisted successfuly
+     */
+
+    public static func wishlistAdd(_ item: CatalogItem, delegate: WishlistAddDelegate) {
+        shared?.wishlistToggle(item: item, completion: { [weak delegate] (item, error) in
+            if let error = error {
+                delegate?.wishlistAddDidFailWith(error)
+            } else {
+                delegate?.wishlistAddDidSucceedFor(item!)
+            }
+        })
+    }
+
+    /**
+     Adds the given `CatalogItem` into the traveler's wishlist
+
+     - Parameters:
+     - item: The `CatalogItem` that needs to be wishlisted
+     - completion: A completion block that is called when the item is wishlisted
+     */
+
+    public static func wishlistAdd(_ item: CatalogItem, completion: @escaping (CatalogItem?, Error?) -> Void) {
+        shared?.wishlistToggle(item: item, completion: completion)
+    }
+
+    /**
+     Removes the given `CatalogItem` from the traveler's wishlist
+
+     - Parameters:
+     - item: The `CatalogItem` that needs to be removed from the wishlist
+     - delegate: A `WishlistRemoveDelegate` that is notified if the item was removed from the wishlist successfuly
+     */
+
+    public static func wishlistRemove(_ item: CatalogItem, delegate: WishlistRemoveDelegate) {
+        shared?.wishlistToggle(item: item, completion: { [weak delegate] (item, error) in
+            if let error = error {
+                delegate?.wishlistRemoveDidFailWith(error)
+            } else {
+                delegate?.wishlistRemoveDidSucceedFor(item!)
+            }
+        })
+    }
+
+    /**
+     Removes the given `CatalogItem` from the traveler's wishlist
+
+     - Parameters:
+     - item: The `CatalogItem` that needs to be removed from the wishlist
+     - completion: A completion block that is called when the item is removed from the wishlist
+     */
+
+    public static func wishlistRemove(_ item: CatalogItem, completion: @escaping (CatalogItem?, Error?) -> Void) {
+        shared?.wishlistToggle(item: item, completion: completion)
+    }
+
+    /**
+     Fetches an `WishlistResult` corresponding to the given `WishlistQuery`.
+
+     - Parameters:
+     - query: The `WishlistQuery` to filter.
+     - identifier: An optional hash identifying the request. This value is returned back in the delegates. Use this to distinguish between different requests
+     - delegate: An `WishlistFetchDelegate` that is notified of the results.
+     */
+
+    public static func fetchWishlist(_ query: WishlistQuery, identifier: AnyHashable?, delegate: WishlistFetchDelegate) {
+        shared?.fetchWishlist(query, identifier: identifier, previousResultBlock: { [weak delegate] () -> WishlistResult? in
+            return delegate?.previousResult()
+        }, resultBlock: { [weak delegate] (result, identifier) in
+            delegate?.wishlistFetchDidReceive(result, identifier: identifier)
+        }, completion: { [weak delegate] (result, error, identifier) in
+            if let error = error {
+                delegate?.wishlistFetchDidFailWith(error, identifier: identifier)
+            } else {
+                delegate?.wishlistFetchDidSucceedWith(result!, identifier: identifier)
+            }
+        })
+    }
+
+    /**
+     Fetches an `WishlistResult` corresponding to the given `WishlistQuery`.
+
+     - Parameters:
+     - query: The `WishlistQuery` to filter.
+     - identifier: An optional hash identifying the request. This value is returned back in the callbacks. Use this to distinguish between different requests
+     - previousResultBlock: A block called (on a worker thread) to return any previous results that are to be merged
+     - resultBlock: A block called (on a worker thread) with the final merged results
+     - completion: A completion block that is called when the results are ready.
+     */
+
+    public static func fetchWishlist(_ query: WishlistQuery, identfier: AnyHashable?, previousResultBlock: (() -> WishlistResult?)?, resultBlock: ((WishlistResult, AnyHashable?) -> Void)?, completion: @escaping (WishlistResult?, Error?, AnyHashable?) -> Void) {
+        shared?.fetchWishlist(query, identifier: identfier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
+    }
+
 }
