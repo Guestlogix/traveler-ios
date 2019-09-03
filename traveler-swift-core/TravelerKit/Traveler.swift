@@ -10,7 +10,7 @@ import Foundation
 
 public class Traveler {
     private let queue = OperationQueue()
-    private let orderSerialQueue = OperationQueue()
+    private let serialQueue = OperationQueue()
     private let session: Session
 
     private static var _shared: Traveler?
@@ -38,7 +38,7 @@ public class Traveler {
     init(apiKey: String, device: Device) {
         self.session = Session(apiKey: apiKey)
         self.device = device
-        self.orderSerialQueue.maxConcurrentOperationCount = 1
+        self.serialQueue.maxConcurrentOperationCount = 1
 
         let sessionOperation = SessionBeginOperation(session: session)
         OperationQueue.authQueue.addOperation(sessionOperation)
@@ -190,7 +190,7 @@ public class Traveler {
         blockOperation.addDependency(mergeOperation)
 
         queue.addOperation(fetchOperation)
-        orderSerialQueue.addOperation(mergeOperation)
+        serialQueue.addOperation(mergeOperation)
         OperationQueue.main.addOperation(blockOperation)
     }
 
@@ -284,7 +284,7 @@ public class Traveler {
         blockOperation.addDependency(mergeOperation)
 
         queue.addOperation(fetchOperation)
-        orderSerialQueue.addOperation(mergeOperation)
+        serialQueue.addOperation(mergeOperation)
         OperationQueue.main.addOperation(blockOperation)
     }
 
