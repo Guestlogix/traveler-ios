@@ -11,7 +11,7 @@ import Foundation
 enum AuthPath {
     case flights(FlightQuery)
     case catalog(CatalogQuery)
-    case catalogItem(Product)
+    case catalogItem(Product, travelerId: String?)
     case productSchedule(Product, from: Date, to: Date)
     case passes(Product, availability: Availability, option: BookingOption?)
     case questions(Product, passes: [Pass])
@@ -21,6 +21,8 @@ enum AuthPath {
     case cancellationQuote(Order)
     case cancelOrder(CancellationQuote)
     case emailOrderConfirmation(Order)
+    case wishlistToggle([Product], travelerId: String)
+    case wishlist(WishlistQuery, travelerId: String)
 
     // MARK: URLRequest
 
@@ -42,8 +44,13 @@ enum AuthPath {
             query.flights?.forEach { (flight) in
                 urlComponents.queryItems!.append(URLQueryItem(name:"flight-ids", value: flight.id))
             }
-        case .catalogItem(let item):
-            urlComponents.path = "/v1/product/\(item.id)"
+        case .catalogItem(let item, let travelerId):
+            urlComponents.path = "/v1/catalog/\(item.id)"
+            if let _ = travelerId {
+                urlComponents.queryItems = [
+                    URLQueryItem(name: "travelerId", value: travelerId)
+                ]
+            }
         case .productSchedule(let product, let fromDate, let toDate):
             urlComponents.path = "/v1/product/\(product.id)/schedule"
             urlComponents.queryItems = [
@@ -116,6 +123,28 @@ enum AuthPath {
         case .emailOrderConfirmation(let order):
             urlComponents.path = "/v1/order/\(order.id)/ticket"
             urlRequest.method = .patch
+        case .wishlistToggle(let items, let travelerId):
+            urlComponents.path = "/v1/traveler/\(travelerId)/wishlist"
+            urlRequest.method = .patch
+            urlRequest.jsonBody = [
+                "product_ids": items.map({
+                    $0.id
+                })
+            ]
+        case .wishlist(let query, let travelerId):
+            urlComponents.path = "/v1/traveler/\(travelerId)/wishlist"
+            urlRequest.method = .get
+            urlComponents.queryItems = [
+                URLQueryItem(name: "skip", value: String(query.offset)),
+                URLQueryItem(name: "take", value: String(query.limit)),
+                URLQueryItem(name: "to", value: ISO8601DateFormatter.fullFormatter.string(from: query.toDate))
+            ]
+
+            if let fromDate = query.fromDate {
+                urlComponents.queryItems?.append(
+                    URLQueryItem(name: "from", value: ISO8601DateFormatter.fullFormatter.string(from: fromDate))
+                )
+            }
         }
 
         urlRequest.url = urlComponents.url

@@ -13,7 +13,7 @@ public enum Category: String, Decodable {
     case tour = "Tour"
     case show = "Show"
     case event = "Event"
-    case transfer = "Transfer"
+    case transfer = "Transfers"
     case parking = "Parking"
     case nightlife = "Nightlife"
     case dining = "Dining"
