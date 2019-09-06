@@ -23,6 +23,7 @@ class CatalogItemResultViewController: UIViewController {
     @IBOutlet weak var itemInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var itemInfoView: UIView!
     @IBOutlet weak var termsAndConditionsButton: UIButton!
+    @IBOutlet weak var descriptionLabelBottomConstraint: NSLayoutConstraint!
     
     weak var delegate: CatalogItemResultViewControllerDelegate?
     var catalogItemDetails: CatalogItemDetails?
@@ -45,7 +46,8 @@ class CatalogItemResultViewController: UIViewController {
             })
         })
 
-        termsAndConditionsButton.isEnabled = catalogItemDetails?.attributedTermsAndConditions != nil
+        termsAndConditionsButton.isHidden = catalogItemDetails?.attributedTermsAndConditions == nil
+        descriptionLabelBottomConstraint.constant = catalogItemDetails?.attributedTermsAndConditions == nil ? 0: termsAndConditionsButton.frame.height + 10
     }
 
     override func viewWillDisappear(_ animated: Bool) {
