@@ -218,7 +218,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="zyr-24-GVl" secondAttribute="trailing" id="7xR-qD-LFb"/>
                                                     <constraint firstItem="PVE-rB-saD" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" constant="16" id="8EX-U9-K38"/>
                                                     <constraint firstItem="zyr-24-GVl" firstAttribute="top" secondItem="AKz-8S-J8p" secondAttribute="bottom" id="Awu-Yn-Ry0"/>
-                                                    <constraint firstItem="PVE-rB-saD" firstAttribute="top" secondItem="kOt-35-ojm" secondAttribute="bottom" constant="10" id="C0A-bF-dlD"/>
+                                                    <constraint firstItem="AKz-8S-J8p" firstAttribute="top" secondItem="kOt-35-ojm" secondAttribute="bottom" constant="40" id="IDb-CU-cYG"/>
                                                     <constraint firstAttribute="trailing" secondItem="PVE-rB-saD" secondAttribute="trailing" constant="16" id="JQV-7M-d0J"/>
                                                     <constraint firstAttribute="trailing" secondItem="Zcw-xY-71N" secondAttribute="trailing" id="Kfs-sF-z4B"/>
                                                     <constraint firstAttribute="trailing" secondItem="13o-HV-sxb" secondAttribute="trailing" constant="16" id="LS5-H0-8zb"/>
@@ -297,6 +297,7 @@
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="kOt-35-ojm" id="IJ7-gS-RhV"/>
+                        <outlet property="descriptionLabelBottomConstraint" destination="IDb-CU-cYG" id="zA0-W3-qba"/>
                         <outlet property="headerView" destination="Zcw-xY-71N" id="jHv-5g-ty6"/>
                         <outlet property="itemInfoHeightConstraint" destination="KqR-cu-QRS" id="EYL-wS-ff7"/>
                         <outlet property="itemInfoView" destination="AKz-8S-J8p" id="7xh-3i-QF5"/>
