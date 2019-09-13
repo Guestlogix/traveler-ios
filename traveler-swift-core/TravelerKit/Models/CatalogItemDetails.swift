@@ -36,6 +36,8 @@ public struct CatalogItemDetails: Decodable, Product {
     public let supplier: Supplier
     /// Terms and conditions
     public var termsAndConditions: String?
+    /// Disclaimer
+    public var disclaimer: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -49,6 +51,7 @@ public struct CatalogItemDetails: Decodable, Product {
         case information
         case supplier
         case termsAndConditions
+        case disclaimer
     }
 }
 

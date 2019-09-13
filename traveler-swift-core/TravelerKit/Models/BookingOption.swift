@@ -20,10 +20,15 @@ public struct BookingOption: Decodable, Equatable {
      then this would read something like "11:00 am".
      */
     public let value: String
+    /**
+     A disclaimer for that option. These disclaimers may contain start times and information on levies
+     */
+    public let disclaimer: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case value = "optionLabel"
+        case disclaimer = "disclaimer"
     }
 
     public static func ==(lhs: BookingOption, rhs: BookingOption) -> Bool {
