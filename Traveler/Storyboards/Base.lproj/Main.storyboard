@@ -71,11 +71,19 @@
                                 <action selector="didPressAuthButton:" destination="caP-4I-RGD" id="9mt-Rp-8XK"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="g6t-xa-4nO">
-                            <connections>
-                                <segue destination="U3w-ya-EKt" kind="presentation" identifier="addFlightSegue" id="eEX-66-lWQ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="g6t-xa-4nO">
+                                <connections>
+                                    <segue destination="U3w-ya-EKt" kind="presentation" identifier="addFlightSegue" id="eEX-66-lWQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="pVl-Us-SV4">
+                                <connections>
+                                    <action selector="didPressSearchButton:" destination="caP-4I-RGD" id="lJm-cI-ay4"/>
+                                    <segue destination="15f-eJ-vkR" kind="show" identifier="searchSegue" id="Se6-wN-d8W"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="authButton" destination="f5P-La-iKT" id="2IK-r8-NNL"/>
@@ -90,6 +98,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBr-9C-snF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="394" y="1422"/>
+        </scene>
+        <!--CatalogItemSearch-->
+        <scene sceneID="UZZ-xq-RGh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CatalogItemSearch" bundleIdentifier="com.guestlogix.TravelerKitUI" id="15f-eJ-vkR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ns-D7-SME" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="673" y="2219"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="JuQ-tc-Bez">
@@ -594,7 +610,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bQr-bN-Im0">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="6Y6-1O-G4E">
+                        <view key="titleView" contentMode="scaleToFill" ambiguous="YES" id="6Y6-1O-G4E">
                             <rect key="frame" x="187.66666666666666" y="22" width="0.0" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
