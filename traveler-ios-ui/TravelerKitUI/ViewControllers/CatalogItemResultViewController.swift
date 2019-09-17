@@ -13,6 +13,7 @@ let imageCellIdentifier = "imageCellIdentifier"
 
 protocol CatalogItemResultViewControllerDelegate: class {
     func catalogItemResultViewControllerDidChangePreferredTranslucency(_ controller: CatalogItemResultViewController)
+    func catalogItemResultViewController(_ controller: CatalogItemResultViewController, didUnwishlist item: Product)
 }
 
 class CatalogItemResultViewController: UIViewController {
@@ -22,6 +23,7 @@ class CatalogItemResultViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var itemInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var itemInfoView: UIView!
+    @IBOutlet weak var wishlistButton: HeartButton!
     @IBOutlet weak var termsAndConditionsButton: UIButton!
     
     weak var delegate: CatalogItemResultViewControllerDelegate?
@@ -36,6 +38,8 @@ class CatalogItemResultViewController: UIViewController {
         let description = catalogItemDetails?.attributedDescription
         description?.setFontFace(font: UIFont.systemFont(ofSize: 17))
         descriptionLabel.attributedText = description
+        wishlistButton.isFilled = catalogItemDetails?.isWishlisted ?? false
+        wishlistButton.tintColor = .red
 
         // Preload images
 
@@ -80,6 +84,23 @@ class CatalogItemResultViewController: UIViewController {
 
     @IBAction func didSelectTermsAndConditions(_ sender: Any) {
         performSegue(withIdentifier: "termsAndConditionsSegue", sender: nil)
+    }
+
+    @IBAction func didToggleWishlist(_ sender: Any) {
+        guard let detail = catalogItemDetails else {
+            return
+        }
+
+        // Since isWishlisted is changed to optional now, do I show the `unidentifiedUser` error right here when isWishlisted is found to be nil or should I let the core SDK handle it?
+        if detail.isWishlisted == true {
+            Traveler.wishlistRemove([detail], result: nil, delegate: self)
+            wishlistButton.isFilled = false
+        } else {
+            Traveler.wishlistAdd([detail], delegate: self)
+            wishlistButton.isFilled = true
+        }
+
+        wishlistButton.isEnabled = false
     }
 }
 
@@ -129,5 +150,44 @@ extension CatalogItemResultViewController: UIScrollViewDelegate {
             scrollView.contentInsetAdjustmentBehavior = .never
             delegate?.catalogItemResultViewControllerDidChangePreferredTranslucency(self)
         }
+    }
+}
+
+extension CatalogItemResultViewController: WishlistRemoveDelegate {
+    func wishlistRemoveDidSucceed() {
+        wishlistButton.isEnabled = true
+        catalogItemDetails?.isWishlisted = false
+        delegate?.catalogItemResultViewController(self, didUnwishlist: catalogItemDetails!)
+    }
+
+    func wishlistRemoveDidFailWith(_ error: Error, result: WishlistResult?) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
+            self.wishlistButton.isEnabled = true
+            self.wishlistButton.isFilled = true
+        })
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
+    }
+}
+
+extension CatalogItemResultViewController: WishlistAddDelegate {
+    func wishlistAddDidSucceedFor(_ items: [CatalogItem]) {
+        wishlistButton.isEnabled = true
+        catalogItemDetails?.isWishlisted = true
+    }
+
+    func wishlistAddDidFailWith(_ error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
+            self.wishlistButton.isEnabled = true
+            self.wishlistButton.isFilled = false
+        })
+	
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
     }
 }

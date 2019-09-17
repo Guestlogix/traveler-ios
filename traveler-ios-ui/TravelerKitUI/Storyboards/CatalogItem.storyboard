@@ -170,7 +170,7 @@
                                                         </connections>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13o-HV-sxb">
-                                                        <rect key="frame" x="16" y="399" width="343" height="33.5"/>
+                                                        <rect key="frame" x="16" y="399" width="66.5" height="33.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -207,11 +207,22 @@
                                                             <segue destination="dYu-Mg-MyD" kind="presentation" identifier="termsAndConditionsSegue" id="uFP-mr-GeA"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkS-cf-a0S" customClass="HeartButton" customModule="TravelerKitUI" customModuleProvider="target">
+                                                        <rect key="frame" x="335" y="403.5" width="25" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="25" id="hTn-vA-pcd"/>
+                                                            <constraint firstAttribute="width" secondItem="AkS-cf-a0S" secondAttribute="height" multiplier="1:1" id="qnB-j2-CsP"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="didToggleWishlist:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="nMZ-Ey-22K"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="kOt-35-ojm" firstAttribute="top" secondItem="13o-HV-sxb" secondAttribute="bottom" constant="22" id="0Z8-mA-4b4"/>
                                                     <constraint firstItem="AKz-8S-J8p" firstAttribute="top" secondItem="PVE-rB-saD" secondAttribute="bottom" id="2KS-lN-m6i"/>
+                                                    <constraint firstItem="AkS-cf-a0S" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="13o-HV-sxb" secondAttribute="trailing" constant="10" id="5PP-Mo-RYb"/>
                                                     <constraint firstAttribute="trailing" secondItem="kOt-35-ojm" secondAttribute="trailing" constant="16" id="6a3-nz-N9c"/>
                                                     <constraint firstItem="13o-HV-sxb" firstAttribute="top" secondItem="Zcw-xY-71N" secondAttribute="bottom" constant="24" id="6ok-nQ-3Xb"/>
                                                     <constraint firstItem="Zcw-xY-71N" firstAttribute="top" secondItem="ypP-Pg-YB4" secondAttribute="top" id="6wl-zf-gRX"/>
@@ -221,10 +232,11 @@
                                                     <constraint firstItem="PVE-rB-saD" firstAttribute="top" secondItem="kOt-35-ojm" secondAttribute="bottom" constant="10" id="C0A-bF-dlD"/>
                                                     <constraint firstAttribute="trailing" secondItem="PVE-rB-saD" secondAttribute="trailing" constant="16" id="JQV-7M-d0J"/>
                                                     <constraint firstAttribute="trailing" secondItem="Zcw-xY-71N" secondAttribute="trailing" id="Kfs-sF-z4B"/>
-                                                    <constraint firstAttribute="trailing" secondItem="13o-HV-sxb" secondAttribute="trailing" constant="16" id="LS5-H0-8zb"/>
                                                     <constraint firstItem="zyr-24-GVl" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="Nr2-tK-qli"/>
                                                     <constraint firstAttribute="bottom" secondItem="zyr-24-GVl" secondAttribute="bottom" id="P3r-Aa-aug"/>
                                                     <constraint firstItem="kOt-35-ojm" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" constant="16" id="SXB-Ax-Ljd"/>
+                                                    <constraint firstItem="13o-HV-sxb" firstAttribute="centerY" secondItem="AkS-cf-a0S" secondAttribute="centerY" id="UWe-km-4kN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AkS-cf-a0S" secondAttribute="trailing" constant="15" id="ZjW-gz-iUc"/>
                                                     <constraint firstItem="Zcw-xY-71N" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="h0e-6v-wsz"/>
                                                     <constraint firstItem="AKz-8S-J8p" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="uxp-aE-JEX"/>
                                                     <constraint firstItem="13o-HV-sxb" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" constant="16" id="vce-5H-bLh"/>
@@ -303,6 +315,7 @@
                         <outlet property="scrollView" destination="5AW-GA-zq8" id="ize-J1-UsE"/>
                         <outlet property="termsAndConditionsButton" destination="PVE-rB-saD" id="DcN-Fu-XG1"/>
                         <outlet property="titleLabel" destination="13o-HV-sxb" id="nnV-gd-Blt"/>
+                        <outlet property="wishlistButton" destination="AkS-cf-a0S" id="UdE-RE-1cy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H7R-B5-6j6" userLabel="First Responder" sceneMemberID="firstResponder"/>

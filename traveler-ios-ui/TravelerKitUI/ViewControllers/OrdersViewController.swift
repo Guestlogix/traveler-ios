@@ -45,7 +45,7 @@ open class OrdersViewController: UIViewController {
 extension OrdersViewController: OrderFetchDelegate {
     public func orderFetchDidSucceedWith(_ result: OrderResult, identifier: AnyHashable?) {
         self.result = result
-
+        
         performSegue(withIdentifier: "resultSegue", sender: nil)
     }
 

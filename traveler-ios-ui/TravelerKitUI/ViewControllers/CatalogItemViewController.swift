@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 public protocol CatalogItemViewControllerDelegate: class {
-    func catalogItemViewController(_ controller: CatalogItemViewController, didCreate order: Order)
+    func catalogItemViewController(_ controller: CatalogItemViewController, didUnwishlist item: Product)
 }
 
 open class CatalogItemViewController: UIViewController {
@@ -81,6 +81,10 @@ extension CatalogItemViewController: CatalogItemErrorViewControllerDelegate {
 }
 
 extension CatalogItemViewController: CatalogItemResultViewControllerDelegate {
+    func catalogItemResultViewController(_ controller: CatalogItemResultViewController, didUnwishlist item: Product) {
+        delegate?.catalogItemViewController(self, didUnwishlist: item)
+    }
+
     func catalogItemResultViewControllerDidChangePreferredTranslucency(_ controller: CatalogItemResultViewController) {
         if controller.preferredTranslucency {
             UIView.animate(withDuration: 0.2, animations: {
@@ -107,9 +111,5 @@ extension CatalogItemViewController: CatalogItemResultViewControllerDelegate {
                 controller.titleLabel.alpha = 0
             }
         }
-    }
-
-    func catalogItemResultViewController(_ controller: CatalogItemResultViewController, didCreate order: Order) {
-        delegate?.catalogItemViewController(self, didCreate: order)
     }
 }
