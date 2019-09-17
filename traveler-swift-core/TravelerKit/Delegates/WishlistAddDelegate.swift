@@ -11,13 +11,15 @@ import Foundation
 /// Notified when wishlisting item
 public protocol WishlistAddDelegate: class {
     /**
-     Called when the `CatalogItem` was wishlisted successfully
+     Called when the `Product` was wishlisted successfully
+
      - Parameters:
-     -item: The `CatalogItem`that was wishlisted
+     - item: The `Product` that was wishlisted
+     - itemDetails: The corresponding `CatalogItemDetails` of the `Product` that was wishlisted
      */
-    func wishlistAddDidSucceedFor(_ items: [CatalogItem])
+    func wishlistAddDidSucceedFor(_ item: Product, with itemDetails: CatalogItemDetails)
     /**
-     Called when there was an error wishlisting the `CatalogItem`
+     Called when there was an error wishlisting the `Product`
 
      - Parameters:
      - error: The `Error` representing the reason for failure.

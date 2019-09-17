@@ -20,6 +20,11 @@
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="lrf-99-tEs">
                         <barButtonItem key="backBarButtonItem" title="Back" id="pnF-CI-JGN"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="I8B-oP-nea">
+                            <connections>
+                                <action selector="didPressCancelWithSender:" destination="Z2S-Kb-kcV" id="ZmT-qq-aho"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="18L-M2-7qk" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="j3A-z6-b3X"/>

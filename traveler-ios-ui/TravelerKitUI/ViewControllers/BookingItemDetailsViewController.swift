@@ -20,6 +20,7 @@ class BookingItemDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var wishlistButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var itemInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var itemInfoView: UIView!
@@ -51,7 +52,6 @@ class BookingItemDetailsViewController: UIViewController {
 
         termsAndConditionsButton.isHidden = bookingItemDetails?.attributedTermsAndConditions == nil
         descriptionLabelBottomConstraint.constant = bookingItemDetails?.attributedTermsAndConditions == nil ? 0: termsAndConditionsButton.frame.height + 10
-
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,6 +63,8 @@ class BookingItemDetailsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         updatePreferredTranslucency()
+
+        wishlistButton.isSelected = bookingItemDetails?.isWishlisted ?? false
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,6 +83,21 @@ class BookingItemDetailsViewController: UIViewController {
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
+        }
+    }
+
+    @IBAction func didPressWishlistButton(_ sender: UIButton) {
+        guard let product = product else {
+            Log("Unknown product.", data: nil, level: .error)
+            return
+        }
+
+        if let isWishlisted = bookingItemDetails?.isWishlisted, isWishlisted == true {
+            wishlistButton.isSelected = false
+            Traveler.removeFromWishlist(product, result: nil, delegate: self)
+        } else {
+            wishlistButton.isSelected = true
+            Traveler.addToWishlist(product, delegate: self)
         }
     }
 
@@ -141,5 +158,58 @@ extension BookingItemDetailsViewController: UIScrollViewDelegate {
 extension BookingItemDetailsViewController: BookablePurchaseViewControllerDelegate {
     func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.bookingItemDetailsViewController(self, didFinishWith: bookingForm)
+    }
+}
+
+extension BookingItemDetailsViewController: WishlistAddDelegate {
+    func wishlistAddDidSucceedFor(_ item: Product, with itemDetails: CatalogItemDetails) {
+        guard let details = itemDetails as? BookingItemDetails else {
+            Log("Unknown CatalogItemDetails type", data: itemDetails, level: .error)
+            return
+        }
+
+        bookingItemDetails = details
+    }
+
+    func wishlistAddDidFailWith(_ error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
+            self.wishlistButton.isSelected = false
+        })
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
+    }
+}
+
+extension BookingItemDetailsViewController: WishlistRemoveDelegate {
+    func wishlistRemoveDidSucceedFor(_ item: Product, with itemDetails: CatalogItemDetails?) {
+        switch itemDetails {
+        case .some(let details as BookingItemDetails):
+            bookingItemDetails = details
+        case .some:
+            Log("Unknown CatalogItemDetails type", data: itemDetails, level: .error)
+        case .none:
+            let alert = UIAlertController(title: "Item is no longer available.", message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
+                self.dismiss(animated: true, completion: nil)
+            })
+
+            alert.addAction(okAction)
+
+            present(alert, animated: true)
+        }
+    }
+
+    func wishlistRemoveDidFailWith(_ error: Error, result: WishlistResult?) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
+            self.wishlistButton.isSelected = true
+        })
+
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
     }
 }

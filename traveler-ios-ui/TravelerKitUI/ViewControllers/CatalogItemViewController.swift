@@ -9,14 +9,9 @@
 import UIKit
 import TravelerKit
 
-public protocol CatalogItemViewControllerDelegate: class {
-    func catalogItemViewController(_ controller: CatalogItemViewController, didCreate order: Order)
-}
-
 open class CatalogItemViewController: UIViewController {
     public var image: UIImage?
     public var catalogItem: CatalogItem?
-    public weak var delegate: CatalogItemViewControllerDelegate?
 
     private var details: CatalogItemDetails?
     private var product: Product?

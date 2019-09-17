@@ -9,6 +9,6 @@
 import Foundation
 
 public enum WishlistToggleError: Error {
+    /// The traveler is not identified yet. Developer must call `Traveler.identify()` before attempting to wishlsit or unwishlist an item.
     case unidentifiedTraveler
-    case notInWishlist
 }

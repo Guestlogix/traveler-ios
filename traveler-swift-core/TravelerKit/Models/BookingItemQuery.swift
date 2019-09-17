@@ -48,7 +48,7 @@ public struct BookingItemQuery {
 
     init(with params: BookingItemSearchParameters) {
         self.boundingBox = params.boundingBox
-        self.categories = params.categories ?? []
+        self.categories = params.categories
         self.priceRange = params.range
         self.text = params.text
         self.offset = 0

@@ -9,6 +9,7 @@
 import Foundation
 
 /// Any product that can be purchased
+/// Note: `Product` is directly related to `Order` but also being conformed by `BookingItem`, `ParkingItem` and `items` in `WishlistResult`. Another refactoring might be needed later.
 public protocol Product {
     /// Identifier
     var id: String { get }

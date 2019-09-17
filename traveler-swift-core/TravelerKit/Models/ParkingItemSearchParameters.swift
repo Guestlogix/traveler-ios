@@ -31,15 +31,19 @@ public struct ParkingItemSearchParameters: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.airportIATA = try container.decode(String?.self, forKey: .airport)
 
-        let topLeftLatitude = try container.decode(Double.self, forKey: .topLeftLatitude)
-        let topLeftLongitude = try container.decode(Double.self, forKey: .topLeftLongitude)
-        let bottomRightLatitude = try container.decode(Double.self, forKey: .bottomRightLatitude)
-        let bottomRighLongitude = try container.decode(Double.self, forKey: .bottomRightLongitude)
+        let topLeftLatitude = try container.decode(Double?.self, forKey: .topLeftLatitude)
+        let topLeftLongitude = try container.decode(Double?.self, forKey: .topLeftLongitude)
+        let bottomRightLatitude = try container.decode(Double?.self, forKey: .bottomRightLatitude)
+        let bottomRighLongitude = try container.decode(Double?.self, forKey: .bottomRightLongitude)
 
-        let topLeftCoordinate = Coordinate(latitude: topLeftLatitude, longitude: topLeftLongitude)
-        let bottomRightCoordinate = Coordinate(latitude: bottomRightLatitude, longitude: bottomRighLongitude)
+        if let topLeftLatitude = topLeftLatitude, let topLeftLongitude = topLeftLongitude, let bottomRightLatitude = bottomRightLatitude, let bottomRighLongitude = bottomRighLongitude {
+            let topLeftCoordinate = Coordinate(latitude: topLeftLatitude, longitude: topLeftLongitude)
+            let bottomRightCoordinate = Coordinate(latitude: bottomRightLatitude, longitude: bottomRighLongitude)
 
-        self.boundingBox = BoundingBox(topLeftCoordinate: topLeftCoordinate, bottomRightCoordinate: bottomRightCoordinate)
+            self.boundingBox = BoundingBox(topLeftCoordinate: topLeftCoordinate, bottomRightCoordinate: bottomRightCoordinate)
+        } else {
+            self.boundingBox = nil
+        }
 
         let startTimeString = try container.decode(String.self, forKey: .startTime)
         let endTimeString = try container.decode(String.self, forKey: .endTime)

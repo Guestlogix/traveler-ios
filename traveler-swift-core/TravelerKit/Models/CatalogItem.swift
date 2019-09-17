@@ -16,4 +16,6 @@ public protocol CatalogItem {
     var subTitle: String? { get }
     /// URL for a thumbnail
     var imageURL: URL? { get }
+    /// Indicates if item is available
+    var isAvailable: Bool { get }
 }

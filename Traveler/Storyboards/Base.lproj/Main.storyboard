@@ -243,6 +243,30 @@
                                             <segue destination="bRM-19-kxD" kind="show" identifier="settingsSegue" id="aTd-6V-e3h"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="cck-Db-tDJ">
+                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cck-Db-tDJ" id="YXg-5Y-IeJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQ4-EG-Apz">
+                                                    <rect key="frame" x="16" y="11.333333333333336" width="309" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jQ4-EG-Apz" firstAttribute="centerY" secondItem="YXg-5Y-IeJ" secondAttribute="centerY" id="M3C-wQ-pPl"/>
+                                                <constraint firstItem="jQ4-EG-Apz" firstAttribute="leading" secondItem="YXg-5Y-IeJ" secondAttribute="leading" constant="16" id="bGI-Us-zN8"/>
+                                                <constraint firstAttribute="trailing" secondItem="jQ4-EG-Apz" secondAttribute="trailing" constant="16" id="xTQ-DP-rxV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ock-fL-bKh" kind="show" id="6MB-j5-IR5"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -273,7 +297,15 @@
                 <viewControllerPlaceholder storyboardName="Orders" bundleIdentifier="com.guestlogix.TravelerKitUI" id="mwQ-e9-Ztk" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zv-qc-1xM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5003" y="1517"/>
+            <point key="canvasLocation" x="4762" y="1422"/>
+        </scene>
+        <!--Wishlist-->
+        <scene sceneID="2bz-dJ-UoU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wishlist" bundleIdentifier="com.guestlogix.TravelerKitUI" id="Ock-fL-bKh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Qm-JX-jyJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4767" y="2233"/>
         </scene>
         <!--Settings-->
         <scene sceneID="dJ4-ul-HlD">
@@ -324,7 +356,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peS-nt-TkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5004" y="2056.4039408866997"/>
+            <point key="canvasLocation" x="5004" y="1802"/>
         </scene>
         <!--Passenger Catalog View Controller-->
         <scene sceneID="hqm-07-Fsr">
@@ -501,7 +533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yH-82-dcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7722.3999999999996" y="1422.4137931034484"/>
+            <point key="canvasLocation" x="6780" y="1400"/>
         </scene>
         <!--CatalogItem-->
         <scene sceneID="8hi-b7-28c">
