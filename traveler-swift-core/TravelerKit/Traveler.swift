@@ -250,36 +250,22 @@ public class Traveler {
     }
 
     @discardableResult
-    func wishlistRemove(items: [Product], result: WishlistResult?, completion: @escaping(WishlistResult?, Error?) -> Void) -> WishlistResult? {
+    func removeFromWishlist(_ item: Product, result: WishlistResult?, completion: @escaping(Product, CatalogItemDetails?, WishlistResult?, Error?) -> Void) -> WishlistResult? {
         guard let travelerProfileId = session.identity else {
-            completion(nil, WishlistToggleError.unidentifiedTraveler)
+            completion(item, nil, result, WishlistToggleError.unidentifiedTraveler)
             return nil
         }
 
         var immediateResult: WishlistResult?
 
         if var result = result {
-            let allItemsExistInResult = items.map({ $0.id }).reduce(true) { (exists, id) -> Bool in
-                exists && result.items.values.contains(where: { (item) -> Bool in
-                    item.id == id
-                })
-            }
-
-            guard allItemsExistInResult == true else {
-                completion(nil, WishlistToggleError.notInWishlist)
-                return nil
-            }
-
-            for item in items {
-                result.remove(item)
-            }
-
+            result.remove(item)
             immediateResult = result
         }
 
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[AnyItem]>(path: .wishlistToggle(items, travelerId: travelerProfileId), session: session)
+        let fetchOperation = AuthenticatedRemoteFetchOperation<AnyItemDetails>(path: .wishlistRemove(item, travelerId: travelerProfileId), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
-            completion(result, fetchOperation.error)
+            completion(item, fetchOperation.resource?.payload, result, fetchOperation.error)
         }
 
         blockOperation.addDependency(fetchOperation)
@@ -289,31 +275,16 @@ public class Traveler {
         return immediateResult
     }
 
-    func wishlistAdd(items: [Product], completion: @escaping([CatalogItem]?, Error?) -> Void) {
+    func addToWishlist(_ item: Product, completion: @escaping(Product, CatalogItemDetails?, Error?) -> Void) {
         guard let travelerProfileId = session.identity else {
-            completion(nil, WishlistToggleError.unidentifiedTraveler)
+            completion(item, nil, WishlistToggleError.unidentifiedTraveler)
             return
         }
 
 
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[AnyItem]>(path: .wishlistToggle(items, travelerId: travelerProfileId), session: session)
+        let fetchOperation = AuthenticatedRemoteFetchOperation<AnyItemDetails>(path: .wishlistAdd(item, travelerId: travelerProfileId), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
-            var resultArray: [CatalogItem]?
-
-            if let anyItemArray = fetchOperation.resource {
-                resultArray = anyItemArray.map({ (item) -> CatalogItem in
-                    switch item.type {
-                    case .booking:
-                        return item.bookingItem!
-                    case .parking:
-                        return item.parkingItem!
-                    }
-                })
-            } else {
-                resultArray = nil
-            }
-
-            completion(resultArray, fetchOperation.error)
+            completion(item, fetchOperation.resource?.payload, fetchOperation.error)
         }
 
         blockOperation.addDependency(fetchOperation)
@@ -334,12 +305,6 @@ public class Traveler {
         let wrapper = ResultWrapper()
 
         let fetchOperation = AuthenticatedRemoteFetchOperation<WishlistResult>(path: .wishlist(query, travelerId: travelerProfileId) , session: session)
-        let mergeOperation = BlockOperation { [unowned fetchOperation] in
-            guard let result = fetchOperation.resource else { return }
-
-            wrapper.result = previousResultBlock?()?.merge(result) ?? result
-            resultBlock?(wrapper.result!, identifier)
-        }
 
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             if let result = wrapper.result {
@@ -349,13 +314,29 @@ public class Traveler {
             }
         }
 
+        let mergeOperation = BlockOperation { [unowned fetchOperation] in
+            guard let result = fetchOperation.resource else { return }
+
+            if let previousResultBlock = previousResultBlock, let previousResult = previousResultBlock() {
+                if let mergedResult = previousResult.merge(result) {
+                    wrapper.result = mergedResult
+                    resultBlock?(wrapper.result!, identifier)
+                } else {
+                    completion(nil, WishlistResultError.resultMismatch, identifier)
+                    blockOperation.cancel()
+                }
+            } else {
+                wrapper.result = previousResultBlock?()?.merge(result) ?? result
+                resultBlock?(wrapper.result!, identifier)
+            }
+        }
+
         mergeOperation.addDependency(fetchOperation)
         blockOperation.addDependency(mergeOperation)
 
         queue.addOperation(fetchOperation)
         serialQueue.addOperation(mergeOperation)
-    OperationQueue.main.addOperation(blockOperation)
-
+        OperationQueue.main.addOperation(blockOperation)
     }
 
     func searchBookingItems(_ searchQuery: BookingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> BookingItemSearchResult?)?, resultBlock: ((BookingItemSearchResult, AnyHashable?) -> Void)?, completion: @escaping (BookingItemSearchResult?, Error?, AnyHashable?) -> Void) {
@@ -832,65 +813,64 @@ public class Traveler {
     }
 
     /**
-<<<<<<< HEAD
      Adds the given `CatalogItem` into the traveler's wishlist
 
      - Parameters:
-     - item: The `CatalogItem` that needs to be wishlisted
-     - delegate: A `WishlistAddDelegate` that is notified if the item was wishlisted successfuly
+     - item: The `Product` that needs to be wishlisted
+     - delegate:  A `WishlistAddDelegate` that is notified if the items were wishlisted successfuly
      */
 
-    public static func wishlistAdd(_ items: [Product], delegate: WishlistAddDelegate) {
-        shared?.wishlistAdd(items: items, completion: { [weak delegate] addedItems, error in
+    public static func addToWishlist(_ item: Product, delegate: WishlistAddDelegate) {
+        shared?.addToWishlist(item, completion: { [weak delegate] item, details, error in
             if let error = error {
                 delegate?.wishlistAddDidFailWith(error)
             } else {
-                delegate?.wishlistAddDidSucceedFor(addedItems!)
+                delegate?.wishlistAddDidSucceedFor(item, with: details!)
             }
         })
     }
 
     /**
-     Adds the given `CatalogItem`s into the traveler's wishlist
+     Adds the given `Product` into the traveler's wishlist
 
      - Parameters:
-     - items: The `CatalogItem`s that need to be wishlisted
-     - completion: A completion block that is called when the item is wishlisted
+     - item: The `Product` thats need to be wishlisted
+     - completion:  A completion block that is called when the items are wishlisted
      */
 
-    public static func wishlistAdd(_ items: [Product], completion: @escaping ([CatalogItem]?, Error?) -> Void) {
-        shared?.wishlistAdd(items: items, completion: completion)
+    public static func addToWishlist(_ item: Product, completion: @escaping (Product, CatalogItemDetails?, Error?) -> Void) {
+        shared?.addToWishlist(item, completion: completion)
     }
 
     /**
-     Removes the given `CatalogItem` from the traveler's wishlist
+     Removes the given `Product` from the traveler's wishlist
 
      - Parameters:
-     - item: The `CatalogItem` that needs to be removed from the wishlist
-     - delegate: A `WishlistRemoveDelegate` that is notified if the item was removed from the wishlist successfuly
+     - item: The `Product` that needs to be removed from the wishlist
+     - delegate:  A `WishlistRemoveDelegate` that is notified if the item is removed from the wishlist successfuly
      */
     @discardableResult
-    public static func wishlistRemove(_ items: [Product], result: WishlistResult?, delegate: WishlistRemoveDelegate) -> WishlistResult? {
-        return shared?.wishlistRemove(items: items, result: result, completion: { [weak delegate] (result, error) in
+    public static func removeFromWishlist(_ item: Product, result: WishlistResult?, delegate: WishlistRemoveDelegate) -> WishlistResult? {
+        return shared?.removeFromWishlist(item, result: result, completion: { [weak delegate] (item, details, result, error) in
             if let error = error {
                 delegate?.wishlistRemoveDidFailWith(error, result: result)
             } else {
-                delegate?.wishlistRemoveDidSucceed()
+                delegate?.wishlistRemoveDidSucceedFor(item, with: details)
             }
         })
     }
 
     /**
-     Removes the given `CatalogItem` from the traveler's wishlist
+     Removes the given `Product` from the traveler's wishlist
 
      - Parameters:
-     - item: The `CatalogItem` that needs to be removed from the wishlist
+     - item: The `Product` that needs to be removed from the wishlist
      - completion: A completion block that is called when the item is removed from the wishlist
      */
 
     @discardableResult
-    public static func wishlistRemove(_ items: [Product], result: WishlistResult?, completion: @escaping (WishlistResult?, Error?) -> Void) -> WishlistResult? {
-        return shared?.wishlistRemove(items: items, result: result, completion: completion)
+    public static func removeFromWishlist(_ item: Product, result: WishlistResult?, completion: @escaping (Product, CatalogItemDetails?, WishlistResult?, Error?) -> Void) -> WishlistResult? {
+        return shared?.removeFromWishlist(item, result: result, completion: completion)
     }
 
     /**

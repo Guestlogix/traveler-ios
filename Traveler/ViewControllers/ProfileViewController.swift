@@ -31,6 +31,8 @@ class ProfileViewController: UITableViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let orderVC as OrdersViewController):
             orderVC.query = OrderQuery(offset: 0, limit: 10, from: nil, to: Date())
+        case (_, let wishlistVC as WishlistViewController):
+            wishlistVC.query = WishlistQuery(offset: 0, limit: 10, from: nil, to: Date())
         case (_, let vc as SettingsViewController):
             vc.delegate = self
         case ("exitSegue"?, _):

@@ -18,6 +18,9 @@ public struct QueryItem: CatalogItem, Decodable {
     public let imageURL: URL?
     /// A `SearchQuery` 
     public var query: SearchQuery
+    /// Indicates if item is available
+    /// It's initialized as `true` becuase a `QueryItem` is always available. 
+    public let isAvailable = true
 
     enum CodingKeys: String, CodingKey {
         case subtitle = "subTitle"

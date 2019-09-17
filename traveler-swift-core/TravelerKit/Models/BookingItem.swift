@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct BookingItem: CatalogItem, Decodable, Product {
+public struct BookingItem: CatalogItem, Product, Decodable {
     /// An identifier
     public let id: String
     /// Starting price
@@ -26,7 +26,9 @@ public struct BookingItem: CatalogItem, Decodable, Product {
     /// Translation attribution
     public let providerTranslationAttribution: ProviderTranslationAttribution
     /// A coordinate representing the item's location
-    public let location: Coordinate
+    public let location: Coordinate?
+    /// Indicates if item is available
+    public let isAvailable: Bool
 
     enum CodingKeys: String, CodingKey {
        case id = "id"
@@ -38,6 +40,7 @@ public struct BookingItem: CatalogItem, Decodable, Product {
         case type = "purchaseStrategy"
         case location = "geoLocation"
         case providerTranslationAttribution = "providerTranslationAttribution"
+        case isAvailable = "isAvailable"
     }
 
     public init(from decoder: Decoder) throws {
@@ -45,13 +48,14 @@ public struct BookingItem: CatalogItem, Decodable, Product {
 
         self.id = try container.decode(String.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
-        self.subTitle = try container.decode(String.self, forKey: .subTitle)
-        self.imageURL = try container.decode(URL.self, forKey: .thumbnail)
+        self.subTitle = try container.decode(String?.self, forKey: .subTitle)
+        self.imageURL = try container.decode(URL?.self, forKey: .thumbnail)
         self.price = try container.decode(Price.self, forKey: .price)
         self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
         self.productType = try container.decode(ProductType.self, forKey: .type)
-        self.location = try container.decode(Coordinate.self, forKey: .location)
+        self.location = try container.decode(Coordinate?.self, forKey: .location)
         self.providerTranslationAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .providerTranslationAttribution)
+        self.isAvailable = try container.decode(Bool.self, forKey: .isAvailable)
     }
 
 }

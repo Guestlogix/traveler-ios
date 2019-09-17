@@ -9,7 +9,15 @@
 /* Begin PBXBuildFile section */
 		A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */; };
 		A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */; };
+		A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F361323202B880044A1DD /* Wishlist.storyboard */; };
+		A33F3616232039770044A1DD /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F3615232039770044A1DD /* WishlistViewController.swift */; };
+		A33F3618232039A20044A1DD /* WishlistResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F3617232039A20044A1DD /* WishlistResultViewController.swift */; };
+		A33F361A232048C30044A1DD /* AvailabilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F3619232048C30044A1DD /* AvailabilityCell.swift */; };
+		A3900BD9232FD146002D7186 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BD8232FD146002D7186 /* HeartButton.swift */; };
+		A3900BDB232FD1BF002D7186 /* Int+DegreesToRadians.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BDA232FD1BF002D7186 /* Int+DegreesToRadians.swift */; };
+		A3900BDD232FD1F3002D7186 /* UIBezierPath+Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */; };
 		A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */; };
+		A394B36723302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394B36623302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift */; };
 		A3E3FC472343AE9200CB616B /* BookingOption+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FC462343AE9200CB616B /* BookingOption+TravelerUI.swift */; };
 		A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */; };
 		A9639C9C220DF4F200625235 /* TravelerKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639C9A220DF4F200625235 /* TravelerKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -137,7 +145,15 @@
 /* Begin PBXFileReference section */
 		A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
 		A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionsViewController.swift; sourceTree = "<group>"; };
+		A33F361323202B880044A1DD /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
+		A33F3615232039770044A1DD /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
+		A33F3617232039A20044A1DD /* WishlistResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistResultViewController.swift; sourceTree = "<group>"; };
+		A33F3619232048C30044A1DD /* AvailabilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityCell.swift; sourceTree = "<group>"; };
+		A3900BD8232FD146002D7186 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
+		A3900BDA232FD1BF002D7186 /* Int+DegreesToRadians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+DegreesToRadians.swift"; sourceTree = "<group>"; };
+		A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Heart.swift"; sourceTree = "<group>"; };
 		A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookableConfirmationViewController.swift; sourceTree = "<group>"; };
+		A394B36623302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistToggleError+LocalizedError.swift"; sourceTree = "<group>"; };
 		A3E3FC462343AE9200CB616B /* BookingOption+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingOption+TravelerUI.swift"; sourceTree = "<group>"; };
 		A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmer.swift"; sourceTree = "<group>"; };
 		A9639C97220DF4F200625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TravelerKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,6 +366,8 @@
 				A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */,
 				CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */,
 				CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */,
+				A33F3615232039770044A1DD /* WishlistViewController.swift */,
+				A33F3617232039A20044A1DD /* WishlistResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -365,6 +383,7 @@
 				CA1462A622BBE0A200137F06 /* Order+TravelerUI.swift */,
 				CA153D8022CA82F000287034 /* BookingError+LocalizedError.swift */,
 				A3E3FC462343AE9200CB616B /* BookingOption+TravelerUI.swift */,
+				A394B36623302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift */,
 			);
 			path = ModelExtensions;
 			sourceTree = "<group>";
@@ -405,6 +424,7 @@
 				CA1A856A232EE88900F4DED4 /* DoubleSliderView.swift */,
 				CA1A8566232ED66500F4DED4 /* RangeCell.swift */,
 				CA1A8567232ED66500F4DED4 /* RangeCell.xib */,
+				A33F3619232048C30044A1DD /* AvailabilityCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -420,6 +440,7 @@
 				CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */,
 				A974A69C2282197800319683 /* Orders.storyboard */,
 				CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */,
+				A33F361323202B880044A1DD /* Wishlist.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -437,6 +458,7 @@
 				A9639CE9220DF57400625235 /* DrawerPresentationAnimator.swift */,
 				A9639CEA220DF57400625235 /* DrawerPresentationController.swift */,
 				A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */,
+				A3900BD8232FD146002D7186 /* HeartButton.swift */,
 			);
 			path = UIUtilities;
 			sourceTree = "<group>";
@@ -485,6 +507,8 @@
 				A9639D36220E028300625235 /* NSMutableAttributedString+FontFace.swift */,
 				A9639DEA2213463900625235 /* UIDevice+Device.swift */,
 				CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */,
+				A3900BDA232FD1BF002D7186 /* Int+DegreesToRadians.swift */,
+				A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -582,6 +606,7 @@
 				A9639D18220DF57400625235 /* FormFieldFooterView.xib in Resources */,
 				CA88804222B2B22500213E41 /* Product.storyboard in Resources */,
 				F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */,
+				A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */,
 				CA12275E22F0D5D000541F3A /* TermsAndConditions.storyboard in Resources */,
 				CA1A8569232ED66500F4DED4 /* RangeCell.xib in Resources */,
 				F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */,
@@ -627,20 +652,24 @@
 				A9639D37220E028300625235 /* NSMutableAttributedString+FontFace.swift in Sources */,
 				A9639D1F220DF57400625235 /* FormStringInputCell.swift in Sources */,
 				A9639D10220DF57400625235 /* CatalogView.swift in Sources */,
+				A33F3618232039A20044A1DD /* WishlistResultViewController.swift in Sources */,
 				CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */,
 				A9639CFB220DF57400625235 /* ReceiptViewController.swift in Sources */,
 				A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */,
 				A9639D01220DF57400625235 /* BookingItemDetailsViewController.swift in Sources */,
 				F3A3E066224BBEF700CD69F4 /* FormDateInputCell.swift in Sources */,
 				CA16570322B2E91300FDF6C7 /* Notification+Cancel.swift in Sources */,
+				A3900BDB232FD1BF002D7186 /* Int+DegreesToRadians.swift in Sources */,
 				A9639D25220DF57400625235 /* InputType.swift in Sources */,
 				A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */,
 				A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */,
 				CA2666722322DE950074E83A /* BookingItemSearchViewController.swift in Sources */,
+				A33F361A232048C30044A1DD /* AvailabilityCell.swift in Sources */,
 				CA12275C22F0D4CA00541F3A /* TermsAndConditionsViewController.swift in Sources */,
 				A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */,
 				A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */,
 				CA161DB52326C8D800A94C52 /* Tag.swift in Sources */,
+				A394B36723302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift in Sources */,
 				A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */,
 				A974A69B2282152E00319683 /* OrderCell.swift in Sources */,
 				A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */,
@@ -651,9 +680,11 @@
 				A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */,
 				CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */,
 				CA161DB02326C8B400A94C52 /* TagsCell.swift in Sources */,
+				A3900BD9232FD146002D7186 /* HeartButton.swift in Sources */,
 				A9639D08220DF57400625235 /* ShadowedView.swift in Sources */,
 				CA1A8568232ED66500F4DED4 /* RangeCell.swift in Sources */,
 				CA88804022B2AF9700213E41 /* PassCell.swift in Sources */,
+				A33F3616232039770044A1DD /* WishlistViewController.swift in Sources */,
 				A9639D0A220DF57400625235 /* ListCell.swift in Sources */,
 				A9639D13220DF57400625235 /* OrderItemViewCell.swift in Sources */,
 				CA1A856B232EE88900F4DED4 /* DoubleSliderView.swift in Sources */,
@@ -675,6 +706,7 @@
 				CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */,
 				A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */,
 				CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */,
+				A3900BDD232FD1F3002D7186 /* UIBezierPath+Heart.swift in Sources */,
 				A9639D1A220DF57400625235 /* FormMessage.swift in Sources */,
 				A974A6972282130900319683 /* OrdersViewController.swift in Sources */,
 				CA1A8565232ED64500F4DED4 /* DoubleSlider.swift in Sources */,

@@ -38,6 +38,10 @@ class BookingItemSearchViewController: UIViewController {
             Log("Unknown segue", data: nil, level: .warning)
         }
     }
+
+    @IBAction func didPressCancel(sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension BookingItemSearchViewController: UISearchBarDelegate {

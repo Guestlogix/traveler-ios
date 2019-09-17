@@ -9,7 +9,8 @@
 import Foundation
 /// Errors that can occur upon fetching the Wishlist
 public enum WishlistResultError: Error {
-    /// The traveler is not identified yer. Developer must call `Traveler.identify()` before attempting to fetch the wishlist
+    /// The traveler is not identified yet. Developer must call `Traveler.identify()` before attempting to fetch the wishlist
     case unidentifiedTraveler
+    /// The local wishlist result doesn't match the wishlist result from the server. 
     case resultMismatch
 }

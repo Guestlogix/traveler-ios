@@ -14,7 +14,7 @@ public struct WishlistResult: Decodable {
     /// The total number of orders matching the given query
     public private(set) var total: Int
     /// An `Array<CatalogItem>` representing the results of the query
-    public private(set) var items: [Int: Product]
+    public private(set) var items: [Int: Product & CatalogItem]
     /// The fromDate part of the `WishlistQuery`that matches the result
     public let fromDate: Date?
     /// The toDate part of the `WishlistQuery` that matches the result
@@ -29,7 +29,7 @@ public struct WishlistResult: Decodable {
         case items = "result"
     }
 
-    init(total: Int, items: [Int: Product], fromDate: Date?, toDate: Date) {
+    init(total: Int, items: [Int: Product & CatalogItem], fromDate: Date?, toDate: Date) {
         self.total = total
         self.items = items
         self.fromDate = fromDate
@@ -83,7 +83,7 @@ public struct WishlistResult: Decodable {
 
         items.removeValue(forKey: itemIndex)
 
-        var updatedItems = [Int: Product]()
+        var updatedItems = [Int: Product & CatalogItem]()
         for (key, value) in items {
             updatedItems[key > itemIndex ? (key - 1) : key] = value
         }
@@ -105,16 +105,16 @@ public struct WishlistResult: Decodable {
         self.toDate = toDate
         self.total = try container.decode(Int.self, forKey: .total)
 
-        let items = try container.decode([AnyItem].self, forKey: .items).map({ (item) -> Product in
+        let items = try container.decode([AnyItem].self, forKey: .items).map({ (item) -> (Product & CatalogItem) in
             switch item.type {
             case .booking:
                 return item.bookingItem!
-            default:
-                throw DecodingError.dataCorruptedError(forKey: CodingKeys.items, in: container, debugDescription: "Unknown product type")
+            case .parking:
+                return item.parkingItem!
             }
         })
 
-        var indexedItems = [Int : Product]()
+        var indexedItems = [Int : Product & CatalogItem]()
         for (index, item) in items.enumerated() {
             indexedItems[index + offset] = item
         }

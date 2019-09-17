@@ -10,7 +10,6 @@ import Foundation
 
 /// The detailed information of a `ParkingItem`
 public struct ParkingItemDetails: CatalogItemDetails, Decodable {
-
     /// Description
     public let description: String?
     /// An array of URLs of images
@@ -42,11 +41,11 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
     /// Translate attribution
     public let translateAttribution: ProviderTranslationAttribution
     /// Indicating if it's wishlisted
-    public let isWishlisted: Bool
+    public let isWishlisted: Bool?
     /// Secondary title
     public let subtitle: String
     /// URL for a thumbnail
-    public let thumbnailURL: URL
+    public let thumbnailURL: URL?
     /// Categories
     public var categories: [ProductItemCategory]
 
@@ -81,16 +80,16 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
         self.priceToPayOnsite = try container.decode(Price.self, forKey: .payableOnSite)
         self.description = try container.decode(String.self, forKey: .description)
         self.imageUrls = try container.decode([URL].self, forKey: .imageUrls)
-        self.information = try container.decode([Attribute].self, forKey: .information)
-        self.contact = try container.decode(ContactInfo.self, forKey: .contact)
+        self.information = try container.decode([Attribute]?.self, forKey: .information)
+        self.contact = try container.decode(ContactInfo?.self, forKey: .contact)
         self.locations = try container.decode([Location].self, forKey: .locations)
         self.supplier = try container.decode(Supplier.self, forKey: .supplier)
-        self.termsAndConditions = try container.decode(String.self, forKey: .termsAndConditions)
-        self.isWishlisted = try container.decode(Bool.self, forKey: .isWishlisted)
-        self.disclaimer = try container.decode(String.self, forKey: .disclaimer)
+        self.termsAndConditions = try container.decode(String?.self, forKey: .termsAndConditions)
+        self.isWishlisted = try container.decode(Bool?.self, forKey: .isWishlisted)
+        self.disclaimer = try container.decode(String?.self, forKey: .disclaimer)
         self.title = try container.decode(String.self, forKey: .title)
         self.subtitle = try container.decode(String.self, forKey: .subtitle)
-        self.thumbnailURL = try container.decode(URL.self, forKey: .thumbnail)
+        self.thumbnailURL = try container.decode(URL?.self, forKey: .thumbnail)
         self.price = try container.decode(Price.self, forKey: .priceStartingAt)
         self.productType = try container.decode(ProductType.self, forKey: .purchaseStrategy)
         self.translateAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .googleTranslateAttrbution)
