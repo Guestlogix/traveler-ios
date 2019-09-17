@@ -8,12 +8,12 @@
 
 import Foundation
 /// Represents the different categories a `CatalogItem` can have
-public enum Category: String, Decodable {
+public enum CatalogItemCategory: String, Decodable {
     case activity = "Activity"
     case tour = "Tour"
     case show = "Show"
     case event = "Event"
-    case transfer = "Transfer"
+    case transfer = "Transfers"
     case parking = "Parking"
     case nightlife = "Nightlife"
     case dining = "Dining"

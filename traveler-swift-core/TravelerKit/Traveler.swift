@@ -235,6 +235,43 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func searchCatalog(_ searchQuery: CatalogItemSearchQuery, identifier: AnyHashable?, previousResultBlock: (() -> CatalogItemSearchResult?)?, resultBlock: ((CatalogItemSearchResult, AnyHashable?) -> Void)?, completion: @escaping (CatalogItemSearchResult?, Error?, AnyHashable?) -> Void) {
+
+        if searchQuery.boundingBox == nil && searchQuery.categories == nil && searchQuery.range == nil && searchQuery.text == nil {
+            completion(nil , SearchQueryError.invalidQuery, nil)
+        } else {
+
+            class ResultWrapper {
+                var result: CatalogItemSearchResult?
+            }
+
+            let wrapper = ResultWrapper()
+
+            let fetchOperation = AuthenticatedRemoteFetchOperation<CatalogItemSearchResult>(path: .searchCatalog(searchQuery), session: session)
+            let mergeOperation = BlockOperation { [unowned fetchOperation] in
+                guard let result = fetchOperation.resource else { return }
+
+                wrapper.result = previousResultBlock?()?.merge(result) ?? result
+                resultBlock?(wrapper.result!, identifier)
+            }
+
+            let blockOperation = BlockOperation { [unowned fetchOperation] in
+                if let result = wrapper.result {
+                    completion(result, nil, identifier)
+                } else {
+                    completion(nil, fetchOperation.error!, identifier)
+                }
+            }
+
+            mergeOperation.addDependency(fetchOperation)
+            blockOperation.addDependency(mergeOperation)
+
+            queue.addOperation(fetchOperation)
+            orderSerialQueue.addOperation(mergeOperation)
+            OperationQueue.main.addOperation(blockOperation)
+        }
+    }
+
     // MARK: Public API
 
     /**
@@ -633,5 +670,42 @@ public class Traveler {
 
     public static func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
         shared?.emailOrderConfirmation(order: order, completion: completion)
+    }
+
+    /**
+     Makes a search in the API catalog given a `CatalogItemSearchQuery`
+
+     - Parameters:
+     - searchQuery: The `CatalogItemSearchQuery` with the search parameters
+     - delegate: A `CatalogSearchDelegate` that is notified if the search is successful
+     */
+
+    public static func searchCatalog(searchQuery: CatalogItemSearchQuery, identifier: AnyHashable?, delegate: CatalogItemSearchDelegate) {
+        shared?.searchCatalog(searchQuery, identifier: identifier, previousResultBlock: { [weak delegate] () -> CatalogItemSearchResult? in
+            return delegate?.previousResult()
+            }, resultBlock: { [weak delegate] (result, identifier) in
+                delegate?.catalogSearchDidReceive(result, identifier: identifier)
+            }, completion: { [weak delegate] (result, error, identifier) in
+                if let error = error {
+                    delegate?.catalogSearchDidFailWith(error, identifier: identifier)
+                } else {
+                    delegate?.catalogSearchDidSucceedWith(result!, identifier: identifier)
+                }
+        })
+    }
+
+    /**
+     Makes a search in the API catalog given a `CatalogItemSearchQuery`
+
+     - Parameters:
+     - searchQuery: The `CatalogItemSearchQuery` with the search parameters
+     - identifier: An optional hash identifying the request. This value is returned back in the callbacks. Use this to distinguish between different requests
+     - previousResultBlock: A block called (on a worker thread) to return any previous results that are to be merged
+     - resultBlock: A block called (on a worker thread) with the final merged results
+     - completion: A completion block that is called when the results are ready.
+     */
+
+    public static func searchCatalog(searchQuery: CatalogItemSearchQuery, identifier: AnyHashable?, previousResultBlock: (() -> CatalogItemSearchResult?)?, resultBlock: ((CatalogItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (CatalogItemSearchResult?, Error?, AnyHashable?)-> Void) {
+        shared?.searchCatalog(searchQuery, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
     }
 }

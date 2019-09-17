@@ -21,7 +21,7 @@ public struct CatalogItem: Decodable, Product {
     /// Price
     public var price: Price
     /// Categories
-    public let categories: [Category]
+    public let categories: [CatalogItemCategory]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
