@@ -37,8 +37,8 @@ public struct QueryItem: CatalogItem, Decodable {
         self.type = try container.decode(QueryType.self, forKey: .type)
         switch type {
         case .Booking:
-            let queryParams = try container.decode(BookingSearchParameters.self, forKey: .searchParams)
-            let bookingQuery = BookingQuery(with: queryParams)
+            let queryParams = try container.decode(BookingItemSearchParameters.self, forKey: .searchParams)
+            let bookingQuery = BookingItemQuery(with: queryParams)
             self.query = .booking(query: bookingQuery)
         case .Parking:
             let queryParams = try container.decode(ParkingSearchParameters.self, forKey: .searchParams)

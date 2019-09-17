@@ -89,6 +89,14 @@
 		A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */; };
 		A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */; };
 		A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */; };
+		CA0575E3234AA5D7000B2211 /* Facets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575DB234AA5D6000B2211 /* Facets.swift */; };
+		CA0575E4234AA5D7000B2211 /* BookingItemSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575DC234AA5D6000B2211 /* BookingItemSearchFilters.swift */; };
+		CA0575E5234AA5D7000B2211 /* PriceLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575DD234AA5D6000B2211 /* PriceLimits.swift */; };
+		CA0575E6234AA5D7000B2211 /* SearchQueryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575DE234AA5D6000B2211 /* SearchQueryError.swift */; };
+		CA0575E7234AA5D7000B2211 /* BookingItemSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575DF234AA5D6000B2211 /* BookingItemSearchResult.swift */; };
+		CA0575EA234AA5D7000B2211 /* CategoryFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575E2234AA5D6000B2211 /* CategoryFacet.swift */; };
+		CA0575EC234AA5F2000B2211 /* BookingItemSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575EB234AA5F2000B2211 /* BookingItemSearchDelegate.swift */; };
+		CA0575EE234AC2C5000B2211 /* PriceRangeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575ED234AC2C5000B2211 /* PriceRangeFilter.swift */; };
 		CA07DE74231EDD88004C8872 /* WishlistAddDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07DE73231EDD88004C8872 /* WishlistAddDelegate.swift */; };
 		CA07DE76231EE6EB004C8872 /* WishlistRemoveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07DE75231EE6EB004C8872 /* WishlistRemoveDelegate.swift */; };
 		CA07DE78231EE8EF004C8872 /* WishlistToggleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07DE77231EE8EF004C8872 /* WishlistToggleError.swift */; };
@@ -103,10 +111,10 @@
 		CA2ADDB42347926800A6EE34 /* QueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDB32347926800A6EE34 /* QueryItem.swift */; };
 		CA2ADDB623479A5B00A6EE34 /* BookingItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDB523479A5B00A6EE34 /* BookingItemDetails.swift */; };
 		CA2ADDB823479A7E00A6EE34 /* ParkingItemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDB723479A7E00A6EE34 /* ParkingItemDetails.swift */; };
-		CA2ADDBA2347C4BA00A6EE34 /* BookingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDB92347C4BA00A6EE34 /* BookingQuery.swift */; };
-		CA2ADDBC2347C50200A6EE34 /* BookingSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDBB2347C50200A6EE34 /* BookingSearchParameters.swift */; };
+		CA2ADDBA2347C4BA00A6EE34 /* BookingItemQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDB92347C4BA00A6EE34 /* BookingItemQuery.swift */; };
+		CA2ADDBC2347C50200A6EE34 /* BookingItemSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDBB2347C50200A6EE34 /* BookingItemSearchParameters.swift */; };
 		CA2ADDC02347C6FC00A6EE34 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDBF2347C6FC00A6EE34 /* QueryType.swift */; };
-		CA4E189C2349442800A5DFE2 /* ParkingSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E189B2349442800A5DFE2 /* ParkingSearchParameters.swift */; };
+		CA4E189C2349442800A5DFE2 /* ParkingItemSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E189B2349442800A5DFE2 /* ParkingItemSearchParameters.swift */; };
 		CA4E18A22349622F00A5DFE2 /* ParkingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E18A12349622F00A5DFE2 /* ParkingQuery.swift */; };
 		CA4E18A4234964DD00A5DFE2 /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E18A3234964DD00A5DFE2 /* SearchQuery.swift */; };
 		CA594AF922DFD33F008C6C4B /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AF822DFD33F008C6C4B /* Supplier.swift */; };
@@ -114,10 +122,9 @@
 		CA594AFF22DFD3BF008C6C4B /* SupplierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */; };
 		CA594B0122DFD3C4008C6C4B /* TrademarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */; };
 		CA8AFF3A23415637006ECD16 /* CatalogItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF3923415637006ECD16 /* CatalogItemType.swift */; };
-		CA8AFF4023419109006ECD16 /* PriceRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF3F23419109006ECD16 /* PriceRange.swift */; };
 		CA8AFF4223419142006ECD16 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF4123419142006ECD16 /* BoundingBox.swift */; };
 		CA8AFF4423427AE3006ECD16 /* GoogleTranslateAttribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF4323427AE3006ECD16 /* GoogleTranslateAttribution.swift */; };
-		CAA8EF0E22EA076C0000376D /* CatalogItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8EF0D22EA076B0000376D /* CatalogItemCategory.swift */; };
+		CAA8EF0E22EA076C0000376D /* ProductItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8EF0D22EA076B0000376D /* ProductItemCategory.swift */; };
 		CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */; };
 		CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */; };
 		CAE90E8722BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */; };
@@ -220,6 +227,14 @@
 		A9EED5F7215AC254003AAA5F /* KeychainReadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperation.swift; sourceTree = "<group>"; };
 		A9EED5FC215BD40D003AAA5F /* KeychainStoreOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreOperationTests.swift; sourceTree = "<group>"; };
 		A9EED617215C02F3003AAA5F /* KeychainReadOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainReadOperationTests.swift; sourceTree = "<group>"; };
+		CA0575DB234AA5D6000B2211 /* Facets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facets.swift; sourceTree = "<group>"; };
+		CA0575DC234AA5D6000B2211 /* BookingItemSearchFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemSearchFilters.swift; sourceTree = "<group>"; };
+		CA0575DD234AA5D6000B2211 /* PriceLimits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLimits.swift; sourceTree = "<group>"; };
+		CA0575DE234AA5D6000B2211 /* SearchQueryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchQueryError.swift; sourceTree = "<group>"; };
+		CA0575DF234AA5D6000B2211 /* BookingItemSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemSearchResult.swift; sourceTree = "<group>"; };
+		CA0575E2234AA5D6000B2211 /* CategoryFacet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFacet.swift; sourceTree = "<group>"; };
+		CA0575EB234AA5F2000B2211 /* BookingItemSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemSearchDelegate.swift; sourceTree = "<group>"; };
+		CA0575ED234AC2C5000B2211 /* PriceRangeFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRangeFilter.swift; sourceTree = "<group>"; };
 		CA07DE73231EDD88004C8872 /* WishlistAddDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistAddDelegate.swift; sourceTree = "<group>"; };
 		CA07DE75231EE6EB004C8872 /* WishlistRemoveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistRemoveDelegate.swift; sourceTree = "<group>"; };
 		CA07DE77231EE8EF004C8872 /* WishlistToggleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistToggleError.swift; sourceTree = "<group>"; };
@@ -234,10 +249,10 @@
 		CA2ADDB32347926800A6EE34 /* QueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItem.swift; sourceTree = "<group>"; };
 		CA2ADDB523479A5B00A6EE34 /* BookingItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemDetails.swift; sourceTree = "<group>"; };
 		CA2ADDB723479A7E00A6EE34 /* ParkingItemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItemDetails.swift; sourceTree = "<group>"; };
-		CA2ADDB92347C4BA00A6EE34 /* BookingQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingQuery.swift; sourceTree = "<group>"; };
-		CA2ADDBB2347C50200A6EE34 /* BookingSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSearchParameters.swift; sourceTree = "<group>"; };
+		CA2ADDB92347C4BA00A6EE34 /* BookingItemQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemQuery.swift; sourceTree = "<group>"; };
+		CA2ADDBB2347C50200A6EE34 /* BookingItemSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchParameters.swift; sourceTree = "<group>"; };
 		CA2ADDBF2347C6FC00A6EE34 /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
-		CA4E189B2349442800A5DFE2 /* ParkingSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSearchParameters.swift; sourceTree = "<group>"; };
+		CA4E189B2349442800A5DFE2 /* ParkingItemSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItemSearchParameters.swift; sourceTree = "<group>"; };
 		CA4E18A12349622F00A5DFE2 /* ParkingQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingQuery.swift; sourceTree = "<group>"; };
 		CA4E18A3234964DD00A5DFE2 /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
 		CA594AF822DFD33F008C6C4B /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
@@ -245,10 +260,9 @@
 		CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierTests.swift; sourceTree = "<group>"; };
 		CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrademarkTests.swift; sourceTree = "<group>"; };
 		CA8AFF3923415637006ECD16 /* CatalogItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemType.swift; sourceTree = "<group>"; };
-		CA8AFF3F23419109006ECD16 /* PriceRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRange.swift; sourceTree = "<group>"; };
 		CA8AFF4123419142006ECD16 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		CA8AFF4323427AE3006ECD16 /* GoogleTranslateAttribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslateAttribution.swift; sourceTree = "<group>"; };
-		CAA8EF0D22EA076B0000376D /* CatalogItemCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemCategory.swift; sourceTree = "<group>"; };
+		CAA8EF0D22EA076B0000376D /* ProductItemCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemCategory.swift; sourceTree = "<group>"; };
 		CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRequestOperation.swift; sourceTree = "<group>"; };
 		CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRemoteRequestOperation.swift; sourceTree = "<group>"; };
 		CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOrderConfirmationDelegate.swift; sourceTree = "<group>"; };
@@ -292,6 +306,7 @@
 		A9BF40D121779CE90090ED1C /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				CA0575EB234AA5F2000B2211 /* BookingItemSearchDelegate.swift */,
 				A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */,
 				A9BF40E9218264FB0090ED1C /* CatalogFetchDelegate.swift */,
 				A9E2AD8121934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift */,
@@ -363,7 +378,14 @@
 		A9DB06472140487B009817EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CAA8EF0D22EA076B0000376D /* CatalogItemCategory.swift */,
+				CA0575ED234AC2C5000B2211 /* PriceRangeFilter.swift */,
+				CA0575DC234AA5D6000B2211 /* BookingItemSearchFilters.swift */,
+				CA0575DF234AA5D6000B2211 /* BookingItemSearchResult.swift */,
+				CA0575E2234AA5D6000B2211 /* CategoryFacet.swift */,
+				CA0575DB234AA5D6000B2211 /* Facets.swift */,
+				CA0575DD234AA5D6000B2211 /* PriceLimits.swift */,
+				CA0575DE234AA5D6000B2211 /* SearchQueryError.swift */,
+				CAA8EF0D22EA076B0000376D /* ProductItemCategory.swift */,
 				A9DB06432140358C009817EC /* Credentials.swift */,
 				A9DB064821404CE0009817EC /* Token.swift */,
 				A9DB06A9214AAF60009817EC /* FlightQuery.swift */,
@@ -415,14 +437,13 @@
 				CA07DE7B231EF380004C8872 /* WishlistResult.swift */,
 				CA07DE7F231EFCD6004C8872 /* WishlistResultError.swift */,
 				CA8AFF3923415637006ECD16 /* CatalogItemType.swift */,
-				CA8AFF3F23419109006ECD16 /* PriceRange.swift */,
 				CA8AFF4123419142006ECD16 /* BoundingBox.swift */,
 				CA8AFF4323427AE3006ECD16 /* GoogleTranslateAttribution.swift */,
 				CA1754CF2343B4D800F08F73 /* ProductType.swift */,
-				CA2ADDB92347C4BA00A6EE34 /* BookingQuery.swift */,
-				CA2ADDBB2347C50200A6EE34 /* BookingSearchParameters.swift */,
+				CA2ADDB92347C4BA00A6EE34 /* BookingItemQuery.swift */,
+				CA2ADDBB2347C50200A6EE34 /* BookingItemSearchParameters.swift */,
 				CA2ADDBF2347C6FC00A6EE34 /* QueryType.swift */,
-				CA4E189B2349442800A5DFE2 /* ParkingSearchParameters.swift */,
+				CA4E189B2349442800A5DFE2 /* ParkingItemSearchParameters.swift */,
 				CA4E18A12349622F00A5DFE2 /* ParkingQuery.swift */,
 				CA4E18A3234964DD00A5DFE2 /* SearchQuery.swift */,
 			);
@@ -618,7 +639,7 @@
 				CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */,
 				A9DB06A821496396009817EC /* Traveler.swift in Sources */,
 				CA07DE7E231EF7C7004C8872 /* WishlistFetchDelegate.swift in Sources */,
-				CA4E189C2349442800A5DFE2 /* ParkingSearchParameters.swift in Sources */,
+				CA4E189C2349442800A5DFE2 /* ParkingItemSearchParameters.swift in Sources */,
 				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,
 				CA1754D02343B4D800F08F73 /* ProductType.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
@@ -627,6 +648,7 @@
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,
 				A9DB06B1214AE0AF009817EC /* URLRequest+JSON.swift in Sources */,
+				CA0575E7234AA5D7000B2211 /* BookingItemSearchResult.swift in Sources */,
 				CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */,
 				A9BF40E2218231010090ED1C /* CatalogueQuery.swift in Sources */,
 				A91F3BDD21DC36AD0016894A /* BookingForm.swift in Sources */,
@@ -635,13 +657,14 @@
 				A9DB065D2140665A009817EC /* MappingOperation.swift in Sources */,
 				A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */,
 				A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */,
+				CA0575E5234AA5D7000B2211 /* PriceLimits.swift in Sources */,
 				A92523F221FB71D0009E2642 /* ValidationError.swift in Sources */,
 				A9E28A9721A864A700967C4A /* Product.swift in Sources */,
 				A95F46A922983B6C009C9227 /* CancellationQuote.swift in Sources */,
 				A9DB065B2140665A009817EC /* NetworkOperation.swift in Sources */,
 				A9BF40E6218231580090ED1C /* CatalogGroup.swift in Sources */,
 				A9E2AD80219344670063BF79 /* CatalogItemDetails.swift in Sources */,
-				CA2ADDBA2347C4BA00A6EE34 /* BookingQuery.swift in Sources */,
+				CA2ADDBA2347C4BA00A6EE34 /* BookingItemQuery.swift in Sources */,
 				A974A6932280CA9C00319683 /* OrderFetchDelegate.swift in Sources */,
 				A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */,
 				CA8AFF3A23415637006ECD16 /* CatalogItemType.swift in Sources */,
@@ -656,36 +679,41 @@
 				CA4E18A4234964DD00A5DFE2 /* SearchQuery.swift in Sources */,
 				CA2ADDB42347926800A6EE34 /* QueryItem.swift in Sources */,
 				A9DB06442140358C009817EC /* Credentials.swift in Sources */,
-				CA2ADDBC2347C50200A6EE34 /* BookingSearchParameters.swift in Sources */,
+				CA2ADDBC2347C50200A6EE34 /* BookingItemSearchParameters.swift in Sources */,
 				A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */,
 				A91F3BDB21D9F9730016894A /* Question.swift in Sources */,
 				A9AC3BFD21FA6D9500690D46 /* ValidationRule.swift in Sources */,
 				A9EED5F2215A7D43003AAA5F /* UnauthPath.swift in Sources */,
 				A9639D32220E000100625235 /* PaymentHandler.swift in Sources */,
-				CA8AFF4023419109006ECD16 /* PriceRange.swift in Sources */,
 				A92523F821FBAD90009E2642 /* OrderCreateDelegate.swift in Sources */,
 				CA07DE7C231EF380004C8872 /* WishlistResult.swift in Sources */,
 				A9BF40E42182310F0090ED1C /* Catalog.swift in Sources */,
+				CA0575E3234AA5D7000B2211 /* Facets.swift in Sources */,
 				CA594AF922DFD33F008C6C4B /* Supplier.swift in Sources */,
 				A95F46AD229C6AD3009C9227 /* CancellationError.swift in Sources */,
 				A974A6952280CFD800319683 /* OrderResultError.swift in Sources */,
 				A92523F621FBAD2C009E2642 /* Order.swift in Sources */,
 				A9EED5F4215A7E52003AAA5F /* AuthenticatedRemoteFetchOperation.swift in Sources */,
 				A96F8305223784F500268D0D /* BookingOption.swift in Sources */,
+				CA0575E6234AA5D7000B2211 /* SearchQueryError.swift in Sources */,
 				A9DB06B3214AFB54009817EC /* Flight.swift in Sources */,
 				A91F3BB321B82BDD0016894A /* ErrorContext.swift in Sources */,
 				A9DB065F2140665A009817EC /* ConcurrentOperation.swift in Sources */,
 				CA2ADDB22347922400A6EE34 /* ProductItem.swift in Sources */,
 				A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */,
 				A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */,
+				CA0575E4234AA5D7000B2211 /* BookingItemSearchFilters.swift in Sources */,
 				A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */,
 				CA2ADDB623479A5B00A6EE34 /* BookingItemDetails.swift in Sources */,
+				CA0575EC234AA5F2000B2211 /* BookingItemSearchDelegate.swift in Sources */,
 				A9DB06592140665A009817EC /* DownloadOperation.swift in Sources */,
 				CAE90E8722BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift in Sources */,
 				A96F830922389CE300268D0D /* AvailabilitiesFetchDelegate.swift in Sources */,
 				A9BF40EA218264FB0090ED1C /* CatalogFetchDelegate.swift in Sources */,
+				CA0575EA234AA5D7000B2211 /* CategoryFacet.swift in Sources */,
 				CA07DE80231EFCD6004C8872 /* WishlistResultError.swift in Sources */,
 				A9DB065E2140665A009817EC /* NetworkError.swift in Sources */,
+				CA0575EE234AC2C5000B2211 /* PriceRangeFilter.swift in Sources */,
 				A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */,
 				CA8AFF4423427AE3006ECD16 /* GoogleTranslateAttribution.swift in Sources */,
 				A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */,
@@ -709,7 +737,7 @@
 				CA2ADDB823479A7E00A6EE34 /* ParkingItemDetails.swift in Sources */,
 				A9BF40D321779D030090ED1C /* FlightSeachDelegate.swift in Sources */,
 				A96F8314223AC79F00268D0D /* BookingOptionSet.swift in Sources */,
-				CAA8EF0E22EA076C0000376D /* CatalogItemCategory.swift in Sources */,
+				CAA8EF0E22EA076C0000376D /* ProductItemCategory.swift in Sources */,
 				CA07DE78231EE8EF004C8872 /* WishlistToggleError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

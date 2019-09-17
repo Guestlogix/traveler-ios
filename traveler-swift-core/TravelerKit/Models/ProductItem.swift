@@ -23,7 +23,7 @@ public struct ProductItem: CatalogItem, Product, Decodable {
     /// The `ProductType`
     public let type: ProductType
     /// The categories which the product belongs to
-    public let categories: [CatalogItemCategory]
+    public let categories: [ProductItemCategory]
 
     enum CodingKeys: String, CodingKey {
         case title = "title"
@@ -43,7 +43,7 @@ public struct ProductItem: CatalogItem, Product, Decodable {
         self.id = try container.decode(String.self, forKey: .id)
         self.price = try container.decode(Price.self, forKey: .price)
         self.type = try container.decode(ProductType.self, forKey: .type)
-        self.categories = try container.decode([CatalogItemCategory].self, forKey: .categories)
+        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
     }
 
 }

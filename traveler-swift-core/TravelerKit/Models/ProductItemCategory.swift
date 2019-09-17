@@ -1,5 +1,5 @@
 //
-//  CatalogItemCategory.swift
+//  ProductItemCategory.swift
 //  TravelerKit
 //
 //  Created by Omar Padierna on 2019-07-19.
@@ -7,8 +7,8 @@
 //
 
 import Foundation
-/// Represents the different categories a `CatalogItem` can have
-public enum CatalogItemCategory: String, Decodable {
+/// Represents the different categories a `ProductItem` can have
+public enum ProductItemCategory: String, Decodable {
     case activity = "Activity"
     case tour = "Tour"
     case show = "Show"

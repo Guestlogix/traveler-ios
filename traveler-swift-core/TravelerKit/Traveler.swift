@@ -330,7 +330,45 @@ public class Traveler {
 
         queue.addOperation(fetchOperation)
         serialQueue.addOperation(mergeOperation)
-        OperationQueue.main.addOperation(blockOperation)
+    OperationQueue.main.addOperation(blockOperation)
+
+    }
+
+    func searchBookingItems(_ searchQuery: BookingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> BookingItemSearchResult?)?, resultBlock: ((BookingItemSearchResult, AnyHashable?) -> Void)?, completion: @escaping (BookingItemSearchResult?, Error?, AnyHashable?) -> Void) {
+
+        if searchQuery.boundingBox == nil && searchQuery.categories == nil && searchQuery.range == nil && searchQuery.text == nil {
+            completion(nil , SearchQueryError.invalidQuery, nil)
+        } else {
+
+            class ResultWrapper {
+                var result: BookingItemSearchResult?
+            }
+
+            let wrapper = ResultWrapper()
+
+            let fetchOperation = AuthenticatedRemoteFetchOperation<BookingItemSearchResult>(path: .searchBookingItems(searchQuery), session: session)
+            let mergeOperation = BlockOperation { [unowned fetchOperation] in
+                guard let result = fetchOperation.resource else { return }
+
+                wrapper.result = previousResultBlock?()?.merge(result) ?? result
+                resultBlock?(wrapper.result!, identifier)
+            }
+
+            let blockOperation = BlockOperation { [unowned fetchOperation] in
+                if let result = wrapper.result {
+                    completion(result, nil, identifier)
+                } else {
+                    completion(nil, fetchOperation.error!, identifier)
+                }
+            }
+
+            mergeOperation.addDependency(fetchOperation)
+            blockOperation.addDependency(mergeOperation)
+
+            queue.addOperation(fetchOperation)
+            serialQueue.addOperation(mergeOperation)
+            OperationQueue.main.addOperation(blockOperation)
+        }
     }
 
     // MARK: Public API
@@ -734,6 +772,7 @@ public class Traveler {
     }
 
     /**
+<<<<<<< HEAD
      Adds the given `CatalogItem` into the traveler's wishlist
 
      - Parameters:
@@ -818,18 +857,54 @@ public class Traveler {
     }
 
     /**
-     Fetches an `WishlistResult` corresponding to the given `WishlistQuery`.
+        Fetches an `WishlistResult` corresponding to the given `WishlistQuery`.
+
+        - Parameters:
+        - query: The `WishlistQuery` to filter.
+        - identifier: An optional hash identifying the request. This value is returned back in the callbacks. Use this to distinguish between different requests
+        - previousResultBlock: A block called (on a worker thread) to return any previous results that are to be merged
+        - resultBlock: A block called (on a worker thread) with the final merged results
+        - completion: A completion block that is called when the results are ready.
+        */
+
+       public static func fetchWishlist(_ query: WishlistQuery, identfier: AnyHashable?, previousResultBlock: (() -> WishlistResult?)?, resultBlock: ((WishlistResult, AnyHashable?) -> Void)?, completion: @escaping (WishlistResult?, Error?, AnyHashable?) -> Void) {
+           shared?.fetchWishlist(query, identifier: identfier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
+       }
+
+    /**
+     Makes a search in the API catalog given a `BookingItemSearchQuery`
 
      - Parameters:
-     - query: The `WishlistQuery` to filter.
+     - searchQuery: The `BookingItemSearchQuery` with the search parameters
+     - delegate: A `BookingItemSearchDelegate` that is notified if the search is successful
+     */
+
+    public static func searchBookingItems(searchQuery: BookingItemQuery, identifier: AnyHashable?, delegate: BookingItemSearchDelegate) {
+        shared?.searchBookingItems(searchQuery, identifier: identifier, previousResultBlock: { [weak delegate]() -> BookingItemSearchResult? in
+            delegate?.previousResult()
+            }, resultBlock: { (result, identifier) in
+                delegate.bookingSearchDidReceive(result, identifier: identifier)
+        }, completion: { (result, error, identifier) in
+            if let error = error {
+                delegate.bookingItemSearchDidFailWith(error, identifier: identifier)
+            } else {
+                delegate.bookingItemSearchDidSucceedWith(result!, identifier: identifier)
+            }
+        })
+    }
+
+    /**
+     Makes a search in the API catalog given a `BookingItemSearchQuery`
+
+     - Parameters:
+     - searchQuery: The `BookingItemSearchQuery` with the search parameters
      - identifier: An optional hash identifying the request. This value is returned back in the callbacks. Use this to distinguish between different requests
      - previousResultBlock: A block called (on a worker thread) to return any previous results that are to be merged
      - resultBlock: A block called (on a worker thread) with the final merged results
      - completion: A completion block that is called when the results are ready.
      */
 
-    public static func fetchWishlist(_ query: WishlistQuery, identfier: AnyHashable?, previousResultBlock: (() -> WishlistResult?)?, resultBlock: ((WishlistResult, AnyHashable?) -> Void)?, completion: @escaping (WishlistResult?, Error?, AnyHashable?) -> Void) {
-        shared?.fetchWishlist(query, identifier: identfier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
+    public static func searchBookingItems(searchQuery: BookingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> BookingItemSearchResult?)?, resultBlock: ((BookingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (BookingItemSearchResult?, Error?, AnyHashable?)-> Void) {
+        shared?.searchBookingItems(searchQuery, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
     }
-
 }

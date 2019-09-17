@@ -23,6 +23,7 @@ enum AuthPath {
     case emailOrderConfirmation(Order)
     case wishlistToggle([Product], travelerId: String)
     case wishlist(WishlistQuery, travelerId: String)
+    case searchBookingItems(BookingItemQuery)
 
     // MARK: URLRequest
 
@@ -155,8 +156,31 @@ enum AuthPath {
                     URLQueryItem(name: "from", value: ISO8601DateFormatter.fullFormatter.string(from: fromDate))
                 )
             }
-        }
+        case .searchBookingItems(let searchQuery):
+            urlComponents.path = "/v1/booking"
+            urlRequest.method = .get
+            urlComponents.queryItems = [
+                URLQueryItem(name: "text", value: searchQuery.text),
+                URLQueryItem(name: "skip", value: String(searchQuery.offset)),
+                URLQueryItem(name: "take", value: String(searchQuery.limit))]
 
+            searchQuery.categories?.forEach({ (category) in
+                urlComponents.queryItems?.append(URLQueryItem(name: "categories", value: category.rawValue))
+            })
+
+            if let priceRange = searchQuery.range {
+                urlComponents.queryItems?.append(URLQueryItem(name: "min-price", value: String(priceRange.range.lowerBound)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "max-price", value: String(priceRange.range.upperBound)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "currency", value: priceRange.currency.rawValue))
+            }
+            if let boundingBox = searchQuery.boundingBox {
+                urlComponents.queryItems?.append(URLQueryItem(name: "top-left-latitude", value: String(boundingBox.topLeftLatitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "top-left-longitude", value: String(boundingBox.topLeftLongitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-latitude", value: String(boundingBox.bottomRightLatitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-longitude", value: String(boundingBox.bottomRightLongitude)))
+            }
+        }
+        
         urlRequest.url = urlComponents.url
 
         return urlRequest
