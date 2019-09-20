@@ -16,6 +16,7 @@ public class Traveler {
     private static var _shared: Traveler?
 
     let device: Device
+    let sandboxMode: Bool
 
     static var shared: Traveler? {
         guard _shared != nil else {
@@ -26,19 +27,20 @@ public class Traveler {
         return _shared
     }
 
-    public static func initialize(apiKey: String, device: Device) {
+    public static func initialize(apiKey: String, device: Device, sandboxMode: Bool = false) {
         guard _shared == nil else {
             Log("SDK already initialized!", data: nil, level: .warning)
             return
         }
 
-        _shared = Traveler(apiKey: apiKey, device: device)
+        _shared = Traveler(apiKey: apiKey, device: device, sandboxMode: sandboxMode)
     }
 
-    init(apiKey: String, device: Device) {
+    init(apiKey: String, device: Device, sandboxMode: Bool) {
         self.session = Session(apiKey: apiKey)
         self.device = device
         self.orderSerialQueue.maxConcurrentOperationCount = 1
+        self.sandboxMode = sandboxMode
 
         let sessionOperation = SessionBeginOperation(session: session)
         OperationQueue.authQueue.addOperation(sessionOperation)

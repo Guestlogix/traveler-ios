@@ -8,10 +8,9 @@
 
 import Foundation
 import TravelerKit
-import TravelerKitUI
 import Stripe
 
-public struct StripePaymentProvider: PaymentProvider  {
+public struct StripePaymentProvider {
 
     private let sandBoxModeEnabled: Bool
 
@@ -35,7 +34,7 @@ public struct StripePaymentProvider: PaymentProvider  {
         return (addCardViewController, paymentHandler)
     }
 
-    public init(sandBoxModeEnabled: Bool = true) {
+    public init(sandBoxModeEnabled: Bool = false) {
         self.sandBoxModeEnabled = sandBoxModeEnabled
     }
 }

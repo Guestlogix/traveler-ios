@@ -22,7 +22,7 @@ protocol OrderSummaryViewControllerDelegate: class {
 class OrderSummaryViewController: UITableViewController {
     var order: Order?
     weak var delegate: OrderSummaryViewControllerDelegate?
-
+    
     // TODO: Pull list of saved payment methods from PaymentSDK
     private var payments: [Payment] = []
     private var selectedPaymentIndex: Int? {
@@ -36,20 +36,20 @@ class OrderSummaryViewController: UITableViewController {
     private var billingSection: Int {
         return order?.products.count ?? 0
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let bundle = Bundle(for: HeaderView.self)
         tableView.register(UINib(nibName: "HeaderView", bundle: bundle), forHeaderFooterViewReuseIdentifier: headerViewIdentifier)
     }
-
+    
     // MARK: UITableViewDataSource
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return (order?.products.count ?? 0) + 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case billingSection:
@@ -58,7 +58,7 @@ class OrderSummaryViewController: UITableViewController {
             return (order!.products[section] as? BookableProduct)?.passes.count ?? 1
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case billingSection where indexPath.row < payments.count:
@@ -80,9 +80,9 @@ class OrderSummaryViewController: UITableViewController {
             return cell
         }
     }
-
+    
     // MARK: UITableViewDelegate
-
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case billingSection:
@@ -97,7 +97,7 @@ class OrderSummaryViewController: UITableViewController {
             return headerView
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case billingSection:
@@ -107,23 +107,21 @@ class OrderSummaryViewController: UITableViewController {
             return HeaderView.boundingSize(with: tableView.bounds.size, title: order?.products[section].title, disclaimer: nil).height
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (billingSection, payments.count):
-            guard let paymentProvider = TravelerUI.shared?.paymentProvider else {
+            guard let paymentHandler = TravelerUI.shared?.paymentHandler, let paymentViewController = TravelerUI.shared?.paymentViewController  else {
                 fatalError("SDK not initialized")
             }
-
-            let paymentCollectorPackage = paymentProvider.paymentCollectorPackage()
-            let vc = paymentCollectorPackage.0
-            let paymentHandler = paymentCollectorPackage.1
+            
+            let vc = paymentViewController
             let navVC = UINavigationController(rootViewController: vc)
-
+            
             paymentHandler.delegate = self
-
+            
             self.paymentHandler = paymentHandler
-
+            
             present(navVC, animated: true)
         case (billingSection, _) where selectedPaymentIndex != indexPath.row:
             selectedPaymentIndex = indexPath.row
@@ -131,12 +129,12 @@ class OrderSummaryViewController: UITableViewController {
         default:
             break
         }
-
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-
+        
         switch tableView.cellForRow(at: indexPath)?.reuseIdentifier{
         case infoCellIdentifier?:
             return true
@@ -144,7 +142,7 @@ class OrderSummaryViewController: UITableViewController {
             return false
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
             self.payments.remove(at: indexPath.row)
@@ -159,10 +157,10 @@ extension OrderSummaryViewController: PaymentHandlerDelegate {
         guard !payments.contains(where:  { $0.securePayload() == payment.securePayload() }) else {
             return
         }
-
+        
         payments.insert(payment, at: 0)
         selectedPaymentIndex = 0
-
+        
         tableView.reloadData()
     }
 }

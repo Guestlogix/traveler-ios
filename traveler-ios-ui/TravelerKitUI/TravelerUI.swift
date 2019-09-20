@@ -11,9 +11,10 @@ import TravelerKit
 
 public class TravelerUI {
     private static var _shared: TravelerUI?
-
-    let paymentProvider: PaymentProvider
-
+    
+    let paymentHandler: PaymentHandler
+    let paymentViewController: UIViewController
+    
     var preferredCurrency: Currency
 
     static var shared: TravelerUI? {
@@ -26,29 +27,30 @@ public class TravelerUI {
     }
 
     // MARK: Public API
-
+    
     public static var preferredCurrency: Currency {
         get {
             return shared?.preferredCurrency ?? .USD
         }
         set {
             shared?.preferredCurrency = newValue
-
+            
             NotificationCenter.default.post(name: .preferredCurrencyDidChange, object: nil)
         }
     }
-
-    public static func initialize(paymentProvider: PaymentProvider, preferredCurrency: Currency = .USD) {
+    
+    public static func initialize(paymentHandler: PaymentHandler, paymentViewController: UIViewController, preferredCurrency: Currency = .USD) {
         guard _shared == nil else {
             Log("SDK already initialized!", data: nil, level: .warning)
             return
         }
-
-        _shared = TravelerUI(paymentProvider: paymentProvider, preferredCurrency: preferredCurrency)
+        
+        _shared = TravelerUI(paymentProvider: paymentHandler, paymentViewController: paymentViewController, preferredCurrency: preferredCurrency)
     }
-
-    init(paymentProvider: PaymentProvider, preferredCurrency: Currency) {
-        self.paymentProvider = paymentProvider
+    
+    init(paymentProvider: PaymentHandler, paymentViewController: UIViewController, preferredCurrency: Currency) {
+        self.paymentHandler = paymentProvider
         self.preferredCurrency = preferredCurrency
+        self.paymentViewController = paymentViewController
     }
 }

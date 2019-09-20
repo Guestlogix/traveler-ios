@@ -26,13 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // TravelerSDK
 
-        Traveler.initialize(apiKey: Environment.travelerKitKey, device: UIDevice.current)
         #if TRAVELER
-        TravelerUI.initialize(paymentProvider: StripePaymentProvider())
+        Traveler.initialize(apiKey: Environment.travelerKitKey, device: UIDevice.current, sandboxMode: true)
+        let paymentCollectorPackage = StripePaymentProvider(sandBoxModeEnabled: true).paymentCollectorPackage()
+        
+        TravelerUI.initialize(paymentHandler: paymentCollectorPackage.1, paymentViewController: paymentCollectorPackage.0)
         #endif
 
         #if GCREW
-        TravelerUI.initialize(paymentProvider: StripePaymentProvider(sandBoxModeEnabled: false))
+        Traveler.initialize(apiKey: Environment.travelerKitKey, device: UIDevice.current)
+        
+        let paymentCollectorPackage = StripePaymentProvider().paymentCollectorPackage()
+        TravelerUI.initialize(paymentHandler: paymentCollectorPackage.1, paymentViewController: paymentCollectorPackage.0)
+
         #endif
 
         // Temp Styles
