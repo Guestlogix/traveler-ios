@@ -49,7 +49,7 @@ open class CarouselViewCell: UITableViewCell {
         delegate?.carouselCellDidPressMoreButton(self)
     }
 
-    func reload() {
+    public func reload() {
         itemSize = delegate?.sizeForItemsInCell(self) ?? .zero
         collectionView.collectionViewLayout.invalidateLayout()
         collectionView.reloadData()
