@@ -42,7 +42,7 @@ class CancellationViewController: UITableViewController {
         cell.titleLabel.text = quote?.products[indexPath.row].title
         let percentageFee = quote!.percentageFee(product: quote!.products[indexPath.row])
         cell.valueLabel.text = "Cancellation Fee \(percentageFee)%"
-        cell.secondValueLabel?.text = quote?.products[indexPath.row].totalRefund.localizedDescriptionInBaseCurrency
+        cell.secondValueLabel?.text = quote?.products[indexPath.row].cancellationCharge.localizedDescriptionInBaseCurrency
 
         return cell
     }
