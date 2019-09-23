@@ -83,7 +83,6 @@
 		A9639D37220E028300625235 /* NSMutableAttributedString+FontFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D36220E028300625235 /* NSMutableAttributedString+FontFace.swift */; };
 		A9639D39220E029800625235 /* Attribute+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D38220E029800625235 /* Attribute+TravelerUI.swift */; };
 		A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D3A220E02DF00625235 /* TravelerUI.swift */; };
-		A9639D3D220E033C00625235 /* PaymentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D3C220E033C00625235 /* PaymentProvider.swift */; };
 		A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639DEA2213463900625235 /* UIDevice+Device.swift */; };
 		A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830D22389E1D00268D0D /* BookingContext.swift */; };
 		A974A6972282130900319683 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6962282130900319683 /* OrdersViewController.swift */; };
@@ -201,7 +200,6 @@
 		A9639D36220E028300625235 /* NSMutableAttributedString+FontFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+FontFace.swift"; sourceTree = "<group>"; };
 		A9639D38220E029800625235 /* Attribute+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Attribute+TravelerUI.swift"; sourceTree = "<group>"; };
 		A9639D3A220E02DF00625235 /* TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelerUI.swift; sourceTree = "<group>"; };
-		A9639D3C220E033C00625235 /* PaymentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProvider.swift; sourceTree = "<group>"; };
 		A9639DEA2213463900625235 /* UIDevice+Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Device.swift"; sourceTree = "<group>"; };
 		A96F830D22389E1D00268D0D /* BookingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingContext.swift; sourceTree = "<group>"; };
 		A974A6962282130900319683 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 				A9639C9A220DF4F200625235 /* TravelerKitUI.h */,
 				A9639C9B220DF4F200625235 /* Info.plist */,
 				A9639D3A220E02DF00625235 /* TravelerUI.swift */,
-				A9639D3C220E033C00625235 /* PaymentProvider.swift */,
 			);
 			path = TravelerKitUI;
 			sourceTree = "<group>";
@@ -632,7 +629,6 @@
 				A9639D17220DF57400625235 /* PagedHorizontalView.swift in Sources */,
 				CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */,
 				A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */,
-				A9639D3D220E033C00625235 /* PaymentProvider.swift in Sources */,
 				A9639D00220DF57400625235 /* CatalogItemInfoViewController.swift in Sources */,
 				CA1462A722BBE0A200137F06 /* Order+TravelerUI.swift in Sources */,
 				A9639D04220DF57400625235 /* StepperCell.swift in Sources */,
