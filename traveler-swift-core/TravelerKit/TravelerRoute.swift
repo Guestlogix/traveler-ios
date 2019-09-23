@@ -60,6 +60,7 @@ extension PassengerRoute: Route {
         urlRequest.addValue(Locale.current.identifier, forHTTPHeaderField: "x-locale")
         urlRequest.addValue(Bundle.main.bundleIdentifier ?? "[NO_BUNDLE_IDENTIFIER]", forHTTPHeaderField: "x-application-id")
         urlRequest.addValue(TimeZone.current.identifier, forHTTPHeaderField: "x-timezone")
+        urlRequest.addValue(Traveler.shared?.sandboxMode.description ?? "false", forHTTPHeaderField: "x-sandbox-mode")
 
         return urlRequest
     }
