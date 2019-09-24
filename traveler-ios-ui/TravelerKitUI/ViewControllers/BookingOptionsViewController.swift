@@ -23,14 +23,13 @@ class BookingOptionsViewController: UIViewController {
 
     var product: Product?
     var selectedAvailability: Availability?
-    var availableOptions: [BookingOption]? {
+    
+    private var passes: [Pass]?
+    private var availableOptions: [BookingOption]? {
         return selectedAvailability?.optionSet?.options
     }
-    var optionError: Error?
-    var selectedOption: BookingOption?
-    var selectedIndexPath: IndexPath?
-
-    var passes: [Pass]?
+    private var optionError: Error?
+    private var selectedIndexPath: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +55,14 @@ class BookingOptionsViewController: UIViewController {
             return
         }
 
-        guard let option = selectedOption else {
+        guard let indexPath = selectedIndexPath else {
             optionError = BookingError.noOption
             tableView.reloadData()
             return
         }
 
         nextButton.isEnabled = false
-        delegate?.bookingOptionsViewController(self, didProceedWith: option)
+        delegate?.bookingOptionsViewController(self, didProceedWith: availableOptions![indexPath.row])
     }
 
     func passFetchDidSucceedWith(_ result: [Pass]) {
@@ -85,13 +84,19 @@ class BookingOptionsViewController: UIViewController {
 }
 
 extension BookingOptionsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Please select an option"
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return availableOptions?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! OptionCell
-        cell.optionLabel.text = availableOptions![indexPath.row].value
+        let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! InfoCell
+        cell.titleLabel.text = availableOptions![indexPath.row].value
+        cell.valueLabel.attributedText = availableOptions![indexPath.row].attributedDisclaimer
+
         cell.accessoryType = indexPath == selectedIndexPath ? .checkmark : .none
 
         return cell
@@ -101,13 +106,10 @@ extension BookingOptionsViewController: UITableViewDataSource {
 extension BookingOptionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         optionError = nil
-        if let path = selectedIndexPath {
-            selectedIndexPath = nil
-            tableView.reloadRows(at: [path], with: .automatic)
-        }
-        selectedOption = availableOptions![indexPath.row]
+
+        let previousIndexPath = selectedIndexPath
         selectedIndexPath = indexPath
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.reloadRows(at: [previousIndexPath, selectedIndexPath].compactMap({$0}), with: .automatic)
     }
 }
 
