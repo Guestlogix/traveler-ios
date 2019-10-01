@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Injector Scirpt"
-               scriptText = "#Read through variables file and store variables in associated array (dictionary)&#10;FILE=/Users/variables/variables.txt&#10;declare -gA variables&#10;if test -f &quot;$FILE&quot;; then&#10;while read line&#10;do &#10;key=$(echo $line | cut -d &apos; &apos; -f1)&#10;value=$(echo $line | cut -d &apos; &apos; -f2)&#10;variables[$key]=$value&#10;done &lt; $FILE&#10;&#10;#Force git to ignore environment swift file. &#10;git update-index --skip-worktree ${SRCROOT}/Traveler/Environment/Environment.swift&#10;&#10;#Open environment swift file and search for environment variables&#10;cat ${SRCROOT}/Traveler/Environment/Environment.swift | while read line&#10;do&#10;if [[ $line =~ \&quot;\$\(.*\)\&quot; ]]; then&#10;variable=$(echo $line | sed &apos;s/.*&quot;$(\([^&quot;]*\))&quot;.*/\1/&apos;)&#10;echo $variable&#10;echo ${variables[$variable]}&#10;sed -i &apos;&apos; -e &quot;s/\$($variable)/${variables[$variable]}/&quot; ${SRCROOT}/Traveler/Environment/Environment.swift&#10;fi&#10;done &#10;&#10;cat ${SRCROOT}/Traveler/Environment/Environment.swift&#10;else &#10;echo &quot;****--Warning: Variables file not found--****&quot;&#10;fi&#10;"
+               scriptText = "#Read through variables file and store variables in associated array (dictionary)&#10;#exec &gt; ${PROJECT_DIR}/prebuild.log 2&gt;&amp;1&#10;echo &quot;Test&quot;&#10;FILE=/Users/variables/variables.txt&#10;declare -gA variables&#10;if test -f &quot;$FILE&quot;; then&#10;while read line&#10;do &#10;key=$(echo $line | cut -d &apos; &apos; -f1)&#10;value=$(echo $line | cut -d &apos; &apos; -f2)&#10;variables[$key]=$value&#10;done &lt; $FILE&#10;&#10;#Force git to ignore environment swift file. &#10;git update-index --skip-worktree ${SRCROOT}/Traveler/Environment/Environment.swift&#10;&#10;#Open environment swift file and search for environment variables&#10;cat ${SRCROOT}/Traveler/Environment/Environment.swift | while read line&#10;do&#10;if [[ $line =~ \&quot;\$\(.*\)\&quot; ]]; then&#10;variable=$(echo $line | sed &apos;s/.*&quot;$(\([^&quot;]*\))&quot;.*/\1/&apos;)&#10;echo $variable&#10;echo ${variables[$variable]}&#10;sed -i &apos;&apos; -e &quot;s/\$($variable)/${variables[$variable]}/&quot; ${SRCROOT}/Traveler/Environment/Environment.swift&#10;fi&#10;done &#10;&#10;cat ${SRCROOT}/Traveler/Environment/Environment.swift&#10;else &#10;echo &quot;****--Warning: Variables file not found--****&quot;&#10;fi&#10;&#10;"
                shellToInvoke = "/usr/local/bin/bash">
                <EnvironmentBuildable>
                   <BuildableReference
@@ -65,8 +65,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -76,8 +74,8 @@
             ReferencedContainer = "container:Traveler.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -99,8 +97,6 @@
             ReferencedContainer = "container:Traveler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

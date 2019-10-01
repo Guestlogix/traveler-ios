@@ -17,7 +17,7 @@ class BookablePurchaseViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var proceedButton: UIButton!
 
-    var product: Product?
+    var product: BookingItemDetails?
     weak var delegate: BookablePurchaseViewControllerDelegate?
 
     override func viewDidLoad() {

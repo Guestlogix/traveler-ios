@@ -32,14 +32,12 @@ open class CatalogItemViewController: UIViewController {
 
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as CatalogItemLoadingViewController):
-            vc.image = image
+        case ("loadingSegue", _):
+            break
         case (_, let vc as CatalogItemErrorViewController):
-            vc.image = image
             vc.delegate = self
-        case (_, let vc as CatalogItemResultViewController):
-            vc.catalogItemDetails = details
-            vc.delegate = self
+        case (_, let vc as CatalogItemDetailsViewController):
+            vc.itemDetails = details
         default:
             Log("Unknown segue", data: nil, level: .warning)
             break
@@ -54,7 +52,14 @@ open class CatalogItemViewController: UIViewController {
 
         performSegue(withIdentifier: "loadingSegue", sender: nil)
 
-        Traveler.fetchCatalogItemDetails(catalogItem, delegate: self)
+        switch catalogItem {
+        case let catalogItem as ProductItem:
+            Traveler.fetchCatalogItemDetails(catalogItem, delegate: self)
+        default:
+            Log("Unknown CatalogItem Type", data: nil, level: .error)
+            performSegue(withIdentifier: "errorSegue", sender: nil)
+        }
+
     }
 
     @IBAction func didClose(_ sender: Any) {
@@ -64,8 +69,7 @@ open class CatalogItemViewController: UIViewController {
 
 extension CatalogItemViewController: CatalogItemDetailsFetchDelegate {
     public func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) {
-        self.details = result
-
+        details = result
         performSegue(withIdentifier: "resultSegue", sender: nil)
     }
 
@@ -80,8 +84,8 @@ extension CatalogItemViewController: CatalogItemErrorViewControllerDelegate {
     }
 }
 
-extension CatalogItemViewController: CatalogItemResultViewControllerDelegate {
-    func catalogItemResultViewControllerDidChangePreferredTranslucency(_ controller: CatalogItemResultViewController) {
+extension CatalogItemViewController: BookingItemDetailsViewControllerDelegate {
+    func catalogItemResultViewControllerDidChangePreferredTranslucency(_ controller: BookingItemDetailsViewController) {
         if controller.preferredTranslucency {
             UIView.animate(withDuration: 0.2, animations: {
                 self.navigationController?.navigationBar.alpha = 0
@@ -109,7 +113,7 @@ extension CatalogItemViewController: CatalogItemResultViewControllerDelegate {
         }
     }
 
-    func catalogItemResultViewController(_ controller: CatalogItemResultViewController, didCreate order: Order) {
+    func catalogItemResultViewController(_ controller: BookingItemDetailsViewController, didCreate order: Order) {
         delegate?.catalogItemViewController(self, didCreate: order)
     }
 }

@@ -10,23 +10,14 @@ import UIKit
 import TravelerKit
 
 class PurchaseViewController: UIViewController {
-    var strategy: PurchaseStrategy?
-    var product: Product?
+   
+    var product: BookingItemDetails?
 
     private var order: Order?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        switch strategy {
-        case .some(.bookable):
-            performSegue(withIdentifier: "bookableSegue", sender: nil)
-        case .some(.buyable):
-            performSegue(withIdentifier: "buyableSegue", sender: nil)
-        case .none:
-            Log("No Strategy", data: nil, level: .error)
-            break
-        }
+        performSegue(withIdentifier: "bookableSegue", sender: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,8 +25,6 @@ class PurchaseViewController: UIViewController {
         case (_, let vc as BookablePurchaseViewController):
             vc.delegate = self
             vc.product = product
-        case (_, let vc as BuyablePurchaseViewController):
-            vc.delegate = self
         case (_, let vc as PaymentConfirmationViewController):
             vc.order = order
         default:

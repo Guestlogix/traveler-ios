@@ -14,21 +14,18 @@ public protocol Product {
     var id: String { get }
     /// Price
     var price: Price { get }
-    /// Name
+    /// Type
+    var type: ProductType { get }
+    /// Title
     var title: String { get }
 }
 
-/// Different types of product
-public enum ProductType: String, Decodable {
-    /// Experience or any product that has a booking nature
-    case bookable = "Bookable"
-}
+struct AnyProduct: Product, Decodable {
 
-struct AnyProduct: Decodable {
     let id: String
     let price: Price
     let title: String
-    let productType: ProductType
+    let type: ProductType
 
     // Properties for BookableProduct
     let passes: [Pass]?
@@ -47,8 +44,8 @@ struct AnyProduct: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
-        self.productType = try container.decode(ProductType.self, forKey: .productType)
-        self.passes = try container.decode([Pass]?.self, forKey: .passes) ?? nil
+        self.type = try container.decode(ProductType.self, forKey: .productType)
+        self.passes = try? container.decode([Pass]?.self, forKey: .passes) ?? nil
         self.price = try container.decode(Price.self, forKey:.price)
 
 
@@ -74,4 +71,6 @@ public struct BookableProduct: Product {
     public let eventDate: Date
     /// Price of product
     public let price: Price
+    /// Product type
+    public let type: ProductType = .booking
 }

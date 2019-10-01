@@ -12,7 +12,7 @@ import TravelerKit
 class ProductDetailViewController: UIViewController {
     var product: Product?
 
-    private var productDetails: CatalogItemDetails?
+    private var bookingProductDetails: BookingItemDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ProductDetailViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as BookableProductDetailViewController):
             vc.purchasedProduct = product as? BookableProduct
-            vc.productDetails = productDetails
+            vc.productDetails = bookingProductDetails
         case (_, let vc as RetryViewController):
             vc.delegate = self
         case ("loadingSegue", _):
@@ -53,11 +53,15 @@ class ProductDetailViewController: UIViewController {
 
 extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
     func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) {
-        self.productDetails = result
-
-        if let _ = product as? BookableProduct {
+        switch result {
+        case let result as BookingItemDetails:
+            self.bookingProductDetails = result
             performSegue(withIdentifier: "bookableDetailSegue", sender: nil)
-        } else {
+        case let _ as ParkingItemDetails:
+            Log("Parking not implemented", data: nil, level: .warning)
+            performSegue(withIdentifier: "errorSegue", sender: nil)
+        default:
+            Log("Unkown detail tupe", data: nil, level: .error)
             performSegue(withIdentifier: "errorSegue", sender: nil)
         }
     }

@@ -20,7 +20,7 @@ class BookableProductDetailViewController: UIViewController {
     @IBOutlet weak var productInfoView: UIView!
 
     var purchasedProduct: BookableProduct?
-    var productDetails: CatalogItemDetails?
+    var productDetails: BookingItemDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()

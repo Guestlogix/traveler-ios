@@ -14,7 +14,7 @@ public struct WishlistResult: Decodable {
     /// The total number of orders matching the given query
     public private(set) var total: Int
     /// An `Array<CatalogItem>` representing the results of the query
-    public private(set) var items: [Int: CatalogItem]
+    public private(set) var items: [Int: ProductItem]
     /// The fromDate part of the `WishlistQuery`that matches the result
     public let fromDate: Date?
     /// The toDate part of the `WishlistQuery` that matches the result
@@ -29,7 +29,7 @@ public struct WishlistResult: Decodable {
         case items = "result"
     }
 
-    init(total: Int, items: [Int: CatalogItem], fromDate: Date?, toDate: Date) {
+    init(total: Int, items: [Int: ProductItem], fromDate: Date?, toDate: Date) {
         self.total = total
         self.items = items
         self.fromDate = fromDate
@@ -74,7 +74,7 @@ public struct WishlistResult: Decodable {
     }
 
     @discardableResult
-    public mutating func remove(_ item: Product) -> Bool {
+    public mutating func remove(_ item: ProductItem) -> Bool {
         guard let existingItemPair = items.first(where: { $0.value.id == item.id }) else {
             return false
         }
@@ -83,7 +83,7 @@ public struct WishlistResult: Decodable {
 
         items.removeValue(forKey: itemIndex)
 
-        var updatedItems = [Int: CatalogItem]()
+        var updatedItems = [Int: ProductItem]()
         for (key, value) in items {
             updatedItems[key > itemIndex ? (key - 1) : key] = value
         }
@@ -96,6 +96,7 @@ public struct WishlistResult: Decodable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+
         let offset = try container.decode(Int.self, forKey: .offset)
         let fromDate = try container.decode(Date?.self, forKey: .fromDate)
         let toDate = try container.decode(Date.self, forKey: .toDate)
@@ -104,9 +105,9 @@ public struct WishlistResult: Decodable {
         self.toDate = toDate
         self.total = try container.decode(Int.self, forKey: .total)
 
-        let items = try container.decode([CatalogItem].self, forKey: .items)
+        let items = try container.decode([ProductItem].self, forKey: .items)
 
-        var indexedItems = [Int : CatalogItem]()
+        var indexedItems = [Int : ProductItem]()
         for (index, item) in items.enumerated() {
             indexedItems[index + offset] = item
         }

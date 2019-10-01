@@ -1,5 +1,5 @@
 //
-//  CatalogItemResultViewController.swift
+//  BookingItemDetailsViewController.swift
 //  TravelerKit
 //
 //  Created by Ata Namvari on 2018-11-08.
@@ -11,11 +11,11 @@ import TravelerKit
 
 let imageCellIdentifier = "imageCellIdentifier"
 
-protocol CatalogItemResultViewControllerDelegate: class {
-    func catalogItemResultViewControllerDidChangePreferredTranslucency(_ controller: CatalogItemResultViewController)
+protocol BookingItemDetailsViewControllerDelegate: class {
+    func catalogItemResultViewControllerDidChangePreferredTranslucency(_ controller: BookingItemDetailsViewController)
 }
 
-class CatalogItemResultViewController: UIViewController {
+class BookingItemDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,28 +24,28 @@ class CatalogItemResultViewController: UIViewController {
     @IBOutlet weak var itemInfoView: UIView!
     @IBOutlet weak var termsAndConditionsButton: UIButton!
     
-    weak var delegate: CatalogItemResultViewControllerDelegate?
-    var catalogItemDetails: CatalogItemDetails?
+    weak var delegate: BookingItemDetailsViewControllerDelegate?
+    var bookingItemDetails: BookingItemDetails?
 
     private(set) var preferredTranslucency: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLabel.text = catalogItemDetails?.title
-        let description = catalogItemDetails?.attributedDescription
+        titleLabel.text = bookingItemDetails?.title
+        let description = bookingItemDetails?.attributedDescription
         description?.setFontFace(font: UIFont.systemFont(ofSize: 17))
         descriptionLabel.attributedText = description
 
         // Preload images
 
-        catalogItemDetails?.imageUrls.forEach({ (imageURL) in
+        bookingItemDetails?.imageUrls.forEach({ (imageURL) in
             AssetManager.shared.loadImage(with: imageURL, completion: { _ in
                 // no-op
             })
         })
 
-        termsAndConditionsButton.isEnabled = catalogItemDetails?.attributedTermsAndConditions != nil
+        termsAndConditionsButton.isEnabled = bookingItemDetails?.attributedTermsAndConditions != nil
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,15 +63,14 @@ class CatalogItemResultViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as CatalogItemInfoViewController):
             vc.delegate = self
-            vc.details = catalogItemDetails
+            vc.details = bookingItemDetails
         case (_, let vc as PurchaseViewController):
-            vc.strategy = catalogItemDetails?.purchaseStrategy
-            vc.product = catalogItemDetails
+            vc.product = bookingItemDetails
         case (_, let vc as SupplierInfoViewController):
-            vc.supplier = catalogItemDetails?.supplier
+            vc.supplier = bookingItemDetails?.supplier
         case ("termsAndConditionsSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? TermsAndConditionsViewController
-            vc?.termsAndConditions = catalogItemDetails?.attributedTermsAndConditions
+            vc?.termsAndConditions = bookingItemDetails?.attributedTermsAndConditions
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -83,18 +82,18 @@ class CatalogItemResultViewController: UIViewController {
     }
 }
 
-extension CatalogItemResultViewController: UICollectionViewDataSource {
+extension BookingItemDetailsViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return catalogItemDetails?.imageUrls.count ?? 0
+        return bookingItemDetails?.imageUrls.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageCellIdentifier, for: indexPath) as! ImageCell
-        let imageURL = catalogItemDetails!.imageUrls[indexPath.row]
+        let imageURL = bookingItemDetails!.imageUrls[indexPath.row]
 
         AssetManager.shared.loadImage(with: imageURL) { (image) in
             cell.imageView.image = image
@@ -104,7 +103,7 @@ extension CatalogItemResultViewController: UICollectionViewDataSource {
     }
 }
 
-extension CatalogItemResultViewController: CatalogItemInfoViewControllerDelegate {
+extension BookingItemDetailsViewController: CatalogItemInfoViewControllerDelegate {
     func catalogItemInfoViewControllerDidChangePreferredContentSize(_ controller: CatalogItemInfoViewController) {
         itemInfoView.isHidden = controller.preferredContentSize.height == 0
         itemInfoHeightConstraint.constant = controller.preferredContentSize.height
@@ -112,7 +111,7 @@ extension CatalogItemResultViewController: CatalogItemInfoViewControllerDelegate
     }
 }
 
-extension CatalogItemResultViewController: UIScrollViewDelegate {
+extension BookingItemDetailsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updatePreferredTranslucency()
     }

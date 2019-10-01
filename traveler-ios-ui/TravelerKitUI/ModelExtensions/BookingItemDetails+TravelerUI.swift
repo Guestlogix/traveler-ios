@@ -9,7 +9,7 @@
 import Foundation
 import TravelerKit
 
-extension CatalogItemDetails {
+extension BookingItemDetails {
     public var attributedDescription: NSMutableAttributedString? {
         guard let description = description else {
             return nil

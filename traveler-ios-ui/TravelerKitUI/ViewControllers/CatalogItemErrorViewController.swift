@@ -13,15 +13,10 @@ protocol CatalogItemErrorViewControllerDelegate: class {
 }
 
 class CatalogItemErrorViewController: UIViewController {
-    @IBOutlet weak var imageView: UIImageView!
-
-    var image: UIImage?
     weak var delegate: CatalogItemErrorViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        imageView.image = image
     }
 
     @IBAction func didRetry(_ sender: UIButton) {
