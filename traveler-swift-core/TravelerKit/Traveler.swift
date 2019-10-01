@@ -27,6 +27,10 @@ public class Traveler {
         return _shared
     }
 
+    public static var sandboxMode: Bool {
+        return shared?.sandboxMode ?? false
+    }
+
     public static func initialize(apiKey: String, device: Device, sandboxMode: Bool = false) {
         guard _shared == nil else {
             Log("SDK already initialized!", data: nil, level: .warning)

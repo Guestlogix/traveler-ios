@@ -111,18 +111,14 @@ class OrderSummaryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (billingSection, payments.count):
-            guard let paymentHandler = TravelerUI.shared?.paymentHandler, let paymentViewController = TravelerUI.shared?.paymentViewController  else {
+            guard let paymentHandlerViewControllerType = TravelerUI.shared?.paymentHandlerViewControllerType else {
                 fatalError("SDK not initialized")
             }
 
-            let vc = paymentViewController
-            let navVC = UINavigationController(rootViewController: vc)
+            let vc = paymentHandlerViewControllerType.init()
+            vc.delegate = self
 
-            paymentHandler.delegate = self
-
-            self.paymentHandler = paymentHandler
-
-            present(navVC, animated: true)
+            present(vc, animated: true)
         case (billingSection, _) where selectedPaymentIndex != indexPath.row:
             selectedPaymentIndex = indexPath.row
             tableView.reloadSections(IndexSet([billingSection]), with: .none)

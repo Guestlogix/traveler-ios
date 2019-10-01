@@ -12,8 +12,7 @@ import TravelerKit
 public class TravelerUI {
     private static var _shared: TravelerUI?
 
-    let paymentHandler: PaymentHandler
-    let paymentViewController: UIViewController
+    let paymentHandlerViewControllerType: (PaymentHandler & UIViewController).Type
 
     var preferredCurrency: Currency
 
@@ -39,18 +38,18 @@ public class TravelerUI {
         }
     }
 
-    public static func initialize(paymentHandler: PaymentHandler, paymentViewController: UIViewController, preferredCurrency: Currency = .USD) {
+    public static func initialize(paymentHandler: (PaymentHandler & UIViewController).Type, preferredCurrency: Currency = .USD) {
         guard _shared == nil else {
             Log("SDK already initialized!", data: nil, level: .warning)
             return
         }
 
-        _shared = TravelerUI(paymentProvider: paymentHandler, paymentViewController: paymentViewController, preferredCurrency: preferredCurrency)
+        _shared = TravelerUI(paymentHandler: paymentHandler, preferredCurrency: preferredCurrency)
     }
 
-    init(paymentProvider: PaymentHandler, paymentViewController: UIViewController, preferredCurrency: Currency) {
-        self.paymentHandler = paymentProvider
+    init(paymentHandler: (PaymentHandler & UIViewController).Type, preferredCurrency: Currency) {
+        self.paymentHandlerViewControllerType = paymentHandler
         self.preferredCurrency = preferredCurrency
-        self.paymentViewController = paymentViewController
+
     }
 }
