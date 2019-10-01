@@ -11,73 +11,87 @@ import TravelerKit
 import Stripe
 
 public struct StripePaymentProvider {
-
-    private let sandBoxModeEnabled: Bool
-
-    private var paymentConfiguration: STPPaymentConfiguration {
+    fileprivate static var paymentConfiguration: STPPaymentConfiguration {
         let config = STPPaymentConfiguration()
 
-        if self.sandBoxModeEnabled {
+        if Traveler.sandboxMode {
             config.publishableKey = "pk_test_yUnRnhSqk2DvuL6Qlx9TNrfx"
         } else {
             config.publishableKey = "pk_live_BbIRatKepYSWQBVL9G9JfR6I"
         }
+
         return config
-    }
-
-    public func paymentCollectorPackage() -> (UIViewController, PaymentHandler) {
-        let paymentHandler = StripePaymentHandler()
-
-        let addCardViewController = STPAddCardViewController(configuration: paymentConfiguration, theme: STPTheme.default())
-        addCardViewController.delegate = paymentHandler
-
-        return (addCardViewController, paymentHandler)
-    }
-
-    public init(sandBoxModeEnabled: Bool = false) {
-        self.sandBoxModeEnabled = sandBoxModeEnabled
     }
 }
 
-class StripePaymentHandler: NSObject, PaymentHandler, STPAddCardViewControllerDelegate {
-    weak var delegate: PaymentHandlerDelegate?
+// Note: Must be presented modally
 
-    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
-        addCardViewController.dismiss(animated: true, completion: nil)
+public class PaymentCollectionViewController: UIViewController, PaymentHandler {
+    public weak var delegate: PaymentHandlerDelegate?
+
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+
+        let addCardViewController = STPAddCardViewController(configuration: StripePaymentProvider.paymentConfiguration, theme: STPTheme.default())
+        addCardViewController.delegate = self
+
+        let navController = UINavigationController(rootViewController: addCardViewController)
+
+        addChild(navController)
+
+        let destView = navController.view!
+        destView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        destView.frame = view.bounds
+        view.addSubview(destView)
+        navController.didMove(toParent: self)
+    }
+}
+
+extension PaymentCollectionViewController: STPAddCardViewControllerDelegate {
+    public func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        dismiss(animated: true, completion: nil)
     }
 
-    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        delegate?.paymentHandler(self, didCollect: StripePayment(token: token))
-
-        addCardViewController.dismiss(animated: true, completion: nil)
+    private func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreatePaymentMethod paymentMethod: STPPaymentMethod, completion: @escaping STPErrorBlock) {
+        let payment = StripePayment(paymentMethod: paymentMethod)
+        delegate?.paymentHandler(self, didCollect: payment)
     }
 }
 
 struct StripePayment: Payment {
     var localizedDescription: String {
-        guard let card = token.card else {
-            return "UNKNOWN CARD"
+        // TODO: Write descriptions for other method types
+        switch paymentMethod.type {
+        case .typeCard:
+            return "\(paymentMethod.card!.brand) ending in \(String(describing: paymentMethod.card!.last4))"
+        case .typeCardPresent:
+            return "CardPresent"
+        case .typeFPX:
+            return "FPX"
+        case .typeiDEAL:
+            return "iDEAL"
+        case .typeUnknown:
+            return "Unknown payment type"
         }
-
-        return "\(STPCard.string(from: card.brand)) ending in \(card.last4)"
     }
 
     var attributes: [Attribute] {
-        guard let card = token.card else {
+        // TODO: Return attributes for other method types
+        guard let card = paymentMethod.card else {
             return []
         }
 
         return [
-            Attribute(label: "Credit card number", value: card.last4),
+            Attribute(label: "Credit card number", value: card.last4 ?? "****"),
             Attribute(label: "Expiry date", value: "\(card.expMonth)/\(card.expYear)")
         ]
     }
 
-    let token: STPToken
+    let paymentMethod: STPPaymentMethod
 
     func securePayload() -> Data? {
         let jsonPayload: [String: Any] = [
-            "token": token.tokenId,
+            "paymentMethodId": paymentMethod.stripeId,
         ]
 
         return try? JSONSerialization.data(withJSONObject: jsonPayload, options: [])
