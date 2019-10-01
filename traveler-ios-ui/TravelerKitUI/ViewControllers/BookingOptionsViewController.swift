@@ -21,7 +21,7 @@ class BookingOptionsViewController: UIViewController {
 
     weak var delegate: BookingOptionsViewControllerDelegate?
 
-    var product: Product?
+    var product: BookingItem?
     var selectedAvailability: Availability?
     
     private var passes: [Pass]?

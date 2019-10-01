@@ -21,13 +21,13 @@ class ProductDetailViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch (segue.identifier, segue.destination) {
-        case (_, let vc as BookableProductDetailViewController):
-            vc.purchasedProduct = product as? BookableProduct
+        switch (segue.identifier, segue.destination, productDetails) {
+        case (_, let vc as BookableProductDetailViewController, let productDetails as BookingItemDetails):
+            vc.purchasedProduct = product as? BookingProduct
             vc.productDetails = productDetails
-        case (_, let vc as RetryViewController):
+        case (_, let vc as RetryViewController, _):
             vc.delegate = self
-        case ("loadingSegue", _):
+        case ("loadingSegue", _, _):
             break
         default:
             Log("Unknown segue", data: nil, level:.warning)
@@ -43,7 +43,7 @@ class ProductDetailViewController: UIViewController {
 
         performSegue(withIdentifier: "loadingSegue", sender: nil)
 
-        Traveler.fetchCatalogItemDetails(product, delegate: self)
+        Traveler.fetchProductDetails(product, delegate: self)
     }
 
     @IBAction func didClose(_ sender: Any) {
@@ -53,11 +53,12 @@ class ProductDetailViewController: UIViewController {
 
 extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
     func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) {
-        self.productDetails = result
-
-        if let _ = product as? BookableProduct {
+        switch result {
+        case let result as BookingItemDetails:
+            self.productDetails = result
             performSegue(withIdentifier: "bookableDetailSegue", sender: nil)
-        } else {
+        default:
+            Log("Unkown detail type", data: nil, level: .error)
             performSegue(withIdentifier: "errorSegue", sender: nil)
         }
     }

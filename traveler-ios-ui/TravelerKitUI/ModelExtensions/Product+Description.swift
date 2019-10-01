@@ -12,7 +12,7 @@ import TravelerKit
 extension Product {
     var secondaryDescription: String? {
         switch self {
-        case let self as BookableProduct:
+        case let self as BookingProduct:
             return ISO8601DateFormatter.dateOnlyFormatter.string(from: self.eventDate)
         default:
             return nil

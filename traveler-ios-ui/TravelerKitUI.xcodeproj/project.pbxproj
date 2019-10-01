@@ -14,14 +14,11 @@
 		A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */; };
 		A9639C9C220DF4F200625235 /* TravelerKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639C9A220DF4F200625235 /* TravelerKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA3220DF57300625235 /* CatalogItemViewController.swift */; };
-		A9639CEC220DF57400625235 /* BuyableDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA4220DF57300625235 /* BuyableDetailsViewController.swift */; };
 		A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */; };
 		A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */; };
 		A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA8220DF57300625235 /* QuantityViewController.swift */; };
 		A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA9220DF57300625235 /* PurchaseViewController.swift */; };
-		A9639CF2220DF57400625235 /* CatalogItemLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAA220DF57300625235 /* CatalogItemLoadingViewController.swift */; };
 		A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */; };
-		A9639CF4220DF57400625235 /* CatalogItemErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAC220DF57300625235 /* CatalogItemErrorViewController.swift */; };
 		A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */; };
 		A9639CF6220DF57400625235 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */; };
 		A9639CF7220DF57400625235 /* CatalogItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAF220DF57300625235 /* CatalogItemDetailsViewController.swift */; };
@@ -34,7 +31,7 @@
 		A9639CFE220DF57400625235 /* CatalogResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB6220DF57300625235 /* CatalogResultViewController.swift */; };
 		A9639CFF220DF57400625235 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB7220DF57300625235 /* CatalogViewController.swift */; };
 		A9639D00220DF57400625235 /* CatalogItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB8220DF57300625235 /* CatalogItemInfoViewController.swift */; };
-		A9639D01220DF57400625235 /* CatalogItemResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB9220DF57300625235 /* CatalogItemResultViewController.swift */; };
+		A9639D01220DF57400625235 /* BookingItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CB9220DF57300625235 /* BookingItemDetailsViewController.swift */; };
 		A9639D02220DF57400625235 /* BookablePurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CBA220DF57300625235 /* BookablePurchaseViewController.swift */; };
 		A9639D03220DF57400625235 /* CarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CBD220DF57300625235 /* CarouselViewCell.swift */; };
 		A9639D04220DF57400625235 /* StepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CBE220DF57300625235 /* StepperCell.swift */; };
@@ -109,6 +106,8 @@
 		CA88804222B2B22500213E41 /* Product.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA88804122B2B22400213E41 /* Product.storyboard */; };
 		CAACA48322B835600054765C /* CancellationError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAACA48222B835600054765C /* CancellationError+LocalizedError.swift */; };
 		CAC32410229C50E200A4F286 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */; };
+		CACC1D2D2343C91800AA6619 /* OrderReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */; };
+		CACC1D2F2343CA4000AA6619 /* BookingItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACC1D2E2343CA4000AA6619 /* BookingItem.storyboard */; };
 		CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACFE0D122B01FF200927899 /* Product+Description.swift */; };
 		CAEF49D422C2910F00117857 /* FailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEF49D322C2910F00117857 /* FailViewController.swift */; };
 		F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */; };
@@ -132,14 +131,11 @@
 		A9639C9A220DF4F200625235 /* TravelerKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TravelerKitUI.h; sourceTree = "<group>"; };
 		A9639C9B220DF4F200625235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9639CA3220DF57300625235 /* CatalogItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemViewController.swift; sourceTree = "<group>"; };
-		A9639CA4220DF57300625235 /* BuyableDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyableDetailsViewController.swift; sourceTree = "<group>"; };
 		A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingQuestionsViewController.swift; sourceTree = "<group>"; };
 		A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
 		A9639CA8220DF57300625235 /* QuantityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityViewController.swift; sourceTree = "<group>"; };
 		A9639CA9220DF57300625235 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
-		A9639CAA220DF57300625235 /* CatalogItemLoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemLoadingViewController.swift; sourceTree = "<group>"; };
 		A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfoViewController.swift; sourceTree = "<group>"; };
-		A9639CAC220DF57300625235 /* CatalogItemErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemErrorViewController.swift; sourceTree = "<group>"; };
 		A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityFormViewController.swift; sourceTree = "<group>"; };
 		A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
 		A9639CAF220DF57300625235 /* CatalogItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemDetailsViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +148,7 @@
 		A9639CB6220DF57300625235 /* CatalogResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogResultViewController.swift; sourceTree = "<group>"; };
 		A9639CB7220DF57300625235 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		A9639CB8220DF57300625235 /* CatalogItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemInfoViewController.swift; sourceTree = "<group>"; };
-		A9639CB9220DF57300625235 /* CatalogItemResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemResultViewController.swift; sourceTree = "<group>"; };
+		A9639CB9220DF57300625235 /* BookingItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemDetailsViewController.swift; sourceTree = "<group>"; };
 		A9639CBA220DF57300625235 /* BookablePurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookablePurchaseViewController.swift; sourceTree = "<group>"; };
 		A9639CBD220DF57300625235 /* CarouselViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselViewCell.swift; sourceTree = "<group>"; };
 		A9639CBE220DF57300625235 /* StepperCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepperCell.swift; sourceTree = "<group>"; };
@@ -227,6 +223,8 @@
 		CA88804122B2B22400213E41 /* Product.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Product.storyboard; sourceTree = "<group>"; };
 		CAACA48222B835600054765C /* CancellationError+LocalizedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CancellationError+LocalizedError.swift"; sourceTree = "<group>"; };
 		CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderReview.storyboard; sourceTree = "<group>"; };
+		CACC1D2E2343CA4000AA6619 /* BookingItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookingItem.storyboard; sourceTree = "<group>"; };
 		CACFE0D122B01FF200927899 /* Product+Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product+Description.swift"; sourceTree = "<group>"; };
 		CAEF49D322C2910F00117857 /* FailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailViewController.swift; sourceTree = "<group>"; };
 		F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselViewCell.swift; sourceTree = "<group>"; };
@@ -299,14 +297,11 @@
 				A974A6962282130900319683 /* OrdersViewController.swift */,
 				A974A6982282131D00319683 /* OrderResultViewController.swift */,
 				A9639CA3220DF57300625235 /* CatalogItemViewController.swift */,
-				A9639CA4220DF57300625235 /* BuyableDetailsViewController.swift */,
 				A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */,
 				A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */,
 				A9639CA9220DF57300625235 /* PurchaseViewController.swift */,
 				A9639CA8220DF57300625235 /* QuantityViewController.swift */,
-				A9639CAA220DF57300625235 /* CatalogItemLoadingViewController.swift */,
 				A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */,
-				A9639CAC220DF57300625235 /* CatalogItemErrorViewController.swift */,
 				A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */,
 				A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */,
 				A9639CAF220DF57300625235 /* CatalogItemDetailsViewController.swift */,
@@ -319,7 +314,7 @@
 				A9639CB6220DF57300625235 /* CatalogResultViewController.swift */,
 				A9639CB7220DF57300625235 /* CatalogViewController.swift */,
 				A9639CB8220DF57300625235 /* CatalogItemInfoViewController.swift */,
-				A9639CB9220DF57300625235 /* CatalogItemResultViewController.swift */,
+				A9639CB9220DF57300625235 /* BookingItemDetailsViewController.swift */,
 				A9639CBA220DF57300625235 /* BookablePurchaseViewController.swift */,
 				A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */,
 				CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */,
@@ -380,10 +375,12 @@
 		A9639CD0220DF57400625235 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */,
 				CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */,
+				CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */,
 				CA88804122B2B22400213E41 /* Product.storyboard */,
 				A9639CD1220DF57400625235 /* CatalogItem.storyboard */,
+				CACC1D2E2343CA4000AA6619 /* BookingItem.storyboard */,
+				CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */,
 				A974A69C2282197800319683 /* Orders.storyboard */,
 			);
 			path = Storyboards;
@@ -531,10 +528,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */,
+				CACC1D2F2343CA4000AA6619 /* BookingItem.storyboard in Resources */,
 				F3A3E064224BB85E00CD69F4 /* FormValueDisplayInputCell.xib in Resources */,
 				A9639D1D220DF57400625235 /* FormStringCell.xib in Resources */,
 				A9639D14220DF57400625235 /* CarouselItemViewCell.xib in Resources */,
 				A9639D19220DF57400625235 /* FormListCell.xib in Resources */,
+				CACC1D2D2343C91800AA6619 /* OrderReview.storyboard in Resources */,
 				A9639D1E220DF57400625235 /* FormHeaderView.xib in Resources */,
 				CA1656FB22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard in Resources */,
 				F3A3E068224BBF2400CD69F4 /* FormDateInputCell.xib in Resources */,
@@ -588,7 +587,7 @@
 				CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */,
 				A9639CFB220DF57400625235 /* ReceiptViewController.swift in Sources */,
 				A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */,
-				A9639D01220DF57400625235 /* CatalogItemResultViewController.swift in Sources */,
+				A9639D01220DF57400625235 /* BookingItemDetailsViewController.swift in Sources */,
 				F3A3E066224BBEF700CD69F4 /* FormDateInputCell.swift in Sources */,
 				CA16570322B2E91300FDF6C7 /* Notification+Cancel.swift in Sources */,
 				A9639D25220DF57400625235 /* InputType.swift in Sources */,
@@ -596,13 +595,11 @@
 				A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */,
 				CA12275C22F0D4CA00541F3A /* TermsAndConditionsViewController.swift in Sources */,
 				A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */,
-				A9639CF2220DF57400625235 /* CatalogItemLoadingViewController.swift in Sources */,
 				A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */,
 				A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */,
 				A974A69B2282152E00319683 /* OrderCell.swift in Sources */,
 				A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */,
 				A9639D12220DF57400625235 /* Stepper.swift in Sources */,
-				A9639CEC220DF57400625235 /* BuyableDetailsViewController.swift in Sources */,
 				A9639D23220DF57400625235 /* FormView.swift in Sources */,
 				CA153D8122CA82F000287034 /* BookingError+LocalizedError.swift in Sources */,
 				A9639CF7220DF57400625235 /* CatalogItemDetailsViewController.swift in Sources */,
@@ -619,7 +616,6 @@
 				A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */,
 				A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */,
 				CAEF49D422C2910F00117857 /* FailViewController.swift in Sources */,
-				A9639CF4220DF57400625235 /* CatalogItemErrorViewController.swift in Sources */,
 				A9639D26220DF57400625235 /* FormHeaderView.swift in Sources */,
 				A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */,
 				A9639D29220DF57400625235 /* ProgressHUD.swift in Sources */,

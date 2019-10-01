@@ -8,53 +8,49 @@
 
 import Foundation
 
-/// The detailed information of a `CatalogItem`
-public struct CatalogItemDetails: Decodable, Product {
-    /// Identifier
-    public let id: String
+/// Detail information of Catalog Items 
+public protocol CatalogItemDetails {
     /// Title
-    public let title: String
+    var title: String { get }
     /// Description
-    public private(set) var description: String?
+    var description: String? { get }
     /// An array of URLs of images
-    public let imageUrls: [URL]
+    var imageUrls: [URL] { get }
     /// Attributes
-    public let information: [Attribute]?
-    // Indicating if it's wishlisted
-    public var isWishlisted: Bool?
+    var information: [Attribute]? { get }
     /// Vendor's contact information
-    public let contact: ContactInfo?
+    var contact: ContactInfo? { get }
     /// An array of locations
-    public let locations: [Location]
-    /// Starting price
-    public let priceStartingAt: Price
-    /// Strategy for purchasing the item
-    public let purchaseStrategy: PurchaseStrategy
-    /// Starting price
-    public var price: Price {
-        return priceStartingAt
-    }
+    var locations: [Location] { get }
     /// Product supplier
-    public let supplier: Supplier
-    /// Terms and conditions
-    public var termsAndConditions: String?
+    var supplier: Supplier { get }
     /// Disclaimer
-    public var disclaimer: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case title
-        case description
-        case imageUrls
-        case contact
-        case locations
-        case priceStartingAt
-        case purchaseStrategy
-        case information
-        case isWishlisted
-        case supplier
-        case termsAndConditions
-        case disclaimer
-    }
+    var disclaimer: String? { get }
+    /// Terms and conditions
+    var termsAndConditions: String? { get }
 }
 
+struct AnyItemDetails: Decodable {
+
+    let payload: CatalogItemDetails
+
+    enum CodingKeys: String, CodingKey {
+        case type = "purchaseStrategy"
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let type = try container.decode(ProductType.self, forKey: .type)
+
+        var itemDetail: CatalogItemDetails
+        switch type {
+        case .booking:
+            itemDetail = try BookingItemDetails(from: decoder)
+
+        case .parking:
+            itemDetail = try ParkingItemDetails(from: decoder)
+        }
+
+        payload = itemDetail
+    }
+}

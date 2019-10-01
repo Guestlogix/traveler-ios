@@ -73,15 +73,23 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func fetchCatalogItemDetails(_ catalogItem: Product, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
-        let fetchOperation: AuthenticatedRemoteFetchOperation<CatalogItemDetails>
-        if let travelerProfileId = session.identity {
-            fetchOperation = AuthenticatedRemoteFetchOperation<CatalogItemDetails>(path: .catalogItem(catalogItem, travelerId: travelerProfileId), session: session)
-        } else {
-            fetchOperation = AuthenticatedRemoteFetchOperation<CatalogItemDetails>(path: .catalogItem(catalogItem, travelerId: nil), session: session)
+    func fetchProductDetails(_ product: Product, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
+        let fetchOperation: AuthenticatedRemoteFetchOperation<AnyItemDetails>
+        let travelerProfileId = session.identity
+
+        var path: AuthPath
+
+        switch product.productType {
+        case .booking:
+            path = .bookingItem(product, travelerId: travelerProfileId)
+        case .parking:
+            path = .parkingItem(product, travelerId: travelerProfileId)
         }
+
+        fetchOperation = AuthenticatedRemoteFetchOperation<AnyItemDetails>(path: path, session: session)
+
         let blockOperation = BlockOperation { [unowned fetchOperation] in
-            completion(fetchOperation.resource, fetchOperation.error)
+            completion(fetchOperation.resource?.payload, fetchOperation.error)
         }
 
         blockOperation.addDependency(fetchOperation)
@@ -104,7 +112,7 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func fetchPasses(product: Product, availability: Availability, option: BookingOption?, completion: @escaping ([Pass]?, Error?) -> Void) {
+    func fetchPasses(product: BookingItem, availability: Availability, option: BookingOption?, completion: @escaping ([Pass]?, Error?) -> Void) {
         let fetchOperation = AuthenticatedRemoteFetchOperation<[Pass]>(path: .passes(product, availability: availability, option: option), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
@@ -116,7 +124,7 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func fetchBookingForm(product: Product, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
+    func fetchBookingForm(product: BookingItem, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
         let fetchOperation = AuthenticatedRemoteFetchOperation<[QuestionGroup]>(path: .questions(product, passes: passes), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             if let groups = fetchOperation.resource {
@@ -133,7 +141,7 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    // TODO: Use an array Purchase as an interface instead of BookingForm
+    // TODO: Use a protocol Purchase as an argument instead of BookingForm
     func createOrder(bookingForm: BookingForm, completion: @escaping (Order?, Error?) -> Void) {
         let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .createOrder([bookingForm], travelerId: session.identity), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
@@ -250,7 +258,7 @@ public class Traveler {
 
         var immediateResult: WishlistResult?
 
-        if var result = result, let items = items as? [CatalogItem] {
+        if var result = result {
             let allItemsExistInResult = items.map({ $0.id }).reduce(true) { (exists, id) -> Bool in
                 exists && result.items.values.contains(where: { (item) -> Bool in
                     item.id == id
@@ -269,7 +277,7 @@ public class Traveler {
             immediateResult = result
         }
 
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[CatalogItem]>(path: .wishlistToggle(items, travelerId: travelerProfileId), session: session)
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[AnyItem]>(path: .wishlistToggle(items, travelerId: travelerProfileId), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(result, fetchOperation.error)
         }
@@ -287,9 +295,25 @@ public class Traveler {
             return
         }
 
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[CatalogItem]>(path: .wishlistToggle(items, travelerId: travelerProfileId), session: session)
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[AnyItem]>(path: .wishlistToggle(items, travelerId: travelerProfileId), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
-            completion(fetchOperation.resource, fetchOperation.error)
+            var resultArray: [CatalogItem]?
+
+            if let anyItemArray = fetchOperation.resource {
+                resultArray = anyItemArray.map({ (item) -> CatalogItem in
+                    switch item.type {
+                    case .booking:
+                        return item.bookingItem!
+                    case .parking:
+                        return item.parkingItem!
+                    }
+                })
+            } else {
+                resultArray = nil
+            }
+
+            completion(resultArray, fetchOperation.error)
         }
 
         blockOperation.addDependency(fetchOperation)
@@ -410,15 +434,15 @@ public class Traveler {
     }
 
     /**
-     Fetches the `CatalogItemDetails` for a given `CatalogItem`.
+     Fetches the `CatalogItemDetails` for a given `Product`.
 
      - Parameters:
-        - catalogItem: A `Product` for which to fetch the details.
+        - product: A `Product` for which to fetch the details.
         - delegate: A `CatalogItemDetailsFetchDelegate` that is notified of the results.
      */
 
-    public static func fetchCatalogItemDetails(_ catalogItem: Product, delegate: CatalogItemDetailsFetchDelegate) {
-        shared?.fetchCatalogItemDetails(catalogItem, completion: { [weak delegate] (details, error) in
+    public static func fetchProductDetails(_ product: Product, delegate: CatalogItemDetailsFetchDelegate) {
+        shared?.fetchProductDetails(product, completion: { [weak delegate] (details, error) in
             if let details = details {
                 delegate?.catalogItemDetailsFetchDidSucceedWith(details)
             } else {
@@ -428,15 +452,15 @@ public class Traveler {
     }
 
     /**
-     Fetches the `CatalogItemDetails` for a given `CatalogItem`.
+     Fetches the `CatalogItemDetails` for a given `Product`.
 
      - Parameters:
-        - catalogItem: A `Product` for which to fetch the details.
+        - product: A `Product` for which to fetch the details.
         - delegate: A completion block that is called when the results are ready.
      */
 
-    public static func fetchCatalogItemDetails(_ catalogItem: Product, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
-        shared?.fetchCatalogItemDetails(catalogItem, completion: completion)
+    public static func fetchProductDetails(_ catalogItem: Product, completion: @escaping (CatalogItemDetails?, Error?) -> Void) {
+        shared?.fetchProductDetails(catalogItem, completion: completion)
     }
 
     /**
@@ -449,7 +473,7 @@ public class Traveler {
         - completion: A completion block that is called when the results are ready.
      */
 
-    public static func fetchPasses(product: Product, availability: Availability, option: BookingOption?, completion: @escaping ([Pass]?, Error?) -> Void) {
+    public static func fetchPasses(product: BookingItem, availability: Availability, option: BookingOption?, completion: @escaping ([Pass]?, Error?) -> Void) {
         shared?.fetchPasses(product: product, availability: availability, option: option, completion: completion)
     }
 
@@ -463,7 +487,7 @@ public class Traveler {
         - delegate: A `PassFetchDelegate` that is notified of the results.
      */
 
-    public static func fetchPasses(product: Product, availability: Availability, option: BookingOption?, delegate: PassFetchDelegate) {
+    public static func fetchPasses(product: BookingItem, availability: Availability, option: BookingOption?, delegate: PassFetchDelegate) {
         shared?.fetchPasses(product: product, availability: availability, option: option, completion: { [weak delegate] (passes, error) in
             if let passes = passes {
                 delegate?.passFetchDidSucceedWith(passes)
@@ -544,7 +568,7 @@ public class Traveler {
         - completion: A completion block that is called when the results are ready.
      */
 
-    public static func fetchBookingForm(product: Product, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
+    public static func fetchBookingForm(product: BookingItem, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
         shared?.fetchBookingForm(product: product, passes: passes, completion: completion)
     }
 
@@ -557,7 +581,7 @@ public class Traveler {
         - delegate: A `BookingFormFetchDelegate` that is notified of the results.
      */
 
-    public static func fetchBookingForm(product: Product, passes: [Pass], delegate: BookingFormFetchDelegate) {
+    public static func fetchBookingForm(product: BookingItem, passes: [Pass], delegate: BookingFormFetchDelegate) {
         shared?.fetchBookingForm(product: product, passes: passes, completion: { [weak delegate] (form, error) in
             if let error = error {
                 delegate?.bookingFormFetchDidFailWith(error)
