@@ -19,7 +19,7 @@ class BookingPassesViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
 
-    var product: Product?
+    var product: BookingItem?
     var passes: [Pass]?
     weak var delegate: BookingPassesViewControllerDelegate?
 

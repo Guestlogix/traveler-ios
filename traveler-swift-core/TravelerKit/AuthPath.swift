@@ -11,7 +11,8 @@ import Foundation
 enum AuthPath {
     case flights(FlightQuery)
     case catalog(CatalogQuery)
-    case catalogItem(Product, travelerId: String?)
+    case bookingItem(Product, travelerId: String?)
+    case parkingItem(Product, travelerId: String?)
     case productSchedule(Product, from: Date, to: Date)
     case passes(Product, availability: Availability, option: BookingOption?)
     case questions(Product, passes: [Pass])
@@ -38,14 +39,21 @@ enum AuthPath {
                 URLQueryItem(name: "departure-date", value: DateFormatter.yearMonthDay.string(from: query.date))
             ]
         case .catalog(let query):
-            urlComponents.path = "/v1/catalog"
+            urlComponents.path = "/v1/catalog-group"
             urlComponents.queryItems = [URLQueryItem]()
 
             query.flights?.forEach { (flight) in
                 urlComponents.queryItems!.append(URLQueryItem(name:"flight-ids", value: flight.id))
             }
-        case .catalogItem(let item, let travelerId):
-            urlComponents.path = "/v1/catalog/\(item.id)"
+        case .bookingItem(let item, let travelerId):
+            urlComponents.path = "/v1/booking/\(item.id)"
+            if let _ = travelerId {
+                urlComponents.queryItems = [
+                    URLQueryItem(name: "travelerId", value: travelerId)
+                ]
+            }
+        case .parkingItem(let item, let travelerId):
+            urlComponents.path = "/v1/parking/\(item.id)"
             if let _ = travelerId {
                 urlComponents.queryItems = [
                     URLQueryItem(name: "travelerId", value: travelerId)

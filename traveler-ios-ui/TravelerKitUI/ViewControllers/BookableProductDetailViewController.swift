@@ -19,8 +19,8 @@ class BookableProductDetailViewController: UIViewController {
     @IBOutlet weak var productInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var productInfoView: UIView!
 
-    var purchasedProduct: BookableProduct?
-    var productDetails: CatalogItemDetails?
+    var purchasedProduct: BookingProduct?
+    var productDetails: BookingItemDetails?
 
     override func viewDidLoad() {
         super.viewDidLoad()

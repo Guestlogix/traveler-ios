@@ -10,51 +10,32 @@ import UIKit
 import TravelerKit
 
 class PurchaseViewController: UIViewController {
-    var strategy: PurchaseStrategy?
+
+    var itemDetails: CatalogItemDetails?
     var product: Product?
 
     private var order: Order?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        switch strategy {
-        case .some(.bookable):
-            performSegue(withIdentifier: "bookableSegue", sender: nil)
-        case .some(.buyable):
-            performSegue(withIdentifier: "buyableSegue", sender: nil)
-        case .none:
-            Log("No Strategy", data: nil, level: .error)
-            break
+        if itemDetails != nil {
+            performSegue(withIdentifier: "detailsSegue", sender: nil)
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as BookablePurchaseViewController):
-            vc.delegate = self
-            vc.product = product
-        case (_, let vc as BuyablePurchaseViewController):
-            vc.delegate = self
         case (_, let vc as PaymentConfirmationViewController):
             vc.order = order
+        case (_, let vc as CatalogItemDetailsViewController):
+            vc.delegate = self
+            vc.itemDetails = itemDetails
+            vc.product = product
         default:
             Log("Unknown segue", data: nil, level: .warning)
             break
         }
     }
-}
-
-extension PurchaseViewController: BookablePurchaseViewControllerDelegate {
-    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith bookingForm: BookingForm) {
-        ProgressHUD.show()
-
-        Traveler.createOrder(bookingForm: bookingForm, delegate: self)
-    }
-}
-
-extension PurchaseViewController: BuyablePurchaseViewControllerDelegate {
-    /// This should be similar to above delegate
 }
 
 extension PurchaseViewController: OrderCreateDelegate {
@@ -74,5 +55,13 @@ extension PurchaseViewController: OrderCreateDelegate {
         alert.addAction(okAction)
 
         present(alert, animated: true)
+    }
+}
+
+extension PurchaseViewController: CatalogItemDetailsViewControllerDelegate {
+    func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith bookingForm: BookingForm) {
+        ProgressHUD.show()
+
+        Traveler.createOrder(bookingForm: bookingForm, delegate: self)
     }
 }

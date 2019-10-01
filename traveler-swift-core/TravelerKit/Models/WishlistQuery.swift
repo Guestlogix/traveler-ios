@@ -25,9 +25,9 @@ public struct WishlistQuery {
 
      - Parameters:
      - offset: Pagination offset, default to 0
-     - limit: Pagination limit, defualt to 10
-     - from: CatalogItems that were wishlisted after this date, default to nil
-     - to: CatalogItems that were wishlisted before this date, passing nil will default to NOW
+     - limit : Pagination limit, defualt to 10
+     - from : CatalogItems that were wishlisted after this date, default to nil
+     - to : CatalogItems that were wishlisted before this date, passing nil will default to NOW
      */
     public init(offset: Int = 0 , limit: Int = 10, from: Date? = nil, to: Date? = nil) {
         self.offset = offset

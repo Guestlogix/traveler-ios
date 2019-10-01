@@ -96,9 +96,11 @@ public struct Order: Decodable, Equatable, Hashable {
         }
 
         self.products = try container.decode([AnyProduct].self, forKey: .products).map { product in
-            switch product.productType {
-            case .bookable:
-                return BookableProduct(id: product.id, title: product.title, passes: product.passes!, eventDate: product.eventDate, price: product.price)
+            switch product.type {
+            case .booking:
+                return product.bookingProduct!
+            default:
+                throw DecodingError.dataCorruptedError(forKey: CodingKeys.products, in: container, debugDescription: "Unknown product type")
             }
         }
 

@@ -17,8 +17,10 @@ class BookablePurchaseViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var proceedButton: UIButton!
 
-    var product: Product?
+    var product: BookingItem?
     weak var delegate: BookablePurchaseViewControllerDelegate?
+
+    private var order: Order?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,8 @@ class BookablePurchaseViewController: UIViewController {
         case (_, let vc as BookingConfirmationViewController):
             vc.product = product
             vc.delegate = self
+        case (_, let vc as PaymentConfirmationViewController):
+            vc.order = order
         default:
             Log("Unknown Segue", data: segue, level: .warning)
             break

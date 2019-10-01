@@ -14,7 +14,7 @@ protocol BookingConfirmationViewControllerDelegate: class {
 }
 
 class BookingConfirmationViewController: UIViewController {
-    var product: Product?
+    var product: BookingItem?
     weak var delegate: BookingConfirmationViewControllerDelegate?
 
     override func viewDidLoad() {

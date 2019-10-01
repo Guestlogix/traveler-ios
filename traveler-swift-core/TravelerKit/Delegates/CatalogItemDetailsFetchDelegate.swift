@@ -16,7 +16,8 @@ public protocol CatalogItemDetailsFetchDelegate: class {
      - Parameters:
      - result: Fetched `CatalogItemDetails`
      */
-    func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails)
+    func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) 
+
     /**
      Called when there was an error fetching the catalog item details
 

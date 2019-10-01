@@ -9,26 +9,11 @@
 import Foundation
 
 /// An item in the `CatalogGroup`
-public struct CatalogItem: Decodable, Product {
-    /// Identifier
-    public let id: String
+public protocol CatalogItem {
     /// Title
-    public let title: String
+    var title: String { get }
     /// Secondary title
-    public let subTitle: String
+    var subTitle: String? { get }
     /// URL for a thumbnail
-    public let imageURL: URL?
-    /// Price
-    public var price: Price
-    /// Categories
-    public let categories: [Category]
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case subTitle = "subTitle"
-        case imageURL = "thumbnail"
-        case price = "priceStartingAt"
-        case categories = "categories"
-    }
+    var imageURL: URL? { get }
 }

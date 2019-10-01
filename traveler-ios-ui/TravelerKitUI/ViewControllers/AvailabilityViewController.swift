@@ -20,7 +20,7 @@ class AvailabilityViewController: UIViewController {
 
     weak var delegate: AvailabilityViewControllerDelegate?
 
-    var product: Product?
+    var product: BookingItem?
     var selectedAvailability: Availability?
     var availabilityError: Error?
     var availableOptions: [BookingOption]? {

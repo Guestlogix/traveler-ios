@@ -14,56 +14,41 @@ public protocol Product {
     var id: String { get }
     /// Price
     var price: Price { get }
-    /// Name
+    /// Type
+    var productType: ProductType { get }
+    /// Title
     var title: String { get }
-}
-
-/// Different types of product
-public enum ProductType: String, Decodable {
-    /// Experience or any product that has a booking nature
-    case bookable = "Bookable"
+    /// Categories
+    var categories: [CatalogItemCategory] { get }
 }
 
 struct AnyProduct: Decodable {
-    let id: String
-    let price: Price
-    let title: String
-    let productType: ProductType
 
-    // Properties for BookableProduct
-    let passes: [Pass]?
-    let eventDate: Date
+    let bookingProduct: BookingProduct?
+
+    let type: ProductType
 
     enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case price = "price"
-        case title = "title"
         case productType = "purchaseStrategy"
-        case eventDate = "experienceDate"
-        case passes = "passes"
     }
 
-    public init (from decoder:Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.productType = try container.decode(ProductType.self, forKey: .productType)
-        self.passes = try container.decode([Pass]?.self, forKey: .passes) ?? nil
-        self.price = try container.decode(Price.self, forKey:.price)
 
+        self.type = try container.decode(ProductType.self, forKey: .productType)
 
-        let dateString = try container.decode(String.self, forKey: .eventDate)
-
-        if let date = ISO8601DateFormatter.dateOnlyFormatter.date(from: dateString) {
-            self.eventDate = date
-        } else {
-            throw DecodingError.dataCorruptedError(forKey: CodingKeys.eventDate, in: container, debugDescription: "Incorrect format")
+        switch type {
+        case .booking:
+            let bookingProduct = try BookingProduct(from: decoder)
+            self.bookingProduct = bookingProduct
+        case .parking:
+            throw DecodingError.dataCorruptedError(forKey: CodingKeys.productType , in: container, debugDescription: "Unsupported product type")
         }
     }
 }
 
-/// Any purchased bookable product
-public struct BookableProduct: Product {
+/// Any purchased booking product
+public struct BookingProduct: Product, Decodable {
     /// Identifier
     public let id: String
     /// Name
@@ -74,4 +59,35 @@ public struct BookableProduct: Product {
     public let eventDate: Date
     /// Price of product
     public let price: Price
+    /// Product type
+    public let productType: ProductType = .booking
+    /// Categories
+    public let categories: [CatalogItemCategory]
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case passes = "passes"
+        case categories = "categories"
+        case productType = "purchaseStrategy"
+        case eventDate = "experienceDate"
+        case price = "price"
+    }
+
+    public init (from decoder:Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.passes = try container.decode([Pass]?.self, forKey: .passes) ?? []
+        self.price = try container.decode(Price.self, forKey:.price)
+        self.categories = try container.decode([CatalogItemCategory].self, forKey: .categories)
+
+        let dateString = try container.decode(String.self, forKey: .eventDate)
+
+        if let date = ISO8601DateFormatter.dateOnlyFormatter.date(from: dateString) {
+            self.eventDate = date
+        } else {
+            throw DecodingError.dataCorruptedError(forKey: CodingKeys.eventDate, in: container, debugDescription: "Incorrect format")
+        }
+    }
 }

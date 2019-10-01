@@ -19,6 +19,8 @@ open class CatalogItemViewController: UIViewController {
     public weak var delegate: CatalogItemViewControllerDelegate?
 
     private var details: CatalogItemDetails?
+    private var product: Product?
+    private var bookingForm: BookingForm?
 
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,14 +34,13 @@ open class CatalogItemViewController: UIViewController {
 
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as CatalogItemLoadingViewController):
-            vc.image = image
-        case (_, let vc as CatalogItemErrorViewController):
-            vc.image = image
+        case ("loadingSegue", _):
+            break
+        case (_, let vc as RetryViewController):
             vc.delegate = self
-        case (_, let vc as CatalogItemResultViewController):
-            vc.catalogItemDetails = details
-            vc.delegate = self
+        case (_, let vc as PurchaseViewController):
+            vc.itemDetails = details
+            vc.product = product
         default:
             Log("Unknown segue", data: nil, level: .warning)
             break
@@ -52,9 +53,16 @@ open class CatalogItemViewController: UIViewController {
             return
         }
 
-        performSegue(withIdentifier: "loadingSegue", sender: nil)
+        switch catalogItem {
+        case let catalogItem as Product:
+            performSegue(withIdentifier: "loadingSegue", sender: nil)
+            Traveler.fetchProductDetails(catalogItem, delegate: self)
+            product = catalogItem
+        default:
+            Log("Unknown CatalogItem Type", data: nil, level: .error)
+            performSegue(withIdentifier: "errorSegue", sender: nil)
+        }
 
-        Traveler.fetchCatalogItemDetails(catalogItem, delegate: self)
     }
 
     @IBAction func didClose(_ sender: Any) {
@@ -64,8 +72,7 @@ open class CatalogItemViewController: UIViewController {
 
 extension CatalogItemViewController: CatalogItemDetailsFetchDelegate {
     public func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) {
-        self.details = result
-
+        details = result
         performSegue(withIdentifier: "resultSegue", sender: nil)
     }
 
@@ -74,42 +81,8 @@ extension CatalogItemViewController: CatalogItemDetailsFetchDelegate {
     }
 }
 
-extension CatalogItemViewController: CatalogItemErrorViewControllerDelegate {
-    func catalogItemErrorViewControllerDidRetry(_ controller: CatalogItemErrorViewController) {
+extension CatalogItemViewController: RetryViewControllerDelegate {
+    func retryViewControllerDidRetry(_ controller: RetryViewController) {
         reload()
-    }
-}
-
-extension CatalogItemViewController: CatalogItemResultViewControllerDelegate {
-    func catalogItemResultViewControllerDidChangePreferredTranslucency(_ controller: CatalogItemResultViewController) {
-        if controller.preferredTranslucency {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.navigationController?.navigationBar.alpha = 0
-
-                controller.titleLabel.alpha = 1
-            }) { _ in
-                self.navigationController?.navigationBar.alpha = 1
-                self.navigationController?.navigationBar.isTranslucent = true
-                self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-                self.navigationController?.navigationBar.shadowImage = UIImage()
-                self.navigationItem.title = nil
-            }
-        } else {
-            self.navigationController?.navigationBar.isTranslucent = true
-            self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-            self.navigationController?.navigationBar.shadowImage = nil
-            self.navigationItem.title = details?.title
-
-            self.navigationController?.navigationBar.alpha = 0
-            UIView.animate(withDuration: 0.2) {
-                self.navigationController?.navigationBar.alpha = 1
-
-                controller.titleLabel.alpha = 0
-            }
-        }
-    }
-
-    func catalogItemResultViewController(_ controller: CatalogItemResultViewController, didCreate order: Order) {
-        delegate?.catalogItemViewController(self, didCreate: order)
     }
 }
