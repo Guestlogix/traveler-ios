@@ -8,10 +8,10 @@
 
 import Foundation
 
-/// This represents the amount that will be refunded should the corresponding `Order` be cancelled
+/// This represents the details about the cancellation such as refund and expiration date and the corresponding `Order`
 public struct CancellationQuote {
+    /// Identifer
     let id: String
-
     /// Total amount that will be refunded
     public let totalRefund: Price
     /// Charge for cancellation
@@ -22,6 +22,8 @@ public struct CancellationQuote {
     public let products: [ProductCancellationQuote]
     /// The `Order` that was cancelled
     public let order: Order
+    /// The array of cancellation reasons provided for user to choose
+    public let cancellationReasons: [CancellationReason]
 
     init(cancellationQuoteResponse: CancellationQuoteResponse, order: Order) {
         self.id = cancellationQuoteResponse.id
@@ -29,6 +31,7 @@ public struct CancellationQuote {
         self.cancellationCharge = cancellationQuoteResponse.cancellationCharge
         self.expirationDate = cancellationQuoteResponse.expirationDate
         self.products = cancellationQuoteResponse.products
+        self.cancellationReasons = cancellationQuoteResponse.cancellationReasons
         self.order = order
     }
 }
@@ -39,6 +42,7 @@ struct CancellationQuoteResponse: Decodable {
     let cancellationCharge: Price
     let expirationDate: Date
     let products: [ProductCancellationQuote]
+    let cancellationReasons: [CancellationReason]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -46,9 +50,10 @@ struct CancellationQuoteResponse: Decodable {
         case cancellationCharge = "cancellationCharge"
         case expirationDate = "quoteExpiresOn"
         case products = "products"
+        case cancellationReasons = "cancellationReasons"
     }
 
-    public init (from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.id = try container.decode(String.self, forKey: .id)
@@ -64,6 +69,7 @@ struct CancellationQuoteResponse: Decodable {
         }
 
         self.products = try container.decode([ProductCancellationQuote].self, forKey: .products)
+        self.cancellationReasons = try container.decode([CancellationReason].self, forKey: .cancellationReasons)
     }
 }
 

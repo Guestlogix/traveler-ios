@@ -11,4 +11,5 @@ import Foundation
 public enum CancellationError: Error {
     case expiredQuote
     case notCancellable
+    case explanationRequired
 }

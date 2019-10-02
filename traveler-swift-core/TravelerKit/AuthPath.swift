@@ -20,7 +20,7 @@ enum AuthPath {
     case processOrder(Order, Payment)
     case orders(OrderQuery, travelerId: String)
     case cancellationQuote(Order)
-    case cancelOrder(CancellationQuote)
+    case cancelOrder(CancellationRequest)
     case emailOrderConfirmation(Order)
     case wishlistAdd(Product, travelerId: String)
     case wishlistRemove(Product, travelerId: String)
@@ -129,8 +129,13 @@ enum AuthPath {
             }
         case .cancellationQuote(let order):
             urlComponents.path = "/v1/order/\(order.id)/cancellation"
-        case .cancelOrder(let quote):
-            urlComponents.path = "/v1/order/\(quote.order.id)/cancellation/\(quote.id)"
+        case .cancelOrder(let request):
+            urlComponents.path = "/v1/order/\(request.quote.order.id)/cancellation/\(request.quote.id)"
+            urlRequest.jsonBody = [
+                "cancellationReason": request.reason.id,
+                "cancellationReasonText": request.explanation ?? ""
+            ]
+
             urlRequest.method = .patch
         case .emailOrderConfirmation(let order):
             urlComponents.path = "/v1/order/\(order.id)/ticket"
