@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A315F465234692FC00DF8545 /* CancellationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315F464234692FC00DF8545 /* CancellationRequest.swift */; };
+		A3E3FC49234501AF00CB616B /* CancellationReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FC48234501AF00CB616B /* CancellationReason.swift */; };
 		A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */; };
 		A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */; };
 		A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */; };
@@ -150,6 +152,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A315F464234692FC00DF8545 /* CancellationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationRequest.swift; sourceTree = "<group>"; };
+		A3E3FC48234501AF00CB616B /* CancellationReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationReason.swift; sourceTree = "<group>"; };
 		A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperationTests.swift; sourceTree = "<group>"; };
 		A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+PassengerKit.swift"; sourceTree = "<group>"; };
 		A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ContainsAnyOf.swift"; sourceTree = "<group>"; };
@@ -473,6 +477,8 @@
 				CAAF4A4B234E45AD00919317 /* ParkingItemCategory.swift */,
 				A97F8BCF2358EA9F001A779C /* PaymentAuthenticator.swift */,
 				A97F8BD02358EAA0001A779C /* PaymentError.swift */,
+				A3E3FC48234501AF00CB616B /* CancellationReason.swift */,
+				A315F464234692FC00DF8545 /* CancellationRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -673,6 +679,7 @@
 				CA1B1505234F6E91009661EC /* BookingItemQuery.swift in Sources */,
 				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,
 				CA1754D02343B4D800F08F73 /* ProductType.swift in Sources */,
+				A315F465234692FC00DF8545 /* CancellationRequest.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
 				A974A68F2280C42900319683 /* OrderQuery.swift in Sources */,
 				A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */,
@@ -695,6 +702,7 @@
 				CAEB7A7A234D4C7E00C31BD6 /* ParkingItem.swift in Sources */,
 				CA1B150A234F6E91009661EC /* CategoryFacet.swift in Sources */,
 				A9BF40E6218231580090ED1C /* CatalogGroup.swift in Sources */,
+				A3E3FC49234501AF00CB616B /* CancellationReason.swift in Sources */,
 				A9E2AD80219344670063BF79 /* CatalogItemDetails.swift in Sources */,
 				A974A6932280CA9C00319683 /* OrderFetchDelegate.swift in Sources */,
 				CA1B1500234F6E91009661EC /* BookingItemSearchParameters.swift in Sources */,
