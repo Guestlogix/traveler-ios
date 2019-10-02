@@ -224,21 +224,22 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func cancelOrder(quote: CancellationQuote, competion: @escaping (Order?, Error?) -> Void) {
-        guard quote.expirationDate > Date() else {
-            competion(nil, CancellationError.expiredQuote)
-            return
+    func cancelOrder(_ request: CancellationRequest, completion: @escaping (Order?, Error?) -> Void) {
+        let validationResult = request.validate()
+        switch validationResult {
+        case .some(let error):
+            completion(nil, error)
+        case .none:
+            let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .cancelOrder(request), session: session)
+            let blockOperation = BlockOperation { [unowned fetchOperation] in
+                completion(fetchOperation.resource, fetchOperation.error)
+            }
+
+            blockOperation.addDependency(fetchOperation)
+
+            queue.addOperation(fetchOperation)
+            OperationQueue.main.addOperation(blockOperation)
         }
-
-        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .cancelOrder(quote), session: session)
-        let blockOperation = BlockOperation { [unowned fetchOperation] in
-            competion(fetchOperation.resource, fetchOperation.error)
-        }
-
-        blockOperation.addDependency(fetchOperation)
-
-        queue.addOperation(fetchOperation)
-        OperationQueue.main.addOperation(blockOperation)
     }
 
     func emailOrderConfirmation(order: Order, completion: @escaping (Error?) -> Void) {
@@ -775,8 +776,8 @@ public class Traveler {
         A `CancellationError.expiredQuote` will be thrown if the quote has expired.
      */
 
-    public static func cancelOrder(quote: CancellationQuote, delegate: CancellationDelegate) {
-        shared?.cancelOrder(quote: quote, competion: { [weak delegate] (order, error) in
+    public static func cancelOrder(_ request: CancellationRequest, delegate: CancellationDelegate) {
+        shared?.cancelOrder(request, completion: { [weak delegate] (order, error) in
             if let error = error {
                 delegate?.cancellationDidFailWith(error)
             } else {
@@ -794,8 +795,8 @@ public class Traveler {
         A `CancellationError.expiredQuote` will be thrown if the quote has expired.
      */
 
-    public static func cancelOrder(quote: CancellationQuote, completion: @escaping (Order?, Error?) -> Void) {
-        shared?.cancelOrder(quote: quote, competion: completion)
+    public static func cancelOrder(_ request: CancellationRequest, completion: @escaping (Order?, Error?) -> Void) {
+        shared?.cancelOrder(request, completion: completion)
     }
 
     /**
