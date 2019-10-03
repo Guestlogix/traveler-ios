@@ -41,6 +41,8 @@
 		A974A6912280C43300319683 /* OrderResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6902280C43300319683 /* OrderResult.swift */; };
 		A974A6932280CA9C00319683 /* OrderFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */; };
 		A974A6952280CFD800319683 /* OrderResultError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6942280CFD800319683 /* OrderResultError.swift */; };
+		A97F8BD12358EAA0001A779C /* PaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F8BCF2358EA9F001A779C /* PaymentAuthenticator.swift */; };
+		A97F8BD22358EAA0001A779C /* PaymentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F8BD02358EAA0001A779C /* PaymentError.swift */; };
 		A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */; };
 		A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BAB220497FE008AA0C1 /* Receipt.swift */; };
 		A9825BB82204F5E0008AA0C1 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9825BB72204F5E0008AA0C1 /* Price.swift */; };
@@ -182,6 +184,8 @@
 		A974A6902280C43300319683 /* OrderResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResult.swift; sourceTree = "<group>"; };
 		A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFetchDelegate.swift; sourceTree = "<group>"; };
 		A974A6942280CFD800319683 /* OrderResultError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultError.swift; sourceTree = "<group>"; };
+		A97F8BCF2358EA9F001A779C /* PaymentAuthenticator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAuthenticator.swift; sourceTree = "<group>"; };
+		A97F8BD02358EAA0001A779C /* PaymentError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentError.swift; sourceTree = "<group>"; };
 		A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProcessDelegate.swift; sourceTree = "<group>"; };
 		A9825BAB220497FE008AA0C1 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		A9825BB72204F5E0008AA0C1 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
@@ -464,6 +468,8 @@
 				CAEB7A77234CEECA00C31BD6 /* BookingItem.swift */,
 				CAEB7A79234D4C7E00C31BD6 /* ParkingItem.swift */,
 				CAAF4A4B234E45AD00919317 /* ParkingItemCategory.swift */,
+				A97F8BCF2358EA9F001A779C /* PaymentAuthenticator.swift */,
+				A97F8BD02358EAA0001A779C /* PaymentError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -707,6 +713,7 @@
 				A91F3BDB21D9F9730016894A /* Question.swift in Sources */,
 				A9AC3BFD21FA6D9500690D46 /* ValidationRule.swift in Sources */,
 				A9EED5F2215A7D43003AAA5F /* UnauthPath.swift in Sources */,
+				A97F8BD22358EAA0001A779C /* PaymentError.swift in Sources */,
 				A9639D32220E000100625235 /* PaymentHandler.swift in Sources */,
 				CA1B1504234F6E91009661EC /* Facets.swift in Sources */,
 				A92523F821FBAD90009E2642 /* OrderCreateDelegate.swift in Sources */,
@@ -762,6 +769,7 @@
 				CA1B1512234F6EEA009661EC /* ParkingItemSearchDelegate.swift in Sources */,
 				A96F8314223AC79F00268D0D /* BookingOptionSet.swift in Sources */,
 				CA07DE78231EE8EF004C8872 /* WishlistToggleError.swift in Sources */,
+				A97F8BD12358EAA0001A779C /* PaymentAuthenticator.swift in Sources */,
 				CA1B1509234F6E91009661EC /* SearchQueryError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
