@@ -97,6 +97,7 @@
 		A974A69D2282197800319683 /* Orders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A974A69C2282197800319683 /* Orders.storyboard */; };
 		A974A69F2283209A00319683 /* RetryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A69E2283209A00319683 /* RetryViewController.swift */; };
 		A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6A02285FBF800319683 /* DummyTableViewController.swift */; };
+		A996650F23442846007EBF14 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A996650E23442846007EBF14 /* Authenticator.swift */; };
 		A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */; };
 		CA12275C22F0D4CA00541F3A /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12275B22F0D4CA00541F3A /* TermsAndConditionsViewController.swift */; };
 		CA12275E22F0D5D000541F3A /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */; };
@@ -235,6 +236,7 @@
 		A974A69C2282197800319683 /* Orders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Orders.storyboard; sourceTree = "<group>"; };
 		A974A69E2283209A00319683 /* RetryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryViewController.swift; sourceTree = "<group>"; };
 		A974A6A02285FBF800319683 /* DummyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTableViewController.swift; sourceTree = "<group>"; };
+		A996650E23442846007EBF14 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pass+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA12275B22F0D4CA00541F3A /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				A96F830D22389E1D00268D0D /* BookingContext.swift */,
+				A996650E23442846007EBF14 /* Authenticator.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 			files = (
 				A9639D2A220DF57400625235 /* DrawerTansitioning.swift in Sources */,
 				A9639D02220DF57400625235 /* BookablePurchaseViewController.swift in Sources */,
+				A996650F23442846007EBF14 /* Authenticator.swift in Sources */,
 				A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */,
 				A9639CFF220DF57400625235 /* CatalogViewController.swift in Sources */,
 				A3E3FC472343AE9200CB616B /* BookingOption+TravelerUI.swift in Sources */,

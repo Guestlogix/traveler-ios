@@ -66,7 +66,7 @@ extension PassengerRoute: Route {
     }
 
     func transform(error: Error) -> Error {
-        guard case NetworkError.clientError(400, .some(let data)) = error else {
+        guard case NetworkError.clientError(_, .some(let data)) = error else {
             return error
         }
 
@@ -76,19 +76,23 @@ extension PassengerRoute: Route {
             return error
         }
 
-        switch errorCode {
-        case 2006:
+        switch (errorCode, errorJSON["errorData"]) {
+        case (2006, _):
             return BookingError.noPasses
-        case 2007:
+        case (2007, _):
             return BookingError.veryOldTraveler
-        case 2012-2014:
+        case (2012-2014, _):
             return CancellationError.notCancellable
-        case 2014:
+        case (2014, _):
             return BookingError.adultAgeInvalid
-        case 2017:
+        case (2017, _):
             return BookingError.belowMinUnits
-        case 2018:
+        case (2018, _):
             return BookingError.unaccompaniedChildren
+        case (2027, let data as [String: Any]) where data["confirmationKey"] is String:
+            return PaymentError.confirmationRequired(data["confirmationKey"] as! String)
+        case (6001, _):
+            return PaymentError.processingError
         default:
             Log("Unknown error code", data: errorJSON, level: .warning)
             return error

@@ -10,7 +10,7 @@ import Foundation
 import TravelerKit
 import Stripe
 
-public struct StripePaymentProvider {
+struct StripePaymentProvider {
     fileprivate static var paymentConfiguration: STPPaymentConfiguration {
         let config = STPPaymentConfiguration()
 
@@ -21,6 +21,41 @@ public struct StripePaymentProvider {
         }
 
         return config
+    }
+}
+
+public class StripePaymentAuthenticator: NSObject, STPAuthenticationContext, PaymentAuthenticator {
+    public typealias Controller = UIViewController
+
+    public weak var delegate: PaymentAuthenticationDelegate?
+
+    var viewController: UIViewController?
+
+    public func authenticationPresentingViewController() -> UIViewController {
+        guard let controller = viewController else {
+            fatalError("ViewController was never assigned")
+        }
+
+        return controller
+    }
+
+    public func authenticate(with key: String, controller: UIViewController) {
+        self.viewController = controller
+
+        STPPaymentHandler.shared().apiClient = STPAPIClient(configuration: StripePaymentProvider.paymentConfiguration)
+        STPPaymentHandler.shared().handleNextAction(forPayment: key, authenticationContext: self, returnURL: nil) {
+            [weak delegate]
+            (status, intent, error) in
+
+            switch status {
+            case .succeeded:
+                delegate?.paymentAuthenticationDidSucceed()
+            case .failed:
+                delegate?.paymentAuthenticationDidFailWith(PaymentError.confirmationFailed(error!))
+            case .canceled:
+                break
+            }
+        }
     }
 }
 
@@ -52,9 +87,10 @@ extension PaymentCollectionViewController: STPAddCardViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
 
-    private func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreatePaymentMethod paymentMethod: STPPaymentMethod, completion: @escaping STPErrorBlock) {
+    public func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreatePaymentMethod paymentMethod: STPPaymentMethod, completion: @escaping STPErrorBlock) {
         let payment = StripePayment(paymentMethod: paymentMethod)
         delegate?.paymentHandler(self, didCollect: payment)
+        dismiss(animated: true, completion: nil)
     }
 }
 
@@ -63,7 +99,7 @@ struct StripePayment: Payment {
         // TODO: Write descriptions for other method types
         switch paymentMethod.type {
         case .typeCard:
-            return "\(paymentMethod.card!.brand) ending in \(String(describing: paymentMethod.card!.last4))"
+            return "\(paymentMethod.card!.brand) ending in \(String(describing: paymentMethod.card.unsafelyUnwrapped.last4))"
         case .typeCardPresent:
             return "CardPresent"
         case .typeFPX:
@@ -95,5 +131,20 @@ struct StripePayment: Payment {
         ]
 
         return try? JSONSerialization.data(withJSONObject: jsonPayload, options: [])
+    }
+}
+
+extension STPCardBrand {
+    var name: String {
+        switch self {
+        case .visa:
+            return "Visa"
+        case .amex:
+            return "American Express"
+        case .dinersClub:
+            return "Diners Club"
+        default:
+            return "Credit card"
+        }
     }
 }

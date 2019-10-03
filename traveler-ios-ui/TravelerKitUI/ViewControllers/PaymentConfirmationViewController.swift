@@ -70,13 +70,28 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
     func order(_ order: Order, didFailWithError error: Error) {
         ProgressHUD.hide()
 
-        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] (_) in
-            self.performSegue(withIdentifier: "failSegue", sender: nil)
-        }
-        alert.addAction(okAction)
+        switch error {
+        case PaymentError.confirmationRequired(let key):
+            // TODO: This should be moved out, singleton use should not really go beyond Traveler itself
+            // TODO: Should we break the idea of a forced singleton? @Omar
+            // PS: There should be way to tag people right in code! Xcode plugin?
+            guard let authenticator = TravelerUI.shared?.authenticator else {
+                fatalError("SDK not initialized")
+            }
 
-        present(alert, animated: true, completion: nil)
+            authenticator.delegate = self
+            authenticator.authenticate(key, self)
+        default:
+            // TODO: Much better to just goto the fail segue and pass the error object to it.
+            // The fail segue should go to a generic ErrorViewController that can display error messages
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] (_) in
+                self.performSegue(withIdentifier: "failSegue", sender: nil)
+            }
+            alert.addAction(okAction)
+
+            present(alert, animated: true, completion: nil)
+        }
     }
 
     func order(_ order: Order, didSucceedWithReceipt receipt: Receipt) {
@@ -92,5 +107,19 @@ extension PaymentConfirmationViewController: OrderSummaryViewControllerDelegate 
     func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment) {
         self.payment = payment
         self.confirmButton.isEnabled = true
+    }
+}
+
+extension PaymentConfirmationViewController: PaymentAuthenticationDelegate {
+    func paymentAuthenticationDidFailWith(_ error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(okAction)
+
+        present(alert, animated: true, completion: nil)
+    }
+
+    func paymentAuthenticationDidSucceed() {
+        didConfirm(self)
     }
 }

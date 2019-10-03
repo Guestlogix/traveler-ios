@@ -13,6 +13,7 @@ public class TravelerUI {
     private static var _shared: TravelerUI?
 
     let paymentHandlerViewControllerType: (PaymentHandler & UIViewController).Type
+    let authenticator: Authenticator
 
     var preferredCurrency: Currency
 
@@ -38,18 +39,18 @@ public class TravelerUI {
         }
     }
 
-    public static func initialize(paymentHandler: (PaymentHandler & UIViewController).Type, preferredCurrency: Currency = .USD) {
+    public static func initialize<PA : PaymentAuthenticator>(paymentHandler: (PaymentHandler & UIViewController).Type, paymentAuthenticator: PA, preferredCurrency: Currency = .USD) where PA.Controller == UIViewController {
         guard _shared == nil else {
             Log("SDK already initialized!", data: nil, level: .warning)
             return
         }
 
-        _shared = TravelerUI(paymentHandler: paymentHandler, preferredCurrency: preferredCurrency)
+        _shared = TravelerUI(paymentHandler: paymentHandler, authenticator: Authenticator(paymentAuthenticator), preferredCurrency: preferredCurrency)
     }
 
-    init(paymentHandler: (PaymentHandler & UIViewController).Type, preferredCurrency: Currency) {
+    init(paymentHandler: (PaymentHandler & UIViewController).Type, authenticator: Authenticator, preferredCurrency: Currency) {
         self.paymentHandlerViewControllerType = paymentHandler
         self.preferredCurrency = preferredCurrency
-
+        self.authenticator = authenticator
     }
 }
