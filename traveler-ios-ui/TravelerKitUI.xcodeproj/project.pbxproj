@@ -95,9 +95,22 @@
 		CA12275E22F0D5D000541F3A /* TermsAndConditions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */; };
 		CA1462A722BBE0A200137F06 /* Order+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1462A622BBE0A200137F06 /* Order+TravelerUI.swift */; };
 		CA153D8122CA82F000287034 /* BookingError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA153D8022CA82F000287034 /* BookingError+LocalizedError.swift */; };
+		CA161DB02326C8B400A94C52 /* TagsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA161DAE2326C8B400A94C52 /* TagsCell.swift */; };
+		CA161DB32326C8CF00A94C52 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA161DB22326C8CF00A94C52 /* TagsView.swift */; };
+		CA161DB52326C8D800A94C52 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA161DB42326C8D700A94C52 /* Tag.swift */; };
 		CA1656FB22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */; };
 		CA1656FF22B2E0FB00FDF6C7 /* CancellationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1656FE22B2E0FB00FDF6C7 /* CancellationViewController.swift */; };
 		CA16570322B2E91300FDF6C7 /* Notification+Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */; };
+		CA19C48D23294A1A004BD7D4 /* TagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA19C48B23294A1A004BD7D4 /* TagsCell.xib */; };
+		CA1A8565232ED64500F4DED4 /* DoubleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A8564232ED64500F4DED4 /* DoubleSlider.swift */; };
+		CA1A8568232ED66500F4DED4 /* RangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A8566232ED66500F4DED4 /* RangeCell.swift */; };
+		CA1A8569232ED66500F4DED4 /* RangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1A8567232ED66500F4DED4 /* RangeCell.xib */; };
+		CA1A856B232EE88900F4DED4 /* DoubleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A856A232EE88900F4DED4 /* DoubleSliderView.swift */; };
+		CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */; };
+		CA2666722322DE950074E83A /* BookingItemSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */; };
+		CA2666742322DF2B0074E83A /* BookingItemSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */; };
+		CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666752322E14D0074E83A /* CollectionHeaderView.swift */; };
+		CA26667A2322E71B0074E83A /* Facets+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */; };
 		CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */; };
 		CA35995022E8B10400D7D675 /* SupplierInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */; };
 		CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */; };
@@ -213,9 +226,22 @@
 		CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TermsAndConditions.storyboard; sourceTree = "<group>"; };
 		CA1462A622BBE0A200137F06 /* Order+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA153D8022CA82F000287034 /* BookingError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingError+LocalizedError.swift"; sourceTree = "<group>"; };
+		CA161DAE2326C8B400A94C52 /* TagsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCell.swift; sourceTree = "<group>"; };
+		CA161DB22326C8CF00A94C52 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		CA161DB42326C8D700A94C52 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CatalogItemInfo.storyboard; sourceTree = "<group>"; };
 		CA1656FE22B2E0FB00FDF6C7 /* CancellationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellationViewController.swift; sourceTree = "<group>"; };
 		CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Cancel.swift"; sourceTree = "<group>"; };
+		CA19C48B23294A1A004BD7D4 /* TagsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsCell.xib; sourceTree = "<group>"; };
+		CA1A8564232ED64500F4DED4 /* DoubleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSlider.swift; sourceTree = "<group>"; };
+		CA1A8566232ED66500F4DED4 /* RangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeCell.swift; sourceTree = "<group>"; };
+		CA1A8567232ED66500F4DED4 /* RangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RangeCell.xib; sourceTree = "<group>"; };
+		CA1A856A232EE88900F4DED4 /* DoubleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSliderView.swift; sourceTree = "<group>"; };
+		CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingItemSearch.storyboard; sourceTree = "<group>"; };
+		CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchViewController.swift; sourceTree = "<group>"; };
+		CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchResultViewController.swift; sourceTree = "<group>"; };
+		CA2666752322E14D0074E83A /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
+		CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Facets+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierInfoViewController.swift; sourceTree = "<group>"; };
 		CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregatedPassesViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +352,8 @@
 				CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */,
 				A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */,
 				A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */,
+				CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */,
+				CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +399,15 @@
 				F33397DA2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib */,
 				A9639CCF220DF57300625235 /* ImageCell.swift */,
 				A974A69A2282152E00319683 /* OrderCell.swift */,
+				CA2666752322E14D0074E83A /* CollectionHeaderView.swift */,
+				CA161DAE2326C8B400A94C52 /* TagsCell.swift */,
+				CA19C48B23294A1A004BD7D4 /* TagsCell.xib */,
+				CA161DB22326C8CF00A94C52 /* TagsView.swift */,
+				CA161DB42326C8D700A94C52 /* Tag.swift */,
+				CA1A8564232ED64500F4DED4 /* DoubleSlider.swift */,
+				CA1A856A232EE88900F4DED4 /* DoubleSliderView.swift */,
+				CA1A8566232ED66500F4DED4 /* RangeCell.swift */,
+				CA1A8567232ED66500F4DED4 /* RangeCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +422,7 @@
 				CACC1D2E2343CA4000AA6619 /* BookingItem.storyboard */,
 				CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */,
 				A974A69C2282197800319683 /* Orders.storyboard */,
+				CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -449,6 +487,7 @@
 				CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */,
 				A9639D36220E028300625235 /* NSMutableAttributedString+FontFace.swift */,
 				A9639DEA2213463900625235 /* UIDevice+Device.swift */,
+				CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -530,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA19C48D23294A1A004BD7D4 /* TagsCell.xib in Resources */,
 				F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */,
 				CACC1D2F2343CA4000AA6619 /* BookingItem.storyboard in Resources */,
 				F3A3E064224BB85E00CD69F4 /* FormValueDisplayInputCell.xib in Resources */,
@@ -546,7 +586,9 @@
 				CA88804222B2B22500213E41 /* Product.storyboard in Resources */,
 				F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */,
 				CA12275E22F0D5D000541F3A /* TermsAndConditions.storyboard in Resources */,
+				CA1A8569232ED66500F4DED4 /* RangeCell.xib in Resources */,
 				F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */,
+				CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */,
 				A9639D20220DF57400625235 /* FormButtonCell.xib in Resources */,
 				A9639D06220DF57400625235 /* HeaderView.xib in Resources */,
 				A9639D16220DF57400625235 /* CatalogItem.storyboard in Resources */,
@@ -575,6 +617,7 @@
 				A9639D03220DF57400625235 /* CarouselViewCell.swift in Sources */,
 				A9639CFA220DF57400625235 /* BookableDetailsViewController.swift in Sources */,
 				A9639CFE220DF57400625235 /* CatalogResultViewController.swift in Sources */,
+				CA2666742322DF2B0074E83A /* BookingItemSearchResultViewController.swift in Sources */,
 				CA35995022E8B10400D7D675 /* SupplierInfoViewController.swift in Sources */,
 				A9639D0C220DF57400625235 /* HeaderView.swift in Sources */,
 				F3A3E062224BB84100CD69F4 /* FormValueDisplayInputCell.swift in Sources */,
@@ -595,10 +638,12 @@
 				A9639D25220DF57400625235 /* InputType.swift in Sources */,
 				A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */,
 				A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */,
+				CA2666722322DE950074E83A /* BookingItemSearchViewController.swift in Sources */,
 				CA12275C22F0D4CA00541F3A /* TermsAndConditionsViewController.swift in Sources */,
 				A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */,
 				A9639CF2220DF57400625235 /* CatalogItemLoadingViewController.swift in Sources */,
 				A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */,
+				CA161DB52326C8D800A94C52 /* Tag.swift in Sources */,
 				A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */,
 				A974A69B2282152E00319683 /* OrderCell.swift in Sources */,
 				A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */,
@@ -608,10 +653,13 @@
 				A9639CF7220DF57400625235 /* CatalogItemDetailsViewController.swift in Sources */,
 				A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */,
 				CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */,
+				CA161DB02326C8B400A94C52 /* TagsCell.swift in Sources */,
 				A9639D08220DF57400625235 /* ShadowedView.swift in Sources */,
+				CA1A8568232ED66500F4DED4 /* RangeCell.swift in Sources */,
 				CA88804022B2AF9700213E41 /* PassCell.swift in Sources */,
 				A9639D0A220DF57400625235 /* ListCell.swift in Sources */,
 				A9639D13220DF57400625235 /* OrderItemViewCell.swift in Sources */,
+				CA1A856B232EE88900F4DED4 /* DoubleSliderView.swift in Sources */,
 				A9639CFC220DF57400625235 /* AttributesViewController.swift in Sources */,
 				A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */,
 				A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */,
@@ -622,14 +670,18 @@
 				A9639CF4220DF57400625235 /* CatalogItemErrorViewController.swift in Sources */,
 				A9639D26220DF57400625235 /* FormHeaderView.swift in Sources */,
 				A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */,
+				CA26667A2322E71B0074E83A /* Facets+TravelerUI.swift in Sources */,
 				A9639D29220DF57400625235 /* ProgressHUD.swift in Sources */,
 				A9639D15220DF57400625235 /* ImageCell.swift in Sources */,
 				CA1656FF22B2E0FB00FDF6C7 /* CancellationViewController.swift in Sources */,
 				A974A69F2283209A00319683 /* RetryViewController.swift in Sources */,
+				CA161DB32326C8CF00A94C52 /* TagsView.swift in Sources */,
+				CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */,
 				A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */,
 				CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */,
 				A9639D1A220DF57400625235 /* FormMessage.swift in Sources */,
 				A974A6972282130900319683 /* OrdersViewController.swift in Sources */,
+				CA1A8565232ED64500F4DED4 /* DoubleSlider.swift in Sources */,
 				A9639D17220DF57400625235 /* PagedHorizontalView.swift in Sources */,
 				CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */,
 				A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */,

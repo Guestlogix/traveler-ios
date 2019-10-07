@@ -13,7 +13,8 @@ open class CarouselItemViewCell: UICollectionViewCell {
     @IBOutlet open weak var imageView: UIImageView!
     @IBOutlet open weak var titleLabel: UILabel!
     @IBOutlet open weak var subTitleLabel: UILabel?
-
+    @IBOutlet open weak var priceLabel: UILabel!
+    
     public static var margin: CGFloat {
         return 15
     }
