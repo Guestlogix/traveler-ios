@@ -371,6 +371,40 @@ public class Traveler {
         }
     }
 
+    func searchParkingItems(_ searchQuery: ParkingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> ParkingItemSearchResult?)?, resultBlock: ((ParkingItemSearchResult, AnyHashable?) -> Void)?, completion: @escaping (ParkingItemSearchResult?, Error?, AnyHashable?) -> Void) {
+
+        class ResultWrapper {
+            var result: ParkingItemSearchResult?
+
+        }
+
+            let wrapper = ResultWrapper()
+
+            let fetchOperation = AuthenticatedRemoteFetchOperation<ParkingItemSearchResult>(path: .searchParkingItems(searchQuery), session: session)
+            let mergeOperation = BlockOperation { [unowned fetchOperation] in
+                guard let result = fetchOperation.resource else { return }
+
+                wrapper.result = previousResultBlock?()?.merge(result) ?? result
+                resultBlock?(wrapper.result!, identifier)
+            }
+
+            let blockOperation = BlockOperation { [unowned fetchOperation] in
+                if let result = wrapper.result {
+                    completion(result, nil, identifier)
+                } else {
+                    completion(nil, fetchOperation.error!, identifier)
+                }
+            }
+
+            mergeOperation.addDependency(fetchOperation)
+            blockOperation.addDependency(mergeOperation)
+
+            queue.addOperation(fetchOperation)
+            serialQueue.addOperation(mergeOperation)
+            OperationQueue.main.addOperation(blockOperation)
+
+    }
+
     // MARK: Public API
 
     /**
@@ -906,5 +940,42 @@ public class Traveler {
 
     public static func searchBookingItems(searchQuery: BookingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> BookingItemSearchResult?)?, resultBlock: ((BookingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (BookingItemSearchResult?, Error?, AnyHashable?)-> Void) {
         shared?.searchBookingItems(searchQuery, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
+    }
+
+    /**
+     Makes a search in the API catalog given a `ParkingItemSearchQuery`
+
+     - Parameters:
+     - searchQuery: The `ParkingItemSearchQuery` with the search parameters
+     - delegate: A `ParkingItemSearchDelegate` that is notified if the search is successful
+     */
+
+    public static func searchParkingItems(searchQuery: ParkingItemQuery, identifier: AnyHashable?, delegate: ParkingItemSearchDelegate) {
+        shared?.searchParkingItems(searchQuery, identifier: identifier, previousResultBlock: { [weak delegate]() -> ParkingItemSearchResult? in
+            delegate?.previousResult()
+            }, resultBlock: { (result, identifier) in
+                delegate.parkingSearchDidReceive(result, identifier: identifier)
+        }, completion: { (result, error, identifier) in
+            if let error = error {
+                delegate.parkingItemSearchDidFailWith(error, identifier: identifier)
+            } else {
+                delegate.parkingItemSearchDidSucceedWith(result!, identifier: identifier)
+            }
+        })
+    }
+
+    /**
+     Makes a search in the API catalog given a `ParkingItemSearchQuery`
+
+     - Parameters:
+     - searchQuery: The `ParkingItemSearchQuery` with the search parameters
+     - identifier: An optional hash identifying the request. This value is returned back in the callbacks. Use this to distinguish between different requests
+     - previousResultBlock: A block called (on a worker thread) to return any previous results that are to be merged
+     - resultBlock: A block called (on a worker thread) with the final merged results
+     - completion: A completion block that is called when the results are ready.
+     */
+
+    public static func searchParkingItems(searchQuery: ParkingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> ParkingItemSearchResult?)?, resultBlock: ((ParkingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (ParkingItemSearchResult?, Error?, AnyHashable?)-> Void) {
+        shared?.searchParkingItems(searchQuery, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
     }
 }

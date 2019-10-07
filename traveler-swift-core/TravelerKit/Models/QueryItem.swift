@@ -41,8 +41,8 @@ public struct QueryItem: CatalogItem, Decodable {
             let bookingQuery = BookingItemQuery(with: queryParams)
             self.query = .booking(query: bookingQuery)
         case .Parking:
-            let queryParams = try container.decode(ParkingSearchParameters.self, forKey: .searchParams)
-            let parkingQuery = ParkingQuery(with: queryParams)
+            let queryParams = try container.decode(ParkingItemSearchParameters.self, forKey: .searchParams)
+            let parkingQuery = ParkingItemQuery(with: queryParams)
             self.query = .parking(query: parkingQuery)
         }
     }

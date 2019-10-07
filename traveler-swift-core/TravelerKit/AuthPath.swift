@@ -24,6 +24,7 @@ enum AuthPath {
     case wishlistToggle([Product], travelerId: String)
     case wishlist(WishlistQuery, travelerId: String)
     case searchBookingItems(BookingItemQuery)
+    case searchParkingItems(ParkingItemQuery)
 
     // MARK: URLRequest
 
@@ -179,6 +180,23 @@ enum AuthPath {
                 urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-latitude", value: String(boundingBox.bottomRightLatitude)))
                 urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-longitude", value: String(boundingBox.bottomRightLongitude)))
             }
+        case .searchParkingItems(let searchQuery):
+            urlComponents.path = "/v1/parking"
+            urlRequest.method = .get
+            urlComponents.queryItems = [
+                URLQueryItem(name: "to", value: DateFormatter.withoutTimezone.string(from: searchQuery.dateRange.upperBound)),
+                URLQueryItem(name: "from", value: DateFormatter.withoutTimezone.string(from: searchQuery.dateRange.lowerBound)),
+            URLQueryItem(name: "skip", value: String(searchQuery.offset)),
+            URLQueryItem(name: "take", value: String(searchQuery.limit))]
+
+            if let boundingBox = searchQuery.boundingBox {
+                urlComponents.queryItems?.append(URLQueryItem(name: "top-left-latitude", value: String(boundingBox.topLeftLatitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "top-left-longitude", value: String(boundingBox.topLeftLongitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-latitude", value: String(boundingBox.bottomRightLatitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-longitude", value: String(boundingBox.bottomRightLongitude)))
+            }
+
+            urlComponents.queryItems?.append(URLQueryItem(name: "airport", value: searchQuery.airport))
         }
         
         urlRequest.url = urlComponents.url

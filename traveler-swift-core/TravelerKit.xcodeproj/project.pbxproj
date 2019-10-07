@@ -97,6 +97,8 @@
 		CA0575EA234AA5D7000B2211 /* CategoryFacet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575E2234AA5D6000B2211 /* CategoryFacet.swift */; };
 		CA0575EC234AA5F2000B2211 /* BookingItemSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575EB234AA5F2000B2211 /* BookingItemSearchDelegate.swift */; };
 		CA0575EE234AC2C5000B2211 /* PriceRangeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575ED234AC2C5000B2211 /* PriceRangeFilter.swift */; };
+		CA0575F0234ADE7B000B2211 /* ParkingItemSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575EF234ADE7B000B2211 /* ParkingItemSearchResult.swift */; };
+		CA0575F2234AE28E000B2211 /* ParkingItemSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0575F1234AE28E000B2211 /* ParkingItemSearchDelegate.swift */; };
 		CA07DE74231EDD88004C8872 /* WishlistAddDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07DE73231EDD88004C8872 /* WishlistAddDelegate.swift */; };
 		CA07DE76231EE6EB004C8872 /* WishlistRemoveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07DE75231EE6EB004C8872 /* WishlistRemoveDelegate.swift */; };
 		CA07DE78231EE8EF004C8872 /* WishlistToggleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA07DE77231EE8EF004C8872 /* WishlistToggleError.swift */; };
@@ -115,7 +117,7 @@
 		CA2ADDBC2347C50200A6EE34 /* BookingItemSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDBB2347C50200A6EE34 /* BookingItemSearchParameters.swift */; };
 		CA2ADDC02347C6FC00A6EE34 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2ADDBF2347C6FC00A6EE34 /* QueryType.swift */; };
 		CA4E189C2349442800A5DFE2 /* ParkingItemSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E189B2349442800A5DFE2 /* ParkingItemSearchParameters.swift */; };
-		CA4E18A22349622F00A5DFE2 /* ParkingQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E18A12349622F00A5DFE2 /* ParkingQuery.swift */; };
+		CA4E18A22349622F00A5DFE2 /* ParkingItemQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E18A12349622F00A5DFE2 /* ParkingItemQuery.swift */; };
 		CA4E18A4234964DD00A5DFE2 /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E18A3234964DD00A5DFE2 /* SearchQuery.swift */; };
 		CA594AF922DFD33F008C6C4B /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AF822DFD33F008C6C4B /* Supplier.swift */; };
 		CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFA22DFD344008C6C4B /* Trademark.swift */; };
@@ -235,6 +237,8 @@
 		CA0575E2234AA5D6000B2211 /* CategoryFacet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFacet.swift; sourceTree = "<group>"; };
 		CA0575EB234AA5F2000B2211 /* BookingItemSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemSearchDelegate.swift; sourceTree = "<group>"; };
 		CA0575ED234AC2C5000B2211 /* PriceRangeFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceRangeFilter.swift; sourceTree = "<group>"; };
+		CA0575EF234ADE7B000B2211 /* ParkingItemSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItemSearchResult.swift; sourceTree = "<group>"; };
+		CA0575F1234AE28E000B2211 /* ParkingItemSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItemSearchDelegate.swift; sourceTree = "<group>"; };
 		CA07DE73231EDD88004C8872 /* WishlistAddDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistAddDelegate.swift; sourceTree = "<group>"; };
 		CA07DE75231EE6EB004C8872 /* WishlistRemoveDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistRemoveDelegate.swift; sourceTree = "<group>"; };
 		CA07DE77231EE8EF004C8872 /* WishlistToggleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistToggleError.swift; sourceTree = "<group>"; };
@@ -253,7 +257,7 @@
 		CA2ADDBB2347C50200A6EE34 /* BookingItemSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchParameters.swift; sourceTree = "<group>"; };
 		CA2ADDBF2347C6FC00A6EE34 /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
 		CA4E189B2349442800A5DFE2 /* ParkingItemSearchParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItemSearchParameters.swift; sourceTree = "<group>"; };
-		CA4E18A12349622F00A5DFE2 /* ParkingQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingQuery.swift; sourceTree = "<group>"; };
+		CA4E18A12349622F00A5DFE2 /* ParkingItemQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItemQuery.swift; sourceTree = "<group>"; };
 		CA4E18A3234964DD00A5DFE2 /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
 		CA594AF822DFD33F008C6C4B /* Supplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		CA594AFA22DFD344008C6C4B /* Trademark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trademark.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				CA07DE73231EDD88004C8872 /* WishlistAddDelegate.swift */,
 				CA07DE75231EE6EB004C8872 /* WishlistRemoveDelegate.swift */,
 				CA07DE7D231EF7C7004C8872 /* WishlistFetchDelegate.swift */,
+				CA0575F1234AE28E000B2211 /* ParkingItemSearchDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -444,8 +449,9 @@
 				CA2ADDBB2347C50200A6EE34 /* BookingItemSearchParameters.swift */,
 				CA2ADDBF2347C6FC00A6EE34 /* QueryType.swift */,
 				CA4E189B2349442800A5DFE2 /* ParkingItemSearchParameters.swift */,
-				CA4E18A12349622F00A5DFE2 /* ParkingQuery.swift */,
+				CA4E18A12349622F00A5DFE2 /* ParkingItemQuery.swift */,
 				CA4E18A3234964DD00A5DFE2 /* SearchQuery.swift */,
+				CA0575EF234ADE7B000B2211 /* ParkingItemSearchResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 				A9DB06A821496396009817EC /* Traveler.swift in Sources */,
 				CA07DE7E231EF7C7004C8872 /* WishlistFetchDelegate.swift in Sources */,
 				CA4E189C2349442800A5DFE2 /* ParkingItemSearchParameters.swift in Sources */,
+				CA0575F2234AE28E000B2211 /* ParkingItemSearchDelegate.swift in Sources */,
 				A9825BC02208DD31008AA0C1 /* CustomerContact.swift in Sources */,
 				CA1754D02343B4D800F08F73 /* ProductType.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
@@ -669,7 +676,7 @@
 				A9825BAA22043285008AA0C1 /* OrderProcessDelegate.swift in Sources */,
 				CA8AFF3A23415637006ECD16 /* CatalogItemType.swift in Sources */,
 				A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */,
-				CA4E18A22349622F00A5DFE2 /* ParkingQuery.swift in Sources */,
+				CA4E18A22349622F00A5DFE2 /* ParkingItemQuery.swift in Sources */,
 				A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */,
 				CA2ADDC02347C6FC00A6EE34 /* QueryType.swift in Sources */,
 				A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */,
@@ -704,6 +711,7 @@
 				A9E2ADA52194D75D0063BF79 /* Attribute.swift in Sources */,
 				CA0575E4234AA5D7000B2211 /* BookingItemSearchFilters.swift in Sources */,
 				A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */,
+				CA0575F0234ADE7B000B2211 /* ParkingItemSearchResult.swift in Sources */,
 				CA2ADDB623479A5B00A6EE34 /* BookingItemDetails.swift in Sources */,
 				CA0575EC234AA5F2000B2211 /* BookingItemSearchDelegate.swift in Sources */,
 				A9DB06592140665A009817EC /* DownloadOperation.swift in Sources */,
