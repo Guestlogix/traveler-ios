@@ -48,7 +48,7 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
     /// URL for a thumbnail
     public let thumbnailURL: URL
     /// Categories
-    public var categories: [CatalogItemCategory]
+    public var categories: [ProductItemCategory]
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -94,7 +94,7 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
         self.price = try container.decode(Price.self, forKey: .priceStartingAt)
         self.productType = try container.decode(ProductType.self, forKey: .purchaseStrategy)
         self.translateAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .googleTranslateAttrbution)
-        self.categories = try container.decode([CatalogItemCategory].self, forKey: .categories)
+        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
     }
 
 

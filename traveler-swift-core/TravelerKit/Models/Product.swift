@@ -19,7 +19,7 @@ public protocol Product {
     /// Title
     var title: String { get }
     /// Categories
-    var categories: [CatalogItemCategory] { get }
+    var categories: [ProductItemCategory] { get }
 }
 
 struct AnyProduct: Decodable {
@@ -62,7 +62,7 @@ public struct BookingProduct: Product, Decodable {
     /// Product type
     public let productType: ProductType = .booking
     /// Categories
-    public let categories: [CatalogItemCategory]
+    public let categories: [ProductItemCategory]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -80,7 +80,7 @@ public struct BookingProduct: Product, Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.passes = try container.decode([Pass]?.self, forKey: .passes) ?? []
         self.price = try container.decode(Price.self, forKey:.price)
-        self.categories = try container.decode([CatalogItemCategory].self, forKey: .categories)
+        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
 
         let dateString = try container.decode(String.self, forKey: .eventDate)
 

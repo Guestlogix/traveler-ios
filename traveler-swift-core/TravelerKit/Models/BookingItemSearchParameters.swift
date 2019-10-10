@@ -1,5 +1,5 @@
 //
-//  BookingSearchParameters.swift
+//  BookingItemSearchParameters.swift
 //  TravelerKit
 //
 //  Created by Omar Padierna on 2019-10-04.
@@ -8,13 +8,14 @@
 
 import Foundation
 /// The search parameters that conform to a `BookingQuery`
-struct BookingSearchParameters: Decodable {
+struct BookingItemSearchParameters: Decodable {
     /// Text for text-based queries
     public let text: String?
     ///  Range of prices for items
-    public let range: PriceRange?
+    public let range: PriceRangeFilter?
     /// Item category
-    public let categories: [CatalogItemCategory]
+    public let categories: [ProductItemCategory]
+
     /// A `BoundingBox`representing the geographic area in which items should be searched for
     public let boundingBox: BoundingBox?
 
@@ -40,7 +41,7 @@ struct BookingSearchParameters: Decodable {
             let currency = try container.decode(Currency.self, forKey: .currency)
             let range = mininumPriceValue...maximumPriceVaue
 
-            self.range = PriceRange(range: range, currency: currency)
+            self.range = PriceRangeFilter(range: range, currency: currency)
         } else {
             self.range = nil
         }
@@ -58,7 +59,8 @@ struct BookingSearchParameters: Decodable {
         } else {
             self.boundingBox = nil
         }
+        
+        self.categories = try container.decode([ProductItemCategory]?.self, forKey: .categories) ?? []
 
-        self.categories = try container.decode([CatalogItemCategory]?.self, forKey: .categories) ?? []
     }
 }

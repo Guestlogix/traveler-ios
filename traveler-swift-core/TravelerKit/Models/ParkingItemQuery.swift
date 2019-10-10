@@ -1,5 +1,5 @@
 //
-//  ParkingQuery.swift
+//  ParkingItemQuery.swift
 //  TravelerKit
 //
 //  Created by Omar Padierna on 2019-10-05.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// A query to fetch Parking items
-public struct ParkingQuery {
+public struct ParkingItemQuery {
     /// Pagination offset
     public let offset: Int
     /// Pagination limit
@@ -40,7 +40,7 @@ public struct ParkingQuery {
         self.airportIATA = airport
     }
 
-    init(with params: ParkingSearchParameters) {
+    init(with params: ParkingItemSearchParameters) {
         self.boundingBox = params.boundingBox
         self.dateRange = params.dateRange
         self.airportIATA = params.airportIATA
@@ -48,10 +48,17 @@ public struct ParkingQuery {
         self.limit = 10
     }
 
+    func isValid() -> Bool {
+        if self.airportIATA == nil && self.boundingBox == nil {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
-extension ParkingQuery: Equatable {
-    public static func == (lhs: ParkingQuery, rhs: ParkingQuery) -> Bool {
+extension ParkingItemQuery: Equatable {
+    public static func == (lhs: ParkingItemQuery, rhs: ParkingItemQuery) -> Bool {
         return lhs.boundingBox == rhs.boundingBox && lhs.dateRange == rhs.dateRange && lhs.airportIATA == rhs.airportIATA
     }
 }

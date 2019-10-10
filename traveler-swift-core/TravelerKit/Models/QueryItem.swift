@@ -33,14 +33,15 @@ public struct QueryItem: CatalogItem, Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.imageURL = try container.decode(URL?.self, forKey: .imageURL)
         let type = try container.decode(QueryType.self, forKey: .type)
+
         switch type {
         case .booking:
-            let queryParams = try container.decode(BookingSearchParameters.self, forKey: .searchParams)
-            let bookingQuery = BookingQuery(with: queryParams)
+            let queryParams = try container.decode(BookingItemSearchParameters.self, forKey: .searchParams)
+            let bookingQuery = BookingItemQuery(with: queryParams)
             self.query = .booking(bookingQuery)
         case .parking:
-            let queryParams = try container.decode(ParkingSearchParameters.self, forKey: .searchParams)
-            let parkingQuery = ParkingQuery(with: queryParams)
+            let queryParams = try container.decode(ParkingItemSearchParameters.self, forKey: .searchParams)
+            let parkingQuery = ParkingItemQuery(with: queryParams)
             self.query = .parking(parkingQuery)
         }
     }
