@@ -9,6 +9,6 @@
 import Foundation
 /// An enum that encompasses all possible search queries
 public enum SearchQuery {
-    case booking(BookingQuery)
-    case parking(ParkingQuery)
+    case booking(BookingItemQuery)
+    case parking(ParkingItemQuery)
 }

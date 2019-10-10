@@ -9,6 +9,13 @@
 import Foundation
 
 extension DateFormatter {
+
+    public static var withFullDate: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyymmdd"
+        return dateFormatter
+    }()
+
     public static var yearMonthDay: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"

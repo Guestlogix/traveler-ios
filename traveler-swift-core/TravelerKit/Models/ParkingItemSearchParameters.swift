@@ -1,5 +1,5 @@
 //
-//  ParkingSearchParameters.swift
+//  ParkingItemSearchParameters.swift
 //  TravelerKit
 //
 //  Created by Omar Padierna on 2019-10-05.
@@ -8,7 +8,7 @@
 
 import Foundation
 /// A model containing the search parameters of a `ParkingQuery`
-public struct ParkingSearchParameters: Decodable {
+public struct ParkingItemSearchParameters: Decodable {
     /// An airport IATA code that represents the airport for which to search available parking
     public let airportIATA: String?
     /// A `BoundingBox` specifying the area to search for available parking
