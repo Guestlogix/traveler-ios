@@ -9,12 +9,12 @@
 import Foundation
 
 /**
- A result model representing the `ProductItem`s that were fetched for a given `ParkingItemSearchQuery`
+ A result model representing the `ParkingItem`s that were fetched for a given `ParkingItemSearchQuery`
  */
 public struct ParkingItemSearchResult: Decodable {
     /// The total number of catalog items matching the given query
     public let total: Int
-    /// An `Array<ProductItem>` representing the results of the query
+    /// An `Array<ParkingItem>` representing the results of the query
     public let items: [Int: ParkingItem]
     /// A `Facets` object that informs how the data could be filtered further
     public let facets: Facets

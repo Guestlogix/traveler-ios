@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The detailed information of a parking `ProductItem`
+/// The detailed information of a `ParkingItem`
 public struct ParkingItemDetails: CatalogItemDetails, Decodable {
 
     /// Description
@@ -96,6 +96,4 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
         self.translateAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .googleTranslateAttrbution)
         self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
     }
-
-
 }

@@ -7,7 +7,7 @@
 //
 
 /**
- TODO: Catalog item categories should be specific to CatalogItem type
+ TODO: Catalog item categories should be specific to Product type
  */
 import Foundation
 /// Represents the different categories a `ProductItem` can have

@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The detailed information of a bookable `ProductItem`
+/// The detailed information of a `BookingItem`
 public struct BookingItemDetails: CatalogItemDetails, Decodable {
 
     /// Identifier
