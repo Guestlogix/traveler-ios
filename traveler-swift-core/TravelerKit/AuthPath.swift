@@ -27,6 +27,7 @@ enum AuthPath {
     case wishlist(WishlistQuery, travelerId: String)
     case searchBookingItems(BookingItemQuery)
     case searchParkingItems(ParkingItemQuery)
+    case similarItems(Product)
 
     // MARK: URLRequest
 
@@ -203,6 +204,9 @@ enum AuthPath {
             }
 
             urlComponents.queryItems?.append(URLQueryItem(name: "airport", value: searchQuery.airportIATA))
+        case .similarItems(let item):
+            urlComponents.path = "/v1/catalog-group/\(item.id)"
+            urlRequest.method = .get
         }
         
         urlRequest.url = urlComponents.url
