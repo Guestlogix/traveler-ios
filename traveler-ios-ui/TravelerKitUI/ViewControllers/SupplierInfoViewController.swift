@@ -9,13 +9,13 @@
 import UIKit
 import TravelerKit
 
-class SupplierInfoViewController: UIViewController {
+open class SupplierInfoViewController: UIViewController {
     @IBOutlet weak var trademarkCopyLabel: UILabel!
     @IBOutlet weak var trademarkImageView: UIImageView!
     
     var supplier: Supplier?
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         trademarkCopyLabel.text = supplier?.trademark?.copyright

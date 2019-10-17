@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol RetryViewControllerDelegate: class {
+public protocol RetryViewControllerDelegate: class {
     func retryViewControllerDidRetry(_ controller: RetryViewController)
 }
 
-class RetryViewController: UIViewController {
+open class RetryViewController: UIViewController {
     weak var delegate: RetryViewControllerDelegate?
 
     @IBAction func didRetry(_ sender: UIButton) {

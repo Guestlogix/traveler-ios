@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol BuyablePurchaseViewControllerDelegate: class {
+public protocol BuyablePurchaseViewControllerDelegate: class {
 
 }
 
-class BuyablePurchaseViewController: UIViewController {
+open class BuyablePurchaseViewController: UIViewController {
     weak var delegate: BuyablePurchaseViewControllerDelegate?
 }

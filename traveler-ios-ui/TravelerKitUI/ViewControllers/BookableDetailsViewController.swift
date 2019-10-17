@@ -17,7 +17,7 @@ protocol BookableDetailsViewControllerDelegate: class {
 
 let optionCellIdentifier = "optionCellIdentifier"
 
-class BookableDetailsViewController: UITableViewController {
+open class BookableDetailsViewController: UITableViewController {
     var product: Product?
     var selectedAvailability: Availability?
     var availableOptions: [BookingOption]? {
@@ -45,7 +45,7 @@ class BookableDetailsViewController: UITableViewController {
         return IndexPath(row: datePickerCellVisible ? 2 : 1, section: 0)
     }
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         updatePreferredContentSize()
@@ -65,11 +65,11 @@ class BookableDetailsViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (datePickerCellVisible, hasOptions) {
         case (false, false):
             return 1
@@ -81,7 +81,7 @@ class BookableDetailsViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.row, datePickerCellVisible, hasOptions) {
         case (0, _, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell
@@ -129,7 +129,7 @@ class BookableDetailsViewController: UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
         case dateCellIndexPath:
             datePickerCellVisible = !datePickerCellVisible
@@ -165,7 +165,7 @@ class BookableDetailsViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch (indexPath.row, datePickerCellVisible) {
         case (1, true):
             return 162
@@ -210,7 +210,7 @@ extension BookableDetailsViewController: ListCellDataSource {
 }
 
 extension BookableDetailsViewController: AvailabilitiesFetchDelegate {
-    func availabilitiesFetchDidSucceedWith(_ availabilities: [Availability]) {
+    public func availabilitiesFetchDidSucceedWith(_ availabilities: [Availability]) {
         tableView.isUserInteractionEnabled = true
 
         guard let availability = availabilities.first else {
@@ -226,7 +226,7 @@ extension BookableDetailsViewController: AvailabilitiesFetchDelegate {
         updatePreferredContentSize()
     }
 
-    func availabilitiesFetchDidFailWith(_ error: Error) {
+    public func availabilitiesFetchDidFailWith(_ error: Error) {
         tableView.isUserInteractionEnabled = true
 
         let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
@@ -238,7 +238,7 @@ extension BookableDetailsViewController: AvailabilitiesFetchDelegate {
 }
 
 extension BookableDetailsViewController: ErrorContextObserving {
-    func errorContextDidUpdate(_ context: ErrorContext) {
+    public func errorContextDidUpdate(_ context: ErrorContext) {
         /// https://stackoverflow.com/questions/6409370/uitableview-reloaddata-automatically-calls-resignfirstresponder
 
         if let _ = context.error {

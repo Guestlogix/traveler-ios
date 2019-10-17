@@ -9,7 +9,7 @@
 import UIKit
 import TravelerKit
 
-class BookingItemSearchResultViewController: UIViewController {
+open class BookingItemSearchResultViewController: UIViewController {
     @IBOutlet weak var resultsCollectionView: UICollectionView!
 
     var bookingItemResult: BookingItemSearchResult?
@@ -19,7 +19,7 @@ class BookingItemSearchResultViewController: UIViewController {
     private var _volatileResult: BookingItemSearchResult?
     private var pagesLoading = Set<Int>()
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         resultsCollectionView.register(UINib(nibName: "CarouselItemViewCell", bundle: Bundle(identifier: "com.guestlogix.TravelerKitUI")), forCellWithReuseIdentifier: "catalogItemCell")
@@ -30,7 +30,7 @@ class BookingItemSearchResultViewController: UIViewController {
         _volatileResult = bookingItemResult
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let navVC as UINavigationController):
             let catalogItemVC = navVC.topViewController as! CatalogItemViewController
@@ -45,17 +45,17 @@ extension BookingItemSearchResultViewController: UICollectionViewDataSource, UIC
 
     //MARK: UICollectionViewDataSource
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerCollectionView", for: indexPath) as! CollectionHeaderView
         headerView.label.text = "\(bookingItemResult?.total ?? 0) items found"
         return headerView
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookingItemResult?.total ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = bookingItemResult!.items[indexPath.row]
 
         switch item {
@@ -83,14 +83,14 @@ extension BookingItemSearchResultViewController: UICollectionViewDataSource, UIC
 
     //MARK: UICollectionViewDelegate
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCatalogItem = bookingItemResult!.items[indexPath.row]
         performSegue(withIdentifier: "itemSegue" , sender: nil)
     }
 }
 
 extension BookingItemSearchResultViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         guard let catalogItemResult = bookingItemResult, let searchQuery = searchQuery else {
             return
         }
@@ -110,7 +110,7 @@ extension BookingItemSearchResultViewController: UICollectionViewDataSourcePrefe
 
 extension BookingItemSearchResultViewController: BookingItemSearchDelegate {
 
-    func bookingItemSearchDidSucceedWith(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
+    public func bookingItemSearchDidSucceedWith(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
         self.bookingItemResult = _volatileResult
 
         _ = (identifier as? Int).flatMap({ pagesLoading.remove($0) })
@@ -118,11 +118,11 @@ extension BookingItemSearchResultViewController: BookingItemSearchDelegate {
         _ = resultsCollectionView.indexPathsForVisibleItems.compactMap({ resultsCollectionView.reloadItems(at: [$0]) })
     }
 
-    func bookingItemSearchDidReceive(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
+    public func bookingItemSearchDidReceive(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
         _volatileResult = result
     }
 
-    func bookingItemSearchDidFailWith(_ error: Error, identifier: AnyHashable?) {
+    public func bookingItemSearchDidFailWith(_ error: Error, identifier: AnyHashable?) {
         _ = (identifier as? Int).flatMap({ pagesLoading.remove($0) })
 
         Log("Error searching for catalog item", data: error, level: .error)

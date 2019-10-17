@@ -9,11 +9,11 @@
 import UIKit
 import TravelerKit
 
-protocol BookingQuestionsViewControllerDelegate: class {
+public protocol BookingQuestionsViewControllerDelegate: class {
     func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith bookingForm: BookingForm)
 }
 
-class BookingQuestionsViewController: UIViewController {
+open class BookingQuestionsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var formView: FormView!
@@ -23,7 +23,7 @@ class BookingQuestionsViewController: UIViewController {
 
     private var error: Error?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         formView.dataSource = self
@@ -50,7 +50,7 @@ class BookingQuestionsViewController: UIViewController {
 }
 
 extension BookingQuestionsViewController: FormViewDataSource {
-    func formView(_ formView: FormView, titleForOption option: Int, at indexPath: IndexPath) -> String {
+    public func formView(_ formView: FormView, titleForOption option: Int, at indexPath: IndexPath) -> String {
         let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
         
         switch question.type {
@@ -61,7 +61,7 @@ extension BookingQuestionsViewController: FormViewDataSource {
         }
     }
 
-    func formView(_ formView: FormView, numberOfOptionsForInputAt indexPath: IndexPath) -> Int {
+    public func formView(_ formView: FormView, numberOfOptionsForInputAt indexPath: IndexPath) -> Int {
         switch bookingForm!.questionGroups[indexPath.section].questions[indexPath.row].type {
         case .multipleChoice(let choices):
             return choices.count
@@ -70,7 +70,7 @@ extension BookingQuestionsViewController: FormViewDataSource {
         }
     }
 
-    func formView(_ formView: FormView, valueForInputAt indexPath: IndexPath) -> Any? {
+    public func formView(_ formView: FormView, valueForInputAt indexPath: IndexPath) -> Any? {
         let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
         let answer = try? bookingForm!.answer(for: question)
 
@@ -88,7 +88,7 @@ extension BookingQuestionsViewController: FormViewDataSource {
         }
     }
 
-    func formView(_ formView: FormView, inputDescriptorForFieldAt indexPath: IndexPath) -> InputDescriptor {
+    public func formView(_ formView: FormView, inputDescriptorForFieldAt indexPath: IndexPath) -> InputDescriptor {
         switch indexPath.section {
         case bookingForm!.questionGroups.count:
             return InputDescriptor(type: .button("Checkout"))
@@ -97,11 +97,11 @@ extension BookingQuestionsViewController: FormViewDataSource {
         }
     }
 
-    func numberOfSections(in formView: FormView) -> Int {
+    public func numberOfSections(in formView: FormView) -> Int {
         return bookingForm.flatMap({ $0.questionGroups.count + 1 }) ?? 0
     }
 
-    func formView(_ formView: FormView, numberOfFieldsIn section: Int) -> Int {
+    public func formView(_ formView: FormView, numberOfFieldsIn section: Int) -> Int {
         switch section {
         case bookingForm!.questionGroups.count:
             return 1
@@ -112,7 +112,7 @@ extension BookingQuestionsViewController: FormViewDataSource {
 }
 
 extension BookingQuestionsViewController: FormViewDelegate {
-    func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String? {
+    public func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String? {
         guard section < bookingForm!.questionGroups.count else {
             return nil
         }
@@ -120,7 +120,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
         return bookingForm?.questionGroups[section].disclaimer
     }
 
-    func formView(_ formView: FormView, titleForHeaderIn section: Int) -> String? {
+    public func formView(_ formView: FormView, titleForHeaderIn section: Int) -> String? {
         guard section < bookingForm!.questionGroups.count else {
             return nil
         }
@@ -128,7 +128,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
         return bookingForm?.questionGroups[section].title
     }
 
-    func formView(_ formView: FormView, didChangeValue value: Any?, forInputFieldAt indexPath: IndexPath) {
+    public func formView(_ formView: FormView, didChangeValue value: Any?, forInputFieldAt indexPath: IndexPath) {
         let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
 
         switch (question.type, value) {
@@ -146,7 +146,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
         }
     }
 
-    func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath) {
+    public func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath) {
         /// There is only one button: Checkout
 
         let errors = bookingForm?.validate()
@@ -166,7 +166,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
         }
     }
 
-    func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage? {
+    public func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage? {
         guard let error = self.error as? BookingFormError,
             case let .invalidAnswer(groupIndex, questionIndex, validationError) = error,
             indexPath.section == groupIndex, indexPath.item == questionIndex else {

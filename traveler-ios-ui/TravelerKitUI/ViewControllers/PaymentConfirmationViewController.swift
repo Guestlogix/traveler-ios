@@ -9,7 +9,7 @@
 import UIKit
 import TravelerKit
 
-class PaymentConfirmationViewController: UIViewController {
+open class PaymentConfirmationViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
 
@@ -19,13 +19,13 @@ class PaymentConfirmationViewController: UIViewController {
     private var paymentHandler: PaymentHandler?
     private var receipt: Receipt?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         totalPriceLabel.text = order?.total.localizedDescriptionInBaseCurrency
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as OrderSummaryViewController):
             vc.order = order
@@ -67,7 +67,7 @@ class PaymentConfirmationViewController: UIViewController {
 }
 
 extension PaymentConfirmationViewController: OrderProcessDelegate {
-    func order(_ order: Order, didFailWithError error: Error) {
+    public func order(_ order: Order, didFailWithError error: Error) {
         ProgressHUD.hide()
 
         switch error {
@@ -94,7 +94,7 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
         }
     }
 
-    func order(_ order: Order, didSucceedWithReceipt receipt: Receipt) {
+    public func order(_ order: Order, didSucceedWithReceipt receipt: Receipt) {
         ProgressHUD.hide()
 
         self.receipt = receipt
@@ -104,14 +104,14 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
 }
 
 extension PaymentConfirmationViewController: OrderSummaryViewControllerDelegate {
-    func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment) {
+    public func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment) {
         self.payment = payment
         self.confirmButton.isEnabled = true
     }
 }
 
 extension PaymentConfirmationViewController: PaymentAuthenticationDelegate {
-    func paymentAuthenticationDidFailWith(_ error: Error) {
+    public func paymentAuthenticationDidFailWith(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(okAction)
@@ -119,7 +119,7 @@ extension PaymentConfirmationViewController: PaymentAuthenticationDelegate {
         present(alert, animated: true, completion: nil)
     }
 
-    func paymentAuthenticationDidSucceed() {
+    public func paymentAuthenticationDidSucceed() {
         didConfirm(self)
     }
 }

@@ -9,18 +9,18 @@
 import UIKit
 import TravelerKit
 
-protocol CancellationViewControllerDelegate: class {
+public protocol CancellationViewControllerDelegate: class {
     func cancellationViewController(_ controller: CancellationViewController, didCancel order:Order)
     func cancellationViewControllerDidExpire(_ controller: CancellationViewController)
 }
 
-class CancellationViewController: UITableViewController {
+open class CancellationViewController: UITableViewController {
     @IBOutlet weak var totalRefundLabel: UILabel!
 
     var quote: CancellationQuote?
     weak var delegate: CancellationViewControllerDelegate?
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         totalRefundLabel.text = quote?.totalRefund.localizedDescriptionInBaseCurrency
@@ -28,15 +28,15 @@ class CancellationViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return quote?.products.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "productCancelCell", for: indexPath) as! InfoCell
 
         cell.titleLabel.text = quote?.products[indexPath.row].title
@@ -69,13 +69,13 @@ class CancellationViewController: UITableViewController {
 }
 
 extension CancellationViewController: CancellationDelegate {
-    func cancellationDidSucceed(order: Order) {
+    public func cancellationDidSucceed(order: Order) {
         ProgressHUD.hide()
         delegate?.cancellationViewController(self, didCancel: order)
         NotificationCenter.default.post(name: .orderDidCancel, object: self, userInfo: [orderKey: order])
     }
 
-    func cancellationDidFailWith(_ error: Error) {
+    public func cancellationDidFailWith(_ error: Error) {
         ProgressHUD.hide()
 
         switch error {

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class TermsAndConditionsViewController: UIViewController {
+open class TermsAndConditionsViewController: UIViewController {
     @IBOutlet weak var termsAndConditionsLabel: UILabel!
 
     var termsAndConditions: NSMutableAttributedString?
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         termsAndConditions?.setFontFace(font: UIFont.systemFont(ofSize: 17))

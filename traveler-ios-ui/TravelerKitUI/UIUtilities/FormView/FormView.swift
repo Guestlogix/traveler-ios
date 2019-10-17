@@ -28,7 +28,7 @@ public protocol FormViewDelegate: class {
 }
 
 extension FormViewDelegate {
-    func formView(_ formView: FormView, sizeForInputFieldAt indexPath: IndexPath) -> CGSize {
+    public func formView(_ formView: FormView, sizeForInputFieldAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: formView.bounds.width, height: 50)
     }
 
@@ -40,7 +40,7 @@ extension FormViewDelegate {
         return nil
     }
 
-    func formViewDidChangeContentSize(_ formView: FormView) {
+    public func formViewDidChangeContentSize(_ formView: FormView) {
         /// Default noop
     }
 

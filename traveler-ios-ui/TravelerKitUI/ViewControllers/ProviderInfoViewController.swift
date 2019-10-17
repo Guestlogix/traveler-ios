@@ -15,7 +15,7 @@ protocol ProviderInfoViewControllerDelegate: class {
 
 let locationCellIdentifier = "locationCellIdentifier"
 
-class ProviderInfoViewController: UIViewController {
+open class ProviderInfoViewController: UIViewController {
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailView: UIView!
@@ -32,7 +32,7 @@ class ProviderInfoViewController: UIViewController {
     var locations: [Location]?
     weak var delegate: ProviderInfoViewControllerDelegate?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         nameLabel.text = contactInfo?.name
@@ -98,15 +98,15 @@ class ProviderInfoViewController: UIViewController {
 }
 
 extension ProviderInfoViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    private func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: locationCellIdentifier, for: indexPath) as! LocationCell
         let location = locations![indexPath.row]
         cell.addressLabel.text = location.address
@@ -116,7 +116,7 @@ extension ProviderInfoViewController: UITableViewDataSource {
 }
 
 extension ProviderInfoViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    private func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let location = locations![indexPath.row]
         return LocationCell.boundingSize(address: location.address, with: CGSize(width: tableView.bounds.width, height: 0)).height
     }
