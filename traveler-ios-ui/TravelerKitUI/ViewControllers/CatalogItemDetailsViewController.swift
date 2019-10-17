@@ -9,18 +9,18 @@
 import UIKit
 import TravelerKit
 
-protocol CatalogItemDetailsViewControllerDelegate: class {
+public protocol CatalogItemDetailsViewControllerDelegate: class {
     func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class CatalogItemDetailsViewController: UIViewController {
+open class CatalogItemDetailsViewController: UIViewController {
 
     var itemDetails: CatalogItemDetails?
     var product: Product?
 
     weak var delegate: CatalogItemDetailsViewControllerDelegate?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         switch itemDetails {
@@ -32,7 +32,7 @@ class CatalogItemDetailsViewController: UIViewController {
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination, sender) {
         case (_, let vc as BookingItemDetailsViewController , let sender as BookingItemDetails):
             vc.bookingItemDetails = sender

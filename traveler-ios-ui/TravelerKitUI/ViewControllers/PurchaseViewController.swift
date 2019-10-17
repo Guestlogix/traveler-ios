@@ -9,21 +9,21 @@
 import UIKit
 import TravelerKit
 
-class PurchaseViewController: UIViewController {
+open class PurchaseViewController: UIViewController {
 
     var itemDetails: CatalogItemDetails?
     var product: Product?
 
     private var order: Order?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         if itemDetails != nil {
             performSegue(withIdentifier: "detailsSegue", sender: nil)
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as PaymentConfirmationViewController):
             vc.order = order
@@ -39,7 +39,7 @@ class PurchaseViewController: UIViewController {
 }
 
 extension PurchaseViewController: OrderCreateDelegate {
-    func orderCreationDidSucceed(_ order: Order) {
+    public func orderCreationDidSucceed(_ order: Order) {
         ProgressHUD.hide()
 
         self.order = order
@@ -47,7 +47,7 @@ extension PurchaseViewController: OrderCreateDelegate {
         performSegue(withIdentifier: "confirmationSegue", sender: nil)
     }
 
-    func orderCreationDidFail(_ error: Error) {
+    public func orderCreationDidFail(_ error: Error) {
         ProgressHUD.hide()
 
         let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
@@ -59,7 +59,7 @@ extension PurchaseViewController: OrderCreateDelegate {
 }
 
 extension PurchaseViewController: CatalogItemDetailsViewControllerDelegate {
-    func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith bookingForm: BookingForm) {
+    public func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith bookingForm: BookingForm) {
         ProgressHUD.show()
 
         Traveler.createOrder(bookingForm: bookingForm, delegate: self)

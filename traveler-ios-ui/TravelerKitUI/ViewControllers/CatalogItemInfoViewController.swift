@@ -9,11 +9,11 @@
 import UIKit
 import TravelerKit
 
-protocol CatalogItemInfoViewControllerDelegate: class {
+public protocol CatalogItemInfoViewControllerDelegate: class {
     func catalogItemInfoViewControllerDidChangePreferredContentSize(_ controller: CatalogItemInfoViewController)
 }
 
-class CatalogItemInfoViewController: UIViewController {
+open class CatalogItemInfoViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var containerView: UIView!
 
@@ -42,7 +42,7 @@ class CatalogItemInfoViewController: UIViewController {
     private var selectedSegment: Segment?
     private var segments: [Segment] = []
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         segmentedControl.removeAllSegments()
@@ -66,7 +66,7 @@ class CatalogItemInfoViewController: UIViewController {
         }
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue, segue.destination) {
         case (let segue as ContainerEmbedSegue, let vc as AttributesViewController):
             segue.containerView = containerView
@@ -101,7 +101,7 @@ extension CatalogItemInfoViewController.Segment {
 }
 
 extension CatalogItemInfoViewController: AttributesViewControllerDelegate {
-    func attributesViewControllerDidChangePreferredContentSize(_ controller: AttributesViewController) {
+    public func attributesViewControllerDidChangePreferredContentSize(_ controller: AttributesViewController) {
         var size = controller.preferredContentSize
         size.height += containerView.frame.origin.y
 

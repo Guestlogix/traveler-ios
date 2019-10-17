@@ -9,12 +9,12 @@
 import UIKit
 import TravelerKit
 
-protocol BookingOptionsViewControllerDelegate: class {
+public protocol BookingOptionsViewControllerDelegate: class {
     func bookingOptionsViewController(_ controller: BookingOptionsViewController, didProceedWith option: BookingOption)
     func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookingOptionsViewController: UIViewController {
+open class BookingOptionsViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -31,13 +31,13 @@ class BookingOptionsViewController: UIViewController {
     private var optionError: Error?
     private var selectedIndexPath: IndexPath?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         priceLabel.text = product?.price.localizedDescriptionInBaseCurrency
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.destination {
         case let vc as BookingPassesViewController:
             vc.passes = passes
@@ -88,11 +88,11 @@ extension BookingOptionsViewController: UITableViewDataSource {
         return "Please select an option"
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return availableOptions?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! InfoCell
         cell.titleLabel.text = availableOptions![indexPath.row].value
         cell.valueLabel.attributedText = availableOptions![indexPath.row].attributedDisclaimer
@@ -114,7 +114,7 @@ extension BookingOptionsViewController: UITableViewDelegate {
 }
 
 extension BookingOptionsViewController: BookingPassesViewControllerDelegate {
-    func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm) {
+    public func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.bookingOptionsViewController(self, didFinishWith: bookingForm)
     }
 }

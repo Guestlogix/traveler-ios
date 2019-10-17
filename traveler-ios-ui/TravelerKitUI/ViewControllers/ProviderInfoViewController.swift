@@ -15,7 +15,7 @@ protocol ProviderInfoViewControllerDelegate: class {
 
 let locationCellIdentifier = "locationCellIdentifier"
 
-class ProviderInfoViewController: UIViewController {
+open class ProviderInfoViewController: UIViewController {
     @IBOutlet weak var contactView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailView: UIView!
@@ -32,7 +32,7 @@ class ProviderInfoViewController: UIViewController {
     var locations: [Location]?
     weak var delegate: ProviderInfoViewControllerDelegate?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         nameLabel.text = contactInfo?.name
@@ -102,11 +102,11 @@ extension ProviderInfoViewController: UITableViewDataSource {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: locationCellIdentifier, for: indexPath) as! LocationCell
         let location = locations![indexPath.row]
         cell.addressLabel.text = location.address

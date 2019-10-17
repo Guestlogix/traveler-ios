@@ -16,7 +16,7 @@ protocol BookingItemDetailsViewControllerDelegate: class {
     func bookingItemDetailsViewController(_ controller: BookingItemDetailsViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookingItemDetailsViewController: UIViewController {
+public class BookingItemDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -32,7 +32,7 @@ class BookingItemDetailsViewController: UIViewController {
 
     private(set) var preferredTranslucency: Bool = true
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         titleLabel.text = bookingItemDetails?.title
@@ -54,18 +54,18 @@ class BookingItemDetailsViewController: UIViewController {
 
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         if preferredTranslucency {
             preferredTranslucency = false
             delegate?.bookingItemDetailsViewControllerDidChangePreferredTranslucency(self)
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         updatePreferredTranslucency()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as CatalogItemInfoViewController):
             vc.delegate = self
@@ -94,11 +94,11 @@ extension BookingItemDetailsViewController: UICollectionViewDataSource {
         return 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookingItemDetails?.imageUrls.count ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageCellIdentifier, for: indexPath) as! ImageCell
         let imageURL = bookingItemDetails!.imageUrls[indexPath.row]
 
@@ -111,7 +111,7 @@ extension BookingItemDetailsViewController: UICollectionViewDataSource {
 }
 
 extension BookingItemDetailsViewController: CatalogItemInfoViewControllerDelegate {
-    func catalogItemInfoViewControllerDidChangePreferredContentSize(_ controller: CatalogItemInfoViewController) {
+    public func catalogItemInfoViewControllerDidChangePreferredContentSize(_ controller: CatalogItemInfoViewController) {
         itemInfoView.isHidden = controller.preferredContentSize.height == 0
         itemInfoHeightConstraint.constant = controller.preferredContentSize.height
         view.layoutIfNeeded()
@@ -139,7 +139,7 @@ extension BookingItemDetailsViewController: UIScrollViewDelegate {
 }
 
 extension BookingItemDetailsViewController: BookablePurchaseViewControllerDelegate {
-    func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith bookingForm: BookingForm) {
+    public func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.bookingItemDetailsViewController(self, didFinishWith: bookingForm)
     }
 }

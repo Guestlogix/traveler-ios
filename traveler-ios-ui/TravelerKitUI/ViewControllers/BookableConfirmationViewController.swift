@@ -9,19 +9,19 @@
 import UIKit
 import TravelerKit
 
-protocol BookingConfirmationViewControllerDelegate: class {
+public protocol BookingConfirmationViewControllerDelegate: class {
     func bookingConfirmationViewController(_ controller: BookingConfirmationViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookingConfirmationViewController: UIViewController {
+open class BookingConfirmationViewController: UIViewController {
     var product: BookingItem?
     weak var delegate: BookingConfirmationViewControllerDelegate?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as AvailabilityViewController):
             vc.product = product
@@ -34,7 +34,7 @@ class BookingConfirmationViewController: UIViewController {
 }
 
 extension BookingConfirmationViewController: AvailabilityViewControllerDelegate {
-    func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith bookingForm: BookingForm) {
+    public func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.bookingConfirmationViewController(self, didFinishWith: bookingForm)
     }
 }

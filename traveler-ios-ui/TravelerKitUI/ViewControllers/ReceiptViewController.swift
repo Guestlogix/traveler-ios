@@ -9,13 +9,13 @@
 import UIKit
 import TravelerKit
 
-class ReceiptViewController: UITableViewController {
+open class ReceiptViewController: UITableViewController {
     @IBOutlet weak var confirmationLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
 
     var receipt: Receipt?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         // TODO: Add back confirmation number label after backend figures out how to send us an ORDER confirmation number
@@ -30,15 +30,15 @@ class ReceiptViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return receipt?.order.products.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: infoCellIdentifier, for: indexPath) as! InfoCell
         let product = receipt!.order.products[indexPath.row]
         cell.titleLabel.text = product.title
@@ -48,7 +48,7 @@ class ReceiptViewController: UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let product = receipt!.order.products[indexPath.row]
         return InfoCell.boundingSize(title: product.title, value: "", with: tableView.bounds.size).height
     }

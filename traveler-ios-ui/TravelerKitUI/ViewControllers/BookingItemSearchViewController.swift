@@ -9,7 +9,7 @@
 import UIKit
 import TravelerKit
 
-class BookingItemSearchViewController: UIViewController {
+open class BookingItemSearchViewController: UIViewController {
     
     private var searchText: String?
     private var bookingItemResult: BookingItemSearchResult?
@@ -17,7 +17,7 @@ class BookingItemSearchViewController: UIViewController {
     private var facets: Facets?
     private var previousFilters: BookingItemSearchFilters?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         let searchBar = UISearchController(searchResultsController: nil)
@@ -27,7 +27,7 @@ class BookingItemSearchViewController: UIViewController {
         definesPresentationContext = true
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case ("loadingSegue", _):
             break
@@ -53,7 +53,7 @@ extension BookingItemSearchViewController: UISearchBarDelegate {
 }
 
 extension BookingItemSearchViewController: BookingItemSearchDelegate {
-    func bookingItemSearchDidSucceedWith(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
+    public func bookingItemSearchDidSucceedWith(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
         switch (facets) {
                case .none:
                    facets = result.facets
@@ -64,7 +64,7 @@ extension BookingItemSearchViewController: BookingItemSearchDelegate {
                performSegue(withIdentifier: "searchResultSegue", sender: nil)
     }
 
-    func bookingItemSearchDidFailWith(_ error: Error, identifier: AnyHashable?) {
+    public func bookingItemSearchDidFailWith(_ error: Error, identifier: AnyHashable?) {
         performSegue(withIdentifier: "failSegue", sender: nil)
     }
 }

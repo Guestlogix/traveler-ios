@@ -15,11 +15,11 @@ let orderItemCellIdentifier = "orderItemCellIdentifier"
 let infoCellIdentifier = "infoCellIdentifier"
 let headerViewIdentifier = "headerViewIdentifier"
 
-protocol OrderSummaryViewControllerDelegate: class {
+public protocol OrderSummaryViewControllerDelegate: class {
     func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment)
 }
 
-class OrderSummaryViewController: UITableViewController {
+open class OrderSummaryViewController: UITableViewController {
     var order: Order?
     weak var delegate: OrderSummaryViewControllerDelegate?
 
@@ -37,7 +37,7 @@ class OrderSummaryViewController: UITableViewController {
         return order?.products.count ?? 0
     }
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         let bundle = Bundle(for: HeaderView.self)
@@ -46,11 +46,11 @@ class OrderSummaryViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return (order?.products.count ?? 0) + 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case billingSection:
             return payments.count + 1
@@ -59,7 +59,7 @@ class OrderSummaryViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case billingSection where indexPath.row < payments.count:
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoCellIdentifier", for: indexPath) as! InfoCell
@@ -83,7 +83,7 @@ class OrderSummaryViewController: UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case billingSection:
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerViewIdentifier) as! HeaderView
@@ -98,7 +98,7 @@ class OrderSummaryViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case billingSection:
             return HeaderView.boundingSize(with: tableView.bounds.size, title: "Billing Information", disclaimer: nil).height
@@ -108,7 +108,7 @@ class OrderSummaryViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
         case (billingSection, payments.count):
             guard let paymentHandler = TravelerUI.shared?.paymentHandler, let paymentViewController = TravelerUI.shared?.paymentViewController  else {
@@ -133,7 +133,7 @@ class OrderSummaryViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 
         switch tableView.cellForRow(at: indexPath)?.reuseIdentifier{
         case infoCellIdentifier?:
@@ -143,7 +143,7 @@ class OrderSummaryViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    override open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
             self.payments.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -153,7 +153,7 @@ class OrderSummaryViewController: UITableViewController {
 }
 
 extension OrderSummaryViewController: PaymentHandlerDelegate {
-    func paymentHandler(_ handler: PaymentHandler, didCollect payment: Payment) {
+    public func paymentHandler(_ handler: PaymentHandler, didCollect payment: Payment) {
         guard !payments.contains(where:  { $0.securePayload() == payment.securePayload() }) else {
             return
         }

@@ -9,11 +9,11 @@
 import UIKit
 import TravelerKit
 
-protocol BookingPassesViewControllerDelegate: class {
+public protocol BookingPassesViewControllerDelegate: class {
     func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookingPassesViewController: UIViewController {
+open class BookingPassesViewController: UIViewController {
     @IBOutlet weak var confirmContainerView: UIView!
     @IBOutlet weak var passesContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel!
@@ -31,7 +31,7 @@ class BookingPassesViewController: UIViewController {
         })
     }
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         passQuantities = defaultPassQuantities
@@ -44,7 +44,7 @@ class BookingPassesViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadPriceLabel), name: .preferredCurrencyDidChange, object: nil)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let passesVC as PassesViewController):
             passesVC.delegate = self
@@ -94,13 +94,13 @@ extension BookingPassesViewController: PassesViewControllerDelegate {
 }
 
 extension BookingPassesViewController: BookingQuestionsViewControllerDelegate {
-    func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith bookingForm: BookingForm) {
+    public func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith bookingForm: BookingForm) {
         delegate?.bookingPassesViewController(self, didFinishWith: bookingForm)
     }
 }
 
 extension BookingPassesViewController: BookingFormFetchDelegate {
-    func bookingFormFetchDidFailWith(_ error: Error) {
+    public func bookingFormFetchDidFailWith(_ error: Error) {
         confirmButton.isEnabled = true
 
         // TODO: Should cast Error correctly to a known error, OR better the custom error should override localizedDescription
@@ -113,7 +113,7 @@ extension BookingPassesViewController: BookingFormFetchDelegate {
         present(alert, animated: true)
     }
 
-    func bookingFormFetchDidSucceedWith(_ bookingForm: BookingForm) {
+    public func bookingFormFetchDidSucceedWith(_ bookingForm: BookingForm) {
         confirmButton.isEnabled = true
 
         self.bookingForm = bookingForm

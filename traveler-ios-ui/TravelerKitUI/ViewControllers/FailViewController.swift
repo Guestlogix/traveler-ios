@@ -8,11 +8,11 @@
 
 import UIKit
 
-class FailViewController: UIViewController {
+open class FailViewController: UIViewController {
 
     var test: Bool?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
     }
 
