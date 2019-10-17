@@ -64,7 +64,7 @@ extension WishlistViewController: WishlistFetchDelegate {
 }
 
 extension WishlistViewController: RetryViewControllerDelegate {
-    func retryViewControllerDidRetry(_ controller: RetryViewController) {
+    public func retryViewControllerDidRetry(_ controller: RetryViewController) {
         reload()
     }
 }

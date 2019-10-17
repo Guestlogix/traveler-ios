@@ -16,7 +16,7 @@ let dateCellIdentifier = "dateCellIdentifier"
 let timeCellIdentifier = "timeCellIdentifier"
 let datePickerCellIdentifier = "datePickerCellIdentifier"
 
-class AvailabilityFormViewController: UITableViewController {
+open class AvailabilityFormViewController: UITableViewController {
 
     var date: Date?
     weak var delegate: AvailabilityFormViewControllerDelegate?
@@ -25,15 +25,15 @@ class AvailabilityFormViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datePickerCellVisible ? 3 : 2
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch (indexPath.section, indexPath.row, datePickerCellVisible) {
         case (0, 0, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell

@@ -9,11 +9,11 @@
 import UIKit
 import TravelerKit
 
-protocol BookablePurchaseViewControllerDelegate: class {
+public protocol BookablePurchaseViewControllerDelegate: class {
     func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith bookingForm: BookingForm)
 }
 
-class BookablePurchaseViewController: UIViewController {
+open class BookablePurchaseViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var proceedButton: UIButton!
 
@@ -22,13 +22,13 @@ class BookablePurchaseViewController: UIViewController {
 
     private var order: Order?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         priceLabel.text = product?.price.localizedDescriptionInBaseCurrency
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as BookingConfirmationViewController):
             vc.product = product
@@ -79,7 +79,7 @@ extension BookablePurchaseViewController: DrawerTransitioning {
 }
 
 extension BookablePurchaseViewController: BookingConfirmationViewControllerDelegate {
-    func bookingConfirmationViewController(_ controller: BookingConfirmationViewController, didFinishWith bookingForm: BookingForm) {
+    public func bookingConfirmationViewController(_ controller: BookingConfirmationViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.bookablePurchaseViewController(self, didFinishWith: bookingForm)
     }
 }

@@ -14,7 +14,7 @@ let productCellIdentifier = "productCellIdentifier"
 let billingCellIdentifier = "billingCellIdentifier"
 let cancelOrderCellIdentifier = "cancelOrderCellIdentifier"
 
-class OrderDetailViewController: UITableViewController {
+open class OrderDetailViewController: UITableViewController {
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var orderDateLabel: UILabel!
     @IBOutlet weak var orderPriceLabel: UILabel!
@@ -27,7 +27,7 @@ class OrderDetailViewController: UITableViewController {
     private var product: Product?
     private var cancellationQuote: CancellationQuote?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         loadOrder()
@@ -51,7 +51,7 @@ class OrderDetailViewController: UITableViewController {
         cancellationButton.setTitle(title, for: .normal)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case ("productDetailSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? ProductDetailViewController
@@ -68,15 +68,15 @@ class OrderDetailViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return order?.products.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let product = order!.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! InfoCell
@@ -89,7 +89,7 @@ class OrderDetailViewController: UITableViewController {
 
     //MARK: UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         product = order!.products[indexPath.row]
 
         tableView.deselectRow(at: indexPath, animated: true)
@@ -121,7 +121,7 @@ class OrderDetailViewController: UITableViewController {
 }
 
 extension OrderDetailViewController: CancellationViewControllerDelegate {
-    func cancellationViewControllerDidExpire(_ controller: CancellationViewController) {
+    public func cancellationViewControllerDidExpire(_ controller: CancellationViewController) {
         let alert = UIAlertController(title: "Error", message: "Quote expired", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "", style: .default)
         alert.addAction(okAction)
@@ -130,7 +130,7 @@ extension OrderDetailViewController: CancellationViewControllerDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
 
-    func cancellationViewController(_ controller: CancellationViewController, didCancel order: Order) {
+    public func cancellationViewController(_ controller: CancellationViewController, didCancel order: Order) {
         controller.dismiss(animated: true, completion: nil)
 
         self.order = order
@@ -140,7 +140,7 @@ extension OrderDetailViewController: CancellationViewControllerDelegate {
 }
 
 extension OrderDetailViewController: CancellationQuoteFetchDelegate {
-    func cancellationQuoteFetchDidSucceedWith(_ quote: CancellationQuote) {
+    public func cancellationQuoteFetchDidSucceedWith(_ quote: CancellationQuote) {
         cancellationQuote = quote
 
         ProgressHUD.hide()
@@ -148,7 +148,7 @@ extension OrderDetailViewController: CancellationQuoteFetchDelegate {
         performSegue(withIdentifier: "cancelSegue", sender: nil)
     }
 
-    func cancellationQuoteFetchDidFailWith(_ error: Error) {
+    public func cancellationQuoteFetchDidFailWith(_ error: Error) {
         ProgressHUD.hide()
 
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
@@ -161,7 +161,7 @@ extension OrderDetailViewController: CancellationQuoteFetchDelegate {
 }
 
 extension OrderDetailViewController: EmailOrderConfirmationDelegate {
-    func emailDidSucceed() {
+    public func emailDidSucceed() {
         let alert = UIAlertController(title: "Success", message: "Confirmation sent", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
 
@@ -172,7 +172,7 @@ extension OrderDetailViewController: EmailOrderConfirmationDelegate {
         present(alert, animated: true)
     }
 
-    func emailDidFailWith(_ error: Error) {
+    public func emailDidFailWith(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: "Something went wrong, please try again", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
 

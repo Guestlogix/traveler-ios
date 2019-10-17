@@ -10,18 +10,18 @@ import UIKit
 
 let dummyCellIdentifier = "dummyCellIdentifier"
 
-class DummyTableViewController: UITableViewController {
+open class DummyTableViewController: UITableViewController {
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Int(tableView.bounds.height / tableView.rowHeight)
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: dummyCellIdentifier, for: indexPath)
         cell.contentView.subviews.forEach({ $0.startShimmering() })
         return cell

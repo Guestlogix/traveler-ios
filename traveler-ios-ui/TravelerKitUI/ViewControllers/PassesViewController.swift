@@ -16,12 +16,12 @@ protocol PassesViewControllerDelegate: class {
 
 let stepperCellIdentifier = "stepperCellIdentifier"
 
-class PassesViewController: UITableViewController {
+open class PassesViewController: UITableViewController {
     var passes: [Pass]?
     weak var delegate: PassesViewControllerDelegate?
     var passQuantities: [Pass: Int]?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         updatePreferredContentSize()
@@ -35,15 +35,15 @@ class PassesViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return passes?.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: stepperCellIdentifier, for: indexPath) as! StepperCell
         let pass = passes![indexPath.row]
         cell.titleLabel.text = pass.name

@@ -9,19 +9,18 @@
 import UIKit
 import TravelerKit
 
-protocol AttributesViewControllerDelegate: class {
+public protocol AttributesViewControllerDelegate: class {
     func attributesViewControllerDidChangePreferredContentSize(_ controller: AttributesViewController)
 }
 
 let attributeCellIdentifier = "attributeCellIdentifier"
 
-class AttributesViewController: UITableViewController {
-
+open class AttributesViewController: UITableViewController {
 
     var attributes: [Attribute]?
     weak var delegate: AttributesViewControllerDelegate?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.layoutIfNeeded()
@@ -32,15 +31,15 @@ class AttributesViewController: UITableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return attributes?.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: attributeCellIdentifier, for: indexPath) as! InfoCell
         let attribute = attributes![indexPath.row]
         cell.titleLabel.text = attribute.label
@@ -52,7 +51,7 @@ class AttributesViewController: UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let attribute = attributes![indexPath.row]
         let boundingSize = CGSize(width: tableView.bounds.width - 32, height: 0)
 

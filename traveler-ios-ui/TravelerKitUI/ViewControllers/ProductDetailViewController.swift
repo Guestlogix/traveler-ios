@@ -9,18 +9,18 @@
 import UIKit
 import TravelerKit
 
-class ProductDetailViewController: UIViewController {
+open class ProductDetailViewController: UIViewController {
     var product: Product?
 
     private var productDetails: CatalogItemDetails?
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         reload()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination, productDetails) {
         case (_, let vc as BookableProductDetailViewController, let productDetails as BookingItemDetails):
             vc.purchasedProduct = product as? BookingProduct
@@ -52,7 +52,7 @@ class ProductDetailViewController: UIViewController {
 }
 
 extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
-    func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) {
+    public func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) {
         switch result {
         case let result as BookingItemDetails:
             self.productDetails = result
@@ -63,13 +63,13 @@ extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
         }
     }
 
-    func catalogItemDetailsFetchDidFailWith(_ error: Error) {
+    public func catalogItemDetailsFetchDidFailWith(_ error: Error) {
         performSegue(withIdentifier: "errorSegue", sender: nil)
     }
 }
 
 extension ProductDetailViewController: RetryViewControllerDelegate {
-    func retryViewControllerDidRetry(_ controller: RetryViewController) {
+    public func retryViewControllerDidRetry(_ controller: RetryViewController) {
         reload()
     }
 }
