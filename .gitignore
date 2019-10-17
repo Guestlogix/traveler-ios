@@ -1,3 +1,6 @@
+# Build logs (scheme)
+prebuild.log
+
 # General
 .DS_Store
 .AppleDouble
