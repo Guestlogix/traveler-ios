@@ -12,4 +12,16 @@ import Foundation
 public struct Coordinate: Decodable, Equatable {
     public let latitude: Double
     public let longitude: Double
+
+    /**
+     Initializes a `Coordinate`
+     - Parameters:
+     - latitude: A double representing the latitude
+     - longitude: A double representing the longitude
+     */
+
+    public init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
