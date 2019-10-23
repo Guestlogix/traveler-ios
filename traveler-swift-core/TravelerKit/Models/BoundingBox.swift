@@ -15,6 +15,18 @@ public struct BoundingBox {
     public let topLeftCoordinate: Coordinate
     /// The longitude for the bottom right corner of the bounding box
     public let bottomRightCoordinate: Coordinate
+
+    /**
+     Initializes a `BoundingBox`
+     - Parameters:
+     - topLeftCoordinate: A `Coordinate` that represents the top left corner of the bounding box
+     - bottomRightCoordinate: A `Coordinate` that represents the bottom right coordinate of the bounding box
+     */
+
+    public init(topLeftCoordinate: Coordinate, bottomRightCoordinate: Coordinate) {
+        self.topLeftCoordinate = topLeftCoordinate
+        self.bottomRightCoordinate = bottomRightCoordinate
+    }
 }
 
 extension BoundingBox: Equatable {
