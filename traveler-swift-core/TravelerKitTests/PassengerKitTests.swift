@@ -10,10 +10,17 @@ import XCTest
 @testable import TravelerKit
 
 class TravelerKitTests: XCTestCase {
-
+    var traveler: Traveler!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        traveler = Traveler(apiKey: "TokenyToken", device: MockDevice(), sandboxMode: true)
+        let mockAPI = MockAPI()
+
+        mockAPI.loadURLs(for: .authenticate(key: "TokenyToken"))
+        mockAPI.loadURLs(for: .flights(number: "AC1981", date: DateFormatter.yearMonthDay.date(from: "2019/12/27")!))
+        mockAPI.loadURLs(for: .catalog(flights: nil))
     }
     
     override func tearDown() {
@@ -22,16 +29,32 @@ class TravelerKitTests: XCTestCase {
     }
     
     func testFlightSearch() {
-        let travelerKit = Traveler(apiKey: "XJ7B8mFnPj6O8MT4KuwzF9sg4OtxaR6w7EeytIIT", device: UIDevice.current as! Device)
-
-        let query = FlightQuery(number: "SA1", date: DateFormatter.yearMonthDay.date(from: "2018/02/27")!)
+        let query = FlightQuery(number: "AC1981", date: DateFormatter.yearMonthDay.date(from: "2019/12/27")!)
         let exp = expectation(description: "Should get a response")
 
-        travelerKit.flightSearch(query: query) { (flights, error) in
+        traveler.flightSearch(query: query) { (flights, error) in
+            guard let flight = flights?[0] else {
+                XCTFail()
+                return
+            }
+
+            XCTAssertEqual(flight.arrivalAirport.code, "YYZ")
             exp.fulfill()
         }
 
         wait(for: [exp], timeout: 2)
     }
-    
+
+    func testCatalog() {
+        let query = CatalogQuery()
+
+        let exp = expectation(description: "Should get a response")
+
+        traveler.fetchCatalog(query: query) { (catalog, error) in
+            XCTAssertNotNil(catalog)
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 2)
+    }
 }

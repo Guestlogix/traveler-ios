@@ -13,12 +13,13 @@ class TrademarkTests: XCTestCase {
 
     func testTrademarkBadURL() {
         //given
-        let jsonData = "{\"iconURL\":\"htp:leURL.bleh\",\"copyright\":\"Display this text\"}".data(using: .utf8)!
+        let data = DataResponses.trademarkWithBadUrl()
+
         let decoder = JSONDecoder()
 
         //when
         do {
-             let tradeMark = try decoder.decode(Trademark.self, from: jsonData)
+             let _ = try decoder.decode(Trademark.self, from: data)
         } catch {
             let contextString = String(reflecting: error)
             let contextStringComponents = contextString.components(separatedBy: "debugDescription: ")

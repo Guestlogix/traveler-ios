@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88168D322371BAE70096E443 /* MockDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88168D312371BAE70096E443 /* MockDevice.swift */; };
 		A315F465234692FC00DF8545 /* CancellationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315F464234692FC00DF8545 /* CancellationRequest.swift */; };
 		A3E3FC49234501AF00CB616B /* CancellationReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FC48234501AF00CB616B /* CancellationReason.swift */; };
 		A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */; };
@@ -104,6 +105,7 @@
 		CA12275722F0CCEA00541F3A /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12275522F0CCEA00541F3A /* Date+String.swift */; };
 		CA15F90122BAC66300F3788A /* ProcessedPaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */; };
 		CA1754D02343B4D800F08F73 /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1754CF2343B4D800F08F73 /* ProductType.swift */; };
+		CA18DDAC235F5C640068D0D1 /* BookingItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18DDAB235F5C640068D0D1 /* BookingItemTests.swift */; };
 		CA1B1500234F6E91009661EC /* BookingItemSearchParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B14F1234F6E8F009661EC /* BookingItemSearchParameters.swift */; };
 		CA1B1501234F6E91009661EC /* BookingItemSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B14F2234F6E8F009661EC /* BookingItemSearchFilters.swift */; };
 		CA1B1502234F6E91009661EC /* PriceLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B14F3234F6E90009661EC /* PriceLimits.swift */; };
@@ -129,6 +131,11 @@
 		CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFA22DFD344008C6C4B /* Trademark.swift */; };
 		CA594AFF22DFD3BF008C6C4B /* SupplierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */; };
 		CA594B0122DFD3C4008C6C4B /* TrademarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */; };
+		CA5D4B16236738DF008B3E16 /* DataResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5D4B15236738DF008B3E16 /* DataResponses.swift */; };
+		CA5FA3BB236524D200FF216A /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FA3BA236524D200FF216A /* Endpoints.swift */; };
+		CA6EA9B02365229000E4FC6A /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EA9AD2365229000E4FC6A /* MockAPI.swift */; };
+		CA6EA9B12365229000E4FC6A /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EA9AE2365229000E4FC6A /* MockNetwork.swift */; };
+		CA6EA9B22365229000E4FC6A /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6EA9AF2365229000E4FC6A /* MockJSON.swift */; };
 		CA79FA33238360D000C63C9C /* PaymentsFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA31238360D000C63C9C /* PaymentsFetchDelegate.swift */; };
 		CA79FA34238360D000C63C9C /* PaymentSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA32238360D000C63C9C /* PaymentSaveDelegate.swift */; };
 		CA79FA38238360F600C63C9C /* EphemeralKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA35238360F600C63C9C /* EphemeralKey.swift */; };
@@ -139,6 +146,8 @@
 		CA8AFF4223419142006ECD16 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF4123419142006ECD16 /* BoundingBox.swift */; };
 		CA8AFF4423427AE3006ECD16 /* ProviderTranslateAttribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF4323427AE3006ECD16 /* ProviderTranslateAttribution.swift */; };
 		CAAF4A4C234E45AD00919317 /* ParkingItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAF4A4B234E45AD00919317 /* ParkingItemCategory.swift */; };
+		CAB5168B2360D4DB00E110F7 /* BookingItemDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5168A2360D4DB00E110F7 /* BookingItemDetailsTests.swift */; };
+		CAB5168D2360E0F400E110F7 /* AnyItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5168C2360E0F400E110F7 /* AnyItemTests.swift */; };
 		CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */; };
 		CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */; };
 		CAE90E8722BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */; };
@@ -158,6 +167,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		88168D312371BAE70096E443 /* MockDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDevice.swift; sourceTree = "<group>"; };
 		A315F464234692FC00DF8545 /* CancellationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationRequest.swift; sourceTree = "<group>"; };
 		A3E3FC48234501AF00CB616B /* CancellationReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationReason.swift; sourceTree = "<group>"; };
 		A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperationTests.swift; sourceTree = "<group>"; };
@@ -259,6 +269,7 @@
 		CA12275522F0CCEA00541F3A /* Date+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		CA15F90022BAC66300F3788A /* ProcessedPaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessedPaymentInfo.swift; sourceTree = "<group>"; };
 		CA1754CF2343B4D800F08F73 /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
+		CA18DDAB235F5C640068D0D1 /* BookingItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemTests.swift; sourceTree = "<group>"; };
 		CA1B14F1234F6E8F009661EC /* BookingItemSearchParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemSearchParameters.swift; sourceTree = "<group>"; };
 		CA1B14F2234F6E8F009661EC /* BookingItemSearchFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemSearchFilters.swift; sourceTree = "<group>"; };
 		CA1B14F3234F6E90009661EC /* PriceLimits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceLimits.swift; sourceTree = "<group>"; };
@@ -284,6 +295,11 @@
 		CA594AFA22DFD344008C6C4B /* Trademark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trademark.swift; sourceTree = "<group>"; };
 		CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierTests.swift; sourceTree = "<group>"; };
 		CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrademarkTests.swift; sourceTree = "<group>"; };
+		CA5D4B15236738DF008B3E16 /* DataResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponses.swift; sourceTree = "<group>"; };
+		CA5FA3BA236524D200FF216A /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		CA6EA9AD2365229000E4FC6A /* MockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
+		CA6EA9AE2365229000E4FC6A /* MockNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
+		CA6EA9AF2365229000E4FC6A /* MockJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
 		CA79FA31238360D000C63C9C /* PaymentsFetchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsFetchDelegate.swift; sourceTree = "<group>"; };
 		CA79FA32238360D000C63C9C /* PaymentSaveDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSaveDelegate.swift; sourceTree = "<group>"; };
 		CA79FA35238360F600C63C9C /* EphemeralKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EphemeralKey.swift; sourceTree = "<group>"; };
@@ -294,6 +310,8 @@
 		CA8AFF4123419142006ECD16 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		CA8AFF4323427AE3006ECD16 /* ProviderTranslateAttribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTranslateAttribution.swift; sourceTree = "<group>"; };
 		CAAF4A4B234E45AD00919317 /* ParkingItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItemCategory.swift; sourceTree = "<group>"; };
+		CAB5168A2360D4DB00E110F7 /* BookingItemDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemDetailsTests.swift; sourceTree = "<group>"; };
+		CAB5168C2360E0F400E110F7 /* AnyItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyItemTests.swift; sourceTree = "<group>"; };
 		CAE90E8222BD46FC0066FAAF /* RemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRequestOperation.swift; sourceTree = "<group>"; };
 		CAE90E8422BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRemoteRequestOperation.swift; sourceTree = "<group>"; };
 		CAE90E8622BD5E4B0066FAAF /* EmailOrderConfirmationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOrderConfirmationDelegate.swift; sourceTree = "<group>"; };
@@ -406,6 +424,7 @@
 		A9DB063021402F49009817EC /* TravelerKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				CA6EA9AC2365227D00E4FC6A /* Mocking */,
 				CA594AFD22DFD3AB008C6C4B /* Models */,
 				A9EED5F9215BD1E7003AAA5F /* Operations */,
 				A9DB063121402F49009817EC /* PassengerKitTests.swift */,
@@ -561,8 +580,24 @@
 			children = (
 				CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */,
 				CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */,
+				CA18DDAB235F5C640068D0D1 /* BookingItemTests.swift */,
+				CAB5168A2360D4DB00E110F7 /* BookingItemDetailsTests.swift */,
+				CAB5168C2360E0F400E110F7 /* AnyItemTests.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CA6EA9AC2365227D00E4FC6A /* Mocking */ = {
+			isa = PBXGroup;
+			children = (
+				CA6EA9AD2365229000E4FC6A /* MockAPI.swift */,
+				88168D312371BAE70096E443 /* MockDevice.swift */,
+				CA6EA9AF2365229000E4FC6A /* MockJSON.swift */,
+				CA6EA9AE2365229000E4FC6A /* MockNetwork.swift */,
+				CA5FA3BA236524D200FF216A /* Endpoints.swift */,
+				CA5D4B15236738DF008B3E16 /* DataResponses.swift */,
+			);
+			path = Mocking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -814,10 +849,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA6EA9B12365229000E4FC6A /* MockNetwork.swift in Sources */,
+				CA6EA9B22365229000E4FC6A /* MockJSON.swift in Sources */,
+				CA5FA3BB236524D200FF216A /* Endpoints.swift in Sources */,
+				CA18DDAC235F5C640068D0D1 /* BookingItemTests.swift in Sources */,
+				88168D322371BAE70096E443 /* MockDevice.swift in Sources */,
+				CA6EA9B02365229000E4FC6A /* MockAPI.swift in Sources */,
+				CAB5168B2360D4DB00E110F7 /* BookingItemDetailsTests.swift in Sources */,
 				A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */,
 				CA594B0122DFD3C4008C6C4B /* TrademarkTests.swift in Sources */,
 				A9DB063221402F49009817EC /* PassengerKitTests.swift in Sources */,
 				A9EED5FD215BD40D003AAA5F /* KeychainStoreOperationTests.swift in Sources */,
+				CA5D4B16236738DF008B3E16 /* DataResponses.swift in Sources */,
+				CAB5168D2360E0F400E110F7 /* AnyItemTests.swift in Sources */,
 				CA594AFF22DFD3BF008C6C4B /* SupplierTests.swift in Sources */,
 				A9EED618215C02F3003AAA5F /* KeychainReadOperationTests.swift in Sources */,
 			);
