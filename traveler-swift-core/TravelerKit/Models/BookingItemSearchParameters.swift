@@ -24,7 +24,7 @@ struct BookingItemSearchParameters: Decodable {
         case topLeftLatitude = "topLeftLatitude"
         case topLeftLongitude = "topLeftLongitude"
         case bottomRightLatitude = "bottomRightLatitude"
-        case bottomRightLongitude = "bottomLeftLongitude"
+        case bottomRightLongitude = "bottomRightLongitude"
         case minPrice = "minPrice"
         case maxPrice = "maxPrice"
         case currency = "currency"
