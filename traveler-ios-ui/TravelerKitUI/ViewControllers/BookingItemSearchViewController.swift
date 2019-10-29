@@ -59,16 +59,18 @@ extension BookingItemSearchViewController: UISearchBarDelegate {
 extension BookingItemSearchViewController: BookingItemSearchDelegate {
     func bookingItemSearchDidSucceedWith(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
         switch (facets) {
-               case .none:
-                   facets = result.facets
-               default:
-                   break
-               }
-               bookingItemResult = result
-               performSegue(withIdentifier: "searchResultSegue", sender: nil)
+            case .none:
+                facets = result.facets
+            default:
+                break
+        }
+        bookingItemResult = result
+        self.navigationItem.searchController?.isActive = false
+        performSegue(withIdentifier: "searchResultSegue", sender: nil)
     }
 
     func bookingItemSearchDidFailWith(_ error: Error, identifier: AnyHashable?) {
+        self.navigationItem.searchController?.isActive = false
         performSegue(withIdentifier: "failSegue", sender: nil)
     }
 }
