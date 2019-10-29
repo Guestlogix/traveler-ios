@@ -22,7 +22,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="Imj-5k-MIp" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="4Rh-Tf-qWK"/>
-                        <segue destination="7yh-Lv-OwI" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="Fu9-04-fSq"/>
+                        <segue destination="7yh-Lv-OwI" kind="custom" identifier="noResultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="Fu9-04-fSq"/>
                         <segue destination="EyP-3M-3yM" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="kGe-ra-1Tm"/>
                         <segue destination="KYq-vh-5aa" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="XcH-A7-AEz"/>
                     </connections>

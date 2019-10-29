@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A3C4722D235A007600B930D3 /* Calendar+TravelerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C4722C235A007600B930D3 /* Calendar+TravelerKit.swift */; };
 		A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */; };
 		A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */; };
 		A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */; };
@@ -150,6 +151,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A3C4722C235A007600B930D3 /* Calendar+TravelerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+TravelerKit.swift"; sourceTree = "<group>"; };
 		A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperationTests.swift; sourceTree = "<group>"; };
 		A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+PassengerKit.swift"; sourceTree = "<group>"; };
 		A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ContainsAnyOf.swift"; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
 				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
+				A3C4722C235A007600B930D3 /* Calendar+TravelerKit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				CA2ADDB823479A7E00A6EE34 /* ParkingItemDetails.swift in Sources */,
 				A9BF40D321779D030090ED1C /* FlightSeachDelegate.swift in Sources */,
 				CA1B1512234F6EEA009661EC /* ParkingItemSearchDelegate.swift in Sources */,
+				A3C4722D235A007600B930D3 /* Calendar+TravelerKit.swift in Sources */,
 				A96F8314223AC79F00268D0D /* BookingOptionSet.swift in Sources */,
 				CA07DE78231EE8EF004C8872 /* WishlistToggleError.swift in Sources */,
 				A97F8BD12358EAA0001A779C /* PaymentAuthenticator.swift in Sources */,

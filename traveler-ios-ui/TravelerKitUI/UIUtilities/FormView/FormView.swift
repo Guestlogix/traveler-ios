@@ -8,6 +8,8 @@
 
 import UIKit
 
+let datePickerCellIdentifier = "datePickerCellIdentifier"
+
 public protocol FormViewDataSource: class {
     func numberOfSections(in formView: FormView) -> Int
     func formView(_ formView: FormView, numberOfFieldsIn section: Int) -> Int

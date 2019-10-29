@@ -17,4 +17,6 @@ public enum ProductItemCategory: String, Decodable {
     case show = "Show"
     case event = "Event"
     case nightlife = "Nightlife"
+    case NA = "NA"
+    case transfers = "Transfers"
 }

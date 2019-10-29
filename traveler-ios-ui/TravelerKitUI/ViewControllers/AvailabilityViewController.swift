@@ -14,14 +14,17 @@ public protocol AvailabilityViewControllerDelegate: class {
 }
 
 open class AvailabilityViewController: UIViewController {
+    @IBOutlet weak var previousMonthButton: UIButton!
+    @IBOutlet weak var monthYearLable: UILabel!
+    @IBOutlet weak var nextMonthButton: UIButton!
+    @IBOutlet weak var calendarContainer: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
 
     weak var delegate: AvailabilityViewControllerDelegate?
 
     var product: BookingItem?
-    var selectedAvailability: Availability?
+    private var selectedAvailability: Availability?
     var availabilityError: Error?
     var availableOptions: [BookingOption]? {
         return selectedAvailability?.optionSet?.options
@@ -31,22 +34,39 @@ open class AvailabilityViewController: UIViewController {
     }
     var selectedOption: BookingOption?
     var optionsViewController: BookingOptionsViewController?
+    var numberOfMonths = 12
 
     private var passes: [Pass]?
+    private var pageController: UIPageViewController?
+    private var calendarViewControllers: [Date: AvailabilityCalendarViewController] = [:]
+    private var selectedDate = Date() {
+        didSet {
+            monthYearLable.text = DateFormatter.monthYear.string(from: selectedDate)
 
-    private var datePickerCellVisible = false
-    private var dateCellIndexPath: IndexPath {
-        return IndexPath(row: 0, section: 0)
+            if selectedDate == minimumDate {
+                previousMonthButton.isEnabled = false
+            } else if selectedDate == maximumDate {
+                nextMonthButton.isEnabled = false
+            } else {
+                previousMonthButton.isEnabled = true
+                nextMonthButton.isEnabled = true
+            }
+        }
     }
-
-    private var datePickerCellIndexPath: IndexPath {
-        return IndexPath(row: 1, section: 0)
-    }
+    private var minimumDate: Date?
+    private var maximumDate: Date?
 
     override open func viewDidLoad() {
         super.viewDidLoad()
 
+        monthYearLable.text = DateFormatter.monthYear.string(from: selectedDate)
         priceLabel.text = product?.price.localizedDescriptionInBaseCurrency
+        nextButton.isEnabled = false
+
+        minimumDate = selectedDate
+        previousMonthButton.isEnabled = false
+        maximumDate = Calendar.current.date(byAdding: .month, value: numberOfMonths, to: minimumDate!)
+        setupPageController()
     }
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,6 +85,46 @@ open class AvailabilityViewController: UIViewController {
         }
     }
 
+    @IBAction func didSelectPreviousMonth(_ sender: Any) {
+        guard let volatileDate = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate) else {
+            Log("Unknown error getting the date of previous month.", data: nil, level: .error)
+            return
+        }
+
+        selectedDate = volatileDate
+        if let calendarVC = calendarViewControllers[selectedDate] {
+            pageController?.setViewControllers([calendarVC], direction: .reverse, animated: true, completion: nil)
+        } else {
+            let storyboard = UIStoryboard(name: "BookingItem", bundle: Bundle(for: AvailabilityViewController.self))
+            let calendarVC = storyboard.instantiateViewController(withIdentifier: "calendarVC") as! AvailabilityCalendarViewController
+            calendarVC.delegate = self
+            calendarVC.product = product
+            calendarVC.representingDate = selectedDate
+            calendarViewControllers[selectedDate] = calendarVC
+            pageController?.setViewControllers([calendarVC], direction: .reverse, animated: true, completion: nil)
+        }
+    }
+
+    @IBAction func didSelectNextMonth(_ sender: Any) {
+        guard let volatileDate = Calendar.current.date(byAdding: .month, value: 1, to: selectedDate) else {
+            Log("Unknown error getting the date of next month.", data: nil, level: .error)
+            return
+        }
+
+        selectedDate = volatileDate
+        if let calendarVC = calendarViewControllers[selectedDate] {
+            pageController?.setViewControllers([calendarVC], direction: .forward, animated: true, completion: nil)
+        } else {
+            let storyboard = UIStoryboard(name: "BookingItem", bundle: Bundle(for: AvailabilityViewController.self))
+            let calendarVC = storyboard.instantiateViewController(withIdentifier: "calendarVC") as! AvailabilityCalendarViewController
+            calendarVC.delegate = self
+            calendarVC.product = product
+            calendarVC.representingDate = selectedDate
+            calendarViewControllers[selectedDate] = calendarVC
+            pageController?.setViewControllers([calendarVC], direction: .forward, animated: true, completion: nil)
+        }
+    }
+
     @IBAction func didProceed(_ sender: Any) {
         guard let product = product else {
             Log("No product", data: nil, level: .error)
@@ -72,10 +132,7 @@ open class AvailabilityViewController: UIViewController {
         }
 
         guard let availability = selectedAvailability else {
-            if availabilityError == nil {
-                availabilityError = BookingError.noDate
-            }
-            tableView.reloadData()
+            // TODO: show an alert
             return
         }
 
@@ -88,112 +145,84 @@ open class AvailabilityViewController: UIViewController {
             Traveler.fetchPasses(product: product, availability: availability, option: nil, delegate: self)
         }
     }
-}
 
-extension AvailabilityViewController: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datePickerCellVisible ? 2 : 1
-    }
+    private func setupPageController() {
+        pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        pageController?.dataSource = self
+        pageController?.delegate = self
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell
-            cell.valueLabel.textColor = (availabilityError != nil ? true : false) ? UIColor.red : UIColor.darkText
-            cell.titleLabel.textColor = (availabilityError != nil ? true : false) ? UIColor.red : UIColor.darkText
+        addChild(pageController!)
+        pageController?.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        pageController?.view.frame = calendarContainer.bounds
+        calendarContainer.addSubview(pageController!.view)
+        pageController?.didMove(toParent: self)
 
-            switch (availabilityError) {
-            case .some(BookingError.badDate):
-                cell.valueLabel.text = "Unavailable"
-            case .some(BookingError.noDate):
-                cell.valueLabel.text = "Please Select"
-            default:
-                cell.valueLabel.text = selectedAvailability.flatMap({ DateFormatter.yearMonthDay.string(from: $0.date) })
-            }
-
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: datePickerCellIdentifier, for: indexPath) as! DatePickerCell
-            cell.datePicker.minimumDate = Date()
-            cell.datePicker.date = selectedAvailability?.date ?? Date()
-            cell.delegate = self
-            return cell
-        }
+        let storyboard = UIStoryboard(name: "BookingItem", bundle: Bundle(for: AvailabilityViewController.self))
+        let initialVC = storyboard.instantiateViewController(withIdentifier: "calendarVC") as! AvailabilityCalendarViewController
+        initialVC.delegate = self
+        initialVC.representingDate = selectedDate
+        initialVC.product = product
+        calendarViewControllers[selectedDate] = initialVC
+        pageController?.setViewControllers([initialVC], direction: .forward, animated: false, completion: nil)
     }
 }
 
-extension AvailabilityViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath {
-        case dateCellIndexPath:
-            datePickerCellVisible = !datePickerCellVisible
-
-            tableView.beginUpdates()
-
-            if datePickerCellVisible {
-                tableView.insertRows(at: [datePickerCellIndexPath], with: .automatic)
-            } else {
-                tableView.deleteRows(at: [datePickerCellIndexPath], with: .top)
-            }
-
-            tableView.endUpdates()
-
-            tableView.deselectRow(at: indexPath, animated: true)
-
-            if selectedAvailability == nil {
-                updateSelectedDate(Date())
-
-                tableView.reloadRows(at: [indexPath], with: .none)
-            }
-        default:
-            break
-        }
-    }
-
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 44 : 162
-    }
-}
-
-extension AvailabilityViewController: DatePickerCellDelegate {
-    func datePickerCellValueDidChange(_ cell: DatePickerCell) {
-        updateSelectedDate(cell.datePicker.date)
-    }
-
-    func updateSelectedDate(_ date: Date) {
-        guard let product = product else { return }
-
-        availabilityError = nil
-
-        tableView.isUserInteractionEnabled = false
-
-        Traveler.fetchAvailabilities(product: product, startDate: date, endDate: date, delegate: self)
-    }
-}
-
-extension AvailabilityViewController: AvailabilitiesFetchDelegate {
-    public func availabilitiesFetchDidSucceedWith(_ availabilities: [Availability]) {
-        tableView.isUserInteractionEnabled = true
-
-        guard let availability = availabilities.first else {
-            availabilityError = BookingError.badDate
-            tableView.reloadData()
+extension AvailabilityViewController: UIPageViewControllerDelegate {
+    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let currentViewController = pageViewController.viewControllers?.first as? AvailabilityCalendarViewController, let representingDate = currentViewController.representingDate else {
+            Log("Unknow view controller or no representing date.", data: nil, level: .error)
             return
         }
 
-        selectedOption = nil
-        selectedAvailability = availability
+        selectedDate = representingDate
+    }
+}
 
-        tableView.reloadData()
+extension AvailabilityViewController: UIPageViewControllerDataSource {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard selectedDate != minimumDate else {
+            return nil
+        }
+
+        guard let volatileDate = Calendar.current.date(byAdding: .month, value: -1, to: selectedDate) else {
+            Log("Unknown error getting the date of next month.", data: nil, level: .error)
+            return nil
+        }
+
+        if let calendarVC = calendarViewControllers[volatileDate] {
+            return calendarVC
+        } else {
+            let storyboard = UIStoryboard(name: "BookingItem", bundle: Bundle(for: AvailabilityViewController.self))
+            let calendarVC = storyboard.instantiateViewController(withIdentifier: "calendarVC") as! AvailabilityCalendarViewController
+            calendarVC.delegate = self
+            calendarVC.product = product
+            calendarVC.representingDate = volatileDate
+            calendarViewControllers[volatileDate] = calendarVC
+            return calendarVC
+        }
     }
 
-    public func availabilitiesFetchDidFailWith(_ error: Error) {
-        tableView.isUserInteractionEnabled = true
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard selectedDate != maximumDate else {
+            return nil
+        }
 
-        let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
+        guard let volatileDate = Calendar.current.date(byAdding: .month, value: 1, to: selectedDate) else {
+            Log("Unknown error getting the date of next month.", data: nil, level: .error)
+            return nil
+        }
 
-        present(alert, animated: true, completion: nil)
+        if let calendarVC = calendarViewControllers[volatileDate] {
+            return calendarVC
+        } else {
+            let storyboard = UIStoryboard(name: "BookingItem", bundle: Bundle(for: AvailabilityViewController.self))
+            let calendarVC = storyboard.instantiateViewController(withIdentifier: "calendarVC") as! AvailabilityCalendarViewController
+            calendarVC.delegate = self
+            calendarVC.product = product
+            calendarVC.representingDate = volatileDate
+            calendarViewControllers[volatileDate] = calendarVC
+            return calendarVC
+        }
     }
 }
 
@@ -243,5 +272,12 @@ extension AvailabilityViewController: BookingOptionsViewControllerDelegate {
 extension AvailabilityViewController: BookingPassesViewControllerDelegate {
     public func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm) {
         delegate?.availabilityViewController(self, didFinishWith: bookingForm)
+    }
+}
+
+extension AvailabilityViewController: AvailabilityCalendarViewControllerDelegate {
+    func availabilityCalendarViewController(_ controller: AvailabilityCalendarViewController, didSelect availability: Availability) {
+        selectedAvailability = availability
+        nextButton.isEnabled = true
     }
 }

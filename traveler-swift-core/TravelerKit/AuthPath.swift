@@ -64,9 +64,9 @@ enum AuthPath {
                 ]
             }
         case .productSchedule(let product, let fromDate, let toDate):
-            urlComponents.path = "/v1/product/\(product.id)/schedule"
+            urlComponents.path = "/v1/booking/\(product.id)/schedule"
             urlComponents.queryItems = [
-                URLQueryItem(name: "from", value: DateFormatter.yearMonthDay.string(from: fromDate)),
+                URLQueryItem(name: "from", value: DateFormatter.yearMonthDay.string(from: fromDate < Date() ? Date() : fromDate)),
                 URLQueryItem(name: "to", value: DateFormatter.yearMonthDay.string(from: toDate))
             ]
         case .passes(let product, let availability, let option):

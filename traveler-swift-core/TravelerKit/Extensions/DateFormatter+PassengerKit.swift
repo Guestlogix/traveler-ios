@@ -22,6 +22,12 @@ extension DateFormatter {
         return dateFormatter
     }()
 
+    public static var monthYear: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM yyyy"
+        return dateFormatter
+    }()
+
     public static var withoutTimezone: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

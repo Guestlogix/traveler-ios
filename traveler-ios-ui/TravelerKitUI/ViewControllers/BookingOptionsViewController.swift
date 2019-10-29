@@ -14,6 +14,8 @@ public protocol BookingOptionsViewControllerDelegate: class {
     func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm)
 }
 
+let optionCellIdentifier = "optionCellIdentifier"
+
 open class BookingOptionsViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
