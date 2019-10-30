@@ -52,7 +52,7 @@ extension WishlistViewController: WishlistFetchDelegate {
         if result.total > 0 {
             performSegue(withIdentifier: "resultSegue", sender: nil)
         } else {
-            performSegue(withIdentifier: "noResultsSegue", sender: nil)
+            performSegue(withIdentifier: "emptySegue", sender: nil)
         }
     }
 
