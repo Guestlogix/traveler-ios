@@ -8,11 +8,11 @@
 
 import Foundation
 
-@IBDesignable class HeartButton: UIButton {
+@IBDesignable public class HeartButton: UIButton {
     @IBInspectable var strokeWidth: CGFloat = 1.5
     @IBInspectable var strokeColor: UIColor?
 
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         let bezierPath = UIBezierPath(heartIn: self.bounds)
 
         if let strokeColor = self.strokeColor {

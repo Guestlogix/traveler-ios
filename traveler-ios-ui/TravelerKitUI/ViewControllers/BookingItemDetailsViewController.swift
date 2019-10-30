@@ -96,7 +96,7 @@ public class BookingItemDetailsViewController: UIViewController {
             return
         }
 
-        if let isWishlisted = bookingItemDetails?.isWishlisted, isWishlisted == true {
+        if wishlistButton.isSelected {
             wishlistButton.isSelected = false
             Traveler.removeFromWishlist(product, result: nil, delegate: self)
         } else {
@@ -176,14 +176,19 @@ extension BookingItemDetailsViewController: WishlistAddDelegate {
     }
 
     public func wishlistAddDidFailWith(_ error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
-            self.wishlistButton.isSelected = false
-        })
+        switch error {
+        case WishlistToggleError.unidentifiedTraveler:
+            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
+                self.wishlistButton.isSelected = false
+            })
 
-        alert.addAction(okAction)
+            alert.addAction(okAction)
 
-        present(alert, animated: true)
+            present(alert, animated: true)
+        default:
+            wishlistButton.isSelected = bookingItemDetails?.isWishlisted ?? false
+        }
     }
 }
 
@@ -207,14 +212,7 @@ extension BookingItemDetailsViewController: WishlistRemoveDelegate {
     }
 
     public func wishlistRemoveDidFailWith(_ error: Error, result: WishlistResult?) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: { [unowned self] _ in
-            self.wishlistButton.isSelected = true
-        })
-
-        alert.addAction(okAction)
-
-        present(alert, animated: true)
+        wishlistButton.isSelected = bookingItemDetails?.isWishlisted ?? true
     }
 }
 
