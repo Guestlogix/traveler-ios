@@ -126,13 +126,13 @@
                                                             <segue destination="dYu-Mg-MyD" kind="presentation" identifier="termsAndConditionsSegue" id="uFP-mr-GeA"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cz-Lr-Ekd" customClass="HeartButton" customModule="TravelerKitUI" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cz-Lr-Ekd" customClass="HeartButton" customModule="TravelerKitUI" customModuleProvider="target">
                                                         <rect key="frame" x="329" y="401" width="30" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="2Cz-Lr-Ekd" secondAttribute="height" id="3iE-pW-99W"/>
                                                             <constraint firstAttribute="width" constant="30" id="S3W-yn-TEk"/>
                                                         </constraints>
-                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
                                                             <action selector="didPressWishlistButton:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="qsF-Tb-LOe"/>
                                                         </connections>
