@@ -17,7 +17,7 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Traveler.identify(profile?.travelerId, attributes: [:])
+        Traveler.identify(profile?.travelerId)
 
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
@@ -52,6 +52,7 @@ extension AuthViewController: MainViewControllerDelegate {
         GIDSignIn.sharedInstance()?.signOut()
         Profile.clearStoredProfile()
 
+        Traveler.identify(nil, attributes: [:])
         NotificationCenter.default.post(name: .signInStatusDidChange, object: nil)
     }
 
@@ -91,7 +92,7 @@ extension AuthViewController: GIDSignInDelegate {
 
             profile.store()
 
-            Traveler.identify(profile.travelerId, attributes: [:])
+            Traveler.identify(profile.travelerId)
 
             NotificationCenter.default.post(name: .signInStatusDidChange, object: nil, userInfo: [profileKey: profile])
         }
