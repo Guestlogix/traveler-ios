@@ -49,7 +49,7 @@ public class Traveler {
         OperationQueue.authQueue.addOperation(sessionOperation)
     }
 
-    func identify(_ identifier: String?, attributes: [String: Any?]? = nil) {
+    func identify(_ identifier: String?, attributes: [String: Any?]?) {
         self.session.identity = identifier
     }
 
@@ -450,7 +450,7 @@ public class Traveler {
         - attributes: A `Dictionary<String, Any?>` of custom traveler attributes to keep for records.
      */
 
-    public static func identify(_ identifier: String?, attributes: [String: Any?]) {
+    public static func identify(_ identifier: String?, attributes: [String: Any?]? = nil) {
         shared?.identify(identifier, attributes: attributes)
     }
 
