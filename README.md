@@ -11,5 +11,4 @@ Once bash has been upgraded, it will be necessary to copy a text file containing
 
 That file can be found in this repository: https://github.com/Guestlogix/mobile-environment-variables
 
-Note: The script that injects the environment variables looks for "variables.txt" in the following path: /Users/variables/variables.txt
-
+Note: The script that injects the environment variables looks for "variables.txt" in the following path: `~/variables/variables.txt` (`~/` denotes the current user's home directory)
