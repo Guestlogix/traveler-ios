@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88C7E5DB236C9CD00007AD75 /* SimilarItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */; };
+		88C7E5DD236CAC180007AD75 /* SimilarItemsResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */; };
+		88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */; };
 		A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */; };
 		A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */; };
 		A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F361323202B880044A1DD /* Wishlist.storyboard */; };
@@ -145,6 +148,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarItemsViewController.swift; sourceTree = "<group>"; };
+		88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarItemsResultViewController.swift; sourceTree = "<group>"; };
+		88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimilarItems.storyboard; sourceTree = "<group>"; };
 		A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
 		A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionsViewController.swift; sourceTree = "<group>"; };
 		A33F361323202B880044A1DD /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
@@ -373,6 +379,8 @@
 				A33F3615232039770044A1DD /* WishlistViewController.swift */,
 				A33F3617232039A20044A1DD /* WishlistResultViewController.swift */,
 				A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */,
+				88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */,
+				88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 				A974A69C2282197800319683 /* Orders.storyboard */,
 				CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */,
 				A33F361323202B880044A1DD /* Wishlist.storyboard */,
+				88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -616,6 +625,7 @@
 				CA12275E22F0D5D000541F3A /* TermsAndConditions.storyboard in Resources */,
 				CA1A8569232ED66500F4DED4 /* RangeCell.xib in Resources */,
 				F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */,
+				88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */,
 				CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */,
 				A9639D20220DF57400625235 /* FormButtonCell.xib in Resources */,
 				A9639D06220DF57400625235 /* HeaderView.xib in Resources */,
@@ -686,7 +696,9 @@
 				A9639CF7220DF57400625235 /* CatalogItemDetailsViewController.swift in Sources */,
 				A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */,
 				CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */,
+				88C7E5DD236CAC180007AD75 /* SimilarItemsResultViewController.swift in Sources */,
 				CA161DB02326C8B400A94C52 /* TagsCell.swift in Sources */,
+				88C7E5DB236C9CD00007AD75 /* SimilarItemsViewController.swift in Sources */,
 				A3900BD9232FD146002D7186 /* HeartButton.swift in Sources */,
 				A9639D08220DF57400625235 /* ShadowedView.swift in Sources */,
 				CA1A8568232ED66500F4DED4 /* RangeCell.swift in Sources */,

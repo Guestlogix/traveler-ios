@@ -26,6 +26,7 @@ public class BookingItemDetailsViewController: UIViewController {
     @IBOutlet weak var itemInfoView: UIView!
     @IBOutlet weak var termsAndConditionsButton: UIButton!
     @IBOutlet weak var descriptionLabelBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var similarItemsHeightConstraint: NSLayoutConstraint!
     
     weak var delegate: BookingItemDetailsViewControllerDelegate?
     var bookingItemDetails: BookingItemDetails?
@@ -77,6 +78,9 @@ public class BookingItemDetailsViewController: UIViewController {
             vc.delegate = self
         case (_, let vc as SupplierInfoViewController):
             vc.supplier = bookingItemDetails?.supplier
+        case (_, let vc as SimilarItemsViewController):
+            vc.delegate = self
+            vc.product = product
         case ("termsAndConditionsSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? TermsAndConditionsViewController
             vc?.termsAndConditions = bookingItemDetails?.attributedTermsAndConditions
@@ -211,5 +215,13 @@ extension BookingItemDetailsViewController: WishlistRemoveDelegate {
         alert.addAction(okAction)
 
         present(alert, animated: true)
+    }
+}
+
+extension BookingItemDetailsViewController: SimilarItemsViewControllerDelegate {
+    public func similarItemsViewController(_ controller: SimilarItemsViewController, didFailWith: Error) {
+        // Collapse the view when there is an error
+        similarItemsHeightConstraint.constant = 0
+        view.layoutIfNeeded()
     }
 }

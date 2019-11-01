@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="802"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypP-Pg-YB4">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="725"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="945"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcw-xY-71N" customClass="PagedHorizontalView" customModule="TravelerKitUI" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
@@ -99,22 +99,13 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKz-8S-J8p">
+                                                    <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKz-8S-J8p">
                                                         <rect key="frame" x="0.0" y="515" width="375" height="120"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="120" id="KqR-cu-QRS"/>
                                                         </constraints>
                                                         <connections>
                                                             <segue destination="1s8-Yt-SG6" kind="embed" id="LhE-Ip-rns"/>
-                                                        </connections>
-                                                    </containerView>
-                                                    <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyr-24-GVl" userLabel="Supplier Info View">
-                                                        <rect key="frame" x="0.0" y="635" width="375" height="90"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="90" id="s6P-tP-ZfC"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <segue destination="Ekb-OE-tqt" kind="embed" id="4C3-nn-63T"/>
                                                         </connections>
                                                     </containerView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVE-rB-saD">
@@ -136,10 +127,29 @@
                                                             <action selector="didPressWishlistButton:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="qsF-Tb-LOe"/>
                                                         </connections>
                                                     </button>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zyr-24-GVl" userLabel="Supplier Info View">
+                                                        <rect key="frame" x="0.0" y="612" width="375" height="90"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="90" id="s6P-tP-ZfC"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <segue destination="Ekb-OE-tqt" kind="embed" id="4C3-nn-63T"/>
+                                                        </connections>
+                                                    </containerView>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loh-jb-pQc" userLabel="Similar Items View">
+                                                        <rect key="frame" x="0.0" y="725" width="375" height="220"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="220" id="JcZ-uX-9S0"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <segue destination="r7u-VF-1xg" kind="embed" id="Xtd-rm-HGN"/>
+                                                        </connections>
+                                                    </containerView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="kOt-35-ojm" firstAttribute="top" secondItem="13o-HV-sxb" secondAttribute="bottom" constant="22" id="0Z8-mA-4b4"/>
                                                     <constraint firstItem="AKz-8S-J8p" firstAttribute="top" secondItem="PVE-rB-saD" secondAttribute="bottom" id="2KS-lN-m6i"/>
+                                                    <constraint firstItem="loh-jb-pQc" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="4nO-Ip-iya"/>
                                                     <constraint firstItem="2Cz-Lr-Ekd" firstAttribute="centerY" secondItem="13o-HV-sxb" secondAttribute="centerY" id="6OT-rk-j8C"/>
                                                     <constraint firstAttribute="trailing" secondItem="kOt-35-ojm" secondAttribute="trailing" constant="16" id="6a3-nz-N9c"/>
                                                     <constraint firstItem="13o-HV-sxb" firstAttribute="top" secondItem="Zcw-xY-71N" secondAttribute="bottom" constant="24" id="6ok-nQ-3Xb"/>
@@ -151,10 +161,12 @@
                                                     <constraint firstAttribute="trailing" secondItem="PVE-rB-saD" secondAttribute="trailing" constant="16" id="JQV-7M-d0J"/>
                                                     <constraint firstAttribute="trailing" secondItem="Zcw-xY-71N" secondAttribute="trailing" id="Kfs-sF-z4B"/>
                                                     <constraint firstItem="zyr-24-GVl" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="Nr2-tK-qli"/>
-                                                    <constraint firstAttribute="bottom" secondItem="zyr-24-GVl" secondAttribute="bottom" id="P3r-Aa-aug"/>
+                                                    <constraint firstAttribute="bottom" secondItem="loh-jb-pQc" secondAttribute="bottom" id="Q91-ks-tfa"/>
+                                                    <constraint firstItem="loh-jb-pQc" firstAttribute="top" secondItem="zyr-24-GVl" secondAttribute="bottom" id="SCu-CS-K7B"/>
                                                     <constraint firstItem="kOt-35-ojm" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" constant="16" id="SXB-Ax-Ljd"/>
                                                     <constraint firstItem="2Cz-Lr-Ekd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="13o-HV-sxb" secondAttribute="trailing" constant="16" id="T1T-BG-7P6"/>
                                                     <constraint firstItem="AKz-8S-J8p" firstAttribute="top" secondItem="kOt-35-ojm" secondAttribute="bottom" constant="40" id="TsA-Zq-fH2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="loh-jb-pQc" secondAttribute="trailing" id="XLP-Mx-b2d"/>
                                                     <constraint firstItem="Zcw-xY-71N" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="h0e-6v-wsz"/>
                                                     <constraint firstAttribute="trailing" secondItem="2Cz-Lr-Ekd" secondAttribute="trailing" constant="16" id="qyx-Hf-Uxl"/>
                                                     <constraint firstItem="AKz-8S-J8p" firstAttribute="leading" secondItem="ypP-Pg-YB4" secondAttribute="leading" id="uxp-aE-JEX"/>
@@ -189,6 +201,7 @@
                                                 </connections>
                                             </containerView>
                                         </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="AXe-MB-7Vk" secondAttribute="trailing" id="4nK-fi-VFH"/>
                                             <constraint firstItem="AXe-MB-7Vk" firstAttribute="leading" secondItem="bit-yu-qL2" secondAttribute="leading" id="764-kM-JTM"/>
@@ -230,6 +243,7 @@
                         <outlet property="itemInfoHeightConstraint" destination="KqR-cu-QRS" id="EYL-wS-ff7"/>
                         <outlet property="itemInfoView" destination="AKz-8S-J8p" id="7xh-3i-QF5"/>
                         <outlet property="scrollView" destination="5AW-GA-zq8" id="ize-J1-UsE"/>
+                        <outlet property="similarItemsHeightConstraint" destination="JcZ-uX-9S0" id="RfD-YV-AmN"/>
                         <outlet property="termsAndConditionsButton" destination="PVE-rB-saD" id="DcN-Fu-XG1"/>
                         <outlet property="titleLabel" destination="13o-HV-sxb" id="nnV-gd-Blt"/>
                         <outlet property="wishlistButton" destination="2Cz-Lr-Ekd" id="wtt-HL-Bhc"/>
@@ -896,6 +910,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKb-JV-Swo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3045.6521739130435" y="4839.5089285714284"/>
+        </scene>
+        <!--SimilarItems-->
+        <scene sceneID="eaJ-7w-lbl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SimilarItems" id="r7u-VF-1xg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9e-ts-aYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2307" y="2443"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
