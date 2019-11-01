@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AaR-nc-1aw">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Similar Items View Controller-->
+        <scene sceneID="ODb-7O-cvq">
+            <objects>
+                <viewController id="AaR-nc-1aw" customClass="SimilarItemsViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BrP-VP-1Tp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fFP-T2-DVF"/>
+                    </view>
+                    <connections>
+                        <segue destination="AQF-tr-dEe" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="btA-kV-sFi"/>
+                        <segue destination="DTU-IE-X1L" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="IfZ-Ap-Hs1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZvJ-pz-whq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2964" y="987"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Zd3-kG-Eoe">
+            <objects>
+                <viewController id="AQF-tr-dEe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GYf-Hj-Hop">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MCT-m6-WiS">
+                                <rect key="frame" x="197" y="92" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MCT-m6-WiS" firstAttribute="centerX" secondItem="ehR-xg-5l2" secondAttribute="centerX" id="l5W-k7-iqA"/>
+                            <constraint firstItem="MCT-m6-WiS" firstAttribute="top" secondItem="ehR-xg-5l2" secondAttribute="top" constant="48" id="sSi-wz-ghO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ehR-xg-5l2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ft-IQ-qGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4751" y="441"/>
+        </scene>
+        <!--Similar Items Result View Controller-->
+        <scene sceneID="m0G-Eh-jYd">
+            <objects>
+                <viewController id="DTU-IE-X1L" customClass="SimilarItemsResultViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9gs-zc-25w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ifb-xB-Ddo"/>
+                    </view>
+                    <connections>
+                        <segue destination="y1R-tP-XnS" kind="presentation" identifier="itemSegue" id="CCY-Oj-5hh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CTS-td-Qdu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4752" y="1566"/>
+        </scene>
+        <!--CatalogItem-->
+        <scene sceneID="HQ2-ld-xn9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CatalogItem" bundleIdentifier="com.guestlogix.TravelerKitUI" id="y1R-tP-XnS" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ofr-5q-Ka8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AQS-yD-X81" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5583" y="1566"/>
+        </scene>
+    </scenes>
+</document>
