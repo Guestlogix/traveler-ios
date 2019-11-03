@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 public protocol BookingQuestionsViewControllerDelegate: class {
-    func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith bookingForm: BookingForm)
+    func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith purchaseForm: PurchaseForm)
 }
 
 open class BookingQuestionsViewController: UIViewController {
@@ -18,7 +18,7 @@ open class BookingQuestionsViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var formView: FormView!
 
-    var bookingForm: BookingForm?
+    var purchaseForm: PurchaseForm?
     weak var delegate: BookingQuestionsViewControllerDelegate?
 
     private var error: Error?
@@ -51,7 +51,7 @@ open class BookingQuestionsViewController: UIViewController {
 
 extension BookingQuestionsViewController: FormViewDataSource {
     public func formView(_ formView: FormView, titleForOption option: Int, at indexPath: IndexPath) -> String {
-        let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
+        let question = purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row]
         
         switch question.type {
         case .multipleChoice(let choices):
@@ -62,7 +62,7 @@ extension BookingQuestionsViewController: FormViewDataSource {
     }
 
     public func formView(_ formView: FormView, numberOfOptionsForInputAt indexPath: IndexPath) -> Int {
-        switch bookingForm!.questionGroups[indexPath.section].questions[indexPath.row].type {
+        switch purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row].type {
         case .multipleChoice(let choices):
             return choices.count
         default:
@@ -71,8 +71,8 @@ extension BookingQuestionsViewController: FormViewDataSource {
     }
 
     public func formView(_ formView: FormView, valueForInputAt indexPath: IndexPath) -> Any? {
-        let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
-        let answer = try? bookingForm!.answer(for: question)
+        let question = purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row]
+        let answer = try? purchaseForm!.answer(for: question)
 
         switch answer {
         case .some(let date as DateAnswer):
@@ -90,56 +90,56 @@ extension BookingQuestionsViewController: FormViewDataSource {
 
     public func formView(_ formView: FormView, inputDescriptorForFieldAt indexPath: IndexPath) -> InputDescriptor {
         switch indexPath.section {
-        case bookingForm!.questionGroups.count:
+        case purchaseForm!.questionGroups.count:
             return InputDescriptor(type: .button("Checkout"))
         default:
-            return InputDescriptor(question: bookingForm!.questionGroups[indexPath.section].questions[indexPath.row])
+            return InputDescriptor(question: purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row])
         }
     }
 
     public func numberOfSections(in formView: FormView) -> Int {
-        return bookingForm.flatMap({ $0.questionGroups.count + 1 }) ?? 0
+        return purchaseForm.flatMap({ $0.questionGroups.count + 1 }) ?? 0
     }
 
     public func formView(_ formView: FormView, numberOfFieldsIn section: Int) -> Int {
         switch section {
-        case bookingForm!.questionGroups.count:
+        case purchaseForm!.questionGroups.count:
             return 1
         default:
-            return bookingForm!.questionGroups[section].questions.count
+            return purchaseForm!.questionGroups[section].questions.count
         }
     }
 }
 
 extension BookingQuestionsViewController: FormViewDelegate {
     public func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String? {
-        guard section < bookingForm!.questionGroups.count else {
+        guard section < purchaseForm!.questionGroups.count else {
             return nil
         }
 
-        return bookingForm?.questionGroups[section].disclaimer
+        return purchaseForm?.questionGroups[section].disclaimer
     }
 
     public func formView(_ formView: FormView, titleForHeaderIn section: Int) -> String? {
-        guard section < bookingForm!.questionGroups.count else {
+        guard section < purchaseForm!.questionGroups.count else {
             return nil
         }
 
-        return bookingForm?.questionGroups[section].title
+        return purchaseForm?.questionGroups[section].title
     }
 
     public func formView(_ formView: FormView, didChangeValue value: Any?, forInputFieldAt indexPath: IndexPath) {
-        let question = bookingForm!.questionGroups[indexPath.section].questions[indexPath.row]
+        let question = purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row]
 
         switch (question.type, value) {
         case (.date, let value as Date):
-            try? bookingForm!.addAnswer(DateAnswer(value, question: question))
+            try? purchaseForm!.addAnswer(DateAnswer(value, question: question))
         case (.quantity, let value as Int):
-            try? bookingForm!.addAnswer(QuantityAnswer(value, question: question))
+            try? purchaseForm!.addAnswer(QuantityAnswer(value, question: question))
         case (.string, let value as String):
-            try? bookingForm!.addAnswer(TextualAnswer(value, question: question))
+            try? purchaseForm!.addAnswer(TextualAnswer(value, question: question))
         case (.multipleChoice(let choices), let value as Int) where value < choices.count:
-            try? bookingForm!.addAnswer(MultipleChoiceSelection(value, question: question))
+            try? purchaseForm!.addAnswer(MultipleChoiceSelection(value, question: question))
         default:
             Log("Invalid answer", data: value, level: .error)
             break
@@ -149,11 +149,11 @@ extension BookingQuestionsViewController: FormViewDelegate {
     public func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath) {
         /// There is only one button: Checkout
 
-        let errors = bookingForm?.validate()
+        let errors = purchaseForm?.validate()
 
         switch errors?.first {
         case .none:
-            delegate?.bookingQuestionsViewController(self, didCheckoutWith: bookingForm!)
+            delegate?.bookingQuestionsViewController(self, didCheckoutWith: purchaseForm!)
         case .some(.invalidAnswer(let groupIndex, let questionIndex, _)):
             self.error = errors?.first
 
@@ -167,7 +167,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
     }
 
     public func formView(_ formView: FormView, messageForFieldAt indexPath: IndexPath) -> FormMessage? {
-        guard let error = self.error as? BookingFormError,
+        guard let error = self.error as? PurchaseFormError,
             case let .invalidAnswer(groupIndex, questionIndex, validationError) = error,
             indexPath.section == groupIndex, indexPath.item == questionIndex else {
                 return nil

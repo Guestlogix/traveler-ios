@@ -39,20 +39,22 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
     /// Amount to be paid on site
     public let priceToPayOnsite: Price
     /// Translate attribution
-    public let translateAttribution: ProviderTranslationAttribution
+    public let translateAttribution: ProviderTranslationAttribution?
     /// Indicating if it's wishlisted
     public let isWishlisted: Bool?
     /// Secondary title
-    public let subtitle: String
+    public let subTitle: String
     /// URL for a thumbnail
     public let thumbnailURL: URL?
     /// Categories
     public var categories: [ProductItemCategory]
+    /// Dates
+    public var dateRange: Range<Date>
 
     enum CodingKeys: String, CodingKey {
         case id
         case payableOnline
-        case payableOnSite
+        case payableOnSite = "payableOnsite"
         case description
         case imageUrls
         case information
@@ -63,13 +65,16 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
         case isWishlisted
         case disclaimer
         case title
-        case subtitle
+        case subTitle
         case thumbnail
         case priceStartingAt
         case purchaseStrategy
         case geoLocation
-        case googleTranslateAttrbution
+        case providerTranslationAttribution
         case categories
+        case startTime
+        case endTime
+        case utcOffsetHours
     }
 
     public init(from decoder: Decoder) throws {
@@ -78,7 +83,7 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
         self.id = try container.decode(String.self, forKey: .id)
         self.priceToPayOnline = try container.decode(Price.self, forKey: .payableOnline)
         self.priceToPayOnsite = try container.decode(Price.self, forKey: .payableOnSite)
-        self.description = try container.decode(String.self, forKey: .description)
+        self.description = try container.decode(String?.self, forKey: .description)
         self.imageUrls = try container.decode([URL].self, forKey: .imageUrls)
         self.information = try container.decode([Attribute]?.self, forKey: .information)
         self.contact = try container.decode(ContactInfo?.self, forKey: .contact)
@@ -88,11 +93,18 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
         self.isWishlisted = try container.decode(Bool?.self, forKey: .isWishlisted)
         self.disclaimer = try container.decode(String?.self, forKey: .disclaimer)
         self.title = try container.decode(String.self, forKey: .title)
-        self.subtitle = try container.decode(String.self, forKey: .subtitle)
+        self.subTitle = try container.decode(String.self, forKey: .subTitle)
         self.thumbnailURL = try container.decode(URL?.self, forKey: .thumbnail)
         self.price = try container.decode(Price.self, forKey: .priceStartingAt)
         self.productType = try container.decode(ProductType.self, forKey: .purchaseStrategy)
-        self.translateAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .googleTranslateAttrbution)
+        self.translateAttribution = try container.decode(ProviderTranslationAttribution?.self, forKey: .providerTranslationAttribution)
         self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
+
+        // TODO: Do the timezone conversion
+
+        let lowerBound = try container.decode(Date.self, forKey: .startTime)
+        let upperBound = try container.decode(Date.self, forKey: .endTime)
+
+        self.dateRange = Range(uncheckedBounds: (lower: lowerBound, upper: upperBound))
     }
 }

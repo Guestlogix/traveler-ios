@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 public protocol BookingConfirmationViewControllerDelegate: class {
-    func bookingConfirmationViewController(_ controller: BookingConfirmationViewController, didFinishWith bookingForm: BookingForm)
+    func bookingConfirmationViewController(_ controller: BookingConfirmationViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 open class BookingConfirmationViewController: UIViewController {
@@ -34,7 +34,7 @@ open class BookingConfirmationViewController: UIViewController {
 }
 
 extension BookingConfirmationViewController: AvailabilityViewControllerDelegate {
-    public func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.bookingConfirmationViewController(self, didFinishWith: bookingForm)
+    public func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith purchaseForm: PurchaseForm) {
+        delegate?.bookingConfirmationViewController(self, didFinishWith: purchaseForm)
     }
 }

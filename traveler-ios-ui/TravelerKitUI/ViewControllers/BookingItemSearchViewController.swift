@@ -51,7 +51,7 @@ extension BookingItemSearchViewController: UISearchBarDelegate {
         }
 
         searchQuery = BookingItemQuery(text: searchText, range: nil, boundingBox: nil)
-        Traveler.searchBookingItems(searchQuery: searchQuery!, identifier: nil, delegate: self)
+        Traveler.searchBookingItems(searchQuery!, identifier: nil, delegate: self)
         performSegue(withIdentifier: "loadingSegue", sender: nil)
     }
 }

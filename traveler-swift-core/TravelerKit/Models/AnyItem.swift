@@ -15,22 +15,28 @@ struct AnyItem: Decodable {
     let type: ProductType
 
     enum CodingKeys: String, CodingKey {
-        case purchaseStrategy = "purchaseStrategy"
+        case id = "id"
+        case title = "title"
+        case subTitle = "subTitle"
+        case thumbnail = "thumbnail"
+        case price = "priceStartingAt"
+        case categories = "categories"
+        case type = "purchaseStrategy"
+        case location = "geoLocation"
+        case providerTranslationAttribution = "providerTranslationAttribution"
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.type = try container.decode(ProductType.self, forKey: .purchaseStrategy)
+        self.type = try container.decode(ProductType.self, forKey: .type)
 
         switch type {
         case .booking:
-            let bookingItem = try BookingItem(from: decoder)
-            self.bookingItem = bookingItem
             self.parkingItem = nil
+            self.bookingItem = try BookingItem(from: decoder)
         case .parking:
-            let parkingItem = try ParkingItem(from: decoder)
-            self.parkingItem = parkingItem
+            self.parkingItem = try ParkingItem(from: decoder)
             self.bookingItem = nil
         }
     }

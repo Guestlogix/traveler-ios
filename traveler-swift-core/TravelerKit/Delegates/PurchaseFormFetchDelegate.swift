@@ -1,5 +1,5 @@
 //
-//  BookingFormFetchDelegate.swift
+//  PurchaseFormFetchDelegate.swift
 //  TravelerKit
 //
 //  Created by Ata Namvari on 2019-03-12.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// Notified of booking form fetch results
-public protocol BookingFormFetchDelegate: class {
+/// Notified of product form fetch results
+public protocol PurchaseFormFetchDelegate: class {
     /**
      Called when there was an error processing the order
 
@@ -18,12 +18,12 @@ public protocol BookingFormFetchDelegate: class {
      to look for here. Best course of action is to just display a generic error
      message.
      */
-    func bookingFormFetchDidFailWith(_ error: Error)
+    func purchaseFormFetchDidFailWith(_ error: Error)
     /**
      Called when the booking form was fetched successfully
 
      - Parameters:
-     - bookingForm: Fetched `BookingForm`
+     - purchaseForm: Fetched `PurchaseForm`
      */
-    func bookingFormFetchDidSucceedWith(_ bookingForm: BookingForm)
+    func purchaseFormFetchDidSucceedWith(_ purchaseForm: PurchaseForm)
 }

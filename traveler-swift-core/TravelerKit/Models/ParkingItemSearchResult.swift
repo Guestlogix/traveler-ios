@@ -19,7 +19,7 @@ public struct ParkingItemSearchResult: Decodable {
     /// A `Facets` object that informs how the data could be filtered further
     public let facets: Facets
     /// The `BookingItemQuery` that returns this result
-    public let query: ParkingItemQuery?
+    public let query: ParkingItemQuery
 
     enum CodingKeys: String, CodingKey {
         case offset = "skip"
@@ -30,7 +30,7 @@ public struct ParkingItemSearchResult: Decodable {
         case parameters = "parameters"
     }
 
-    init(total: Int, items: [Int: ParkingItem], facets: Facets, query: ParkingItemQuery?) {
+    init(total: Int, items: [Int: ParkingItem], facets: Facets, query: ParkingItemQuery) {
         self.total = total
         self.items = items
         self.facets = facets

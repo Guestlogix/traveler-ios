@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 public protocol BookingPassesViewControllerDelegate: class {
-    func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm)
+    func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 open class BookingPassesViewController: UIViewController {
@@ -24,7 +24,7 @@ open class BookingPassesViewController: UIViewController {
     weak var delegate: BookingPassesViewControllerDelegate?
 
     private var passQuantities: [Pass: Int]?
-    private var bookingForm: BookingForm?
+    private var purchaseForm: PurchaseForm?
     private var defaultPassQuantities: [Pass: Int]? {
         return passes?.first.flatMap({
             [$0: 1]
@@ -51,7 +51,7 @@ open class BookingPassesViewController: UIViewController {
             passesVC.passes = passes
             passesVC.passQuantities = defaultPassQuantities
         case (_, let vc as BookingQuestionsViewController):
-            vc.bookingForm = bookingForm
+            vc.purchaseForm = purchaseForm
             vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
@@ -72,7 +72,7 @@ open class BookingPassesViewController: UIViewController {
 
         confirmButton.isEnabled = false
 
-        Traveler.fetchBookingForm(product: product, passes: passes, delegate: self)
+        Traveler.fetchPurchaseForm(product: product, passes: passes, delegate: self)
     }
 }
 
@@ -94,13 +94,13 @@ extension BookingPassesViewController: PassesViewControllerDelegate {
 }
 
 extension BookingPassesViewController: BookingQuestionsViewControllerDelegate {
-    public func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith bookingForm: BookingForm) {
-        delegate?.bookingPassesViewController(self, didFinishWith: bookingForm)
+    public func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith purchaseForm: PurchaseForm) {
+        delegate?.bookingPassesViewController(self, didFinishWith: purchaseForm)
     }
 }
 
-extension BookingPassesViewController: BookingFormFetchDelegate {
-    public func bookingFormFetchDidFailWith(_ error: Error) {
+extension BookingPassesViewController: PurchaseFormFetchDelegate {
+    public func purchaseFormFetchDidFailWith(_ error: Error) {
         confirmButton.isEnabled = true
 
         // TODO: Should cast Error correctly to a known error, OR better the custom error should override localizedDescription
@@ -113,13 +113,14 @@ extension BookingPassesViewController: BookingFormFetchDelegate {
         present(alert, animated: true)
     }
 
-    public func bookingFormFetchDidSucceedWith(_ bookingForm: BookingForm) {
+    public func purchaseFormFetchDidSucceedWith(_ purchaseForm: PurchaseForm) {
         confirmButton.isEnabled = true
 
-        self.bookingForm = bookingForm
+        self.purchaseForm = purchaseForm
 
         performSegue(withIdentifier: "questionsSegue", sender: nil)
     }
+
 }
 
 extension Dictionary where Key == Pass, Value == Int {

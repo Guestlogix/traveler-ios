@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 public protocol AvailabilityViewControllerDelegate: class {
-    func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith bookingForm: BookingForm)
+    func availabilityViewController(_ controller: AvailabilityViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 open class AvailabilityViewController: UIViewController {
@@ -235,13 +235,13 @@ extension AvailabilityViewController: BookingOptionsViewControllerDelegate {
         Traveler.fetchPasses(product: product!, availability: selectedAvailability!, option: option, delegate: self)
     }
 
-    public func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.availabilityViewController(self, didFinishWith: bookingForm)
+    public func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith purchaseForm: PurchaseForm) {
+        delegate?.availabilityViewController(self, didFinishWith: purchaseForm)
     }
 }
 
 extension AvailabilityViewController: BookingPassesViewControllerDelegate {
-    public func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.availabilityViewController(self, didFinishWith: bookingForm)
+    public func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith purchaseForm: PurchaseForm) {
+        delegate?.availabilityViewController(self, didFinishWith: purchaseForm)
     }
 }

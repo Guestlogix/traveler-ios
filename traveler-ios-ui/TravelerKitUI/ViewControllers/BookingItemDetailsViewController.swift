@@ -13,7 +13,7 @@ let imageCellIdentifier = "imageCellIdentifier"
 
 protocol BookingItemDetailsViewControllerDelegate: class {
     func bookingItemDetailsViewControllerDidChangePreferredTranslucency(_ controller: BookingItemDetailsViewController)
-    func bookingItemDetailsViewController(_ controller: BookingItemDetailsViewController, didFinishWith bookingForm: BookingForm)
+    func bookingItemDetailsViewController(_ controller: BookingItemDetailsViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 public class BookingItemDetailsViewController: UIViewController {
@@ -156,8 +156,8 @@ extension BookingItemDetailsViewController: UIScrollViewDelegate {
 }
 
 extension BookingItemDetailsViewController: BookablePurchaseViewControllerDelegate {
-    public func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.bookingItemDetailsViewController(self, didFinishWith: bookingForm)
+    public func bookablePurchaseViewController(_ controller: BookablePurchaseViewController, didFinishWith purchaseForm: PurchaseForm) {
+        delegate?.bookingItemDetailsViewController(self, didFinishWith: purchaseForm)
     }
 }
 

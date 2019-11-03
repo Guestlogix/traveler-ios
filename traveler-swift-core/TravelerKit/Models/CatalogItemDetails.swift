@@ -46,7 +46,6 @@ struct AnyItemDetails: Decodable {
         switch type {
         case .booking:
             itemDetail = try BookingItemDetails(from: decoder)
-
         case .parking:
             itemDetail = try ParkingItemDetails(from: decoder)
         }

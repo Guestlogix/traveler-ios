@@ -17,4 +17,6 @@ public enum ProductItemCategory: String, Decodable {
     case show = "Show"
     case event = "Event"
     case nightlife = "Nightlife"
+    case parking = "Parking"
+    case transfers = "Transfers" // Why was this added all of a sudden?
 }

@@ -37,6 +37,7 @@ public class MappingOperation<T> : Operation where T : Decodable {
         } catch {
             self.error = error
             Log(error.localizedDescription, data: String(data: data, encoding: .utf8), level: .error)
+            Log("Error decoding: ", data: error, level: .error)
         }
     }
 }

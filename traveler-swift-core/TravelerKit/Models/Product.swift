@@ -19,13 +19,12 @@ public protocol Product {
     var productType: ProductType { get }
     /// Title
     var title: String { get }
-    /// Categories
-    var categories: [ProductItemCategory] { get }
 }
 
 struct AnyProduct: Decodable {
 
     let bookingProduct: BookingProduct?
+    let parkingProduct: ParkingProduct?
 
     let type: ProductType
 
@@ -42,10 +41,53 @@ struct AnyProduct: Decodable {
         case .booking:
             let bookingProduct = try BookingProduct(from: decoder)
             self.bookingProduct = bookingProduct
+            self.parkingProduct = nil
         case .parking:
-            throw DecodingError.dataCorruptedError(forKey: CodingKeys.productType , in: container, debugDescription: "Unsupported product type")
+            let parkingProduct = try ParkingProduct(from: decoder)
+            self.parkingProduct = parkingProduct
+            self.bookingProduct = nil
         }
     }
+}
+
+//TODO: Revisit these models when new endpoint for purchased items is available. Consider potential refactoring for SDK with products that have already been purchased. 
+
+///Any purchased parking product:
+public struct ParkingProduct: Product, Decodable {
+    /// Identifier
+    public let id: String
+    /// Price of product
+    public let price: Price
+    /// Product type
+    public let productType: ProductType = .parking
+    /// A title
+    public let title: String
+    /// Date in which the product takes place
+    public let eventDate: Date
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case title = "title"
+        case productType = "purchaseStrategy"
+        case eventDate = "experienceDate"
+        case price = "price"
+    }
+
+    public init (from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.price = try container.decode(Price.self, forKey:.price)
+
+        let dateString = try container.decode(String.self, forKey: .eventDate)
+
+        if let date = ISO8601DateFormatter.dateOnlyFormatter.date(from: dateString) {
+            self.eventDate = date
+        } else {
+            throw DecodingError.dataCorruptedError(forKey: CodingKeys.eventDate, in: container, debugDescription: "Incorrect format")
+        }
+    }
+
 }
 
 /// Any purchased booking product
@@ -75,7 +117,7 @@ public struct BookingProduct: Product, Decodable {
         case price = "price"
     }
 
-    public init (from decoder:Decoder) throws {
+    public init (from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)

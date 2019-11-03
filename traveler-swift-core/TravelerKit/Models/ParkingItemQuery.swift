@@ -11,15 +11,15 @@ import Foundation
 /// A query to fetch Parking items
 public struct ParkingItemQuery {
     /// Pagination offset
-    public let offset: Int
+    public var offset: Int
     /// Pagination limit
-    public let limit: Int
+    public var limit: Int
     /// IATA code as string for aiport oriented queries
-    public let airportIATA: String?
+    public var airportIATA: String?
     /// A range of dates where parking is available
-    public let dateRange: ClosedRange<Date>
+    public var dateRange: ClosedRange<Date>
     /// A `BoundingBox` representing the geographic area in which items should be searched for
-    public let boundingBox: BoundingBox?
+    public var boundingBox: BoundingBox?
 
     /**
      Initializes a `ParkingQuery`
@@ -49,11 +49,7 @@ public struct ParkingItemQuery {
     }
 
     func isValid() -> Bool {
-        if self.airportIATA == nil && self.boundingBox == nil {
-            return false
-        } else {
-            return true
-        }
+        return true // I think this is valid, will leave method here
     }
 }
 

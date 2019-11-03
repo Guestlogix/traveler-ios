@@ -54,6 +54,13 @@ extension DateFormatter {
         return formatter
     }()
 
+    public static var shortDisplayFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
+
     public func fullFormatter(with timeZone: TimeZone) -> DateFormatter {
         let dateFormatter = self.copy() as! DateFormatter
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

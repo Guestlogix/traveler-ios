@@ -71,28 +71,24 @@ extension PassengerRoute: Route {
         }
 
         guard let errorJSON = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-           let errorCode = errorJSON["errorCode"] as? Int else {
+            let errorCode = errorJSON["errorCode"] as? Int else {
             Log("Bad JSON", data: String(data: data, encoding: .utf8), level: .error)
             return error
         }
 
-        switch (errorCode, errorJSON["errorData"]) {
-        case (2006, _):
+        switch errorCode {
+        case 2006:
             return BookingError.noPasses
-        case (2007, _):
+        case 2007:
             return BookingError.veryOldTraveler
-        case (2012-2014, _):
+        case 2012...2014:
             return CancellationError.notCancellable
-        case (2014, _):
+        case 2015:
             return BookingError.adultAgeInvalid
-        case (2017, _):
+        case 2017:
             return BookingError.belowMinUnits
-        case (2018, _):
+        case 2018:
             return BookingError.unaccompaniedChildren
-        case (2027, let data as [String: Any]) where data["confirmationKey"] is String:
-            return PaymentError.confirmationRequired(data["confirmationKey"] as! String)
-        case (6001, _):
-            return PaymentError.processingError
         default:
             Log("Unknown error code", data: errorJSON, level: .warning)
             return error

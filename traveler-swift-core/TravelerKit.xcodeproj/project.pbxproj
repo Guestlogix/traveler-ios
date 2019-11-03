@@ -16,7 +16,7 @@
 		A91F3BB521B879DB0016894A /* Pass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB421B879DB0016894A /* Pass.swift */; };
 		A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB621B87C500016894A /* PassFetchDelegate.swift */; };
 		A91F3BDB21D9F9730016894A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BDA21D9F9730016894A /* Question.swift */; };
-		A91F3BDD21DC36AD0016894A /* BookingForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BDC21DC36AD0016894A /* BookingForm.swift */; };
+		A91F3BDD21DC36AD0016894A /* PurchaseForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BDC21DC36AD0016894A /* PurchaseForm.swift */; };
 		A91F3BDF21DD3BA80016894A /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BDE21DD3BA80016894A /* QuestionGroup.swift */; };
 		A92523F221FB71D0009E2642 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92523F121FB71D0009E2642 /* ValidationError.swift */; };
 		A92523F621FBAD2C009E2642 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92523F521FBAD2C009E2642 /* Order.swift */; };
@@ -36,7 +36,7 @@
 		A9639C8C220DF1F000625235 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639C8B220DF1F000625235 /* Device.swift */; };
 		A9639D32220E000100625235 /* PaymentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D31220E000100625235 /* PaymentHandler.swift */; };
 		A96F8305223784F500268D0D /* BookingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F8304223784F500268D0D /* BookingOption.swift */; };
-		A96F830722389CD100268D0D /* BookingFormFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830622389CD100268D0D /* BookingFormFetchDelegate.swift */; };
+		A96F830722389CD100268D0D /* PurchaseFormFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830622389CD100268D0D /* PurchaseFormFetchDelegate.swift */; };
 		A96F830922389CE300268D0D /* AvailabilitiesFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F830822389CE300268D0D /* AvailabilitiesFetchDelegate.swift */; };
 		A96F8314223AC79F00268D0D /* BookingOptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96F8313223AC79F00268D0D /* BookingOptionSet.swift */; };
 		A974A68F2280C42900319683 /* OrderQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A68E2280C42900319683 /* OrderQuery.swift */; };
@@ -161,7 +161,7 @@
 		A91F3BB421B879DB0016894A /* Pass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pass.swift; sourceTree = "<group>"; };
 		A91F3BB621B87C500016894A /* PassFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassFetchDelegate.swift; sourceTree = "<group>"; };
 		A91F3BDA21D9F9730016894A /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
-		A91F3BDC21DC36AD0016894A /* BookingForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingForm.swift; sourceTree = "<group>"; };
+		A91F3BDC21DC36AD0016894A /* PurchaseForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseForm.swift; sourceTree = "<group>"; };
 		A91F3BDE21DD3BA80016894A /* QuestionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
 		A92523F121FB71D0009E2642 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		A92523F521FBAD2C009E2642 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		A9639C8B220DF1F000625235 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		A9639D31220E000100625235 /* PaymentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentHandler.swift; sourceTree = "<group>"; };
 		A96F8304223784F500268D0D /* BookingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOption.swift; sourceTree = "<group>"; };
-		A96F830622389CD100268D0D /* BookingFormFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFormFetchDelegate.swift; sourceTree = "<group>"; };
+		A96F830622389CD100268D0D /* PurchaseFormFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseFormFetchDelegate.swift; sourceTree = "<group>"; };
 		A96F830822389CE300268D0D /* AvailabilitiesFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilitiesFetchDelegate.swift; sourceTree = "<group>"; };
 		A96F8313223AC79F00268D0D /* BookingOptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionSet.swift; sourceTree = "<group>"; };
 		A974A68E2280C42900319683 /* OrderQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQuery.swift; sourceTree = "<group>"; };
@@ -336,7 +336,7 @@
 				A91F3BB621B87C500016894A /* PassFetchDelegate.swift */,
 				A92523F721FBAD90009E2642 /* OrderCreateDelegate.swift */,
 				A9825BA922043285008AA0C1 /* OrderProcessDelegate.swift */,
-				A96F830622389CD100268D0D /* BookingFormFetchDelegate.swift */,
+				A96F830622389CD100268D0D /* PurchaseFormFetchDelegate.swift */,
 				A96F830822389CE300268D0D /* AvailabilitiesFetchDelegate.swift */,
 				A974A6922280CA9C00319683 /* OrderFetchDelegate.swift */,
 				A95F46AA229C403B009C9227 /* CancellationQuoteFetchDelegate.swift */,
@@ -438,7 +438,7 @@
 				A9639C87220DEDCC00625235 /* BookingError.swift */,
 				A91F3BB221B82BDD0016894A /* ErrorContext.swift */,
 				A91F3BDA21D9F9730016894A /* Question.swift */,
-				A91F3BDC21DC36AD0016894A /* BookingForm.swift */,
+				A91F3BDC21DC36AD0016894A /* PurchaseForm.swift */,
 				A91F3BDE21DD3BA80016894A /* QuestionGroup.swift */,
 				A92F5C2321F22CFE00020F10 /* Answer.swift */,
 				A9AC3BFC21FA6D9500690D46 /* ValidationRule.swift */,
@@ -689,7 +689,7 @@
 				CAE90E8522BD50640066FAAF /* AuthenticatedRemoteRequestOperation.swift in Sources */,
 				CA1D8BA823576356008D5EC1 /* SimilarProductsFetchDelegate.swift in Sources */,
 				A9BF40E2218231010090ED1C /* CatalogueQuery.swift in Sources */,
-				A91F3BDD21DC36AD0016894A /* BookingForm.swift in Sources */,
+				A91F3BDD21DC36AD0016894A /* PurchaseForm.swift in Sources */,
 				A9639C8C220DF1F000625235 /* Device.swift in Sources */,
 				A9E2AD8221934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift in Sources */,
 				A9DB065D2140665A009817EC /* MappingOperation.swift in Sources */,
@@ -766,7 +766,7 @@
 				A9DB06572140665A009817EC /* UploadOperation.swift in Sources */,
 				A9E2AD9D2194AD060063BF79 /* Location.swift in Sources */,
 				CA15F90122BAC66300F3788A /* ProcessedPaymentInfo.swift in Sources */,
-				A96F830722389CD100268D0D /* BookingFormFetchDelegate.swift in Sources */,
+				A96F830722389CD100268D0D /* PurchaseFormFetchDelegate.swift in Sources */,
 				CA1B1508234F6E91009661EC /* BookingItemSearchResult.swift in Sources */,
 				A95776512153EC7E00BD11C8 /* RestoreOperation.swift in Sources */,
 				A9DB06B9214C27B3009817EC /* AuthOperation.swift in Sources */,

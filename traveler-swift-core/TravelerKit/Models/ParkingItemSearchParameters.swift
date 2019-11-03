@@ -10,11 +10,11 @@ import Foundation
 /// A model containing the search parameters of a `ParkingQuery`
 public struct ParkingItemSearchParameters: Decodable {
     /// An airport IATA code that represents the airport for which to search available parking
-    public let airportIATA: String?
+    public var airportIATA: String?
     /// A `BoundingBox` specifying the area to search for available parking
-    public let boundingBox: BoundingBox?
+    public var boundingBox: BoundingBox?
     /// A range of dates where parking is available
-    public let dateRange: ClosedRange<Date>
+    public var dateRange: ClosedRange<Date>
 
     enum CodingKeys: String, CodingKey {
         case airport = "airport"
@@ -31,12 +31,11 @@ public struct ParkingItemSearchParameters: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.airportIATA = try container.decode(String?.self, forKey: .airport)
 
-        let topLeftLatitude = try container.decode(Double?.self, forKey: .topLeftLatitude)
-        let topLeftLongitude = try container.decode(Double?.self, forKey: .topLeftLongitude)
-        let bottomRightLatitude = try container.decode(Double?.self, forKey: .bottomRightLatitude)
-        let bottomRighLongitude = try container.decode(Double?.self, forKey: .bottomRightLongitude)
+        if let topLeftLatitude = try container.decode(Double?.self, forKey: .topLeftLatitude),
+            let topLeftLongitude = try container.decode(Double?.self, forKey: .topLeftLongitude),
+            let bottomRightLatitude = try container.decode(Double?.self, forKey: .bottomRightLatitude),
+            let bottomRighLongitude = try container.decode(Double?.self, forKey: .bottomRightLongitude) {
 
-        if let topLeftLatitude = topLeftLatitude, let topLeftLongitude = topLeftLongitude, let bottomRightLatitude = bottomRightLatitude, let bottomRighLongitude = bottomRighLongitude {
             let topLeftCoordinate = Coordinate(latitude: topLeftLatitude, longitude: topLeftLongitude)
             let bottomRightCoordinate = Coordinate(latitude: bottomRightLatitude, longitude: bottomRighLongitude)
 
