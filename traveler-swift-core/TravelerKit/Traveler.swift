@@ -128,12 +128,21 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func fetchBookingForm(product: BookingItem, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
-        let fetchOperation = AuthenticatedRemoteFetchOperation<[QuestionGroup]>(path: .questions(product, passes: passes), session: session)
+    func fetchPurchaseForm(product: Product, passes: [Pass], completion: @escaping (PurchaseForm?, Error?) -> Void) {
+        var path: AuthPath
+
+        switch product.productType {
+        case .booking:
+            path = .bookingQuestions(product, passes: passes)
+        case .parking:
+            path = .parkingQuestions(product)
+        }
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[QuestionGroup]>(path: path, session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             if let groups = fetchOperation.resource {
-                let bookingForm = BookingForm(product: product, passes: passes, questionGroups: groups)
-                completion(bookingForm, nil)
+                let purchaseForm = PurchaseForm(product: product, passes: passes, questionGroups: groups)
+                completion(purchaseForm, nil)
             } else {
                 completion(nil, fetchOperation.error)
             }
@@ -145,9 +154,9 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    // TODO: Use a protocol Purchase as an argument instead of BookingForm
-    func createOrder(bookingForm: BookingForm, completion: @escaping (Order?, Error?) -> Void) {
-        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .createOrder([bookingForm], travelerId: session.identity), session: session)
+
+    func createOrder(purchaseForm: PurchaseForm, completion: @escaping (Order?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<Order>(path: .createOrder([purchaseForm], travelerId: session.identity), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
         }
@@ -569,15 +578,15 @@ public class Traveler {
     }
 
     /**
-     Creates an `Order` for the supplied `BookingForm`.
+     Creates an `Order` for the supplied `PurchaseForm`.
 
      - Parameters:
-        - bookingForm: A `BookingForm` for which to create the `Order` for.
+        - purchaseForm: A `PurchaseForm` for which to create the `Order` for.
         - delgate: An `OrderCreateDelegate` that is notified of the results.
      */
 
-    public static func createOrder(bookingForm: BookingForm, delegate: OrderCreateDelegate) {
-        shared?.createOrder(bookingForm: bookingForm, completion: { [weak delegate] (order, error) in
+    public static func createOrder(purchaseForm: PurchaseForm, delegate: OrderCreateDelegate) {
+        shared?.createOrder(purchaseForm: purchaseForm, completion: { [weak delegate] (order, error) in
             if let order = order {
                 delegate?.orderCreationDidSucceed(order)
             } else {
@@ -587,15 +596,15 @@ public class Traveler {
     }
 
     /**
-     Creates an `Order` for the supplied `BookingForm`.
+     Creates an `Order` for the supplied `PurchaseForm`.
 
      - Parameters:
-        - bookingForm: A `BookingForm` for which to create the `Order` for.
+        - purchaseForm: A `PurchaseForm` for which to create the `Order` for.
         - completion: A completion block that is called when the results are ready.
      */
 
-    public static func createOrder(bookingForm: BookingForm, completion: @escaping (Order?, Error?) -> Void) {
-        shared?.createOrder(bookingForm: bookingForm, completion: completion)
+    public static func createOrder(purchaseForm: PurchaseForm, completion: @escaping (Order?, Error?) -> Void) {
+        shared?.createOrder(purchaseForm: purchaseForm, completion: completion)
     }
 
     /**
@@ -631,33 +640,33 @@ public class Traveler {
     }
 
     /**
-     Fetches the `BookingForm` for a given `Product` and array of `Pass`es.
+     Fetches the `PurchaseForm` for a given `Product` and array of `Pass`es.
 
      - Parameters:
-        - product: A `Product` for which to fetch the `BookingForm`.
-        - passes: An `Array<Pass>` for which to fetch the `BookingForm`.
+        - product: A `Product` for which to fetch the `PurchaseForm`.
+        - passes: An `Array<Pass>` for which to fetch the `PurchaseForm`.
         - completion: A completion block that is called when the results are ready.
      */
 
-    public static func fetchBookingForm(product: BookingItem, passes: [Pass], completion: @escaping (BookingForm?, Error?) -> Void) {
-        shared?.fetchBookingForm(product: product, passes: passes, completion: completion)
+    public static func fetchPurchaseForm(product: Product, passes: [Pass] = [], completion: @escaping (PurchaseForm?, Error?) -> Void) {
+        shared?.fetchPurchaseForm(product: product, passes: passes, completion: completion)
     }
 
     /**
-     Fetches the `BookingForm` for a given `Product` and array of `Pass`es.
+     Fetches the `PurchaseForm` for a given `Product` and array of `Pass`es.
 
      - Parameters:
-        - product: A `Product` for which to fetch the `BookingForm`.
-        - passes: An `Array<Pass>` for which to fetch the `BookingForm`.
-        - delegate: A `BookingFormFetchDelegate` that is notified of the results.
+        - product: A `Product` for which to fetch the `PurchaseForm`.
+        - passes: An `Array<Pass>` for which to fetch the `PurchaseForm`.
+        - delegate: A `PurchaseFormFetchDelegate` that is notified of the results.
      */
 
-    public static func fetchBookingForm(product: BookingItem, passes: [Pass], delegate: BookingFormFetchDelegate) {
-        shared?.fetchBookingForm(product: product, passes: passes, completion: { [weak delegate] (form, error) in
+    public static func fetchPurchaseForm(product: Product, passes: [Pass] = [], delegate: PurchaseFormFetchDelegate) {
+        shared?.fetchPurchaseForm(product: product, passes: passes, completion: { [weak delegate] (form, error) in
             if let error = error {
-                delegate?.bookingFormFetchDidFailWith(error)
+                delegate?.purchaseFormFetchDidFailWith(error)
             } else {
-                delegate?.bookingFormFetchDidSucceedWith(form!)
+                delegate?.purchaseFormFetchDidSucceedWith(form!)
             }
         })
     }
@@ -935,7 +944,7 @@ public class Traveler {
      - delegate: A `BookingItemSearchDelegate` that is notified if the search is successful
      */
 
-    public static func searchBookingItems(searchQuery: BookingItemQuery, identifier: AnyHashable?, delegate: BookingItemSearchDelegate) {
+    public static func searchBookingItems(_ searchQuery: BookingItemQuery, identifier: AnyHashable?, delegate: BookingItemSearchDelegate) {
         shared?.searchBookingItems(searchQuery, identifier: identifier, previousResultBlock: { [weak delegate] () -> BookingItemSearchResult? in
             delegate?.previousResult()
             }, resultBlock: { [weak delegate] (result, identifier) in
@@ -960,7 +969,7 @@ public class Traveler {
      - completion: A completion block that is called when the results are ready.
      */
 
-    public static func searchBookingItems(searchQuery: BookingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> BookingItemSearchResult?)?, resultBlock: ((BookingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (BookingItemSearchResult?, Error?, AnyHashable?)-> Void) {
+    public static func searchBookingItems(_ searchQuery: BookingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> BookingItemSearchResult?)?, resultBlock: ((BookingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (BookingItemSearchResult?, Error?, AnyHashable?)-> Void) {
         shared?.searchBookingItems(searchQuery, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
     }
 
@@ -972,7 +981,7 @@ public class Traveler {
      - delegate: A `ParkingItemSearchDelegate` that is notified if the search is successful
      */
 
-    public static func searchParkingItems(searchQuery: ParkingItemQuery, identifier: AnyHashable?, delegate: ParkingItemSearchDelegate) {
+    public static func searchParkingItems(_ searchQuery: ParkingItemQuery, identifier: AnyHashable?, delegate: ParkingItemSearchDelegate) {
         shared?.searchParkingItems(searchQuery, identifier: identifier, previousResultBlock: { [weak delegate] () -> ParkingItemSearchResult? in
             delegate?.previousResult()
             }, resultBlock: { [weak delegate] (result, identifier) in
@@ -997,7 +1006,7 @@ public class Traveler {
      - completion: A completion block that is called when the results are ready.
      */
 
-    public static func searchParkingItems(searchQuery: ParkingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> ParkingItemSearchResult?)?, resultBlock: ((ParkingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (ParkingItemSearchResult?, Error?, AnyHashable?) -> Void) {
+    public static func searchParkingItems(_ searchQuery: ParkingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> ParkingItemSearchResult?)?, resultBlock: ((ParkingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (ParkingItemSearchResult?, Error?, AnyHashable?)-> Void) {
         shared?.searchParkingItems(searchQuery, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
     }
 

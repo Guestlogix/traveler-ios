@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 
 public protocol CatalogItemDetailsViewControllerDelegate: class {
-    func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith bookingForm: BookingForm)
+    func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 open class CatalogItemDetailsViewController: UIViewController {
@@ -75,8 +75,8 @@ extension CatalogItemDetailsViewController: BookingItemDetailsViewControllerDele
         }
     }
 
-    func bookingItemDetailsViewController(_ controller: BookingItemDetailsViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.catalogItemDetailsViewControllerDelegate(self, didFinishWith: bookingForm)
+    func bookingItemDetailsViewController(_ controller: BookingItemDetailsViewController, didFinishWith purchaseForm: PurchaseForm) {
+        delegate?.catalogItemDetailsViewControllerDelegate(self, didFinishWith: purchaseForm)
     }
 
 }

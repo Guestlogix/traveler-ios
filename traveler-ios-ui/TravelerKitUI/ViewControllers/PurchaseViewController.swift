@@ -59,9 +59,9 @@ extension PurchaseViewController: OrderCreateDelegate {
 }
 
 extension PurchaseViewController: CatalogItemDetailsViewControllerDelegate {
-    public func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith bookingForm: BookingForm) {
+    public func catalogItemDetailsViewControllerDelegate(_ controller: CatalogItemDetailsViewController, didFinishWith purchaseForm: PurchaseForm) {
         ProgressHUD.show()
 
-        Traveler.createOrder(bookingForm: bookingForm, delegate: self)
+        Traveler.createOrder(purchaseForm: purchaseForm, delegate: self)
     }
 }

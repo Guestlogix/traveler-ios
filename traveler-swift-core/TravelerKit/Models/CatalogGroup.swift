@@ -19,7 +19,7 @@ public struct CatalogGroup: Decodable {
     /// The type of item in the current group
     public let itemType: CatalogItemType
     /// The `CatalogItem`s in this group
-    public private(set) var items: [CatalogItem]
+    public let items: [CatalogItem]
 
     enum CodingKeys: String, CodingKey {
         case isFeatured = "featured"
@@ -39,18 +39,18 @@ public struct CatalogGroup: Decodable {
 
         switch itemType {
         case .item:
-            let anyItem = try container.decode([AnyItem].self, forKey: .items)
-            self.items = anyItem.map({ (item) -> CatalogItem in
-                switch item.type {
-                case .booking:
-                    return item.bookingItem!
-                case .parking:
-                    return item.parkingItem!
-                }
+            let anyItems = try container.decode([AnyItem].self, forKey: .items)
 
-            })
+            let items = anyItems.map({ $0.item })
+            self.items = items
         case .query:
             self.items = try container.decode([QueryItem].self, forKey: .items)
         }
+    }
+}
+
+extension AnyItem {
+    var item: CatalogItem {
+        return bookingItem ?? parkingItem!
     }
 }

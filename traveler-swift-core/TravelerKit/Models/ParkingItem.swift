@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ParkingItem: CatalogItem, Product, Decodable {
+public struct ParkingItem: CatalogItem, Decodable, Product {
     /// An identifier
     public let id: String
     /// Starting price
@@ -27,35 +27,19 @@ public struct ParkingItem: CatalogItem, Product, Decodable {
     public let providerTranslationAttribution: ProviderTranslationAttribution
     /// A coordinate representing the item's location
     public let location: Coordinate
-    /// Indicates if item is available
-    public let isAvailable: Bool
+    /// A ParkingItem that is seen is always available
+    // TODO: Do a calculation on the time, I think the backend should decide how long these items are available
+    public var isAvailable: Bool { return true }
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"
         case subTitle = "subTitle"
-        case thumbnail = "thumbnail"
+        case imageURL = "thumbnail"
         case price = "priceStartingAt"
         case categories = "categories"
-        case type = "purchaseStrategy"
+        case productType = "purchaseStrategy"
         case location = "geoLocation"
         case providerTranslationAttribution = "providerTranslationAttribution"
-        case isAvailable = "isAvailable"
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        self.id = try container.decode(String.self, forKey: .id)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.subTitle = try container.decode(String?.self, forKey: .subTitle)
-        self.imageURL = try container.decode(URL?.self, forKey: .thumbnail)
-        self.price = try container.decode(Price.self, forKey: .price)
-        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
-        self.productType = try container.decode(ProductType.self, forKey: .type)
-        self.location = try container.decode(Coordinate.self, forKey: .location)
-        self.providerTranslationAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .providerTranslationAttribution)
-        self.isAvailable = try container.decode(Bool.self, forKey: .isAvailable)
-    }
-    
 }

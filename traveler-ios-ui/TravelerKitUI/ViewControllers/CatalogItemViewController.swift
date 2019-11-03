@@ -15,7 +15,6 @@ open class CatalogItemViewController: UIViewController {
 
     private var details: CatalogItemDetails?
     private var product: Product?
-    private var bookingForm: BookingForm?
 
     open override func viewDidLoad() {
         super.viewDidLoad()

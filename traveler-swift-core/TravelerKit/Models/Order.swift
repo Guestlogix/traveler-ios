@@ -99,8 +99,8 @@ public struct Order: Decodable, Equatable, Hashable {
             switch product.type {
             case .booking:
                 return product.bookingProduct!
-            default:
-                throw DecodingError.dataCorruptedError(forKey: CodingKeys.products, in: container, debugDescription: "Unknown product type")
+            case .parking:
+                return product.parkingProduct!
             }
         }
 

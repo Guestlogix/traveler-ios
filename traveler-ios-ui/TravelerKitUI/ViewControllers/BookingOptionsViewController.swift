@@ -11,7 +11,7 @@ import TravelerKit
 
 public protocol BookingOptionsViewControllerDelegate: class {
     func bookingOptionsViewController(_ controller: BookingOptionsViewController, didProceedWith option: BookingOption)
-    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith bookingForm: BookingForm)
+    func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 open class BookingOptionsViewController: UIViewController {
@@ -114,7 +114,7 @@ extension BookingOptionsViewController: UITableViewDelegate {
 }
 
 extension BookingOptionsViewController: BookingPassesViewControllerDelegate {
-    public func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith bookingForm: BookingForm) {
-        delegate?.bookingOptionsViewController(self, didFinishWith: bookingForm)
+    public func bookingPassesViewController(_ controller: BookingPassesViewController, didFinishWith purchaseForm: PurchaseForm) {
+        delegate?.bookingOptionsViewController(self, didFinishWith: purchaseForm)
     }
 }

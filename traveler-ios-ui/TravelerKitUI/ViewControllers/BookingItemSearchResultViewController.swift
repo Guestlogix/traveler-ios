@@ -102,7 +102,7 @@ extension BookingItemSearchResultViewController: UICollectionViewDataSourcePrefe
             pagesLoading.insert(page)
 
             let query = BookingItemQuery(page: page, for: searchQuery)
-            Traveler.searchBookingItems(searchQuery: query, identifier: page, delegate: self)
+            Traveler.searchBookingItems(query, identifier: page, delegate: self)
         }
 
     }
