@@ -13,6 +13,9 @@ public protocol RetryViewControllerDelegate: class {
 }
 
 open class RetryViewController: UIViewController {
+    @IBOutlet weak var errorMessageLabel: UILabel!
+    @IBOutlet weak var errorTitleLabel: UILabel!
+    
     weak var delegate: RetryViewControllerDelegate?
 
     @IBAction func didRetry(_ sender: UIButton) {

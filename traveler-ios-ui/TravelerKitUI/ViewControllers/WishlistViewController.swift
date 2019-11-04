@@ -37,6 +37,7 @@ open class WishlistViewController: UIViewController {
             vc.delegate = self
         case ("errorSegue", let vc as RetryViewController):
             vc.delegate = self
+            vc.errorMessageLabel.text = "An error occured while loading your wishlist :("
         case ("loadingSegue", _):
             break
         default:

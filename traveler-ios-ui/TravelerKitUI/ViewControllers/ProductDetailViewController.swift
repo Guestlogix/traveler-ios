@@ -27,6 +27,7 @@ open class ProductDetailViewController: UIViewController {
             vc.productDetails = productDetails
         case (_, let vc as RetryViewController, _):
             vc.delegate = self
+            vc.errorMessageLabel.text = "An error occured while loading your product :("
         case ("loadingSegue", _, _):
             break
         default:

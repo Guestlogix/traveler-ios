@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88168D2E2370BCE30096E443 /* Retry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88168D2D2370BCE30096E443 /* Retry.storyboard */; };
+		88168D302370BE010096E443 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88168D2F2370BE010096E443 /* Loading.storyboard */; };
 		A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */; };
 		A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */; };
 		A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F361323202B880044A1DD /* Wishlist.storyboard */; };
@@ -144,6 +146,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88168D2D2370BCE30096E443 /* Retry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Retry.storyboard; sourceTree = "<group>"; };
+		88168D2F2370BE010096E443 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
 		A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionsViewController.swift; sourceTree = "<group>"; };
 		A33F361323202B880044A1DD /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
@@ -443,6 +447,8 @@
 				A974A69C2282197800319683 /* Orders.storyboard */,
 				CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */,
 				A33F361323202B880044A1DD /* Wishlist.storyboard */,
+				88168D2D2370BCE30096E443 /* Retry.storyboard */,
+				88168D2F2370BE010096E443 /* Loading.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -606,12 +612,14 @@
 				F3A3E068224BBF2400CD69F4 /* FormDateInputCell.xib in Resources */,
 				A974A69D2282197800319683 /* Orders.storyboard in Resources */,
 				A9639D0F220DF57400625235 /* CarouselViewCell.xib in Resources */,
+				88168D302370BE010096E443 /* Loading.storyboard in Resources */,
 				A9639D18220DF57400625235 /* FormFieldFooterView.xib in Resources */,
 				CA88804222B2B22500213E41 /* Product.storyboard in Resources */,
 				F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */,
 				A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */,
 				CA12275E22F0D5D000541F3A /* TermsAndConditions.storyboard in Resources */,
 				CA1A8569232ED66500F4DED4 /* RangeCell.xib in Resources */,
+				88168D2E2370BCE30096E443 /* Retry.storyboard in Resources */,
 				F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */,
 				CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */,
 				A9639D20220DF57400625235 /* FormButtonCell.xib in Resources */,

@@ -33,6 +33,7 @@ open class CatalogItemViewController: UIViewController {
             break
         case (_, let vc as RetryViewController):
             vc.delegate = self
+            vc.errorMessageLabel.text = "Sorry, something went wrong"
         case (_, let vc as PurchaseViewController):
             vc.itemDetails = details
             vc.product = product
