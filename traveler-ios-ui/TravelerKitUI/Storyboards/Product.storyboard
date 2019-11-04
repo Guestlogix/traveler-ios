@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vHV-sI-EeY">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vHV-sI-EeY">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -204,14 +202,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vu-ti-VlC">
                                                 <rect key="frame" x="0.0" y="298" width="414" height="82"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLl-CV-bfQ" userLabel="Product Name Label">
-                                                        <rect key="frame" x="8" y="10" width="398" height="34"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLl-CV-bfQ" userLabel="Product Name Label">
+                                                        <rect key="frame" x="10" y="10" width="396" height="33.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KsK-Px-5il">
-                                                        <rect key="frame" x="8" y="49" width="398" height="30"/>
+                                                        <rect key="frame" x="10" y="48.5" width="396" height="30"/>
                                                         <state key="normal" title="Terms and conditions"/>
                                                         <connections>
                                                             <action selector="didSelectTermsAndConditions:" destination="edl-lD-YNF" eventType="touchUpInside" id="ui7-UZ-4SC"/>
@@ -223,10 +221,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="uLl-CV-bfQ" secondAttribute="trailing" constant="8" id="4R7-IJ-jNP"/>
                                                     <constraint firstItem="KsK-Px-5il" firstAttribute="top" secondItem="uLl-CV-bfQ" secondAttribute="bottom" constant="5" id="4a4-r6-Ecl"/>
                                                     <constraint firstItem="uLl-CV-bfQ" firstAttribute="top" secondItem="0vu-ti-VlC" secondAttribute="top" constant="10" id="Da5-Yh-8vg"/>
-                                                    <constraint firstItem="KsK-Px-5il" firstAttribute="leading" secondItem="0vu-ti-VlC" secondAttribute="leading" constant="8" id="LIB-BF-ipd"/>
-                                                    <constraint firstAttribute="height" constant="82" id="Pry-1A-1PB"/>
+                                                    <constraint firstItem="KsK-Px-5il" firstAttribute="leading" secondItem="0vu-ti-VlC" secondAttribute="leading" constant="10" id="LIB-BF-ipd"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="82" id="Pry-1A-1PB"/>
                                                     <constraint firstAttribute="trailing" secondItem="KsK-Px-5il" secondAttribute="trailing" constant="8" id="Xxc-mU-aJY"/>
-                                                    <constraint firstItem="uLl-CV-bfQ" firstAttribute="leading" secondItem="0vu-ti-VlC" secondAttribute="leading" constant="8" id="fhr-x5-cUT"/>
+                                                    <constraint firstItem="uLl-CV-bfQ" firstAttribute="leading" secondItem="0vu-ti-VlC" secondAttribute="leading" constant="10" id="fhr-x5-cUT"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrF-1i-BKa">
@@ -297,6 +295,7 @@
                                             <constraint firstAttribute="trailing" secondItem="EHw-Qa-RVw" secondAttribute="trailing" id="WVJ-bs-mYD"/>
                                             <constraint firstAttribute="trailing" secondItem="gQb-74-0GH" secondAttribute="trailing" id="WjU-Ib-ha3"/>
                                             <constraint firstItem="EHw-Qa-RVw" firstAttribute="leading" secondItem="kvE-UW-3cW" secondAttribute="leading" id="Z88-G0-u7b"/>
+                                            <constraint firstItem="x4v-x3-xBL" firstAttribute="top" secondItem="KsK-Px-5il" secondAttribute="bottom" constant="3.5" id="cJm-Xk-AAf"/>
                                             <constraint firstItem="0vu-ti-VlC" firstAttribute="top" secondItem="y65-I3-JR3" secondAttribute="bottom" id="cZM-5r-b0s"/>
                                             <constraint firstItem="x4v-x3-xBL" firstAttribute="top" secondItem="0vu-ti-VlC" secondAttribute="bottom" id="fEu-wZ-Meq"/>
                                             <constraint firstItem="EHw-Qa-RVw" firstAttribute="top" secondItem="wNK-mK-ENa" secondAttribute="bottom" constant="25" id="gQm-zo-7yU"/>
