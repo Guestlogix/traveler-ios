@@ -18,6 +18,7 @@
 		A3900BDD232FD1F3002D7186 /* UIBezierPath+Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */; };
 		A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */; };
 		A394B36723302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394B36623302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift */; };
+		A3A8846E2370CD3900480BCA /* CancellationReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */; };
 		A3E3FC472343AE9200CB616B /* BookingOption+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FC462343AE9200CB616B /* BookingOption+TravelerUI.swift */; };
 		A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */; };
 		A9639C9C220DF4F200625235 /* TravelerKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639C9A220DF4F200625235 /* TravelerKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -155,6 +156,7 @@
 		A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Heart.swift"; sourceTree = "<group>"; };
 		A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookableConfirmationViewController.swift; sourceTree = "<group>"; };
 		A394B36623302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistToggleError+LocalizedError.swift"; sourceTree = "<group>"; };
+		A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationReasonViewController.swift; sourceTree = "<group>"; };
 		A3E3FC462343AE9200CB616B /* BookingOption+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingOption+TravelerUI.swift"; sourceTree = "<group>"; };
 		A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmer.swift"; sourceTree = "<group>"; };
 		A9639C97220DF4F200625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TravelerKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -370,6 +372,7 @@
 				CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */,
 				A33F3615232039770044A1DD /* WishlistViewController.swift */,
 				A33F3617232039A20044A1DD /* WishlistResultViewController.swift */,
+				A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				A9639D39220E029800625235 /* Attribute+TravelerUI.swift in Sources */,
 				A9639D24220DF57400625235 /* InputDescriptor.swift in Sources */,
 				A9639D11220DF57400625235 /* ButtonCell.swift in Sources */,
+				A3A8846E2370CD3900480BCA /* CancellationReasonViewController.swift in Sources */,
 				CA88803D22B2AF4800213E41 /* BookableProductDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

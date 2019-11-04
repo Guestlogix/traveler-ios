@@ -26,6 +26,17 @@ open class CancellationViewController: UITableViewController {
         totalRefundLabel.text = quote?.totalRefund.localizedDescriptionInBaseCurrency
     }
 
+    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.destination {
+        case let vc as CancellationReasonViewController:
+            vc.delegate = self
+            vc.quote = quote
+        default:
+            Log("Unknown segue", data: segue, level: .warning)
+            break
+        }
+    }
+
     // MARK: UITableViewDataSource
 
     override public func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,19 +59,12 @@ open class CancellationViewController: UITableViewController {
     }
 
     @IBAction func didConfirm(_ sender: Any) {
-        if let quote = quote {
-            let alert = UIAlertController(title: "Are you sure you want to cancel your order?", message: nil, preferredStyle: .alert)
-            let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
-            let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
-                ProgressHUD.show()
-                Traveler.cancelOrder(quote: quote, delegate: self)
-            }
-
-            alert.addAction(noAction)
-            alert.addAction(yesAction)
-
-            present(alert, animated: true, completion: nil)
+        guard let _ = quote else {
+            Log("No cancellation quote", data: nil, level: .error)
+            return
         }
+
+        performSegue(withIdentifier: "cancellationReasonSegue", sender: nil)
     }
 
     @IBAction func didClose(_ sender: Any) {
@@ -68,25 +72,13 @@ open class CancellationViewController: UITableViewController {
     }
 }
 
-extension CancellationViewController: CancellationDelegate {
-    public func cancellationDidSucceed(order: Order) {
-        ProgressHUD.hide()
+extension CancellationViewController: CancellationReasonViewControllerDelegate {
+    public func cancellationReasonViewController(_ controller: CancellationReasonViewController, didCancel order: Order) {
         delegate?.cancellationViewController(self, didCancel: order)
-        NotificationCenter.default.post(name: .orderDidCancel, object: self, userInfo: [orderKey: order])
     }
 
-    public func cancellationDidFailWith(_ error: Error) {
-        ProgressHUD.hide()
-
-        switch error {
-        case CancellationError.expiredQuote:
-            delegate?.cancellationViewControllerDidExpire(self)
-        default:
-            let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        }
+    public func cancellationReasonViewControllerDidExpire(_ controller: CancellationReasonViewController) {
+        delegate?.cancellationViewControllerDidExpire(self)
     }
 }
 
