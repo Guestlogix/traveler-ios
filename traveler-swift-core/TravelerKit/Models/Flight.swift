@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents information about a flight
-public struct Flight: Decodable, Equatable {
+public struct Flight: Codable, Equatable {
     public static func == (lhs: Flight, rhs: Flight) -> Bool {
         return lhs.id == rhs.id
         && lhs.number == rhs.number

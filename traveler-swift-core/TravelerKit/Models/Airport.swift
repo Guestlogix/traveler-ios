@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents information about an airport
-public struct Airport: Decodable, Equatable {
+public struct Airport: Codable, Equatable {
     /// IATA code
     public let code: String
     /// Airport name
@@ -24,6 +24,14 @@ public struct Airport: Decodable, Equatable {
         case name = "name"
         case city = "city"
         case utcOffsetHours = "utcOffsetHours"
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(code, forKey: .code)
+        try container.encode(name, forKey: .name)
+        try container.encode(city, forKey: .city)
+        try container.encode(Double(timeZone.secondsFromGMT()) / 3600, forKey: .utcOffsetHours)
     }
 
     init(code: String, name: String, city: String, timeZone: TimeZone) {
