@@ -277,11 +277,8 @@
 		A974A6CC228C63FA00319683 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CA11A5AF22DD0798002850A2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		CA12271E22F0C12A00541F3A /* Traveler local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Traveler local.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA12271F22F0C12A00541F3A /* Traveler copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Traveler copy2-Info.plist"; path = "/Users/opadierna/Documents/traveler-ios/Traveler copy2-Info.plist"; sourceTree = "<absolute>"; };
 		CA12275322F0C25E00541F3A /* gCrew local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gCrew local.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA12275422F0C25E00541F3A /* gCrew copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "gCrew copy-Info.plist"; path = "/Users/opadierna/Documents/traveler-ios/gCrew copy-Info.plist"; sourceTree = "<absolute>"; };
 		CAC5088C22D3C736004A114B /* gCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAC5088D22D3C736004A114B /* Traveler copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Traveler copy-Info.plist"; path = "/Users/opadierna/Documents/traveler-ios/Traveler copy-Info.plist"; sourceTree = "<absolute>"; };
 		CADEC49922CFB05C00FCF7A2 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -376,9 +373,6 @@
 				A9639D692211CD3400625235 /* Traveler */,
 				A9639D682211CD3400625235 /* Products */,
 				A9639DE02211D91A00625235 /* Frameworks */,
-				CAC5088D22D3C736004A114B /* Traveler copy-Info.plist */,
-				CA12271F22F0C12A00541F3A /* Traveler copy2-Info.plist */,
-				CA12275422F0C25E00541F3A /* gCrew copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1074,7 +1068,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Traveler copy2-Info.plist";
+				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1102,7 +1096,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Traveler copy2-Info.plist";
+				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1130,7 +1124,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "gCrew copy-Info.plist";
+				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1158,7 +1152,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "gCrew copy-Info.plist";
+				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1186,7 +1180,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Traveler copy-Info.plist";
+				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1214,7 +1208,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "Traveler copy-Info.plist";
+				INFOPLIST_FILE = Traveler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,5 +1,5 @@
 //
-//  BookingQuestionsViewController.swift
+//  PurchaseQuestionsViewController.swift
 //  TravelerKit
 //
 //  Created by Ata Namvari on 2018-12-31.
@@ -9,18 +9,18 @@
 import UIKit
 import TravelerKit
 
-public protocol BookingQuestionsViewControllerDelegate: class {
-    func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith purchaseForm: PurchaseForm)
+
+public protocol PurchaseQuestionsViewControllerDelegate: class {
+    func purchaseQuestionsViewController(_ controller: PurchaseQuestionsViewController, didCheckoutWith purchaseForm: PurchaseForm)
 }
 
-open class BookingQuestionsViewController: UIViewController {
+open class PurchaseQuestionsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var formView: FormView!
 
     var purchaseForm: PurchaseForm?
-    weak var delegate: BookingQuestionsViewControllerDelegate?
-
+    weak var delegate: PurchaseQuestionsViewControllerDelegate?
     private var error: Error?
 
     override open func viewDidLoad() {
@@ -49,7 +49,7 @@ open class BookingQuestionsViewController: UIViewController {
     }
 }
 
-extension BookingQuestionsViewController: FormViewDataSource {
+extension PurchaseQuestionsViewController: FormViewDataSource {
     public func formView(_ formView: FormView, titleForOption option: Int, at indexPath: IndexPath) -> String {
         let question = purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row]
         
@@ -111,7 +111,7 @@ extension BookingQuestionsViewController: FormViewDataSource {
     }
 }
 
-extension BookingQuestionsViewController: FormViewDelegate {
+extension PurchaseQuestionsViewController: FormViewDelegate {
     public func formView(_ formView: FormView, disclaimerForHeaderIn section: Int) -> String? {
         guard section < purchaseForm!.questionGroups.count else {
             return nil
@@ -153,7 +153,7 @@ extension BookingQuestionsViewController: FormViewDelegate {
 
         switch errors?.first {
         case .none:
-            delegate?.bookingQuestionsViewController(self, didCheckoutWith: purchaseForm!)
+            delegate?.purchaseQuestionsViewController(self, didCheckoutWith: purchaseForm!)
         case .some(.invalidAnswer(let groupIndex, let questionIndex, _)):
             self.error = errors?.first
 

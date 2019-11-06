@@ -10,10 +10,10 @@ import Foundation
 import TravelerKit
 
 public protocol BookingContextObserving: class {
-    func bookingContextDidUpdate(_ context: BookingContext)
+    func bookingContextDidUpdate(_ context: _BookingContext)
 }
 
-public class BookingContext {
+public class _BookingContext {
     public var selectedAvailability: Availability? {
         didSet {
             notifyObservers()

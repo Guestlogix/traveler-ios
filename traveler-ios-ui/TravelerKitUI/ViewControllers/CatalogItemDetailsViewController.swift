@@ -24,8 +24,8 @@ open class CatalogItemDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         switch itemDetails {
-        case let itemDetails as BookingItemDetails:
-            performSegue(withIdentifier: "bookingSegue", sender: itemDetails)
+        case is BookingItemDetails:
+            performSegue(withIdentifier: "bookingSegue", sender: nil)
         default:
             Log("Unknown item type", data: itemDetails, level: .error)
             performSegue(withIdentifier: "errorSegue", sender: nil)
@@ -33,9 +33,9 @@ open class CatalogItemDetailsViewController: UIViewController {
     }
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch (segue.identifier, segue.destination, sender) {
-        case (_, let vc as BookingItemDetailsViewController , let sender as BookingItemDetails):
-            vc.bookingItemDetails = sender
+        switch (segue.identifier, segue.destination, itemDetails) {
+        case (_, let vc as BookingItemDetailsViewController , let details as BookingItemDetails):
+            vc.bookingItemDetails = details
             vc.product = product as? BookingItem
             vc.delegate = self
         default:

@@ -553,12 +553,22 @@
                         <outlet property="confirmContainerView" destination="auQ-nG-Jtt" id="9V1-C9-0pt"/>
                         <outlet property="passesContainerHeightConstraint" destination="L61-Zq-gac" id="Lpr-Sf-lOj"/>
                         <outlet property="priceLabel" destination="Ha6-Uy-F0q" id="l69-us-dYx"/>
-                        <segue destination="rC1-Qw-aaQ" kind="show" identifier="questionsSegue" id="GlM-Ry-N6v"/>
+                        <segue destination="ll1-DE-Jyp" kind="show" identifier="questionsSegue" id="orz-qz-KrN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAJ-OS-8mV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4303" y="4317"/>
+        </scene>
+        <!--PurchaseQuestions-->
+        <scene sceneID="ZNv-fF-zH0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PurchaseQuestions" id="ll1-DE-Jyp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Tzb-lG-Shd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Bv-UG-pLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5062" y="4324"/>
         </scene>
         <!--Passes View Controller-->
         <scene sceneID="d1a-G0-HoZ">
@@ -702,39 +712,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bz8-1o-1WZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4303" y="4985"/>
-        </scene>
-        <!--Booking Questions View Controller-->
-        <scene sceneID="wVC-Uo-9mR">
-            <objects>
-                <viewController id="rC1-Qw-aaQ" customClass="BookingQuestionsViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="9iR-FF-pLP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sb2-ve-qOn" customClass="FormView" customModule="TravelerKitUI" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="375" height="698"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Sb2-ve-qOn" firstAttribute="top" secondItem="6Nm-fV-Vgu" secondAttribute="top" id="R93-xX-cXC"/>
-                            <constraint firstItem="Sb2-ve-qOn" firstAttribute="leading" secondItem="6Nm-fV-Vgu" secondAttribute="leading" id="epl-st-qcm"/>
-                            <constraint firstItem="Sb2-ve-qOn" firstAttribute="trailing" secondItem="6Nm-fV-Vgu" secondAttribute="trailing" id="y2D-7V-hBH"/>
-                            <constraint firstAttribute="bottom" secondItem="Sb2-ve-qOn" secondAttribute="bottom" id="yI9-Nl-41E"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Nm-fV-Vgu"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xAf-dq-zXZ">
-                        <nil key="title"/>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="formView" destination="Sb2-ve-qOn" id="J4B-Io-KEp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EHa-yg-akd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5336" y="4317"/>
         </scene>
         <!--CatalogItemInfo-->
         <scene sceneID="aax-ra-ycj">

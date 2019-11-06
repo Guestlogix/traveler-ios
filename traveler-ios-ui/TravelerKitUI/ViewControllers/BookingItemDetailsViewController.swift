@@ -111,7 +111,7 @@ public class BookingItemDetailsViewController: UIViewController {
 }
 
 extension BookingItemDetailsViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
@@ -140,7 +140,7 @@ extension BookingItemDetailsViewController: CatalogItemInfoViewControllerDelegat
 }
 
 extension BookingItemDetailsViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         updatePreferredTranslucency()
     }
 

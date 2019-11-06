@@ -13,6 +13,7 @@ protocol StringCellDelegate: class {
 }
 
 class StringCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var textField: UITextField!
 
     weak var delegate: StringCellDelegate?

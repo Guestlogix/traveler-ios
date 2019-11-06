@@ -14,6 +14,8 @@ extension Product {
         switch self {
         case let self as BookingProduct:
             return ISO8601DateFormatter.dateOnlyFormatter.string(from: self.eventDate)
+        case let self as ParkingProduct:
+            return ISO8601DateFormatter.dateOnlyFormatter.string(from: self.eventDate)
         default:
             return nil
         }

@@ -24,7 +24,9 @@ open class BookingPassesViewController: UIViewController {
     weak var delegate: BookingPassesViewControllerDelegate?
 
     private var passQuantities: [Pass: Int]?
+
     private var purchaseForm: PurchaseForm?
+
     private var defaultPassQuantities: [Pass: Int]? {
         return passes?.first.flatMap({
             [$0: 1]
@@ -50,7 +52,7 @@ open class BookingPassesViewController: UIViewController {
             passesVC.delegate = self
             passesVC.passes = passes
             passesVC.passQuantities = defaultPassQuantities
-        case (_, let vc as BookingQuestionsViewController):
+        case (_, let vc as PurchaseQuestionsViewController):
             vc.purchaseForm = purchaseForm
             vc.delegate = self
         default:
@@ -93,8 +95,9 @@ extension BookingPassesViewController: PassesViewControllerDelegate {
     }
 }
 
-extension BookingPassesViewController: BookingQuestionsViewControllerDelegate {
-    public func bookingQuestionsViewController(_ controller: BookingQuestionsViewController, didCheckoutWith purchaseForm: PurchaseForm) {
+
+extension BookingPassesViewController: PurchaseQuestionsViewControllerDelegate {
+    public func purchaseQuestionsViewController(_ controller: PurchaseQuestionsViewController, didCheckoutWith purchaseForm: PurchaseForm) {
         delegate?.bookingPassesViewController(self, didFinishWith: purchaseForm)
     }
 }
