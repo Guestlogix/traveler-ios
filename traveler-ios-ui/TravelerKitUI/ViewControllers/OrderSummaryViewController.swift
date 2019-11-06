@@ -71,13 +71,28 @@ open class OrderSummaryViewController: UITableViewController {
             cell.titleLabel.text = "Add card"
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
-            // TODO: This should also be fixed in coming PRs
-            let pass = (order!.products.first as? BookingProduct)?.passes[indexPath.row]
-            cell.titleLabel.text = pass?.name
-            cell.subTitleLabel.text = pass?.description
-            cell.priceLabel.text = pass?.price.localizedDescriptionInBaseCurrency
-            return cell
+            // TODO: This should be fixed when orders can support more than one product.
+            let product = order!.products.first
+
+            switch product {
+            case let product as BookingProduct:
+                let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
+                // TODO: This should also be fixed when dealing with multiple orders and multiple passes.
+                let pass = product.passes[indexPath.row]
+                cell.titleLabel.text = pass.name
+                cell.subTitleLabel.text = pass.description
+                cell.priceLabel.text = pass.price.localizedDescriptionInBaseCurrency
+                return cell
+            case let product as ParkingProduct:
+                let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
+                cell.titleLabel.text = product.title
+                cell.priceLabel.text = product.price.localizedDescriptionInBaseCurrency
+                return cell
+            default:
+                Log("Unsupported product type", data: nil, level: .warning)
+                let cell = UITableViewCell()
+                return cell
+            }
         }
     }
 

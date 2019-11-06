@@ -13,50 +13,37 @@ open class CatalogItemViewController: UIViewController {
     public var image: UIImage?
     public var catalogItem: CatalogItem?
 
-    private var details: CatalogItemDetails?
-    private var product: Product?
-
+    private var order: Order?
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-
-        reload()
+        switch catalogItem {
+        case is Product:
+            performSegue(withIdentifier: "productSegue", sender: nil)
+        case is QueryItem:
+            performSegue(withIdentifier: "querySegue", sender: nil)
+        default:
+            Log("Unknown CatalogItem Type", data: nil, level: .error)
+            break
+        }
     }
 
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case ("loadingSegue", _):
-            break
-        case (_, let vc as RetryViewController):
+        case (_, let vc as ProductItemViewController):
+            // TODO: Pass images for better loading experience
+            vc.product = catalogItem as? Product
             vc.delegate = self
-        case (_, let vc as PurchaseViewController):
-            vc.itemDetails = details
-            vc.product = product
+        case (_, let vc as QueryItemViewController):
+            vc.queryItem = catalogItem as? QueryItem
+            vc.delegate = self
+        case (_, let vc as PaymentConfirmationViewController):
+            vc.order = order
         default:
             Log("Unknown segue", data: nil, level: .warning)
             break
         }
-    }
-
-    func reload() {
-        guard let catalogItem = catalogItem else {
-            performSegue(withIdentifier: "errorSegue", sender: nil)
-            return
-        }
-
-        switch catalogItem {
-        case let catalogItem as Product:
-            performSegue(withIdentifier: "loadingSegue", sender: nil)
-            Traveler.fetchProductDetails(catalogItem, delegate: self)
-            product = catalogItem
-        default:
-            Log("Unknown CatalogItem Type", data: nil, level: .error)
-            performSegue(withIdentifier: "errorSegue", sender: nil)
-        }
-
     }
 
     @IBAction func didClose(_ sender: Any) {
@@ -64,19 +51,38 @@ open class CatalogItemViewController: UIViewController {
     }
 }
 
-extension CatalogItemViewController: CatalogItemDetailsFetchDelegate {
-    public func catalogItemDetailsFetchDidSucceedWith(_ result: CatalogItemDetails) {
-        details = result
-        performSegue(withIdentifier: "resultSegue", sender: nil)
-    }
+extension CatalogItemViewController: ProductItemViewControllerDelegate {
+    public func productItemViewController(_ controller: ProductItemViewController, didFinishWith purchaseForm: PurchaseForm) {
+        ProgressHUD.show()
 
-    public func catalogItemDetailsFetchDidFailWith(_ error: Error) {
-        performSegue(withIdentifier: "errorSegue", sender: nil)
+        Traveler.createOrder(purchaseForm: purchaseForm, delegate: self)
     }
 }
 
-extension CatalogItemViewController: RetryViewControllerDelegate {
-    public func retryViewControllerDidRetry(_ controller: RetryViewController) {
-        reload()
+extension CatalogItemViewController: QueryItemViewControllerDelegate {
+    public func queryItemViewController(_ controller: QueryItemViewController, didFinishWith purchaseForm: PurchaseForm) {
+        ProgressHUD.show()
+
+        Traveler.createOrder(purchaseForm: purchaseForm, delegate: self)
+    }
+}
+
+extension CatalogItemViewController: OrderCreateDelegate {
+    public func orderCreationDidSucceed(_ order: Order) {
+        ProgressHUD.hide()
+
+        self.order = order
+
+        performSegue(withIdentifier: "confirmationSegue", sender: nil)
+    }
+
+    public func orderCreationDidFail(_ error: Error) {
+        ProgressHUD.hide()
+
+        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+
+        present(alert, animated: true)
     }
 }

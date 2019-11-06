@@ -9,8 +9,9 @@
 import UIKit
 import TravelerKit
 
-open class BookingItemSearchViewController: UIViewController {
-    
+
+open class BookingItemQueryViewController: UIViewController {
+
     private var searchText: String?
     private var bookingItemResult: BookingItemSearchResult?
     private var searchQuery: BookingItemQuery?
@@ -44,7 +45,8 @@ open class BookingItemSearchViewController: UIViewController {
     }
 }
 
-extension BookingItemSearchViewController: UISearchBarDelegate {
+
+extension BookingItemQueryViewController: UISearchBarDelegate {
     public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {
             return
@@ -56,7 +58,7 @@ extension BookingItemSearchViewController: UISearchBarDelegate {
     }
 }
 
-extension BookingItemSearchViewController: BookingItemSearchDelegate {
+extension BookingItemQueryViewController: BookingItemSearchDelegate {
     public func bookingItemSearchDidSucceedWith(_ result: BookingItemSearchResult, identifier: AnyHashable?) {
         switch (facets) {
             case .none:

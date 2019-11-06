@@ -29,14 +29,14 @@
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
-                        <segue destination="Py4-h5-jSH" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="g2Z-xU-kh6"/>
-                        <segue destination="qsj-fo-rny" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="el2-bf-9jb"/>
-                        <segue destination="Quv-z6-OrK" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="o4H-SH-kUd"/>
+                        <segue destination="a8U-kx-BGO" kind="custom" identifier="productSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="Kd9-Xx-LAl"/>
+                        <segue destination="5kh-2b-EtW" kind="custom" identifier="querySegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="Fw5-nc-mKZ"/>
+                        <segue destination="fSO-nP-bHH" kind="show" identifier="confirmationSegue" id="ulo-OZ-UnY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQa-QN-pQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="848.79999999999995" y="-22.03898050974513"/>
+            <point key="canvasLocation" x="-1583" y="200"/>
         </scene>
         <!--Retry View Controller-->
         <scene sceneID="A77-PF-zWc">
@@ -116,7 +116,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uYF-uQ-LvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90.400000000000006" y="-22.03898050974513"/>
+            <point key="canvasLocation" x="-2522" y="200"/>
         </scene>
         <!--BookingItem-->
         <scene sceneID="Bsu-WT-5hF">
@@ -124,7 +124,7 @@
                 <viewControllerPlaceholder storyboardName="BookingItem" id="xao-wP-yoB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70a-gg-rPM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3983" y="1019"/>
+            <point key="canvasLocation" x="3783" y="400"/>
         </scene>
         <!--Catalog Item Details View Controller-->
         <scene sceneID="SB1-ib-ph5">
@@ -142,26 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7E-JN-6B3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3095" y="1091"/>
-        </scene>
-        <!--Purchase View Controller-->
-        <scene sceneID="XRy-05-Cdt">
-            <objects>
-                <viewController id="Quv-z6-OrK" customClass="PurchaseViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JvX-0O-Wxw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="LLH-r7-KsK"/>
-                    </view>
-                    <connections>
-                        <segue destination="fSO-nP-bHH" kind="show" identifier="confirmationSegue" id="wnu-2E-fgp"/>
-                        <segue destination="d43-Zu-me1" kind="custom" identifier="detailsSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="Tcn-F8-ARu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M13-8O-bHY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2116" y="355"/>
+            <point key="canvasLocation" x="2423" y="401"/>
         </scene>
         <!--OrderReview-->
         <scene sceneID="VCw-qb-uKX">
@@ -171,7 +152,53 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxP-8i-eV2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042" y="301"/>
+            <point key="canvasLocation" x="-1522" y="730"/>
+        </scene>
+        <!--Product Item View Controller-->
+        <scene sceneID="qHE-cq-IMT">
+            <objects>
+                <viewController id="a8U-kx-BGO" customClass="ProductItemViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Laa-nX-gIw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="poU-as-Uxq"/>
+                    </view>
+                    <connections>
+                        <segue destination="Py4-h5-jSH" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="4cP-BO-8gm"/>
+                        <segue destination="qsj-fo-rny" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="fbu-uE-WWa"/>
+                        <segue destination="d43-Zu-me1" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="tse-8Y-wd7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ajH-cd-eOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="103" y="-159"/>
+        </scene>
+        <!--Query Item View Controller-->
+        <scene sceneID="UZP-T1-2gJ">
+            <objects>
+                <viewController id="5kh-2b-EtW" customClass="QueryItemViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gmE-hI-LxW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fRE-e3-HxT"/>
+                    </view>
+                    <connections>
+                        <segue destination="nC0-zm-84H" kind="custom" identifier="parkingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="XVp-Np-Aqu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2L0-s7-ZG8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102" y="689"/>
+        </scene>
+        <!--Parking-->
+        <scene sceneID="Lhe-Fm-gyQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Parking" id="nC0-zm-84H" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DSO-fH-WvN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="632"/>
         </scene>
     </scenes>
 </document>

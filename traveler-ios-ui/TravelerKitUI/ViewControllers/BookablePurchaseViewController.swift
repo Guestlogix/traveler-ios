@@ -47,7 +47,7 @@ open class BookablePurchaseViewController: UIViewController {
 }
 
 extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         guard presented is BookingPassesViewController else {
             return nil
         }
@@ -55,7 +55,7 @@ extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate 
         return DrawerPresentationController(presentedViewController: presented, presenting: presenting, source: source)
     }
 
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let confirmVC = presented as? BookingPassesViewController else {
             return nil
         }
@@ -63,7 +63,8 @@ extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate 
         return DrawerPresentationAnimator(sourceDrawer: self, targetDrawer: confirmVC)
     }
 
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+   public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let confirmVC = dismissed as? BookingPassesViewController else {
             return nil
         }
@@ -73,7 +74,7 @@ extension BookablePurchaseViewController: UIViewControllerTransitioningDelegate 
 }
 
 extension BookablePurchaseViewController: DrawerTransitioning {
-    func drawerViewForTransition(context: UIViewControllerContextTransitioning) -> UIView {
+    public func drawerViewForTransition(context: UIViewControllerContextTransitioning) -> UIView {
         return view
     }
 }

@@ -26,10 +26,8 @@
 		A95F46A72296ECE3009C9227 /* UIView+Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95F46A62296ECE3009C9227 /* UIView+Shimmer.swift */; };
 		A9639C9C220DF4F200625235 /* TravelerKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639C9A220DF4F200625235 /* TravelerKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA3220DF57300625235 /* CatalogItemViewController.swift */; };
-		A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */; };
 		A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */; };
 		A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA8220DF57300625235 /* QuantityViewController.swift */; };
-		A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA9220DF57300625235 /* PurchaseViewController.swift */; };
 		A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */; };
 		A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */; };
 		A9639CF6220DF57400625235 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */; };
@@ -119,12 +117,40 @@
 		CA1A8569232ED66500F4DED4 /* RangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1A8567232ED66500F4DED4 /* RangeCell.xib */; };
 		CA1A856B232EE88900F4DED4 /* DoubleSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1A856A232EE88900F4DED4 /* DoubleSliderView.swift */; };
 		CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */; };
-		CA2666722322DE950074E83A /* BookingItemSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */; };
 		CA2666742322DF2B0074E83A /* BookingItemSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */; };
 		CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666752322E14D0074E83A /* CollectionHeaderView.swift */; };
 		CA26667A2322E71B0074E83A /* Facets+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */; };
 		CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */; };
 		CA35995022E8B10400D7D675 /* SupplierInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */; };
+		CA78A9FC237B062800F6DF87 /* ParkingResultContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78A9F9237B062700F6DF87 /* ParkingResultContext.swift */; };
+		CA78A9FD237B062800F6DF87 /* ParkingFilterContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78A9FA237B062800F6DF87 /* ParkingFilterContext.swift */; };
+		CA78A9FE237B062800F6DF87 /* ParkingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78A9FB237B062800F6DF87 /* ParkingSpot.swift */; };
+		CA78AA00237B063200F6DF87 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78A9FF237B063200F6DF87 /* UIView+Additions.swift */; };
+		CA78AA05237B063F00F6DF87 /* BoundingBox+CLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA01237B063E00F6DF87 /* BoundingBox+CLocation.swift */; };
+		CA78AA06237B063F00F6DF87 /* MKMapView+BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA02237B063E00F6DF87 /* MKMapView+BoundingBox.swift */; };
+		CA78AA07237B063F00F6DF87 /* ParkingItemDetails+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA03237B063F00F6DF87 /* ParkingItemDetails+TravelerUI.swift */; };
+		CA78AA08237B063F00F6DF87 /* ParkingItemQuery+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA04237B063F00F6DF87 /* ParkingItemQuery+TravelerUI.swift */; };
+		CA78AA0B237B065000F6DF87 /* Parking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA78AA09237B064F00F6DF87 /* Parking.storyboard */; };
+		CA78AA0C237B065000F6DF87 /* PurchaseQuestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA78AA0A237B065000F6DF87 /* PurchaseQuestions.storyboard */; };
+		CA78AA0E237B065C00F6DF87 /* SnappingCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA0D237B065B00F6DF87 /* SnappingCollectionViewFlowLayout.swift */; };
+		CA78AA1E237B067200F6DF87 /* ParkingResultMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA0F237B067100F6DF87 /* ParkingResultMapViewController.swift */; };
+		CA78AA1F237B067200F6DF87 /* ParkingResultMapListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA10237B067100F6DF87 /* ParkingResultMapListController.swift */; };
+		CA78AA20237B067200F6DF87 /* ParkingResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA11237B067100F6DF87 /* ParkingResultTableViewController.swift */; };
+		CA78AA21237B067200F6DF87 /* ParkingQueryFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA12237B067100F6DF87 /* ParkingQueryFormViewController.swift */; };
+		CA78AA22237B067200F6DF87 /* BookingItemQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA13237B067100F6DF87 /* BookingItemQueryViewController.swift */; };
+		CA78AA23237B067200F6DF87 /* QueryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA14237B067100F6DF87 /* QueryItemViewController.swift */; };
+		CA78AA24237B067200F6DF87 /* ParkingQueryChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA15237B067100F6DF87 /* ParkingQueryChangeViewController.swift */; };
+		CA78AA25237B067200F6DF87 /* ParkingResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA16237B067100F6DF87 /* ParkingResultListViewController.swift */; };
+		CA78AA26237B067200F6DF87 /* ParkingItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA17237B067100F6DF87 /* ParkingItemDetailViewController.swift */; };
+		CA78AA27237B067200F6DF87 /* ParkingItemDetailsPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA18237B067100F6DF87 /* ParkingItemDetailsPriceViewController.swift */; };
+		CA78AA28237B067200F6DF87 /* ProductItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA19237B067100F6DF87 /* ProductItemViewController.swift */; };
+		CA78AA29237B067200F6DF87 /* ParkingItemDetailsResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA1A237B067100F6DF87 /* ParkingItemDetailsResultViewController.swift */; };
+		CA78AA2A237B067200F6DF87 /* ParkingQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA1B237B067100F6DF87 /* ParkingQueryViewController.swift */; };
+		CA78AA2B237B067200F6DF87 /* ParkingFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA1C237B067200F6DF87 /* ParkingFilterViewController.swift */; };
+		CA78AA2C237B067200F6DF87 /* PurchaseQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA1D237B067200F6DF87 /* PurchaseQuestionsViewController.swift */; };
+		CA78AA30237B068F00F6DF87 /* ParkingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA2D237B068F00F6DF87 /* ParkingItemTableViewCell.swift */; };
+		CA78AA31237B068F00F6DF87 /* LabeledAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA2E237B068F00F6DF87 /* LabeledAnnotationView.swift */; };
+		CA78AA32237B068F00F6DF87 /* ParkingItemCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78AA2F237B068F00F6DF87 /* ParkingItemCellView.swift */; };
 		CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */; };
 		CA88803D22B2AF4800213E41 /* BookableProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */; };
 		CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */; };
@@ -169,10 +195,8 @@
 		A9639C9A220DF4F200625235 /* TravelerKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TravelerKitUI.h; sourceTree = "<group>"; };
 		A9639C9B220DF4F200625235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9639CA3220DF57300625235 /* CatalogItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemViewController.swift; sourceTree = "<group>"; };
-		A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingQuestionsViewController.swift; sourceTree = "<group>"; };
 		A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
 		A9639CA8220DF57300625235 /* QuantityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityViewController.swift; sourceTree = "<group>"; };
-		A9639CA9220DF57300625235 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfoViewController.swift; sourceTree = "<group>"; };
 		A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityFormViewController.swift; sourceTree = "<group>"; };
 		A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
@@ -262,12 +286,40 @@
 		CA1A8567232ED66500F4DED4 /* RangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RangeCell.xib; sourceTree = "<group>"; };
 		CA1A856A232EE88900F4DED4 /* DoubleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSliderView.swift; sourceTree = "<group>"; };
 		CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingItemSearch.storyboard; sourceTree = "<group>"; };
-		CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchViewController.swift; sourceTree = "<group>"; };
 		CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchResultViewController.swift; sourceTree = "<group>"; };
 		CA2666752322E14D0074E83A /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Facets+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierInfoViewController.swift; sourceTree = "<group>"; };
+		CA78A9F9237B062700F6DF87 /* ParkingResultContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingResultContext.swift; sourceTree = "<group>"; };
+		CA78A9FA237B062800F6DF87 /* ParkingFilterContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingFilterContext.swift; sourceTree = "<group>"; };
+		CA78A9FB237B062800F6DF87 /* ParkingSpot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingSpot.swift; sourceTree = "<group>"; };
+		CA78A9FF237B063200F6DF87 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		CA78AA01237B063E00F6DF87 /* BoundingBox+CLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoundingBox+CLocation.swift"; sourceTree = "<group>"; };
+		CA78AA02237B063E00F6DF87 /* MKMapView+BoundingBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapView+BoundingBox.swift"; sourceTree = "<group>"; };
+		CA78AA03237B063F00F6DF87 /* ParkingItemDetails+TravelerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ParkingItemDetails+TravelerUI.swift"; sourceTree = "<group>"; };
+		CA78AA04237B063F00F6DF87 /* ParkingItemQuery+TravelerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ParkingItemQuery+TravelerUI.swift"; sourceTree = "<group>"; };
+		CA78AA09237B064F00F6DF87 /* Parking.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Parking.storyboard; sourceTree = "<group>"; };
+		CA78AA0A237B065000F6DF87 /* PurchaseQuestions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PurchaseQuestions.storyboard; sourceTree = "<group>"; };
+		CA78AA0D237B065B00F6DF87 /* SnappingCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		CA78AA0F237B067100F6DF87 /* ParkingResultMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingResultMapViewController.swift; sourceTree = "<group>"; };
+		CA78AA10237B067100F6DF87 /* ParkingResultMapListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingResultMapListController.swift; sourceTree = "<group>"; };
+		CA78AA11237B067100F6DF87 /* ParkingResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingResultTableViewController.swift; sourceTree = "<group>"; };
+		CA78AA12237B067100F6DF87 /* ParkingQueryFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingQueryFormViewController.swift; sourceTree = "<group>"; };
+		CA78AA13237B067100F6DF87 /* BookingItemQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingItemQueryViewController.swift; sourceTree = "<group>"; };
+		CA78AA14237B067100F6DF87 /* QueryItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryItemViewController.swift; sourceTree = "<group>"; };
+		CA78AA15237B067100F6DF87 /* ParkingQueryChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingQueryChangeViewController.swift; sourceTree = "<group>"; };
+		CA78AA16237B067100F6DF87 /* ParkingResultListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingResultListViewController.swift; sourceTree = "<group>"; };
+		CA78AA17237B067100F6DF87 /* ParkingItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingItemDetailViewController.swift; sourceTree = "<group>"; };
+		CA78AA18237B067100F6DF87 /* ParkingItemDetailsPriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingItemDetailsPriceViewController.swift; sourceTree = "<group>"; };
+		CA78AA19237B067100F6DF87 /* ProductItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemViewController.swift; sourceTree = "<group>"; };
+		CA78AA1A237B067100F6DF87 /* ParkingItemDetailsResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingItemDetailsResultViewController.swift; sourceTree = "<group>"; };
+		CA78AA1B237B067100F6DF87 /* ParkingQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingQueryViewController.swift; sourceTree = "<group>"; };
+		CA78AA1C237B067200F6DF87 /* ParkingFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingFilterViewController.swift; sourceTree = "<group>"; };
+		CA78AA1D237B067200F6DF87 /* PurchaseQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseQuestionsViewController.swift; sourceTree = "<group>"; };
+		CA78AA2D237B068F00F6DF87 /* ParkingItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingItemTableViewCell.swift; sourceTree = "<group>"; };
+		CA78AA2E237B068F00F6DF87 /* LabeledAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledAnnotationView.swift; sourceTree = "<group>"; };
+		CA78AA2F237B068F00F6DF87 /* ParkingItemCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkingItemCellView.swift; sourceTree = "<group>"; };
 		CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AggregatedPassesViewController.swift; sourceTree = "<group>"; };
 		CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookableProductDetailViewController.swift; sourceTree = "<group>"; };
 		CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +391,21 @@
 		A9639CA2220DF57300625235 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CA78AA13237B067100F6DF87 /* BookingItemQueryViewController.swift */,
+				CA78AA1C237B067200F6DF87 /* ParkingFilterViewController.swift */,
+				CA78AA18237B067100F6DF87 /* ParkingItemDetailsPriceViewController.swift */,
+				CA78AA1A237B067100F6DF87 /* ParkingItemDetailsResultViewController.swift */,
+				CA78AA17237B067100F6DF87 /* ParkingItemDetailViewController.swift */,
+				CA78AA15237B067100F6DF87 /* ParkingQueryChangeViewController.swift */,
+				CA78AA12237B067100F6DF87 /* ParkingQueryFormViewController.swift */,
+				CA78AA1B237B067100F6DF87 /* ParkingQueryViewController.swift */,
+				CA78AA16237B067100F6DF87 /* ParkingResultListViewController.swift */,
+				CA78AA10237B067100F6DF87 /* ParkingResultMapListController.swift */,
+				CA78AA0F237B067100F6DF87 /* ParkingResultMapViewController.swift */,
+				CA78AA11237B067100F6DF87 /* ParkingResultTableViewController.swift */,
+				CA78AA19237B067100F6DF87 /* ProductItemViewController.swift */,
+				CA78AA1D237B067200F6DF87 /* PurchaseQuestionsViewController.swift */,
+				CA78AA14237B067100F6DF87 /* QueryItemViewController.swift */,
 				CA12275B22F0D4CA00541F3A /* TermsAndConditionsViewController.swift */,
 				CA1656FE22B2E0FB00FDF6C7 /* CancellationViewController.swift */,
 				CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */,
@@ -349,9 +416,7 @@
 				A974A6962282130900319683 /* OrdersViewController.swift */,
 				A974A6982282131D00319683 /* OrderResultViewController.swift */,
 				A9639CA3220DF57300625235 /* CatalogItemViewController.swift */,
-				A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */,
 				A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */,
-				A9639CA9220DF57300625235 /* PurchaseViewController.swift */,
 				A9639CA8220DF57300625235 /* QuantityViewController.swift */,
 				A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */,
 				A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */,
@@ -374,7 +439,6 @@
 				CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */,
 				A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */,
 				A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */,
-				CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */,
 				CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */,
 				A33F3615232039770044A1DD /* WishlistViewController.swift */,
 				A33F3617232039A20044A1DD /* WishlistResultViewController.swift */,
@@ -388,6 +452,10 @@
 		A9639CBB220DF57300625235 /* ModelExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				CA78AA01237B063E00F6DF87 /* BoundingBox+CLocation.swift */,
+				CA78AA02237B063E00F6DF87 /* MKMapView+BoundingBox.swift */,
+				CA78AA03237B063F00F6DF87 /* ParkingItemDetails+TravelerUI.swift */,
+				CA78AA04237B063F00F6DF87 /* ParkingItemQuery+TravelerUI.swift */,
 				CAACA48222B835600054765C /* CancellationError+LocalizedError.swift */,
 				A9639D33220E01FE00625235 /* CatalogItemDetails+TravelerUI.swift */,
 				A9639D38220E029800625235 /* Attribute+TravelerUI.swift */,
@@ -404,6 +472,9 @@
 		A9639CBC220DF57300625235 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CA78AA2E237B068F00F6DF87 /* LabeledAnnotationView.swift */,
+				CA78AA2F237B068F00F6DF87 /* ParkingItemCellView.swift */,
+				CA78AA2D237B068F00F6DF87 /* ParkingItemTableViewCell.swift */,
 				CA88803F22B2AF9700213E41 /* PassCell.swift */,
 				A9639CBD220DF57300625235 /* CarouselViewCell.swift */,
 				F33397D62214C742003C7819 /* FeaturedCarouselViewCell.swift */,
@@ -445,6 +516,8 @@
 		A9639CD0220DF57400625235 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				CA78AA09237B064F00F6DF87 /* Parking.storyboard */,
+				CA78AA0A237B065000F6DF87 /* PurchaseQuestions.storyboard */,
 				CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */,
 				CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */,
 				CA88804122B2B22400213E41 /* Product.storyboard */,
@@ -462,6 +535,7 @@
 		A9639CD2220DF57400625235 /* UIUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				CA78AA0D237B065B00F6DF87 /* SnappingCollectionViewFlowLayout.swift */,
 				A9639CD3220DF57400625235 /* PagedHorizontalView.swift */,
 				A9639CD4220DF57400625235 /* FormView */,
 				A9639CE4220DF57400625235 /* DrawerDismissalAnimator.swift */,
@@ -516,6 +590,7 @@
 		A9639D35220E023C00625235 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CA78A9FF237B063200F6DF87 /* UIView+Additions.swift */,
 				CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */,
 				CA16570222B2E91300FDF6C7 /* Notification+Cancel.swift */,
 				A9639D36220E028300625235 /* NSMutableAttributedString+FontFace.swift */,
@@ -530,6 +605,9 @@
 		A96F830C22389DFA00268D0D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA78A9FA237B062800F6DF87 /* ParkingFilterContext.swift */,
+				CA78A9F9237B062700F6DF87 /* ParkingResultContext.swift */,
+				CA78A9FB237B062800F6DF87 /* ParkingSpot.swift */,
 				A96F830D22389E1D00268D0D /* BookingContext.swift */,
 				A996650E23442846007EBF14 /* Authenticator.swift */,
 			);
@@ -628,7 +706,9 @@
 				88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */,
 				CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */,
 				A9639D20220DF57400625235 /* FormButtonCell.xib in Resources */,
+				CA78AA0B237B065000F6DF87 /* Parking.storyboard in Resources */,
 				A9639D06220DF57400625235 /* HeaderView.xib in Resources */,
+				CA78AA0C237B065000F6DF87 /* PurchaseQuestions.storyboard in Resources */,
 				A9639D16220DF57400625235 /* CatalogItem.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA78A9FD237B062800F6DF87 /* ParkingFilterContext.swift in Sources */,
 				A9639D2A220DF57400625235 /* DrawerTansitioning.swift in Sources */,
 				A9639D02220DF57400625235 /* BookablePurchaseViewController.swift in Sources */,
 				A996650F23442846007EBF14 /* Authenticator.swift in Sources */,
@@ -648,6 +729,7 @@
 				A3E3FC472343AE9200CB616B /* BookingOption+TravelerUI.swift in Sources */,
 				A9639D1C220DF57400625235 /* FormFieldFooterView.swift in Sources */,
 				CAACA48322B835600054765C /* CancellationError+LocalizedError.swift in Sources */,
+				CA78AA2C237B067200F6DF87 /* PurchaseQuestionsViewController.swift in Sources */,
 				A9639D2D220DF57400625235 /* DrawerPresentationController.swift in Sources */,
 				A9639D22220DF57400625235 /* FormButtonCell.swift in Sources */,
 				A9639CF9220DF57400625235 /* BuyablePurchaseViewController.swift in Sources */,
@@ -655,34 +737,51 @@
 				A9639D34220E01FE00625235 /* CatalogItemDetails+TravelerUI.swift in Sources */,
 				A9639D0D220DF57400625235 /* LocationCell.swift in Sources */,
 				A9639D03220DF57400625235 /* CarouselViewCell.swift in Sources */,
+				CA78AA26237B067200F6DF87 /* ParkingItemDetailViewController.swift in Sources */,
 				A9639CFA220DF57400625235 /* BookableDetailsViewController.swift in Sources */,
+				CA78AA28237B067200F6DF87 /* ProductItemViewController.swift in Sources */,
 				A9639CFE220DF57400625235 /* CatalogResultViewController.swift in Sources */,
+				CA78AA24237B067200F6DF87 /* ParkingQueryChangeViewController.swift in Sources */,
 				CA2666742322DF2B0074E83A /* BookingItemSearchResultViewController.swift in Sources */,
 				CA35995022E8B10400D7D675 /* SupplierInfoViewController.swift in Sources */,
+				CA78AA08237B063F00F6DF87 /* ParkingItemQuery+TravelerUI.swift in Sources */,
+				CA78A9FE237B062800F6DF87 /* ParkingSpot.swift in Sources */,
+				CA78AA1F237B067200F6DF87 /* ParkingResultMapListController.swift in Sources */,
+				CA78AA0E237B065C00F6DF87 /* SnappingCollectionViewFlowLayout.swift in Sources */,
 				A9639D0C220DF57400625235 /* HeaderView.swift in Sources */,
+				CA78AA30237B068F00F6DF87 /* ParkingItemTableViewCell.swift in Sources */,
 				F3A3E062224BB84100CD69F4 /* FormValueDisplayInputCell.swift in Sources */,
 				A9639D1B220DF57400625235 /* FormListInputCell.swift in Sources */,
 				A9639D2C220DF57400625235 /* DrawerPresentationAnimator.swift in Sources */,
+				CA78AA23237B067200F6DF87 /* QueryItemViewController.swift in Sources */,
 				F3A3E06A224D449A00CD69F4 /* FormQuantityCell.swift in Sources */,
+				CA78AA2B237B067200F6DF87 /* ParkingFilterViewController.swift in Sources */,
 				A9639D21220DF57400625235 /* FormLayout.swift in Sources */,
 				A9639D0B220DF57400625235 /* DateCell.swift in Sources */,
 				A9639D37220E028300625235 /* NSMutableAttributedString+FontFace.swift in Sources */,
+				CA78AA1E237B067200F6DF87 /* ParkingResultMapViewController.swift in Sources */,
 				A9639D1F220DF57400625235 /* FormStringInputCell.swift in Sources */,
+				CA78AA00237B063200F6DF87 /* UIView+Additions.swift in Sources */,
 				A9639D10220DF57400625235 /* CatalogView.swift in Sources */,
 				A33F3618232039A20044A1DD /* WishlistResultViewController.swift in Sources */,
 				CA88803E22B2AF4800213E41 /* ProductDetailViewController.swift in Sources */,
 				A9639CFB220DF57400625235 /* ReceiptViewController.swift in Sources */,
 				A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */,
+				CA78AA05237B063F00F6DF87 /* BoundingBox+CLocation.swift in Sources */,
 				A9639D01220DF57400625235 /* BookingItemDetailsViewController.swift in Sources */,
 				F3A3E066224BBEF700CD69F4 /* FormDateInputCell.swift in Sources */,
 				CA16570322B2E91300FDF6C7 /* Notification+Cancel.swift in Sources */,
+				CA78AA31237B068F00F6DF87 /* LabeledAnnotationView.swift in Sources */,
 				A3900BDB232FD1BF002D7186 /* Int+DegreesToRadians.swift in Sources */,
+				CA78AA2A237B067200F6DF87 /* ParkingQueryViewController.swift in Sources */,
 				A9639D25220DF57400625235 /* InputType.swift in Sources */,
 				A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */,
 				A9639D3B220E02DF00625235 /* TravelerUI.swift in Sources */,
-				CA2666722322DE950074E83A /* BookingItemSearchViewController.swift in Sources */,
+				CA78AA21237B067200F6DF87 /* ParkingQueryFormViewController.swift in Sources */,
+				CA78AA29237B067200F6DF87 /* ParkingItemDetailsResultViewController.swift in Sources */,
 				A33F361A232048C30044A1DD /* AvailabilityCell.swift in Sources */,
 				CA12275C22F0D4CA00541F3A /* TermsAndConditionsViewController.swift in Sources */,
+				CA78AA07237B063F00F6DF87 /* ParkingItemDetails+TravelerUI.swift in Sources */,
 				A9639DEB2213463900625235 /* UIDevice+Device.swift in Sources */,
 				A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */,
 				CA161DB52326C8D800A94C52 /* Tag.swift in Sources */,
@@ -694,7 +793,6 @@
 				A9639D23220DF57400625235 /* FormView.swift in Sources */,
 				CA153D8122CA82F000287034 /* BookingError+LocalizedError.swift in Sources */,
 				A9639CF7220DF57400625235 /* CatalogItemDetailsViewController.swift in Sources */,
-				A9639CF1220DF57400625235 /* PurchaseViewController.swift in Sources */,
 				CA88803C22B2AF4800213E41 /* AggregatedPassesViewController.swift in Sources */,
 				88C7E5DD236CAC180007AD75 /* SimilarItemsResultViewController.swift in Sources */,
 				CA161DB02326C8B400A94C52 /* TagsCell.swift in Sources */,
@@ -704,12 +802,15 @@
 				CA1A8568232ED66500F4DED4 /* RangeCell.swift in Sources */,
 				CA88804022B2AF9700213E41 /* PassCell.swift in Sources */,
 				A33F3616232039770044A1DD /* WishlistViewController.swift in Sources */,
+				CA78AA32237B068F00F6DF87 /* ParkingItemCellView.swift in Sources */,
+				CA78AA06237B063F00F6DF87 /* MKMapView+BoundingBox.swift in Sources */,
 				A9639D0A220DF57400625235 /* ListCell.swift in Sources */,
 				A9639D13220DF57400625235 /* OrderItemViewCell.swift in Sources */,
 				CA1A856B232EE88900F4DED4 /* DoubleSliderView.swift in Sources */,
+				CA78AA27237B067200F6DF87 /* ParkingItemDetailsPriceViewController.swift in Sources */,
 				A9639CFC220DF57400625235 /* AttributesViewController.swift in Sources */,
 				A96F830E22389E1D00268D0D /* BookingContext.swift in Sources */,
-				A9639CED220DF57400625235 /* BookingQuestionsViewController.swift in Sources */,
+				CA78A9FC237B062800F6DF87 /* ParkingResultContext.swift in Sources */,
 				A9639D27220DF57400625235 /* DrawerDismissalAnimator.swift in Sources */,
 				A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */,
 				A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */,
@@ -728,6 +829,7 @@
 				A3900BDD232FD1F3002D7186 /* UIBezierPath+Heart.swift in Sources */,
 				A9639D1A220DF57400625235 /* FormMessage.swift in Sources */,
 				A974A6972282130900319683 /* OrdersViewController.swift in Sources */,
+				CA78AA25237B067200F6DF87 /* ParkingResultListViewController.swift in Sources */,
 				CA1A8565232ED64500F4DED4 /* DoubleSlider.swift in Sources */,
 				A9639D17220DF57400625235 /* PagedHorizontalView.swift in Sources */,
 				CACFE0D222B01FF300927899 /* Product+Description.swift in Sources */,
@@ -742,10 +844,12 @@
 				A9639D07220DF57400625235 /* StringCell.swift in Sources */,
 				A9639D28220DF57400625235 /* ContainerEmbedSegue.swift in Sources */,
 				F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */,
+				CA78AA20237B067200F6DF87 /* ParkingResultTableViewController.swift in Sources */,
 				CAC32410229C50E200A4F286 /* OrderDetailViewController.swift in Sources */,
 				A9639CFD220DF57400625235 /* BookingPassesViewController.swift in Sources */,
 				A9639D09220DF57400625235 /* InfoCell.swift in Sources */,
 				A9639D0E220DF57400625235 /* DatePickerCell.swift in Sources */,
+				CA78AA22237B067200F6DF87 /* BookingItemQueryViewController.swift in Sources */,
 				A9639D39220E029800625235 /* Attribute+TravelerUI.swift in Sources */,
 				A9639D24220DF57400625235 /* InputDescriptor.swift in Sources */,
 				A9639D11220DF57400625235 /* ButtonCell.swift in Sources */,

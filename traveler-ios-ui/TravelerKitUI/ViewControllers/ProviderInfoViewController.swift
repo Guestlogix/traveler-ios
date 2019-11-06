@@ -98,7 +98,7 @@ open class ProviderInfoViewController: UIViewController {
 }
 
 extension ProviderInfoViewController: UITableViewDataSource {
-    private func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
@@ -116,7 +116,7 @@ extension ProviderInfoViewController: UITableViewDataSource {
 }
 
 extension ProviderInfoViewController: UITableViewDelegate {
-    private func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let location = locations![indexPath.row]
         return LocationCell.boundingSize(address: location.address, with: CGSize(width: tableView.bounds.width, height: 0)).height
     }
