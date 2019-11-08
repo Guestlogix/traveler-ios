@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88168D402374C8FB0096E443 /* Error.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88168D3F2374C8FB0096E443 /* Error.storyboard */; };
+		88265B152375B0DB008483B4 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A69E2283209A00319683 /* ErrorViewController.swift */; };
 		88C7E5DB236C9CD00007AD75 /* SimilarItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */; };
 		88C7E5DD236CAC180007AD75 /* SimilarItemsResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */; };
 		88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */; };
+		88EA66CB2375B9E1007EE832 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88EA66CA2375B9E1007EE832 /* Loading.storyboard */; };
+		88EA66CD2375BA17007EE832 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EA66CC2375BA17007EE832 /* LoadingViewController.swift */; };
 		A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */; };
 		A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */; };
 		A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F361323202B880044A1DD /* Wishlist.storyboard */; };
@@ -97,7 +101,6 @@
 		A974A6992282131D00319683 /* OrderResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6982282131D00319683 /* OrderResultViewController.swift */; };
 		A974A69B2282152E00319683 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A69A2282152E00319683 /* OrderCell.swift */; };
 		A974A69D2282197800319683 /* Orders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A974A69C2282197800319683 /* Orders.storyboard */; };
-		A974A69F2283209A00319683 /* RetryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A69E2283209A00319683 /* RetryViewController.swift */; };
 		A974A6A12285FBF800319683 /* DummyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6A02285FBF800319683 /* DummyTableViewController.swift */; };
 		A996650F23442846007EBF14 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A996650E23442846007EBF14 /* Authenticator.swift */; };
 		A9ECCEEB225658EA00CB5E59 /* Pass+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */; };
@@ -174,9 +177,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88168D3F2374C8FB0096E443 /* Error.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Error.storyboard; sourceTree = "<group>"; };
 		88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarItemsViewController.swift; sourceTree = "<group>"; };
 		88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarItemsResultViewController.swift; sourceTree = "<group>"; };
 		88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimilarItems.storyboard; sourceTree = "<group>"; };
+		88EA66CA2375B9E1007EE832 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
+		88EA66CC2375BA17007EE832 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
 		A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionsViewController.swift; sourceTree = "<group>"; };
 		A33F361323202B880044A1DD /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
@@ -195,8 +201,10 @@
 		A9639C9A220DF4F200625235 /* TravelerKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TravelerKitUI.h; sourceTree = "<group>"; };
 		A9639C9B220DF4F200625235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9639CA3220DF57300625235 /* CatalogItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemViewController.swift; sourceTree = "<group>"; };
+		A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingQuestionsViewController.swift; sourceTree = "<group>"; };
 		A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
 		A9639CA8220DF57300625235 /* QuantityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityViewController.swift; sourceTree = "<group>"; };
+		A9639CA9220DF57300625235 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfoViewController.swift; sourceTree = "<group>"; };
 		A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityFormViewController.swift; sourceTree = "<group>"; };
 		A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
@@ -266,7 +274,7 @@
 		A974A6982282131D00319683 /* OrderResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResultViewController.swift; sourceTree = "<group>"; };
 		A974A69A2282152E00319683 /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		A974A69C2282197800319683 /* Orders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Orders.storyboard; sourceTree = "<group>"; };
-		A974A69E2283209A00319683 /* RetryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryViewController.swift; sourceTree = "<group>"; };
+		A974A69E2283209A00319683 /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		A974A6A02285FBF800319683 /* DummyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyTableViewController.swift; sourceTree = "<group>"; };
 		A996650E23442846007EBF14 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		A9ECCEEA225658EA00CB5E59 /* Pass+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pass+TravelerUI.swift"; sourceTree = "<group>"; };
@@ -286,6 +294,7 @@
 		CA1A8567232ED66500F4DED4 /* RangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RangeCell.xib; sourceTree = "<group>"; };
 		CA1A856A232EE88900F4DED4 /* DoubleSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleSliderView.swift; sourceTree = "<group>"; };
 		CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingItemSearch.storyboard; sourceTree = "<group>"; };
+		CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchViewController.swift; sourceTree = "<group>"; };
 		CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchResultViewController.swift; sourceTree = "<group>"; };
 		CA2666752322E14D0074E83A /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Facets+TravelerUI.swift"; sourceTree = "<group>"; };
@@ -411,12 +420,14 @@
 				CA88803922B2AF4800213E41 /* AggregatedPassesViewController.swift */,
 				CA88803A22B2AF4800213E41 /* BookableProductDetailViewController.swift */,
 				CA88803B22B2AF4800213E41 /* ProductDetailViewController.swift */,
-				A974A69E2283209A00319683 /* RetryViewController.swift */,
+				A974A69E2283209A00319683 /* ErrorViewController.swift */,
 				A974A6A02285FBF800319683 /* DummyTableViewController.swift */,
 				A974A6962282130900319683 /* OrdersViewController.swift */,
 				A974A6982282131D00319683 /* OrderResultViewController.swift */,
 				A9639CA3220DF57300625235 /* CatalogItemViewController.swift */,
+				A9639CA5220DF57300625235 /* BookingQuestionsViewController.swift */,
 				A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */,
+				A9639CA9220DF57300625235 /* PurchaseViewController.swift */,
 				A9639CA8220DF57300625235 /* QuantityViewController.swift */,
 				A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */,
 				A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */,
@@ -439,12 +450,14 @@
 				CA35994F22E8B10400D7D675 /* SupplierInfoViewController.swift */,
 				A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */,
 				A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */,
+				CA2666712322DE950074E83A /* BookingItemSearchViewController.swift */,
 				CA2666732322DF2A0074E83A /* BookingItemSearchResultViewController.swift */,
 				A33F3615232039770044A1DD /* WishlistViewController.swift */,
 				A33F3617232039A20044A1DD /* WishlistResultViewController.swift */,
 				A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */,
 				88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */,
 				88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */,
+				88EA66CC2375BA17007EE832 /* LoadingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -528,6 +541,8 @@
 				CA26666D2322D9C40074E83A /* BookingItemSearch.storyboard */,
 				A33F361323202B880044A1DD /* Wishlist.storyboard */,
 				88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */,
+				88168D3F2374C8FB0096E443 /* Error.storyboard */,
+				88EA66CA2375B9E1007EE832 /* Loading.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -696,12 +711,14 @@
 				F3A3E068224BBF2400CD69F4 /* FormDateInputCell.xib in Resources */,
 				A974A69D2282197800319683 /* Orders.storyboard in Resources */,
 				A9639D0F220DF57400625235 /* CarouselViewCell.xib in Resources */,
+				88EA66CB2375B9E1007EE832 /* Loading.storyboard in Resources */,
 				A9639D18220DF57400625235 /* FormFieldFooterView.xib in Resources */,
 				CA88804222B2B22500213E41 /* Product.storyboard in Resources */,
 				F33397D92214C76E003C7819 /* FeaturedCarouselViewCell.xib in Resources */,
 				A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */,
 				CA12275E22F0D5D000541F3A /* TermsAndConditions.storyboard in Resources */,
 				CA1A8569232ED66500F4DED4 /* RangeCell.xib in Resources */,
+				88168D402374C8FB0096E443 /* Error.storyboard in Resources */,
 				F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */,
 				88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */,
 				CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */,
@@ -820,8 +837,8 @@
 				CA26667A2322E71B0074E83A /* Facets+TravelerUI.swift in Sources */,
 				A9639D29220DF57400625235 /* ProgressHUD.swift in Sources */,
 				A9639D15220DF57400625235 /* ImageCell.swift in Sources */,
+				88265B152375B0DB008483B4 /* ErrorViewController.swift in Sources */,
 				CA1656FF22B2E0FB00FDF6C7 /* CancellationViewController.swift in Sources */,
-				A974A69F2283209A00319683 /* RetryViewController.swift in Sources */,
 				CA161DB32326C8CF00A94C52 /* TagsView.swift in Sources */,
 				CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */,
 				A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */,
@@ -853,6 +870,7 @@
 				A9639D39220E029800625235 /* Attribute+TravelerUI.swift in Sources */,
 				A9639D24220DF57400625235 /* InputDescriptor.swift in Sources */,
 				A9639D11220DF57400625235 /* ButtonCell.swift in Sources */,
+				88EA66CD2375BA17007EE832 /* LoadingViewController.swift in Sources */,
 				A3A8846E2370CD3900480BCA /* CancellationReasonViewController.swift in Sources */,
 				CA88803D22B2AF4800213E41 /* BookableProductDetailViewController.swift in Sources */,
 			);

@@ -8,6 +8,7 @@
 
 import UIKit
 import TravelerKit
+import TravelerKitUI
 
 class PassengerCatalogViewController: UIViewController {
     var query: CatalogQuery?
@@ -24,8 +25,12 @@ class PassengerCatalogViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case ("loadingSegue"?, _):
             break
-        case (_, let retryVC as RetryViewController):
-            retryVC.delegate = self
+        case ("errorSegue", let errorVC as ErrorViewController):
+            errorVC.delegate = self
+        case ("emptySegue", let errorVC as ErrorViewController):
+            errorVC.delegate = self
+            errorVC.errorTitleString = "Sorry"
+            errorVC.errorMessageString = "There's nothing to show :("
         case (_, let resultVC as PassengerCatalogResultViewController):
             resultVC.catalog = catalog
         default:
@@ -50,7 +55,11 @@ extension PassengerCatalogViewController: CatalogFetchDelegate {
     func catalogFetchDidSucceedWith(_ result: Catalog) {
         self.catalog = result
 
-        performSegue(withIdentifier: "resultSegue", sender: nil)
+        if result.groups.first?.items.count == 0 {
+            performSegue(withIdentifier: "emptySegue", sender: nil)
+        } else {
+            performSegue(withIdentifier: "resultSegue", sender: nil)
+        }
     }
 
     func catalogFetchDidFailWith(_ error: Error) {
@@ -58,8 +67,8 @@ extension PassengerCatalogViewController: CatalogFetchDelegate {
     }
 }
 
-extension PassengerCatalogViewController: RetryViewControllerDelegate {
-    func retryViewControllerDidRetry(_ controller: RetryViewController) {
+extension PassengerCatalogViewController: ErrorViewControllerDelegate {
+    func errorViewControllerDidRetry(_ controller: ErrorViewController) {
         reload()
     }
 }

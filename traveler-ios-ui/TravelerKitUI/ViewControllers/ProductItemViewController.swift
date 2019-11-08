@@ -34,7 +34,7 @@ open class ProductItemViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case ("loadingSegue", _):
             break
-        case (_, let vc as RetryViewController):
+        case (_, let vc as ErrorViewController):
             vc.delegate = self
         case (_, let vc as CatalogItemDetailsViewController):
             vc.itemDetails = details
@@ -70,8 +70,8 @@ extension ProductItemViewController: CatalogItemDetailsFetchDelegate {
     }
 }
 
-extension ProductItemViewController: RetryViewControllerDelegate {
-    public func retryViewControllerDidRetry(_ controller: RetryViewController) {
+extension ProductItemViewController: ErrorViewControllerDelegate {
+    public func errorViewControllerDidRetry(_ controller: ErrorViewController) {
         reload()
     }
 }

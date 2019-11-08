@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NQy-Yx-doH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Error View Controller-->
+        <scene sceneID="4sY-uU-9iR">
+            <objects>
+                <viewController id="NQy-Yx-doH" customClass="ErrorViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Io-lb-ig9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2U-pW-WDK" userLabel="Error Title">
+                                <rect key="frame" x="20" y="159" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Unfortunately something went wrong :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsA-Jf-h6K">
+                                <rect key="frame" x="50" y="219.5" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcN-Bn-j2h">
+                                <rect key="frame" x="188.5" y="250" width="37" height="30"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <action selector="didRetry:" destination="NQy-Yx-doH" eventType="touchUpInside" id="tLI-hu-zIb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SsA-Jf-h6K" firstAttribute="leading" secondItem="7EI-uI-Zut" secondAttribute="leading" constant="50" id="La8-CL-StB"/>
+                            <constraint firstItem="7EI-uI-Zut" firstAttribute="trailing" secondItem="SsA-Jf-h6K" secondAttribute="trailing" constant="50" id="NuU-Vj-Aax"/>
+                            <constraint firstItem="K2U-pW-WDK" firstAttribute="top" secondItem="7EI-uI-Zut" secondAttribute="top" constant="80" id="dhK-h6-ZbN"/>
+                            <constraint firstItem="SsA-Jf-h6K" firstAttribute="top" secondItem="K2U-pW-WDK" secondAttribute="bottom" constant="15" id="e0z-dx-Qgk"/>
+                            <constraint firstItem="K2U-pW-WDK" firstAttribute="leading" secondItem="7EI-uI-Zut" secondAttribute="leading" constant="20" id="iVf-fg-XOa"/>
+                            <constraint firstItem="EcN-Bn-j2h" firstAttribute="top" secondItem="SsA-Jf-h6K" secondAttribute="bottom" constant="15" id="mUc-Yj-m80"/>
+                            <constraint firstItem="7EI-uI-Zut" firstAttribute="trailing" secondItem="K2U-pW-WDK" secondAttribute="trailing" constant="20" id="vsb-Di-P9w"/>
+                            <constraint firstItem="EcN-Bn-j2h" firstAttribute="centerX" secondItem="SsA-Jf-h6K" secondAttribute="centerX" id="zs4-F2-I6a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7EI-uI-Zut"/>
+                    </view>
+                    <connections>
+                        <outlet property="errorMessage" destination="SsA-Jf-h6K" id="Snu-kO-Wt6"/>
+                        <outlet property="errorMessageToErrorTitleVerticalConstraint" destination="e0z-dx-Qgk" id="BU5-3K-N1T"/>
+                        <outlet property="errorTitle" destination="K2U-pW-WDK" id="kNm-2d-CTw"/>
+                        <outlet property="retryButton" destination="EcN-Bn-j2h" id="fWw-6f-R12"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pvz-0u-y6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4543.4782608695659" y="1242.8571428571429"/>
+        </scene>
+    </scenes>
+</document>

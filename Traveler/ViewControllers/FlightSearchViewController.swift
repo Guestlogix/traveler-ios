@@ -8,6 +8,7 @@
 
 import UIKit
 import TravelerKit
+import TravelerKitUI
 
 protocol FlightSearchViewControllerDelegate: class {
     func flightSearchViewControllerDidTryAgain(_ controller: FlightSearchViewController)
@@ -38,13 +39,17 @@ class FlightSearchViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case ("loadingSegue"?, _),
-             ("exitSegue"?, _):
+        case ("loadingSegue"?, let loadingVC as LoadingViewController):
+            loadingVC.loadingTitleString = "Searching flights..."
+        case ("exitSegue"?, _):
             break
-        case (_, let emptyVC as EmptyViewController):
+        case ("emptySegue", let emptyVC as ErrorViewController):
             emptyVC.delegate = self
-        case (_, let retryVC as RetryViewController):
-            retryVC.delegate = self
+            emptyVC.errorTitleString = "No flights found"
+            emptyVC.errorMessageString = "Please try again with a different flight number or departure date"
+            emptyVC.retryButtonString = "Try Again"
+        case ("errorSegue", let errorVC as ErrorViewController):
+            errorVC.delegate = self
         case (_, let resultVC as FlightSearchResultViewController):
             resultVC.flights = flights
             resultVC.delegate = self
@@ -89,8 +94,8 @@ extension FlightSearchViewController: EmptyViewControllerDelegate {
     }
 }
 
-extension FlightSearchViewController: RetryViewControllerDelegate {
-    func retryViewControllerDidRetry(_ controller: RetryViewController) {
+extension FlightSearchViewController: ErrorViewControllerDelegate {
+    func errorViewControllerDidRetry(_ controller: ErrorViewController) {
         reload()
     }
 }

@@ -25,8 +25,9 @@ open class ProductDetailViewController: UIViewController {
         case (_, let vc as BookableProductDetailViewController, let productDetails as BookingItemDetails):
             vc.purchasedProduct = product as? BookingProduct
             vc.productDetails = productDetails
-        case (_, let vc as RetryViewController, _):
+        case (_, let vc as ErrorViewController, _):
             vc.delegate = self
+            vc.errorMessageString = "An error occured while loading your product :("
         case ("loadingSegue", _, _):
             break
         default:
@@ -68,8 +69,8 @@ extension ProductDetailViewController: CatalogItemDetailsFetchDelegate {
     }
 }
 
-extension ProductDetailViewController: RetryViewControllerDelegate {
-    public func retryViewControllerDidRetry(_ controller: RetryViewController) {
+extension ProductDetailViewController: ErrorViewControllerDelegate {
+    public func errorViewControllerDidRetry(_ controller: ErrorViewController) {
         reload()
     }
 }

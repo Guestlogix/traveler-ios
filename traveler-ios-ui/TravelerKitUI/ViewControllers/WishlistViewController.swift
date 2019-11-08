@@ -35,8 +35,11 @@ open class WishlistViewController: UIViewController {
         case (_, let vc as WishlistResultViewController):
             vc.wishlistResult = result
             vc.delegate = self
-        case ("errorSegue", let vc as RetryViewController):
+        case ("emptySegue", let vc as ErrorViewController):
+            vc.errorMessageString = "There are currently no saved items to show"
+        case ("errorSegue", let vc as ErrorViewController):
             vc.delegate = self
+            vc.errorMessageString = "An error occured while loading your wishlist :("
         case ("loadingSegue", _):
             break
         default:
@@ -63,8 +66,8 @@ extension WishlistViewController: WishlistFetchDelegate {
     }
 }
 
-extension WishlistViewController: RetryViewControllerDelegate {
-    public func retryViewControllerDidRetry(_ controller: RetryViewController) {
+extension WishlistViewController: ErrorViewControllerDelegate {
+    public func errorViewControllerDidRetry(_ controller: ErrorViewController) {
         reload()
     }
 }

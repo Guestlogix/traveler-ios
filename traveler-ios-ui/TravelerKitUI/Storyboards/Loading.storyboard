@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GIG-eu-Vap">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Loading View Controller-->
+        <scene sceneID="GHV-QE-6o3">
+            <objects>
+                <viewController id="GIG-eu-Vap" customClass="LoadingViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZE6-DT-Hw4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhd-2L-HMD">
+                                <rect key="frame" x="207" y="64" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3XY-HH-mMb">
+                                <rect key="frame" x="197" y="84" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3XY-HH-mMb" firstAttribute="top" secondItem="mhd-2L-HMD" secondAttribute="bottom" constant="20" id="8o8-om-zvw"/>
+                            <constraint firstItem="mhd-2L-HMD" firstAttribute="centerX" secondItem="TU8-vl-Mga" secondAttribute="centerX" id="C2C-G3-4IC"/>
+                            <constraint firstItem="mhd-2L-HMD" firstAttribute="top" secondItem="TU8-vl-Mga" secondAttribute="top" constant="20" id="DsI-cI-rgP"/>
+                            <constraint firstItem="3XY-HH-mMb" firstAttribute="centerX" secondItem="TU8-vl-Mga" secondAttribute="centerX" id="MSp-7J-tmm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TU8-vl-Mga"/>
+                    </view>
+                    <connections>
+                        <outlet property="loadingTitle" destination="mhd-2L-HMD" id="zDM-Be-geH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAN-Ev-Aac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8484" y="-1125"/>
+        </scene>
+    </scenes>
+</document>
