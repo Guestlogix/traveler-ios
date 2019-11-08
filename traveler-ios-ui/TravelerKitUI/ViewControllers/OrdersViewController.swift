@@ -32,8 +32,11 @@ open class OrdersViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as OrderResultViewController):
             vc.orderResult = result
-        case ("errorSegue", _),
-             ("loadingSegue", _):
+        case ("emptySegue", let vc as ErrorViewController):
+            vc.errorMessageString = "There are currently no orders to show"
+        case ("errorSegue", let vc as ErrorViewController):
+            vc.errorMessageString = "An error occured while loading your orders :("
+        case ("loadingSegue", _):
             break
         default:
             Log("Unknown segue", data: segue, level: .warning)

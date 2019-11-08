@@ -41,8 +41,9 @@ public class ParkingItemDetailViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case ("loadingSegue"?, _):
             break
-        case (_, let vc as RetryViewController):
+        case (_, let vc as ErrorViewController):
             vc.delegate = self
+            vc.errorMessageString = "Error loading parking details"
         case (_, let vc as ParkingItemDetailsResultViewController):
             vc.details = details
             vc.parkingItem = parkingItem
@@ -73,8 +74,8 @@ extension ParkingItemDetailViewController: CatalogItemDetailsFetchDelegate {
     }
 }
 
-extension ParkingItemDetailViewController: RetryViewControllerDelegate {
-    public func retryViewControllerDidRetry(_ controller: RetryViewController) {
+extension ParkingItemDetailViewController: ErrorViewControllerDelegate {
+    public func errorViewControllerDidRetry(_ controller: ErrorViewController) {
         reload()
     }
 }

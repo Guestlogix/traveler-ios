@@ -26,9 +26,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="v1L-b8-8Zi" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="LPp-cS-dln"/>
-                        <segue destination="TVj-aO-8Lx" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="vaI-3R-XNH"/>
                         <segue destination="edl-lD-YNF" kind="custom" identifier="bookableDetailSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="0L0-uu-ccr"/>
+                        <segue destination="bXq-iS-mBF" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="3rN-gx-1pj"/>
+                        <segue destination="EbM-Hp-TMV" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="Tbc-ho-r9d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XoN-vt-dhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,66 +53,13 @@
             </objects>
             <point key="canvasLocation" x="1526" y="1440"/>
         </scene>
-        <!--Retry View Controller-->
-        <scene sceneID="gj3-9m-OhT">
+        <!--Error-->
+        <scene sceneID="prp-ys-zgJ">
             <objects>
-                <viewController id="v1L-b8-8Zi" customClass="RetryViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="w8O-m4-fYA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An error occured while loading your product :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MX-pz-3Ld">
-                                <rect key="frame" x="52" y="206" width="310" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rvl-qh-Wz6">
-                                <rect key="frame" x="188.5" y="279" width="37" height="30"/>
-                                <state key="normal" title="Retry"/>
-                                <connections>
-                                    <action selector="didRetry:" destination="v1L-b8-8Zi" eventType="touchUpInside" id="qD1-CW-ShS"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="97i-y1-xfp" firstAttribute="trailing" secondItem="6MX-pz-3Ld" secondAttribute="trailing" constant="52" id="3Mf-oA-Jv7"/>
-                            <constraint firstItem="6MX-pz-3Ld" firstAttribute="leading" secondItem="97i-y1-xfp" secondAttribute="leading" constant="52" id="4K2-YI-U7W"/>
-                            <constraint firstItem="6MX-pz-3Ld" firstAttribute="centerY" secondItem="97i-y1-xfp" secondAttribute="centerY" multiplier="0.5" id="5Za-73-pYd"/>
-                            <constraint firstItem="Rvl-qh-Wz6" firstAttribute="centerX" secondItem="6MX-pz-3Ld" secondAttribute="centerX" id="ZZA-zT-NOA"/>
-                            <constraint firstItem="Rvl-qh-Wz6" firstAttribute="top" secondItem="6MX-pz-3Ld" secondAttribute="bottom" constant="32" id="mbA-SL-Mz2"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="97i-y1-xfp"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t99-tR-EEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Error" id="bXq-iS-mBF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mbz-vo-gqD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4545" y="1243"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="lPG-0W-o2M">
-            <objects>
-                <viewController id="TVj-aO-8Lx" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qDG-yd-rs7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="SWY-ap-3YU">
-                                <rect key="frame" x="197" y="92" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="SWY-ap-3YU" firstAttribute="top" secondItem="0sK-mQ-Rdi" secondAttribute="top" constant="48" id="MfV-J8-uds"/>
-                            <constraint firstItem="SWY-ap-3YU" firstAttribute="centerX" secondItem="0sK-mQ-Rdi" secondAttribute="centerX" id="keD-iz-Qkw"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="0sK-mQ-Rdi"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9mu-gc-Dq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4545" y="434"/>
+            <point key="canvasLocation" x="4544" y="1242"/>
         </scene>
         <!--Bookable Product Detail View Controller-->
         <scene sceneID="Mx3-YE-ncF">
@@ -454,6 +401,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pX8-1y-MDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6822" y="2507"/>
+        </scene>
+        <!--Loading-->
+        <scene sceneID="Do6-Qy-Nh9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Loading" id="EbM-Hp-TMV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Nx-Fu-oJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4542" y="881"/>
         </scene>
     </scenes>
 </document>

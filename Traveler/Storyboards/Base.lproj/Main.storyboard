@@ -366,151 +366,15 @@
                         <viewLayoutGuide key="safeArea" id="VoZ-sH-Ts8"/>
                     </view>
                     <connections>
-                        <segue destination="alS-5p-xO7" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="tWb-qg-vgJ"/>
-                        <segue destination="37g-es-PDM" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="srw-sr-Ic6"/>
-                        <segue destination="dwi-gd-Sty" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="qzO-s9-EXi"/>
                         <segue destination="pxC-2F-gAu" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="ckk-rs-fx1"/>
+                        <segue destination="ZSI-gE-FCJ" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="LFG-PS-kqm"/>
+                        <segue destination="dYY-jB-TNb" kind="custom" identifier="emptySegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="BmR-jm-vG2"/>
+                        <segue destination="Rfu-Xs-fmI" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" id="Blu-wM-sgt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mGE-Af-Jfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2964" y="987"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="1yM-fc-Q8C">
-            <objects>
-                <viewController id="alS-5p-xO7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TJ9-fo-rmD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="rrV-sS-fkX">
-                                <rect key="frame" x="177.66666666666666" y="92" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="rrV-sS-fkX" firstAttribute="centerX" secondItem="L8g-43-4x9" secondAttribute="centerX" id="eF6-NB-icN"/>
-                            <constraint firstItem="rrV-sS-fkX" firstAttribute="top" secondItem="L8g-43-4x9" secondAttribute="top" constant="48" id="vrQ-h7-beO"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="L8g-43-4x9"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AoH-s5-h6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6780" y="-684"/>
-        </scene>
-        <!--Retry View Controller-->
-        <scene sceneID="WTf-HC-9Se">
-            <objects>
-                <viewController id="37g-es-PDM" customClass="RetryViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3ES-HM-Om3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzf-yU-udB">
-                                <rect key="frame" x="0.0" y="319.33333333333331" width="375" height="183.33333333333331"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unfortunately something went wrong :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZz-wq-aBA">
-                                        <rect key="frame" x="20" y="49" width="335" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mel-se-81j">
-                                        <rect key="frame" x="169" y="116.33333333333337" width="37" height="30"/>
-                                        <state key="normal" title="Retry"/>
-                                        <connections>
-                                            <action selector="didRetry:" destination="37g-es-PDM" eventType="touchUpInside" id="Vd3-8n-VW4"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oh No!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfg-Vn-9O4">
-                                        <rect key="frame" x="159.66666666666666" y="8" width="56" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="QZz-wq-aBA" firstAttribute="leading" secondItem="dzf-yU-udB" secondAttribute="leading" constant="20" id="0DP-gh-GTj"/>
-                                    <constraint firstAttribute="bottom" secondItem="mel-se-81j" secondAttribute="bottom" constant="37" id="0im-vf-XUg"/>
-                                    <constraint firstAttribute="trailing" secondItem="QZz-wq-aBA" secondAttribute="trailing" constant="20" id="Ipc-m0-Ea1"/>
-                                    <constraint firstItem="kfg-Vn-9O4" firstAttribute="top" secondItem="dzf-yU-udB" secondAttribute="top" constant="8" id="PnW-AI-AKu"/>
-                                    <constraint firstItem="QZz-wq-aBA" firstAttribute="top" secondItem="kfg-Vn-9O4" secondAttribute="bottom" constant="20" id="g2j-pK-g5g"/>
-                                    <constraint firstItem="kfg-Vn-9O4" firstAttribute="centerX" secondItem="dzf-yU-udB" secondAttribute="centerX" id="jWZ-kI-KfQ"/>
-                                    <constraint firstItem="mel-se-81j" firstAttribute="centerX" secondItem="dzf-yU-udB" secondAttribute="centerX" id="pjX-8w-4Ne"/>
-                                    <constraint firstItem="mel-se-81j" firstAttribute="top" secondItem="QZz-wq-aBA" secondAttribute="bottom" constant="47" id="wRA-lU-0eE"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="dzf-yU-udB" firstAttribute="centerY" secondItem="Ojm-Mz-5uE" secondAttribute="centerY" id="RxN-13-eki"/>
-                            <constraint firstItem="dzf-yU-udB" firstAttribute="leading" secondItem="Ojm-Mz-5uE" secondAttribute="leading" id="fxM-jy-bfy"/>
-                            <constraint firstItem="dzf-yU-udB" firstAttribute="trailing" secondItem="Ojm-Mz-5uE" secondAttribute="trailing" id="ie4-G4-cwH"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ojm-Mz-5uE"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W76-mR-o7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6780" y="-1.4778325123152709"/>
-        </scene>
-        <!--Retry View Controller-->
-        <scene sceneID="ccJ-2w-NeJ">
-            <objects>
-                <viewController id="dwi-gd-Sty" customClass="RetryViewController" customModule="Traveler" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vZM-H3-Z4D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6X1-xh-zU0">
-                                <rect key="frame" x="0.0" y="319.33333333333331" width="375" height="183.33333333333331"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There's nothing to show :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRy-nk-Jyn">
-                                        <rect key="frame" x="20" y="49" width="335" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKh-98-f2Q">
-                                        <rect key="frame" x="161" y="116.33333333333337" width="53" height="30"/>
-                                        <state key="normal" title="Refresh"/>
-                                        <connections>
-                                            <action selector="didRetry:" destination="dwi-gd-Sty" eventType="touchUpInside" id="zzF-HU-Jdn"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-CA-D7g">
-                                        <rect key="frame" x="164.66666666666666" y="8" width="46" height="21"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="xKh-98-f2Q" firstAttribute="centerX" secondItem="6X1-xh-zU0" secondAttribute="centerX" id="Erx-Sv-2eN"/>
-                                    <constraint firstAttribute="bottom" secondItem="xKh-98-f2Q" secondAttribute="bottom" constant="37" id="HPp-Ia-sFi"/>
-                                    <constraint firstAttribute="trailing" secondItem="eRy-nk-Jyn" secondAttribute="trailing" constant="20" id="NXa-yu-mhN"/>
-                                    <constraint firstItem="xKh-98-f2Q" firstAttribute="top" secondItem="eRy-nk-Jyn" secondAttribute="bottom" constant="47" id="QVo-Bc-CHr"/>
-                                    <constraint firstItem="iVG-CA-D7g" firstAttribute="top" secondItem="6X1-xh-zU0" secondAttribute="top" constant="8" id="WEi-1m-BaK"/>
-                                    <constraint firstItem="iVG-CA-D7g" firstAttribute="centerX" secondItem="6X1-xh-zU0" secondAttribute="centerX" id="gP4-ba-r5f"/>
-                                    <constraint firstItem="eRy-nk-Jyn" firstAttribute="leading" secondItem="6X1-xh-zU0" secondAttribute="leading" constant="20" id="vhm-dh-6f2"/>
-                                    <constraint firstItem="eRy-nk-Jyn" firstAttribute="top" secondItem="iVG-CA-D7g" secondAttribute="bottom" constant="20" id="zmT-JV-kfs"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="6X1-xh-zU0" firstAttribute="centerY" secondItem="La8-7L-WjD" secondAttribute="centerY" id="C9c-Zq-6uu"/>
-                            <constraint firstItem="6X1-xh-zU0" firstAttribute="trailing" secondItem="La8-7L-WjD" secondAttribute="trailing" id="DIq-xN-TEX"/>
-                            <constraint firstItem="6X1-xh-zU0" firstAttribute="leading" secondItem="La8-7L-WjD" secondAttribute="leading" id="FOR-g2-EUW"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="La8-7L-WjD"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gsL-Rd-aiy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6780" y="708.62068965517244"/>
         </scene>
         <!--Passenger Catalog Result View Controller-->
         <scene sceneID="HnW-a9-1qd">
@@ -634,7 +498,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bQr-bN-Im0">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" ambiguous="YES" id="6Y6-1O-G4E">
+                        <view key="titleView" contentMode="scaleToFill" id="6Y6-1O-G4E">
                             <rect key="frame" x="187.66666666666666" y="28" width="0.0" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -720,6 +584,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5Y-7z-E3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2964" y="1943"/>
+        </scene>
+        <!--Error-->
+        <scene sceneID="ufO-Mk-0Rh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Error" bundleIdentifier="com.guestlogix.TravelerKitUI" id="ZSI-gE-FCJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXL-qp-q44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6780" y="16"/>
+        </scene>
+        <!--Error-->
+        <scene sceneID="Mmd-NW-M3h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Error" bundleIdentifier="com.guestlogix.TravelerKitUI" id="dYY-jB-TNb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jbt-39-rpZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6780" y="645"/>
+        </scene>
+        <!--Loading-->
+        <scene sceneID="5Ha-bk-eH0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Loading" bundleIdentifier="com.guestlogix.TravelerKitUI" id="Rfu-Xs-fmI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LAh-oj-yh5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6780" y="-405"/>
         </scene>
     </scenes>
 </document>

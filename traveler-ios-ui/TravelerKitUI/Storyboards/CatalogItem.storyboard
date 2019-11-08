@@ -38,66 +38,13 @@
             </objects>
             <point key="canvasLocation" x="-1583" y="200"/>
         </scene>
-        <!--Retry View Controller-->
-        <scene sceneID="A77-PF-zWc">
+        <!--Loading-->
+        <scene sceneID="gFR-RU-571">
             <objects>
-                <viewController id="qsj-fo-rny" customClass="RetryViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jv3-3l-JvL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, something went wrong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVm-g8-k1X">
-                                <rect key="frame" x="20" y="323" width="335" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bJ-Zb-myk">
-                                <rect key="frame" x="156" y="368" width="63" height="30"/>
-                                <state key="normal" title="Try again"/>
-                                <connections>
-                                    <action selector="didRetry:" destination="qsj-fo-rny" eventType="touchUpInside" id="a0S-DR-BWV"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="hxe-il-7fL" firstAttribute="trailing" secondItem="yVm-g8-k1X" secondAttribute="trailing" constant="20" id="4Jf-34-Ri4"/>
-                            <constraint firstItem="3bJ-Zb-myk" firstAttribute="top" secondItem="yVm-g8-k1X" secondAttribute="bottom" constant="24" id="9h9-ro-uf0"/>
-                            <constraint firstItem="yVm-g8-k1X" firstAttribute="centerY" secondItem="Jv3-3l-JvL" secondAttribute="centerY" id="fTS-6v-DMj"/>
-                            <constraint firstItem="yVm-g8-k1X" firstAttribute="leading" secondItem="hxe-il-7fL" secondAttribute="leading" constant="20" id="k9w-ZO-2oQ"/>
-                            <constraint firstItem="3bJ-Zb-myk" firstAttribute="centerX" secondItem="hxe-il-7fL" secondAttribute="centerX" id="w9a-Rk-JbB"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="hxe-il-7fL"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ftd-ax-4tc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Loading" id="Efy-yD-2PP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGY-KF-Zu2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2424.6376811594205" y="-376.33928571428572"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="CM0-lU-sYq">
-            <objects>
-                <viewController id="Py4-h5-jSH" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fj7-S4-3Vk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="urm-gz-WN8">
-                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="urm-gz-WN8" firstAttribute="centerY" secondItem="Fj7-S4-3Vk" secondAttribute="centerY" id="16G-v8-Da9"/>
-                            <constraint firstItem="urm-gz-WN8" firstAttribute="centerX" secondItem="qQN-u9-5sP" secondAttribute="centerX" id="Fi5-6g-BmF"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qQN-u9-5sP"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mQa-YO-6hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2424.6376811594205" y="-1077.4553571428571"/>
+            <point key="canvasLocation" x="2421" y="-1012"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vSd-g1-jIX">
@@ -165,9 +112,9 @@
                         <viewLayoutGuide key="safeArea" id="poU-as-Uxq"/>
                     </view>
                     <connections>
-                        <segue destination="Py4-h5-jSH" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="4cP-BO-8gm"/>
-                        <segue destination="qsj-fo-rny" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="fbu-uE-WWa"/>
                         <segue destination="d43-Zu-me1" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="tse-8Y-wd7"/>
+                        <segue destination="VT4-Gb-hu9" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="MXp-Tq-j1J"/>
+                        <segue destination="Efy-yD-2PP" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="2fm-Mf-xrM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajH-cd-eOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -199,6 +146,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSO-fH-WvN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="834" y="632"/>
+        </scene>
+        <!--Error-->
+        <scene sceneID="BmW-jK-QyM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Error" id="VT4-Gb-hu9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UQi-aD-oYJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2422" y="-425"/>
         </scene>
     </scenes>
 </document>

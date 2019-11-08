@@ -30,7 +30,7 @@ open class BookingItemQueryViewController: UIViewController {
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case ("loadingSegue", _):
+        case ("loadingSegue", _), ("errorSegue", _):
             break
         case (_ , let searchResultsVC as BookingItemSearchResultViewController):
             searchResultsVC.bookingItemResult = bookingItemResult
@@ -73,6 +73,6 @@ extension BookingItemQueryViewController: BookingItemSearchDelegate {
 
     public func bookingItemSearchDidFailWith(_ error: Error, identifier: AnyHashable?) {
         self.navigationItem.searchController?.isActive = false
-        performSegue(withIdentifier: "failSegue", sender: nil)
+        performSegue(withIdentifier: "errorSegue", sender: nil)
     }
 }
