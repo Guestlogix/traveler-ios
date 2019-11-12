@@ -9,14 +9,14 @@
 import Foundation
 import TravelerKit
 
-public protocol ProductItemViewControllerDelegate {
+public protocol ProductItemViewControllerDelegate: class {
     func productItemViewController(_ controller: ProductItemViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 open class ProductItemViewController: UIViewController {
     public var product: Product?
 
-    public var delegate: ProductItemViewControllerDelegate?
+    public weak var delegate: ProductItemViewControllerDelegate?
 
     private var details: CatalogItemDetails?
 

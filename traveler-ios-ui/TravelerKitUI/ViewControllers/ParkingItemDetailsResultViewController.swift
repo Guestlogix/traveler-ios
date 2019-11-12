@@ -10,7 +10,7 @@ import Foundation
 import TravelerKit
 import MapKit
 
-public protocol ParkingItemDetailsResultViewControllerDelegate {
+public protocol ParkingItemDetailsResultViewControllerDelegate: class {
     func parkingItemDetailsResultViewController(_ controller: ParkingItemDetailsResultViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
@@ -31,7 +31,7 @@ public class ParkingItemDetailsResultViewController: UIViewController {
     public var parkingItem: ParkingItem?
 
     var parkingForm: PurchaseForm?
-    var delegate: ParkingItemDetailsResultViewControllerDelegate?
+    weak var delegate: ParkingItemDetailsResultViewControllerDelegate?
 
     public override func viewDidLoad() {
         super.viewDidLoad()

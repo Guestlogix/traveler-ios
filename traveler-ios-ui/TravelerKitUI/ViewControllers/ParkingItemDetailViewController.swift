@@ -9,14 +9,14 @@
 import Foundation
 import TravelerKit
 
-public protocol ParkingItemDetailViewControllerDelegate {
+public protocol ParkingItemDetailViewControllerDelegate: class {
     func parkingItemDetailViewController(_ controller: ParkingItemDetailViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 public class ParkingItemDetailViewController: UIViewController {
     public var parkingItem: ParkingItem?
 
-    var delegate: ParkingItemDetailViewControllerDelegate?
+    weak var delegate: ParkingItemDetailViewControllerDelegate?
 
     private var details: ParkingItemDetails?
 

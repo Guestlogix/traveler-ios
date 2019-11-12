@@ -33,14 +33,12 @@ public class ParkingQueryFormViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationManager?.startUpdatingLocation()
-    }
-
-    public override func viewDidAppear(_ animated: Bool) {
         parkingFilterContext?.addObserver(self)
     }
-
-    public override func viewWillDisappear(_ animated: Bool) {
+    
+    deinit {
         parkingFilterContext?.removeObserver(self)
     }
 }

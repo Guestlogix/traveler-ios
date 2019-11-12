@@ -9,7 +9,7 @@
 import UIKit
 import TravelerKit
 
-protocol ParkingQueryChangeViewControllerDelegate {
+protocol ParkingQueryChangeViewControllerDelegate: class {
     func parkingQueryChangeViewController(_ controller: ParkingQueryChangeViewController, didUpdate query: ParkingItemQuery)
 }
 
@@ -17,7 +17,7 @@ class ParkingQueryChangeViewController: UIViewController {
     @IBOutlet weak var locationSegmentedControl: UISegmentedControl!
 
     var query: ParkingItemQuery?
-    var delegate: ParkingQueryChangeViewControllerDelegate?
+    weak var delegate: ParkingQueryChangeViewControllerDelegate?
 
     private let parkingFilterContext = ParkingFilterContext()
 

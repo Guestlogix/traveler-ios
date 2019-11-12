@@ -104,10 +104,6 @@ public class BookingItemDetailsViewController: UIViewController {
             Traveler.addToWishlist(product, delegate: self)
         }
     }
-
-    @IBAction func didSelectTermsAndConditions(_ sender: Any) {
-        performSegue(withIdentifier: "termsAndConditionsSegue", sender: nil)
-    }
 }
 
 extension BookingItemDetailsViewController: UICollectionViewDataSource {

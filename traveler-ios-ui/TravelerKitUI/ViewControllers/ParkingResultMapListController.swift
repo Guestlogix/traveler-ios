@@ -1,5 +1,5 @@
 //
-//  ParkingQueryViewController.swift
+//  ParkingResultMapListViewController.swift
 //  TravelerKitUI
 //
 //  Created by Ata Namvari on 2019-10-07.
