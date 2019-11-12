@@ -30,6 +30,26 @@ public struct PurchaseForm {
         self.questionGroups = questionGroups
         self.passes = passes
         self.product = product
+
+        for question in questionGroups.first?.questions ?? [] {
+            guard let suggestedAnswer = question.suggestedAnswer else {
+                continue
+            }
+
+            switch (question.type, suggestedAnswer) {
+            case (.date, let value as Date):
+                try? self.addAnswer(DateAnswer(value, question: question))
+            case (.quantity, let value as Int):
+                try? self.addAnswer(QuantityAnswer(value, question: question))
+            case (.string, let value as String):
+                try? self.addAnswer(TextualAnswer(value, question: question))
+            case (.multipleChoice(let choices), let value as Int) where value < choices.count:
+                try? self.addAnswer(MultipleChoiceSelection(value, question: question))
+            default:
+                Log("Invalid answer", data: suggestedAnswer, level: .error)
+                break
+            }
+        }
     }
 
     /**

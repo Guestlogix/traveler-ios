@@ -123,7 +123,6 @@ extension BookingPassesViewController: PurchaseFormFetchDelegate {
 
         performSegue(withIdentifier: "questionsSegue", sender: nil)
     }
-
 }
 
 extension Dictionary where Key == Pass, Value == Int {

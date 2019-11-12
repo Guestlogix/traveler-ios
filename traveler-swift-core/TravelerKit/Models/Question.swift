@@ -23,6 +23,8 @@ public struct Question: Decodable, Equatable {
     public let description: String?
     /// Validation rules
     public let validationRules: [ValidationRule]
+    /// Suggested answer based on previous saved attributes of user
+    public let suggestedAnswer: Any?
 
     /// Different questions types
     public enum `Type` {
@@ -61,14 +63,16 @@ public struct Question: Decodable, Equatable {
         case required       = "required"
         case type           = "type"
         case choices        = "choices"
+        case suggestedAnswer = "suggestedAnswer"
     }
 
-    init(id: String, title: String, description: String? = nil, type: Type, validationRules: [ValidationRule] = []) {
+    init(id: String, title: String, description: String? = nil, type: Type, validationRules: [ValidationRule] = [], suggestedAnswer: Any? = nil) {
         self.id = id
         self.title = title
         self.description = description
         self.type = type
         self.validationRules = validationRules
+        self.suggestedAnswer = suggestedAnswer
     }
 
     public init(from decoder: Decoder) throws {
@@ -89,14 +93,19 @@ public struct Question: Decodable, Equatable {
         switch type {
         case "Date":
             self.type = .date
+            self.suggestedAnswer = try container.decode(Date?.self, forKey: .suggestedAnswer)
         case "Quantity":
             self.type = .quantity
+            self.suggestedAnswer = try container.decode(Int?.self, forKey: .suggestedAnswer)
         case "Text":
             self.type = .string
+            self.suggestedAnswer = try container.decode(String?.self, forKey: .suggestedAnswer)
         case "MultipleChoice":
             let choices = try container.decode([Question.Choice].self, forKey: .choices)
 
             self.type = .multipleChoice(choices)
+            let choiceId = try container.decode(String?.self, forKey: .suggestedAnswer)
+            self.suggestedAnswer = choices.firstIndex(where: {$0.id == choiceId})
         default:
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.type, in: container, debugDescription: "Unknown type")
         }

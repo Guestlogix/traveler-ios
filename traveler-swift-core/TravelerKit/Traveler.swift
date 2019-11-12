@@ -51,6 +51,19 @@ public class Traveler {
 
     func identify(_ identifier: String?, attributes: [String: Any?]?) {
         self.session.identity = identifier
+
+        guard let attributes = attributes, let travelerProfileId = session.identity else {
+            return
+        }
+        let requestOperation = AuthenticatedRemoteRequestOperation(path: .storeAttributes(attributes, travelerId: travelerProfileId), session: session)
+        let blockOperation = BlockOperation { [unowned requestOperation] in
+            if let error = requestOperation.error {
+                Log("There's an error storing user attributes.", data: error, level: .error)
+            }
+        }
+        blockOperation.addDependency(requestOperation)
+        queue.addOperation(requestOperation)
+        OperationQueue.main.addOperation(blockOperation)
     }
 
     func flightSearch(query: FlightQuery, completion: @escaping ([Flight]? , Error?) -> Void) {
@@ -129,13 +142,14 @@ public class Traveler {
     }
 
     func fetchPurchaseForm(product: Product, passes: [Pass], completion: @escaping (PurchaseForm?, Error?) -> Void) {
+        let travelerProfileId = session.identity
         var path: AuthPath
 
         switch product.productType {
         case .booking:
-            path = .bookingQuestions(product, passes: passes)
+            path = .bookingQuestions(product, passes: passes, travelerId: travelerProfileId)
         case .parking:
-            path = .parkingQuestions(product)
+            path = .parkingQuestions(product, travelerId: travelerProfileId)
         }
 
         let fetchOperation = AuthenticatedRemoteFetchOperation<[QuestionGroup]>(path: path, session: session)
