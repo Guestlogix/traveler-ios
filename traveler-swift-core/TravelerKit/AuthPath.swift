@@ -9,14 +9,15 @@
 import Foundation
 
 enum AuthPath {
+    case storeAttributes([String: Any?], travelerId: String)
     case flights(FlightQuery)
     case catalog(CatalogQuery)
     case bookingItem(Product, travelerId: String?)
     case parkingItem(Product, travelerId: String?)
     case productSchedule(Product, from: Date, to: Date)
     case passes(Product, availability: Availability, option: BookingOption?)
-    case bookingQuestions(Product, passes: [Pass])
-    case parkingQuestions(Product)
+    case bookingQuestions(Product, passes: [Pass], travelerId: String?)
+    case parkingQuestions(Product, travelerId: String?)
     case createOrder([PurchaseForm], travelerId: String?) // Use an interface called Purchase in the future to capture buyables
     case processOrder(Order, Payment)
     case orders(OrderQuery, travelerId: String)
@@ -37,6 +38,10 @@ enum AuthPath {
         var urlRequest = URLRequest(url: baseURL)
 
         switch self {
+        case .storeAttributes(let attributes, let travelerId):
+            urlComponents.path = "/v1/traveler/\(travelerId)"
+            urlRequest.method = .put
+            urlRequest.jsonBody = attributes
         case .flights(let query):
             urlComponents.path = "/v1/flight"
             urlComponents.queryItems = [
@@ -81,15 +86,24 @@ enum AuthPath {
                     URLQueryItem(name: "option-id", value: $0.id)
                 )
             }
-        case .bookingQuestions(let product, let passes):
+        case .bookingQuestions(let product, let passes, let travelerId):
             urlComponents.path = "/v1/booking/\(product.id)/question"
             urlComponents.queryItems = [URLQueryItem]()
 
             passes.forEach { (pass) in
                 urlComponents.queryItems!.append(URLQueryItem(name: "pass-ids", value: pass.id))
             }
-        case .parkingQuestions(let product):
+
+            if let _ = travelerId {
+                urlComponents.queryItems!.append(URLQueryItem(name: "travelerId", value: travelerId))
+            }
+        case .parkingQuestions(let product, let travelerId):
             urlComponents.path = "/v1/parking/\(product.id)/question"
+            if let _ = travelerId {
+                urlComponents.queryItems = [
+                    URLQueryItem(name: "travelerId", value: travelerId)
+                ]
+            }
         case .createOrder(let forms, let travelerId):
             urlComponents.path = "/v1/order"
             urlRequest.method = .post
