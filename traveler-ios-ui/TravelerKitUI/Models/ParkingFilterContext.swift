@@ -15,7 +15,7 @@ public protocol ParkingFilterContextObserving: class {
 public class ParkingFilterContext {
     private(set) var filter: Int?
 
-    private var delegate: ParkingFilterContextObserving?
+    private weak var delegate: ParkingFilterContextObserving?
 
     var selectedFilter: Int? {
         didSet {
