@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -159,8 +159,7 @@
                                                         <rect key="frame" x="10" y="48.5" width="396" height="30"/>
                                                         <state key="normal" title="Terms and conditions"/>
                                                         <connections>
-                                                            <action selector="didSelectTermsAndConditions:" destination="edl-lD-YNF" eventType="touchUpInside" id="ui7-UZ-4SC"/>
-                                                            <segue destination="5jO-fW-3UY" kind="presentation" identifier="termsAndConditionsSegue" id="siI-JJ-L8d"/>
+                                                            <segue destination="5jO-fW-3UY" kind="presentation" identifier="termsAndConditionsSegue" id="pOl-hN-QRL"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

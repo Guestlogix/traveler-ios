@@ -9,14 +9,14 @@
 import Foundation
 import TravelerKit
 
-public protocol QueryItemViewControllerDelegate {
+public protocol QueryItemViewControllerDelegate: class {
     func queryItemViewController(_ controller: QueryItemViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
 public class QueryItemViewController: UIViewController {
     public var queryItem: QueryItem?
 
-    public var delegate: QueryItemViewControllerDelegate?
+    public weak var delegate: QueryItemViewControllerDelegate?
 
     public override func viewDidLoad() {
         super.viewDidLoad()

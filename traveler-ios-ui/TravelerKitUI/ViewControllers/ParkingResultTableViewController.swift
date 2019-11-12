@@ -9,7 +9,7 @@
 import Foundation
 import TravelerKit
 
-public protocol ParkingResultTableViewControllerDelegate {
+public protocol ParkingResultTableViewControllerDelegate: class {
     func parkingResultTableViewController(_ controller: ParkingResultTableViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
@@ -18,7 +18,7 @@ public class ParkingResultTableViewController: UITableViewController {
 
     public var context: ParkingResultContext?
 
-    public var delegate: ParkingResultTableViewControllerDelegate?
+    public weak var delegate: ParkingResultTableViewControllerDelegate?
 
     private var selectedItem: ParkingItem?
 

@@ -56,16 +56,13 @@ open class BookableProductDetailViewController: UIViewController {
             vc.delegate = self
         case (_ , let vc as SupplierInfoViewController):
             vc.supplier = productDetails?.supplier
-        case (_, let vc as TermsAndConditionsViewController):
-            vc.termsAndConditions = productDetails?.attributedTermsAndConditions
+        case ("termsAndConditionsSegue", let navVC as UINavigationController):
+            let vc = navVC.topViewController as? TermsAndConditionsViewController
+            vc?.termsAndConditions = productDetails?.attributedTermsAndConditions
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
         }
-    }
-
-    @IBAction func didSelectTermsAndConditions(_ sender: Any) {
-        performSegue(withIdentifier: "termsAndConditionsSegue", sender: nil)
     }
 }
 

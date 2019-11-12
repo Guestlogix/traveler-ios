@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -112,8 +112,7 @@
                                                         <rect key="frame" x="16" y="485" width="343" height="30"/>
                                                         <state key="normal" title="Terms and conditions"/>
                                                         <connections>
-                                                            <action selector="didSelectTermsAndConditions:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="zY2-1n-D73"/>
-                                                            <segue destination="dYu-Mg-MyD" kind="presentation" identifier="termsAndConditionsSegue" id="uFP-mr-GeA"/>
+                                                            <segue destination="dYu-Mg-MyD" kind="presentation" identifier="termsAndConditionsSegue" id="SDz-0D-BOA"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cz-Lr-Ekd" customClass="HeartButton" customModule="TravelerKitUI" customModuleProvider="target">
@@ -122,7 +121,7 @@
                                                             <constraint firstAttribute="width" secondItem="2Cz-Lr-Ekd" secondAttribute="height" id="3iE-pW-99W"/>
                                                             <constraint firstAttribute="width" constant="30" id="S3W-yn-TEk"/>
                                                         </constraints>
-                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
                                                             <action selector="didPressWishlistButton:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="qsF-Tb-LOe"/>
                                                         </connections>

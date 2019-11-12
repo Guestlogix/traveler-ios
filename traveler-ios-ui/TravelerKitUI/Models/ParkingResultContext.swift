@@ -14,25 +14,13 @@ public protocol ParkingResultContextObserving: class {
     func parkingResultContextDidChangeSelectedIndex(_ context: ParkingResultContext)
 }
 
-public class ParkingResultContext {
+public class ParkingResultContext: ObservingContext {
     private(set) var spots: [ParkingSpot]?
 
     var selectedIndex: Int? {
         didSet {
-            observers.forEach {
-                $0.parkingResultContextDidChangeSelectedIndex(self)
-            }
+            notifyObserversWithSelectedIndexChange()
         }
-    }
-
-    private var observers = [ParkingResultContextObserving]()
-
-    func addObserver(_ observer: ParkingResultContextObserving) {
-        observers.append(observer)
-    }
-
-    func removeObserver(_ observer: ParkingResultContextObserving) {
-        _ = observers.firstIndex(where: { observer === $0 }).flatMap({ observers.remove(at: $0) })
     }
 
     var result: ParkingItemSearchResult? {
@@ -40,12 +28,31 @@ public class ParkingResultContext {
             spots = result?.items.values.map({ ParkingSpot(parkingItem: $0) })
 
             DispatchQueue.main.async {
-                self.observers.forEach {
-                    $0.parkingResultContextDidUpdateResult(self)
-                }
-
+                self.notifyObserversWithResultUpdate()
                 self.selectedIndex = (self.spots?.count ?? 0) > 0 ? 0 : nil
             }
+        }
+    }
+
+    func notifyObserversWithSelectedIndexChange() {
+        for (id, observation) in observations {
+            guard let observer = observation.observer, let resultObserver = observer as? ParkingResultContextObserving else {
+                observations.removeValue(forKey: id)
+                continue
+            }
+
+            resultObserver.parkingResultContextDidChangeSelectedIndex(self)
+        }
+    }
+
+    func notifyObserversWithResultUpdate() {
+        for (id, observation) in observations {
+            guard let observer = observation.observer, let resultObserver = observer as? ParkingResultContextObserving else {
+                observations.removeValue(forKey: id)
+                continue
+            }
+
+            resultObserver.parkingResultContextDidUpdateResult(self)
         }
     }
 }

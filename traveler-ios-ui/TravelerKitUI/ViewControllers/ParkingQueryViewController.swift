@@ -9,7 +9,7 @@
 import Foundation
 import TravelerKit
 
-public protocol ParkingQueryViewControllerDelegate {
+public protocol ParkingQueryViewControllerDelegate: class {
     func parkingQueryViewController(_ controller: ParkingQueryViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
@@ -24,7 +24,7 @@ public class ParkingQueryViewController: UIViewController {
 
     public var query: ParkingItemQuery? 
 
-    public var delegate: ParkingQueryViewControllerDelegate?
+    public weak var delegate: ParkingQueryViewControllerDelegate?
 
     private let context = ParkingResultContext()
     private var _parkingSpots: [ParkingSpot] = []

@@ -3,7 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,8 +76,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="pVl-Us-SV4">
                                 <connections>
-                                    <action selector="didPressSearchButton:" destination="caP-4I-RGD" id="lJm-cI-ay4"/>
-                                    <segue destination="15f-eJ-vkR" kind="show" identifier="searchSegue" id="Se6-wN-d8W"/>
+                                    <segue destination="15f-eJ-vkR" kind="presentation" identifier="searchSegue" id="73O-u9-bZk"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -99,7 +98,9 @@
         <!--BookingItemSearch-->
         <scene sceneID="UZZ-xq-RGh">
             <objects>
-                <viewControllerPlaceholder storyboardName="BookingItemSearch" bundleIdentifier="com.guestlogix.TravelerKitUI" id="15f-eJ-vkR" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="BookingItemSearch" bundleIdentifier="com.guestlogix.TravelerKitUI" id="15f-eJ-vkR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hhH-og-yS1"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ns-D7-SME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="673" y="2219"/>
@@ -498,7 +499,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bQr-bN-Im0">
                         <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="6Y6-1O-G4E">
+                        <view key="titleView" contentMode="scaleToFill" ambiguous="YES" id="6Y6-1O-G4E">
                             <rect key="frame" x="187.66666666666666" y="28" width="0.0" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

@@ -97,10 +97,6 @@ class MainViewController: UIViewController {
             performSegue(withIdentifier: "profileSegue", sender: nil)
         }
     }
-
-    @IBAction func didPressSearchButton(_ sender: Any) {
-        performSegue(withIdentifier: "searchSegue", sender: nil)
-    }
 }
 
 extension MainViewController: FlightLookupViewControllerDelegate {
