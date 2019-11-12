@@ -14,6 +14,11 @@
 		88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */; };
 		88EA66CB2375B9E1007EE832 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88EA66CA2375B9E1007EE832 /* Loading.storyboard */; };
 		88EA66CD2375BA17007EE832 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EA66CC2375BA17007EE832 /* LoadingViewController.swift */; };
+		881F3A472379A4E900BB1C84 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F3A462379A4E900BB1C84 /* SearchController.swift */; };
+		881F3A492379A51E00BB1C84 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 881F3A482379A51E00BB1C84 /* Search.storyboard */; };
+		881F3A4B2379C74E00BB1C84 /* SectionedSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F3A4A2379C74E00BB1C84 /* SectionedSearchController.swift */; };
+		881F3A4D2379F07B00BB1C84 /* SearchOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881F3A4C2379F07B00BB1C84 /* SearchOption.swift */; };
+		88BB888E237AFDA8006CBA09 /* SectionedSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88BB888D237AFDA8006CBA09 /* SectionedSearch.storyboard */; };
 		A33609EE23049DEF007AA844 /* AvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */; };
 		A33F360A23147CF00044A1DD /* BookingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */; };
 		A33F361423202B880044A1DD /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F361323202B880044A1DD /* Wishlist.storyboard */; };
@@ -183,6 +188,11 @@
 		88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimilarItems.storyboard; sourceTree = "<group>"; };
 		88EA66CA2375B9E1007EE832 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		88EA66CC2375BA17007EE832 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		881F3A462379A4E900BB1C84 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		881F3A482379A51E00BB1C84 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		881F3A4A2379C74E00BB1C84 /* SectionedSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedSearchController.swift; sourceTree = "<group>"; };
+		881F3A4C2379F07B00BB1C84 /* SearchOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOption.swift; sourceTree = "<group>"; };
+		88BB888D237AFDA8006CBA09 /* SectionedSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SectionedSearch.storyboard; sourceTree = "<group>"; };
 		A33609ED23049DEF007AA844 /* AvailabilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityViewController.swift; sourceTree = "<group>"; };
 		A33F360923147CF00044A1DD /* BookingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingOptionsViewController.swift; sourceTree = "<group>"; };
 		A33F361323202B880044A1DD /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
@@ -458,6 +468,8 @@
 				88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */,
 				88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */,
 				88EA66CC2375BA17007EE832 /* LoadingViewController.swift */,
+				881F3A462379A4E900BB1C84 /* SearchController.swift */,
+				881F3A4A2379C74E00BB1C84 /* SectionedSearchController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -543,6 +555,8 @@
 				88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */,
 				88168D3F2374C8FB0096E443 /* Error.storyboard */,
 				88EA66CA2375B9E1007EE832 /* Loading.storyboard */,
+				881F3A482379A51E00BB1C84 /* Search.storyboard */,
+				88BB888D237AFDA8006CBA09 /* SectionedSearch.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -625,6 +639,7 @@
 				CA78A9FB237B062800F6DF87 /* ParkingSpot.swift */,
 				A96F830D22389E1D00268D0D /* BookingContext.swift */,
 				A996650E23442846007EBF14 /* Authenticator.swift */,
+				881F3A4C2379F07B00BB1C84 /* SearchOption.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -698,8 +713,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				881F3A492379A51E00BB1C84 /* Search.storyboard in Resources */,
 				CA19C48D23294A1A004BD7D4 /* TagsCell.xib in Resources */,
 				F33397DB2214C7A7003C7819 /* FeaturedCarouselItemViewCell.xib in Resources */,
+				88BB888E237AFDA8006CBA09 /* SectionedSearch.storyboard in Resources */,
 				CACC1D2F2343CA4000AA6619 /* BookingItem.storyboard in Resources */,
 				F3A3E064224BB85E00CD69F4 /* FormValueDisplayInputCell.xib in Resources */,
 				A9639D1D220DF57400625235 /* FormStringCell.xib in Resources */,
@@ -741,6 +758,7 @@
 				A9639D2A220DF57400625235 /* DrawerTansitioning.swift in Sources */,
 				A9639D02220DF57400625235 /* BookablePurchaseViewController.swift in Sources */,
 				A996650F23442846007EBF14 /* Authenticator.swift in Sources */,
+				881F3A4B2379C74E00BB1C84 /* SectionedSearchController.swift in Sources */,
 				A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */,
 				A9639CFF220DF57400625235 /* CatalogViewController.swift in Sources */,
 				A3E3FC472343AE9200CB616B /* BookingOption+TravelerUI.swift in Sources */,
@@ -839,6 +857,7 @@
 				A9639D15220DF57400625235 /* ImageCell.swift in Sources */,
 				88265B152375B0DB008483B4 /* ErrorViewController.swift in Sources */,
 				CA1656FF22B2E0FB00FDF6C7 /* CancellationViewController.swift in Sources */,
+				881F3A4D2379F07B00BB1C84 /* SearchOption.swift in Sources */,
 				CA161DB32326C8CF00A94C52 /* TagsView.swift in Sources */,
 				CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */,
 				A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */,
@@ -858,6 +877,7 @@
 				A974A6992282131D00319683 /* OrderResultViewController.swift in Sources */,
 				A9639D05220DF57400625235 /* CarouselItemViewCell.swift in Sources */,
 				A9639D2B220DF57400625235 /* AssetManager.swift in Sources */,
+				881F3A472379A4E900BB1C84 /* SearchController.swift in Sources */,
 				A9639D07220DF57400625235 /* StringCell.swift in Sources */,
 				A9639D28220DF57400625235 /* ContainerEmbedSegue.swift in Sources */,
 				F33397D72214C742003C7819 /* FeaturedCarouselViewCell.swift in Sources */,
