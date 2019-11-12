@@ -11,7 +11,7 @@ import TravelerKit
 
 let parkingCellIdentifier = "parkingCellIdentifier"
 
-public protocol ParkingResultListViewControllerDelegate {
+public protocol ParkingResultListViewControllerDelegate: class {
     func parkingResultListViewController(_ controller: ParkingResultListViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
@@ -19,7 +19,7 @@ public class ParkingResultListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     public var context: ParkingResultContext?
-    public var delegate: ParkingResultListViewControllerDelegate?
+    public weak var delegate: ParkingResultListViewControllerDelegate?
 
     override public func viewDidLoad() {
         super.viewDidLoad()

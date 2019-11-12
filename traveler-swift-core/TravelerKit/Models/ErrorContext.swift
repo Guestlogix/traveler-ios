@@ -23,7 +23,10 @@ public class ErrorContext {
         }
     }
 
-    private var observers = [ErrorContextObserving]()
+    private struct Observation {
+        weak var observer: ErrorContextObserving?
+    }
+    private var observations = [ObjectIdentifier: Observation]()
 
     /**
      Initializes an instance
@@ -35,29 +38,36 @@ public class ErrorContext {
     }
 
     /**
-     Adds an observer to the context's list of observers. The observer will be
+     Adds an observer to the context's dictionary of observations. The observer will be
      notified of any changes to the underlying Error instance
 
      - Parameters:
      - observer: An object conforming to `ErrorContextObserving` to be added to the list of observers
      */
     public func addObserver(_ observer: ErrorContextObserving) {
-        observers.append(observer)
+        let id = ObjectIdentifier(observer)
+        observations[id] = Observation(observer: observer)
     }
 
     /**
-     Removes a given observer from the list of observers (if it had beed previously added)
+     Removes a given observer from the dictionary of observations (if it had beed previously added)
      The observer will no longer be notified of changes to the underlying Error instance
 
      - Parameters:
      - observer: The `ErrorContextObserving` to be removed
      */
     public func removeObserver(_ observer: ErrorContextObserving) {
-        _ = observers.firstIndex(where: { observer === $0 }).flatMap({ observers.remove(at: $0) })
+        let id = ObjectIdentifier(observer)
+        observations.removeValue(forKey: id)
     }
 
     private func notifyObservers() {
-        for observer in observers {
+        for (id, observation) in observations {
+            guard let observer = observation.observer else {
+                observations.removeValue(forKey: id)
+                continue
+            }
+
             observer.errorContextDidUpdate(self)
         }
     }

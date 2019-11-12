@@ -15,21 +15,37 @@ public protocol ParkingFilterContextObserving: class {
 public class ParkingFilterContext {
     private(set) var filter: Int?
 
-    private var delegate: ParkingFilterContextObserving?
+    private weak var delegate: ParkingFilterContextObserving?
 
     var selectedFilter: Int? {
         didSet {
-            observers.forEach { $0.parkingFilterContextDidChangeSelectedFilter(self)}
+            notifyObserver()
         }
     }
 
-    private var observers = [ParkingFilterContextObserving]()
+    private struct Observation {
+        weak var observer: ParkingFilterContextObserving?
+    }
+    private var observations = [ObjectIdentifier: Observation]()
 
     func addObserver(_ observer: ParkingFilterContextObserving) {
-        observers.append(observer)
+        let id = ObjectIdentifier(observer)
+        observations[id] = Observation(observer: observer)
     }
 
     func removeObserver(_ observer: ParkingFilterContextObserving) {
-        _ = observers.firstIndex(where: { observer === $0 }).flatMap({ observers.remove(at: $0) })
+        let id = ObjectIdentifier(observer)
+        observations.removeValue(forKey: id)
+    }
+
+    func notifyObserver() {
+        for (id, observation) in observations {
+            guard let observer = observation.observer else {
+                observations.removeValue(forKey: id)
+                continue
+            }
+
+            observer.parkingFilterContextDidChangeSelectedFilter(self)
+        }
     }
 }

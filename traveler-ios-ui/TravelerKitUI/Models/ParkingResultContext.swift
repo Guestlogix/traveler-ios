@@ -19,20 +19,8 @@ public class ParkingResultContext {
 
     var selectedIndex: Int? {
         didSet {
-            observers.forEach {
-                $0.parkingResultContextDidChangeSelectedIndex(self)
-            }
+            notifyObserversWithSelectedIndexChange()
         }
-    }
-
-    private var observers = [ParkingResultContextObserving]()
-
-    func addObserver(_ observer: ParkingResultContextObserving) {
-        observers.append(observer)
-    }
-
-    func removeObserver(_ observer: ParkingResultContextObserving) {
-        _ = observers.firstIndex(where: { observer === $0 }).flatMap({ observers.remove(at: $0) })
     }
 
     var result: ParkingItemSearchResult? {
@@ -40,12 +28,46 @@ public class ParkingResultContext {
             spots = result?.items.values.map({ ParkingSpot(parkingItem: $0) })
 
             DispatchQueue.main.async {
-                self.observers.forEach {
-                    $0.parkingResultContextDidUpdateResult(self)
-                }
-
+                self.notifyObserversWithResultUpdate()
                 self.selectedIndex = (self.spots?.count ?? 0) > 0 ? 0 : nil
             }
+        }
+    }
+
+    private struct Observation {
+        weak var observer: ParkingResultContextObserving?
+    }
+    private var observations = [ObjectIdentifier: Observation]()
+
+    func addObserver(_ observer: ParkingResultContextObserving) {
+        let id = ObjectIdentifier(observer)
+        observations[id] = Observation(observer: observer)
+    }
+
+    func removeObserver(_ observer: ParkingResultContextObserving) {
+        let id = ObjectIdentifier(observer)
+        observations.removeValue(forKey: id)
+    }
+
+    func notifyObserversWithSelectedIndexChange() {
+        for (id, observation) in observations {
+            guard let observer = observation.observer else {
+                observations.removeValue(forKey: id)
+                continue
+            }
+
+            observer.parkingResultContextDidChangeSelectedIndex(self)
+        }
+    }
+
+    func notifyObserversWithResultUpdate() {
+        for (id, observation) in observations {
+            guard let observer = observation.observer else {
+                observations.removeValue(forKey: id)
+                continue
+            }
+
+            observer.parkingResultContextDidUpdateResult(self)
         }
     }
 }

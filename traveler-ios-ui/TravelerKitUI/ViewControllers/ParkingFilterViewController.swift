@@ -10,7 +10,7 @@ import UIKit
 import TravelerKit
 import CoreLocation
 
-protocol ParkingFilterViewControllerDelegate {
+protocol ParkingFilterViewControllerDelegate: class {
     func parkingFilterViewController(_ controller: ParkingFilterViewController, didUpdate query: ParkingItemQuery)
 }
 
@@ -18,7 +18,7 @@ class ParkingFilterViewController: UIViewController {
 
     var query: ParkingItemQuery?
     var parkingFilterContext: ParkingFilterContext?
-    var delegate: ParkingFilterViewControllerDelegate?
+    weak var delegate: ParkingFilterViewControllerDelegate?
 
     private let locationManager = CLLocationManager()
     private let nearMe = 0
