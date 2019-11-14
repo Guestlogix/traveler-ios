@@ -70,8 +70,6 @@ class MainViewController: UIViewController {
         case (let segue as ContainerEmbedSegue, let catalogVC as PassengerCatalogViewController):
             segue.containerView = containerView
             catalogVC.query = CatalogQuery(flights: flights)
-        case (_, _ as UINavigationController) where segue.identifier == "searchSegue":
-            break
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break

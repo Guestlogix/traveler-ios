@@ -22,7 +22,7 @@ open class BookingItemSearchResultViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        resultsCollectionView.register(UINib(nibName: "CarouselItemViewCell", bundle: Bundle(identifier: "com.guestlogix.TravelerKitUI")), forCellWithReuseIdentifier: "catalogItemCell")
+        resultsCollectionView.register(UINib(nibName: "CarouselItemViewCell", bundle: Bundle(identifier: "com.guestlogix.TravelerKitUI")), forCellWithReuseIdentifier: CellIdentifiers.catalogItem)
         resultsCollectionView.dataSource = self
         resultsCollectionView.delegate = self
         resultsCollectionView.prefetchDataSource = self
@@ -64,7 +64,7 @@ extension BookingItemSearchResultViewController: UICollectionViewDataSource, UIC
             cell.contentView.subviews.forEach({ $0.startShimmering() })
             return cell
         case .some(let catalogItem):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "catalogItemCell", for: indexPath) as! CarouselItemViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.catalogItem, for: indexPath) as! CarouselItemViewCell
 
             if let url = catalogItem.imageURL {
                 AssetManager.shared.loadImage(with: url) { [weak cell] (image) in

@@ -23,7 +23,7 @@ public class QueryItemViewController: UIViewController {
 
         switch queryItem?.query {
         case .some(.booking(let bookingQuery)):
-            performSegue(withIdentifier: "bookingSegue", sender: bookingQuery)
+            performSegue(withIdentifier: "bookingQuerySegue", sender: bookingQuery)
         case .some(.parking(let parkingQuery)):
             performSegue(withIdentifier: "parkingSegue", sender: parkingQuery)
         case .none:
@@ -35,8 +35,7 @@ public class QueryItemViewController: UIViewController {
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination, sender) {
         case (_, let vc as BookingItemQueryViewController, let query as BookingItemQuery):
-            //vc.searchQuery = query
-            // TODO: Reusable loading state for BookingItemQueryViewController
+            vc.query = query
             break
         case (_, let vc as ParkingQueryViewController, let query as ParkingItemQuery):
             vc.query = query

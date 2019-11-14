@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <viewLayoutGuide key="safeArea" id="bka-Vl-kmf"/>
                     </view>
                     <navigationItem key="navigationItem" id="8Vd-zF-Lff">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="VJ0-K5-w6v">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="stop" id="VJ0-K5-w6v">
                             <connections>
                                 <action selector="didClose:" destination="dKu-cx-0lO" id="3kR-pP-FYM"/>
                             </connections>
@@ -143,6 +143,7 @@
                     </view>
                     <connections>
                         <segue destination="nC0-zm-84H" kind="custom" identifier="parkingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="XVp-Np-Aqu"/>
+                        <segue destination="4lh-3a-2y2" kind="custom" identifier="bookingQuerySegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="N5N-z1-vGg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2L0-s7-ZG8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -172,6 +173,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXJ-hq-FAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3781" y="569"/>
+        </scene>
+        <!--BookingItemQuery-->
+        <scene sceneID="XT4-wf-EPX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BookingItemQuery" id="4lh-3a-2y2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sas-ga-2mI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="864"/>
         </scene>
     </scenes>
 </document>
