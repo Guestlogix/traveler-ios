@@ -29,7 +29,7 @@ extension CatalogViewDataSource {
     
     
     func catalogView(_ catalogView: CatalogView, identifierFor group: Int) -> String {
-        return groupCellIdentifier
+        return CellIdentifiers.catalogGroup
     }
 }
 
@@ -70,8 +70,6 @@ extension CatalogViewDelegate {
     }
 }
 
-let groupCellIdentifier = "groupCellIdentifier"
-
 public class CatalogView: UIView {
     @IBOutlet public weak var dataSource: CatalogViewDataSource?
     @IBOutlet public weak var delegate: CatalogViewDelegate?
@@ -95,7 +93,7 @@ public class CatalogView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "CarouselViewCell", bundle: Bundle(for: type(of: self))), forCellReuseIdentifier: groupCellIdentifier)
+        tableView.register(UINib(nibName: "CarouselViewCell", bundle: Bundle(for: type(of: self))), forCellReuseIdentifier: CellIdentifiers.catalogGroup)
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
 
@@ -182,6 +180,6 @@ extension CatalogView: CarouselViewCellDataSource {
     }
     
     public func identifierForItemsInCell(_ cell: CarouselViewCell) -> String {
-        return dataSource?.catalogView(self, identifierFor: cell.tag) ?? groupCellIdentifier
+        return dataSource?.catalogView(self, identifierFor: cell.tag) ?? CellIdentifiers.catalogGroup
     }
 }

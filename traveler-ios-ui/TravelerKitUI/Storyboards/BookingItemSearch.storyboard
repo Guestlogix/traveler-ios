@@ -3,15 +3,15 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Booking Item Query View Controller-->
+        <!--Booking Item Search View Controller-->
         <scene sceneID="S3T-nB-b6r">
             <objects>
-                <viewController id="Z2S-Kb-kcV" customClass="BookingItemQueryViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Z2S-Kb-kcV" customClass="BookingItemSearchViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1u0-cT-wu1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,10 +19,14 @@
                         <viewLayoutGuide key="safeArea" id="9DA-JP-Ou5"/>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="lrf-99-tEs">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="pnF-CI-JGN"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="I8B-oP-nea">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="pnF-CI-JGN">
                             <connections>
-                                <action selector="didPressCancelWithSender:" destination="Z2S-Kb-kcV" id="ZmT-qq-aho"/>
+                                <action selector="didPressCancelWithSender:" destination="Z2S-Kb-kcV" id="26j-ZS-1nb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="I8B-oP-nea">
+                            <connections>
+                                <segue destination="f19-kA-tvd" kind="presentation" identifier="bookingItemSearchSortFilterSegue" id="Cmo-Gr-AIt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -209,6 +213,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ew9-Rs-Vfy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2349" y="3779"/>
+        </scene>
+        <!--BookingItemSearchSortFilter-->
+        <scene sceneID="7gF-1z-Kje">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BookingItemSearchSortFilter" id="f19-kA-tvd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ixm-LR-kxG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1312" y="3943"/>
         </scene>
     </scenes>
 </document>
