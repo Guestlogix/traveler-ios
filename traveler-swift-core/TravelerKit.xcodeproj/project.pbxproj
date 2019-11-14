@@ -129,6 +129,12 @@
 		CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFA22DFD344008C6C4B /* Trademark.swift */; };
 		CA594AFF22DFD3BF008C6C4B /* SupplierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */; };
 		CA594B0122DFD3C4008C6C4B /* TrademarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */; };
+		CA79FA33238360D000C63C9C /* PaymentsFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA31238360D000C63C9C /* PaymentsFetchDelegate.swift */; };
+		CA79FA34238360D000C63C9C /* PaymentSaveDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA32238360D000C63C9C /* PaymentSaveDelegate.swift */; };
+		CA79FA38238360F600C63C9C /* EphemeralKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA35238360F600C63C9C /* EphemeralKey.swift */; };
+		CA79FA39238360F600C63C9C /* EphemeralKeyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA36238360F600C63C9C /* EphemeralKeyError.swift */; };
+		CA79FA3A238360F600C63C9C /* PaymentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA37238360F600C63C9C /* PaymentManager.swift */; };
+		CA79FA3C2383612600C63C9C /* EphemeralKeyFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79FA3B2383612600C63C9C /* EphemeralKeyFetchDelegate.swift */; };
 		CA8AFF3A23415637006ECD16 /* CatalogItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF3923415637006ECD16 /* CatalogItemType.swift */; };
 		CA8AFF4223419142006ECD16 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF4123419142006ECD16 /* BoundingBox.swift */; };
 		CA8AFF4423427AE3006ECD16 /* ProviderTranslateAttribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8AFF4323427AE3006ECD16 /* ProviderTranslateAttribution.swift */; };
@@ -278,6 +284,12 @@
 		CA594AFA22DFD344008C6C4B /* Trademark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trademark.swift; sourceTree = "<group>"; };
 		CA594AFE22DFD3BF008C6C4B /* SupplierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierTests.swift; sourceTree = "<group>"; };
 		CA594B0022DFD3C4008C6C4B /* TrademarkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrademarkTests.swift; sourceTree = "<group>"; };
+		CA79FA31238360D000C63C9C /* PaymentsFetchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsFetchDelegate.swift; sourceTree = "<group>"; };
+		CA79FA32238360D000C63C9C /* PaymentSaveDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSaveDelegate.swift; sourceTree = "<group>"; };
+		CA79FA35238360F600C63C9C /* EphemeralKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EphemeralKey.swift; sourceTree = "<group>"; };
+		CA79FA36238360F600C63C9C /* EphemeralKeyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EphemeralKeyError.swift; sourceTree = "<group>"; };
+		CA79FA37238360F600C63C9C /* PaymentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentManager.swift; sourceTree = "<group>"; };
+		CA79FA3B2383612600C63C9C /* EphemeralKeyFetchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EphemeralKeyFetchDelegate.swift; sourceTree = "<group>"; };
 		CA8AFF3923415637006ECD16 /* CatalogItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogItemType.swift; sourceTree = "<group>"; };
 		CA8AFF4123419142006ECD16 /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		CA8AFF4323427AE3006ECD16 /* ProviderTranslateAttribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTranslateAttribution.swift; sourceTree = "<group>"; };
@@ -328,6 +340,9 @@
 		A9BF40D121779CE90090ED1C /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				CA79FA3B2383612600C63C9C /* EphemeralKeyFetchDelegate.swift */,
+				CA79FA32238360D000C63C9C /* PaymentSaveDelegate.swift */,
+				CA79FA31238360D000C63C9C /* PaymentsFetchDelegate.swift */,
 				CA1B150F234F6EEA009661EC /* BookingItemSearchDelegate.swift */,
 				CA1B1510234F6EEA009661EC /* ParkingItemSearchDelegate.swift */,
 				A9BF40D221779D030090ED1C /* FlightSeachDelegate.swift */,
@@ -402,6 +417,9 @@
 		A9DB06472140487B009817EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CA79FA35238360F600C63C9C /* EphemeralKey.swift */,
+				CA79FA36238360F600C63C9C /* EphemeralKeyError.swift */,
+				CA79FA37238360F600C63C9C /* PaymentManager.swift */,
 				CA1B14F6234F6E90009661EC /* BookingItemQuery.swift */,
 				CA1B14F2234F6E8F009661EC /* BookingItemSearchFilters.swift */,
 				CA1B14F1234F6E8F009661EC /* BookingItemSearchParameters.swift */,
@@ -672,7 +690,9 @@
 				A9639C8A220DF10A00625235 /* Payment.swift in Sources */,
 				CA12275722F0CCEA00541F3A /* Date+String.swift in Sources */,
 				CAE90E8322BD46FC0066FAAF /* RemoteRequestOperation.swift in Sources */,
+				CA79FA33238360D000C63C9C /* PaymentsFetchDelegate.swift in Sources */,
 				CAEB7A76234CEE1E00C31BD6 /* AnyItem.swift in Sources */,
+				CA79FA38238360F600C63C9C /* EphemeralKey.swift in Sources */,
 				CA1B150D234F6E91009661EC /* ParkingItemQuery.swift in Sources */,
 				A9DB06A821496396009817EC /* Traveler.swift in Sources */,
 				CA07DE7E231EF7C7004C8872 /* WishlistFetchDelegate.swift in Sources */,
@@ -682,6 +702,7 @@
 				A315F465234692FC00DF8545 /* CancellationRequest.swift in Sources */,
 				A9EED5F0215A7D3B003AAA5F /* AuthPath.swift in Sources */,
 				A974A68F2280C42900319683 /* OrderQuery.swift in Sources */,
+				CA79FA3C2383612600C63C9C /* EphemeralKeyFetchDelegate.swift in Sources */,
 				A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */,
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,
@@ -693,6 +714,7 @@
 				A9639C8C220DF1F000625235 /* Device.swift in Sources */,
 				A9E2AD8221934AD60063BF79 /* CatalogItemDetailsFetchDelegate.swift in Sources */,
 				A9DB065D2140665A009817EC /* MappingOperation.swift in Sources */,
+				CA79FA3A238360F600C63C9C /* PaymentManager.swift in Sources */,
 				A9825BAC220497FE008AA0C1 /* Receipt.swift in Sources */,
 				A9E2AD9B2194ACF10063BF79 /* ContactInfo.swift in Sources */,
 				A92523F221FB71D0009E2642 /* ValidationError.swift in Sources */,
@@ -713,6 +735,7 @@
 				A95776532153F1CE00BD11C8 /* StorageOperation.swift in Sources */,
 				CA2ADDC02347C6FC00A6EE34 /* QueryType.swift in Sources */,
 				A957764721513F0800BD11C8 /* OperationQueue+AuthQueue.swift in Sources */,
+				CA79FA39238360F600C63C9C /* EphemeralKeyError.swift in Sources */,
 				A95F46AB229C403B009C9227 /* CancellationQuoteFetchDelegate.swift in Sources */,
 				A9EED5F6215AB713003AAA5F /* KeychainStoreOperation.swift in Sources */,
 				CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */,
@@ -722,6 +745,7 @@
 				CAAF4A4C234E45AD00919317 /* ParkingItemCategory.swift in Sources */,
 				A9DB06442140358C009817EC /* Credentials.swift in Sources */,
 				A957764F2153E82600BD11C8 /* SessionBeginOperation.swift in Sources */,
+				CA79FA34238360D000C63C9C /* PaymentSaveDelegate.swift in Sources */,
 				A91F3BDB21D9F9730016894A /* Question.swift in Sources */,
 				A9AC3BFD21FA6D9500690D46 /* ValidationRule.swift in Sources */,
 				A9EED5F2215A7D43003AAA5F /* UnauthPath.swift in Sources */,

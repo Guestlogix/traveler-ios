@@ -34,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Traveler.initialize(apiKey: Environment.travelerKitKey, device: UIDevice.current)
         #endif
 
-        TravelerUI.initialize(paymentHandler: PaymentCollectionViewController.self, paymentAuthenticator: StripePaymentAuthenticator())
+        TravelerUI.initialize(paymentHandler: PaymentCollectionViewController.self,
+                              paymentAuthenticator: StripePaymentAuthenticator(),
+                              paymentManager: StripePaymentProvider.self)
 
         // Temp Styles
 

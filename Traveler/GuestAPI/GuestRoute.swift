@@ -24,7 +24,7 @@ extension GuestRoute: Route {
             return url
         }
 
-        let productionEndpoint = "https://9th3dtgfg3.execute-api.ca-central-1.amazonaws.com/dev/"
+        let productionEndpoint = "https://9th3dtgfg3.execute-api.ca-central-1.amazonaws.com/dev"
 
         guard let endpoint = UserDefaults.standard.string(forKey: "traveler_Authentication_Endpoint") else {
             return URL(string: productionEndpoint)!

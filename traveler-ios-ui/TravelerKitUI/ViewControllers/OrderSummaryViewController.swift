@@ -16,25 +16,31 @@ let infoCellIdentifier = "infoCellIdentifier"
 let headerViewIdentifier = "headerViewIdentifier"
 
 public protocol OrderSummaryViewControllerDelegate: class {
-    func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment)
+    func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment, saveOption: Bool)
 }
 
 open class OrderSummaryViewController: UITableViewController {
-    var order: Order?
+    @IBOutlet weak var savePaymentView: UIView!
+    @IBOutlet weak var saveSwitch: UISwitch!
+
+    public var order: Order?
+    public var payments: [Payment] = []
     weak var delegate: OrderSummaryViewControllerDelegate?
 
-    // TODO: Pull list of saved payment methods from PaymentSDK
-    private var payments: [Payment] = []
     private var selectedPaymentIndex: Int? {
         didSet {
             selectedPaymentIndex.flatMap {
-                delegate?.orderSummaryViewController(self, didSelect: payments[$0])
+                delegate?.orderSummaryViewController(self, didSelect: totalPayments[$0], saveOption: saveSwitch.isOn)
             }
         }
     }
     private var paymentHandler: PaymentHandler?
     private var billingSection: Int {
         return order?.products.count ?? 0
+    }
+    private var newPayments: [Payment] = []
+    private var totalPayments: [Payment] {
+        return payments + newPayments
     }
 
     override open func viewDidLoad() {
@@ -53,7 +59,7 @@ open class OrderSummaryViewController: UITableViewController {
     override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case billingSection:
-            return payments.count + 1
+            return totalPayments.count + 1
         default:
             return (order!.products[section] as? BookingProduct)?.passes.count ?? 1
         }
@@ -61,9 +67,9 @@ open class OrderSummaryViewController: UITableViewController {
 
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case billingSection where indexPath.row < payments.count:
+        case billingSection where indexPath.row < totalPayments.count:
             let cell = tableView.dequeueReusableCell(withIdentifier: "infoCellIdentifier", for: indexPath) as! InfoCell
-            cell.titleLabel.text = payments[indexPath.row].localizedDescription
+            cell.titleLabel.text = totalPayments[indexPath.row].localizedDescription
             cell.accessoryType = indexPath.row == selectedPaymentIndex ? .checkmark : .none
             return cell
         case billingSection:
@@ -125,7 +131,7 @@ open class OrderSummaryViewController: UITableViewController {
 
     override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (indexPath.section, indexPath.row) {
-        case (billingSection, payments.count):
+        case (billingSection, totalPayments.count):
             guard let paymentHandlerViewControllerType = TravelerUI.shared?.paymentHandlerViewControllerType else {
                 fatalError("SDK not initialized")
             }
@@ -137,6 +143,14 @@ open class OrderSummaryViewController: UITableViewController {
         case (billingSection, _) where selectedPaymentIndex != indexPath.row:
             selectedPaymentIndex = indexPath.row
             tableView.reloadSections(IndexSet([billingSection]), with: .none)
+
+            if selectedPaymentIndex! >= payments.count {
+                savePaymentView.isHidden = false
+                saveSwitch.isOn = false
+            } else {
+                savePaymentView.isHidden = true
+                saveSwitch.isOn = false
+            }
         default:
             break
         }
@@ -154,9 +168,20 @@ open class OrderSummaryViewController: UITableViewController {
         }
     }
 
+    open override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        // Shoud we be able to delete saved cards from here?
+        // if so delegate
+        if indexPath.row >= payments.count {
+            return .delete
+        } else {
+            return .none
+        }
+    }
+
     override open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let index = indexPath.row - payments.count
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
-            self.payments.remove(at: indexPath.row)
+            self.newPayments.remove(at: index)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         return [deleteAction]
@@ -169,8 +194,8 @@ extension OrderSummaryViewController: PaymentHandlerDelegate {
             return
         }
 
-        payments.insert(payment, at: 0)
-        selectedPaymentIndex = 0
+        newPayments.insert(payment, at: 0)
+        selectedPaymentIndex = payments.count
 
         tableView.reloadData()
     }
