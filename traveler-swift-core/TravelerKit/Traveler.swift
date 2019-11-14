@@ -369,6 +369,8 @@ public class Traveler {
 
     func searchBookingItems(_ searchQuery: BookingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> BookingItemSearchResult?)?, resultBlock: ((BookingItemSearchResult, AnyHashable?) -> Void)?, completion: @escaping (BookingItemSearchResult?, Error?, AnyHashable?) -> Void) {
 
+        // TODO: Use a guard statement here
+
         if !searchQuery.isValid() {
             completion(nil , SearchQueryError.invalidQuery, nil)
         } else {
@@ -442,6 +444,23 @@ public class Traveler {
 
     func fetchSimilarProducts(to product: Product, completion: @escaping (Catalog?, Error?) -> Void) {
         let fetchOperation = AuthenticatedRemoteFetchOperation<Catalog>(path: .similarItems(product), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func fetchEphemeralStripeCustomerKey(forVersion apiVersion: String, completion: @escaping (EphemeralKey?, Error?) -> Void) {
+        guard let travlerId = session.identity else {
+            completion(nil, EphemeralKeyError.unidentifiedTraveler)
+            return
+        }
+
+        let fetchOperation = AuthenticatedRemoteFetchOperation<EphemeralKey>(path: .stripeEphemeralKey(version: apiVersion, travlerId: travlerId), session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
         }
@@ -1051,5 +1070,33 @@ public class Traveler {
 
     public static func fetchSimilarProducts(to product: Product, completion: @escaping (Catalog?, Error?) -> Void) {
         shared?.fetchSimilarProducts(to: product, completion: completion)
+    }
+
+    /**
+     Returns a traveler authenticated `URLRequest` that fetches the ephemeral Stripe Customer key
+     - Parameters:
+     - apiVersion: The API Version of the Stripe SDK you need to fetch the key for
+     - completion: A completion block that is called when the results are ready
+     */
+
+    public static func fetchEphemeralStripeCustomerKey(forVersion apiVersion: String, completion: @escaping (EphemeralKey?, Error?) -> Void) {
+        shared?.fetchEphemeralStripeCustomerKey(forVersion: apiVersion, completion: completion)
+    }
+
+    /**
+    Returns a traveler authenticated `URLRequest` that fetches the ephemeral Stripe Customer key
+    - Parameters:
+    - apiVersion: The API Version of the Stripe SDK you need to fetch the key for
+    - delegate: A `EphemeralKeyFetchDelegate` that is notified if the fetch is successful
+     */
+
+    public static func fetchEphemeralStripeCustomerKey(forVersion apiVersion: String, delegate: EphemeralKeyFetchDelegate) {
+        shared?.fetchEphemeralStripeCustomerKey(forVersion: apiVersion, completion: { [weak delegate] (json, error) in
+            if let json = json {
+                delegate?.ephemeralKeyFetchDidSucceedWith(json)
+            } else {
+                delegate?.ephemeralKeyFetchDidFailWith(error!)
+            }
+        })
     }
 }

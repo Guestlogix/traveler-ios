@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A923AA6F237A3AF40030DCED /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A923AA6E237A3AF40030DCED /* APIClient.swift */; };
 		A9639D4D220E103F00625235 /* TravelerStripePaymentProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639D4B220E103F00625235 /* TravelerStripePaymentProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9639D56220E10BD00625235 /* StripePaymentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D55220E10BD00625235 /* StripePaymentProvider.swift */; };
 		A9639D5C220E12FF00625235 /* TravelerKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639D59220E12FF00625235 /* TravelerKitUI.framework */; };
 		A9639D5D220E12FF00625235 /* TravelerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9639D5A220E12FF00625235 /* TravelerKit.framework */; };
 		A96F8312223960D200268D0D /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A96F8311223960D200268D0D /* Stripe.framework */; };
+		A9D1BD04237CD8980053C62C /* StripePaymentAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1BD03237CD8980053C62C /* StripePaymentAuthenticator.swift */; };
+		A9D1BD06237CD8D50053C62C /* PaymentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1BD05237CD8D50053C62C /* PaymentCollectionViewController.swift */; };
+		A9D1BD08237CD8FF0053C62C /* StripePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1BD07237CD8FF0053C62C /* StripePayment.swift */; };
+		A9D1BD0A237CD9340053C62C /* STPCardBrand+Traveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D1BD09237CD9340053C62C /* STPCardBrand+Traveler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A923AA6E237A3AF40030DCED /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A9639D48220E103F00625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TravelerStripePaymentProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639D4B220E103F00625235 /* TravelerStripePaymentProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TravelerStripePaymentProvider.h; sourceTree = "<group>"; };
 		A9639D4C220E103F00625235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -23,6 +29,10 @@
 		A9639D59220E12FF00625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TravelerKitUI.framework; path = Carthage/Build/iOS/TravelerKitUI.framework; sourceTree = "<group>"; };
 		A9639D5A220E12FF00625235 /* TravelerKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TravelerKit.framework; path = Carthage/Build/iOS/TravelerKit.framework; sourceTree = "<group>"; };
 		A96F8311223960D200268D0D /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = ../Carthage/Build/iOS/Stripe.framework; sourceTree = "<group>"; };
+		A9D1BD03237CD8980053C62C /* StripePaymentAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentAuthenticator.swift; sourceTree = "<group>"; };
+		A9D1BD05237CD8D50053C62C /* PaymentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCollectionViewController.swift; sourceTree = "<group>"; };
+		A9D1BD07237CD8FF0053C62C /* StripePayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePayment.swift; sourceTree = "<group>"; };
+		A9D1BD09237CD9340053C62C /* STPCardBrand+Traveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "STPCardBrand+Traveler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,11 @@
 			isa = PBXGroup;
 			children = (
 				A9639D55220E10BD00625235 /* StripePaymentProvider.swift */,
+				A9D1BD03237CD8980053C62C /* StripePaymentAuthenticator.swift */,
+				A9D1BD05237CD8D50053C62C /* PaymentCollectionViewController.swift */,
+				A9D1BD07237CD8FF0053C62C /* StripePayment.swift */,
+				A9D1BD09237CD9340053C62C /* STPCardBrand+Traveler.swift */,
+				A923AA6E237A3AF40030DCED /* APIClient.swift */,
 				A9639D4B220E103F00625235 /* TravelerStripePaymentProvider.h */,
 				A9639D4C220E103F00625235 /* Info.plist */,
 			);
@@ -157,7 +172,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D1BD0A237CD9340053C62C /* STPCardBrand+Traveler.swift in Sources */,
 				A9639D56220E10BD00625235 /* StripePaymentProvider.swift in Sources */,
+				A9D1BD06237CD8D50053C62C /* PaymentCollectionViewController.swift in Sources */,
+				A9D1BD08237CD8FF0053C62C /* StripePayment.swift in Sources */,
+				A9D1BD04237CD8980053C62C /* StripePaymentAuthenticator.swift in Sources */,
+				A923AA6F237A3AF40030DCED /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

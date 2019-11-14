@@ -16,8 +16,8 @@ open class PaymentConfirmationViewController: UIViewController {
     var order: Order?
 
     private var payment: Payment?
-    private var paymentHandler: PaymentHandler?
     private var receipt: Receipt?
+    private var shouldSavePayment: Bool = false
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ open class PaymentConfirmationViewController: UIViewController {
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
-        case (_, let vc as OrderSummaryViewController):
+        case (_, let vc as OrderPaymentViewController):
             vc.order = order
             vc.delegate = self
         case (_, let vc as ReceiptViewController):
@@ -48,7 +48,15 @@ open class PaymentConfirmationViewController: UIViewController {
 
         ProgressHUD.show()
 
-        Traveler.processOrder(order, payment: payment, delegate: self)
+        if let manager = TravelerUI.shared?.paymentManager, shouldSavePayment {
+            manager.savePayment(payment) { [unowned self] (error) in
+                error.flatMap { Log("Error saving payment", data: $0, level: .warning) }
+
+                Traveler.processOrder(order, payment: payment, delegate: self)
+            }
+        } else {
+            Traveler.processOrder(order, payment: payment, delegate: self)
+        }
     }
 
     @IBAction func didCancel(_ sender: Any) {
@@ -103,9 +111,10 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
     }
 }
 
-extension PaymentConfirmationViewController: OrderSummaryViewControllerDelegate {
-    public func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment) {
+extension PaymentConfirmationViewController: OrderPaymentViewControllerDelegate {
+    public func orderPaymentViewController(_ controller: OrderPaymentViewController, didSelect payment: Payment, saveOption: Bool) {
         self.payment = payment
+        self.shouldSavePayment = saveOption
         self.confirmButton.isEnabled = true
     }
 }

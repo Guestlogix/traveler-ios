@@ -122,7 +122,7 @@
                                                             <constraint firstAttribute="width" secondItem="2Cz-Lr-Ekd" secondAttribute="height" id="3iE-pW-99W"/>
                                                             <constraint firstAttribute="width" constant="30" id="S3W-yn-TEk"/>
                                                         </constraints>
-                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
                                                             <action selector="didPressWishlistButton:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="qsF-Tb-LOe"/>
                                                         </connections>
@@ -568,7 +568,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Bv-UG-pLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5062" y="4324"/>
+            <point key="canvasLocation" x="5074" y="4317"/>
         </scene>
         <!--Passes View Controller-->
         <scene sceneID="d1a-G0-HoZ">
@@ -898,6 +898,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dnu-2g-PV1"/>
+        <segue reference="anm-lI-YyO"/>
     </inferredMetricsTieBreakers>
 </document>

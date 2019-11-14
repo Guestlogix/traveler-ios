@@ -10,8 +10,8 @@ import Foundation
 import TravelerKit
 import Stripe
 
-struct StripePaymentProvider {
-    fileprivate static var paymentConfiguration: STPPaymentConfiguration {
+public struct StripePaymentProvider: PaymentManager {
+    static var paymentConfiguration: STPPaymentConfiguration {
         let config = STPPaymentConfiguration()
 
         if Traveler.sandboxMode {
@@ -22,129 +22,52 @@ struct StripePaymentProvider {
 
         return config
     }
-}
 
-public class StripePaymentAuthenticator: NSObject, STPAuthenticationContext, PaymentAuthenticator {
-    public typealias Controller = UIViewController
+    // MARK: Public API
+    //TODO: Add documentation
+    public static func fetchPayments(completion: @escaping ([Payment]?, Error?) -> Void) {
+        STPCustomerContext(keyProvider: APIClient()).listPaymentMethodsForCustomer { (methods, error) in
+            guard let payments = methods?.map({ StripePayment(paymentMethod: $0) }) else {
+                completion(nil, error)
+                return
+            }
 
-    public weak var delegate: PaymentAuthenticationDelegate?
-
-    var viewController: UIViewController?
-
-    public func authenticationPresentingViewController() -> UIViewController {
-        guard let controller = viewController else {
-            fatalError("ViewController was never assigned")
+            completion(payments, nil)
         }
-
-        return controller
     }
 
-    public func authenticate(with key: String, controller: UIViewController) {
-        self.viewController = controller
-
-        STPPaymentHandler.shared().apiClient = STPAPIClient(configuration: StripePaymentProvider.paymentConfiguration)
-        STPPaymentHandler.shared().handleNextAction(forPayment: key, authenticationContext: self, returnURL: nil) {
-            [weak delegate]
-            (status, intent, error) in
-
-            switch status {
-            case .succeeded:
-                delegate?.paymentAuthenticationDidSucceed()
-            case .failed:
-                delegate?.paymentAuthenticationDidFailWith(PaymentError.confirmationFailed(error!))
-            case .canceled:
-                break
+    public static func fetchPayments(delegate: PaymentsFetchDelegate) {
+        self.fetchPayments { [weak delegate] (payments, error) in
+            if let payments = payments {
+                delegate?.paymentsFetchDidSucceedWith(payments)
+            } else {
+                delegate?.paymentsFetchDidFailWith(error!)
             }
         }
     }
-}
 
-// Note: Must be presented modally
+    public static func savePayment(_ payment: Payment, completion: @escaping ((Error?) -> Void)) {
+        guard let stripePayment = payment as? StripePayment else {
+            Log("Unknown Payment type", data: type(of: payment), level: .error)
+            return
+        }
 
-public class PaymentCollectionViewController: UIViewController, PaymentHandler {
-    public weak var delegate: PaymentHandlerDelegate?
+        STPCustomerContext(keyProvider: APIClient()).attachPaymentMethod(toCustomer: stripePayment.paymentMethod) { (error) in
+            if let error = error {
+                Log("Error saving payment info", data: error, level: .warning)
+            }
 
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-
-        let addCardViewController = STPAddCardViewController(configuration: StripePaymentProvider.paymentConfiguration, theme: STPTheme.default())
-        addCardViewController.delegate = self
-
-        let navController = UINavigationController(rootViewController: addCardViewController)
-
-        addChild(navController)
-
-        let destView = navController.view!
-        destView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        destView.frame = view.bounds
-        view.addSubview(destView)
-        navController.didMove(toParent: self)
-    }
-}
-
-extension PaymentCollectionViewController: STPAddCardViewControllerDelegate {
-    public func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    public func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreatePaymentMethod paymentMethod: STPPaymentMethod, completion: @escaping STPErrorBlock) {
-        let payment = StripePayment(paymentMethod: paymentMethod)
-        delegate?.paymentHandler(self, didCollect: payment)
-        dismiss(animated: true, completion: nil)
-    }
-}
-
-struct StripePayment: Payment {
-    var localizedDescription: String {
-        // TODO: Write descriptions for other method types
-        switch paymentMethod.type {
-        case .typeCard:
-            return "\(paymentMethod.card!.brand) ending in \(String(describing: paymentMethod.card.unsafelyUnwrapped.last4))"
-        case .typeCardPresent:
-            return "CardPresent"
-        case .typeFPX:
-            return "FPX"
-        case .typeiDEAL:
-            return "iDEAL"
-        case .typeUnknown:
-            return "Unknown payment type"
+            completion(error)
         }
     }
 
-    var attributes: [Attribute] {
-        // TODO: Return attributes for other method types
-        guard let card = paymentMethod.card else {
-            return []
-        }
-
-        return [
-            Attribute(label: "Credit card number", value: card.last4 ?? "****"),
-            Attribute(label: "Expiry date", value: "\(card.expMonth)/\(card.expYear)")
-        ]
-    }
-
-    let paymentMethod: STPPaymentMethod
-
-    func securePayload() -> Data? {
-        let jsonPayload: [String: Any] = [
-            "paymentMethodId": paymentMethod.stripeId,
-        ]
-
-        return try? JSONSerialization.data(withJSONObject: jsonPayload, options: [])
-    }
-}
-
-extension STPCardBrand {
-    var name: String {
-        switch self {
-        case .visa:
-            return "Visa"
-        case .amex:
-            return "American Express"
-        case .dinersClub:
-            return "Diners Club"
-        default:
-            return "Credit card"
+    public static func savePayment(_ payment: Payment, delegate: PaymentSaveDelegate) {
+        self.savePayment(payment) { [weak delegate] (error) in
+            if let error = error {
+                delegate?.savePaymentDidFailWith(error)
+            } else {
+                delegate?.savePaymentDidSucceed()
+            }
         }
     }
 }

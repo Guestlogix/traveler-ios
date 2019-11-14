@@ -10,6 +10,7 @@ import Foundation
 
 enum AuthPath {
     case storeAttributes([String: Any?], travelerId: String)
+    case stripeEphemeralKey(version: String, travlerId: String)
     case flights(FlightQuery)
     case catalog(CatalogQuery)
     case bookingItem(Product, travelerId: String?)
@@ -38,10 +39,16 @@ enum AuthPath {
         var urlRequest = URLRequest(url: baseURL)
 
         switch self {
+
         case .storeAttributes(let attributes, let travelerId):
             urlComponents.path = "/v1/traveler/\(travelerId)"
             urlRequest.method = .put
             urlRequest.jsonBody = attributes
+        case .stripeEphemeralKey(let version, let travlerId):
+            urlComponents.path = "/v1/traveler/\(travlerId)/stripeEphemeralKey"
+            urlComponents.queryItems = [
+                URLQueryItem(name: "api-version", value: version)
+            ]
         case .flights(let query):
             urlComponents.path = "/v1/flight"
             urlComponents.queryItems = [
