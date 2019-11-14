@@ -14,6 +14,8 @@ public protocol BookingOptionsViewControllerDelegate: class {
     func bookingOptionsViewController(_ controller: BookingOptionsViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
+let optionCellIdentifier = "optionCellIdentifier"
+
 open class BookingOptionsViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -97,7 +99,10 @@ extension BookingOptionsViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: optionCellIdentifier, for: indexPath) as! InfoCell
         cell.titleLabel.text = availableOptions![indexPath.row].value
-        cell.valueLabel.attributedText = availableOptions![indexPath.row].attributedDisclaimer
+        let value = availableOptions![indexPath.row].attributedDisclaimer
+        cell.infoStackView.spacing = value != nil ? 10 : 0
+        value?.setFontFace(font: UIFont.systemFont(ofSize: 13))
+        cell.valueLabel.attributedText = value
 
         cell.accessoryType = indexPath == selectedIndexPath ? .checkmark : .none
 

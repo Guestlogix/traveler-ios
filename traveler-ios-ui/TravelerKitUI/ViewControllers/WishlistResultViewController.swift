@@ -21,6 +21,10 @@ open class WishlistResultViewController: UICollectionViewController {
     private var selectedCatalogItem: CatalogItem?
     private var pagesLoading = Set<Int>()
 
+    // TODO: Make height dynamic
+    private let edgeInset: CGFloat = 10
+    private let cellHeight: CGFloat = 170
+
     public weak var delegate: WishlistResultViewControllerDelegate?
 
     public var wishlistResult: WishlistResult?
@@ -236,5 +240,14 @@ extension WishlistResult {
         }
 
         return true
+    }
+}
+
+extension WishlistResultViewController: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.size.width
+        let height = cellHeight
+
+        return CGSize(width: width, height: height)
     }
 }

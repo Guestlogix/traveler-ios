@@ -16,6 +16,7 @@ class InfoCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var secondValueLabel: UILabel?
+    @IBOutlet weak var infoStackView: UIStackView!
 
     weak var delegate: InfoCellDelegate?
 

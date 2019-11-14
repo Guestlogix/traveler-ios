@@ -19,6 +19,11 @@ extension BookingOption {
                                                   options: [.documentType : NSAttributedString.DocumentType.html],
                                                   documentAttributes: nil)
 
+        if #available(iOS 13.0, *) {
+            // This is to maintain the label color when using attributed strings in dark mode
+            attr?.addAttribute(.foregroundColor, value: UIColor.secondaryLabel, range: NSRange(location: 0, length: attr!.string.count))
+        }
+
         return attr
     }
 }
