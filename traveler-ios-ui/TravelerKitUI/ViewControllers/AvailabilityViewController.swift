@@ -96,12 +96,20 @@ extension AvailabilityViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var labelColor: UIColor {
+            if #available(iOS 13.0, *) {
+                return .label
+            } else {
+                return .darkText
+            }
+        }
+
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell
-            cell.valueLabel.textColor = (availabilityError != nil ? true : false) ? UIColor.red : UIColor.darkText
-            cell.titleLabel.textColor = (availabilityError != nil ? true : false) ? UIColor.red : UIColor.darkText
+            cell.valueLabel.textColor = availabilityError != nil ? UIColor.red : labelColor
+            cell.titleLabel.textColor = availabilityError != nil ? UIColor.red : labelColor
 
-            switch (availabilityError) {
+            switch availabilityError {
             case .some(BookingError.badDate):
                 cell.valueLabel.text = "Unavailable"
             case .some(BookingError.noDate):
