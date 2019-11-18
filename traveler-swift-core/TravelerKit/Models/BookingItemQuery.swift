@@ -19,10 +19,21 @@ public struct BookingItemQuery {
     /// Minimum allowed price for items
     public let priceRange: PriceRangeFilter?
     /// Item category
-    public let categories: [ProductItemCategory]
-
+    public let categories: [BookingItemCategory]
+    
+    // TODO: Encapsulate boundingBox, country, and city into Location
     /// A `BoundingBox` representing the geographic area in which items should be searched for
     public let boundingBox: BoundingBox?
+    /// Item country
+    public let country: String?
+    /// Item city
+    public let city: String?
+    
+    // TODO: Encapsulate sortOption and sortOrder into Sort
+    /// Sort by
+    public let sortOption: ProductItemSortOption?
+    /// Sort order
+    public let sortOrder: ProductItemSortOrder?
 
     /**
      Initializes a `BookingItemQuery`
@@ -33,17 +44,24 @@ public struct BookingItemQuery {
      - An optional `PriceRange`
      - An optional `Array<Category>` for categories
      - An optional `BoundingBox`
+     - An optional `String` for country
+     - An optional `String` for city
+     - An optional `ProductItemSortOption` for sorting by
+     - An optional `ProductItemSortOrder` for sorting order
      - Returns: `BookingItemQuery`
      */
 
-
-    public init(offset: Int = 0, take: Int = 10, text: String?, range: PriceRangeFilter?, categories: [ProductItemCategory] = [] ,  boundingBox: BoundingBox?) {
+    public init(offset: Int = 0, take: Int = 10, text: String?, range: PriceRangeFilter?, categories: [BookingItemCategory] = [] , boundingBox: BoundingBox?, country: String? = nil, city: String? = nil, sortOption: ProductItemSortOption? = nil, sortOrder: ProductItemSortOrder? = nil) {
         self.offset = offset
         self.limit = take
         self.text = text
         self.priceRange = range
         self.categories = categories
         self.boundingBox = boundingBox
+        self.country = country
+        self.city = city
+        self.sortOption = sortOption
+        self.sortOrder = sortOrder
     }
 
     init(with params: BookingItemSearchParameters) {
@@ -53,6 +71,10 @@ public struct BookingItemQuery {
         self.text = params.text
         self.offset = 0
         self.limit = 10
+        self.country = params.country
+        self.city = params.city
+        self.sortOption = params.sortOption
+        self.sortOrder = params.sortOrder
     }
 
     /**
@@ -64,11 +86,11 @@ public struct BookingItemQuery {
      */
 
     public func filterSearchWith(_ filters: BookingItemSearchFilters) -> BookingItemQuery {
-        return BookingItemQuery(text: self.text, range: filters.priceRange, categories: filters.categories ?? [] , boundingBox: self.boundingBox)
+        return BookingItemQuery(text: filters.text ?? self.text, range: filters.priceRange ?? self.priceRange, categories: filters.categories ?? self.categories, boundingBox: self.boundingBox, country: filters.country ?? self.country, city: filters.city ?? self.city, sortOption: filters.sortOption ?? self.sortOption, sortOrder: filters.sortOrder ?? self.sortOrder)
     }
 
     func isValid() -> Bool {
-        if self.boundingBox == nil && self.priceRange == nil && self.text == nil && self.categories.count == 0 {
+        if self.boundingBox == nil && self.priceRange == nil && self.text == nil && self.categories.count == 0 && self.city == nil {
             return false
         } else {
             return true
@@ -79,6 +101,6 @@ public struct BookingItemQuery {
 
 extension BookingItemQuery: Equatable {
     public static func == (lhs: BookingItemQuery, rhs: BookingItemQuery) -> Bool {
-        return lhs.boundingBox == rhs.boundingBox && lhs.priceRange == rhs.priceRange && lhs.text == rhs.text && lhs.categories.elementsEqual(rhs.categories)
+        return lhs.boundingBox == rhs.boundingBox && lhs.priceRange == rhs.priceRange && lhs.text == rhs.text && lhs.categories.elementsEqual(rhs.categories) && lhs.country == rhs.country && lhs.city == rhs.city && lhs.sortOption == rhs.sortOption && lhs.sortOrder == rhs.sortOrder
     }
 }

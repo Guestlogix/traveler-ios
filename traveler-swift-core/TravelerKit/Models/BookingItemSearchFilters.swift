@@ -12,10 +12,21 @@ import Foundation
  A model representing different ways in which the items in `BookingItemSearchResult` can be filtered
  */
 public struct BookingItemSearchFilters {
+    /// Keywords
+    public var text: String?
+    // TODO: `ProductItemCategory` should be refactored
     /// Item category
-    public var categories: [ProductItemCategory]?
-    ///  Range of prices for items
+    public var categories: [BookingItemCategory]?
+    /// Range of prices for items
     public var priceRange: PriceRangeFilter?
+    /// Item country
+    public var country: String?
+    /// Item city
+    public var city: String?
+    /// Sort by
+    public var sortOption: ProductItemSortOption?
+    /// Sort order
+    public var sortOrder: ProductItemSortOrder?
 
     public init() {}
 }

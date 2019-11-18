@@ -23,8 +23,6 @@ public struct PartnerOfferingItem: CatalogItem, Product, Decodable {
     public let price: Price
     /// Product type
     public let productType: ProductType = .partnerOffering
-    /// Categories
-    public let categories: [ProductItemCategory]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -32,7 +30,6 @@ public struct PartnerOfferingItem: CatalogItem, Product, Decodable {
         case subtitle = "subTitle"
         case thumbnail = "thumbnail"
         case price = "priceStartingAt"
-        case categories = "categories"
         case isAvailable = "isAvailable"
     }
 
@@ -44,7 +41,6 @@ public struct PartnerOfferingItem: CatalogItem, Product, Decodable {
         self.subTitle = try container.decode(String?.self, forKey: .subtitle)
         self.imageURL = try container.decode(URL?.self, forKey: .thumbnail)
         self.price = try container.decode(Price.self, forKey: .price)
-        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
         self.isAvailable = try container.decode(Bool.self, forKey: .isAvailable)
     }
 }

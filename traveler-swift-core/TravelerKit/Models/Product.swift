@@ -129,7 +129,7 @@ public struct BookingProduct: Product, Decodable {
     /// Product type
     public let productType: ProductType = .booking
     /// Categories
-    public let categories: [ProductItemCategory]
+    public let categories: [BookingItemCategory]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -147,7 +147,7 @@ public struct BookingProduct: Product, Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.passes = try container.decode([Pass]?.self, forKey: .passes) ?? []
         self.price = try container.decode(Price.self, forKey:.price)
-        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
+        self.categories = try container.decode([BookingItemCategory].self, forKey: .categories)
 
         let dateString = try container.decode(String.self, forKey: .eventDate)
 

@@ -15,8 +15,6 @@ public struct ParkingItem: CatalogItem, Decodable, Product {
     public let price: Price
     /// Product type
     public let productType: ProductType
-    /// Categories
-    public let categories: [ProductItemCategory]
     /// A title
     public let title: String
     /// A secondary title
@@ -37,7 +35,6 @@ public struct ParkingItem: CatalogItem, Decodable, Product {
         case subTitle = "subTitle"
         case imageURL = "thumbnail"
         case price = "priceStartingAt"
-        case categories = "categories"
         case productType = "purchaseStrategy"
         case location = "geoLocation"
         case providerTranslationAttribution = "providerTranslationAttribution"

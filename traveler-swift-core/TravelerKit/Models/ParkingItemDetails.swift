@@ -47,7 +47,7 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
     /// URL for a thumbnail
     public let thumbnailURL: URL?
     /// Categories
-    public var categories: [ProductItemCategory]
+    public var categories: [BookingItemCategory]
     /// Dates
     public var dateRange: Range<Date>
 
@@ -98,7 +98,7 @@ public struct ParkingItemDetails: CatalogItemDetails, Decodable {
         self.price = try container.decode(Price.self, forKey: .priceStartingAt)
         self.productType = try container.decode(ProductType.self, forKey: .purchaseStrategy)
         self.translateAttribution = try container.decode(ProviderTranslationAttribution?.self, forKey: .providerTranslationAttribution)
-        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
+        self.categories = try container.decode([BookingItemCategory].self, forKey: .categories)
 
         // TODO: Do the timezone conversion
 
