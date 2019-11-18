@@ -32,21 +32,16 @@ public struct PurchaseForm {
         self.product = product
 
         for question in questionGroups.first?.questions ?? [] {
-            guard let suggestedAnswer = question.suggestedAnswer else {
-                continue
-            }
-
-            switch (question.type, suggestedAnswer) {
-            case (.date, let value as Date):
-                try? self.addAnswer(DateAnswer(value, question: question))
-            case (.quantity, let value as Int):
-                try? self.addAnswer(QuantityAnswer(value, question: question))
-            case (.string, let value as String):
-                try? self.addAnswer(TextualAnswer(value, question: question))
-            case (.multipleChoice(let choices), let value as Int) where value < choices.count:
-                try? self.addAnswer(MultipleChoiceSelection(value, question: question))
+            switch (question.type) {
+            case .date(.some(let dateValue)):
+                try? self.addAnswer(DateAnswer(dateValue, question: question))
+            case .quantity(.some(let quantityValue)):
+                try? self.addAnswer(QuantityAnswer(quantityValue, question: question))
+            case .string(.some(let stringValue)):
+                try? self.addAnswer(TextualAnswer(stringValue, question: question))
+            case .multipleChoice(let choices, .some(let indexValue)) where indexValue < choices.count:
+                try? self.addAnswer(MultipleChoiceSelection(indexValue, question: question))
             default:
-                Log("Invalid answer", data: suggestedAnswer, level: .error)
                 break
             }
         }

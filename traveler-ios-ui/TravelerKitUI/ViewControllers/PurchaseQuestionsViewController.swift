@@ -54,7 +54,7 @@ extension PurchaseQuestionsViewController: FormViewDataSource {
         let question = purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row]
         
         switch question.type {
-        case .multipleChoice(let choices):
+        case .multipleChoice(let choices, _):
             return choices[option].value
         default:
             return ""
@@ -63,7 +63,7 @@ extension PurchaseQuestionsViewController: FormViewDataSource {
 
     public func formView(_ formView: FormView, numberOfOptionsForInputAt indexPath: IndexPath) -> Int {
         switch purchaseForm!.questionGroups[indexPath.section].questions[indexPath.row].type {
-        case .multipleChoice(let choices):
+        case .multipleChoice(let choices, _):
             return choices.count
         default:
             return 0
@@ -138,7 +138,7 @@ extension PurchaseQuestionsViewController: FormViewDelegate {
             try? purchaseForm!.addAnswer(QuantityAnswer(value, question: question))
         case (.string, let value as String):
             try? purchaseForm!.addAnswer(TextualAnswer(value, question: question))
-        case (.multipleChoice(let choices), let value as Int) where value < choices.count:
+        case (.multipleChoice(let choices, _), let value as Int) where value < choices.count:
             try? purchaseForm!.addAnswer(MultipleChoiceSelection(value, question: question))
         default:
             Log("Invalid answer", data: value, level: .error)
