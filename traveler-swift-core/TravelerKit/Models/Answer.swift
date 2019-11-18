@@ -50,7 +50,7 @@ public struct MultipleChoiceSelection: Answer {
      */
     public init(_ value: Int, question: Question) throws {
         switch question.type {
-        case .multipleChoice(let choices) where choices.count > value && value >= 0:
+        case .multipleChoice(let choices, _) where choices.count > value && value >= 0:
             self.value = value
             self.codedValue = choices[value].id
         default:
