@@ -16,7 +16,7 @@ public struct BookingItem: CatalogItem, Decodable, Product {
     /// Product type
     public let productType: ProductType
     /// Categories
-    public let categories: [ProductItemCategory]
+    public let categories: [BookingItemCategory]
     /// A title
     public let title: String
     /// A secondary title
@@ -52,7 +52,7 @@ public struct BookingItem: CatalogItem, Decodable, Product {
         self.subTitle = try container.decode(String?.self, forKey: .subTitle)
         self.imageURL = try container.decode(URL?.self, forKey: .thumbnail)
         self.price = try container.decode(Price.self, forKey: .price)
-        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
+        self.categories = try container.decode([BookingItemCategory].self, forKey: .categories)
         self.productType = try container.decode(ProductType.self, forKey: .type)
         self.location = try container.decode(Coordinate.self, forKey: .location)
         self.providerTranslationAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .providerTranslationAttribution)

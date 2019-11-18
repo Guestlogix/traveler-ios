@@ -39,7 +39,7 @@ public struct BookingItemDetails: CatalogItemDetails, Decodable {
     /// Google translate attribution 
     public let translateAttribution: ProviderTranslationAttribution
     /// Categories
-    public let categories: [ProductItemCategory]
+    public let categories: [BookingItemCategory]
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -75,6 +75,6 @@ public struct BookingItemDetails: CatalogItemDetails, Decodable {
         self.termsAndConditions = try container.decode(String?.self, forKey: .termsAndConditions)
         self.disclaimer = try container.decode(String?.self, forKey: .disclaimer)
         self.translateAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .providerTranslationAttribution)
-        self.categories = try container.decode([ProductItemCategory].self, forKey: .categories)
+        self.categories = try container.decode([BookingItemCategory].self, forKey: .categories)
     }
 }

@@ -216,7 +216,9 @@ enum AuthPath {
             urlComponents.queryItems = [
                 URLQueryItem(name: "text", value: searchQuery.text),
                 URLQueryItem(name: "skip", value: String(searchQuery.offset)),
-                URLQueryItem(name: "take", value: String(searchQuery.limit))]
+                URLQueryItem(name: "take", value: String(searchQuery.limit)),
+                URLQueryItem(name: "country", value: searchQuery.country),
+                URLQueryItem(name: "city", value: searchQuery.city)]
 
             searchQuery.categories.forEach({ (category) in
                 urlComponents.queryItems?.append(URLQueryItem(name: "categories", value: category.rawValue))
@@ -227,6 +229,7 @@ enum AuthPath {
                 urlComponents.queryItems?.append(URLQueryItem(name: "max-price", value: String(priceRange.range.upperBound)))
                 urlComponents.queryItems?.append(URLQueryItem(name: "currency", value: priceRange.currency.rawValue))
             }
+            
             if let boundingBox = searchQuery.boundingBox {
                 let topLeftCoordinate = boundingBox.topLeftCoordinate
                 let bottomRightCoordinate = boundingBox.bottomRightCoordinate
@@ -235,6 +238,14 @@ enum AuthPath {
                 urlComponents.queryItems?.append(URLQueryItem(name: "top-left-longitude", value: String(topLeftCoordinate.longitude)))
                 urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-latitude", value: String(bottomRightCoordinate.latitude)))
                 urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-longitude", value: String(bottomRightCoordinate.longitude)))
+            }
+            
+            if let sortOption = searchQuery.sortOption {
+                urlComponents.queryItems?.append(URLQueryItem(name: "sort-field", value: sortOption.rawValue))
+            }
+            
+            if let sortOrder = searchQuery.sortOrder {
+                urlComponents.queryItems?.append(URLQueryItem(name: "sort-order", value: sortOrder.rawValue))
             }
         case .searchParkingItems(let searchQuery):
             urlComponents.path = "/v1/parking"

@@ -14,10 +14,17 @@ struct BookingItemSearchParameters: Decodable {
     ///  Range of prices for items
     public let range: PriceRangeFilter?
     /// Item category
-    public let categories: [ProductItemCategory]
-
+    public let categories: [BookingItemCategory]
     /// A `BoundingBox`representing the geographic area in which items should be searched for
     public let boundingBox: BoundingBox?
+    /// Item country
+    public let country: String?
+    /// Item city
+    public let city: String?
+    /// Sort by
+    public let sortOption: ProductItemSortOption?
+    /// Sort order
+    public let sortOrder: ProductItemSortOrder?
 
     enum CodingKeys: String, CodingKey {
         case text = "text"
@@ -29,6 +36,10 @@ struct BookingItemSearchParameters: Decodable {
         case maxPrice = "maxPrice"
         case currency = "currency"
         case categories = "categories"
+        case country = "country"
+        case city = "city"
+        case sortOption = "sortField"
+        case sortOrder = "sortOrder"
     }
 
     public init(from decoder: Decoder) throws {
@@ -60,7 +71,12 @@ struct BookingItemSearchParameters: Decodable {
             self.boundingBox = nil
         }
         
-        self.categories = try container.decode([ProductItemCategory]?.self, forKey: .categories) ?? []
+        self.categories = try container.decode([BookingItemCategory]?.self, forKey: .categories) ?? []
 
+        self.country = try container.decode(String?.self, forKey: .country)
+        self.city = try container.decode(String?.self, forKey: .city)
+        
+        self.sortOption = try container.decode(ProductItemSortOption?.self, forKey: .sortOption)
+        self.sortOrder = try container.decode(ProductItemSortOrder?.self, forKey: .sortOrder)
     }
 }
