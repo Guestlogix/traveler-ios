@@ -39,6 +39,23 @@ public struct Flight: Codable, Equatable {
         case departureDate = "departureTime"
         case arrivalDate = "arrivalTime"
     }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(number, forKey: .number)
+        try container.encode(departureAirport, forKey: .departureAirport)
+        try container.encode(arrivalAirport, forKey: .arrivalAirport)
+
+        let formatter = DateFormatter()
+        let formatterDeparture = formatter.fullFormatter(with: departureAirport.timeZone)
+        let departureDateString = formatterDeparture.string(from: departureDate)
+        try container.encode(departureDateString, forKey: .departureDate)
+
+        let formatterArrival = formatter.fullFormatter(with: arrivalAirport.timeZone)
+        let arrivalDateString = formatterArrival.string(from: arrivalDate)
+        try container.encode(arrivalDateString, forKey: .arrivalDate)
+    }
 
     init(id: String, number: String, departureAirport: Airport, arrivalAirport: Airport, departureDate: Date, arrivalDate: Date) {
         self.id = id
