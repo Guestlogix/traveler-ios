@@ -24,7 +24,7 @@ open class OrderDetailViewController: UITableViewController {
 
     var order: Order?
 
-    private var product: Product?
+    private var purchasedProduct: PurchasedProduct?
     private var cancellationQuote: CancellationQuote?
 
     override open func viewDidLoad() {
@@ -55,7 +55,7 @@ open class OrderDetailViewController: UITableViewController {
         switch (segue.identifier, segue.destination) {
         case ("productDetailSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? ProductDetailViewController
-            vc?.product = product
+            vc?.purchasedProduct = purchasedProduct
         case ("cancelSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? CancellationViewController
             vc?.quote = cancellationQuote
@@ -78,11 +78,11 @@ open class OrderDetailViewController: UITableViewController {
 
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let product = order!.products[indexPath.row]
+        let purchasedProduct = order!.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! InfoCell
-        cell.titleLabel.text = order!.isCancelled ? "Cancelled: \(product.title)" : product.title
-        cell.valueLabel.text = product.secondaryDescription
-        cell.secondValueLabel?.text = product.price.localizedDescriptionInBaseCurrency
+        cell.titleLabel.text = order!.isCancelled ? "Cancelled: \(purchasedProduct.title)" : purchasedProduct.title
+        cell.valueLabel.text = purchasedProduct.secondaryDescription
+        cell.secondValueLabel?.text = purchasedProduct.finalPrice.localizedDescriptionInBaseCurrency
         
         return cell
     }
@@ -90,7 +90,7 @@ open class OrderDetailViewController: UITableViewController {
     //MARK: UITableViewDelegate
 
     override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        product = order!.products[indexPath.row]
+        purchasedProduct = order!.products[indexPath.row]
 
         tableView.deselectRow(at: indexPath, animated: true)
         

@@ -9,12 +9,12 @@
 import Foundation
 import TravelerKit
 
-extension Product {
+extension PurchasedProduct {
     var secondaryDescription: String? {
         switch self {
-        case let self as BookingProduct:
+        case let self as PurchasedBookingProduct:
             return ISO8601DateFormatter.dateOnlyFormatter.string(from: self.eventDate)
-        case let self as ParkingProduct:
+        case let self as PurchasedParkingProduct:
             return ISO8601DateFormatter.dateOnlyFormatter.string(from: self.eventDate)
         default:
             return nil

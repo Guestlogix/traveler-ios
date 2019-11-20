@@ -96,7 +96,7 @@ public class Traveler {
 
         var path: AuthPath
 
-        switch product.productType {
+        switch product.purchaseType {
         case .booking:
             path = .bookingItem(product, travelerId: travelerProfileId)
         case .parking:
@@ -116,7 +116,6 @@ public class Traveler {
         queue.addOperation(fetchOperation)
         OperationQueue.main.addOperation(blockOperation)
     }
-
 
     // TODO: Use a Range<Date> instead
     func fetchAvailabilities(product: Product, startDate: Date, endDate: Date, completion: @escaping ([Availability]?, Error?) -> Void) {
@@ -163,7 +162,7 @@ public class Traveler {
         let travelerProfileId = session.identity
         var path: AuthPath
 
-        switch product.productType {
+        switch product.purchaseType {
         case .booking:
             if offerings.count == 0 {
                 Log("Options can't be empty for Booking Items", data: nil, level: .error)
@@ -497,6 +496,49 @@ public class Traveler {
         }
 
         let fetchOperation = AuthenticatedRemoteFetchOperation<EphemeralKey>(path: .stripeEphemeralKey(version: apiVersion, travlerId: travlerId), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+    
+    func fetchItinerary(_ query: ItineraryQuery, completion: @escaping (ItineraryResult?, Error?) -> Void) {
+        guard let travlerId = session.identity else {
+            completion(nil, ItineraryQueryError.unidentifiedTraveler)
+            return
+        }
+        
+        let fetchOperation = AuthenticatedRemoteFetchOperation<ItineraryResult>(path: .itinerary(query, travelerId: travlerId), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    func fetchPurchasedProductDetails(_ query: PurchasedProductDetailsQuery, completion: @escaping (AnyPurchasedProductDetails?, Error?) -> Void) {
+        let fetchOperation: AuthenticatedRemoteFetchOperation<AnyPurchasedProductDetails>
+
+        var path: AuthPath
+
+        switch query.purchaseType {
+        case .booking:
+            path = .bookingPurchasedProductDetails(query)
+        case .parking:
+            path = .parkingPurchasedProductDetails(query)
+        case .partnerOffering:
+            path = .partnerPurchasedProductDetails(query)
+        }
+
+        fetchOperation = AuthenticatedRemoteFetchOperation<AnyPurchasedProductDetails>(path: path, session: session)
+
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             completion(fetchOperation.resource, fetchOperation.error)
         }
@@ -1163,5 +1205,63 @@ public class Traveler {
                 delegate?.ephemeralKeyFetchDidFailWith(error!)
             }
         })
+    }
+    
+    /**
+    Returns an `ItineraryResult` containing similar items given an `ItineraryQuery`
+     - Parameters:
+     - query: The reference `ItineraryQuery`
+     - delegate: A `ItineraryFetchDelegate` that is notified if the fetch is successful
+     */
+
+    public static func fetchItinerary(_ query: ItineraryQuery, delegate: ItineraryFetchDelegate) {
+        shared?.fetchItinerary(query, completion: { [weak delegate] (result, error) in
+            if let result = result {
+                delegate?.itineraryFetchDidSucceedWith(result)
+            } else {
+                delegate?.itineraryFetchDidFailWith(error!)
+            }
+        })
+    }
+
+    /**
+     Returns an `ItineraryResult` contaning similar items given an `ItineraryQuery`
+     - Parameters:
+     - query: The reference `ItineraryQuery`
+     - completion: A completion block that is called when the results are ready
+     */
+
+    public static func fetchItinerary(_ query: ItineraryQuery, completion: @escaping (ItineraryResult?, Error?) -> Void) {
+        shared?.fetchItinerary(query, completion: completion)
+    }
+    
+    /**
+     Fetches the `AnyPurchasedProductDetails` for given `query`.
+
+     - Parameters:
+        - query: The reference `PurchasedProductDetailsQuery`
+        - delegate: A `PurchasedProductDetailsFetchDelegate` that is notified of the results.
+     */
+
+    public static func fetchPurchasedProductDetails(_ query: PurchasedProductDetailsQuery, delegate: PurchasedProductDetailsFetchDelegate) {
+        shared?.fetchPurchasedProductDetails(query, completion: { [weak delegate] (details, error) in
+            if let details = details {
+                delegate?.purchasedProductDetailsFetchDidSucceedWith(details)
+            } else {
+                delegate?.purchasedProductDetailsFetchDidFailWith(error!)
+            }
+        })
+    }
+
+    /**
+     Fetches the `AnyPurchasedProductDetails` for given `PurchasedProductDetailsQuery`.
+
+     - Parameters:
+        - query: The reference `PurchasedProductDetailsQuery`
+        - delegate: A completion block that is called when the results are ready.
+     */
+
+    public static func fetchPurchasedProductDetails(_ query: PurchasedProductDetailsQuery, completion: @escaping (AnyPurchasedProductDetails?, Error?) -> Void) {
+        shared?.fetchPurchasedProductDetails(query, completion: completion)
     }
 }

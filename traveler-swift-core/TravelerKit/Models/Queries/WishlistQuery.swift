@@ -35,5 +35,4 @@ public struct WishlistQuery {
         self.fromDate = from
         self.toDate = to ?? Date()
     }
-
 }

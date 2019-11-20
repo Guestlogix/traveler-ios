@@ -8,12 +8,13 @@
 
 import Foundation
 
+// TODO: Rename to AnyPurchasableProduct
 /// An item of any kind
 struct AnyItem: Decodable {
     let bookingItem: BookingItem?
     let parkingItem: ParkingItem?
     let partnerOfferingItem: PartnerOfferingItem?
-    let type: ProductType
+    let type: PurchaseType
 
     enum CodingKeys: String, CodingKey {
         case type = "purchaseStrategy"
@@ -22,7 +23,7 @@ struct AnyItem: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.type = try container.decode(ProductType.self, forKey: .type)
+        self.type = try container.decode(PurchaseType.self, forKey: .type)
 
         switch type {
         case .booking:

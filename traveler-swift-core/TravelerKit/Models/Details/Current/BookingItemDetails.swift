@@ -15,7 +15,7 @@ public struct BookingItemDetails: CatalogItemDetails, Decodable {
     /// Price
     public let price: Price
     /// Type
-    public let productType: ProductType
+    public let purchaseType: PurchaseType
     /// Title
     public let title: String
     /// Description
@@ -69,7 +69,7 @@ public struct BookingItemDetails: CatalogItemDetails, Decodable {
         self.contact = try container.decode(ContactInfo?.self, forKey: .contact)
         self.locations = try container.decode([Location].self, forKey: .locations)
         self.price = try container.decode(Price.self, forKey: .priceStartingAt)
-        self.productType = try container.decode(ProductType.self, forKey: .purchaseStrategy)
+        self.purchaseType = try container.decode(PurchaseType.self, forKey: .purchaseStrategy)
         self.isWishlisted = try container.decode(Bool?.self, forKey: .isWishlisted)
         self.supplier = try container.decode(Supplier.self, forKey: .supplier)
         self.termsAndConditions = try container.decode(String?.self, forKey: .termsAndConditions)

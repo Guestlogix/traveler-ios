@@ -34,6 +34,10 @@ enum AuthPath {
     case searchBookingItems(BookingItemQuery)
     case searchParkingItems(ParkingItemQuery)
     case similarItems(Product)
+    case itinerary(ItineraryQuery, travelerId: String)
+    case bookingPurchasedProductDetails(PurchasedProductDetailsQuery)
+    case parkingPurchasedProductDetails(PurchasedProductDetailsQuery)
+    case partnerPurchasedProductDetails(PurchasedProductDetailsQuery)
 
     // MARK: URLRequest
 
@@ -270,10 +274,28 @@ enum AuthPath {
         case .similarItems(let item):
             urlComponents.path = "/v1/catalog-group/\(item.id)"
             urlRequest.method = .get
+        case .itinerary(let query, let travelerId):
+            urlComponents.path = "/v1/traveler/\(travelerId)/itinerary"
+            urlRequest.method = .get
+                urlComponents.queryItems = []
+                
+                query.flights?.forEach({ (flight) in
+                    urlComponents.queryItems?.append(URLQueryItem(name: "flight-ids", value: flight.id))
+                })
+                
+                if let dateRange = query.dateRange {
+                    urlComponents.queryItems?.append(URLQueryItem(name: "from", value: DateFormatter.withoutTimezone.string(from: dateRange.lowerBound)))
+                    urlComponents.queryItems?.append(URLQueryItem(name: "to", value: DateFormatter.withoutTimezone.string(from: dateRange.upperBound)))
+                }
+        case .bookingPurchasedProductDetails(let query):
+            urlComponents.path = "/v1/orderItemDetail/\(query.orderId)/booking/\(query.productId)"
+        case .parkingPurchasedProductDetails(let query):
+            urlComponents.path = "/v1/orderItemDetail/\(query.orderId)/parking/\(query.productId)"
+        case .partnerPurchasedProductDetails(let query):
+            urlComponents.path = "/v1/orderItemDetail/\(query.orderId)/menu/\(query.productId)"
         }
         
         urlRequest.url = urlComponents.url
-
         return urlRequest
     }
 }

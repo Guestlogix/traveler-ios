@@ -16,6 +16,10 @@ public struct Airport: Codable, Equatable {
     public let name: String
     /// City
     public let city: String
+    /// Country
+    public let country: String
+    /// Country code
+    public let countryCode: String
     /// Timezone
     public let timeZone: TimeZone
 
@@ -23,6 +27,8 @@ public struct Airport: Codable, Equatable {
         case code = "iata"
         case name = "name"
         case city = "city"
+        case country = "countryName"
+        case countryCode = "countryCode"
         case utcOffsetHours = "utcOffsetHours"
     }
 
@@ -31,13 +37,17 @@ public struct Airport: Codable, Equatable {
         try container.encode(code, forKey: .code)
         try container.encode(name, forKey: .name)
         try container.encode(city, forKey: .city)
+        try container.encode(country, forKey: .country)
+        try container.encode(countryCode, forKey: .countryCode)
         try container.encode(Double(timeZone.secondsFromGMT()) / 3600, forKey: .utcOffsetHours)
     }
 
-    init(code: String, name: String, city: String, timeZone: TimeZone) {
+    init(code: String, name: String, city: String, country: String, countryCode: String, timeZone: TimeZone) {
         self.code = code
         self.name = name
         self.city = city
+        self.country = country
+        self.countryCode = countryCode
         self.timeZone = timeZone
     }
 
@@ -46,7 +56,9 @@ public struct Airport: Codable, Equatable {
         self.code = try container.decode(String.self, forKey: .code)
         self.name = try container.decode(String.self, forKey: .name)
         self.city = try container.decode(String.self, forKey: .city)
-
+        self.country = try container.decode(String.self, forKey: .country)
+        self.countryCode = try container.decode(String.self, forKey: .countryCode)
+        
         let utcOffsetHours = try container.decode(Double.self, forKey: .utcOffsetHours)
         let offsetSeconds = Int(utcOffsetHours * 3600)
 
