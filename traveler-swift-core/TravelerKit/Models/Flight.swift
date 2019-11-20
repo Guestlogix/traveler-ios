@@ -30,6 +30,11 @@ public struct Flight: Codable, Equatable {
     public let departureDate: Date
     /// Arrival time
     public let arrivalDate: Date
+    // TODO: Terminals should be part of the `Airport` model
+    /// Departure terminal
+    public let departureTerminal: String?
+    /// Arrival terminal
+    public let arrivalTerminal: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -38,6 +43,8 @@ public struct Flight: Codable, Equatable {
         case arrivalAirport = "destination"
         case departureDate = "departureTime"
         case arrivalDate = "arrivalTime"
+        case departureTerminal = "departureTerminal"
+        case arrivalTerminal = "arrivalTerminal"
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -46,6 +53,8 @@ public struct Flight: Codable, Equatable {
         try container.encode(number, forKey: .number)
         try container.encode(departureAirport, forKey: .departureAirport)
         try container.encode(arrivalAirport, forKey: .arrivalAirport)
+        try container.encode(departureTerminal, forKey: .departureTerminal)
+        try container.encode(arrivalTerminal, forKey: .arrivalTerminal)
 
         let formatter = DateFormatter()
         let formatterDeparture = formatter.fullFormatter(with: departureAirport.timeZone)
@@ -57,19 +66,23 @@ public struct Flight: Codable, Equatable {
         try container.encode(arrivalDateString, forKey: .arrivalDate)
     }
 
-    init(id: String, number: String, departureAirport: Airport, arrivalAirport: Airport, departureDate: Date, arrivalDate: Date) {
+    init(id: String, number: String, departureAirport: Airport, arrivalAirport: Airport, departureDate: Date, arrivalDate: Date, departureTerminal: String, arrivalTerminal: String) {
         self.id = id
         self.number = number
         self.departureAirport = departureAirport
         self.arrivalAirport = arrivalAirport
         self.departureDate = departureDate
         self.arrivalDate = arrivalDate
+        self.departureTerminal = departureTerminal
+        self.arrivalTerminal = arrivalTerminal
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.number = try container.decode(String.self, forKey: .number)
         self.id = try container.decode(String.self, forKey: .id)
+        self.departureTerminal = try container.decode(String?.self, forKey: .departureTerminal)
+        self.arrivalTerminal = try container.decode(String?.self, forKey: .arrivalTerminal)
 
         let departureAirport = try container.decode(Airport.self, forKey: .departureAirport)
         let arrivalAirport = try container.decode(Airport.self, forKey: .arrivalAirport)

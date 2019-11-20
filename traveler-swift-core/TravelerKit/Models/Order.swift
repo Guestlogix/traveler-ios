@@ -39,8 +39,8 @@ public struct Order: Decodable, Equatable, Hashable {
     public let total: Price
     /// Order number for confirmation purposes
     public let referenceNumber: String?
-    /// The `Product`s that were included in the order
-    public let products: [Product]
+    /// The `PurchasedProduct`s that were included in the order
+    public let products: [PurchasedProduct]
     /// The current status
     public let status: OrderStatus
     /// The date and time the order was created
@@ -95,16 +95,7 @@ public struct Order: Decodable, Equatable, Hashable {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.createdDate, in: container, debugDescription: "Incorrect format")
         }
 
-        self.products = try container.decode([AnyProduct].self, forKey: .products).map { product in
-            switch product.type {
-            case .booking:
-                return product.bookingProduct!
-            case .parking:
-                return product.parkingProduct!
-            case .partnerOffering:
-                return product.partnerOfferingProduct!
-            }
-        }
+        self.products = try container.decode([AnyPurchasedProduct].self, forKey: .products).map { $0.payload }
 
         self.contact = try container.decode(CustomerContact.self, forKey: .email)
     }

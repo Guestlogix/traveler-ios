@@ -8,13 +8,14 @@
 
 import Foundation
 
+// TODO: Rename to PurchasableExperienceProduct
 public struct BookingItem: CatalogItem, Decodable, Product {
     /// An identifier
     public let id: String
     /// Starting price
     public let price: Price
-    /// Product type
-    public let productType: ProductType
+    /// Type
+    public let purchaseType: PurchaseType
     /// Categories
     public let categories: [BookingItemCategory]
     /// A title
@@ -53,7 +54,7 @@ public struct BookingItem: CatalogItem, Decodable, Product {
         self.imageURL = try container.decode(URL?.self, forKey: .thumbnail)
         self.price = try container.decode(Price.self, forKey: .price)
         self.categories = try container.decode([BookingItemCategory].self, forKey: .categories)
-        self.productType = try container.decode(ProductType.self, forKey: .type)
+        self.purchaseType = try container.decode(PurchaseType.self, forKey: .type)
         self.location = try container.decode(Coordinate.self, forKey: .location)
         self.providerTranslationAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .providerTranslationAttribution)
         self.isAvailable = try container.decode(Bool.self, forKey: .isAvailable)

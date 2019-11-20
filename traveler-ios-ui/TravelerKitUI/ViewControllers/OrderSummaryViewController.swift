@@ -61,7 +61,7 @@ open class OrderSummaryViewController: UITableViewController {
         case billingSection:
             return totalPayments.count + 1
         default:
-            return (order!.products[section] as? BookingProduct)?.passes.count ?? 1
+            return (order!.products[section] as? PurchasedBookingProduct)?.passes.count ?? 1
         }
     }
 
@@ -81,7 +81,7 @@ open class OrderSummaryViewController: UITableViewController {
             let product = order!.products.first
 
             switch product {
-            case let product as BookingProduct:
+            case let product as PurchasedBookingProduct:
                 let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
                 // TODO: This should also be fixed when dealing with multiple orders and multiple passes.
                 let pass = product.passes[indexPath.row]
@@ -89,16 +89,16 @@ open class OrderSummaryViewController: UITableViewController {
                 cell.subTitleLabel.text = pass.description
                 cell.priceLabel.text = pass.price.localizedDescriptionInBaseCurrency
                 return cell
-            case let product as ParkingProduct:
+            case let product as PurchasedParkingProduct:
                 let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
                 cell.titleLabel.text = product.title
-                cell.priceLabel.text = product.price.localizedDescriptionInBaseCurrency
+                cell.priceLabel.text = product.finalPrice.localizedDescriptionInBaseCurrency
                 cell.subTitleLabel.text = ""
                 return cell
-            case let product as PartnerOfferingProduct:
+            case let product as PurchasedPartnerOfferingProduct:
                 let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
                 cell.titleLabel.text = product.title
-                cell.priceLabel.text = product.price.localizedDescriptionInBaseCurrency
+                cell.priceLabel.text = product.finalPrice.localizedDescriptionInBaseCurrency
                 cell.subTitleLabel.text = ""
                 return cell
             default:

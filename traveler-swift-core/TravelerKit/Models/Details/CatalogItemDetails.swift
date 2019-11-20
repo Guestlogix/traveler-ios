@@ -38,7 +38,7 @@ struct AnyItemDetails: Decodable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let type = try container.decode(ProductType.self, forKey: .type)
+        let type = try container.decode(PurchaseType.self, forKey: .type)
 
         var itemDetail: CatalogItemDetails
         switch type {

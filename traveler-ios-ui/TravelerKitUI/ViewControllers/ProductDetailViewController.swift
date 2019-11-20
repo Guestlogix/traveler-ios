@@ -11,6 +11,7 @@ import TravelerKit
 
 open class ProductDetailViewController: UIViewController {
     var product: Product?
+    var purchasedProduct: PurchasedProduct?
 
     private var productDetails: CatalogItemDetails?
 
@@ -23,7 +24,7 @@ open class ProductDetailViewController: UIViewController {
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination, productDetails) {
         case (_, let vc as BookableProductDetailViewController, let productDetails as BookingItemDetails):
-            vc.purchasedProduct = product as? BookingProduct
+            vc.purchasedProduct = product as? PurchasedBookingProduct
             vc.productDetails = productDetails
         case (_, let vc as ErrorViewController, _):
             vc.delegate = self

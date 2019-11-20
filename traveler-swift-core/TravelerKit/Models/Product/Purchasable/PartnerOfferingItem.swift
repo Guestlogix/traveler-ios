@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Rename to PurchasablePartnerOfferingProduct
 public struct PartnerOfferingItem: CatalogItem, Product, Decodable {
     /// A title
     public let title: String
@@ -21,8 +22,8 @@ public struct PartnerOfferingItem: CatalogItem, Product, Decodable {
     public let id: String
     /// Starting price
     public let price: Price
-    /// Product type
-    public let productType: ProductType = .partnerOffering
+    /// Type
+    public let purchaseType: PurchaseType = .partnerOffering
 
     enum CodingKeys: String, CodingKey {
         case id = "id"

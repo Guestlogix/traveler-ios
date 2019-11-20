@@ -1,5 +1,5 @@
 //
-//  ProductType.swift
+//  PurchaseType.swift
 //  TravelerKit
 //
 //  Created by Omar Padierna on 2019-10-01.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Different types of product
-public enum ProductType: String, Decodable {
+public enum PurchaseType: String, Decodable {
     /// Experience or any product that has a booking nature
     case booking = "Bookable"
     /// Products that relate to parking

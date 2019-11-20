@@ -8,13 +8,14 @@
 
 import Foundation
 
+// TODO: Rename to PurchasableParkingProduct
 public struct ParkingItem: CatalogItem, Decodable, Product {
     /// An identifier
     public let id: String
     /// Starting price
     public let price: Price
-    /// Product type
-    public let productType: ProductType
+    /// Type
+    public let purchaseType: PurchaseType
     /// A title
     public let title: String
     /// A secondary title
@@ -35,7 +36,7 @@ public struct ParkingItem: CatalogItem, Decodable, Product {
         case subTitle = "subTitle"
         case imageURL = "thumbnail"
         case price = "priceStartingAt"
-        case productType = "purchaseStrategy"
+        case purchaseType = "purchaseStrategy"
         case location = "geoLocation"
         case providerTranslationAttribution = "providerTranslationAttribution"
     }
