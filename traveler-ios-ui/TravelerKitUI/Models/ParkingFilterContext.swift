@@ -24,9 +24,9 @@ public class ParkingFilterContext: ObservingContext {
     }
 
     func notifyObserver() {
-        for (id, observation) in observations {
-            guard let observer = observation.observer, let filterObserver = observer as? ParkingFilterContextObserving else {
-                observations.removeValue(forKey: id)
+        for (id, observerWrapper) in observerWrappers {
+            guard let observer = observerWrapper.observer, let filterObserver = observer as? ParkingFilterContextObserving else {
+                observerWrappers.removeValue(forKey: id)
                 continue
             }
 

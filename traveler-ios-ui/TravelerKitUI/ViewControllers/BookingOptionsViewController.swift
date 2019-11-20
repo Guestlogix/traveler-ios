@@ -19,6 +19,8 @@ open class BookingOptionsViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
+    let optionCellIdentifier = "optionCellIdentifier"
+
     weak var delegate: BookingOptionsViewControllerDelegate?
 
     var product: BookingItem?
