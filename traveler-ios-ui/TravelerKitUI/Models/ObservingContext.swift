@@ -9,18 +9,18 @@
 import Foundation
 
 public class ObservingContext {
-    struct ObservationWrapper {
+    struct ObserverWrapper {
         weak var observer: AnyObject?
     }
-    var observations = [ObjectIdentifier: ObservationWrapper]()
+    var observerWrappers = [ObjectIdentifier: ObserverWrapper]()
 
     func addObserver(_ observer: AnyObject) {
         let id = ObjectIdentifier(observer)
-        observations[id] = ObservationWrapper(observer: observer)
+        observerWrappers[id] = ObserverWrapper(observer: observer)
     }
 
     func removeObserver(_ observer: AnyObject) {
         let id = ObjectIdentifier(observer)
-        observations.removeValue(forKey: id)
+        observerWrappers.removeValue(forKey: id)
     }
 }

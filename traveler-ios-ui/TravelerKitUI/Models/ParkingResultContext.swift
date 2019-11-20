@@ -35,9 +35,9 @@ public class ParkingResultContext: ObservingContext {
     }
 
     func notifyObserversWithSelectedIndexChange() {
-        for (id, observation) in observations {
-            guard let observer = observation.observer, let resultObserver = observer as? ParkingResultContextObserving else {
-                observations.removeValue(forKey: id)
+        for (id, observerWrapper) in observerWrappers {
+            guard let observer = observerWrapper.observer, let resultObserver = observer as? ParkingResultContextObserving else {
+                observerWrappers.removeValue(forKey: id)
                 continue
             }
 
@@ -46,9 +46,9 @@ public class ParkingResultContext: ObservingContext {
     }
 
     func notifyObserversWithResultUpdate() {
-        for (id, observation) in observations {
-            guard let observer = observation.observer, let resultObserver = observer as? ParkingResultContextObserving else {
-                observations.removeValue(forKey: id)
+        for (id, observerWrapper) in observerWrappers {
+            guard let observer = observerWrapper.observer, let resultObserver = observer as? ParkingResultContextObserving else {
+                observerWrappers.removeValue(forKey: id)
                 continue
             }
 

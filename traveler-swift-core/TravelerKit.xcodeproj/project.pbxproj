@@ -12,7 +12,6 @@
 		A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */; };
 		A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */; };
 		A91F3BB121B827870016894A /* Array+ContainsAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */; };
-		A91F3BB321B82BDD0016894A /* ErrorContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB221B82BDD0016894A /* ErrorContext.swift */; };
 		A91F3BB521B879DB0016894A /* Pass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB421B879DB0016894A /* Pass.swift */; };
 		A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BB621B87C500016894A /* PassFetchDelegate.swift */; };
 		A91F3BDB21D9F9730016894A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F3BDA21D9F9730016894A /* Question.swift */; };
@@ -157,7 +156,6 @@
 		A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperationTests.swift; sourceTree = "<group>"; };
 		A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+PassengerKit.swift"; sourceTree = "<group>"; };
 		A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ContainsAnyOf.swift"; sourceTree = "<group>"; };
-		A91F3BB221B82BDD0016894A /* ErrorContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorContext.swift; sourceTree = "<group>"; };
 		A91F3BB421B879DB0016894A /* Pass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pass.swift; sourceTree = "<group>"; };
 		A91F3BB621B87C500016894A /* PassFetchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassFetchDelegate.swift; sourceTree = "<group>"; };
 		A91F3BDA21D9F9730016894A /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -436,7 +434,6 @@
 				A9E28A9621A864A700967C4A /* Product.swift */,
 				A91F3BB421B879DB0016894A /* Pass.swift */,
 				A9639C87220DEDCC00625235 /* BookingError.swift */,
-				A91F3BB221B82BDD0016894A /* ErrorContext.swift */,
 				A91F3BDA21D9F9730016894A /* Question.swift */,
 				A91F3BDC21DC36AD0016894A /* PurchaseForm.swift */,
 				A91F3BDE21DD3BA80016894A /* QuestionGroup.swift */,
@@ -739,7 +736,6 @@
 				A96F8305223784F500268D0D /* BookingOption.swift in Sources */,
 				CAEB7A78234CEECA00C31BD6 /* BookingItem.swift in Sources */,
 				A9DB06B3214AFB54009817EC /* Flight.swift in Sources */,
-				A91F3BB321B82BDD0016894A /* ErrorContext.swift in Sources */,
 				A9DB065F2140665A009817EC /* ConcurrentOperation.swift in Sources */,
 				CA1B1503234F6E91009661EC /* PriceRangeFilter.swift in Sources */,
 				A9825BBA22089323008AA0C1 /* Double+Currency.swift in Sources */,
