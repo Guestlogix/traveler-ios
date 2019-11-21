@@ -1,5 +1,5 @@
 //
-//  BookableProductDetailViewController.swift
+//  PurchasedBookingProductDetailViewController.swift
 //  TravelerKitUI
 //
 //  Created by Omar Padierna on 2019-05-30.
@@ -9,7 +9,7 @@
 import UIKit
 import TravelerKit
 
-open class BookableProductDetailViewController: UIViewController {
+open class PurchasedBookingProductDetailViewController: UIViewController {
     @IBOutlet weak var headerView: PagedHorizontalView!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var passDetailsHeightConstraint: NSLayoutConstraint!
@@ -19,27 +19,26 @@ open class BookableProductDetailViewController: UIViewController {
     @IBOutlet weak var productInfoHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var productInfoView: UIView!
 
-    var purchasedProduct: PurchasedBookingProduct?
-    var productDetails: BookingItemDetails?
+    var purchaseDetails: PurchasedBookingProductDetails?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.navigationBar.isTranslucent = true
 
-        productNameLabel.text = purchasedProduct?.title
+        productNameLabel.text = purchaseDetails?.title
 
-        if let date = purchasedProduct?.eventDate {
+        if let date = purchaseDetails?.eventDate {
             dateLabel.text = ISO8601DateFormatter.dateOnlyFormatter.string(from: date)
         }
 
-        let description = productDetails?.attributedDescription
+        let description = purchaseDetails?.attributedDescription
         description?.setFontFace(font: UIFont.systemFont(ofSize: 17))
         productDescriptionLabel.attributedText = description
 
         // Preload images
 
-        productDetails?.imageUrls.forEach({ (imageURL) in
+        purchaseDetails?.imageUrls.forEach({ (imageURL) in
             AssetManager.shared.loadImage(with: imageURL, completion: { _ in
                 // no-op
             })
@@ -50,15 +49,15 @@ open class BookableProductDetailViewController: UIViewController {
         switch (segue.identifier, segue.destination){
         case (_, let vc as AggregatedPassesViewController):
             vc.delegate = self
-            vc.passes = purchasedProduct?.passes
+            vc.passes = purchaseDetails?.passes
         case (_, let vc as CatalogItemInfoViewController):
-            vc.details = productDetails
+            vc.details = purchaseDetails
             vc.delegate = self
         case (_ , let vc as SupplierInfoViewController):
-            vc.supplier = productDetails?.supplier
+            vc.supplier = purchaseDetails?.supplier
         case ("termsAndConditionsSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? TermsAndConditionsViewController
-            vc?.termsAndConditions = productDetails?.attributedTermsAndConditions
+            vc?.termsAndConditions = purchaseDetails?.attributedTermsAndConditions
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -66,18 +65,18 @@ open class BookableProductDetailViewController: UIViewController {
     }
 }
 
-extension BookableProductDetailViewController: UICollectionViewDataSource {
+extension PurchasedBookingProductDetailViewController: UICollectionViewDataSource {
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return productDetails?.imageUrls.count ?? 0
+        return purchaseDetails?.imageUrls.count ?? 0
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: imageCellIdentifier, for: indexPath) as! ImageCell
-        let imageURL = productDetails!.imageUrls[indexPath.row]
+        let imageURL = purchaseDetails!.imageUrls[indexPath.row]
 
         AssetManager.shared.loadImage(with: imageURL) { (image) in
             cell.imageView.image = image
@@ -86,7 +85,7 @@ extension BookableProductDetailViewController: UICollectionViewDataSource {
     }
 }
 
-extension BookableProductDetailViewController: AggregatedPassesViewControllerDelegate {
+extension PurchasedBookingProductDetailViewController: AggregatedPassesViewControllerDelegate {
     public func aggregatedPasssesViewControllerDidChangePreferredContentSize(_ controller: AggregatedPassesViewController) {
         passDetailsView.isHidden = controller.preferredContentSize.height == 0
         passDetailsHeightConstraint.constant = controller.preferredContentSize.height
@@ -94,7 +93,7 @@ extension BookableProductDetailViewController: AggregatedPassesViewControllerDel
     }
 }
 
-extension BookableProductDetailViewController: CatalogItemInfoViewControllerDelegate {
+extension PurchasedBookingProductDetailViewController: CatalogItemInfoViewControllerDelegate {
     public func catalogItemInfoViewControllerDidChangePreferredContentSize(_ controller: CatalogItemInfoViewController) {
         productInfoView.isHidden = controller.preferredContentSize.height == 0
         productInfoHeightConstraint.constant = controller.preferredContentSize.height

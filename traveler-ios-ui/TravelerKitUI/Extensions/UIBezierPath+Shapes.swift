@@ -9,6 +9,42 @@
 import Foundation
 
 extension UIBezierPath {
+    convenience init(airplane rect: CGRect) {
+        self.init()
+        
+        let minDimension = min(rect.height, rect.width)
+        let heightRatio = minDimension / 14
+        let widthRatio = minDimension / 15
+        
+        let heightOffset = rect.height > rect.width ? (rect.height - rect.width) / 2 : 0
+        let widthOffset = rect.width > rect.height ? (rect.width - rect.height) / 2 : 0
+        
+        func scaledCGPoint(x: CGFloat, y: CGFloat) -> CGPoint {
+            return CGPoint(x: x * widthRatio + widthOffset, y: y * heightRatio + heightOffset)
+        }
+        
+        self.move(to: scaledCGPoint(x: 4.88, y: 13.61))
+        self.addLine(to: scaledCGPoint(x: 6.27, y: 13.61))
+        self.addLine(to: scaledCGPoint(x: 9.75, y: 8.04))
+        self.addLine(to: scaledCGPoint(x: 13.58, y: 8.04))
+        self.addCurve(to: scaledCGPoint(x: 14.62, y: 7), controlPoint1: scaledCGPoint(x: 14.15, y: 8.04), controlPoint2: scaledCGPoint(x: 14.62, y: 7.58))
+        self.addCurve(to: scaledCGPoint(x: 13.58, y: 5.96), controlPoint1: scaledCGPoint(x: 14.62, y: 6.42), controlPoint2: scaledCGPoint(x: 14.15, y: 5.96))
+        self.addLine(to: scaledCGPoint(x: 9.75, y: 5.96))
+        self.addLine(to: scaledCGPoint(x: 6.27, y: 0.39))
+        self.addLine(to: scaledCGPoint(x: 4.88, y: 0.39))
+        self.addLine(to: scaledCGPoint(x: 6.62, y: 5.96))
+        self.addLine(to: scaledCGPoint(x: 2.79, y: 5.96))
+        self.addLine(to: scaledCGPoint(x: 1.75, y: 4.57))
+        self.addLine(to: scaledCGPoint(x: 0.71, y: 4.57))
+        self.addLine(to: scaledCGPoint(x: 1.4, y: 7))
+        self.addLine(to: scaledCGPoint(x: 0.71, y: 9.43))
+        self.addLine(to: scaledCGPoint(x: 1.75, y: 9.43))
+        self.addLine(to: scaledCGPoint(x: 2.79, y: 8.04))
+        self.addLine(to: scaledCGPoint(x: 6.62, y: 8.04))
+        self.addLine(to: scaledCGPoint(x: 4.88, y: 13.61))
+        self.close()
+    }
+    
     convenience init(heartIn rect: CGRect) {
         self.init()
 

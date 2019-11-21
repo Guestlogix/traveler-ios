@@ -62,9 +62,11 @@ public class ParkingItemDetailsResultViewController: UIViewController {
         case (_, let vc as CatalogItemInfoViewController):
             vc.delegate = self
             vc.details = details
-        case (_, let vc as ParkingItemDetailsPriceViewController):
-            vc.details = details
+        case (_, let vc as ParkingDetailsPriceViewController):
             vc.delegate = self
+            vc.totalPrice = details?.price
+            vc.onlinePrice = details?.priceToPayOnline
+            vc.onsitePrice = details?.priceToPayOnsite
         case (_, let vc as SupplierInfoViewController):
             vc.supplier = details?.supplier
         case (_, let vc as PurchaseQuestionsViewController):
@@ -105,7 +107,7 @@ extension ParkingItemDetailsResultViewController: MKMapViewDelegate {
 }
 
 extension ParkingItemDetailsResultViewController: ParkingItemDetailsPriceViewControllerDelegate {
-    public func parkingItemDetailsPriceViewControllerDidChangePreferredContentSize(_ controller: ParkingItemDetailsPriceViewController) {
+    public func parkingDetailsPriceViewControllerDidChangePreferredContentSize(_ controller: ParkingDetailsPriceViewController) {
         priceViewHeightConstraint.constant = controller.preferredContentSize.height
         view.layoutIfNeeded()
     }

@@ -33,6 +33,8 @@ public class OrderPaymentViewController: UIViewController {
             vc.payments = payments ?? []
         case ("loadingSegue", _):
             break
+        case ("errorSegue", _):
+            break
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break

@@ -64,8 +64,9 @@ class MainViewController: UIViewController {
             lookupVC?.delegate = self
         case (_, let navVC as UINavigationController) where segue.identifier == "profileSegue":
             let profileVC = navVC.topViewController as? ProfileViewController
-            profileVC?.profile = profile
             profileVC?.delegate = self
+            profileVC?.profile = profile
+            profileVC?.flights = flights
         case (let segue as ContainerEmbedSegue, let catalogVC as PassengerCatalogViewController):
             segue.containerView = containerView
             catalogVC.query = CatalogQuery(flights: flights)
