@@ -54,8 +54,9 @@ open class OrderDetailViewController: UITableViewController {
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case ("productDetailSegue", let navVC as UINavigationController):
-            let vc = navVC.topViewController as? ProductDetailViewController
-            vc?.purchasedProduct = purchasedProduct
+            let vc = navVC.topViewController as? PurchasedProductDetailViewController
+            let query = PurchasedProductDetailsQuery(orderId: order!.id, productId: purchasedProduct!.id, purchaseType: purchasedProduct!.purchaseType)
+            vc?.query = query
         case ("cancelSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? CancellationViewController
             vc?.quote = cancellationQuote
@@ -77,7 +78,6 @@ open class OrderDetailViewController: UITableViewController {
     }
 
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let purchasedProduct = order!.products[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: productCellIdentifier, for: indexPath) as! InfoCell
         cell.titleLabel.text = order!.isCancelled ? "Cancelled: \(purchasedProduct.title)" : purchasedProduct.title

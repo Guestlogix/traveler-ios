@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A9f-9Z-kh1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A9f-9Z-kh1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -121,9 +121,9 @@
                         <viewLayoutGuide key="safeArea" id="Aul-eT-EmK"/>
                     </view>
                     <connections>
-                        <segue destination="ShW-t7-Kas" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="95d-oM-yh7"/>
                         <segue destination="V8N-hf-Sen" kind="custom" identifier="resultSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="d0m-cO-XXF"/>
                         <segue destination="E6g-dM-Bgh" kind="custom" identifier="loadingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="LLS-IY-p2r"/>
+                        <segue destination="Npd-JE-QYH" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="fz2-qr-8KY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fX7-9J-KcK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -456,42 +456,13 @@
             </objects>
             <point key="canvasLocation" x="10210" y="2161"/>
         </scene>
-        <!--Retry View Controller-->
-        <scene sceneID="YXr-NV-Er8">
+        <!--Error-->
+        <scene sceneID="mED-tk-IuP">
             <objects>
-                <viewController id="ShW-t7-Kas" customClass="RetryViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xot-p9-1bz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An error occured while loading your product :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1B-F6-q1z">
-                                <rect key="frame" x="52" y="206" width="310" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1g-P3-cXp">
-                                <rect key="frame" x="188.5" y="279" width="37" height="30"/>
-                                <state key="normal" title="Retry"/>
-                                <connections>
-                                    <action selector="didRetry:" destination="ShW-t7-Kas" eventType="touchUpInside" id="cj5-PD-gcf"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="C1B-F6-q1z" firstAttribute="centerY" secondItem="ijS-hP-H57" secondAttribute="centerY" multiplier="0.5" id="5d4-5W-2HG"/>
-                            <constraint firstItem="ijS-hP-H57" firstAttribute="trailing" secondItem="C1B-F6-q1z" secondAttribute="trailing" constant="52" id="Cmu-Zz-C3l"/>
-                            <constraint firstItem="C1B-F6-q1z" firstAttribute="leading" secondItem="ijS-hP-H57" secondAttribute="leading" constant="52" id="Rum-25-Kud"/>
-                            <constraint firstItem="J1g-P3-cXp" firstAttribute="top" secondItem="C1B-F6-q1z" secondAttribute="bottom" constant="32" id="adW-QW-1xL"/>
-                            <constraint firstItem="J1g-P3-cXp" firstAttribute="centerX" secondItem="C1B-F6-q1z" secondAttribute="centerX" id="qXi-pS-Jv6"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ijS-hP-H57"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F9u-an-A4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Error" id="Npd-JE-QYH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RBW-bn-57R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10439" y="2784"/>
+            <point key="canvasLocation" x="10196" y="2790"/>
         </scene>
     </scenes>
 </document>

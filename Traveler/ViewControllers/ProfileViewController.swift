@@ -18,6 +18,7 @@ class ProfileViewController: UITableViewController {
     @IBOutlet weak var emailLabel: UILabel!
 
     var profile: Profile?
+    var flights = [Flight]()
     weak var delegate: ProfileViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -35,6 +36,9 @@ class ProfileViewController: UITableViewController {
             wishlistVC.query = WishlistQuery(offset: 0, limit: 10, from: nil, to: Date())
         case (_, let vc as SettingsViewController):
             vc.delegate = self
+        case ("itinerarySegue", let navVC as UINavigationController):
+            let vc = navVC.topViewController as? ItineraryViewController
+            vc?.flights = flights
         case ("exitSegue"?, _):
             break
         default:

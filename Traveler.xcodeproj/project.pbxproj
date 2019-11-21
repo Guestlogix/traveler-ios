@@ -59,7 +59,6 @@
 		CA1226F622F0C12A00541F3A /* FlightLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D922211CE0B00625235 /* FlightLookupViewController.swift */; };
 		CA1226F722F0C12A00541F3A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D414224D315100AAE774 /* Profile.swift */; };
 		CA1226F822F0C12A00541F3A /* ValueDisplayInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */; };
-		CA1226F922F0C12A00541F3A /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 		CA1226FA22F0C12A00541F3A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D412224D274400AAE774 /* AuthViewController.swift */; };
 		CA1226FB22F0C12A00541F3A /* FlightSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8C2211CE0B00625235 /* FlightSearchViewController.swift */; };
 		CA1226FC22F0C12A00541F3A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6882280B19900319683 /* ProfileViewController.swift */; };
@@ -101,7 +100,6 @@
 		CA12272C22F0C25E00541F3A /* FlightLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D922211CE0B00625235 /* FlightLookupViewController.swift */; };
 		CA12272D22F0C25E00541F3A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D414224D315100AAE774 /* Profile.swift */; };
 		CA12272E22F0C25E00541F3A /* ValueDisplayInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */; };
-		CA12272F22F0C25E00541F3A /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 		CA12273022F0C25E00541F3A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D412224D274400AAE774 /* AuthViewController.swift */; };
 		CA12273122F0C25E00541F3A /* FlightSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8C2211CE0B00625235 /* FlightSearchViewController.swift */; };
 		CA12273222F0C25E00541F3A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6882280B19900319683 /* ProfileViewController.swift */; };
@@ -142,7 +140,6 @@
 		CAC5086522D3C736004A114B /* FlightLookupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D922211CE0B00625235 /* FlightLookupViewController.swift */; };
 		CAC5086622D3C736004A114B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D414224D315100AAE774 /* Profile.swift */; };
 		CAC5086722D3C736004A114B /* ValueDisplayInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D7F2211CE0B00625235 /* ValueDisplayInputCell.swift */; };
-		CAC5086822D3C736004A114B /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 		CAC5086922D3C736004A114B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A965D412224D274400AAE774 /* AuthViewController.swift */; };
 		CAC5086A22D3C736004A114B /* FlightSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639D8C2211CE0B00625235 /* FlightSearchViewController.swift */; };
 		CAC5086B22D3C736004A114B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A974A6882280B19900319683 /* ProfileViewController.swift */; };
@@ -172,7 +169,6 @@
 		CAC5088622D3C736004A114B /* TravelerKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DD42211D13900625235 /* TravelerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAC5088722D3C736004A114B /* TravelerStripePaymentProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CADEC49A22CFB05C00FCF7A2 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEC49922CFB05C00FCF7A2 /* Environment.swift */; };
-		F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -275,7 +271,6 @@
 		CA12275322F0C25E00541F3A /* gCrew local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gCrew local.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC5088C22D3C736004A114B /* gCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CADEC49922CFB05C00FCF7A2 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
-		F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,7 +436,6 @@
 				A9639D912211CE0B00625235 /* FlightSearchResultViewController.swift */,
 				A9639D922211CE0B00625235 /* FlightLookupViewController.swift */,
 				A9639D932211CE0B00625235 /* EmptyViewController.swift */,
-				F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */,
 				A965D412224D274400AAE774 /* AuthViewController.swift */,
 				A974A6882280B19900319683 /* ProfileViewController.swift */,
 				A974A6CC228C63FA00319683 /* SettingsViewController.swift */,
@@ -737,7 +731,6 @@
 				A9639DA42211CE0B00625235 /* FlightLookupViewController.swift in Sources */,
 				A965D415224D315100AAE774 /* Profile.swift in Sources */,
 				A9639D972211CE0B00625235 /* ValueDisplayInputCell.swift in Sources */,
-				F3BEB5742228772400BD181C /* FlightDetailsViewController.swift in Sources */,
 				A965D413224D274400AAE774 /* AuthViewController.swift in Sources */,
 				A9639D9E2211CE0B00625235 /* FlightSearchViewController.swift in Sources */,
 				A974A6892280B19900319683 /* ProfileViewController.swift in Sources */,
@@ -768,7 +761,6 @@
 				CA1226F622F0C12A00541F3A /* FlightLookupViewController.swift in Sources */,
 				CA1226F722F0C12A00541F3A /* Profile.swift in Sources */,
 				CA1226F822F0C12A00541F3A /* ValueDisplayInputCell.swift in Sources */,
-				CA1226F922F0C12A00541F3A /* FlightDetailsViewController.swift in Sources */,
 				CA1226FA22F0C12A00541F3A /* AuthViewController.swift in Sources */,
 				CA1226FB22F0C12A00541F3A /* FlightSearchViewController.swift in Sources */,
 				CA1226FC22F0C12A00541F3A /* ProfileViewController.swift in Sources */,
@@ -799,7 +791,6 @@
 				CA12272C22F0C25E00541F3A /* FlightLookupViewController.swift in Sources */,
 				CA12272D22F0C25E00541F3A /* Profile.swift in Sources */,
 				CA12272E22F0C25E00541F3A /* ValueDisplayInputCell.swift in Sources */,
-				CA12272F22F0C25E00541F3A /* FlightDetailsViewController.swift in Sources */,
 				CA12273022F0C25E00541F3A /* AuthViewController.swift in Sources */,
 				CA12273122F0C25E00541F3A /* FlightSearchViewController.swift in Sources */,
 				CA12273222F0C25E00541F3A /* ProfileViewController.swift in Sources */,
@@ -830,7 +821,6 @@
 				CAC5086522D3C736004A114B /* FlightLookupViewController.swift in Sources */,
 				CAC5086622D3C736004A114B /* Profile.swift in Sources */,
 				CAC5086722D3C736004A114B /* ValueDisplayInputCell.swift in Sources */,
-				CAC5086822D3C736004A114B /* FlightDetailsViewController.swift in Sources */,
 				CAC5086922D3C736004A114B /* AuthViewController.swift in Sources */,
 				CAC5086A22D3C736004A114B /* FlightSearchViewController.swift in Sources */,
 				CAC5086B22D3C736004A114B /* ProfileViewController.swift in Sources */,
