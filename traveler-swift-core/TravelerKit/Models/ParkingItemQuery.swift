@@ -49,7 +49,11 @@ public struct ParkingItemQuery {
     }
 
     func isValid() -> Bool {
-        return true // I think this is valid, will leave method here
+        if dateRange.lowerBound < Date() || (boundingBox == nil && airportIATA == nil) {
+            return false
+        } else {
+            return true
+        }
     }
 }
 

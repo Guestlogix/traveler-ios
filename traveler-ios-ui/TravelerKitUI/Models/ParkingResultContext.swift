@@ -25,6 +25,10 @@ public class ParkingResultContext: ObservingContext {
 
     var result: ParkingItemSearchResult? {
         didSet {
+            guard result != nil || oldValue != nil else {
+                return
+            }
+
             spots = result?.items.values.map({ ParkingSpot(parkingItem: $0) })
 
             DispatchQueue.main.async {

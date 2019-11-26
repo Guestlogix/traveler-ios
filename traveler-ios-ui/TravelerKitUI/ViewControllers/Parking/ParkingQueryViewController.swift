@@ -13,7 +13,7 @@ public protocol ParkingQueryViewControllerDelegate: class {
     func parkingQueryViewController(_ controller: ParkingQueryViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
-public class ParkingQueryViewController: UIViewController {
+open class ParkingQueryViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var datesLabel: UILabel!
@@ -29,7 +29,7 @@ public class ParkingQueryViewController: UIViewController {
     private let context = ParkingResultContext()
     private var _parkingSpots: [ParkingSpot] = []
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         performSegue(withIdentifier: "mapSegue", sender: nil)
@@ -38,7 +38,7 @@ public class ParkingQueryViewController: UIViewController {
         reloadQuery()
     }
 
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue, segue.destination) {
         case (let segue as ContainerEmbedSegue, let vc as ParkingResultMapListViewController):
             segue.containerView = mapContainerView
@@ -64,11 +64,9 @@ public class ParkingQueryViewController: UIViewController {
         case 0:
             mapContainerView.isHidden = false
             listContainerView.isHidden = true
-            segmentContainerView.alpha = 0
         case 1:
             mapContainerView.isHidden = true
             listContainerView.isHidden = false
-            segmentContainerView.alpha = 1
         default:
             Log("Unknown view", data: sender.selectedSegmentIndex, level: .error)
             break
@@ -86,6 +84,7 @@ public class ParkingQueryViewController: UIViewController {
 
         activityIndicator.startAnimating()
 
+        context.result = nil
         Traveler.searchParkingItems(query, identifier: nil, delegate: self)
     }
 }
@@ -93,6 +92,7 @@ public class ParkingQueryViewController: UIViewController {
 extension ParkingQueryViewController: ParkingItemSearchDelegate {
     public func parkingItemSearchDidFailWith(_ error: Error, identifier: AnyHashable?) {
         activityIndicator.stopAnimating()
+        context.result = nil
 
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -124,16 +124,6 @@ extension ParkingQueryViewController: ParkingResultMapListViewControllerDelegate
     }
 }
 
-//extension ParkingQueryViewController: ParkingQueryFormViewControllerDelegate {
-//    public func parkingQueryFormViewController(_ controller: ParkingQueryFormViewController, didUpdate query: ParkingItemQuery) {
-//        self.query = query
-//
-//        navigationController?.popViewController(animated: true)
-//
-//        reloadQuery()
-//    }
-//}
-
 extension ParkingQueryViewController: ParkingResultTableViewControllerDelegate {
     public func parkingResultTableViewController(_ controller: ParkingResultTableViewController, didFinishWith purchaseForm: PurchaseForm) {
         delegate?.parkingQueryViewController(self, didFinishWith: purchaseForm)
@@ -141,7 +131,7 @@ extension ParkingQueryViewController: ParkingResultTableViewControllerDelegate {
 }
 
 extension ParkingQueryViewController: ParkingQueryChangeViewControllerDelegate {
-    func parkingQueryChangeViewController(_ controller: ParkingQueryChangeViewController, didUpdate query: ParkingItemQuery) {
+    public func parkingQueryChangeViewController(_ controller: ParkingQueryChangeViewController, didUpdate query: ParkingItemQuery) {
         self.query = query
         navigationController?.popViewController(animated: true)
         reloadQuery()

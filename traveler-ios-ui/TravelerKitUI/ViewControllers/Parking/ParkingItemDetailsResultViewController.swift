@@ -21,6 +21,8 @@ public class ParkingItemDetailsResultViewController: UIViewController {
     @IBOutlet weak var datesLabel: UILabel!
     @IBOutlet weak var priceViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var itemInfoHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var itemInfoView: UIView!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var checkoutButton: UIButton!
 
@@ -35,6 +37,7 @@ public class ParkingItemDetailsResultViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.register(LabeledAnnotationView.self, forAnnotationViewWithReuseIdentifier: parkingAnnotationIdentifier)
 
         guard let details = details, let parkingItem = parkingItem else {
             Log("No ParkingItemDetails/ParkingItem", data: nil, level: .error)
@@ -47,15 +50,18 @@ public class ParkingItemDetailsResultViewController: UIViewController {
         mapView.showAnnotations([parkingSpot], animated: true)
 
         titleLabel.text = details.title
-        addressLabel.text = details.subTitle
+        addressLabel.text = details.locations.first?.address
         datesLabel.text = details.datesDescription
 
         descriptionLabel.attributedText = details.attributedDescription
-        totalPriceLabel.text = details.price.localizedDescriptionInBaseCurrency
+        totalPriceLabel.text = details.priceToPayOnline.localizedDescriptionInBaseCurrency
     }
 
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
+        case (_, let vc as CatalogItemInfoViewController):
+            vc.delegate = self
+            vc.details = details
         case (_, let vc as ParkingItemDetailsPriceViewController):
             vc.details = details
             vc.delegate = self
@@ -82,9 +88,33 @@ public class ParkingItemDetailsResultViewController: UIViewController {
     }
 }
 
+extension ParkingItemDetailsResultViewController: MKMapViewDelegate {
+    public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let _ = annotation as? ParkingSpot else {
+            Log("MapAnnotation not a ParkingSpot", data: nil, level: .error)
+            return nil
+        }
+
+        let view = mapView.dequeueReusableAnnotationView(withIdentifier: parkingAnnotationIdentifier, for: annotation) as! LabeledAnnotationView
+
+        view.annotation = annotation
+        view.isChosen = true
+
+        return view
+    }
+}
+
 extension ParkingItemDetailsResultViewController: ParkingItemDetailsPriceViewControllerDelegate {
     public func parkingItemDetailsPriceViewControllerDidChangePreferredContentSize(_ controller: ParkingItemDetailsPriceViewController) {
         priceViewHeightConstraint.constant = controller.preferredContentSize.height
+        view.layoutIfNeeded()
+    }
+}
+
+extension ParkingItemDetailsResultViewController: CatalogItemInfoViewControllerDelegate {
+    public func catalogItemInfoViewControllerDidChangePreferredContentSize(_ controller: CatalogItemInfoViewController) {
+        itemInfoView.isHidden = controller.preferredContentSize.height == 0
+        itemInfoHeightConstraint.constant = controller.preferredContentSize.height
         view.layoutIfNeeded()
     }
 }

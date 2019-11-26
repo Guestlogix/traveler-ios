@@ -16,7 +16,7 @@ public protocol ParkingQueryFormViewControllerDelegate: class {
     func parkingQueryFormViewController(_ controller: ParkingQueryFormViewController, didUpdate query: ParkingItemQuery)
 }
 
-public class ParkingQueryFormViewController: UIViewController {
+open class ParkingQueryFormViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     public var query: ParkingItemQuery?
@@ -31,7 +31,7 @@ public class ParkingQueryFormViewController: UIViewController {
     private let nearMe = 0
     private let airport = 1
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager?.startUpdatingLocation()

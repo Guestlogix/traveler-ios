@@ -15,13 +15,13 @@ public protocol ParkingResultListViewControllerDelegate: class {
     func parkingResultListViewController(_ controller: ParkingResultListViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
-public class ParkingResultListViewController: UIViewController {
+open class ParkingResultListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 
     public var context: ParkingResultContext?
     public weak var delegate: ParkingResultListViewControllerDelegate?
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         context?.addObserver(self)
@@ -33,7 +33,7 @@ public class ParkingResultListViewController: UIViewController {
         context?.removeObserver(self)
     }
 
-    override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as ParkingItemDetailViewController):
             vc.parkingItem = context?.spots![context!.selectedIndex!].parkingItem
@@ -55,6 +55,13 @@ extension ParkingResultListViewController: ParkingResultContextObserving {
 
         // TODO: Have a bit of the left cell show to indicate scroll direction
         collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
+        collectionView.reloadData()
+    }
+}
+
+extension ParkingResultListViewController: ParkingItemCellDelegate {
+    public func parkingItemCellDidSelect(_ cell: ParkingItemCellView) {
+        performSegue(withIdentifier: "detailsSegue", sender: nil)
     }
 }
 
@@ -71,22 +78,55 @@ extension ParkingResultListViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: parkingCellIdentifier, for: indexPath) as! ParkingItemCellView
         let parkingSpot = context!.spots![indexPath.row]
 
-        cell.topBarView.backgroundColor = context?.selectedIndex == indexPath.row ? .blue : .gray
+        cell.topBarView.backgroundColor = context?.selectedIndex == indexPath.row ? cell.tintColor : .gray
         cell.titleLabel.text = parkingSpot.parkingItem.title
         cell.subTitleLabel.text = parkingSpot.parkingItem.subTitle
         cell.totalLabel.text = parkingSpot.parkingItem.price.localizedDescription(in: TravelerUI.preferredCurrency)
+        cell.delegate = self
 
         return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footer", for: indexPath) as! CollectionSupplementaryView
+        let numberOfSpots = context?.spots?.count ?? 0
+        if numberOfSpots > 0 {
+            footerView.titleLabel.text = "Looking for more Parking?"
+            footerView.messageLabel.text = "Move around the map and select \"search this area\"."
+        } else {
+            footerView.titleLabel.text = "No Parking found"
+            footerView.messageLabel.text = "Move around the map and select \"search this area\" to view available Parking options in the area."
+        }
+
+        return footerView
     }
 }
 
 extension ParkingResultListViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 60, height: collectionView.bounds.height - 10)
+        return CGSize(width: collectionView.bounds.width - 100, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        let numberOfSpots = context?.spots?.count ?? 0
+        if numberOfSpots > 0 {
+            return CGSize(width: 100, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
+        } else {
+            return CGSize(width: collectionView.bounds.width - 14*2, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
+        }
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 14, bottom: ParkingResultMapListViewController.safeAreaBottomInset, right: 0)
     }
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        if indexPath.row == context?.selectedIndex {
+            performSegue(withIdentifier: "detailsSegue", sender: nil)
+        } else {
+            context?.selectedIndex = indexPath.row
+        }
     }
 
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -102,7 +142,6 @@ extension ParkingResultListViewController: UICollectionViewDelegateFlowLayout {
         }
 
         context?.selectedIndex = indexPath.row
-        collectionView.reloadData()
     }
 }
 
