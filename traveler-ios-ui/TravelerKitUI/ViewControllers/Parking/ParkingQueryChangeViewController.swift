@@ -9,11 +9,11 @@
 import UIKit
 import TravelerKit
 
-protocol ParkingQueryChangeViewControllerDelegate: class {
+public protocol ParkingQueryChangeViewControllerDelegate: class {
     func parkingQueryChangeViewController(_ controller: ParkingQueryChangeViewController, didUpdate query: ParkingItemQuery)
 }
 
-class ParkingQueryChangeViewController: UIViewController {
+open class ParkingQueryChangeViewController: UIViewController {
     @IBOutlet weak var locationSegmentedControl: UISegmentedControl!
 
     var query: ParkingItemQuery?
@@ -21,14 +21,14 @@ class ParkingQueryChangeViewController: UIViewController {
 
     private let parkingFilterContext = ParkingFilterContext()
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         locationSegmentedControl.selectedSegmentIndex = query?.airportIATA == nil ? 0 : 1
         parkingFilterContext.selectedFilter = locationSegmentedControl.selectedSegmentIndex
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let navVC as ParkingFilterViewController):
             navVC.parkingFilterContext = parkingFilterContext
@@ -46,7 +46,7 @@ class ParkingQueryChangeViewController: UIViewController {
 }
 
 extension ParkingQueryChangeViewController: ParkingFilterViewControllerDelegate {
-    func parkingFilterViewController(_ controller: ParkingFilterViewController, didUpdate query: ParkingItemQuery) {
+    public func parkingFilterViewController(_ controller: ParkingFilterViewController, didUpdate query: ParkingItemQuery) {
         delegate?.parkingQueryChangeViewController(self, didUpdate: query)
     }
 }

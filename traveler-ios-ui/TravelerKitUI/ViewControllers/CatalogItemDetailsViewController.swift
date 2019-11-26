@@ -48,6 +48,7 @@ open class CatalogItemDetailsViewController: UIViewController {
 
 extension CatalogItemDetailsViewController: BookingItemDetailsViewControllerDelegate {
     func bookingItemDetailsViewControllerDidChangePreferredTranslucency(_ controller: BookingItemDetailsViewController) {
+        // TODO: Fix the navigation bar blinking issue with iOS version 13.0 and higher.
         if controller.preferredTranslucency {
             UIView.animate(withDuration: 0.2, animations: {
                 self.navigationController?.navigationBar.alpha = 0
@@ -58,13 +59,15 @@ extension CatalogItemDetailsViewController: BookingItemDetailsViewControllerDele
                 self.navigationController?.navigationBar.isTranslucent = true
                 self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
                 self.navigationController?.navigationBar.shadowImage = UIImage()
-                self.navigationItem.title = nil
+
+                self.navigationController?.navigationBar.topItem?.title = nil
             }
         } else {
             self.navigationController?.navigationBar.isTranslucent = true
             self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
             self.navigationController?.navigationBar.shadowImage = nil
             self.navigationItem.title = itemDetails?.title
+            self.navigationController?.navigationBar.topItem?.title = itemDetails?.title
 
             self.navigationController?.navigationBar.alpha = 0
             UIView.animate(withDuration: 0.2) {

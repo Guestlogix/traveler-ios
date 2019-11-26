@@ -20,9 +20,10 @@
 		A33F3616232039770044A1DD /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F3615232039770044A1DD /* WishlistViewController.swift */; };
 		A33F3618232039A20044A1DD /* WishlistResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F3617232039A20044A1DD /* WishlistResultViewController.swift */; };
 		A33F361A232048C30044A1DD /* AvailabilityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F3619232048C30044A1DD /* AvailabilityCell.swift */; };
+		A37D9D5823904A0700036C40 /* CollectionSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37D9D5723904A0700036C40 /* CollectionSupplementaryView.swift */; };
 		A3900BD9232FD146002D7186 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BD8232FD146002D7186 /* HeartButton.swift */; };
 		A3900BDB232FD1BF002D7186 /* Int+DegreesToRadians.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BDA232FD1BF002D7186 /* Int+DegreesToRadians.swift */; };
-		A3900BDD232FD1F3002D7186 /* UIBezierPath+Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */; };
+		A3900BDD232FD1F3002D7186 /* UIBezierPath+Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3900BDC232FD1F3002D7186 /* UIBezierPath+Shapes.swift */; };
 		A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */; };
 		A394B36723302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A394B36623302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift */; };
 		A3A8846E2370CD3900480BCA /* CancellationReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */; };
@@ -189,9 +190,10 @@
 		A33F3615232039770044A1DD /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		A33F3617232039A20044A1DD /* WishlistResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistResultViewController.swift; sourceTree = "<group>"; };
 		A33F3619232048C30044A1DD /* AvailabilityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailabilityCell.swift; sourceTree = "<group>"; };
+		A37D9D5723904A0700036C40 /* CollectionSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSupplementaryView.swift; sourceTree = "<group>"; };
 		A3900BD8232FD146002D7186 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		A3900BDA232FD1BF002D7186 /* Int+DegreesToRadians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+DegreesToRadians.swift"; sourceTree = "<group>"; };
-		A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Heart.swift"; sourceTree = "<group>"; };
+		A3900BDC232FD1F3002D7186 /* UIBezierPath+Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Shapes.swift"; sourceTree = "<group>"; };
 		A39108EE230B383C0006F09F /* BookableConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookableConfirmationViewController.swift; sourceTree = "<group>"; };
 		A394B36623302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistToggleError+LocalizedError.swift"; sourceTree = "<group>"; };
 		A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationReasonViewController.swift; sourceTree = "<group>"; };
@@ -363,6 +365,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A394294E2397162D00659169 /* Parking */ = {
+			isa = PBXGroup;
+			children = (
+				CA78AA1C237B067200F6DF87 /* ParkingFilterViewController.swift */,
+				CA78AA18237B067100F6DF87 /* ParkingItemDetailsPriceViewController.swift */,
+				CA78AA1A237B067100F6DF87 /* ParkingItemDetailsResultViewController.swift */,
+				CA78AA17237B067100F6DF87 /* ParkingItemDetailViewController.swift */,
+				CA78AA15237B067100F6DF87 /* ParkingQueryChangeViewController.swift */,
+				CA78AA12237B067100F6DF87 /* ParkingQueryFormViewController.swift */,
+				CA78AA1B237B067100F6DF87 /* ParkingQueryViewController.swift */,
+				CA78AA16237B067100F6DF87 /* ParkingResultListViewController.swift */,
+				CA78AA10237B067100F6DF87 /* ParkingResultMapListController.swift */,
+				CA78AA0F237B067100F6DF87 /* ParkingResultMapViewController.swift */,
+				CA78AA11237B067100F6DF87 /* ParkingResultTableViewController.swift */,
+			);
+			path = Parking;
+			sourceTree = "<group>";
+		};
 		A9639C8D220DF4F200625235 = {
 			isa = PBXGroup;
 			children = (
@@ -400,18 +420,8 @@
 		A9639CA2220DF57300625235 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A394294E2397162D00659169 /* Parking */,
 				CA78AA13237B067100F6DF87 /* BookingItemQueryViewController.swift */,
-				CA78AA1C237B067200F6DF87 /* ParkingFilterViewController.swift */,
-				CA78AA18237B067100F6DF87 /* ParkingItemDetailsPriceViewController.swift */,
-				CA78AA1A237B067100F6DF87 /* ParkingItemDetailsResultViewController.swift */,
-				CA78AA17237B067100F6DF87 /* ParkingItemDetailViewController.swift */,
-				CA78AA15237B067100F6DF87 /* ParkingQueryChangeViewController.swift */,
-				CA78AA12237B067100F6DF87 /* ParkingQueryFormViewController.swift */,
-				CA78AA1B237B067100F6DF87 /* ParkingQueryViewController.swift */,
-				CA78AA16237B067100F6DF87 /* ParkingResultListViewController.swift */,
-				CA78AA10237B067100F6DF87 /* ParkingResultMapListController.swift */,
-				CA78AA0F237B067100F6DF87 /* ParkingResultMapViewController.swift */,
-				CA78AA11237B067100F6DF87 /* ParkingResultTableViewController.swift */,
 				CA78AA19237B067100F6DF87 /* ProductItemViewController.swift */,
 				CA78AA1D237B067200F6DF87 /* PurchaseQuestionsViewController.swift */,
 				CA78AA14237B067100F6DF87 /* QueryItemViewController.swift */,
@@ -522,6 +532,7 @@
 				CA1A8566232ED66500F4DED4 /* RangeCell.swift */,
 				CA1A8567232ED66500F4DED4 /* RangeCell.xib */,
 				A33F3619232048C30044A1DD /* AvailabilityCell.swift */,
+				A37D9D5723904A0700036C40 /* CollectionSupplementaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -612,7 +623,7 @@
 				A9639DEA2213463900625235 /* UIDevice+Device.swift */,
 				CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */,
 				A3900BDA232FD1BF002D7186 /* Int+DegreesToRadians.swift */,
-				A3900BDC232FD1F3002D7186 /* UIBezierPath+Heart.swift */,
+				A3900BDC232FD1F3002D7186 /* UIBezierPath+Shapes.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -737,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A37D9D5823904A0700036C40 /* CollectionSupplementaryView.swift in Sources */,
 				CA78A9FD237B062800F6DF87 /* ParkingFilterContext.swift in Sources */,
 				A9639D2A220DF57400625235 /* DrawerTansitioning.swift in Sources */,
 				A9639D02220DF57400625235 /* BookablePurchaseViewController.swift in Sources */,
@@ -843,7 +855,7 @@
 				CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */,
 				A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */,
 				CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */,
-				A3900BDD232FD1F3002D7186 /* UIBezierPath+Heart.swift in Sources */,
+				A3900BDD232FD1F3002D7186 /* UIBezierPath+Shapes.swift in Sources */,
 				A9639D1A220DF57400625235 /* FormMessage.swift in Sources */,
 				A974A6972282130900319683 /* OrdersViewController.swift in Sources */,
 				CA78AA25237B067200F6DF87 /* ParkingResultListViewController.swift in Sources */,

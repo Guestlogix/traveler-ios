@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol ParkingItemCellDelegate: class {
+public protocol ParkingItemCellDelegate: class {
     func parkingItemCellDidSelect(_ cell: ParkingItemCellView)
 }
 
-class ParkingItemCellView: UICollectionViewCell {
+open class ParkingItemCellView: UICollectionViewCell {
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
 
-    weak var delegate: ParkingItemCellDelegate?
+    public weak var delegate: ParkingItemCellDelegate?
 
     @IBAction func didView(_ sender: Any) {
         delegate?.parkingItemCellDidSelect(self)

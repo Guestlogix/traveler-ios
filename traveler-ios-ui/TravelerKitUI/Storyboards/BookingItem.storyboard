@@ -126,8 +126,8 @@
                                                             <action selector="didPressWishlistButton:" destination="2qR-Lh-IWg" eventType="touchUpInside" id="qsF-Tb-LOe"/>
                                                         </connections>
                                                     </button>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zyr-24-GVl" userLabel="Supplier Info View">
-                                                        <rect key="frame" x="0.0" y="612" width="375" height="90"/>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyr-24-GVl" userLabel="Supplier Info View">
+                                                        <rect key="frame" x="0.0" y="635" width="375" height="90"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="90" id="s6P-tP-ZfC"/>
                                                         </constraints>
@@ -337,7 +337,7 @@
         <scene sceneID="XMZ-BH-1zQ">
             <objects>
                 <viewController id="Kin-Bm-rsn" customClass="AvailabilityViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="hze-ix-iPU">
+                    <view key="view" contentMode="scaleToFill" id="hze-ix-iPU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -411,7 +411,7 @@
                                     <outlet property="delegate" destination="Kin-Bm-rsn" id="T91-gz-eSd"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mb2-kg-51B">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mb2-kg-51B">
                                 <rect key="frame" x="0.0" y="-10" width="375" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coe-DO-Ut0">

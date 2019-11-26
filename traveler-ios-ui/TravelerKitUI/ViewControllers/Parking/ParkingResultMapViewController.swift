@@ -16,7 +16,7 @@ protocol ParkingResultMapViewControllerDelegate: class {
     func parkingResultMapViewController(_ controller: ParkingResultMapViewController, didChange boundingBox: BoundingBox)
 }
 
-class ParkingResultMapViewController: UIViewController {
+open class ParkingResultMapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
 
     var context: ParkingResultContext?
@@ -25,7 +25,7 @@ class ParkingResultMapViewController: UIViewController {
     private var isSelecting = false
     private var queryUpdated = false
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.register(LabeledAnnotationView.self, forAnnotationViewWithReuseIdentifier: parkingAnnotationIdentifier)
@@ -36,20 +36,37 @@ class ParkingResultMapViewController: UIViewController {
     deinit {
         context?.removeObserver(self)
     }
+
+    public func selectAnnotationWith(_ index: Int) {
+        let selectedAnnotation = context!.spots![index]
+        mapView.selectAnnotation(selectedAnnotation, animated: true)
+        let visibleMapRect = mapView.visibleMapRect
+        let visibleAnnotations = mapView.annotations(in: visibleMapRect)
+        if visibleAnnotations.contains(selectedAnnotation) == false {         
+            mapView.showAnnotations(context!.spots!, animated: true)
+        }
+
+        for annotationIndex in 0..<context!.spots!.count {
+            if let annotationView = mapView.view(for: context!.spots![annotationIndex]) as? LabeledAnnotationView {
+                annotationView.isChosen = annotationIndex == context?.selectedIndex ? true : false
+            }
+        }
+    }
 }
 
 extension ParkingResultMapViewController: ParkingResultContextObserving {
-    func parkingResultContextDidChangeSelectedIndex(_ context: ParkingResultContext) {
+    public func parkingResultContextDidChangeSelectedIndex(_ context: ParkingResultContext) {
         guard let index = context.selectedIndex else {
             return
         }
 
         isSelecting = true
-        mapView.selectAnnotation(mapView.annotations[index], animated: true)
+
+        selectAnnotationWith(index)
         isSelecting = false
     }
 
-    func parkingResultContextDidUpdateResult(_ context: ParkingResultContext) {
+    public func parkingResultContextDidUpdateResult(_ context: ParkingResultContext) {
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotations(context.spots ?? [])
 
@@ -64,7 +81,7 @@ extension ParkingResultMapViewController: ParkingResultContextObserving {
 }
 
 extension ParkingResultMapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard !isSelecting, view.tag > -1, view.tag < (context?.spots?.count ?? -1) else {
             return
         }
@@ -72,21 +89,23 @@ extension ParkingResultMapViewController: MKMapViewDelegate {
         context?.selectedIndex = view.tag
     }
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let parkingSpot = annotation as? ParkingSpot else {
             Log("MapAnnotation not a ParkingSpot", data: nil, level: .error)
             return nil
         }
 
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: parkingAnnotationIdentifier, for: annotation) as! LabeledAnnotationView
-        
+
         view.annotation = annotation
         view.prepareForDisplay()
         view.tag = context?.spots?.firstIndex(of: parkingSpot) ?? -1
+        view.isChosen = view.tag == context?.selectedIndex ? true : false
+
         return view
     }
 
-    func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+    public func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         guard !queryUpdated else {
             queryUpdated = false
             return

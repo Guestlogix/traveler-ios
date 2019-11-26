@@ -13,7 +13,7 @@ public protocol ParkingResultTableViewControllerDelegate: class {
     func parkingResultTableViewController(_ controller: ParkingResultTableViewController, didFinishWith purchaseForm: PurchaseForm)
 }
 
-public class ParkingResultTableViewController: UITableViewController {
+open class ParkingResultTableViewController: UITableViewController {
     @IBOutlet weak var countLabel: UILabel!
 
     public var context: ParkingResultContext?
@@ -22,7 +22,7 @@ public class ParkingResultTableViewController: UITableViewController {
 
     private var selectedItem: ParkingItem?
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         context?.addObserver(self)
@@ -47,7 +47,7 @@ public class ParkingResultTableViewController: UITableViewController {
         }
     }
 
-    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination) {
         case (_, let vc as ParkingItemDetailViewController):
             vc.parkingItem = selectedItem
