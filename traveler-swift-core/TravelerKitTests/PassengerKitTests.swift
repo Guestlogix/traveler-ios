@@ -16,11 +16,7 @@ class TravelerKitTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         traveler = Traveler(apiKey: "TokenyToken", device: MockDevice(), sandboxMode: true)
-        let mockAPI = MockAPI()
-
-        mockAPI.loadURLs(for: .authenticate(key: "TokenyToken"))
-        mockAPI.loadURLs(for: .flights(number: "AC1981", date: DateFormatter.yearMonthDay.date(from: "2019/12/27")!))
-        mockAPI.loadURLs(for: .catalog(flights: nil))
+        MockNetwork.register()
     }
     
     override func tearDown() {

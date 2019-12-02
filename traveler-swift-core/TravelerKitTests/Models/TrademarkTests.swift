@@ -13,7 +13,7 @@ class TrademarkTests: XCTestCase {
 
     func testTrademarkBadURL() {
         //given
-        let data = DataResponses.trademarkWithBadUrl()
+        let data = MockResponses.trademarkWithBadUrl().jsonData()
 
         let decoder = JSONDecoder()
 

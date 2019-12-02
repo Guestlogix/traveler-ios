@@ -8,25 +8,11 @@
 
 import Foundation
 
-struct DataResponses {
+struct MockResponses {
     struct Normalized {
         static let location: MockJSON = [
             "latitude": 13.45443433,
             "longitude": 14.2323323
-        ]
-        
-        static let price: MockJSON = [
-            "value": 42.00,
-            "baseCurrency": "USD",
-            "exchangeEnabled": true,
-            "exchangeRates": [
-                "aed": 3.673,
-                "aud": 1.460526,
-                "cad": 1.307933,
-                "eur": 0.899169,
-                "gbp": 0.776254,
-                "usd": 1.0
-            ]
         ]
         
         static let translationProvider: MockJSON = [
@@ -38,19 +24,24 @@ struct DataResponses {
             "title": "Normalized item",
             "subTitle": "Normalized item subtitle",
             "thumbnail": "https://www.normalized.com/normalized.png",
-            "priceStartingAt": Normalized.price,
+            "priceStartingAt": price(),
             "isAvailable": true,
             "purchaseStrategy": "Bookable",
             "geoLocation": Normalized.location,
             "providerTranslationAttribution": Normalized.translationProvider,
             "categories": ["Tour"]
         ]
-    }
-
-    //MARK:- Catalog
-    static func catalogData() -> Data {
-        let searchParams: MockJSON = [
-            "text": nil,
+        
+        static let customer: MockJSON = [
+            "title": "mr",
+            "firstName": "test",
+            "lastName": "test",
+            "email": "test@test.com",
+            "phone": "64712345671"
+        ]
+        
+        static let searchParams: MockJSON = [
+            "text": "test",
             "latitude": nil,
             "longitude": nil,
             "radius": nil,
@@ -65,15 +56,48 @@ struct DataResponses {
             "airport": nil,
             "startTime": "2019-10-29T07:37:50",
             "endTime": "2019-11-05T07:37:50",
-            "polling": false
+            "polling": false,
+            "sortField": "Price",
+            "sortOrder": "Asc",
+            "travelerId": nil
         ]
+    }
+    
+    static func price(value: Double = 42.0) -> MockJSON {
+        return [
+            "value": MockJSON.double(value),
+            "baseCurrency": "USD",
+            "exchangeEnabled": true,
+            "exchangeRates": [
+                "aed": 3.673,
+                "aud": 1.460526,
+                "cad": 1.307933,
+                "eur": 0.899169,
+                "gbp": 0.776254,
+                "usd": 1.0
+            ]
+        ]
+    }
+    
+    //MARK:- Pagincation
+    static func pagination(total: Int = 1) -> [String: MockJSON] {
+        return [
+            "skip": 0,
+            "take": 0,
+            "from": "2019-11-22T21:19:56+00:00",
+            "to": "2019-11-22T21:19:56+00:00",
+            "total": MockJSON.int(total)
+        ]
+    }
 
+    //MARK:- Catalog
+    static func catalog() -> MockJSON {
         let queryItem: MockJSON = [
             "type": "Parking",
             "title": "Parking in Toronto",
             "subTitle": nil,
             "thumbnail": "http://traveler-api-v1-dev.dev.svc.cluster.local/parking_image.jpg",
-            "searchParams": searchParams
+            "searchParams": Normalized.searchParams
         ]
 
         let queryItemsArray: MockJSON = [
@@ -102,15 +126,11 @@ struct DataResponses {
             "groups": [groupQuery, groupItems]
         ]
 
-        guard let data = groupsJSON.jsonString()?.data(using: .utf8) else {
-            fatalError("Bad JSON for Catalog")
-        }
-
-        return data
+        return groupsJSON
     }
 
     //MARK:- Supplier (No Trademark)
-    static func supplierDataNoTradeMark() -> Data {
+    static func supplierNoTradeMark() -> MockJSON {
         //given
         let incompleteTrademarkJSON: MockJSON = [
             "id": "SupplierID",
@@ -118,15 +138,11 @@ struct DataResponses {
             "trademark": nil
         ]
 
-        guard let data = incompleteTrademarkJSON.jsonString()?.data(using: .utf8) else {
-            fatalError("Bad JSON for Supplier")
-        }
-
-        return data
+        return incompleteTrademarkJSON
     }
 
     //MARK:- Supplier
-    static func supplierData() -> Data {
+    static func supplier() -> MockJSON {
         let trademarkJSON: MockJSON = [
             "iconUrl": "https://myicon.com",
             "copyRight":"Simple ricks"
@@ -138,28 +154,79 @@ struct DataResponses {
             "trademark": trademarkJSON
         ]
 
-        guard let data = supplierJSON.jsonString()?.data(using: .utf8) else {
-            fatalError("Bad JSON for Supplier")
-        }
-        return data
+        return supplierJSON
     }
     
     //MARK:- Trademark (Bad URL)
-    static func trademarkWithBadUrl() -> Data {
+    static func trademarkWithBadUrl() -> MockJSON {
         let tradeMarkJSON: MockJSON = [
             "iconUrl": "www.creedthoughts.gov.www'\'creedthoughts",
             "copyRight": "Sometimes when I,m sick, or feeling blue, I drink vinegar. I like all kinds: balsamic, vodka, orange juice, leaves."
         ]
 
-        guard let data = tradeMarkJSON.jsonString()?.data(using: .utf8) else {
-            fatalError("Bad JSON for trademark")
-        }
-
-        return data
+        return tradeMarkJSON
+    }
+    
+    //MARK:- Booking Schedule
+    static func bookingSchedule() -> MockJSON {
+        let bookingSchedule: MockJSON = [[
+            "id": "string",
+            "date": "2019-12-02",
+            "optionSet": [
+              "optionSetLabel": "Times",
+              "options": [[
+                  "id": "string",
+                  "optionLabel": "string",
+                  "disclaimer": "string"
+              ]]
+            ],
+            "disclaimer": "string"
+        ]]
+        
+        return bookingSchedule
+    }
+    
+    //MARK:- Booking Pass
+    static func bookingPass() -> MockJSON {
+        let bookingPass: MockJSON = [[
+            "id": "string",
+            "title": "string",
+            "description": "string",
+            "price": price(),
+            "maximumQuantity": 5,
+            "minimumQuantity": 0
+        ]]
+        
+        return bookingPass
+    }
+    
+    //MARK:- Booking Question
+    static func bookingQuestion() -> MockJSON {
+        let bookingQuestion: MockJSON = [[
+            "title": "string",
+            "subTitle": "string",
+            "questions": [[
+                "id": "string",
+                "title": "string",
+                "description": "string",
+                "required": true,
+                "type": "Quantity",
+                "maximumQuantity": 0,
+                "choices": [[
+                    "id": "string",
+                    "label": "string",
+                    "price": price()
+                ]],
+                "suggestedAnswer": nil,
+                "suggestedAnswerFieldMapName": nil
+            ]]
+        ]]
+        
+        return bookingQuestion
     }
 
     //MARK:- BookingItemDetails
-    static func bookingItemDetailsData() -> Data {
+    static func bookingItemDetails() -> MockJSON {
         let attribute1: MockJSON = [
             "label": "Excludes",
             "value": "Special exhibitions"
@@ -211,7 +278,7 @@ struct DataResponses {
             "title": "The Anatomy Park",
             "subTitle": "A thrilling ride inside a homeless man named Ruben",
             "thumbnail": "www.anatomyPark.com/RubensColon.jpg",
-            "priceStartingAt": Normalized.price,
+            "priceStartingAt": price(),
             "categories": ["Activity"],
             "isAvailable": true,
             "purchaseStrategy": "Bookable",
@@ -219,38 +286,27 @@ struct DataResponses {
             "providerTranslationAttribution": translationProvider
         ]
 
-        guard let data = bookingItemDetailsJSON.jsonString()?.data(using: .utf8) else {
-            fatalError("Bad JSON for BookingItemDetails")
-        }
-
-        return data
+        return bookingItemDetailsJSON
     }
 
     //MARK:- Authentication Data
-    static func authData() -> Data {
+    static func auth() -> MockJSON {
         let authJSON: MockJSON = [
             "token": "A token",
             "created": "2019-10-25T18:49:57.103Z",
-            "expires": "2019-10-25T18:49:57.104Z"
+            "expires": "2020-10-25T18:49:57.104Z"
         ]
 
-        guard let data = authJSON.jsonString()?.data(using: .utf8) else {
-            fatalError("Invalid JSON data for authentication")
-        }
-
-        return data
+        return authJSON
     }
 
     //MARK:- BookingItem
-    static func bookingItemData() -> Data {
-        guard let data = Normalized.item.jsonString()?.data(using: .utf8) else {
-            fatalError("Invalid JSON Data for Booking Item")
-        }
-        return data
+    static func bookingItem() -> MockJSON {
+        return Normalized.item
     }
 
     //MARK:- Flights
-    static func flightData() -> Data {
+    static func flight() -> MockJSON {
         let origin: MockJSON = [
             "iata": "MEX",
             "name": "Benito Juarez International Airport",
@@ -283,14 +339,10 @@ struct DataResponses {
             "utcOffsetHours": -4
         ]
 
-        let codeSharesItem: MockJSON = [
+        let codeShares: MockJSON = [[
             "carrierCode": "AV",
             "number": 6926
-        ]
-
-        let codeShares: MockJSON = [
-            codeSharesItem
-        ]
+        ]]
 
         let flightItem: MockJSON = [
             "id": "fli_aT91n94IYFh919FFZ_",
@@ -310,10 +362,123 @@ struct DataResponses {
             flightItem
         ]
 
-        guard let data = flightJSON.jsonString()?.data(using: .utf8) else {
-            fatalError("Bad JSON for Flights")
-        }
-
-        return data
+        return flightJSON
+    }
+    
+    //MARK:- Orders
+    static func orders() -> MockJSON {
+        var orders: [String: MockJSON] = pagination()
+        orders["result"] = [order()]
+        
+        return MockJSON.object(orders)
+    }
+    
+    //MARK:- Order
+    static func order() -> MockJSON {
+        let order: MockJSON = [
+            "id": "String",
+            "referenceNumber": "String",
+            "createdOn": "2019-11-21T19:27:25",
+            "status": "Confirmed",
+            "amount": price(),
+            "products": [bookingProduct()],
+            "customer": Normalized.customer,
+            "creditCardType": "visa",
+            "last4Digits": "****",
+            "disclaimer": nil,
+            "polling": false,
+            "travelerId": "String"
+        ]
+        
+        return order
+    }
+    
+    //MARK:- Booking Product
+    static func bookingProduct() -> MockJSON {
+        let product: MockJSON = [
+            "id": "booking",
+            "price": price(),
+            "title": "Skip the Line: Ripley's Aquarium of Canada in Toronto",
+            "cancellationPolicy": "Non-refundable",
+            "supplier": "Viator",
+            "productStatus": "Available",
+            "experienceDate": "2019-11-27T00:00:00",
+            "purchaseStrategy": "Bookable",
+            "passes": [[
+                "id": "pas_hZFh9199FZhhFzMhhZWI2aSRC9_",
+                "title": "Adult",
+                "description": "Adult (14-64)",
+                "price": price()
+            ]],
+            "information": [[
+                "label": "Start Time",
+                "value": ""
+            ], [
+                "label": "Duration",
+                "value": "1 to 2 hours"
+            ]],
+            "categories": ["Activity", "Tour"]
+        ]
+        
+        return product
+    }
+    
+    //MARK:- Search
+    static func search() -> MockJSON {
+        var search: [String: MockJSON] = pagination()
+        search["aggregation"] = [
+            "price": [
+                "max": price(),
+                "min": price()
+            ],
+            "cities": [],
+            "categories": [[
+                "label": "Tour",
+                "count": 1
+            ], [
+                "label": "Activity",
+                "count": 1
+            ], [
+                "label": "Show",
+                "count": 1
+            ]]
+        ]
+        search["items"] = [bookingItem()]
+        search["parameters"] = Normalized.searchParams
+        
+        return MockJSON.object(search)
+    }
+    
+    //MARK:- Wishlist
+    static func wishlist() -> MockJSON {
+        var wishlist: [String: MockJSON] = pagination()
+        wishlist["result"] = [bookingItem()]
+        
+        return MockJSON.object(wishlist)
+    }
+    
+    //MARK:- Cancellation
+    static func cancellation() -> MockJSON {
+        let cancellation: MockJSON = [
+            "id": "string",
+            "totalRefund": price(),
+            "cancellationCharge": price(value: 2),
+            "orderAmount": price(value: 40),
+            "quoteExpiresOn": "2019-12-02T19:39:19",
+            "cancellationReason": "string",
+            "products": [[
+                "title": "string",
+                "totalRefund": price(value: 42),
+                "cancellationCharge": price(value: 2),
+                "createdOn": "2019-12-02T19:39:19"
+            ]],
+            "cancellationReasons": [[
+                "id": "MyTripWasDelayedOrCancelled",
+                "value": "string",
+                "explanationRequired": true
+            ]]
+        ]
+        
+        return cancellation
     }
 }

@@ -20,7 +20,7 @@ class BookingItemDetailsTests: XCTestCase {
 
     func testBookingItemDetails() throws {
         //Given
-        let data = DataResponses.bookingItemDetailsData()
+        let data = MockResponses.bookingItemDetails().jsonData()
 
         let decoder = JSONDecoder()
 

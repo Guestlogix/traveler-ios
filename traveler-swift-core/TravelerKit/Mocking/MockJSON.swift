@@ -57,6 +57,14 @@ extension MockJSON {
             fatalError("Error in test data! \(error.localizedDescription)", file: file, line: line)
         }
     }
+    
+    func jsonData() -> Data {
+        guard let data = self.jsonString()?.data(using: .utf8) else {
+            fatalError("Bad JSON")
+        }
+        
+        return data
+    }
 }
 
 extension MockJSON: ExpressibleByStringLiteral {

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-@testable import TravelerKit
 
 struct MockDevice: Device
 {

@@ -21,7 +21,7 @@ class AnyItemTests: XCTestCase {
 
     func testBookingItem() throws {
         //Given
-        let data = DataResponses.bookingItemData()
+        let data = MockResponses.bookingItem().jsonData()
         let decoder = JSONDecoder()
         //When
 

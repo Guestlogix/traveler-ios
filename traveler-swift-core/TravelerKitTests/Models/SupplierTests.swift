@@ -13,7 +13,7 @@ class SupplierTests: XCTestCase {
 
     func testCompleteSupplier() throws {
         //given
-        let data = DataResponses.supplierData()
+        let data = MockResponses.supplier().jsonData()
 
         let decoder = JSONDecoder()
         let trademark = Trademark(iconURL: URL(string: "https://myicon.com")! , copyRight: "Simple ricks")
@@ -29,7 +29,7 @@ class SupplierTests: XCTestCase {
 
     func testIncompleteSupplier() {
         //given
-        let data = DataResponses.supplierDataNoTradeMark()
+        let data = MockResponses.supplierNoTradeMark().jsonData()
 
         let decoder = JSONDecoder()
 
