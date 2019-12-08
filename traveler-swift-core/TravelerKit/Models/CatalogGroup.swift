@@ -51,6 +51,13 @@ public struct CatalogGroup: Decodable {
 
 extension AnyItem {
     var item: CatalogItem {
-        return bookingItem ?? parkingItem!
+        switch self.type {
+        case .booking:
+            return bookingItem!
+        case .parking:
+            return parkingItem!
+        case .partnerOffering:
+            return partnerOfferingItem!
+        }
     }
 }

@@ -74,7 +74,7 @@ open class BookingPassesViewController: UIViewController {
 
         confirmButton.isEnabled = false
 
-        Traveler.fetchPurchaseForm(product: product, passes: passes, delegate: self)
+        Traveler.fetchPurchaseForm(product: product, options: passes, delegate: self)
     }
 }
 
