@@ -25,6 +25,7 @@ struct AnyProduct: Decodable {
 
     let bookingProduct: BookingProduct?
     let parkingProduct: ParkingProduct?
+    let partnerOfferingProduct : PartnerOfferingProduct?
 
     let type: ProductType
 
@@ -39,18 +40,44 @@ struct AnyProduct: Decodable {
 
         switch type {
         case .booking:
-            let bookingProduct = try BookingProduct(from: decoder)
-            self.bookingProduct = bookingProduct
+            self.bookingProduct = try BookingProduct(from: decoder)
             self.parkingProduct = nil
+            self.partnerOfferingProduct = nil
         case .parking:
-            let parkingProduct = try ParkingProduct(from: decoder)
-            self.parkingProduct = parkingProduct
+            self.parkingProduct = try ParkingProduct(from: decoder)
             self.bookingProduct = nil
+            self.partnerOfferingProduct = nil
+        case .partnerOfferings:
+            self.parkingProduct = nil
+            self.bookingProduct = nil
+            self.partnerOfferingProduct = try PartnerOfferingProduct(from: decoder)
         }
     }
 }
 
-//TODO: Revisit these models when new endpoint for purchased items is available. Consider potential refactoring for SDK with products that have already been purchased. 
+//TODO: Revisit these models when new endpoint for purchased items is available. Consider potential refactoring for SDK with products that have already been purchased.
+
+/// Any purchased partner offering
+public struct PartnerOfferingProduct: Product, Decodable {
+    /// Identifier
+    public let id: String
+    /// Price
+    public let price: Price
+    /// Product type
+    public let productType: ProductType = .partnerOfferings
+    /// Title
+    public let title: String
+    /// Array of different groups with purchased options
+    public let offerings: [PartnerOfferingGroup]
+
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case price = "price"
+        case title = "title"
+        case offerings = "menu"
+    }
+
+}
 
 ///Any purchased parking product:
 public struct ParkingProduct: Product, Decodable {

@@ -20,8 +20,6 @@ public protocol CatalogItemDetails {
     var information: [Attribute]? { get }
     /// Vendor's contact information
     var contact: ContactInfo? { get }
-    /// An array of locations
-    var locations: [Location] { get }
     /// Product supplier
     var supplier: Supplier { get }
     /// Disclaimer
@@ -48,6 +46,8 @@ struct AnyItemDetails: Decodable {
             itemDetail = try BookingItemDetails(from: decoder)
         case .parking:
             itemDetail = try ParkingItemDetails(from: decoder)
+        case .partnerOfferings:
+            itemDetail = try PartnerOfferingsItemDetail(from: decoder)
         }
 
         payload = itemDetail

@@ -12,18 +12,11 @@ import Foundation
 struct AnyItem: Decodable {
     let bookingItem: BookingItem?
     let parkingItem: ParkingItem?
+    let partnerOfferingsItem: PartnerOfferingItem?
     let type: ProductType
 
     enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case title = "title"
-        case subTitle = "subTitle"
-        case thumbnail = "thumbnail"
-        case price = "priceStartingAt"
-        case categories = "categories"
         case type = "purchaseStrategy"
-        case location = "geoLocation"
-        case providerTranslationAttribution = "providerTranslationAttribution"
     }
 
     init(from decoder: Decoder) throws {
@@ -35,9 +28,15 @@ struct AnyItem: Decodable {
         case .booking:
             self.parkingItem = nil
             self.bookingItem = try BookingItem(from: decoder)
+            self.partnerOfferingsItem = nil
         case .parking:
             self.parkingItem = try ParkingItem(from: decoder)
             self.bookingItem = nil
+            self.partnerOfferingsItem = nil
+        case .partnerOfferings:
+            self.parkingItem = nil
+            self.bookingItem = nil
+            self.partnerOfferingsItem = try PartnerOfferingItem(from: decoder)
         }
     }
 }

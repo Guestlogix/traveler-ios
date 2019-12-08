@@ -111,6 +111,8 @@ public struct WishlistResult: Decodable {
                 return item.bookingItem!
             case .parking:
                 return item.parkingItem!
+            case .partnerOfferings:
+                return item.partnerOfferingsItem!
             }
         })
 

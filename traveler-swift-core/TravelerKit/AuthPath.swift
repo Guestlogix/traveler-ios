@@ -15,9 +15,12 @@ enum AuthPath {
     case catalog(CatalogQuery)
     case bookingItem(Product, travelerId: String?)
     case parkingItem(Product, travelerId: String?)
+    case partnerOfferingItem(Product, travelerID: String?)
     case productSchedule(Product, from: Date, to: Date)
     case passes(Product, availability: Availability, option: BookingOption?)
+    case partnerOfferings(PartnerOfferingItem)
     case bookingQuestions(Product, passes: [Pass], travelerId: String?)
+    case partnerOfferingsQuestions(Product, options: [PartnerOffering], travelerId: String?)
     case parkingQuestions(Product, travelerId: String?)
     case createOrder([PurchaseForm], travelerId: String?) // Use an interface called Purchase in the future to capture buyables
     case processOrder(Order, Payment)
@@ -76,6 +79,13 @@ enum AuthPath {
                     URLQueryItem(name: "travelerId", value: travelerId)
                 ]
             }
+        case .partnerOfferingItem(let item, let travelerId):
+            urlComponents.path = "/v1/menu/\(item.id)"
+            if let _ = travelerId {
+                urlComponents.queryItems = [
+                    URLQueryItem(name: "travelerId", value: travelerId)
+                ]
+            }
         case .productSchedule(let product, let fromDate, let toDate):
             urlComponents.path = "/v1/product/\(product.id)/schedule"
             urlComponents.queryItems = [
@@ -93,12 +103,25 @@ enum AuthPath {
                     URLQueryItem(name: "option-id", value: $0.id)
                 )
             }
+        case .partnerOfferings(let item):
+            urlComponents.path = "/v1/menu/\(item.id)/offerings"
         case .bookingQuestions(let product, let passes, let travelerId):
             urlComponents.path = "/v1/booking/\(product.id)/question"
             urlComponents.queryItems = [URLQueryItem]()
 
             passes.forEach { (pass) in
                 urlComponents.queryItems!.append(URLQueryItem(name: "pass-ids", value: pass.id))
+            }
+
+            if let _ = travelerId {
+                urlComponents.queryItems!.append(URLQueryItem(name: "travelerId", value: travelerId))
+            }
+        case .partnerOfferingsQuestions(let product, let options, let travelerId):
+            urlComponents.path = "/v1/menu/\(product.id)/questions"
+            urlComponents.queryItems = [URLQueryItem]()
+
+            options.forEach { (option) in
+                urlComponents.queryItems!.append(URLQueryItem(name: "pass-ids", value: option.id))
             }
 
             if let _ = travelerId {
@@ -123,7 +146,7 @@ enum AuthPath {
                 "products": forms.map({
                     [
                         "id": $0.product.id,
-                        "passes": $0.passes.map({ $0.id }),
+                        "passes": $0.offerings.map({ $0.id }),
                         "answers": $0.answers.values.map({
                             [
                                 "questionId": $0.questionId,

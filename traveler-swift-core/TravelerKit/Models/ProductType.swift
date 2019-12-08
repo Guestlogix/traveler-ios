@@ -14,4 +14,6 @@ public enum ProductType: String, Decodable {
     case booking = "Bookable"
     /// Products that relate to parking
     case parking = "Parking"
+    /// Products that relate to offerings from a GLX partner
+    case partnerOfferings = "Menu"
 }

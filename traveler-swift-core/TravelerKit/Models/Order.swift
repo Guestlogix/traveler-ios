@@ -101,6 +101,8 @@ public struct Order: Decodable, Equatable, Hashable {
                 return product.bookingProduct!
             case .parking:
                 return product.parkingProduct!
+            case .partnerOfferings:
+                return product.partnerOfferingProduct!
             }
         }
 

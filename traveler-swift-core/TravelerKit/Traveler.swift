@@ -101,6 +101,8 @@ public class Traveler {
             path = .bookingItem(product, travelerId: travelerProfileId)
         case .parking:
             path = .parkingItem(product, travelerId: travelerProfileId)
+        case .partnerOfferings:
+            path = .partnerOfferingItem(product, travelerID: travelerProfileId)
         }
 
         fetchOperation = AuthenticatedRemoteFetchOperation<AnyItemDetails>(path: path, session: session)
@@ -141,21 +143,55 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
-    func fetchPurchaseForm(product: Product, passes: [Pass], completion: @escaping (PurchaseForm?, Error?) -> Void) {
+    //TODO: See if its possible to reconcile fetchPasses and fetchOfferings into a single method.
+    func fetchOfferings(product: PartnerOfferingItem, completion: @escaping ([PartnerOfferingGroup]?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[PartnerOfferingGroup]>(path: .partnerOfferings(product), session: session)
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
+    /**TODO: Find a better way to handle the use of required/non-required passes/offerings/etc for different types of products. Aim for compiler help perhaps an enum with associated values?
+     Ata's suggestion: Generics and associated types.
+     **/
+    func fetchPurchaseForm(product: Product, offerings: [ProductOffering], completion: @escaping (PurchaseForm?, Error?) -> Void) {
         let travelerProfileId = session.identity
         var path: AuthPath
 
         switch product.productType {
         case .booking:
-            path = .bookingQuestions(product, passes: passes, travelerId: travelerProfileId)
+            if offerings.count == 0 {
+                Log("Options can't be empty for Booking Items", data: nil, level: .error)
+                completion(nil, PurchaseFormFetchingError.noOptions)
+                return
+            } else if  ((offerings as? [Pass]) != nil) {
+                path = .bookingQuestions(product, passes: offerings as! [Pass], travelerId: travelerProfileId)
+            } else {
+                Log("Options type mismatch. Expecting Pass type in array", data: nil, level: .error)
+                completion(nil, PurchaseFormFetchingError.optionTypeMismatch)
+                return
+            }
         case .parking:
             path = .parkingQuestions(product, travelerId: travelerProfileId)
+        case .partnerOfferings:
+            if ((offerings as? [PartnerOffering]) != nil)  {
+                path = .partnerOfferingsQuestions(product, options: offerings as! [PartnerOffering], travelerId: travelerProfileId)
+            } else {
+                Log("Options type mismatch. Expecting PartnerOffering type in array", data: nil, level: .error)
+                completion(nil, PurchaseFormFetchingError.optionTypeMismatch)
+                return
+            }
         }
 
         let fetchOperation = AuthenticatedRemoteFetchOperation<[QuestionGroup]>(path: path, session: session)
         let blockOperation = BlockOperation { [unowned fetchOperation] in
             if let groups = fetchOperation.resource {
-                let purchaseForm = PurchaseForm(product: product, passes: passes, questionGroups: groups)
+                let purchaseForm = PurchaseForm(product: product, offerings: offerings, questionGroups: groups)
                 completion(purchaseForm, nil)
             } else {
                 completion(nil, fetchOperation.error)
@@ -611,6 +647,35 @@ public class Traveler {
         })
     }
 
+    //TODO: See if its possible to reconcile fetchPasses and fetchOfferings into a single method
+    /**
+     Fetches the `PartnerOffering`s associated with a given `PartnerOfferingsItem`
+     - Parameters:
+        - product: The `PartnerOfferingItem` for which to fetch the passes for.
+        - delegate: A `FetchOfferingsDelegate` that is notified of the results
+     */
+
+    public static func fetchOfferings(product: PartnerOfferingItem, delegate: FetchOfferingsDelegate) {
+        shared?.fetchOfferings(product: product, completion: { [weak delegate] (offerings, error) in
+            if let offerings = offerings {
+                delegate?.fetchOfferingsDidSucceedWith(offerings)
+            } else {
+                delegate?.fetchOfferingsDidFailWith(error!)
+            }
+        })
+    }
+
+    /**
+    Fetches the `PartnerOffering`s associated with a given `PartnerOfferingsItem`
+    - Parameters:
+       - product: The `PartnerOfferingItem` for which to fetch the passes for.
+       - completion: A  completion block that is called when results are ready
+    */
+
+    public static func fetchOfferings(product: PartnerOfferingItem, completion: @escaping ([PartnerOfferingGroup]?, Error?) -> Void) {
+        shared?.fetchOfferings(product: product, completion: completion)
+    }
+
     /**
      Creates an `Order` for the supplied `PurchaseForm`.
 
@@ -682,8 +747,8 @@ public class Traveler {
         - completion: A completion block that is called when the results are ready.
      */
 
-    public static func fetchPurchaseForm(product: Product, passes: [Pass] = [], completion: @escaping (PurchaseForm?, Error?) -> Void) {
-        shared?.fetchPurchaseForm(product: product, passes: passes, completion: completion)
+    public static func fetchPurchaseForm(product: Product, options: [ProductOffering] = [], completion: @escaping (PurchaseForm?, Error?) -> Void) {
+        shared?.fetchPurchaseForm(product: product, offerings: options, completion: completion)
     }
 
     /**
@@ -695,8 +760,8 @@ public class Traveler {
         - delegate: A `PurchaseFormFetchDelegate` that is notified of the results.
      */
 
-    public static func fetchPurchaseForm(product: Product, passes: [Pass] = [], delegate: PurchaseFormFetchDelegate) {
-        shared?.fetchPurchaseForm(product: product, passes: passes, completion: { [weak delegate] (form, error) in
+    public static func fetchPurchaseForm(product: Product, options: [ProductOffering] = [], delegate: PurchaseFormFetchDelegate) {
+        shared?.fetchPurchaseForm(product: product, offerings: options, completion: { [weak delegate] (form, error) in
             if let error = error {
                 delegate?.purchaseFormFetchDidFailWith(error)
             } else {

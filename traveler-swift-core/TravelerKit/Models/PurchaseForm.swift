@@ -22,13 +22,13 @@ public struct PurchaseForm {
     public let questionGroups: [QuestionGroup]
 
     internal private(set) var answers = [String: Answer]()
-
-    let passes: [Pass]
+    //TODO: Pick a better name for this attribute to better describe passes/partner offering
+    let offerings: [ProductOffering]
     let product: Product
 
-    init(product: Product, passes: [Pass], questionGroups: [QuestionGroup]) {
+    init(product: Product, offerings: [ProductOffering], questionGroups: [QuestionGroup]) {
         self.questionGroups = questionGroups
-        self.passes = passes
+        self.offerings = offerings
         self.product = product
 
         for question in questionGroups.first?.questions ?? [] {

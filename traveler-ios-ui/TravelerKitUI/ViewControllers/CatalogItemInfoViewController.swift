@@ -28,7 +28,10 @@ open class CatalogItemInfoViewController: UIViewController {
 
             if let _ = details?.contact {
                 segments.append(.provider)
-            } else if let locations = details?.locations, locations.count > 0 {
+            } else if let details = details as? BookingItemDetails?, let locations = details?.locations, locations.count > 0 {
+                segments.append(.provider)
+            } else if let details = details as? ParkingItemDetails?, let locations = details?.locations,
+                locations.count > 0 {
                 segments.append(.provider)
             }
         }
@@ -75,7 +78,16 @@ open class CatalogItemInfoViewController: UIViewController {
         case (let segue as ContainerEmbedSegue, let vc as ProviderInfoViewController):
             segue.containerView = containerView
             vc.contactInfo = details?.contact
-            vc.locations = details?.locations
+
+            switch details {
+            case let details as BookingItemDetails:
+                vc.locations = details.locations
+            case let details as ParkingItemDetails:
+                vc.locations = details.locations
+            default:
+                break
+            }
+
             vc.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
