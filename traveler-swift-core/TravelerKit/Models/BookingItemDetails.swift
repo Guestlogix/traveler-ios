@@ -10,7 +10,6 @@ import Foundation
 
 /// The detailed information of a `BookingItem`
 public struct BookingItemDetails: CatalogItemDetails, Decodable {
-
     /// Identifier
     public let id: String
     /// Price

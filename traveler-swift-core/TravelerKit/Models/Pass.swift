@@ -12,7 +12,7 @@ import Foundation
  This type represents the type of admission for a bookable product. As an example
  a tour may have different passes for adults, children and infants.
  */
-public struct Pass: Decodable, Hashable {
+public struct Pass: Decodable, Hashable, ProductOffering {
     public static func == (lhs: Pass, rhs: Pass) -> Bool {
         return lhs.id == rhs.id
     }
@@ -21,8 +21,8 @@ public struct Pass: Decodable, Hashable {
         hasher.combine(id)
     }
 
-    let id: String
-
+    /// Id
+    public let id: String
     /// Title
     public let name: String
     /// Description

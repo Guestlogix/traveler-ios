@@ -11,7 +11,7 @@ import Foundation
 /// Contact information of a business/vendor
 public struct ContactInfo: Decodable {
     /// Name
-    public let name: String
+    public let name: String?
     /// Email address
     public let email: String?
     /// Optional website
