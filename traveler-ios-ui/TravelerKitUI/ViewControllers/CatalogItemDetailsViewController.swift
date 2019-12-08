@@ -26,6 +26,8 @@ open class CatalogItemDetailsViewController: UIViewController {
         switch itemDetails {
         case is BookingItemDetails:
             performSegue(withIdentifier: "bookingSegue", sender: nil)
+        case is PartnerOfferingsItemDetail:
+            performSegue(withIdentifier: "partnerOfferingSegue", sender: nil)
         default:
             Log("Unknown item type", data: itemDetails, level: .error)
             performSegue(withIdentifier: "errorSegue", sender: nil)
@@ -34,10 +36,16 @@ open class CatalogItemDetailsViewController: UIViewController {
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.identifier, segue.destination, itemDetails) {
-        case (_, let vc as BookingItemDetailsViewController , let details as BookingItemDetails):
+        case (_, let vc as BookingItemDetailsViewController, let details as BookingItemDetails):
             vc.bookingItemDetails = details
             vc.product = product as? BookingItem
             vc.delegate = self
+        case (_, let vc as PartnerOfferingDetailsViewController, let details as PartnerOfferingsItemDetail):
+            vc.details = details
+            vc.product = product as? PartnerOfferingItem
+            vc.delegate = self
+        case (_, _ as ErrorViewController, _):
+            break
         default:
             Log("Unknown segue", data: nil, level: .warning)
             break
@@ -79,4 +87,10 @@ extension CatalogItemDetailsViewController: BookingItemDetailsViewControllerDele
         delegate?.catalogItemDetailsViewControllerDelegate(self, didFinishWith: purchaseForm)
     }
 
+}
+
+extension CatalogItemDetailsViewController: PartnerOfferingDetailsViewControllerDelegate {
+    public func partnerOfferingDetailsViewController(_ controller: PartnerOfferingDetailsViewController, didFinishWith purchaseForm: PurchaseForm) {
+        delegate?.catalogItemDetailsViewControllerDelegate(self, didFinishWith: purchaseForm)
+    }
 }

@@ -387,11 +387,11 @@
             <objects>
                 <viewController id="vpc-Fj-HsX" customClass="ParkingResultListViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cax-bn-DhM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                        <rect key="frame" x="0.0" y="0.0" width="446" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVl-WM-vPX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                                <rect key="frame" x="0.0" y="0.0" width="446" height="170"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="20" id="6RM-yL-PAc" customClass="SnappingCollectionViewFlowLayout" customModule="TravelerKitUI" customModuleProvider="target">
                                     <size key="itemSize" width="403" height="163"/>
@@ -507,6 +507,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gfu-dm-A5h"/>
                     </view>
+                    <size key="freeformSize" width="446" height="170"/>
                     <connections>
                         <outlet property="collectionView" destination="jVl-WM-vPX" id="11U-rS-0S4"/>
                     </connections>
