@@ -477,18 +477,6 @@ public class Traveler {
         }
     }
 
-    func fetchSimilarProducts(to product: Product, completion: @escaping (Catalog?, Error?) -> Void) {
-        let fetchOperation = AuthenticatedRemoteFetchOperation<Catalog>(path: .similarItems(product), session: session)
-        let blockOperation = BlockOperation { [unowned fetchOperation] in
-            completion(fetchOperation.resource, fetchOperation.error)
-        }
-
-        blockOperation.addDependency(fetchOperation)
-
-        queue.addOperation(fetchOperation)
-        OperationQueue.main.addOperation(blockOperation)
-    }
-
     func fetchEphemeralStripeCustomerKey(forVersion apiVersion: String, completion: @escaping (EphemeralKey?, Error?) -> Void) {
         guard let travlerId = session.identity else {
             completion(nil, EphemeralKeyError.unidentifiedTraveler)
@@ -1149,34 +1137,6 @@ public class Traveler {
 
     public static func searchParkingItems(_ searchQuery: ParkingItemQuery, identifier: AnyHashable?, previousResultBlock: (() -> ParkingItemSearchResult?)?, resultBlock: ((ParkingItemSearchResult?, AnyHashable?) -> Void)?,  completion: @escaping (ParkingItemSearchResult?, Error?, AnyHashable?)-> Void) {
         shared?.searchParkingItems(searchQuery, identifier: identifier, previousResultBlock: previousResultBlock, resultBlock: resultBlock, completion: completion)
-    }
-
-    /**
-    Returns a `Catalog` containing similar items given a `Product`
-     - Parameters:
-     - to: The reference `Product`
-     - delegate: A `SimilarProductsFetchDelegate` that is notified if the fetch is successful
-     */
-
-    public static func fetchSimilarProducts(to product: Product, delegate: SimilarProductsFetchDelegate) {
-        shared?.fetchSimilarProducts(to: product, completion: { [weak delegate] (result, error) in
-            if let result = result {
-                delegate?.similarItemsFetchDidSucceedWith(result)
-            } else {
-                delegate?.similarItemsFetchDidFailWith(error!)
-            }
-        })
-    }
-
-    /**
-     Returns a `Catalog` contaning similar items given a `Product`
-     - Parameters:
-     - to: The reference `Product`
-     - completion: A completion block that is called when the results are ready
-     */
-
-    public static func fetchSimilarProducts(to product: Product, completion: @escaping (Catalog?, Error?) -> Void) {
-        shared?.fetchSimilarProducts(to: product, completion: completion)
     }
 
     /**

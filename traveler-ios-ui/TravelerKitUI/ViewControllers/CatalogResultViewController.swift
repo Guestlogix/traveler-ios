@@ -11,14 +11,25 @@ import TravelerKit
 
 let carouselCellIdentifier = "carouselCellIdentifier"
 
+public protocol CatalogResultViewControllerDelegate: class {
+    func catalogResultViewControllerDidChangePreferredContentSize(_ controller: CatalogResultViewController)
+}
+
 open class CatalogResultViewController: CatalogViewController {
     public var catalog: Catalog?
+    public weak var delegate: CatalogResultViewControllerDelegate?
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
         catalogView.register(UINib(nibName: "CarouselViewCell", bundle: Bundle(for: CatalogResultViewController.self)), forGroupWithIdentifier: standardIdentifier)
         catalogView.register(UINib(nibName: "FeaturedCarouselViewCell", bundle: Bundle(for: CatalogResultViewController.self)), forGroupWithIdentifier: featuredIdentifier)
+
+        view.layoutIfNeeded()
+
+        preferredContentSize = catalogView.contentSize
+
+        delegate?.catalogResultViewControllerDidChangePreferredContentSize(self)
     }
 
     // MARK: CatalogViewDataSource

@@ -17,9 +17,13 @@
 		887F0E30237DF19700845E67 /* BookingItemQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887F0E2F237DF19700845E67 /* BookingItemQuery.storyboard */; };
 		887F0E32237DF1D100845E67 /* BookingItemQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887F0E31237DF1D100845E67 /* BookingItemQueryViewController.swift */; };
 		887F0E34237F0BC900845E67 /* BookingItemQueryCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887F0E33237F0BC900845E67 /* BookingItemQueryCategoryViewController.swift */; };
-		88C7E5DB236C9CD00007AD75 /* SimilarItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */; };
 		88C7E5DD236CAC180007AD75 /* SimilarItemsResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */; };
-		88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */; };
+		88D3EC8E237B54320013D938 /* BookingItemSearchSortFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D3EC8D237B54320013D938 /* BookingItemSearchSortFilter.storyboard */; };
+		88D3EC90237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC8F237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift */; };
+		88D3EC92237C4CA90013D938 /* BookingItemSearchSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC91237C4CA90013D938 /* BookingItemSearchSortViewController.swift */; };
+		88D3EC94237C62090013D938 /* BookingItemSearchFilterPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC93237C62090013D938 /* BookingItemSearchFilterPriceViewController.swift */; };
+		88D3EC96237D95F90013D938 /* SelectOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D3EC95237D95F90013D938 /* SelectOptionCell.xib */; };
+		88D3EC98237D9C590013D938 /* SelectOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC97237D9C590013D938 /* SelectOptionCell.swift */; };
 		88DF3E322386CD8200C1CC9B /* Itinerary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DF3E312386CD8200C1CC9B /* Itinerary.storyboard */; };
 		88DF3E342386CDB600C1CC9B /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3E332386CDB600C1CC9B /* ItineraryViewController.swift */; };
 		88DF3E3823871D1F00C1CC9B /* ItineraryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3E3723871D1F00C1CC9B /* ItineraryItemCell.swift */; };
@@ -28,12 +32,6 @@
 		88DF3E4223873D5B00C1CC9B /* ItineraryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3E4123873D5B00C1CC9B /* ItineraryFilterViewController.swift */; };
 		88DF3E4423882E4800C1CC9B /* RangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3E4323882E4800C1CC9B /* RangeCell.swift */; };
 		88DF3E4623882E5700C1CC9B /* RangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88DF3E4523882E5700C1CC9B /* RangeCell.xib */; };
-		88D3EC8E237B54320013D938 /* BookingItemSearchSortFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D3EC8D237B54320013D938 /* BookingItemSearchSortFilter.storyboard */; };
-		88D3EC90237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC8F237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift */; };
-		88D3EC92237C4CA90013D938 /* BookingItemSearchSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC91237C4CA90013D938 /* BookingItemSearchSortViewController.swift */; };
-		88D3EC94237C62090013D938 /* BookingItemSearchFilterPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC93237C62090013D938 /* BookingItemSearchFilterPriceViewController.swift */; };
-		88D3EC96237D95F90013D938 /* SelectOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88D3EC95237D95F90013D938 /* SelectOptionCell.xib */; };
-		88D3EC98237D9C590013D938 /* SelectOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D3EC97237D9C590013D938 /* SelectOptionCell.swift */; };
 		88DF3E6C238C4E6500C1CC9B /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3E6B238C4E6500C1CC9B /* CellIdentifiers.swift */; };
 		88DF3E6E238C56BE00C1CC9B /* ProductItemSort+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DF3E6D238C56BE00C1CC9B /* ProductItemSort+TravelerUI.swift */; };
 		88EA66CB2375B9E1007EE832 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88EA66CA2375B9E1007EE832 /* Loading.storyboard */; };
@@ -195,6 +193,8 @@
 		CA88804022B2AF9700213E41 /* PassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA88803F22B2AF9700213E41 /* PassCell.swift */; };
 		CA88804222B2B22500213E41 /* PurchasedProduct.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA88804122B2B22400213E41 /* PurchasedProduct.storyboard */; };
 		CAACA48322B835600054765C /* CancellationError+LocalizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAACA48222B835600054765C /* CancellationError+LocalizedError.swift */; };
+		CABFB74D23AABA6100A5F525 /* CatalogQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABFB74C23AABA6100A5F525 /* CatalogQueryViewController.swift */; };
+		CABFB74F23AABA9000A5F525 /* CatalogQuery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CABFB74E23AABA8F00A5F525 /* CatalogQuery.storyboard */; };
 		CAC32410229C50E200A4F286 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */; };
 		CACC1D2D2343C91800AA6619 /* OrderReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */; };
 		CACC1D2F2343CA4000AA6619 /* BookingItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACC1D2E2343CA4000AA6619 /* BookingItem.storyboard */; };
@@ -221,9 +221,13 @@
 		887F0E2F237DF19700845E67 /* BookingItemQuery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingItemQuery.storyboard; sourceTree = "<group>"; };
 		887F0E31237DF1D100845E67 /* BookingItemQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemQueryViewController.swift; sourceTree = "<group>"; };
 		887F0E33237F0BC900845E67 /* BookingItemQueryCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemQueryCategoryViewController.swift; sourceTree = "<group>"; };
-		88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarItemsViewController.swift; sourceTree = "<group>"; };
 		88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarItemsResultViewController.swift; sourceTree = "<group>"; };
-		88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SimilarItems.storyboard; sourceTree = "<group>"; };
+		88D3EC8D237B54320013D938 /* BookingItemSearchSortFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingItemSearchSortFilter.storyboard; sourceTree = "<group>"; };
+		88D3EC8F237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchSortFilterViewController.swift; sourceTree = "<group>"; };
+		88D3EC91237C4CA90013D938 /* BookingItemSearchSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchSortViewController.swift; sourceTree = "<group>"; };
+		88D3EC93237C62090013D938 /* BookingItemSearchFilterPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchFilterPriceViewController.swift; sourceTree = "<group>"; };
+		88D3EC95237D95F90013D938 /* SelectOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectOptionCell.xib; sourceTree = "<group>"; };
+		88D3EC97237D9C590013D938 /* SelectOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionCell.swift; sourceTree = "<group>"; };
 		88DF3E312386CD8200C1CC9B /* Itinerary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Itinerary.storyboard; sourceTree = "<group>"; };
 		88DF3E332386CDB600C1CC9B /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		88DF3E3723871D1F00C1CC9B /* ItineraryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryItemCell.swift; sourceTree = "<group>"; };
@@ -232,12 +236,6 @@
 		88DF3E4123873D5B00C1CC9B /* ItineraryFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryFilterViewController.swift; sourceTree = "<group>"; };
 		88DF3E4323882E4800C1CC9B /* RangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeCell.swift; sourceTree = "<group>"; };
 		88DF3E4523882E5700C1CC9B /* RangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RangeCell.xib; sourceTree = "<group>"; };
-		88D3EC8D237B54320013D938 /* BookingItemSearchSortFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BookingItemSearchSortFilter.storyboard; sourceTree = "<group>"; };
-		88D3EC8F237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchSortFilterViewController.swift; sourceTree = "<group>"; };
-		88D3EC91237C4CA90013D938 /* BookingItemSearchSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchSortViewController.swift; sourceTree = "<group>"; };
-		88D3EC93237C62090013D938 /* BookingItemSearchFilterPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemSearchFilterPriceViewController.swift; sourceTree = "<group>"; };
-		88D3EC95237D95F90013D938 /* SelectOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectOptionCell.xib; sourceTree = "<group>"; };
-		88D3EC97237D9C590013D938 /* SelectOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionCell.swift; sourceTree = "<group>"; };
 		88DF3E6B238C4E6500C1CC9B /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
 		88DF3E6D238C56BE00C1CC9B /* ProductItemSort+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductItemSort+TravelerUI.swift"; sourceTree = "<group>"; };
 		88EA66CA2375B9E1007EE832 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
@@ -402,6 +400,8 @@
 		CA88803F22B2AF9700213E41 /* PassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassCell.swift; sourceTree = "<group>"; };
 		CA88804122B2B22400213E41 /* PurchasedProduct.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PurchasedProduct.storyboard; sourceTree = "<group>"; };
 		CAACA48222B835600054765C /* CancellationError+LocalizedError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CancellationError+LocalizedError.swift"; sourceTree = "<group>"; };
+		CABFB74C23AABA6100A5F525 /* CatalogQueryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogQueryViewController.swift; sourceTree = "<group>"; };
+		CABFB74E23AABA8F00A5F525 /* CatalogQuery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CatalogQuery.storyboard; sourceTree = "<group>"; };
 		CAC3240F229C50E100A4F286 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrderReview.storyboard; sourceTree = "<group>"; };
 		CACC1D2E2343CA4000AA6619 /* BookingItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BookingItem.storyboard; sourceTree = "<group>"; };
@@ -509,6 +509,7 @@
 		A9639CA2220DF57300625235 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CABFB74C23AABA6100A5F525 /* CatalogQueryViewController.swift */,
 				A394294E2397162D00659169 /* Parking */,
 				8810A9D92384684D0021B874 /* BookingItemSearch */,
 				CA78AA19237B067100F6DF87 /* ProductItemViewController.swift */,
@@ -550,7 +551,6 @@
 				A33F3615232039770044A1DD /* WishlistViewController.swift */,
 				A33F3617232039A20044A1DD /* WishlistResultViewController.swift */,
 				A3A8846D2370CD3900480BCA /* CancellationReasonViewController.swift */,
-				88C7E5DA236C9CD00007AD75 /* SimilarItemsViewController.swift */,
 				88C7E5DC236CAC180007AD75 /* SimilarItemsResultViewController.swift */,
 				88EA66CC2375BA17007EE832 /* LoadingViewController.swift */,
 				CA305CA3238F20DF00A615B2 /* PartnerOfferingDetailsViewController.swift */,
@@ -646,6 +646,7 @@
 		A9639CD0220DF57400625235 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				CABFB74E23AABA8F00A5F525 /* CatalogQuery.storyboard */,
 				CA78AA09237B064F00F6DF87 /* Parking.storyboard */,
 				CA78AA0A237B065000F6DF87 /* PurchaseQuestions.storyboard */,
 				CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */,
@@ -656,7 +657,6 @@
 				CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */,
 				A974A69C2282197800319683 /* Orders.storyboard */,
 				A33F361323202B880044A1DD /* Wishlist.storyboard */,
-				88C7E5DE236CAFFD0007AD75 /* SimilarItems.storyboard */,
 				88168D3F2374C8FB0096E443 /* Error.storyboard */,
 				88EA66CA2375B9E1007EE832 /* Loading.storyboard */,
 				887F0E2F237DF19700845E67 /* BookingItemQuery.storyboard */,
@@ -850,7 +850,6 @@
 				88168D402374C8FB0096E443 /* Error.storyboard in Resources */,
 				88DF3E3C23871D4700C1CC9B /* ItineraryItemCell.xib in Resources */,
 				F3A3E06C224D44B100CD69F4 /* FormQuantityCell.xib in Resources */,
-				88C7E5DF236CAFFD0007AD75 /* SimilarItems.storyboard in Resources */,
 				CA26666E2322D9C40074E83A /* BookingItemSearch.storyboard in Resources */,
 				A9639D20220DF57400625235 /* FormButtonCell.xib in Resources */,
 				CA305CA2238D9FDD00A615B2 /* PartnerOffering.storyboard in Resources */,
@@ -858,6 +857,7 @@
 				A9639D06220DF57400625235 /* HeaderView.xib in Resources */,
 				CA78AA0C237B065000F6DF87 /* PurchaseQuestions.storyboard in Resources */,
 				A9639D16220DF57400625235 /* CatalogItem.storyboard in Resources */,
+				CABFB74F23AABA9000A5F525 /* CatalogQuery.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,7 +964,6 @@
 				88C7E5DD236CAC180007AD75 /* SimilarItemsResultViewController.swift in Sources */,
 				CA0F66912394275300A104BE /* PartnerOfferingQuantityViewController.swift in Sources */,
 				CA161DB02326C8B400A94C52 /* TagsCell.swift in Sources */,
-				88C7E5DB236C9CD00007AD75 /* SimilarItemsViewController.swift in Sources */,
 				A3900BD9232FD146002D7186 /* HeartButton.swift in Sources */,
 				A9639D08220DF57400625235 /* ShadowedView.swift in Sources */,
 				CA88804022B2AF9700213E41 /* PassCell.swift in Sources */,
@@ -998,6 +997,7 @@
 				CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */,
 				A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */,
 				CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */,
+				CABFB74D23AABA6100A5F525 /* CatalogQueryViewController.swift in Sources */,
 				A3900BDD232FD1F3002D7186 /* UIBezierPath+Shapes.swift in Sources */,
 				88D3EC90237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift in Sources */,
 				A9639D1A220DF57400625235 /* FormMessage.swift in Sources */,

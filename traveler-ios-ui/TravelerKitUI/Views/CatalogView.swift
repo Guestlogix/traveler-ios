@@ -75,6 +75,10 @@ public class CatalogView: UIView {
     @IBOutlet public weak var delegate: CatalogViewDelegate?
 
     @IBInspectable public var maxNumberOfCardsPerGroup = 5
+
+    public var contentSize: CGSize {
+        return tableView.contentSize
+    }
     
     private weak var tableView: UITableView!
 
