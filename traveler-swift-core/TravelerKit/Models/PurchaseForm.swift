@@ -39,8 +39,13 @@ public struct PurchaseForm {
                 try? self.addAnswer(QuantityAnswer(quantityValue, question: question))
             case .string(.some(let stringValue)):
                 try? self.addAnswer(TextualAnswer(stringValue, question: question))
-            case .multipleChoice(let choices, .some(let indexValue)) where indexValue < choices.count:
-                try? self.addAnswer(MultipleChoiceSelection(indexValue, question: question))
+            case .multipleChoice(let choices, .some(let choiceId)):
+                guard let selectionIndex = choices.firstIndex(where: { $0.id == choiceId }) else {
+                    Log("Choice with id: \(choiceId) for multiple choice quetion not found.", data: choices, level: .warning)
+                    continue
+                }
+
+                try? self.addAnswer(MultipleChoiceSelection(selectionIndex, question: question))
             default:
                 break
             }

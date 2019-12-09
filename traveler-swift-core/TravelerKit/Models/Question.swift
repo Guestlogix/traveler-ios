@@ -33,7 +33,7 @@ public struct Question: Decodable, Equatable {
         /// Textual
         case string(String?)
         /// Multiple choice
-        case multipleChoice([Choice], Int?)
+        case multipleChoice([Choice], String?)
     }
 
     /// Information about a `Choice` for multiple choice type questions
@@ -100,8 +100,7 @@ public struct Question: Decodable, Equatable {
         case "MultipleChoice":
             let choices = try container.decode([Question.Choice].self, forKey: .choices)
             let choiceId = try container.decode(String?.self, forKey: .suggestedAnswer)
-            let suggestedAnswer = choices.firstIndex(where: {$0.id == choiceId})
-            self.type = .multipleChoice(choices, suggestedAnswer)
+            self.type = .multipleChoice(choices, choiceId)
         default:
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.type, in: container, debugDescription: "Unknown type")
         }
