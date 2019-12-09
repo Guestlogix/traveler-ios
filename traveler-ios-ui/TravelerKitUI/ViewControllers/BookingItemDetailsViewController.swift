@@ -78,9 +78,9 @@ public class BookingItemDetailsViewController: UIViewController {
             vc.delegate = self
         case (_, let vc as SupplierInfoViewController):
             vc.supplier = bookingItemDetails?.supplier
-        case (_, let vc as SimilarItemsViewController):
+        case (_, let vc as CatalogQueryViewController):
             vc.delegate = self
-            vc.product = product
+            vc.query = CatalogQuery(flights: nil, products: product.flatMap({ [$0] }))
         case ("termsAndConditionsSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? TermsAndConditionsViewController
             vc?.termsAndConditions = bookingItemDetails?.attributedTermsAndConditions
@@ -212,10 +212,9 @@ extension BookingItemDetailsViewController: WishlistRemoveDelegate {
     }
 }
 
-extension BookingItemDetailsViewController: SimilarItemsViewControllerDelegate {
-    public func similarItemsViewController(_ controller: SimilarItemsViewController, didFailWith: Error) {
-        // Collapse the view when there is an error
-        similarItemsHeightConstraint.constant = 0
+extension BookingItemDetailsViewController: CatalogQueryViewControllerDelegate {
+    func catalogQueryViewControllerDidChangePreferredContentSize(_ controller: CatalogQueryViewController) {
+        similarItemsHeightConstraint.constant = controller.preferredContentSize.height
         view.layoutIfNeeded()
     }
 }

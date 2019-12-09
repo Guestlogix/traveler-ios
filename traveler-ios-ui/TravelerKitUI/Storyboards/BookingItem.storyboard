@@ -890,10 +890,10 @@
             </objects>
             <point key="canvasLocation" x="3045.6521739130435" y="4839.5089285714284"/>
         </scene>
-        <!--SimilarItems-->
+        <!--CatalogQuery-->
         <scene sceneID="eaJ-7w-lbl">
             <objects>
-                <viewControllerPlaceholder storyboardName="SimilarItems" id="r7u-VF-1xg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CatalogQuery" id="r7u-VF-1xg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9e-ts-aYK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2307" y="2443"/>

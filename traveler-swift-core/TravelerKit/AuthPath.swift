@@ -69,6 +69,10 @@ enum AuthPath {
             query.flights?.forEach { (flight) in
                 urlComponents.queryItems!.append(URLQueryItem(name:"flight-ids", value: flight.id))
             }
+
+            query.products?.forEach({ (product) in
+                urlComponents.queryItems!.append(URLQueryItem(name:"product-ids", value: product.id))
+            })
         case .bookingItem(let item, let travelerId):
             urlComponents.path = "/v1/booking/\(item.id)"
             if let _ = travelerId {
