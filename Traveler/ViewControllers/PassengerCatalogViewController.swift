@@ -55,7 +55,7 @@ extension PassengerCatalogViewController: CatalogFetchDelegate {
     func catalogFetchDidSucceedWith(_ result: Catalog) {
         self.catalog = result
 
-        if result.groups.first?.items.count == 0 {
+        if result.groups.count == 0 {
             performSegue(withIdentifier: "emptySegue", sender: nil)
         } else {
             performSegue(withIdentifier: "resultSegue", sender: nil)
