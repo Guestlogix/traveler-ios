@@ -47,7 +47,7 @@ class FlightSearchViewController: UIViewController {
             emptyVC.delegate = self
             emptyVC.errorTitleString = "No flights found"
             emptyVC.errorMessageString = "Please try again with a different flight number or departure date"
-            emptyVC.retryButtonString = "Try Again"
+            emptyVC.actionButtonString = "Try Again"
         case ("errorSegue", let errorVC as ErrorViewController):
             errorVC.delegate = self
         case (_, let resultVC as FlightSearchResultViewController):

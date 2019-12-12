@@ -256,7 +256,6 @@
 		A9639D912211CE0B00625235 /* FlightSearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightSearchResultViewController.swift; sourceTree = "<group>"; };
 		A9639D922211CE0B00625235 /* FlightLookupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightLookupViewController.swift; sourceTree = "<group>"; };
 		A9639D932211CE0B00625235 /* EmptyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
-		A9639D942211CE0B00625235 /* RetryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RetryViewController.swift; path = "../../traveler-ios-ui/TravelerKitUI/ViewControllers/RetryViewController.swift"; sourceTree = "<group>"; };
 		A9639DD42211D13900625235 /* TravelerKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TravelerKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639DD82211D13F00625235 /* TravelerKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TravelerKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9639DDB2211D14400625235 /* TravelerStripePaymentProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TravelerStripePaymentProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -442,7 +441,6 @@
 				A9639D912211CE0B00625235 /* FlightSearchResultViewController.swift */,
 				A9639D922211CE0B00625235 /* FlightLookupViewController.swift */,
 				A9639D932211CE0B00625235 /* EmptyViewController.swift */,
-				A9639D942211CE0B00625235 /* RetryViewController.swift */,
 				F3BEB5732228772400BD181C /* FlightDetailsViewController.swift */,
 				A965D412224D274400AAE774 /* AuthViewController.swift */,
 				A974A6882280B19900319683 /* ProfileViewController.swift */,

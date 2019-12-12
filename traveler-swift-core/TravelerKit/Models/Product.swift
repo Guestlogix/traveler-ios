@@ -67,14 +67,11 @@ public struct PartnerOfferingProduct: Product, Decodable {
     public let productType: ProductType = .partnerOffering
     /// Title
     public let title: String
-    /// Array of different groups with purchased options
-    public let offerings: [PartnerOfferingGroup]
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case price = "price"
         case title = "title"
-        case offerings = "menu"
     }
 
 }

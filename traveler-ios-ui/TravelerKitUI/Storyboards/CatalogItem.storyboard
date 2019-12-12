@@ -65,6 +65,14 @@
             </objects>
             <point key="canvasLocation" x="-2522" y="200"/>
         </scene>
+        <!--Error-->
+        <scene sceneID="1t1-EY-bKK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Error" id="o8I-XG-bS2" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gcj-Pw-vcK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3782" y="188"/>
+        </scene>
         <!--BookingItem-->
         <scene sceneID="Bsu-WT-5hF">
             <objects>
@@ -85,6 +93,8 @@
                     </view>
                     <connections>
                         <segue destination="xao-wP-yoB" kind="custom" identifier="bookingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="ZrJ-l1-gEL"/>
+                        <segue destination="o8I-XG-bS2" kind="custom" identifier="errorSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="xCI-JZ-kZy"/>
+                        <segue destination="VSh-Dk-Vfy" kind="custom" identifier="partnerOfferingSegue" customClass="ContainerEmbedSegue" customModule="TravelerKitUI" customModuleProvider="target" id="4FW-Ke-zKf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7E-JN-6B3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -154,6 +164,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UQi-aD-oYJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2422" y="-425"/>
+        </scene>
+        <!--PartnerOffering-->
+        <scene sceneID="Oms-oy-eLw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PartnerOffering" id="VSh-Dk-Vfy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bXJ-hq-FAA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3781" y="569"/>
         </scene>
     </scenes>
 </document>
