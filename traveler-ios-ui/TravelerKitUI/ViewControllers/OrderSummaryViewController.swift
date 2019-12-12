@@ -93,6 +93,13 @@ open class OrderSummaryViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
                 cell.titleLabel.text = product.title
                 cell.priceLabel.text = product.price.localizedDescriptionInBaseCurrency
+                cell.subTitleLabel.text = ""
+                return cell
+            case let product as PartnerOfferingProduct:
+                let cell = tableView.dequeueReusableCell(withIdentifier: orderItemCellIdentifier, for: indexPath) as! OrderItemViewCell
+                cell.titleLabel.text = product.title
+                cell.priceLabel.text = product.price.localizedDescriptionInBaseCurrency
+                cell.subTitleLabel.text = ""
                 return cell
             default:
                 Log("Unsupported product type", data: nil, level: .warning)

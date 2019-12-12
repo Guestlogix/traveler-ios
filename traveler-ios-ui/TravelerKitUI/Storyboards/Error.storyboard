@@ -50,10 +50,10 @@
                         <viewLayoutGuide key="safeArea" id="7EI-uI-Zut"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="EcN-Bn-j2h" id="fWw-6f-R12"/>
                         <outlet property="errorMessage" destination="SsA-Jf-h6K" id="Snu-kO-Wt6"/>
                         <outlet property="errorMessageToErrorTitleVerticalConstraint" destination="e0z-dx-Qgk" id="BU5-3K-N1T"/>
                         <outlet property="errorTitle" destination="K2U-pW-WDK" id="kNm-2d-CTw"/>
-                        <outlet property="retryButton" destination="EcN-Bn-j2h" id="fWw-6f-R12"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvz-0u-y6q" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,7 +11,6 @@ import TravelerKit
 
 
 open class BookingItemQueryViewController: UIViewController {
-
     private var searchText: String?
     private var bookingItemResult: BookingItemSearchResult?
     private var searchQuery: BookingItemQuery?

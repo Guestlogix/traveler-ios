@@ -55,12 +55,20 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="gu8-jQ-o2M" secondAttribute="trailing" id="gDm-dM-die"/>
                                     <constraint firstItem="gu8-jQ-o2M" firstAttribute="top" secondItem="bxi-YM-cYr" secondAttribute="top" id="h20-E2-Dvh"/>
                                     <constraint firstItem="gu8-jQ-o2M" firstAttribute="leading" secondItem="bxi-YM-cYr" secondAttribute="leading" id="l3V-Z0-QPt"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdq-TF-OwK">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="596"/>
