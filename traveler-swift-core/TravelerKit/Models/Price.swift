@@ -27,6 +27,10 @@ public struct Price: Decodable {
         return localizedDescription(in: baseCurrency)
     }
 
+    public var roundedLocalizedDescriptionInBaseCurrency: String? {
+        return roundedLocalizedDescription(in: baseCurrency)
+    }
+
     /**
      A localized descriptions of the amount in a currency of choice. If the price does not allow currency exchange and the given
      currency is different than its base, nil is returned.
@@ -43,6 +47,24 @@ public struct Price: Decodable {
         numberFormatter.numberStyle = .currency
 
         return numberFormatter.string(for: NSNumber(value: self.value))
+    }
+
+    /**
+     A localized descriptions of the rounded amount in a currency of choice. If the price does not allow currency exchange and the given currency is different than its base, nil is returned.
+
+     - Parameters:
+     - currency: The `Currency` to convert and display the localized value
+
+     - Returns: A `String`for the rounded value if the value could be converted to the given `Currency`. nil otherwise
+     */
+    public func roundedLocalizedDescription(in currency: Currency) -> String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        numberFormatter.currencyCode = currency.rawValue
+        numberFormatter.numberStyle = .currency
+        numberFormatter.minimumFractionDigits = 0
+
+        return numberFormatter.string(for: NSNumber(value: round(value)))
     }
 
     /// The nominal value of the amount in its base currency

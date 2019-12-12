@@ -28,7 +28,7 @@ public struct BookingItem: CatalogItem, Decodable, Product {
     public let providerTranslationAttribution: ProviderTranslationAttribution
     /// A coordinate representing the item's location
     // TODO: Call this something different. Location implies that the type is `Location`
-    public let location: Coordinate
+    public let location: Coordinate?
     /// Whether is item is available or not
     public var isAvailable: Bool
 
@@ -55,7 +55,7 @@ public struct BookingItem: CatalogItem, Decodable, Product {
         self.price = try container.decode(Price.self, forKey: .price)
         self.categories = try container.decode([BookingItemCategory].self, forKey: .categories)
         self.purchaseType = try container.decode(PurchaseType.self, forKey: .type)
-        self.location = try container.decode(Coordinate.self, forKey: .location)
+        self.location = try container.decode(Coordinate?.self, forKey: .location)
         self.providerTranslationAttribution = try container.decode(ProviderTranslationAttribution.self, forKey: .providerTranslationAttribution)
         self.isAvailable = try container.decode(Bool.self, forKey: .isAvailable)
     }
