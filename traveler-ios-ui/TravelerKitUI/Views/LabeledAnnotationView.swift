@@ -23,7 +23,7 @@ open class LabeledAnnotationView: MKAnnotationView {
                 return
             }
 
-            image = createAnnotationPinImage(withValue: parkingSpot.parkingItem.price.localizedDescriptionInBaseCurrency, isChosen: isChosen)
+            image = createAnnotationPinImage(withValue: parkingSpot.parkingItem.price.roundedLocalizedDescriptionInBaseCurrency, isChosen: isChosen)
         }
     }
 

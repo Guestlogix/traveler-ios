@@ -28,6 +28,7 @@ open class ParkingResultMapListViewController: UIViewController {
 
     public var context: ParkingResultContext?
     public weak var delegate: ParkingResultMapListViewControllerDelegate?
+    public var mapViewControllerTopInset: CGFloat = 0
 
     private var newBoundingBox: BoundingBox?
 
@@ -77,7 +78,7 @@ open class ParkingResultMapListViewController: UIViewController {
         case (_, let vc as ParkingResultMapViewController):
             vc.context = context
             vc.delegate = self
-            vc.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: ParkingResultMapListViewController.listControllerContentHeight, right: 0)
+            vc.additionalSafeAreaInsets = UIEdgeInsets(top: mapViewControllerTopInset, left: 0, bottom: ParkingResultMapListViewController.listControllerContentHeight, right: 0)
         case (_, let vc as ParkingResultListViewController):
             vc.context = context
             vc.delegate = self

@@ -105,13 +105,13 @@ extension ParkingResultListViewController: UICollectionViewDataSource {
 
 extension ParkingResultListViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 100, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
+        return CGSize(width: collectionView.bounds.width - 120, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
     }
 
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         let numberOfSpots = context?.spots?.count ?? 0
         if numberOfSpots > 0 {
-            return CGSize(width: 100, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
+            return CGSize(width: 120, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
         } else {
             return CGSize(width: collectionView.bounds.width - 14*2, height: collectionView.bounds.height - 10 - ParkingResultMapListViewController.safeAreaBottomInset)
         }

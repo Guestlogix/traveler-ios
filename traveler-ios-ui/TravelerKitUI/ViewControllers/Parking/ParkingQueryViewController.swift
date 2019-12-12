@@ -44,7 +44,7 @@ open class ParkingQueryViewController: UIViewController {
             segue.containerView = mapContainerView
             vc.context = context
             vc.delegate = self
-            vc.additionalSafeAreaInsets = UIEdgeInsets(top: segmentContainerView.frame.height, left: 0, bottom: 0, right: 0)
+            vc.mapViewControllerTopInset = segmentContainerView.frame.height
         case (let segue as ContainerEmbedSegue, let vc as ParkingResultTableViewController):
             segue.containerView = listContainerView
             vc.context = context
@@ -64,9 +64,15 @@ open class ParkingQueryViewController: UIViewController {
         case 0:
             mapContainerView.isHidden = false
             listContainerView.isHidden = true
+            segmentContainerView.backgroundColor = .clear
         case 1:
             mapContainerView.isHidden = true
             listContainerView.isHidden = false
+            if #available(iOS 13.0, *) {
+                segmentContainerView.backgroundColor = .secondarySystemBackground
+            } else {
+                segmentContainerView.backgroundColor = UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+            }
         default:
             Log("Unknown view", data: sender.selectedSegmentIndex, level: .error)
             break
