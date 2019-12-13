@@ -16,6 +16,7 @@ let infoCellIdentifier = "infoCellIdentifier"
 let headerViewIdentifier = "headerViewIdentifier"
 
 public protocol OrderSummaryViewControllerDelegate: class {
+    // TODO: Have two separate delegation methods for payment selection and changing save option. 
     func orderSummaryViewController(_ controller: OrderSummaryViewController, didSelect payment: Payment, saveOption: Bool)
 }
 
@@ -30,7 +31,8 @@ open class OrderSummaryViewController: UITableViewController {
     private var selectedPaymentIndex: Int? {
         didSet {
             selectedPaymentIndex.flatMap {
-                delegate?.orderSummaryViewController(self, didSelect: totalPayments[$0], saveOption: saveSwitch.isOn)
+                delegate?.orderSummaryViewController(self, didSelect: totalPayments[$0], saveOption: $0 < payments.count ? false : saveSwitch.isOn)
+                savePaymentView.isHidden = $0 < payments.count
             }
         }
     }
@@ -48,6 +50,14 @@ open class OrderSummaryViewController: UITableViewController {
 
         let bundle = Bundle(for: HeaderView.self)
         tableView.register(UINib(nibName: "HeaderView", bundle: bundle), forHeaderFooterViewReuseIdentifier: headerViewIdentifier)
+
+        savePaymentView.isHidden = true
+    }
+
+    @IBAction func didToggleSavePaymentSwitch(_ sender: UISwitch) {
+        selectedPaymentIndex.flatMap {
+            delegate?.orderSummaryViewController(self, didSelect: totalPayments[$0], saveOption: sender.isOn)
+        }
     }
 
     // MARK: UITableViewDataSource
@@ -150,14 +160,6 @@ open class OrderSummaryViewController: UITableViewController {
         case (billingSection, _) where selectedPaymentIndex != indexPath.row:
             selectedPaymentIndex = indexPath.row
             tableView.reloadSections(IndexSet([billingSection]), with: .none)
-
-            if selectedPaymentIndex! >= payments.count {
-                savePaymentView.isHidden = false
-                saveSwitch.isOn = false
-            } else {
-                savePaymentView.isHidden = true
-                saveSwitch.isOn = false
-            }
         default:
             break
         }
@@ -168,27 +170,21 @@ open class OrderSummaryViewController: UITableViewController {
     override open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 
         switch tableView.cellForRow(at: indexPath)?.reuseIdentifier{
-        case infoCellIdentifier?:
-            return true
+        case infoCellIdentifier? where indexPath.row != selectedPaymentIndex:
+            // TODO: We disable payment methods deletion until it's supported in StripePaymentProvider.swift
+            return false
         default:
             return false
         }
     }
 
-    open override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        // Shoud we be able to delete saved cards from here?
-        // if so delegate
-        if indexPath.row >= payments.count {
-            return .delete
-        } else {
-            return .none
-        }
-    }
-
     override open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let index = indexPath.row - payments.count
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
-            self.newPayments.remove(at: index)
+            if indexPath.row < self.payments.count {
+                self.payments.remove(at: indexPath.row)
+            } else {
+                self.newPayments.remove(at: indexPath.row - self.payments.count)
+            }
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         return [deleteAction]
