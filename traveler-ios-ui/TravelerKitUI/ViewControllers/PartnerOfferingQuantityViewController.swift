@@ -19,7 +19,7 @@ open class PartnerOfferingQuantityViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     
     var product: PartnerOfferingItem?
-    var options: [PartnerOffering]?
+    var selectedOptions: [PartnerOffering]?
     var totalPrice: Price?
     
     weak var delegate: PartnerOfferingQuantityViewControllerDelegate?
@@ -31,7 +31,7 @@ open class PartnerOfferingQuantityViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let options = options else {
+        guard let options = selectedOptions else {
             Log("Options are unavailable", data: nil, level: .error)
             return
         }
@@ -56,6 +56,7 @@ open class PartnerOfferingQuantityViewController: UIViewController {
 
     @IBAction func stepperValueDidChange(_ sender: Stepper) {
         quantity = sender.value
+
         if let totalPrice = totalPrice {
             let newPrice = Price(floatLiteral: totalPrice.valueInBaseCurrency * Double(stepper.value))
             priceLabel.text = newPrice.localizedDescriptionInBaseCurrency
@@ -63,12 +64,19 @@ open class PartnerOfferingQuantityViewController: UIViewController {
     }
 
     @IBAction func didPressNext(_ sender: Any) {
-        guard let product = product, let options = options else {
-            Log("Product or options is nil", data: nil, level: .warning)
+        var totalOptions = [PartnerOffering]()
+
+        guard let product = product else {
+            Log("Product  is nil", data: nil, level: .warning)
             return
         }
 
-        Traveler.fetchPurchaseForm(product: product, options: options, delegate: self)
+        selectedOptions?.forEach({ (element) in
+            let multipliedOptions = Array(repeating: element, count: stepper.value)
+            totalOptions.append(contentsOf: multipliedOptions)
+        })
+
+        Traveler.fetchPurchaseForm(product: product, options: totalOptions, delegate: self)
     }
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {

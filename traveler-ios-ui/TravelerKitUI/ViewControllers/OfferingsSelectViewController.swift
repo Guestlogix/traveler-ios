@@ -55,7 +55,7 @@ open class OfferingsSelectViewController: UIViewController {
         switch (segue.identifier, segue.destination, sender) {
         case (_, let vc as PartnerOfferingQuantityViewController, let options as [PartnerOffering]):
             vc.product = product
-            vc.options = options
+            vc.selectedOptions = options
             vc.totalPrice = totalPrice
             vc.delegate = self
         default:
