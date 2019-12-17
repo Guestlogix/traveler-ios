@@ -80,7 +80,10 @@ extension CatalogItemViewController: OrderCreateDelegate {
         ProgressHUD.hide()
 
         let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "ok", style: .default) { [unowned self] (_) in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         alert.addAction(okAction)
 
         present(alert, animated: true)
