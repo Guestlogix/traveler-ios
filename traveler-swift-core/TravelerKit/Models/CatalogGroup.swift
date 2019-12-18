@@ -39,12 +39,12 @@ public struct CatalogGroup: Decodable {
 
         switch itemType {
         case .item:
-            let anyItems = try container.decode([AnyItem].self, forKey: .items)
-
-            let items = anyItems.map({ $0.item })
+            let lossyItems = try container.decode(LossyDecodableArray<AnyItem>.self, forKey: .items)
+            let items = lossyItems.payload.map({ $0.item })
             self.items = items
         case .query:
-            self.items = try container.decode([QueryItem].self, forKey: .items)
+            let lossyItems = try container.decode(LossyDecodableArray<QueryItem>.self, forKey: .items)
+            self.items = lossyItems.payload
         }
     }
 }

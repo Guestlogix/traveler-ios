@@ -105,7 +105,7 @@ public struct WishlistResult: Decodable {
         self.toDate = toDate
         self.total = try container.decode(Int.self, forKey: .total)
 
-        let items = try container.decode([AnyItem].self, forKey: .items).map({ (item) -> (Product & CatalogItem) in
+        let items = try container.decode(LossyDecodableArray<AnyItem>.self, forKey: .items).payload.map({ (item) -> (Product & CatalogItem) in
             switch item.type {
             case .booking:
                 return item.bookingItem!
