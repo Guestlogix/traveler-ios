@@ -9,7 +9,7 @@
 import Foundation
 
 /// The type of query in a `QueryItem`
-enum QueryType: String, Decodable {
+public enum QueryType: String, Decodable {
     case parking = "Parking"
     case booking = "Booking"
 }
