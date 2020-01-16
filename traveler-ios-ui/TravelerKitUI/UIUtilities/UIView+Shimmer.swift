@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIView {
-    func startShimmering(){
+    public func startShimmering(){
         let light = UIColor.white.cgColor
         let alpha = UIColor.white.withAlphaComponent(0.4).cgColor
 
@@ -29,7 +29,7 @@ extension UIView {
         gradient.add(animation, forKey: "shimmer")
     }
 
-    func stopShimmering(){
+    public func stopShimmering(){
         self.layer.mask = nil
     }
 }
