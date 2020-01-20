@@ -18,8 +18,10 @@ protocol MainViewControllerDelegate: class {
 let flightCellHeight: CGFloat = 44
 
 class MainViewController: UIViewController {
-    // TODO: Random test. Should pick up this TOD=
-    // TODO : Another test
+    //TODO: Test 1
+    //TODO : Test 2
+    // TODO: Test 3
+    // TODO : Test 4
     @IBOutlet weak var authButton: UIBarButtonItem!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
