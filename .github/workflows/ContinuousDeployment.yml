@@ -1,0 +1,26 @@
+name: Swift
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+    name: Continuous deployment iOS
+    
+    steps:
+      - name: Login
+        uses: atlassian/gajira-login@master
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      - name: Jira issue from TODO
+        uses: atlassian/gajira-todo@v2.0.1
+        with:
+          # Key of the project
+          project: TPP
+          # Type of the issue to be created. Example: 'Incident'
+          issuetype: Task
+          # Issue description
+          description: TODO task generated automatically by Github iOS
