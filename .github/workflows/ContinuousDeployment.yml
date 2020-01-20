@@ -1,6 +1,6 @@
-name: Swift
+name: Continuous deploymenbt
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
@@ -24,3 +24,5 @@ jobs:
           issuetype: Task
           # Issue description
           description: TODO task generated automatically by Github iOS
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
