@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     //TODO: Test 1
     //TODO : Test 2
     // TODO: Test 3
-    // TODO : Test 4
+    // TODO : Test4
     @IBOutlet weak var authButton: UIBarButtonItem!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
