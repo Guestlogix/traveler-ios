@@ -93,8 +93,13 @@ open class OrderDetailViewController: UITableViewController {
         purchasedProduct = order!.products[indexPath.row]
 
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        performSegue(withIdentifier: "productDetailSegue", sender: nil)
+
+        switch purchasedProduct?.purchaseType {
+        case .booking, .parking:
+            performSegue(withIdentifier: "productDetailSegue", sender: nil)
+        default:
+            Log("Details not available for this kind of product", data: nil, level: .warning)
+        }
     }
 
     @IBAction func didCancelOrder(_ sender: Any) {
