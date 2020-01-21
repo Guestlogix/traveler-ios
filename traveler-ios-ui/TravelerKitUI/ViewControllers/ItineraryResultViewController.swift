@@ -88,9 +88,14 @@ open class ItineraryResultViewController: UITableViewController {
         let item = itinerary.itemsByDay[itinerary.daysAvailable[indexPath.section]]![indexPath.row]
         
         if let purchaseType = item.type.purchaseType {
-            let query = PurchasedProductDetailsQuery(orderId: item.orderId!, productId: item.id, purchaseType: purchaseType)
-            
-            self.performSegue(withIdentifier: "purchasedProductSegue", sender: query)
+            switch purchaseType {
+            case .booking, .parking:
+                let query = PurchasedProductDetailsQuery(orderId: item.orderId!, productId: item.id, purchaseType: purchaseType)
+
+                self.performSegue(withIdentifier: "purchasedProductSegue", sender: query)
+            default:
+                Log("Details not available for this kind of product", data: nil, level: .warning)
+            }
         } else if item.type == .flight {
             let currentFlight = flights.filter { $0.id == item.id }.first
             
