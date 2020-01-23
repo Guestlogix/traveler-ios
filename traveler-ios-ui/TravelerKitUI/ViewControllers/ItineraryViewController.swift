@@ -12,8 +12,8 @@ import TravelerKit
 open class ItineraryViewController: UIViewController {
     public var flights: [Flight] = []
     
-    private var itinerary = ItineraryByDay()
-    private var currentItinerary = ItineraryByDay()
+    public var itinerary = ItineraryByDay()
+    public var currentItinerary = ItineraryByDay()
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ open class ItineraryViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func reload(with dateRange: ClosedRange<Date>? = nil) {
+    public func reload(with dateRange: ClosedRange<Date>? = nil) {
         let query = ItineraryQuery(flights: flights, dateRange: dateRange)
         
         performSegue(withIdentifier: "loadingSegue", sender: nil)
@@ -60,7 +60,7 @@ open class ItineraryViewController: UIViewController {
         Traveler.fetchItinerary(query, delegate: self)
     }
     
-    func filter() {
+    public func filter() {
         performSegue(withIdentifier: "loadingSegue", sender: nil)
         
         currentItinerary = itinerary.filteredItinerary(by: currentItinerary.dateRange, types: currentItinerary.types)
