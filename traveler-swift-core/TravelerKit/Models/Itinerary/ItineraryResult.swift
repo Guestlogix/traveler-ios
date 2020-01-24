@@ -32,7 +32,7 @@ public struct ItineraryResult: Decodable {
         
         let fromDateString = try container.decode(String.self, forKey: .fromDate)
         
-        if let fromDate = DateFormatter.dateOnlyFormatter.date(from: fromDateString) {
+        if let fromDate = DateFormatter.dateOnlyFormatterGregorian.date(from: fromDateString) {
             self.fromDate = fromDate
         } else {
             self.fromDate = nil
@@ -40,7 +40,7 @@ public struct ItineraryResult: Decodable {
         
         let toDateString = try container.decode(String.self, forKey: .toDate)
         
-        if let toDate = DateFormatter.dateOnlyFormatter.date(from: toDateString) {
+        if let toDate = DateFormatter.dateOnlyFormatterGregorian.date(from: toDateString) {
             self.toDate = toDate
         } else {
             self.toDate = nil

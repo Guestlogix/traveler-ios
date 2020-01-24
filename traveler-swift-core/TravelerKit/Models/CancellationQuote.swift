@@ -62,7 +62,7 @@ struct CancellationQuoteResponse: Decodable {
 
         let dateString = try container.decode(String.self, forKey: .expirationDate)
 
-        if let date = DateFormatter.withoutTimezone.date(from: dateString) {
+        if let date = DateFormatter.withoutTimezoneGregorian.date(from: dateString) {
             self.expirationDate = date
         } else {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.expirationDate, in: container, debugDescription: "Incorrect format")

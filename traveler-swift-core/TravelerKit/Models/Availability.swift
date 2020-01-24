@@ -29,7 +29,7 @@ public struct Availability: Decodable {
 
         let dateString = try container.decode(String.self, forKey: .date)
 
-        if let date = DateFormatter.dateOnlyFormatter.date(from: dateString) {
+        if let date = DateFormatter.dateOnlyFormatterGregorian.date(from: dateString) {
             self.date = date
         } else {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.date, in: container, debugDescription: "Incorrect format")

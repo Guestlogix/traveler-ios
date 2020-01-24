@@ -33,20 +33,28 @@ open class AvailabilityViewController: UIViewController {
     var optionsViewController: BookingOptionsViewController?
 
     private var passes: [Pass]?
-
-    private var datePickerCellVisible = false
-    private var dateCellIndexPath: IndexPath {
+    private var availabilities: [Date: Availability] = [:]
+    
+    private var calendarCellIndexPath: IndexPath {
         return IndexPath(row: 0, section: 0)
     }
-
-    private var datePickerCellIndexPath: IndexPath {
-        return IndexPath(row: 1, section: 0)
-    }
+    
+    private var calendar: Calendar = {
+        var cal = Calendar.current
+        //TODO: Refactor this to handle time zones
+        if let timeZone = TimeZone(secondsFromGMT: 0) {
+            cal.timeZone = timeZone
+        }
+        return cal
+    }()
+    private weak var calendarCell: CalendarCell?
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-
         priceLabel.text = product?.price.localizedDescriptionInBaseCurrency
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
     }
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,7 +78,6 @@ open class AvailabilityViewController: UIViewController {
             Log("No product", data: nil, level: .error)
             return
         }
-
         guard let availability = selectedAvailability else {
             if availabilityError == nil {
                 availabilityError = BookingError.noDate
@@ -78,7 +85,6 @@ open class AvailabilityViewController: UIViewController {
             tableView.reloadData()
             return
         }
-
         nextButton.isEnabled = false
 
         if hasOptions == true {
@@ -91,117 +97,126 @@ open class AvailabilityViewController: UIViewController {
 }
 
 extension AvailabilityViewController: UITableViewDataSource {
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Please select a date"
+    }
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datePickerCellVisible ? 2 : 1
+        return 1
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var labelColor: UIColor {
-            if #available(iOS 13.0, *) {
-                return .label
-            } else {
-                return .darkText
-            }
-        }
-
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: dateCellIdentifier, for: indexPath) as! DateCell
-            cell.valueLabel.textColor = availabilityError != nil ? UIColor.red : labelColor
-            cell.titleLabel.textColor = availabilityError != nil ? UIColor.red : labelColor
-
-            switch availabilityError {
-            case .some(BookingError.badDate):
-                cell.valueLabel.text = "Unavailable"
-            case .some(BookingError.noDate):
-                cell.valueLabel.text = "Please Select"
-            default:
-                cell.valueLabel.text = selectedAvailability.flatMap({ DateFormatter.yearMonthDay.string(from: $0.date) })
-            }
-
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: datePickerCellIdentifier, for: indexPath) as! DatePickerCell
-            cell.datePicker.minimumDate = Date()
-            cell.datePicker.date = selectedAvailability?.date ?? Date()
-            cell.delegate = self
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: calendarCellIdentifier, for: indexPath) as! CalendarCell
+        cell.calendarView.delegate = self
+        cell.calendarView.dataSource = self
+        self.calendarCell = cell
+        return cell
     }
 }
 
-extension AvailabilityViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath {
-        case dateCellIndexPath:
-            datePickerCellVisible = !datePickerCellVisible
+// MARK: - CalendarViewDataSource & CalendarViewDelegate
 
-            tableView.beginUpdates()
-
-            if datePickerCellVisible {
-                tableView.insertRows(at: [datePickerCellIndexPath], with: .automatic)
-            } else {
-                tableView.deleteRows(at: [datePickerCellIndexPath], with: .top)
-            }
-
-            tableView.endUpdates()
-
-            tableView.deselectRow(at: indexPath, animated: true)
-
-            if selectedAvailability == nil {
-                updateSelectedDate(Date())
-
-                tableView.reloadRows(at: [indexPath], with: .none)
-            }
-        default:
-            break
+extension AvailabilityViewController: CalendarViewDataSource, CalendarViewDelegate {
+    public func configurationParameters(for calendarVew: CalendarView) -> CalendarConfigurationParameters {
+        let startDate = Date().minTimeOfDay()
+        var dateComponents = DateComponents()
+        dateComponents.year = 5
+        let endDate = calendar.date(byAdding: dateComponents, to: startDate) ?? Date()
+        
+        return CalendarConfigurationParameters(startDate: startDate, endDate: endDate, calendar: calendar,
+                                               dateSelectionColor: UIColor.systemBlue, dateSelectionTextColor: UIColor.white,
+                                               firstDayOfWeek: .sunday)
+    }
+    
+    public func calendarView(_ view: CalendarView, didInitWithFirstMonthStartDate startDate: Date, andEndDate endDate: Date) {
+        // No need to check availabilities for past dates
+        let today = Date().minTimeOfDay()
+        updateCalendarAvailabilities(withStartDate: today, endDate: endDate)
+    }
+    
+    public func calendarView(_ calendarView: CalendarView, availabilityStateForDate date: Date) -> AvailabilityState {
+        if date < Date().minTimeOfDay() {
+            return .unavailable
         }
+        return availabilities[date.minTimeOfDay()] != nil ? .available : .unavailable
     }
-
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 44 : 162
-    }
-}
-
-extension AvailabilityViewController: DatePickerCellDelegate {
-    func datePickerCellValueDidChange(_ cell: DatePickerCell) {
-        updateSelectedDate(cell.datePicker.date)
-    }
-
-    func updateSelectedDate(_ date: Date) {
-        guard let product = product else { return }
-
-        availabilityError = nil
-
-        tableView.isUserInteractionEnabled = false
-
-        Traveler.fetchAvailabilities(product: product, startDate: date, endDate: date, delegate: self)
-    }
-}
-
-extension AvailabilityViewController: AvailabilitiesFetchDelegate {
-    public func availabilitiesFetchDidSucceedWith(_ availabilities: [Availability]) {
-        tableView.isUserInteractionEnabled = true
-
-        guard let availability = availabilities.first else {
-            availabilityError = BookingError.badDate
-            tableView.reloadData()
+    
+    public func calendarView(_ view: CalendarView, didSelectDate date: Date) {
+        guard let availability = availabilities[date.minTimeOfDay()] else {
+            Log("No availiability for selected date. There must be one if date was available on the calendar!", data: nil, level: .error)
             return
         }
-
         selectedOption = nil
         selectedAvailability = availability
-
-        tableView.reloadData()
     }
-
-    public func availabilitiesFetchDidFailWith(_ error: Error) {
-        tableView.isUserInteractionEnabled = true
-
-        let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
+    
+    public func calendarView(_ view: CalendarView, didChangeMonthWithStartDate startDate: Date, andEndDate endDate: Date) {
+        updateCalendarAvailabilities(withStartDate: startDate, endDate: endDate)
+    }
+    
+    private func updateCalendarAvailabilities(withStartDate startDate: Date, endDate: Date) {
+        guard let product = product else { return }
+        availabilityError = nil
+        
+        // Don't check availabilities again if already checked for the same dates
+        if didAlreadyFetch(forStartDate: startDate, andEndDate: endDate) {
+            return
+        }
+        
+        tableView.isUserInteractionEnabled = false
+        calendarCell?.calendarView.startLoadingIndicator()
+        
+        fetchAvailabilities(forProduct: product, from: startDate, to: endDate) { [weak self] (error) in
+            guard let `self` = self else { return }
+            DispatchQueue.main.async {
+                self.tableView.isUserInteractionEnabled = true
+                let calendarCell = self.tableView.cellForRow(at: self.calendarCellIndexPath) as? CalendarCell
+                calendarCell?.calendarView.stopLoadingIndicator(withCalendarRefresh: true)
+                
+                if error != nil {
+                    self.showErrorDialog(withMessage: "Sorry, something went wrong!")
+                }
+            }
+        }
+    }
+    
+    func fetchAvailabilities(forProduct product: Product, from startDate: Date, to endDate: Date, completion: @escaping (_ error: Error?) -> Void) {
+        var fetchError: Error?
+        
+        Traveler.fetchAvailabilities(product: product, startDate: startDate, endDate: endDate) { [weak self] (availabilities, error) in
+            if let error = error {
+                fetchError = error
+            } else if let availabilties = availabilities {
+                for availability in availabilties {
+                    let date = availability.date.minTimeOfDay()
+                    self?.availabilities[date] = availability
+                }
+            }
+            completion(fetchError)
+        }
+    }
+    
+    private func showErrorDialog(withMessage message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
-
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func didAlreadyFetch(forStartDate startDate: Date, andEndDate endDate: Date) -> Bool {
+        if availabilities[startDate.minTimeOfDay()] != nil || availabilities[endDate.minTimeOfDay()] != nil {
+            return true
+        }
+        var date = startDate
+        repeat {
+            if let nextDate = Calendar.current.date(byAdding: .day, value: 1, to: date) {
+                date = nextDate
+                if availabilities[date.minTimeOfDay()] != nil {
+                    return true
+                }
+            }
+        } while date <= endDate
+        return false
     }
 }
 
@@ -211,11 +226,8 @@ extension AvailabilityViewController: PassFetchDelegate {
             optionsViewController?.passFetchDidSucceedWith(result)
             return
         }
-
         self.passes = result
-
         performSegue(withIdentifier: "passSegue", sender: nil)
-
         nextButton.isEnabled = true
     }
 
@@ -224,15 +236,8 @@ extension AvailabilityViewController: PassFetchDelegate {
             optionsViewController?.passFetchDidFailWith(error)
             return
         }
-
         nextButton.isEnabled = true
-
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-
-        alert.addAction(okAction)
-
-        present(alert, animated: true)
+        showErrorDialog(withMessage: error.localizedDescription)
     }
 }
 

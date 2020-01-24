@@ -167,6 +167,7 @@
 		CAEB7A76234CEE1E00C31BD6 /* AnyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB7A75234CEE1E00C31BD6 /* AnyItem.swift */; };
 		CAEB7A78234CEECA00C31BD6 /* BookingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB7A77234CEECA00C31BD6 /* BookingItem.swift */; };
 		CAEB7A7A234D4C7E00C31BD6 /* ParkingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB7A79234D4C7E00C31BD6 /* ParkingItem.swift */; };
+		EB98870523EB3D4A009E93DF /* Calendar+Gregorian.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98870423EB3D4A009E93DF /* Calendar+Gregorian.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -344,6 +345,7 @@
 		CAEB7A75234CEE1E00C31BD6 /* AnyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyItem.swift; sourceTree = "<group>"; };
 		CAEB7A77234CEECA00C31BD6 /* BookingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItem.swift; sourceTree = "<group>"; };
 		CAEB7A79234D4C7E00C31BD6 /* ParkingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItem.swift; sourceTree = "<group>"; };
+		EB98870423EB3D4A009E93DF /* Calendar+Gregorian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Gregorian.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -682,6 +684,7 @@
 				A957764621513F0800BD11C8 /* OperationQueue+AuthQueue.swift */,
 				A91F3BB021B827870016894A /* Array+ContainsAnyOf.swift */,
 				A9825BB922089323008AA0C1 /* Double+Currency.swift */,
+				EB98870423EB3D4A009E93DF /* Calendar+Gregorian.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 				A974A68F2280C42900319683 /* OrderQuery.swift in Sources */,
 				CA79FA3C2383612600C63C9C /* EphemeralKeyFetchDelegate.swift in Sources */,
 				A91F3BB721B87C500016894A /* PassFetchDelegate.swift in Sources */,
+				EB98870523EB3D4A009E93DF /* Calendar+Gregorian.swift in Sources */,
 				A9BF40E82182325B0090ED1C /* CatalogItem.swift in Sources */,
 				88F4AF89239FE87A007D1D7E /* PurchasedProductDetailsQuery.swift in Sources */,
 				A9DB06602140665A009817EC /* Serializable.swift in Sources */,

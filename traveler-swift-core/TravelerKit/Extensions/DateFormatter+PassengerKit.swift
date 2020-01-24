@@ -9,7 +9,7 @@
 import Foundation
 
 extension DateFormatter {
-
+    
     public static var withFullDate: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyymmdd"
@@ -21,10 +21,22 @@ extension DateFormatter {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         return dateFormatter
     }()
+    
+    public static var yearMonthDayGregorian: DateFormatter = {
+        let dateFormatter = DateFormatter.yearMonthDay
+        dateFormatter.calendar = Calendar.gregorian()
+        return dateFormatter
+    }()
 
     public static var withoutTimezone: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter
+    }()
+    
+    public static var withoutTimezoneGregorian: DateFormatter = {
+        let formatter = DateFormatter.withoutTimezone
+        formatter.calendar = Calendar.gregorian()
         return formatter
     }()
 
@@ -53,6 +65,12 @@ extension DateFormatter {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
+    
+    public static var dateOnlyFormatterGregorian: DateFormatter = {
+        let formatter = DateFormatter.dateOnlyFormatter
+        formatter.calendar = Calendar.gregorian()
+        return formatter
+    }()
 
     public static var shortDisplayFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -65,6 +83,12 @@ extension DateFormatter {
         let dateFormatter = self.copy() as! DateFormatter
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         dateFormatter.timeZone = timeZone
+        return dateFormatter
+    }
+    
+    public func fullFormatterGregorian(with timeZone: TimeZone) -> DateFormatter {
+        let dateFormatter = fullFormatter(with: timeZone)
+        dateFormatter.calendar = Calendar.gregorian()
         return dateFormatter
     }
 }

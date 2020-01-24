@@ -47,8 +47,8 @@ public struct ParkingItemSearchParameters: Decodable {
         let startTimeString = try container.decode(String.self, forKey: .startTime)
         let endTimeString = try container.decode(String.self, forKey: .endTime)
 
-        if let startTime = DateFormatter.withoutTimezone.date(from: startTimeString),
-            let endTime = DateFormatter.withoutTimezone.date(from: endTimeString) {
+        if let startTime = DateFormatter.withoutTimezoneGregorian.date(from: startTimeString),
+            let endTime = DateFormatter.withoutTimezoneGregorian.date(from: endTimeString) {
             self.dateRange = startTime...endTime
         } else {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.startTime, in: container, debugDescription: "Wrong date format for to and from dates")

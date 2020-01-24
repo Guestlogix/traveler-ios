@@ -57,11 +57,11 @@ public struct Flight: Codable, Equatable {
         try container.encode(arrivalTerminal, forKey: .arrivalTerminal)
 
         let formatter = DateFormatter()
-        let formatterDeparture = formatter.fullFormatter(with: departureAirport.timeZone)
+        let formatterDeparture = formatter.fullFormatterGregorian(with: departureAirport.timeZone)
         let departureDateString = formatterDeparture.string(from: departureDate)
         try container.encode(departureDateString, forKey: .departureDate)
 
-        let formatterArrival = formatter.fullFormatter(with: arrivalAirport.timeZone)
+        let formatterArrival = formatter.fullFormatterGregorian(with: arrivalAirport.timeZone)
         let arrivalDateString = formatterArrival.string(from: arrivalDate)
         try container.encode(arrivalDateString, forKey: .arrivalDate)
     }
@@ -93,13 +93,13 @@ public struct Flight: Codable, Equatable {
         let formatter = DateFormatter()
         
         let departureDateString = try container.decode(String.self, forKey: .departureDate)
-        let formatterDeparture = formatter.fullFormatter(with: departureAirport.timeZone)
+        let formatterDeparture = formatter.fullFormatterGregorian(with: departureAirport.timeZone)
         guard let departureDate = formatterDeparture.date(from: departureDateString) else {
             throw DecodingError.dataCorruptedError(forKey: .departureDate, in: container, debugDescription: "Date string does not match expected format for departure date.")
         }
 
         let arrivalDateString = try container.decode(String.self, forKey: .arrivalDate)
-        let formatterArrival = formatter.fullFormatter(with: arrivalAirport.timeZone)
+        let formatterArrival = formatter.fullFormatterGregorian(with: arrivalAirport.timeZone)
         guard let arrivalDate = formatterArrival.date(from: arrivalDateString) else {
             throw DecodingError.dataCorruptedError(forKey: .departureDate, in: container, debugDescription: "Date string does not match expected format for arrival date.")
         }

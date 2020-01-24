@@ -13,7 +13,8 @@ public protocol ItineraryFilterViewControllerDelegate: class {
     func itineraryFilterViewControllerDidApplyFilters(_ controller: ItineraryFilterViewController, types: [ItineraryItemType], dateRange: ClosedRange<Date>)
 }
 
-open class ItineraryFilterViewController: UITableViewController {
+open class ItineraryFilterViewController: UITableViewController, CalendarViewDelegate, CalendarViewDataSource {
+    
     private enum FilterSections: Int, CaseIterable {
         case type
         case dateRange
@@ -22,8 +23,15 @@ open class ItineraryFilterViewController: UITableViewController {
     private let typeCellIdendifier = "TypeCell"
     private let rangeCellIdentifier = "RangeCell"
     private let dateFormat = "dd MMM yyyy"
-    private let startDatePicker = UIDatePicker()
-    private let endDatePicker = UIDatePicker()
+    private var startDateCalendar: CalendarView?
+    private var endDateCalendar: CalendarView?
+    private var calendar: Calendar = {
+        var cal = Calendar.current
+        if let timeZone = TimeZone(secondsFromGMT: 0) {
+            cal.timeZone = timeZone
+        }
+        return cal
+    }()
     
     public weak var delegate: ItineraryFilterViewControllerDelegate?
     
@@ -37,15 +45,13 @@ open class ItineraryFilterViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: typeCellIdendifier)
         tableView.register(UINib(nibName: "RangeCell", bundle: Bundle(for: ItineraryFilterViewController.self)), forCellReuseIdentifier: rangeCellIdentifier)
         
-        startDatePicker.addTarget(self, action: #selector(handleStartDatePicker(sender:)), for: .valueChanged)
-        startDatePicker.setDate(dateRange.lowerBound, animated: true)
-        startDatePicker.datePickerMode = .date
-        startDatePicker.maximumDate = dateRange.upperBound
+        startDateCalendar = CalendarView()
+        startDateCalendar?.dataSource = self
+        startDateCalendar?.delegate = self
         
-        endDatePicker.addTarget(self, action: #selector(handleEndDatePicker(sender:)), for: .valueChanged)
-        endDatePicker.setDate(dateRange.upperBound, animated: true)
-        endDatePicker.datePickerMode = .date
-        endDatePicker.minimumDate = dateRange.lowerBound
+        endDateCalendar = CalendarView()
+        endDateCalendar?.dataSource = self
+        endDateCalendar?.delegate = self
     }
         
     @IBAction func didCancel() {
@@ -56,32 +62,6 @@ open class ItineraryFilterViewController: UITableViewController {
         delegate?.itineraryFilterViewControllerDidApplyFilters(self, types: self.selectedTypes, dateRange: self.dateRange)
         
         dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func handleStartDatePicker(sender: UIDatePicker) {
-        let startDate = sender.date
-        
-        if startDate <= dateRange.upperBound, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: FilterSections.dateRange.rawValue)) as? RangeCell {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = dateFormat
-            dateRange = startDate...dateRange.upperBound
-            startDatePicker.maximumDate = dateRange.upperBound
-            endDatePicker.minimumDate = startDate
-            cell.startField.text = dateFormatter.string(from: startDate)
-        }
-    }
-    
-    @objc func handleEndDatePicker(sender: UIDatePicker) {
-        let endDate = sender.date
-        
-        if endDate >= dateRange.lowerBound, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: FilterSections.dateRange.rawValue)) as? RangeCell {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = dateFormat
-            dateRange = dateRange.lowerBound...endDate
-            startDatePicker.maximumDate = endDate
-            endDatePicker.minimumDate = dateRange.lowerBound
-            cell.endField.text = dateFormatter.string(from: endDate)
-        }
     }
     
     override open func numberOfSections(in tableView: UITableView) -> Int {
@@ -144,10 +124,10 @@ open class ItineraryFilterViewController: UITableViewController {
             cell.titleLabel.text = "Date range"
             cell.startField.placeholder = "Enter the start date"
             cell.startField.text = dateFormatter.string(from: dateRange.lowerBound)
-            cell.startField.inputView = startDatePicker
+            cell.startField.inputView = startDateCalendar
             cell.endField.placeholder = "Enter the end date"
             cell.endField.text = dateFormatter.string(from: dateRange.upperBound)
-            cell.endField.inputView = endDatePicker
+            cell.endField.inputView = endDateCalendar
             return cell
         default:
             Log("Unhandled section for row; this should not happen!", data: indexPath, level: .error)
@@ -164,7 +144,68 @@ open class ItineraryFilterViewController: UITableViewController {
                 selectedTypes.append(types[indexPath.row])
             }
         }
-        
         tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    // MARK: - CalendarViewDataSource & CalendarViewDelegate
+    
+    public func configurationParameters(for calendarVew: CalendarView) -> CalendarConfigurationParameters {
+        let startDate = dateRange.lowerBound
+        var dateComponents = DateComponents()
+        dateComponents.year = 50
+        let endDate = self.calendar.date(byAdding: dateComponents, to: startDate) ?? dateRange.upperBound
+        return CalendarConfigurationParameters(startDate: startDate,
+                                               endDate: endDate,
+                                               calendar: self.calendar,
+                                               dateSelectionColor: UIColor.systemBlue,
+                                               dateSelectionTextColor: UIColor.white,
+                                               firstDayOfWeek: .sunday)
+    }
+    
+    public func calendarView(_ view: CalendarView, didInitWithFirstMonthStartDate startDate: Date, andEndDate endDate: Date) {
+        // noop
+    }
+    
+    public func calendarView(_ calendarView: CalendarView, availabilityStateForDate date: Date) -> AvailabilityState {
+        if calendarView === endDateCalendar {
+            // Limit end date calendar to only allow selection for dates after start date
+            let startDate = dateRange.lowerBound
+            return date >= startDate ? .available : .unavailable
+            
+        } else if calendarView === startDateCalendar {
+            // Limit start date calendar to only show dates in the past and in the current month
+            if date <= Date().maxTimeOfDay() && date <= dateRange.upperBound {
+                return .available
+            } else {
+                return .unavailable
+            }
+        }
+        return .notDetermined
+    }
+    
+    public func calendarView(_ view: CalendarView, didSelectDate date: Date) {
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: FilterSections.dateRange.rawValue)) as? RangeCell else {
+            Log("RangeCell not found! This should not happen.", data: nil, level: .error)
+            return
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        
+        if view === startDateCalendar {
+            dateRange = date ... dateRange.upperBound
+            cell.startField.text = dateFormatter.string(from: date)
+            // Calendar needs to be reloaded so that new date constraints are properly shown
+            endDateCalendar?.reloadCalendar()
+
+        } else if view === endDateCalendar {
+            dateRange = dateRange.lowerBound ... date
+            cell.endField.text = dateFormatter.string(from: date)
+            // Calendar needs to be reloaded so that new date constraints are properly shown
+            startDateCalendar?.reloadCalendar()
+        }
+    }
+    
+    public func calendarView(_ view: CalendarView, didChangeMonthWithStartDate startDate: Date, andEndDate endDate: Date) {
+        // noop
     }
 }

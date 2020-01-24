@@ -57,7 +57,8 @@ extension PassengerRoute: Route {
         urlRequest.addValue(Traveler.shared?.device.osVersion ?? "[NO_OS_VERSION]", forHTTPHeaderField: "x-os-version")
         urlRequest.addValue(Locale.current.languageCode ?? "en", forHTTPHeaderField: "x-language")
         urlRequest.addValue(Locale.current.regionCode ?? "US", forHTTPHeaderField: "x-region")
-        urlRequest.addValue(Locale.current.identifier, forHTTPHeaderField: "x-locale")
+        let localeIdentifier = Locale.current.identifier.components(separatedBy: "@").first
+        urlRequest.addValue(localeIdentifier ?? "en_US", forHTTPHeaderField: "x-locale")
         urlRequest.addValue(Bundle.main.bundleIdentifier ?? "[NO_BUNDLE_IDENTIFIER]", forHTTPHeaderField: "x-application-id")
         urlRequest.addValue(TimeZone.current.identifier, forHTTPHeaderField: "x-timezone")
         urlRequest.addValue(Traveler.shared?.sandboxMode.description ?? "false", forHTTPHeaderField: "x-sandbox-mode")

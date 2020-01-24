@@ -69,7 +69,7 @@ public struct ItineraryItem: Decodable {
         
         let startDateString = try container.decode(String.self, forKey: .startDate)
         
-        if let startDate = DateFormatter.withoutTimezone.date(from: startDateString) {
+        if let startDate = DateFormatter.withoutTimezoneGregorian.date(from: startDateString) {
             self.startDate = startDate
         } else {
             self.startDate = Date()
@@ -77,7 +77,7 @@ public struct ItineraryItem: Decodable {
         }
         
         if let endDateString = try container.decode(String?.self, forKey: .endDate) {
-            if let endDate = DateFormatter.withoutTimezone.date(from: endDateString) {
+            if let endDate = DateFormatter.withoutTimezoneGregorian.date(from: endDateString) {
                 self.endDate = endDate
             } else {
                 self.endDate = nil

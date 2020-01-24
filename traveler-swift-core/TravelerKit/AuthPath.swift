@@ -60,7 +60,7 @@ enum AuthPath {
             urlComponents.path = "/v1/flight"
             urlComponents.queryItems = [
                 URLQueryItem(name: "flight-number", value: query.number),
-                URLQueryItem(name: "departure-date", value: DateFormatter.yearMonthDay.string(from: query.date))
+                URLQueryItem(name: "departure-date", value: DateFormatter.yearMonthDayGregorian.string(from: query.date))
             ]
         case .catalog(let query):
             urlComponents.path = "/v1/catalog-group"
@@ -97,8 +97,8 @@ enum AuthPath {
         case .productSchedule(let product, let fromDate, let toDate):
             urlComponents.path = "/v1/product/\(product.id)/schedule"
             urlComponents.queryItems = [
-                URLQueryItem(name: "from", value: DateFormatter.yearMonthDay.string(from: fromDate)),
-                URLQueryItem(name: "to", value: DateFormatter.yearMonthDay.string(from: toDate))
+                URLQueryItem(name: "from", value: DateFormatter.yearMonthDayGregorian.string(from: fromDate)),
+                URLQueryItem(name: "to", value: DateFormatter.yearMonthDayGregorian.string(from: toDate))
             ]
         case .passes(let product, let availability, let option):
             urlComponents.path = "/v1/product/\(product.id)/pass"
@@ -259,8 +259,8 @@ enum AuthPath {
             urlComponents.path = "/v1/parking"
             urlRequest.method = .get
             urlComponents.queryItems = [
-                URLQueryItem(name: "to", value: DateFormatter.withoutTimezone.string(from: searchQuery.dateRange.upperBound)),
-                URLQueryItem(name: "from", value: DateFormatter.withoutTimezone.string(from: searchQuery.dateRange.lowerBound)),
+                URLQueryItem(name: "to", value: DateFormatter.withoutTimezoneGregorian.string(from: searchQuery.dateRange.upperBound)),
+                URLQueryItem(name: "from", value: DateFormatter.withoutTimezoneGregorian.string(from: searchQuery.dateRange.lowerBound)),
             URLQueryItem(name: "skip", value: String(searchQuery.offset)),
             URLQueryItem(name: "take", value: String(searchQuery.limit))]
 
@@ -288,8 +288,8 @@ enum AuthPath {
                 })
                 
                 if let dateRange = query.dateRange {
-                    urlComponents.queryItems?.append(URLQueryItem(name: "from", value: DateFormatter.withoutTimezone.string(from: dateRange.lowerBound)))
-                    urlComponents.queryItems?.append(URLQueryItem(name: "to", value: DateFormatter.withoutTimezone.string(from: dateRange.upperBound)))
+                    urlComponents.queryItems?.append(URLQueryItem(name: "from", value: DateFormatter.withoutTimezoneGregorian.string(from: dateRange.lowerBound)))
+                    urlComponents.queryItems?.append(URLQueryItem(name: "to", value: DateFormatter.withoutTimezoneGregorian.string(from: dateRange.upperBound)))
                 }
         case .bookingPurchasedProductDetails(let query):
             urlComponents.path = "/v1/orderItemDetail/\(query.orderId)/booking/\(query.productId)"

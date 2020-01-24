@@ -13,4 +13,6 @@ public struct CellIdentifiers {
     static let bookingItemSearchSortFilter = "BookingItemSearchSortFilter"
     static let catalogGroup = "CatalogGroup"
     static let catalogItem = "CatalogItem"
+    static let calendarMonthItem = "CalendarMonthItem"
+    static let calendarDayItem = "CalendarDayItem"
 }

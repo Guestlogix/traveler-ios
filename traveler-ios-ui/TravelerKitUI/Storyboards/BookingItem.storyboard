@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2qR-Lh-IWg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2qR-Lh-IWg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -336,7 +336,7 @@
         <!--Availability View Controller-->
         <scene sceneID="XMZ-BH-1zQ">
             <objects>
-                <viewController id="Kin-Bm-rsn" customClass="AvailabilityViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Kin-Bm-rsn" customClass="AvailabilityViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hze-ix-iPU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="798"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -379,30 +379,28 @@
                                             <outlet property="valueLabel" destination="qgM-2Y-Yvt" id="9hi-21-98n"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePickerCellIdentifier" rowHeight="162" id="vg0-GE-zbp" customClass="DatePickerCell" customModule="TravelerKitUI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="162"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="calendarCellIdentifier" rowHeight="164" id="vg0-GE-zbp" customClass="CalendarCell" customModule="TravelerKitUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.5" width="375" height="164"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vg0-GE-zbp" id="aed-4V-wNA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="hIX-Zm-0Tc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
-                                                    <connections>
-                                                        <action selector="datePickerValueDidChange:" destination="vg0-GE-zbp" eventType="valueChanged" id="Aq3-Hb-9rj"/>
-                                                    </connections>
-                                                </datePicker>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2Q-nm-Kor" customClass="CalendarView" customModule="TravelerKitUI" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="4" width="359" height="160"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="hIX-Zm-0Tc" secondAttribute="trailing" id="3PA-D1-48b"/>
-                                                <constraint firstItem="hIX-Zm-0Tc" firstAttribute="top" secondItem="aed-4V-wNA" secondAttribute="top" id="5EE-x1-Cxo"/>
-                                                <constraint firstAttribute="bottom" secondItem="hIX-Zm-0Tc" secondAttribute="bottom" id="NPr-uP-JQw"/>
-                                                <constraint firstItem="hIX-Zm-0Tc" firstAttribute="leading" secondItem="aed-4V-wNA" secondAttribute="leading" id="gUR-VU-56g"/>
+                                                <constraint firstItem="C2Q-nm-Kor" firstAttribute="top" secondItem="aed-4V-wNA" secondAttribute="top" constant="4" id="4G0-Qh-65N"/>
+                                                <constraint firstItem="C2Q-nm-Kor" firstAttribute="leading" secondItem="aed-4V-wNA" secondAttribute="leading" constant="8" id="Ll7-KZ-0Sl"/>
+                                                <constraint firstAttribute="trailing" secondItem="C2Q-nm-Kor" secondAttribute="trailing" constant="8" id="o3x-JL-hOx"/>
+                                                <constraint firstAttribute="bottom" secondItem="C2Q-nm-Kor" secondAttribute="bottom" id="uOM-kx-65f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
-                                            <outlet property="datePicker" destination="hIX-Zm-0Tc" id="JOK-iw-rf9"/>
+                                            <outlet property="calendarView" destination="C2Q-nm-Kor" id="rBB-am-tKY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -438,7 +436,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="JYa-5C-pa4" firstAttribute="top" secondItem="SRT-1z-Hnh" secondAttribute="bottom" constant="2" id="DL8-ja-YtA"/>
-                                    <constraint firstAttribute="height" constant="64" id="PBz-YI-Ui5"/>
+                                    <constraint firstAttribute="height" priority="999" constant="64" id="PBz-YI-Ui5"/>
                                     <constraint firstAttribute="trailing" secondItem="coe-DO-Ut0" secondAttribute="trailing" constant="16" id="WQ1-2W-djx"/>
                                     <constraint firstItem="JYa-5C-pa4" firstAttribute="leading" secondItem="mb2-kg-51B" secondAttribute="leading" constant="16" id="aZh-qr-7Sv"/>
                                     <constraint firstItem="JYa-5C-pa4" firstAttribute="centerY" secondItem="coe-DO-Ut0" secondAttribute="centerY" constant="6" id="lxb-5Z-zGY"/>
@@ -470,7 +468,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Nb-ah-XEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1774" y="4317"/>
+            <point key="canvasLocation" x="1773.1884057971015" y="4316.5178571428569"/>
         </scene>
         <!--Booking Passes View Controller-->
         <scene sceneID="INt-55-PaM">
