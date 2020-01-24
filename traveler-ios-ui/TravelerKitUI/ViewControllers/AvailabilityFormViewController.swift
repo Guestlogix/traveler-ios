@@ -15,6 +15,7 @@ protocol AvailabilityFormViewControllerDelegate: class {
 let dateCellIdentifier = "dateCellIdentifier"
 let timeCellIdentifier = "timeCellIdentifier"
 let datePickerCellIdentifier = "datePickerCellIdentifier"
+let calendarCellIdentifier = "calendarCellIdentifier"
 
 open class AvailabilityFormViewController: UITableViewController {
 
