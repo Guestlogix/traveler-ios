@@ -71,6 +71,10 @@ open class ItineraryViewController: UIViewController {
             performSegue(withIdentifier: "emptySegue", sender: nil)
         }
     }
+
+    public func resetFilters() {
+        currentItinerary = ItineraryByDay()
+    }
 }
 
 extension ItineraryViewController: ItineraryResultViewControllerDelegate {
