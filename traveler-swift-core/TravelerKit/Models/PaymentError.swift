@@ -22,7 +22,7 @@ extension PaymentError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .processingError:
-            return NSLocalizedString("processingPaymentError", value: "Sorry something went wrong while processing your payment, please try again with a different credit card or try again later", comment: "Payment Error")
+            return NSLocalizedString("processingPaymentError", value: "Unfortunately, we are unable to process your payment at this time. Please try again later.", comment: "Payment Error")
         case .confirmationRequired(_):
             return NSLocalizedString("paymentConfirmationRequiredError", value: "Your payment requires confirmation", comment: "Payment Confirmation Required")
         case .confirmationFailed(_):
