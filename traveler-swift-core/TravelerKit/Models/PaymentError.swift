@@ -17,3 +17,17 @@ public enum PaymentError: Error {
     /// The confirmation of payment failed. An implementation specific error is associated with this case
     case confirmationFailed(Error)
 }
+
+extension PaymentError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .processingError:
+            return NSLocalizedString("processingPaymentError", value: "Sorry something went wrong while processing your payment, please try again with a different credit card or try again later", comment: "Payment Error")
+        case .confirmationRequired(_):
+            return NSLocalizedString("paymentConfirmationRequiredError", value: "Your payment requires confirmation", comment: "Payment Confirmation Required")
+        case .confirmationFailed(_):
+            return NSLocalizedString("paymentConfirmationFailedError", value: "Confirmation failed please try again or try with a different credit card", comment: "Payment Confirmation Failed")
+        }
+
+    }
+}
