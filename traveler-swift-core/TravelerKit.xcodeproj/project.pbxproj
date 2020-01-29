@@ -753,7 +753,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Ata Namvari";
+				ORGANIZATIONNAME = Guestlogix;
 				TargetAttributes = {
 					A9DB062221402F48009817EC = {
 						CreatedOnToolsVersion = 9.4.1;

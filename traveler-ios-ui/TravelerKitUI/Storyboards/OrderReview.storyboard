@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A9f-9Z-kh1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A9f-9Z-kh1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -103,7 +103,7 @@
                         <outlet property="confirmButton" destination="fF6-Zn-vL4" id="Lge-e8-Gfq"/>
                         <outlet property="totalPriceLabel" destination="o8Y-1Y-07Q" id="Q7h-Ff-7ZK"/>
                         <segue destination="DcU-hM-wtE" kind="show" identifier="receiptSegue" id="bGy-Wl-oj1"/>
-                        <segue destination="GdT-PN-fmz" kind="show" identifier="failSegue" id="yjo-6A-VI2"/>
+                        <segue destination="Xjx-fO-KOx" kind="show" identifier="failSegue" id="taM-PD-3hx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhI-lq-Xeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -407,49 +407,32 @@
             </objects>
             <point key="canvasLocation" x="13036" y="710"/>
         </scene>
-        <!--Failed Order-->
-        <scene sceneID="xoe-iU-vj6">
+        <!--Navigation Controller-->
+        <scene sceneID="okv-Vs-dsz">
             <objects>
-                <viewController id="GdT-PN-fmz" customClass="FailViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sEH-UB-UlG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="613"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There was a problem processing your order please try again" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BA1-Dp-mNq">
-                                <rect key="frame" x="42" y="286" width="291" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="291" id="C0h-dW-Gds"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="BA1-Dp-mNq" firstAttribute="centerY" secondItem="sEH-UB-UlG" secondAttribute="centerY" id="cPb-rc-id2"/>
-                            <constraint firstItem="BA1-Dp-mNq" firstAttribute="centerX" secondItem="sEH-UB-UlG" secondAttribute="centerX" id="gpm-2j-kpy"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="YrI-Ec-3hH"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Failed Order" id="95I-cT-X9F">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="sjj-7H-sVk">
-                            <connections>
-                                <action selector="didClose:" destination="GdT-PN-fmz" id="0cW-in-C8o"/>
-                            </connections>
-                        </barButtonItem>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="hidesBackButton" value="YES"/>
-                        </userDefinedRuntimeAttributes>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hbX-TE-1c9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="Xjx-fO-KOx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rva-0Q-MIu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PkM-V6-Hb7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PkN-Bk-kNH" kind="relationship" relationship="rootViewController" id="BcS-q6-65n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ncx-jg-4Ss" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13036" y="1226"/>
+            <point key="canvasLocation" x="10862" y="1634"/>
+        </scene>
+        <!--Error-->
+        <scene sceneID="xxF-xJ-u3P">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Error" id="PkN-Bk-kNH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZA1-BM-Ei5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyb-Sk-8h1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11580" y="1610"/>
         </scene>
         <!--Loading-->
         <scene sceneID="FjC-4Q-qOx">

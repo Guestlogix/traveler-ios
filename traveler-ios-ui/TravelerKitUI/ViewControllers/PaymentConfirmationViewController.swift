@@ -26,14 +26,17 @@ open class PaymentConfirmationViewController: UIViewController {
     }
 
     override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch (segue.identifier, segue.destination) {
-        case (_, let vc as OrderPaymentViewController):
+        switch (segue.identifier, segue.destination, sender) {
+        case (_, let vc as OrderPaymentViewController, _):
             vc.order = order
             vc.delegate = self
-        case (_, let vc as ReceiptViewController):
+        case (_, let vc as ReceiptViewController, _):
             vc.receipt = receipt
-        case ("failSegue", _):
-            break
+        case ("failSegue", let navVC as UINavigationController, let error as Error):
+            let vc = navVC.topViewController as? ErrorViewController
+            vc?.errorMessageString = error.localizedDescription
+            vc?.errorTitleString = "Failed processing order"
+            vc?.delegate = self
         default:
             Log("Unknown segue", data: segue, level: .warning)
             break
@@ -89,16 +92,14 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
 
             authenticator.delegate = self
             authenticator.authenticate(key, self)
-        default:
-            // TODO: Much better to just goto the fail segue and pass the error object to it.
-            // The fail segue should go to a generic ErrorViewController that can display error messages
+        case PaymentError.processingError:
             let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { [unowned self] (_) in
-                self.performSegue(withIdentifier: "failSegue", sender: nil)
-            }
+            let okAction = UIAlertAction(title: "OK", style: .default)
             alert.addAction(okAction)
 
             present(alert, animated: true, completion: nil)
+        default:
+            performSegue(withIdentifier: "failSegue", sender: error)
         }
     }
 
@@ -130,5 +131,11 @@ extension PaymentConfirmationViewController: PaymentAuthenticationDelegate {
 
     public func paymentAuthenticationDidSucceed() {
         didConfirm(self)
+    }
+}
+
+extension PaymentConfirmationViewController: ErrorViewControllerDelegate {
+    public func errorViewControllerDidRetry(_ controller: ErrorViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

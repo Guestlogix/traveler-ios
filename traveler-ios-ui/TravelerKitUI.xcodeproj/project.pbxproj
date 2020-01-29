@@ -59,7 +59,6 @@
 		A9639C9C220DF4F200625235 /* TravelerKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = A9639C9A220DF4F200625235 /* TravelerKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9639CEB220DF57400625235 /* CatalogItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA3220DF57300625235 /* CatalogItemViewController.swift */; };
 		A9639CEE220DF57400625235 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */; };
-		A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CA8220DF57300625235 /* QuantityViewController.swift */; };
 		A9639CF3220DF57400625235 /* ProviderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */; };
 		A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */; };
 		A9639CF6220DF57400625235 /* OrderSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */; };
@@ -265,7 +264,6 @@
 		A9639C9B220DF4F200625235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9639CA3220DF57300625235 /* CatalogItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogItemViewController.swift; sourceTree = "<group>"; };
 		A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
-		A9639CA8220DF57300625235 /* QuantityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuantityViewController.swift; sourceTree = "<group>"; };
 		A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfoViewController.swift; sourceTree = "<group>"; };
 		A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityFormViewController.swift; sourceTree = "<group>"; };
 		A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSummaryViewController.swift; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 				A974A6982282131D00319683 /* OrderResultViewController.swift */,
 				A9639CA3220DF57300625235 /* CatalogItemViewController.swift */,
 				A9639CA6220DF57300625235 /* PaymentConfirmationViewController.swift */,
-				A9639CA8220DF57300625235 /* QuantityViewController.swift */,
 				A9639CAB220DF57300625235 /* ProviderInfoViewController.swift */,
 				A9639CAD220DF57300625235 /* AvailabilityFormViewController.swift */,
 				A9639CAE220DF57300625235 /* OrderSummaryViewController.swift */,
@@ -951,7 +948,6 @@
 				A394B36723302E7400AC17D5 /* WishlistToggleError+LocalizedError.swift in Sources */,
 				A9639CF5220DF57400625235 /* AvailabilityFormViewController.swift in Sources */,
 				A974A69B2282152E00319683 /* OrderCell.swift in Sources */,
-				A9639CF0220DF57400625235 /* QuantityViewController.swift in Sources */,
 				88DF3E4423882E4800C1CC9B /* RangeCell.swift in Sources */,
 				A9639D12220DF57400625235 /* Stepper.swift in Sources */,
 				887F0E34237F0BC900845E67 /* BookingItemQueryCategoryViewController.swift in Sources */,
