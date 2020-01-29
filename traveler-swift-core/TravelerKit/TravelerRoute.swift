@@ -100,7 +100,7 @@ extension PassengerRoute: Route {
             return PaymentError.processingError
         default:
             Log("Unknown error code", data: errorJSON, level: .warning)
-            return error
+            return UnhandledError.error(errorMessage: errorMessage, errorCode: errorCode)
         }
     }
 }
