@@ -23,7 +23,7 @@ extension Order {
         switch self.status {
         case .confirmed, .underReview:
             return true
-        case .declined, .pending, .cancelled:
+        case .declined, .pending, .cancelled, .unknown:
             return false
         }
     }
