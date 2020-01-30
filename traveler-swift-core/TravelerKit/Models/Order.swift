@@ -20,7 +20,8 @@ public enum OrderStatus {
     case underReview(ProcessedPaymentInfo)
     /// `Order` is cancelled
     case cancelled(ProcessedPaymentInfo)
-
+    /// `Order` has an unknown type
+    case unknown
 }
 
 /// Holds information about an order
@@ -47,6 +48,8 @@ public struct Order: Decodable, Equatable, Hashable {
     public let createdDate: Date
     /// The email of the primary contact
     public let contact: CustomerContact
+    /// The additional description needed for some orders
+    public var description: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -84,7 +87,8 @@ public struct Order: Decodable, Equatable, Hashable {
             let paymentString = try container.decode(String.self, forKey: .last4Digits)
             self.status = .cancelled(ProcessedPaymentInfo(paymentInfo: paymentString))
         default:
-            throw DecodingError.dataCorruptedError(forKey: CodingKeys.status, in: container, debugDescription: "Unknown status")
+            self.status = .unknown
+            self.description = "Please contact support for more information on this order \nOrder id: \(id)"
         }
 
         let dateString = try container.decode(String.self, forKey: .createdDate)
@@ -95,7 +99,7 @@ public struct Order: Decodable, Equatable, Hashable {
             throw DecodingError.dataCorruptedError(forKey: CodingKeys.createdDate, in: container, debugDescription: "Incorrect format")
         }
 
-        self.products = try container.decode([AnyPurchasedProduct].self, forKey: .products).map { $0.payload }
+        self.products = try container.decode(LossyDecodableArray<AnyPurchasedProduct>.self, forKey: .products).payload.map { $0.payload }
 
         self.contact = try container.decode(CustomerContact.self, forKey: .email)
     }
