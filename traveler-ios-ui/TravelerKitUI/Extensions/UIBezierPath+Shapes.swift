@@ -79,4 +79,34 @@ extension UIBezierPath {
 
         self.close()
     }
+    
+    convenience init(arrowRightIn rect: CGRect) {
+        self.init()
+        
+        let bodyHeight: CGFloat = rect.height * 0.9
+        let bodyWidth: CGFloat = rect.width * 0.6
+        let margin: CGFloat = 6
+        
+        self.move(to: CGPoint(x: rect.minX + margin, y: rect.minY + margin))
+        self.addLine(to: CGPoint(x: rect.minX + bodyWidth - margin, y: rect.minY + bodyHeight / 2))
+        self.addLine(to: CGPoint(x: rect.minX + margin, y: rect.minY + bodyHeight - margin))
+        self.lineWidth = 1
+        self.lineCapStyle = .round
+        self.stroke()
+    }
+    
+    convenience init(arrowLeftIn rect: CGRect) {
+        self.init()
+        
+        let bodyHeight: CGFloat = rect.height * 0.9
+        let bodyWidth: CGFloat = rect.width * 0.6
+        let margin: CGFloat = 6
+        
+        self.move(to: CGPoint(x: rect.minX + bodyWidth - margin, y: rect.minY + margin))
+        self.addLine(to: CGPoint(x: rect.minX + margin, y: rect.minY + bodyHeight / 2))
+        self.addLine(to: CGPoint(x: rect.minX + bodyWidth - margin, y: rect.minY + bodyHeight - margin))
+        self.lineWidth = 1
+        self.lineCapStyle = .round
+        self.stroke()
+    }
 }
