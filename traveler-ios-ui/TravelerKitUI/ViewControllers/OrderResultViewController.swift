@@ -88,7 +88,12 @@ open class OrderResultViewController: UITableViewController {
                 cell.statusLabel.text = "Declined"
             case .underReview:
                 cell.statusLabel.text = "Under Review"
+            case .unknown:
+                cell.statusLabel.text = ""
+                cell.productsLabel.text = order.description
+                cell.priceLabel.text = nil
             }
+            
             return cell
         }
     }
@@ -98,7 +103,14 @@ open class OrderResultViewController: UITableViewController {
     override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedOrder = orderResult!.orders[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "orderDetailSegue", sender: nil)
+        if let selectedOrder = selectedOrder {
+            switch selectedOrder.status {
+            case .unknown:
+                return
+            case .cancelled, .pending, .confirmed, .declined, .underReview:
+                performSegue(withIdentifier: "orderDetailSegue", sender: nil)
+            }
+        }
     }
 }
 
