@@ -9,14 +9,15 @@
 import Foundation
 
 public enum UnhandledError: Error {
-    case error(errorMessage: String, errorCode: Int)
+    case error(errorMessage: String, errorCode: Int, traceId: String)
 }
 
 extension UnhandledError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .error(let errorMessage, let errorCode):
-            return NSLocalizedString("unhandledError", value: "\(errorMessage) \n error code : \(errorCode)", comment: "Unhandled backend errors")
+        case .error(let errorMessage, let errorCode, let traceId):
+            let description = NSLocalizedString("unhandledError", value: "\(errorMessage) \n error code : \(errorCode)", comment: "Unhandled backend errors")
+            return localizedDescription(description: description, withTraceId: traceId)
         }
     }
 }

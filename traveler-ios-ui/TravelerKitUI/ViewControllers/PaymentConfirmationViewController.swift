@@ -82,7 +82,7 @@ extension PaymentConfirmationViewController: OrderProcessDelegate {
         ProgressHUD.hide()
 
         switch error {
-        case PaymentError.confirmationRequired(let key):
+        case PaymentError.confirmationRequired(let key, _):
             // TODO: This should be moved out, singleton use should not really go beyond Traveler itself
             // TODO: Should we break the idea of a forced singleton? @Omar
             // PS: There should be way to tag people right in code! Xcode plugin?
