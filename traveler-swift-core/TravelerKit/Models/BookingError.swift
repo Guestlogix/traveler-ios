@@ -17,15 +17,15 @@ public enum BookingError: Error {
     /// The `BookingOption` is required and was not supplied
     case noOption
     /// The requested number of passes is not available
-    case noPasses
+    case noPasses(traceId: String)
     /// Cutoff age exceeded, the age for adult passes is too old
-    case veryOldTraveler
+    case veryOldTraveler(traceId: String)
     /// The age for adult pass is invalid
-    case adultAgeInvalid
+    case adultAgeInvalid(traceId: String)
     /// The requested number of units is below the minimum
-    case belowMinUnits
+    case belowMinUnits(traceId: String)
     /// Children are not allowed without adults
-    case unaccompaniedChildren
+    case unaccompaniedChildren(traceId: String)
 }
 
 extension BookingError: LocalizedError {
@@ -35,18 +35,23 @@ extension BookingError: LocalizedError {
             return NSLocalizedString("badDateBookingError", value: "Requested date is not available", comment: "Unavailable Date")
         case .noDate:
             return NSLocalizedString("noDateBookingError", value: "Missing booking date", comment: "Missing Date")
-        case .noPasses:
-            return NSLocalizedString("noPassesBookingError", value: "The number of passes exceeds the maximum allowed quantity. Please adjust the number of passes to continue.", comment: "Unavailable Passes")
+        case .noPasses(let traceId):
+            let description = NSLocalizedString("noPassesBookingError", value: "The number of passes exceeds the maximum allowed quantity. Please adjust the number of passes to continue.", comment: "Unavailable Passes")
+            return localizedDescription(description: description, withTraceId: traceId)
         case .noOption:
             return NSLocalizedString("noOptionBookingError", value: "Missing booking option", comment: "No booking option")
-        case .veryOldTraveler:
-            return NSLocalizedString("veryOldTravelerBookingError", value: "Cut off age exceeded, traveler is too senior for this product", comment: "Cut off age exceeded")
-        case .adultAgeInvalid:
-            return NSLocalizedString("adultAgeInvalidBookingError", value: "The age for adult pass is invalid", comment: "Adult age invalid")
-        case .belowMinUnits:
-            return NSLocalizedString("belowMinUnitsBookingError", value: "The requested number of passes is not enough. Please add more passes", comment: "Below minimum number of units")
-        case .unaccompaniedChildren:
-            return NSLocalizedString("unacommpaniedChildrenBookingError", value: "Children must be accompanied by an adult. Please adjust the number of passes to continue.", comment: "Unaccompanied children not allowed")
+        case .veryOldTraveler(let traceId):
+            let description = NSLocalizedString("veryOldTravelerBookingError", value: "Cut off age exceeded, traveler is too senior for this product", comment: "Cut off age exceeded")
+            return localizedDescription(description: description, withTraceId: traceId)
+        case .adultAgeInvalid(let traceId):
+            let description = NSLocalizedString("adultAgeInvalidBookingError", value: "The age for adult pass is invalid", comment: "Adult age invalid")
+            return localizedDescription(description: description, withTraceId: traceId)
+        case .belowMinUnits(let traceId):
+            let description = NSLocalizedString("belowMinUnitsBookingError", value: "The requested number of passes is not enough. Please add more passes", comment: "Below minimum number of units")
+            return localizedDescription(description: description, withTraceId: traceId)
+        case .unaccompaniedChildren(let traceId):
+            let description = NSLocalizedString("unacommpaniedChildrenBookingError", value: "Children must be accompanied by an adult. Please adjust the number of passes to continue.", comment: "Unaccompanied children not allowed")
+            return localizedDescription(description: description, withTraceId: traceId)
         }
     }
 }

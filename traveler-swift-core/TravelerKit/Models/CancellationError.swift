@@ -10,7 +10,7 @@ import Foundation
 
 public enum CancellationError: Error {
     case expiredQuote
-    case notCancellable
+    case notCancellable(traceId: String)
     case explanationRequired
 }
 
@@ -19,8 +19,9 @@ extension CancellationError: LocalizedError {
         switch self {
         case .expiredQuote:
             return NSLocalizedString("expiredQuoteError",value: "Quote has expired" ,comment: "Expired quote")
-        case .notCancellable:
-            return NSLocalizedString("orderNotCancellableError", value: "Order not cancellable", comment: "Not Cancellable")
+        case .notCancellable(let traceId):
+            let description = NSLocalizedString("orderNotCancellableError", value: "Order not cancellable", comment: "Not Cancellable")
+            return localizedDescription(description: description, withTraceId: traceId)
         case .explanationRequired:
             return NSLocalizedString("orderExplanationRequiredError", value: "A cancellation explanation is required", comment: "explanation required")
         }

@@ -79,7 +79,7 @@ extension CatalogItemViewController: OrderCreateDelegate {
     public func orderCreationDidFail(_ error: Error) {
         ProgressHUD.hide()
 
-        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "ok", style: .default) { [unowned self] (_) in
             self.dismiss(animated: true, completion: nil)
         }

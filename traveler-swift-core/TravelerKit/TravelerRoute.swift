@@ -64,43 +64,47 @@ extension PassengerRoute: Route {
 
         return urlRequest
     }
-
+    
     func transform(error: Error) -> Error {
-        guard case NetworkError.clientError(_, .some(let data)) = error else {
+        guard let networkError = error as? NetworkError,
+            let data = networkError.data else {
             return error
         }
 
         guard let errorJSON = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-            let errorCode = errorJSON["errorCode"] as? Int, let errorMessage = errorJSON["errorMessage"] as? String else {
+            let errorCode = errorJSON["errorCode"] as? Int,
+            let traceId = errorJSON["traceId"] as? String else {
             Log("Bad JSON", data: String(data: data, encoding: .utf8), level: .error)
             return error
         }
 
         switch errorCode {
         case 2006:
-            return BookingError.noPasses
+            return BookingError.noPasses(traceId: traceId)
         case 2007:
-            return BookingError.veryOldTraveler
+            return BookingError.veryOldTraveler(traceId: traceId)
         case 2012...2014:
-            return CancellationError.notCancellable
+            return CancellationError.notCancellable(traceId: traceId)
         case 2015:
-            return BookingError.adultAgeInvalid
+            return BookingError.adultAgeInvalid(traceId: traceId)
         case 2017:
-            return BookingError.belowMinUnits
+            return BookingError.belowMinUnits(traceId: traceId)
         case 2018:
-            return BookingError.unaccompaniedChildren
+            return BookingError.unaccompaniedChildren(traceId: traceId)
         case 2027:
             guard let errorData = errorJSON["errorData"] as? [String:Any],
                 let key = errorData["confirmationKey"] as? String else {
                     return error
             }
 
-            return PaymentError.confirmationRequired(key)
+            return PaymentError.confirmationRequired(key, traceId: traceId)
         case 6001...6014:
-            return PaymentError.processingError
+            return PaymentError.processingError(traceId: traceId)
         default:
             Log("Unknown error code", data: errorJSON, level: .warning)
-            return UnhandledError.error(errorMessage: errorMessage, errorCode: errorCode)
+            // Use networkError.localizedDescription here instead of errorMessage from data JSON because
+            // message from JSON might be too technical for user. Better to show a more user-friendly message with error code and trace id.
+            return UnhandledError.error(errorMessage: networkError.localizedDescription, errorCode: errorCode, traceId: traceId)
         }
     }
 }

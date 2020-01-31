@@ -57,3 +57,17 @@ public enum NetworkError : Error {
         }
     }
 }
+
+extension NetworkError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .unauthorized,
+             .forbidden,
+             .notFound,
+             .clientError,
+             .serverError,
+             .invalidResponse:
+            return NSLocalizedString("networkServerError", value: "Unable to process your request right now, please try again later", comment: "Server Error")
+        }
+    }
+}

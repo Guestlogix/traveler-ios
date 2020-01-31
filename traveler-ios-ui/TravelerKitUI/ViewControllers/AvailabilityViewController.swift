@@ -197,7 +197,7 @@ extension AvailabilityViewController: AvailabilitiesFetchDelegate {
     public func availabilitiesFetchDidFailWith(_ error: Error) {
         tableView.isUserInteractionEnabled = true
 
-        let alert = UIAlertController(title: "Error", message: "Sorry, something went wrong!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
 
