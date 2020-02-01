@@ -58,7 +58,7 @@ public struct Question: Decodable, Equatable {
         case id             = "id"
         case title          = "title"
         case description    = "description"
-        case required       = "required"
+        case validations       = "questionValidations"
         case type           = "type"
         case choices        = "choices"
         case suggestedAnswer = "suggestedAnswer"
@@ -79,8 +79,10 @@ public struct Question: Decodable, Equatable {
         self.title = try container.decode(String.self, forKey: .title)
         self.description = try container.decode(String?.self, forKey: .description)
 
-        if try container.decode(Bool.self, forKey: .required) {
-            self.validationRules = [.required]
+        let validationRules = try container.decode([AnyValidationRule]?.self, forKey: .validations)
+
+        if let rules = validationRules {
+            self.validationRules = rules.map{ $0.payload }
         } else {
             self.validationRules = []
         }

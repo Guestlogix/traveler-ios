@@ -148,7 +148,7 @@ extension PurchaseQuestionsViewController: FormViewDelegate {
 
     public func formView(_ formView: FormView, didPressButtonAt indexPath: IndexPath) {
         /// There is only one button: Checkout
-
+        formView.reloadForm()
         let errors = purchaseForm?.validate()
 
         switch errors?.first {
@@ -174,8 +174,8 @@ extension PurchaseQuestionsViewController: FormViewDelegate {
         }
 
         switch validationError {
-        case .invalidFormat:
-            return .alert("Invalid format")
+        case .invalidFormat(_, let message):
+            return .alert(message)
         case .required:
             return .alert("Required")
         }
