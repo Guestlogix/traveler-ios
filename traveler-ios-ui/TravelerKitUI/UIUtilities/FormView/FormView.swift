@@ -236,6 +236,7 @@ extension FormView: UICollectionViewDelegateFormLayout {
         return FormFieldFooterView.sizeFor(boundingSize: CGSize(width: collectionView.bounds.width, height: 0), text: message.text)
     }
 
+    @objc (collectionView:viewForSupplementaryElementOfKind:atIndexPath:)
     public func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
