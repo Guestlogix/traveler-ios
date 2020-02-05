@@ -93,7 +93,11 @@ public struct PurchaseForm {
 
         for (groupIndex, group) in questionGroups.enumerated() {
             for (questionIndex, question) in group.questions.enumerated() {
-                let answer = answers[question.id]
+                var answer = answers[question.id]
+
+                if let textualAnswer = answer as? TextualAnswer, textualAnswer.value == "" {
+                    answer = nil
+                }
 
                 for validation in question.validationRules {
                     switch (validation, answer) {
