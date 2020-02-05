@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vHV-sI-EeY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vHV-sI-EeY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -419,13 +419,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ij-Bv-wES" customClass="ShadowedView" customModule="TravelerKitUI" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1291" width="414" height="75"/>
+                                <rect key="frame" x="0.0" y="1302" width="414" height="98"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55v-Gf-aLn" userLabel="Shadowed Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdt-oO-N9D">
-                                                <rect key="frame" x="15" y="15" width="384" height="45"/>
+                                                <rect key="frame" x="15" y="9.5" width="384" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="1Gc-gi-xTG"/>
                                                 </constraints>
@@ -445,18 +445,17 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="55v-Gf-aLn" secondAttribute="bottom" id="Bh1-lP-GaF"/>
                                     <constraint firstAttribute="trailing" secondItem="55v-Gf-aLn" secondAttribute="trailing" id="GVG-sD-JXV"/>
-                                    <constraint firstAttribute="height" constant="75" id="Lnd-4Q-NbH"/>
+                                    <constraint firstAttribute="height" constant="98" id="Lnd-4Q-NbH"/>
                                     <constraint firstItem="55v-Gf-aLn" firstAttribute="leading" secondItem="0Ij-Bv-wES" secondAttribute="leading" id="MvD-Na-xsW"/>
                                     <constraint firstItem="55v-Gf-aLn" firstAttribute="top" secondItem="0Ij-Bv-wES" secondAttribute="top" id="WaX-Vu-6YR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWN-Yr-kNC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1247"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="1253"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vx4-tA-kZ5">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1247"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1253"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDK-D7-Ov1" userLabel="Content View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1241.5"/>
@@ -683,11 +682,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="KgA-Sa-ADf" firstAttribute="trailing" secondItem="0Ij-Bv-wES" secondAttribute="trailing" id="5ac-7d-AiE"/>
-                            <constraint firstItem="0Ij-Bv-wES" firstAttribute="bottom" secondItem="KgA-Sa-ADf" secondAttribute="bottom" id="74Y-ny-tgG"/>
+                            <constraint firstItem="0Ij-Bv-wES" firstAttribute="bottom" secondItem="Q0Q-8i-uyp" secondAttribute="bottom" id="74Y-ny-tgG"/>
+                            <constraint firstItem="55v-Gf-aLn" firstAttribute="bottom" secondItem="KgA-Sa-ADf" secondAttribute="bottom" id="7nW-zt-EGu"/>
                             <constraint firstItem="oWN-Yr-kNC" firstAttribute="top" secondItem="KgA-Sa-ADf" secondAttribute="top" id="CiJ-sn-nOw"/>
                             <constraint firstItem="0Ij-Bv-wES" firstAttribute="leading" secondItem="KgA-Sa-ADf" secondAttribute="leading" id="IXC-BC-LV3"/>
                             <constraint firstItem="oWN-Yr-kNC" firstAttribute="trailing" secondItem="KgA-Sa-ADf" secondAttribute="trailing" id="ZKy-Nd-gD7"/>
-                            <constraint firstItem="0Ij-Bv-wES" firstAttribute="top" secondItem="oWN-Yr-kNC" secondAttribute="bottom" id="gOK-ev-vg8"/>
+                            <constraint firstItem="0Ij-Bv-wES" firstAttribute="top" secondItem="oWN-Yr-kNC" secondAttribute="bottom" constant="5" id="gOK-ev-vg8"/>
                             <constraint firstItem="oWN-Yr-kNC" firstAttribute="leading" secondItem="KgA-Sa-ADf" secondAttribute="leading" id="y4p-MG-tL1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KgA-Sa-ADf"/>
