@@ -73,7 +73,8 @@ extension PassengerRoute: Route {
 
         guard let errorJSON = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
             let errorCode = errorJSON["errorCode"] as? Int,
-            let traceId = errorJSON["traceId"] as? String else {
+            let traceId = errorJSON["traceId"] as? String,
+            let errorMessage = errorJSON["errorMessage"] as? String else {
             Log("Bad JSON", data: String(data: data, encoding: .utf8), level: .error)
             return error
         }
@@ -102,9 +103,7 @@ extension PassengerRoute: Route {
             return PaymentError.processingError(traceId: traceId)
         default:
             Log("Unknown error code", data: errorJSON, level: .warning)
-            // Use networkError.localizedDescription here instead of errorMessage from data JSON because
-            // message from JSON might be too technical for user. Better to show a more user-friendly message with error code and trace id.
-            return UnhandledError.error(errorMessage: networkError.localizedDescription, errorCode: errorCode, traceId: traceId)
+            return UnhandledError.error(errorMessage: errorMessage, errorCode: errorCode, traceId: traceId)
         }
     }
 }
