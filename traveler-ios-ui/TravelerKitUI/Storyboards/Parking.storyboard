@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cUe-1c-hY2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cUe-1c-hY2">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -649,7 +649,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="853"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Vn-SO-Udh" userLabel="Content View">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="876.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="872.66666666666663"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9h0-QU-G8o">
                                                         <rect key="frame" x="20" y="300" width="374" height="24"/>
@@ -697,16 +697,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaN-Be-WfG">
-                                                        <rect key="frame" x="20" y="803.66666666666663" width="374" height="1"/>
-                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="1BO-yh-C8b"/>
-                                                            <constraint firstAttribute="height" constant="1" id="ZNV-B1-hVK"/>
-                                                        </constraints>
-                                                    </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-2f-6ne">
-                                                        <rect key="frame" x="20" y="812.66666666666663" width="374" height="56"/>
+                                                        <rect key="frame" x="20" y="808.66666666666663" width="374" height="56"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="xWT-Hp-ngJ"/>
                                                         </constraints>
@@ -748,11 +740,9 @@
                                                     <constraint firstItem="61U-hI-gsO" firstAttribute="top" secondItem="5GG-Wn-EFU" secondAttribute="bottom" constant="11" id="EMV-Je-Bw5"/>
                                                     <constraint firstAttribute="trailing" secondItem="61U-hI-gsO" secondAttribute="trailing" constant="20" id="Hu1-ok-BaK"/>
                                                     <constraint firstItem="T9N-0h-oKz" firstAttribute="top" secondItem="61U-hI-gsO" secondAttribute="bottom" id="MFi-Rx-XBb"/>
-                                                    <constraint firstItem="hdu-2f-6ne" firstAttribute="top" secondItem="MaN-Be-WfG" secondAttribute="bottom" constant="8" id="Mwe-oS-eRw"/>
                                                     <constraint firstItem="61U-hI-gsO" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" constant="20" id="NJj-14-b1c"/>
                                                     <constraint firstAttribute="trailing" secondItem="AV2-Wf-YBM" secondAttribute="trailing" id="PL5-p0-rpj"/>
                                                     <constraint firstItem="lZL-0Q-dNn" firstAttribute="top" secondItem="wiG-rm-aVe" secondAttribute="bottom" constant="15" id="QZ5-Sb-VRh"/>
-                                                    <constraint firstAttribute="trailing" secondItem="MaN-Be-WfG" secondAttribute="trailing" constant="20" id="SM7-ca-2Ae"/>
                                                     <constraint firstItem="lZL-0Q-dNn" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" constant="20" id="V6M-Oy-6fm"/>
                                                     <constraint firstItem="5GG-Wn-EFU" firstAttribute="top" secondItem="lZL-0Q-dNn" secondAttribute="bottom" constant="15" id="VAl-zh-Suk"/>
                                                     <constraint firstAttribute="trailing" secondItem="lZL-0Q-dNn" secondAttribute="trailing" constant="20" id="WSG-lL-hv0"/>
@@ -760,13 +750,12 @@
                                                     <constraint firstAttribute="trailing" secondItem="fY1-0f-gol" secondAttribute="trailing" constant="20" id="cTf-Vy-hVO"/>
                                                     <constraint firstItem="wiG-rm-aVe" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" constant="20" id="d8W-bC-10M"/>
                                                     <constraint firstAttribute="trailing" secondItem="jBG-sp-rfG" secondAttribute="trailing" constant="20" id="dP6-zl-VjT"/>
+                                                    <constraint firstItem="hdu-2f-6ne" firstAttribute="top" secondItem="T9N-0h-oKz" secondAttribute="bottom" constant="20" id="ePZ-RV-xqs"/>
                                                     <constraint firstAttribute="trailing" secondItem="5GG-Wn-EFU" secondAttribute="trailing" constant="20" id="hHb-5j-azR"/>
-                                                    <constraint firstItem="MaN-Be-WfG" firstAttribute="top" secondItem="T9N-0h-oKz" secondAttribute="bottom" constant="15" id="jXb-TM-EmJ"/>
                                                     <constraint firstItem="9h0-QU-G8o" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" constant="20" id="kbh-EW-Czw"/>
                                                     <constraint firstItem="jBG-sp-rfG" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" constant="20" id="lEu-6C-ZLP"/>
                                                     <constraint firstItem="fY1-0f-gol" firstAttribute="top" secondItem="9h0-QU-G8o" secondAttribute="bottom" constant="16" id="lOb-6O-LSf"/>
                                                     <constraint firstAttribute="trailing" secondItem="9h0-QU-G8o" secondAttribute="trailing" constant="20" id="qxl-4n-SAh"/>
-                                                    <constraint firstItem="MaN-Be-WfG" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" constant="20" id="s4Y-h0-b1j"/>
                                                     <constraint firstItem="T9N-0h-oKz" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" id="srP-GM-TkF"/>
                                                     <constraint firstItem="AV2-Wf-YBM" firstAttribute="leading" secondItem="2Vn-SO-Udh" secondAttribute="leading" id="ySO-qB-dix"/>
                                                 </constraints>

@@ -37,6 +37,6 @@ class InfoCell: UITableViewCell {
                                                          context: nil)
 
         return CGSize(width: boundingSize.width,
-                      height: titleSize.height + valueSize.height + 8 + 12)
+                      height: titleSize.height + valueSize.height + 8 + 12 + 4)
     }
 }
