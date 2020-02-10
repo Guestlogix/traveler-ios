@@ -53,10 +53,10 @@ open class AttributesViewController: UITableViewController {
 
     override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let attribute = attributes![indexPath.row]
-        let boundingSize = CGSize(width: tableView.bounds.width - 32, height: 0)
+        let boundingSize = CGSize(width: tableView.bounds.width, height: 0)
 
         return InfoCell.boundingSize(title: attribute.label,
                                      value: attribute.value,
-                                     with: boundingSize).height + 2
+                                     with: boundingSize).height
     }
 }
