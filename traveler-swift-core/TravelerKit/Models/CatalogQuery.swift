@@ -18,6 +18,9 @@ public struct CatalogQuery {
     /// Array of `AnyProduct`s to find similar items to
     public var products: [AnyProduct]?
 
+    ///City for which items should be searched for
+    public var city: String?
+
     /**
      Initializes a `CatalogQuery`
 
@@ -27,8 +30,9 @@ public struct CatalogQuery {
 
      - Returns: `CatalogQuery`
      */
-    public init(flights: [Flight]? = nil, products: [AnyProduct]? = nil) {
+    public init(flights: [Flight]? = nil, products: [AnyProduct]? = nil, city: String? = nil) {
         self.flights = flights
         self.products = products
+        self.city = city
     }
 }

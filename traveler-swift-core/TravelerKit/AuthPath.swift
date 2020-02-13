@@ -64,7 +64,9 @@ enum AuthPath {
             ]
         case .catalog(let query):
             urlComponents.path = "/v1/catalog-group"
-            urlComponents.queryItems = [URLQueryItem]()
+            urlComponents.queryItems = [
+                URLQueryItem(name: "city", value: query.city)
+            ]
 
             query.flights?.forEach { (flight) in
                 urlComponents.queryItems!.append(URLQueryItem(name:"flight-ids", value: flight.id))
