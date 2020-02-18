@@ -38,7 +38,7 @@ public struct BookingItem: CatalogItem, Decodable, Product {
         case subTitle = "subTitle"
         case thumbnail = "thumbnail"
         case price = "priceStartingAt"
-        case categories = "categories"
+        case categories = "subCategories"
         case type = "purchaseStrategy"
         case location = "geoLocation"
         case providerTranslationAttribution = "providerTranslationAttribution"

@@ -8,10 +8,25 @@
 
 import Foundation
 /// Represents the different categories a `BookingItem` can have
-public enum BookingItemCategory: String, Decodable, CaseIterable {
-    case activity = "Activity"
-    case tour = "Tour"
-    case show = "Show"
-    case event = "Event"
-    case nightlife = "Nightlife"
+public struct BookingItemCategory: Decodable {
+    //The id for the category
+    public let id: String
+    //The title for the category
+    public let title: String
+
+    enum codingKeys: String, CodingKey {
+        case id = "id"
+        case label = "label"
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: codingKeys.self)
+
+        self.id = try container.decode(String.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .label)
+    }
+}
+
+extension BookingItemCategory: Equatable {
+    
 }

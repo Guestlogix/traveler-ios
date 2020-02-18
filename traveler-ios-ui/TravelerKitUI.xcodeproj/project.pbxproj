@@ -148,6 +148,7 @@
 		CA2666762322E14D0074E83A /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666752322E14D0074E83A /* CollectionHeaderView.swift */; };
 		CA26667A2322E71B0074E83A /* Facets+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */; };
 		CA2805C923981B5B00C1950C /* PartnerOffering+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2805C823981B5A00C1950C /* PartnerOffering+TravelerUI.swift */; };
+		CA2B728A23FC3F05007BB1EF /* BookingItemCategoryFetchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B728923FC3F05007BB1EF /* BookingItemCategoryFetchViewController.swift */; };
 		CA2CD3BF22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */; };
 		CA305CA2238D9FDD00A615B2 /* PartnerOffering.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA305CA1238D9FDD00A615B2 /* PartnerOffering.storyboard */; };
 		CA305CA4238F20DF00A615B2 /* PartnerOfferingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA305CA3238F20DF00A615B2 /* PartnerOfferingDetailsViewController.swift */; };
@@ -351,6 +352,7 @@
 		CA2666752322E14D0074E83A /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		CA2666792322E71B0074E83A /* Facets+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Facets+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA2805C823981B5A00C1950C /* PartnerOffering+TravelerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PartnerOffering+TravelerUI.swift"; sourceTree = "<group>"; };
+		CA2B728923FC3F05007BB1EF /* BookingItemCategoryFetchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingItemCategoryFetchViewController.swift; sourceTree = "<group>"; };
 		CA2CD3BE22CEA4A6002CEE9D /* NotificationName+TravelerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+TravelerUI.swift"; sourceTree = "<group>"; };
 		CA305CA1238D9FDD00A615B2 /* PartnerOffering.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PartnerOffering.storyboard; sourceTree = "<group>"; };
 		CA305CA3238F20DF00A615B2 /* PartnerOfferingDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOfferingDetailsViewController.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				88D3EC8F237B54C70013D938 /* BookingItemSearchSortFilterViewController.swift */,
 				88D3EC91237C4CA90013D938 /* BookingItemSearchSortViewController.swift */,
 				88D3EC93237C62090013D938 /* BookingItemSearchFilterPriceViewController.swift */,
+				CA2B728923FC3F05007BB1EF /* BookingItemCategoryFetchViewController.swift */,
 			);
 			path = BookingItemSearch;
 			sourceTree = "<group>";
@@ -640,9 +643,9 @@
 				CA1656FA22B2DE1200FDF6C7 /* CatalogItemInfo.storyboard */,
 				CA12275D22F0D5CF00541F3A /* TermsAndConditions.storyboard */,
 				CA88804122B2B22400213E41 /* PurchasedProduct.storyboard */,
-				A9639CD1220DF57400625235 /* CatalogItem.storyboard */,
 				CACC1D2E2343CA4000AA6619 /* BookingItem.storyboard */,
 				CACC1D2C2343C91800AA6619 /* OrderReview.storyboard */,
+				A9639CD1220DF57400625235 /* CatalogItem.storyboard */,
 				A974A69C2282197800319683 /* Orders.storyboard */,
 				A33F361323202B880044A1DD /* Wishlist.storyboard */,
 				88168D3F2374C8FB0096E443 /* Error.storyboard */,
@@ -862,6 +865,7 @@
 				A9639D2A220DF57400625235 /* DrawerTansitioning.swift in Sources */,
 				A9639D02220DF57400625235 /* BookablePurchaseViewController.swift in Sources */,
 				88EC057C239174BD00D73416 /* FlightDetailsViewController.swift in Sources */,
+				CA2B728A23FC3F05007BB1EF /* BookingItemCategoryFetchViewController.swift in Sources */,
 				A996650F23442846007EBF14 /* Authenticator.swift in Sources */,
 				A39108EF230B383C0006F09F /* BookableConfirmationViewController.swift in Sources */,
 				A9639CFF220DF57400625235 /* CatalogViewController.swift in Sources */,

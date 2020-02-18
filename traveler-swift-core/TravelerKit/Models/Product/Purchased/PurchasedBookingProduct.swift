@@ -37,7 +37,7 @@ public struct PurchasedBookingProduct: PurchasedProduct, Decodable {
         case orderReferenceNumber = "orderReferenceNumber"
         case title = "title"
         case passes = "passes"
-        case categories = "categories"
+        case categories = "subCategories"
         case purchaseType = "purchaseStrategy"
         case eventDate = "experienceDate"
         case finalPrice = "price"

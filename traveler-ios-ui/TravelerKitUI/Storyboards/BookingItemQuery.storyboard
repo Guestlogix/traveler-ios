@@ -14,7 +14,7 @@
                 <viewControllerPlaceholder storyboardName="BookingItemSearch" id="VSj-l1-Onn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTN-7z-Jd6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="762" y="96"/>
+            <point key="canvasLocation" x="433" y="111"/>
         </scene>
         <!--Categories-->
         <scene sceneID="v9U-H5-Pww">
@@ -39,11 +39,12 @@
                             <outlet property="delegate" destination="qCm-x7-jib" id="hA9-zw-mT0"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="lc8-7Y-WUD"/>
                     <size key="freeformSize" width="374" height="300"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6B7-nU-S6G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="-648"/>
+            <point key="canvasLocation" x="1183" y="-383"/>
         </scene>
         <!--Title-->
         <scene sceneID="zks-0m-S8n">
@@ -82,7 +83,7 @@
                                                     <constraint firstAttribute="height" constant="220" id="btw-ST-U59"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="qCm-x7-jib" kind="embed" id="pVq-zp-nGH"/>
+                                                    <segue destination="0L6-kn-yDh" kind="embed" id="KUS-yC-Nle"/>
                                                 </connections>
                                             </containerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keywords (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAJ-C6-b4h" userLabel="Keywords">
@@ -165,6 +166,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Mc-q6-JBB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-742.02898550724649" y="95.758928571428569"/>
+        </scene>
+        <!--Booking Item Category Fetch View Controller-->
+        <scene sceneID="KG6-f1-wsl">
+            <objects>
+                <viewController id="0L6-kn-yDh" customClass="BookingItemCategoryFetchViewController" customModule="TravelerKitUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lcd-tM-9LQ">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="220"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Mq-un-fCy"/>
+                    </view>
+                    <connections>
+                        <segue destination="qCm-x7-jib" kind="show" identifier="categoryResult" id="lgT-wo-3IM"/>
+                        <segue destination="Hpr-Vk-mLW" kind="show" identifier="loadingSegue" id="zMr-EM-aJN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xHC-fc-p4z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214" y="-383"/>
+        </scene>
+        <!--Loading-->
+        <scene sceneID="80e-Yd-asM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Loading" id="Hpr-Vk-mLW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QBc-Cx-ASY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yoo-gb-LMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901" y="-564"/>
         </scene>
     </scenes>
 </document>
