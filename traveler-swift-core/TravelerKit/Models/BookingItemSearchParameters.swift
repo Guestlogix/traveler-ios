@@ -35,7 +35,7 @@ struct BookingItemSearchParameters: Decodable {
         case minPrice = "minPrice"
         case maxPrice = "maxPrice"
         case currency = "currency"
-        case categories = "categories"
+        case categories = "subCategories"
         case country = "country"
         case city = "city"
         case sortOption = "sortField"

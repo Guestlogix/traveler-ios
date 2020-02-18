@@ -18,7 +18,7 @@ open class BookingItemQueryViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
 
     public var query: BookingItemQuery?
-    public var categories = BookingItemCategory.allCases
+    public var categories: [BookingItemCategory]?
     
     public override func viewDidLoad() {
         cityField.text = query?.city
@@ -89,7 +89,7 @@ open class BookingItemQueryViewController: UIViewController {
         switch (segue.identifier, segue.destination) {
         case (_, let vc  as BookingItemQueryCategoryViewController):
             vc.delegate = self
-            vc.selectedCategories = query?.categories ?? categories
+
         case ("bookingItemSearchSegue", let navVC as UINavigationController):
             let vc = navVC.topViewController as? BookingItemSearchViewController
             var filters = BookingItemSearchFilters()

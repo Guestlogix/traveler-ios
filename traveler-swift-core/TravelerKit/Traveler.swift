@@ -537,6 +537,19 @@ public class Traveler {
         OperationQueue.main.addOperation(blockOperation)
     }
 
+    func fetchBookingItemCategories(completion: @escaping([BookingItemCategory]?, Error?) -> Void) {
+        let fetchOperation = AuthenticatedRemoteFetchOperation<[BookingItemCategory]>(path: .categories(itemType: PurchaseType.booking), session: session)
+
+        let blockOperation = BlockOperation { [unowned fetchOperation] in
+            completion(fetchOperation.resource, fetchOperation.error)
+        }
+
+        blockOperation.addDependency(fetchOperation)
+
+        queue.addOperation(fetchOperation)
+        OperationQueue.main.addOperation(blockOperation)
+    }
+
     // MARK: Public API
 
     /**
@@ -1218,10 +1231,36 @@ public class Traveler {
 
      - Parameters:
         - query: The reference `PurchasedProductDetailsQuery`
-        - delegate: A completion block that is called when the results are ready.
+        - completion: A completion block that is called when the results are ready.
      */
 
     public static func fetchPurchasedProductDetails(_ query: PurchasedProductDetailsQuery, completion: @escaping (AnyPurchasedProductDetails?, Error?) -> Void) {
         shared?.fetchPurchasedProductDetails(query, completion: completion)
+    }
+
+    /**
+     Fetches the available `BookingItemCategories`
+     - Parameters:
+        - completion: A completion block that is called when the results are ready
+     */
+
+    public static func fetchBookingItemCategories(completion: @escaping([BookingItemCategory]?, Error?) -> Void) {
+        shared?.fetchBookingItemCategories(completion: completion)
+    }
+
+    /**
+     Fetches the available `BookingItemCategories`
+     - Parameters:
+        - delegate: A `BookingItemCategoryFetchDelegate` that is notified of the results
+     */
+
+    public static func fetchBookingItemCategories(delegate: BookingItemCategoryFetchDelegate) {
+        shared?.fetchBookingItemCategories(completion: { [weak delegate] (result, error) in
+            if let result = result {
+                delegate?.bookingItemCategoryFetchDidSuccedWith(result)
+            } else {
+                delegate?.bookingItemCategoryFetchDidFailWith(error!)
+            }
+        })
     }
 }

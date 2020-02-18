@@ -38,6 +38,7 @@ enum AuthPath {
     case bookingPurchasedProductDetails(PurchasedProductDetailsQuery)
     case parkingPurchasedProductDetails(PurchasedProductDetailsQuery)
     case partnerPurchasedProductDetails(PurchasedProductDetailsQuery)
+    case categories(itemType: PurchaseType)
 
     // MARK: URLRequest
 
@@ -231,7 +232,7 @@ enum AuthPath {
                 URLQueryItem(name: "city", value: searchQuery.city)]
 
             searchQuery.categories.forEach({ (category) in
-                urlComponents.queryItems?.append(URLQueryItem(name: "categories", value: category.rawValue))
+                urlComponents.queryItems?.append(URLQueryItem(name: "categories", value: category.id))
             })
 
             if let priceRange = searchQuery.priceRange {
@@ -299,6 +300,13 @@ enum AuthPath {
             urlComponents.path = "/v1/orderItemDetail/\(query.orderId)/parking/\(query.productId)"
         case .partnerPurchasedProductDetails(let query):
             urlComponents.path = "/v1/orderItemDetail/\(query.orderId)/menu/\(query.productId)"
+        case .categories(let type):
+            urlComponents.path = "/v1/traveler/category"
+            urlRequest.method = .get
+
+            urlComponents.queryItems = [
+                URLQueryItem(name: "purchaseStrategy", value: type.rawValue)
+            ]
         }
         
         urlRequest.url = urlComponents.url

@@ -56,7 +56,7 @@ public struct BookingItemDetails: CatalogItemDetails, Decodable {
         case termsAndConditions
         case disclaimer
         case providerTranslationAttribution
-        case categories
+        case categories = "subCategories"
     }
 
     public init(from decoder: Decoder) throws {
