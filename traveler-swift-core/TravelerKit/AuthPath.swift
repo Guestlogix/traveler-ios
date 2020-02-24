@@ -301,7 +301,7 @@ enum AuthPath {
         case .partnerPurchasedProductDetails(let query):
             urlComponents.path = "/v1/orderItemDetail/\(query.orderId)/menu/\(query.productId)"
         case .categories(let type):
-            urlComponents.path = "/v1/traveler/category"
+            urlComponents.path = "/v1/category"
             urlRequest.method = .get
 
             urlComponents.queryItems = [
