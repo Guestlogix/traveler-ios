@@ -7,14 +7,17 @@ Pod::Spec.new do |spec|
   spec.summary      = 'Traveler Platform iOS UI SDK'
 #  spec.source       = { :git => 'https://github.com/Guestlogix/traveler-ios.git', :tag => '0.1.0' }
   spec.source       = { :git => 'https://github.com/Guestlogix/traveler-ios.git', :branch => 'master' }
-  spec.swift_version = "4.2"
+  spec.swift_version = "5.0"
 
   spec.ios.dependency 'TravelerKit'
 
   spec.platform = :ios
-  spec.ios.deployment_target = "12.1"
+  spec.ios.deployment_target = "11.4"
 
   spec.framework = "UIKit"
   spec.source_files = "traveler-ios-ui/TravelerKitUI/**/*.{swift}"
+  spec.resources = "traveler-ios-ui/TravelerKitUI/**/*.{xib,storyboard}"
+  spec.resource_bundle = { 'TravelerKitUI' => 'traveler-ios-ui/TravelerKitUI/**/*.{xib,
+  storyboard}' }
   spec.module_name = "TravelerKitUI"
 end

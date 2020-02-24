@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
   spec.summary      = 'Traveler Swift Core SDK'
 #  spec.source       = { :git => 'https://github.com/Guestlogix/traveler-ios.git', :tag => '0.1.0' }
   spec.source       = { :git => 'https://github.com/Guestlogix/traveler-ios.git', :branch => 'master' }
-  spec.swift_version = "4.2"
+  spec.swift_version = "5.0"
 
   spec.source_files = "traveler-swift-core/TravelerKit/**/*.{swift}"
   spec.ios.deployment_target = '11.4'
