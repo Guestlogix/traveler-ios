@@ -7,14 +7,14 @@ Pod::Spec.new do |spec|
   spec.summary      = 'Traveler Stripe Payment Provider'
 #  spec.source       = { :git => 'https://github.com/Guestlogix/traveler-ios.git', :tag => '0.1.0' }
   spec.source       = { :git => 'https://github.com/Guestlogix/traveler-ios.git', :branch => 'master' }
-  spec.swift_version = "4.2"
+  spec.swift_version = "5.0"
 
   spec.platform = :ios
-  spec.ios.deployment_target = '12.1'
+  spec.ios.deployment_target = '11.4'
   spec.framework = "UIKit"
   spec.dependency 'TravelerKit'
   spec.dependency 'TravelerKitUI'
-  spec.dependency 'Stripe'
+  spec.dependency 'Stripe', '17.0.2'
   spec.source_files = "traveler-ios-stripe/TravelerStripePaymentProvider/**/*.{swift}"
   spec.module_name = "TravelerStripePaymentProvider"
 end
