@@ -11,14 +11,14 @@ import Foundation
 extension Date {
     public func minTimeOfDay() -> Date {
         // Time: 00:00:00
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        let components = Calendar.current.dateComponents([.era, .year, .month, .day], from: self)
         let date = Calendar.current.date(from: components)
         return date!
     }
     
     public func maxTimeOfDay() -> Date {
         // Time: 23:59:59
-        var components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        var components = Calendar.current.dateComponents([.era, .year, .month, .day], from: self)
         components.hour = 23
         components.minute = 59
         components.second = 59
