@@ -24,4 +24,14 @@ public struct Coordinate: Decodable, Equatable {
         self.latitude = latitude
         self.longitude = longitude
     }
+
+    public init?(latitude: Double?, longitude: Double?) {
+        if let latitude = latitude,
+            let longitude = longitude {
+            self.latitude = latitude
+            self.longitude = longitude
+        } else {
+            return nil
+        }
+    }
 }

@@ -21,6 +21,9 @@ public struct CatalogQuery {
     ///City for which items should be searched for
     public var city: String?
 
+    ///The coordinate location for which items should be filtered for
+    public var location: Coordinate?
+
     /**
      Initializes a `CatalogQuery`
 
@@ -30,9 +33,10 @@ public struct CatalogQuery {
 
      - Returns: `CatalogQuery`
      */
-    public init(flights: [Flight]? = nil, products: [AnyProduct]? = nil, city: String? = nil) {
+    public init(flights: [Flight]? = nil, products: [AnyProduct]? = nil, city: String? = nil, location: Coordinate? = nil) {
         self.flights = flights
         self.products = products
         self.city = city
+        self.location = location
     }
 }

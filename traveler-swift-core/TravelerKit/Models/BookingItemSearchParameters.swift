@@ -25,6 +25,8 @@ struct BookingItemSearchParameters: Decodable {
     public let sortOption: ProductItemSortOption?
     /// Sort order
     public let sortOrder: ProductItemSortOrder?
+    /// Location center
+    public let location: Coordinate?
 
     enum CodingKeys: String, CodingKey {
         case text = "text"
@@ -40,6 +42,8 @@ struct BookingItemSearchParameters: Decodable {
         case city = "city"
         case sortOption = "sortField"
         case sortOrder = "sortOrder"
+        case latitude = "latitude"
+        case longitude = "longitude"
     }
 
     public init(from decoder: Decoder) throws {
@@ -69,6 +73,13 @@ struct BookingItemSearchParameters: Decodable {
             
         } else {
             self.boundingBox = nil
+        }
+
+        if let latitude = try container.decode(Double?.self, forKey: .latitude),
+            let longitude = try container.decode(Double?.self, forKey: .longitude) {
+            self.location = Coordinate(latitude: latitude, longitude: longitude)
+        } else {
+            self.location = nil
         }
         
         self.categories = try container.decode([BookingItemCategory]?.self, forKey: .categories) ?? []
