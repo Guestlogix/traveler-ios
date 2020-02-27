@@ -69,6 +69,11 @@ enum AuthPath {
                 URLQueryItem(name: "city", value: query.city)
             ]
 
+            if let location = query.location {
+                urlComponents.queryItems?.append(URLQueryItem(name: "latitude", value: String(location.latitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "longitude", value: String(location.longitude)))
+            }
+
             query.flights?.forEach { (flight) in
                 urlComponents.queryItems!.append(URLQueryItem(name:"flight-ids", value: flight.id))
             }
@@ -248,6 +253,11 @@ enum AuthPath {
                 urlComponents.queryItems?.append(URLQueryItem(name: "top-left-longitude", value: String(topLeftCoordinate.longitude)))
                 urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-latitude", value: String(bottomRightCoordinate.latitude)))
                 urlComponents.queryItems?.append(URLQueryItem(name: "bottom-right-longitude", value: String(bottomRightCoordinate.longitude)))
+            }
+
+            if let location = searchQuery.location {
+                urlComponents.queryItems?.append(URLQueryItem(name: "latitude", value: String(location.latitude)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "longitude", value: String(location.longitude)))
             }
             
             if let sortOption = searchQuery.sortOption {

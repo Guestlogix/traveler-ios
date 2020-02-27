@@ -28,6 +28,8 @@ public struct BookingItemQuery {
     public let country: String?
     /// Item city
     public let city: String?
+    /// A coordinate representing the geographic center in which items should be searched for
+    public let location: Coordinate?
     
     // TODO: Encapsulate sortOption and sortOrder into Sort
     /// Sort by
@@ -51,7 +53,7 @@ public struct BookingItemQuery {
      - Returns: `BookingItemQuery`
      */
 
-    public init(offset: Int = 0, take: Int = 10, text: String?, range: PriceRangeFilter?, categories: [BookingItemCategory] = [] , boundingBox: BoundingBox?, country: String? = nil, city: String? = nil, sortOption: ProductItemSortOption? = nil, sortOrder: ProductItemSortOrder? = nil) {
+    public init(offset: Int = 0, take: Int = 10, text: String?, range: PriceRangeFilter?, categories: [BookingItemCategory] = [] , boundingBox: BoundingBox?, country: String? = nil, city: String? = nil, sortOption: ProductItemSortOption? = nil, sortOrder: ProductItemSortOrder? = nil, location: Coordinate? = nil) {
         self.offset = offset
         self.limit = take
         self.text = text
@@ -62,6 +64,7 @@ public struct BookingItemQuery {
         self.city = city
         self.sortOption = sortOption
         self.sortOrder = sortOrder
+        self.location = location
     }
 
     init(with params: BookingItemSearchParameters) {
@@ -75,6 +78,7 @@ public struct BookingItemQuery {
         self.city = params.city
         self.sortOption = params.sortOption
         self.sortOrder = params.sortOrder
+        self.location = params.location
     }
 
     /**
@@ -86,11 +90,11 @@ public struct BookingItemQuery {
      */
 
     public func filterSearchWith(_ filters: BookingItemSearchFilters) -> BookingItemQuery {
-        return BookingItemQuery(text: filters.text ?? self.text, range: filters.priceRange ?? self.priceRange, categories: filters.categories ?? self.categories, boundingBox: self.boundingBox, country: filters.country ?? self.country, city: filters.city ?? self.city, sortOption: filters.sortOption ?? self.sortOption, sortOrder: filters.sortOrder ?? self.sortOrder)
+        return BookingItemQuery(text: filters.text ?? self.text, range: filters.priceRange ?? self.priceRange, categories: filters.categories ?? self.categories, boundingBox: self.boundingBox, country: filters.country ?? self.country, city: filters.city ?? self.city, sortOption: filters.sortOption ?? self.sortOption, sortOrder: filters.sortOrder ?? self.sortOrder, location: self.location)
     }
 
     func isValid() -> Bool {
-        if self.boundingBox == nil && self.priceRange == nil && self.text == nil && self.categories.count == 0 && self.city == nil {
+        if self.boundingBox == nil && self.priceRange == nil && self.text == nil && self.categories.count == 0 && self.city == nil && self.location == nil {
             return false
         } else {
             return true
