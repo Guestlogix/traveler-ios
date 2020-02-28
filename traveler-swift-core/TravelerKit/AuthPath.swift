@@ -172,9 +172,8 @@ enum AuthPath {
             urlRequest.method = .patch
             urlRequest.httpBody = payment.securePayload()
         case .orders(let query, let travelerId):
-            urlComponents.path = "/v1/order"
+            urlComponents.path = "/v1/traveler/\(travelerId)/order"
             urlComponents.queryItems = [
-                URLQueryItem(name: "traveler", value: travelerId),
                 URLQueryItem(name: "skip", value: String(query.offset)),
                 URLQueryItem(name: "take", value: String(query.limit)),
                 URLQueryItem(name: "to", value: ISO8601DateFormatter.fullFormatter.string(from: query.toDate))
