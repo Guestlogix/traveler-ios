@@ -19,6 +19,8 @@ public struct BookingItemSearchFilters {
     public var categories: [BookingItemCategory]?
     /// Range of prices for items
     public var priceRange: PriceRangeFilter?
+    /// Range of availability dates for items
+    public var dateRange: DateRangeFilter?
     /// Item country
     public var country: String?
     /// Item city

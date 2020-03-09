@@ -137,7 +137,7 @@ extension BookingItemQuery {
     static let pageSize = 10
 
     init(page: Int, for query: BookingItemQuery) {
-        self.init(offset: page * BookingItemQuery.pageSize, take: query.limit, text: query.text, range: query.priceRange, categories: query.categories, boundingBox: query.boundingBox, country: query.country, city: query.city, sortOption: query.sortOption, sortOrder: query.sortOrder)
+        self.init(offset: page * BookingItemQuery.pageSize, take: query.limit, text: query.text, priceRange: query.priceRange, dateRange: query.dateRange, categories: query.categories, boundingBox: query.boundingBox, country: query.country, city: query.city, sortOption: query.sortOption, sortOrder: query.sortOrder, location: query.location)
     }
 }
 
