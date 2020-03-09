@@ -26,6 +26,7 @@
 		88F5ABC023905B6B00AF8076 /* PurchasedBookingProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5ABBF23905B6B00AF8076 /* PurchasedBookingProduct.swift */; };
 		88F5ABC223905B7A00AF8076 /* PurchasedParkingProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F5ABC123905B7A00AF8076 /* PurchasedParkingProduct.swift */; };
 		A315F465234692FC00DF8545 /* CancellationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315F464234692FC00DF8545 /* CancellationRequest.swift */; };
+		A342A7322416B0D4002D1551 /* DateRangeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A342A7312416B0D4002D1551 /* DateRangeFilter.swift */; };
 		A3E3FC49234501AF00CB616B /* CancellationReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E3FC48234501AF00CB616B /* CancellationReason.swift */; };
 		A91E0CD4215E6A2A0017D207 /* SessionBeginOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */; };
 		A91E0CD621625E350017D207 /* DateFormatter+PassengerKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */; };
@@ -202,6 +203,7 @@
 		88F5ABBF23905B6B00AF8076 /* PurchasedBookingProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedBookingProduct.swift; sourceTree = "<group>"; };
 		88F5ABC123905B7A00AF8076 /* PurchasedParkingProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedParkingProduct.swift; sourceTree = "<group>"; };
 		A315F464234692FC00DF8545 /* CancellationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationRequest.swift; sourceTree = "<group>"; };
+		A342A7312416B0D4002D1551 /* DateRangeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeFilter.swift; sourceTree = "<group>"; };
 		A3E3FC48234501AF00CB616B /* CancellationReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellationReason.swift; sourceTree = "<group>"; };
 		A91E0CD3215E6A2A0017D207 /* SessionBeginOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionBeginOperationTests.swift; sourceTree = "<group>"; };
 		A91E0CD521625E350017D207 /* DateFormatter+PassengerKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+PassengerKit.swift"; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				CA1B14F7234F6E90009661EC /* ParkingItemSearchResult.swift */,
 				CA1B14F3234F6E90009661EC /* PriceLimits.swift */,
 				CA1B14F4234F6E90009661EC /* PriceRangeFilter.swift */,
+				A342A7312416B0D4002D1551 /* DateRangeFilter.swift */,
 				CA1B14F8234F6E90009661EC /* BookingItemCategory.swift */,
 				CA1B14FA234F6E90009661EC /* SearchQueryError.swift */,
 				A9DB06432140358C009817EC /* Credentials.swift */,
@@ -889,6 +892,7 @@
 				CA79FA39238360F600C63C9C /* EphemeralKeyError.swift in Sources */,
 				A95F46AB229C403B009C9227 /* CancellationQuoteFetchDelegate.swift in Sources */,
 				A9EED5F6215AB713003AAA5F /* KeychainStoreOperation.swift in Sources */,
+				A342A7322416B0D4002D1551 /* DateRangeFilter.swift in Sources */,
 				88DF3E40238734EC00C1CC9B /* ItineraryItemType.swift in Sources */,
 				88F5ABBB2390282C00AF8076 /* AnyProduct.swift in Sources */,
 				CA594AFB22DFD344008C6C4B /* Trademark.swift in Sources */,

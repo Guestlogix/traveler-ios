@@ -244,6 +244,11 @@ enum AuthPath {
                 urlComponents.queryItems?.append(URLQueryItem(name: "max-price", value: String(priceRange.range.upperBound)))
                 urlComponents.queryItems?.append(URLQueryItem(name: "currency", value: priceRange.currency.rawValue))
             }
+
+            if let dateRange = searchQuery.dateRange {
+                urlComponents.queryItems?.append(URLQueryItem(name: "availability-start", value: DateFormatter.withoutTimezone.string(from: dateRange.range.lowerBound)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "availability-end", value: DateFormatter.withoutTimezone.string(from: dateRange.range.upperBound)))
+            }
             
             if let boundingBox = searchQuery.boundingBox {
                 let topLeftCoordinate = boundingBox.topLeftCoordinate

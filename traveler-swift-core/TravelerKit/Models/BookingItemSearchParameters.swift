@@ -11,8 +11,10 @@ import Foundation
 struct BookingItemSearchParameters: Decodable {
     /// Text for text-based queries
     public let text: String?
-    ///  Range of prices for items
-    public let range: PriceRangeFilter?
+    /// Range of prices for items
+    public let priceRange: PriceRangeFilter?
+    /// Range of availability dates for items
+    public let dateRange: DateRangeFilter?
     /// Item category
     public let categories: [BookingItemCategory]
     /// A `BoundingBox`representing the geographic area in which items should be searched for
@@ -36,6 +38,8 @@ struct BookingItemSearchParameters: Decodable {
         case bottomRightLongitude = "bottomRightLongitude"
         case minPrice = "minPrice"
         case maxPrice = "maxPrice"
+        case startDate = "availabilityStart"
+        case endDate = "availabilityEnd"
         case currency = "currency"
         case categories = "subCategories"
         case country = "country"
@@ -56,9 +60,18 @@ struct BookingItemSearchParameters: Decodable {
             let currency = try container.decode(Currency.self, forKey: .currency)
             let range = mininumPriceValue...maximumPriceVaue
 
-            self.range = PriceRangeFilter(range: range, currency: currency)
+            self.priceRange = PriceRangeFilter(range: range, currency: currency)
         } else {
-            self.range = nil
+            self.priceRange = nil
+        }
+
+        if let startDate = try container.decode(Date?.self, forKey: .startDate),
+            let endDate = try container.decode(Date?.self, forKey: .endDate) {
+            let range = startDate...endDate
+
+            self.dateRange = DateRangeFilter(range: range)
+        } else {
+            self.dateRange = nil
         }
 
         if let topLeftLatitude = try container.decode(Double?.self, forKey: .topLeftLatitude),
