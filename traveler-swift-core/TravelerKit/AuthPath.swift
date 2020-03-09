@@ -236,7 +236,7 @@ enum AuthPath {
                 URLQueryItem(name: "city", value: searchQuery.city)]
 
             searchQuery.categories.forEach({ (category) in
-                urlComponents.queryItems?.append(URLQueryItem(name: "categories", value: category.id))
+                urlComponents.queryItems?.append(URLQueryItem(name: "sub_categories", value: category.id))
             })
 
             if let priceRange = searchQuery.priceRange {
