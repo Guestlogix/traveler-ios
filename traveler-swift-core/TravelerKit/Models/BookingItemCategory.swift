@@ -25,6 +25,11 @@ public struct BookingItemCategory: Decodable {
         self.id = try container.decode(String.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .label)
     }
+
+    init(id: String) {
+        self.id = id
+        self.title = ""
+    }
 }
 
 extension BookingItemCategory: Equatable {
