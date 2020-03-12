@@ -95,7 +95,9 @@ struct BookingItemSearchParameters: Decodable {
             self.location = nil
         }
         
-        self.categories = try container.decode([BookingItemCategory]?.self, forKey: .categories) ?? []
+        let iDcategories = try container.decode([String]?.self, forKey: .categories) ?? []
+
+        self.categories = iDcategories.map{ BookingItemCategory(id: $0) }
 
         self.country = try container.decode(String?.self, forKey: .country)
         self.city = try container.decode(String?.self, forKey: .city)
