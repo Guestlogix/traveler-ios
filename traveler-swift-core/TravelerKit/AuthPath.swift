@@ -245,9 +245,9 @@ enum AuthPath {
                 urlComponents.queryItems?.append(URLQueryItem(name: "currency", value: priceRange.currency.rawValue))
             }
 
-            if let dateRange = searchQuery.dateRange {
-                urlComponents.queryItems?.append(URLQueryItem(name: "availability-start", value: DateFormatter.withoutTimezone.string(from: dateRange.range.lowerBound)))
-                urlComponents.queryItems?.append(URLQueryItem(name: "availability-end", value: DateFormatter.withoutTimezone.string(from: dateRange.range.upperBound)))
+            if let dateRange = searchQuery.dateRange, let range = dateRange.range {
+                urlComponents.queryItems?.append(URLQueryItem(name: "availability-start", value: DateFormatter.withoutTimezone.string(from: range.lowerBound)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "availability-end", value: DateFormatter.withoutTimezone.string(from: range.upperBound)))
             }
             
             if let boundingBox = searchQuery.boundingBox {

@@ -12,9 +12,9 @@ import Foundation
  */
 public struct DateRangeFilter: Equatable {
     /// The range of availability dates with which the items should be filtered
-    public let range: ClosedRange<Date>
+    public let range: ClosedRange<Date>?
 
-    public init(range: ClosedRange<Date>) {
+    public init(range: ClosedRange<Date>?) {
         self.range = range
     }
 }
