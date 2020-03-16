@@ -246,8 +246,9 @@ enum AuthPath {
             }
 
             if let dateRange = searchQuery.dateRange {
-                urlComponents.queryItems?.append(URLQueryItem(name: "availability-start", value: DateFormatter.withoutTimezone.string(from: dateRange.range.lowerBound)))
-                urlComponents.queryItems?.append(URLQueryItem(name: "availability-end", value: DateFormatter.withoutTimezone.string(from: dateRange.range.upperBound)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "availability-start", value:
+                    ISO8601DateFormatter.fullFormatter.string(from: dateRange.range.lowerBound)))
+                urlComponents.queryItems?.append(URLQueryItem(name: "availability-end", value: ISO8601DateFormatter.fullFormatter.string(from: dateRange.range.upperBound)))
             }
             
             if let boundingBox = searchQuery.boundingBox {
