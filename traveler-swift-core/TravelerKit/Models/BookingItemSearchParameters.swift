@@ -65,8 +65,10 @@ struct BookingItemSearchParameters: Decodable {
             self.priceRange = nil
         }
 
-        if let startDate = try container.decode(Date?.self, forKey: .startDate),
-            let endDate = try container.decode(Date?.self, forKey: .endDate) {
+        if let startDateString = try? container.decode(String.self, forKey: .startDate),
+            let startDate = DateFormatter.withoutTimezone.date(from: startDateString),
+            let endDateString = try? container.decode(String.self, forKey: .endDate),
+            let endDate = DateFormatter.withoutTimezone.date(from: endDateString) {
             let range = startDate...endDate
 
             self.dateRange = DateRangeFilter(range: range)
@@ -96,7 +98,6 @@ struct BookingItemSearchParameters: Decodable {
         }
         
         let iDcategories = try container.decode([String]?.self, forKey: .categories) ?? []
-
         self.categories = iDcategories.map{ BookingItemCategory(id: $0) }
 
         self.country = try container.decode(String?.self, forKey: .country)

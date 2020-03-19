@@ -20,6 +20,8 @@ public struct CatalogGroup: Decodable {
     public let itemType: CatalogItemType
     /// The `CatalogItem`s in this group
     public let items: [CatalogItem]
+    /// The `AnyQuery` for this group. Can be used to make additional searches and filtering related to this group.
+    public let query: AnyQuery?
 
     enum CodingKeys: String, CodingKey {
         case isFeatured = "featured"
@@ -27,6 +29,7 @@ public struct CatalogGroup: Decodable {
         case subTitle = "subTitle"
         case items = "items"
         case type = "type"
+        case query = "groupSearch"
     }
 
     public init(from decoder: Decoder) throws {
@@ -46,6 +49,7 @@ public struct CatalogGroup: Decodable {
             let lossyItems = try container.decode(LossyDecodableArray<QueryItem>.self, forKey: .items)
             self.items = lossyItems.payload
         }
+        self.query = try container.decode(AnyQuery?.self, forKey: .query)
     }
 }
 
