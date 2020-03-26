@@ -172,6 +172,7 @@
 		CAEB7A7A234D4C7E00C31BD6 /* ParkingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEB7A79234D4C7E00C31BD6 /* ParkingItem.swift */; };
 		EB5F526F2423B9AF00B9135A /* AnyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5F526E2423B9AF00B9135A /* AnyQuery.swift */; };
 		EB98870323E47889009E93DF /* LocalizedError+Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98870223E47889009E93DF /* LocalizedError+Description.swift */; };
+		EBB7273C242C911600072D87 /* DiscountCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB7273B242C911600072D87 /* DiscountCoupon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +355,7 @@
 		CAEB7A79234D4C7E00C31BD6 /* ParkingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingItem.swift; sourceTree = "<group>"; };
 		EB5F526E2423B9AF00B9135A /* AnyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyQuery.swift; sourceTree = "<group>"; };
 		EB98870223E47889009E93DF /* LocalizedError+Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedError+Description.swift"; sourceTree = "<group>"; };
+		EBB7273B242C911600072D87 /* DiscountCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCoupon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -641,6 +643,7 @@
 				CA3BB66D239558510074229B /* PurchaseFormFetchingError.swift */,
 				88BF0A4923AA6E14009AEBAE /* LossyDecodableArray.swift */,
 				CA894DC823E23FBC007DA2E5 /* UnhandledError.swift */,
+				EBB7273B242C911600072D87 /* DiscountCoupon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -934,6 +937,7 @@
 				CA1B1511234F6EEA009661EC /* BookingItemSearchDelegate.swift in Sources */,
 				A9EED5F8215AC254003AAA5F /* KeychainReadOperation.swift in Sources */,
 				CA2ADDB623479A5B00A6EE34 /* BookingItemDetails.swift in Sources */,
+				EBB7273C242C911600072D87 /* DiscountCoupon.swift in Sources */,
 				EB98870323E47889009E93DF /* LocalizedError+Description.swift in Sources */,
 				88EC05922396D57400D73416 /* PurchasedParkingProductDetails.swift in Sources */,
 				A9DB06592140665A009817EC /* DownloadOperation.swift in Sources */,

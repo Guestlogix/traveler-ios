@@ -173,9 +173,19 @@ enum AuthPath {
                 })
             ]
         case .processOrder(let order, let payment):
+            var securePayload: Data?
+            if let paymentSecurePayload = payment.securePayload(),
+                var jsonPayload = try? JSONSerialization.jsonObject(with: paymentSecurePayload, options: .allowFragments) as? [String: Any?] {
+                if let discountToken = order.discount?.discountToken {
+                    jsonPayload["discountToken"] = discountToken
+                }
+                securePayload = try? JSONSerialization.data(withJSONObject: jsonPayload, options: [])
+            }
+            
             urlComponents.path = "/v1/order/\(order.id)"
             urlRequest.method = .patch
-            urlRequest.httpBody = payment.securePayload()
+            urlRequest.httpBody = securePayload
+            
         case .orders(let query, let travelerId):
             urlComponents.path = "/v1/traveler/\(travelerId)/order"
             urlComponents.queryItems = [
