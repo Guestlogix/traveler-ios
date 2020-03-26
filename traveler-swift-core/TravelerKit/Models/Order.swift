@@ -50,6 +50,8 @@ public struct Order: Decodable, Equatable, Hashable {
     public let contact: CustomerContact
     /// The additional description needed for some orders
     public var description: String?
+    /// The optional `Discount` for the Order
+    public let discount: DiscountCoupon?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -60,6 +62,7 @@ public struct Order: Decodable, Equatable, Hashable {
         case createdDate = "createdOn"
         case email = "customer"
         case last4Digits = "last4Digits"
+        case discount = "discount"
     }
 
     public init(from decoder: Decoder) throws {
@@ -102,5 +105,6 @@ public struct Order: Decodable, Equatable, Hashable {
         self.products = try container.decode(LossyDecodableArray<AnyPurchasedProduct>.self, forKey: .products).payload.map { $0.payload }
 
         self.contact = try container.decode(CustomerContact.self, forKey: .email)
+        self.discount = try container.decode(DiscountCoupon?.self, forKey: .discount)
     }
 }
